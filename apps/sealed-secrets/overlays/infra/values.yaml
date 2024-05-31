@@ -1,0 +1,17 @@
+# needed because kubeseal expects this name, otherwise you'll end up have to run 
+# 'kubeseal --controller-name sealed-secrets' every time
+---
+fullnameOverride: sealed-secrets-controller
+serviceAccount:
+  create: true
+  name: sealed-secrets
+rbac:
+  create: true
+  clusterRole: true
+# resources:
+#   # requests:
+#   #   cpu: 50m
+#   #   memory: 50Mi
+#   limits:
+#     cpu: 150m
+#     memory: 256Mi
