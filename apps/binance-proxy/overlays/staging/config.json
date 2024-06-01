@@ -6,7 +6,7 @@
   "srcPath": "apps/binance-proxy/overlays/staging",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "HEAD",
-  "syncWave": "4",
+  "syncWave": "10",
   "appRole": "trade",
   "labels": "",
   "annotations": "",

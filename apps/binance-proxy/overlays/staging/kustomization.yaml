@@ -22,7 +22,7 @@ helmCharts:
     includeCRDs: false
     valuesFile: values.yaml
 
-configMapGenerator:
-  - name: binance-proxy-config
-    literals:
-      - TZ=CET
+# configMapGenerator:
+#   - name: binance-proxy-config
+#     literals:
+#       - TZ=CET
