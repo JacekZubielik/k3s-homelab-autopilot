@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: node-app
-          image: ghcr.io/jacekzubielik/node-app:2.1.13
+          image: ghcr.io/jacekzubielik/node-app:2.2.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
@@ -46,7 +46,7 @@ spec:
           resources:
             requests:
               memory: 256Mi
-              cpu: 250m # 500milliCPUs (1/2 CPU)
+              cpu: 250m   # 500milliCPUs (1/2 CPU)
             limits:
               memory: 512Mi
               cpu: 500m
