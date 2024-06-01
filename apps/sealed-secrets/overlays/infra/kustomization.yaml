@@ -19,7 +19,7 @@ helmCharts:
     version: 2.14.2
     repo: https://bitnami-labs.github.io/sealed-secrets
     releaseName: sealed-secrets
-    includeCRDs: false
+    includeCRDs: true
     valuesFile: values.yaml
 
 configMapGenerator:
