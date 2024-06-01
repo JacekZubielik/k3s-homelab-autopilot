@@ -16,7 +16,7 @@ metadata:
 
 helmCharts:
   - name: sealed-secrets
-    version: 2.26.3
+    version: 0.26.3
     repo: https://bitnami-labs.github.io/sealed-secrets
     releaseName: sealed-secrets
     includeCRDs: true
