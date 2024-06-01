@@ -1,0 +1,39 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: cert-manager-prometheus-servicemonitor
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  labels:
+    app.kubernetes.io/name: cert-manager
+    release: cert-manager
+spec:
+  selector:
+    matchLabels:
+      app: cert-manager
+  namespaceSelector:
+    matchNames:
+      - cert-manager
+  endpoints:
+    - port: "9402"
+      path: /metrics
+
+######################## <-----------
+#   labels:
+#     app.kubernetes.io/name: traefik
+#     release: kube-prometheus-stack
+# spec:
+#   jobLabel: traefik-metrics
+#   selector:
+#     matchLabels:
+#       app.kubernetes.io/instance: infra-traefik
+#       app.kubernetes.io/name: traefik-dashboard
+#   namespaceSelector:
+#     matchNames:
+#       - prometheus
+#   endpoints:
+#     - port: traefik
+#       path: /metrics
