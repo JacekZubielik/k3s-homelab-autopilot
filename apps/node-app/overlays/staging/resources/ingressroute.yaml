@@ -25,7 +25,7 @@ spec:
       services:
         - kind: Service   # TraefikService
           name: node-app
-          port: 3000
+          port: 80
   tls:
     domains:
       - main: anotherlife.org.pl
