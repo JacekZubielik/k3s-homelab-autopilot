@@ -2,7 +2,6 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: cert-manager-prometheus-servicemonitor
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "5"
@@ -10,6 +9,7 @@ metadata:
   labels:
     app.kubernetes.io/name: cert-manager
     release: cert-manager
+  name: cert-manager-prometheus-servicemonitor
 spec:
   selector:
     matchLabels:
