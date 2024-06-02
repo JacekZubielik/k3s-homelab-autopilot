@@ -6,18 +6,6 @@ startupapicheck:
   timeout: 10m
   backoffLimit: 6
 
-  jobAnnotations:
-    helm.sh/hook: post-install
-    helm.sh/hook-weight: "1"
-    helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
-
-  rbac:
-    # annotations for the startup API Check job RBAC and PSP resources
-    annotations:
-      helm.sh/hook: post-install
-      helm.sh/hook-weight: "-5"
-      helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
-
 installCRDs: true
 
 global:
@@ -114,13 +102,8 @@ webhook:
   serviceAccount:
     create: true
     automountServiceAccountToken: true
-    annotations:
-      helm.sh/hook: post-install
-      helm.sh/hook-weight: "-5"
-      helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
 
   serviceType: ClusterIP
-  loadBalancerIP:
 
   serviceMonitor:
     path: /metrics
