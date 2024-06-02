@@ -72,7 +72,7 @@ maxConcurrentChallenges: 60
 # When this flag is enabled, secrets will be automatically removed when the certificate resource is deleted
 enableCertificateOwnerRef: true
 
-dns01RecursiveNameservers: "1.1.1.1:53,1.0.0.1:53"
+dns01RecursiveNameservers: "8.8.8.8:53,1.1.1.1:53"
 dns01RecursiveNameserversOnly: true
 podDnsPolicy: None
 podDnsConfig:
