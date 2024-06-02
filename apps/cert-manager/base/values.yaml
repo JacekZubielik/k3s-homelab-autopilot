@@ -107,7 +107,7 @@ livenessProbe:
   failureThreshold: 8
 
 prometheus:
-  enabled: false
+  enabled: true
   servicemonitor:
     enabled: true
     prometheusInstance: default
