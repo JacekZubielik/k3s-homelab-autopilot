@@ -58,16 +58,13 @@ maxConcurrentChallenges: 60
   #   cpu: 200m
   #   memory: 256Mi
 
-# serviceAccount:
-#   create: true
-#   # name: ""
-#   # annotations: {}
-#   annotations:
-#     eks.amazonaws.com/role-arn: arn:aws:iam::227651627371:role/cert-manager
-#   # labels: {}
-#   automountServiceAccountToken: true
-# # Automounting API credentials for a particular pod
-# # automountServiceAccountToken: true
+serviceAccount:
+  create: true
+  name: ""
+  annotations:
+    eks.amazonaws.com/role-arn: aws:iam::227651627371:user/certManagerIAMUser
+  # labels: {}
+  automountServiceAccountToken: true
 
 # When this flag is enabled, secrets will be automatically removed when the certificate resource is deleted
 enableCertificateOwnerRef: true
