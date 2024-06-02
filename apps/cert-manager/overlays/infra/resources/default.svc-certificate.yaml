@@ -22,9 +22,9 @@ spec:
     # size: 2048
     algorithm: ECDSA
     size: 256
-  # dnsNames:
-  #   - "default.svc"
-  #   - "*.default.svc"   # <-----
+  dnsNames:
+    - "default.svc"
+    - "*.default.svc"   # <-----
   # ipAddresses:
   #   - 127.0.0.1
   #   - ::1
