@@ -147,13 +147,13 @@ webhook:
     type: RollingUpdate
     rollingUpdate: {}
 
-  # serviceAccount:
-  #   create: true
-  #   automountServiceAccountToken: true
-  #   annotations:
-  #     helm.sh/hook: post-install
-  #     helm.sh/hook-weight: "-5"
-  #     helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
+  serviceAccount:
+    create: true
+    automountServiceAccountToken: true
+    annotations:
+      helm.sh/hook: post-install
+      helm.sh/hook-weight: "-5"
+      helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
 
   serviceType: ClusterIP
   loadBalancerIP:
