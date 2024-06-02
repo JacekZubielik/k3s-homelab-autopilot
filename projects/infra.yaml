@@ -124,11 +124,11 @@ spec:
           - ApplyOutOfSyncOnly=true
           - Validate=false
           - PruneLast=true
-          - Delete=false
+          - Delete=true
           - RespectIgnoreDifferences=true
           - FailOnSharedResource=false
         automated:
           allowEmpty: true
           prune: true
-          selfHeal: true
+          selfHeal: false
 status: {}
