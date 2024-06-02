@@ -3,11 +3,11 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: letsencrypt-staging
-  namespace: traefik
+  namespace: kube-system
   annotations:
     argocd.argoproj.io/sync-wave: "0"
   labels:
-    app.kubernetes.io/name: traefik
+    app.kubernetes.io/name: cert-manager
 spec:
   dnsNames:
     - 'anotherlife.org.pl'

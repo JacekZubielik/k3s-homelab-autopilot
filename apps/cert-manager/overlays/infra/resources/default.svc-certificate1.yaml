@@ -1,0 +1,45 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: default.svc
+  namespace: kube-system
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  isCA: true
+  commonName: default.svc-ca
+  secretName: default.svc.tls
+  # subject:
+  #   organizations:
+  #     - ACME Inc.
+  #   organizationalUnits:
+  #     - Widgets
+  privateKey:
+    # algorithm: RSA
+    # encoding: PKCS8
+    # size: 2048
+    algorithm: ECDSA
+    size: 256
+  # dnsNames:
+  #   - "*.default.svc"
+  #   - "*.default"
+    # - "default.svc"
+    # - "*.default.svc"
+  # dnsNames:
+  #   - .default.svc # <-----
+  #   - localhost
+  # ipAddresses:
+  #   - 127.0.0.1
+  #   - ::1
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: default.svc
+
+  duration: 2160h0m0s # 90d
+  renewBefore: 720h0m0s # 30d
+
+
+

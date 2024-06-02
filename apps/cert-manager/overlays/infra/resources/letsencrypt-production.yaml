@@ -1,0 +1,27 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: route53-letsencrypt-production
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  acme:
+    email: zumbik@protonmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: route53-access-key
+    solvers:
+      - dns01:
+          route53:
+            accessKeyID: AKIATKAIYFFV34T22QYU
+            region: eu-central-1
+            hostedZoneID: Z0010549388CLY75PMF8V
+            # role: arn:aws:iam::227651627371:user/certManagerIAMUser
+            secretAccessKeySecretRef:
+              name: route53-credentials
+              key: secret-access-key
+    #   - selector:
+    #       dnsZones:
+    #         - "anotherlife.org.pl"
