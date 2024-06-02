@@ -1,0 +1,15 @@
+{
+  "appName": "whoami",
+  "userGivenName": "whoami",
+  "destNamespace": "dev",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/whoami/overlays/dev",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "HEAD",
+  "syncWave": "0",
+  "appRole": "dev",
+  "labels": "",
+  "annotations": "",
+  "exclude": "",
+  "include": ""
+}
