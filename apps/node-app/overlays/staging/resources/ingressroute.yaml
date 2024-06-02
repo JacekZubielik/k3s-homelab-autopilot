@@ -1,0 +1,54 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "5"
+    cert-manager.io/cluster-issuer: route53-letsencrypt-staging
+    # external-dns.alpha.kubernetes.io/target: dev.anotherlife.pl
+    kubernetes.io/ingress.class: traefik-external
+  labels:
+    app.kubernetes.io/name: node-app
+  name: node-app
+  namespace: staging
+
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`node-app.anotherlife.org.pl`) && (PathPrefix(`/`))
+      middlewares:
+        - name: chain-traefik-dashboard
+          namespace: traefik
+      services:
+        - kind: TraefikService
+          name: whoami
+          port: 80
+  tls:
+    domains:
+      - main: anotherlife.org.pl
+        sans:
+          - .anotherlife.org.pl
+    options:
+      name: tls-ver13
+      namespace: traefik
+    secretName: letsencrypt-staging
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "5"
+  labels:
+    app.kubernetes.io/name: node-app
+  name: node-app
+spec:
+  weighted:
+    services:
+      - name: node-app
+        port: 3000
+        weight: 1
