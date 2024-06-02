@@ -45,7 +45,7 @@ metadata:
   labels:
     app.kubernetes.io/name: argocd-server
   name: argocd-server
-  # namespace: argocd
+  namespace: argocd
 spec:
   weighted:
     services:
