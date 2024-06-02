@@ -20,13 +20,6 @@ helmCharts:
     includeCRDs: true
     valuesFile: values.yaml
 
-  # valuesInline:
-  #   installCRDs: true
-  #   global:
-  #     leaderElection:
-  #       namespace: "kube-system"
-  #   fullnameOverride: "cert-manager"
-
 configMapGenerator:
   - name: cert-manager-config
     literals:

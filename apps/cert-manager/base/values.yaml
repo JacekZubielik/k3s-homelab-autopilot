@@ -6,19 +6,6 @@ startupapicheck:
   timeout: 10m
   backoffLimit: 6
 
-  # securityContext:
-  #   runAsNonRoot: true
-  #   seccompProfile:
-  #     type: RuntimeDefault
-
-  # containerSecurityContext:
-  #   allowPrivilegeEscalation: false
-  #   capabilities:
-  #     drop:
-  #     - ALL
-  #   # readOnlyRootFilesystem: true
-  #   # runAsNonRoot: true
-
   jobAnnotations:
     helm.sh/hook: post-install
     helm.sh/hook-weight: "1"
@@ -50,13 +37,6 @@ replicaCount: 1
 
 # The maximum number of challenges that can be scheduled as 'processing' at once
 maxConcurrentChallenges: 60
-  # resources:
-    # requests:
-    #   cpu: 10m
-    #   memory: 32Mi
-    # limits:
-    #   cpu: 200m
-    #   memory: 256Mi
 
 serviceAccount:
   create: true
@@ -76,24 +56,6 @@ podDnsConfig:
   nameservers:
     - 1.1.1.1
     - 8.8.8.8
-
-# extraArgs: []
-# extraEnv: []
-# securityContext:
-#   fsGroup: 1001
-#   runAsNonRoot: true
-#   seccompProfile:
-#     type: RuntimeDefault
-
-# Container Security Context to be set on the controller component container
-# ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-# containerSecurityContext:
-#   allowPrivilegeEscalation: false
-#   capabilities:
-#     drop:
-#     - ALL
-#   # readOnlyRootFilesystem: true
-#   # runAsNonRoot: true
 
 nodeSelector:
   kubernetes.io/os: linux
@@ -142,7 +104,9 @@ webhook:
 
   updateStrategy:
     type: RollingUpdate
-    rollingUpdate: {}
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
 
   serviceAccount:
     create: true
@@ -163,25 +127,25 @@ webhook:
     scrapeTimeout: 30s
     honorLabels: false
 
-  # resources:
-  #   requests:
-  #     cpu: 50m
-  #     memory: 256Mi
-  #     ephemeral-storage: 500Mi
-  #   limits:
-  #     cpu: 500m
-  #     memory: 512Mi
-  #     ephemeral-storage: 500Mi
+  resources:
+    requests:
+      cpu: 50m
+      memory: 256Mi
+      ephemeral-storage: 500Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+      ephemeral-storage: 500Mi
 
 ####################################
 cainjector:
   enabled: true
   replicaCount: 1
 
-  # resources:
-  #   requests:
-  #     cpu: 10m
-  #     memory: 32Mi
-  #   limits:
-  #     cpu: 200m
-  #     memory: 256Mi
+  resources:
+    requests:
+      cpu: 10m
+      memory: 32Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi

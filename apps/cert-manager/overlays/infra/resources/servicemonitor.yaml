@@ -21,19 +21,3 @@ spec:
     - port: "9402"
       path: /metrics
 
-######################## <-----------
-#   labels:
-#     app.kubernetes.io/name: traefik
-#     release: kube-prometheus-stack
-# spec:
-#   jobLabel: traefik-metrics
-#   selector:
-#     matchLabels:
-#       app.kubernetes.io/instance: infra-traefik
-#       app.kubernetes.io/name: traefik-dashboard
-#   namespaceSelector:
-#     matchNames:
-#       - prometheus
-#   endpoints:
-#     - port: traefik
-#       path: /metrics

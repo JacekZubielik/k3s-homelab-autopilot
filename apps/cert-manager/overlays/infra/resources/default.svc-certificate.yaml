@@ -10,7 +10,7 @@ metadata:
 spec:
   isCA: true
   commonName: selfsigned-ca
-  secretName: selfsigned-ca
+  secretName: default.svc.tls
   # subject:
   #   organizations:
   #     - ACME Inc.
@@ -24,10 +24,10 @@ spec:
     size: 256
   dnsNames:
     - "default.svc"
-    - "*.default.svc"   # <-----
-  # ipAddresses:
-  #   - 127.0.0.1
-  #   - ::1
+    - "*.default.svc"
+  ipAddresses:
+    - 127.0.0.1
+    - ::1
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
