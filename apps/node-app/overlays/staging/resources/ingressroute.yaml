@@ -24,7 +24,7 @@ spec:
           namespace: traefik
       services:
         - kind: TraefikService
-          name: whoami
+          name: node-app
           port: 3000
   tls:
     domains:
