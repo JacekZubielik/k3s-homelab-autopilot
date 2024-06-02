@@ -24,7 +24,7 @@ spec:
         - kind: TraefikService
           namespace: argocd
           name: argocd-server
-          port: 80
+          port: 8080
 
   tls:
     domains:
