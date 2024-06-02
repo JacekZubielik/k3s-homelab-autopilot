@@ -5,6 +5,7 @@ metadata:
   name: argocd-server
   annotations:
     traefik.ingress.kubernetes.io/router.tls: "true"
+    kubernetes.io/ingress.class: traefik-external
 spec:
   tls:
     - hosts:
