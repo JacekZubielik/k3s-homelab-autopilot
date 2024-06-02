@@ -10,7 +10,7 @@ resources:
   - secrets/seal-secrets.yaml
   - resources/servicemonitor.yaml
   - resources/tlsoption.yaml
-  # - resources/ingressroute-argocd.yaml
+  - resources/ingressroute-argocd.yaml
   # - resources/tlsstore.yaml
 metadata:
   annotations:
