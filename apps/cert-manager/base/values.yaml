@@ -85,11 +85,11 @@ webhook:
   nodeSelector:
     kubernetes.io/os: linux
 
-  # updateStrategy:
-  #   type: RollingUpdate
-  #   rollingUpdate:
-  #     maxSurge: 1
-  #     maxUnavailable: 0
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
 
   serviceAccount:
     create: true
