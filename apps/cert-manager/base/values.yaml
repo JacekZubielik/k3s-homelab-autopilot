@@ -46,6 +46,9 @@ serviceAccount:
   # labels: {}
   automountServiceAccountToken: true
 
+securityContext:
+  fsGroup: 1001
+
 # When this flag is enabled, secrets will be automatically removed when the certificate resource is deleted
 enableCertificateOwnerRef: true
 
