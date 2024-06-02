@@ -478,7 +478,7 @@ namespaceOverride: traefik
 instanceLabelOverride: traefik
 
 prometheus:
-  enabled: false
+  enabled: true
   servicemonitor:
     enabled: true
     prometheusInstance: default
