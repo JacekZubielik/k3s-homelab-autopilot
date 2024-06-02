@@ -13,9 +13,6 @@ spec:
     privateKeySecretRef:
       name: route53-access-key
     solvers:
-      - selector:
-          dnsZones:
-            - "anotherlife.org.pl"
       - dns01:
           route53:
             accessKeyID: AKIATKAIYFFV34T22QYU
@@ -25,3 +22,6 @@ spec:
             secretAccessKeySecretRef:
               name: route53-credentials
               key: secret-access-key
+    #   - selector:
+    #       dnsZones:
+    #         - "anotherlife.org.pl"
