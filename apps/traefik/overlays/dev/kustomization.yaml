@@ -24,7 +24,7 @@ metadata:
 
 helmCharts:
   - name: traefik
-    version: 28.1.0
+    version: 27.2.0
     repo: https://helm.traefik.io/traefik
     releaseName: traefik
     includeCRDs: true
