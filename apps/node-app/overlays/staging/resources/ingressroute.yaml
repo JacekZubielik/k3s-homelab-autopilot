@@ -25,7 +25,7 @@ spec:
       services:
         - kind: TraefikService
           name: whoami
-          port: 80
+          port: 3000
   tls:
     domains:
       - main: anotherlife.org.pl
