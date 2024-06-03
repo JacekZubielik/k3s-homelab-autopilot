@@ -18,3 +18,129 @@ spec:
   secretName: letsencrypt-staging
   duration: 2160h0m0s   # 90d
   renewBefore: 720h0m0s   # 30d
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-infra
+  namespace: authentik
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  dnsNames:
+    - "infra.anotherlife.org.pl"
+    - "*.infra.anotherlife.org.pl"
+  issuerRef:
+    kind: ClusterIssuer
+    name: route53-letsencrypt-staging
+  secretName: letsencrypt-infra-staging
+  duration: 2160h0m0s   # 90d
+  renewBefore: 720h0m0s   # 30d
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-dev
+  namespace: dev
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  dnsNames:
+    - "dev.anotherlife.org.pl"
+    - "*.dev.anotherlife.org.pl"
+  issuerRef:
+    kind: ClusterIssuer
+    name: route53-letsencrypt-staging
+  secretName: letsencrypt-dev-staging
+  duration: 2160h0m0s   # 90d
+  renewBefore: 720h0m0s   # 30d
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-iot
+  namespace: cert-manager
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  dnsNames:
+    - "iot.anotherlife.org.pl"
+    - "*.iot.anotherlife.org.pl"
+  issuerRef:
+    kind: ClusterIssuer
+    name: route53-letsencrypt-staging
+  secretName: letsencrypt-iot-staging
+  duration: 2160h0m0s   # 90d
+  renewBefore: 720h0m0s   # 30d
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-media
+  namespace: cert-manager
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  dnsNames:
+    - "media.anotherlife.org.pl"
+    - "*.media.anotherlife.org.pl"
+  issuerRef:
+    kind: ClusterIssuer
+    name: route53-letsencrypt-staging
+  secretName: letsencrypt-media-staging
+  duration: 2160h0m0s   # 90d
+  renewBefore: 720h0m0s   # 30d
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-monitoring
+  namespace: cert-manager
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  dnsNames:
+    - "monitoring.anotherlife.org.pl"
+    - "*.monitoring.anotherlife.org.pl"
+  issuerRef:
+    kind: ClusterIssuer
+    name: route53-letsencrypt-staging
+  secretName: letsencrypt-monitoring-staging
+  duration: 2160h0m0s   # 90d
+  renewBefore: 720h0m0s   # 30d
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-storage
+  namespace: cert-manager
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  dnsNames:
+    - "storage.anotherlife.org.pl"
+    - "*.storage.anotherlife.org.pl"
+  issuerRef:
+    kind: ClusterIssuer
+    name: route53-letsencrypt-staging
+  secretName: letsencrypt-storage-staging
+  duration: 2160h0m0s   # 90d
+  renewBefore: 720h0m0s   # 30d
