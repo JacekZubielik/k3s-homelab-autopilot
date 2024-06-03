@@ -6,7 +6,7 @@
   "srcPath": "apps/cert-manager/overlays/infra",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
-  "syncWave": "0",
+  "syncWave": "5",
   "appRole": "infra",
   "labels": "",
   "annotations": "",
