@@ -10,10 +10,9 @@ metadata:
     app.kubernetes.io/name: kube-prometheus-stack
   name: kube-prometheus-stack
 
-# resources:
+resources:
+  - resources/ingressroute.yaml
   # - resources/blackbox-exporter-dashboard-configmap.yaml
-  # - resources/namespace.yaml
-  # - resources/ingressroute.yaml
   # - resources/smartctl-exporter-dashboard-configmap.yaml
   # - resources/smartctl-exporter-prometheus-rules.yaml
   # - resources/temperature-dashboard-configmap.yaml
