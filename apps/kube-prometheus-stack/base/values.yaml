@@ -332,13 +332,13 @@ alertmanager:
       repeat_interval: 12h
       receiver: 'null'
       routes:
-      - receiver: 'null'
-        matchers:
-          - alertname = "Watchdog"
+        - receiver: 'null'
+          matchers:
+            - alertname = "Watchdog"
     receivers:
-    - name: 'null'
+      - name: 'null'
     templates:
-    - '/etc/alertmanager/config/*.tmpl'
+      - '/etc/alertmanager/config/*.tmpl'
 
   ## Alertmanager configuration directives (as string type, preferred over the config hash map)
   ## stringConfig will be used only, if tplConfig is true
@@ -648,13 +648,13 @@ alertmanager:
     ##
     podMetadata: {}
 
-    ## Image of Alertmanager
-    ##
-    image:
-      registry: quay.io
-      repository: prometheus/alertmanager
-      tag:
-      sha: ""
+    # ## Image of Alertmanager
+    # ##
+    # image:
+    #   registry: quay.io
+    #   repository: prometheus/alertmanager
+    #   tag:
+    #   sha: ""
 
     ## If true then the user will be responsible to provide a secret with alertmanager configuration
     ## So when true the config part will be ignored (including templateFiles) and the one in the secret will be used
