@@ -46,6 +46,7 @@ metadata:
   labels:
     app.kubernetes.io/name: node-app
   name: node-app
+  namespace: dev
 spec:
   weighted:
     services:
