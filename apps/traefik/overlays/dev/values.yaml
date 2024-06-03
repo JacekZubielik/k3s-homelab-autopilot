@@ -90,23 +90,23 @@ ingressClass:
 #     # -- Enable traefik experimental GatewayClass CRD
 #     enabled: false
 
-# ingressRoute:
-#   dashboard:
-#     enabled: false
-#     annotations: {}
-#     labels: {}
-#     matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
-#     entryPoints: ["traefik"]
-#     middlewares: []
-#     tls: {}
-#   healthcheck:
-#     enabled: false
-#     annotations: {}
-#     labels: {}
-#     matchRule: PathPrefix(`/ping`)
-#     entryPoints: ["traefik"]
-#     middlewares: []
-#     tls: {}
+ingressRoute:
+  dashboard:
+    enabled: false
+    annotations: {}
+    labels: {}
+    matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+    entryPoints: ["traefik"]
+    middlewares: []
+    tls: {}
+  healthcheck:
+    enabled: false
+    annotations: {}
+    labels: {}
+    matchRule: PathPrefix(`/ping`)
+    entryPoints: ["traefik"]
+    middlewares: []
+    tls: {}
 
 updateStrategy:
   type: RollingUpdate

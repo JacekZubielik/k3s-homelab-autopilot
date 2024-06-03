@@ -24,7 +24,6 @@ spec:
         - kind: TraefikService
           name: argocd-server
           port: 80
-
   tls:
     domains:
       - main: anotherlife.org.pl
@@ -34,6 +33,7 @@ spec:
       name: tls-ver13
       namespace: traefik
     secretName: letsencrypt-production
+
 ---
 apiVersion: traefik.io/v1alpha1
 kind: TraefikService
