@@ -15,7 +15,7 @@ spec:
     solvers:
       - dns01:
           route53:
-            # accessKeyID: AKIATKAIYFFV34T22QYU
+            accessKeyID: AKIATKAIYFFV34T22QYU
             region: eu-central-1
             hostedZoneID: Z0010549388CLY75PMF8V
             #role: arn:aws:iam::227651627371:user/certManagerIAMUser
