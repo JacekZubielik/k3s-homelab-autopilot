@@ -20,4 +20,3 @@ spec:
   endpoints:
     - port: "9402"
       path: /metrics
-
