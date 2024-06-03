@@ -29,7 +29,7 @@ helmCharts:
     repo: https://prometheus-community.github.io/helm-charts
     releaseName: kube-prometheus-stack
     includeCRDs: true
-    # valuesFile: values1.yaml
+    valuesFile: values.yaml
     namespace: monitoring
 
   # - name: prometheus-blackbox-exporter
@@ -52,7 +52,6 @@ helmCharts:
 #   literals:
 #   - TZ=CET
 
-
 patches:
   - patch: |-
       - op: add
@@ -63,4 +62,3 @@ patches:
       kind: CustomResourceDefinition
       name: prometheuses.monitoring.coreos.com
       version: v1
-
