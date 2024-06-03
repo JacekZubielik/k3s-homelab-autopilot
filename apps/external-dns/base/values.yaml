@@ -42,7 +42,7 @@ aws:
   ## @param aws.assumeRoleArn When using the AWS provider, assume role by specifying --aws-assume-role to the external-dns daemon
   assumeRoleArn: ""
   ## @param aws.roleArn Specify role ARN to the external-dns daemon
-  roleArn: "arn:aws:iam::227651627371:role/cert-manager"
+  roleArn: "arn:aws:iam::227651627371:role/dns-manager"
   ## @param aws.apiRetries Maximum number of retries for AWS API calls before giving up
   apiRetries: 3
   ## @param aws.batchChangeSize When using the AWS provider, set the maximum number of changes that will be applied in each batch
