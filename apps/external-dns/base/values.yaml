@@ -38,7 +38,7 @@ aws:
   ## @param aws.region When using the AWS provider, `AWS_DEFAULT_REGION` to set in the environment (optional)
   region: eu-central-1
   ## @param aws.zoneType When using the AWS provider, filter for zones of this type (optional, options: public, private)
-  zoneType: ""
+  zoneType: "public"
   ## @param aws.assumeRoleArn When using the AWS provider, assume role by specifying --aws-assume-role to the external-dns daemon
   assumeRoleArn: ""
   ## @param aws.roleArn Specify role ARN to the external-dns daemon
@@ -89,7 +89,7 @@ logFormat: text
 registry: "txt"
 txtPrefix: ""
 txtSuffix: ""
-txtOwnerId: ""
+txtOwnerId: "Z0010549388CLY75PMF8V"
 forceTxtOwnerId: false
 extraArgs: {}
 extraEnvVars: []
@@ -126,11 +126,13 @@ containerSecurityContext:
   readOnlyRootFilesystem: true
   capabilities:
     drop: ["ALL"]
-
+# If you are deploying to AWS EKS and you want to leverage . 
+# You will need to override fsGroup and runAsUser with 65534(nfsnobody) and 0 respectively. 
+# Otherwise service account token will not be properly mounted.
 podSecurityContext:
   enabled: true
-  fsGroup: 1001
-  runAsUser: 1001
+  fsGroup: 65534  # 1001
+  runAsUser: 0  # 1001
 
 resources:
   requests:
