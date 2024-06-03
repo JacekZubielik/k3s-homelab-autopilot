@@ -23,7 +23,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: letsencrypt-infra
+  name: letsencrypt-infra-staging
   namespace: authentik
   annotations:
     argocd.argoproj.io/sync-wave: "0"
@@ -44,7 +44,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: letsencrypt-dev
+  name: letsencrypt-dev-staging
   namespace: dev
   annotations:
     argocd.argoproj.io/sync-wave: "0"
@@ -65,7 +65,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: letsencrypt-iot
+  name: letsencrypt-iot-staging
   namespace: cert-manager
   annotations:
     argocd.argoproj.io/sync-wave: "0"
@@ -86,7 +86,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: letsencrypt-media
+  name: letsencrypt-media-staging
   namespace: cert-manager
   annotations:
     argocd.argoproj.io/sync-wave: "0"
@@ -107,7 +107,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: letsencrypt-monitoring
+  name: letsencrypt-monitoring-staging
   namespace: cert-manager
   annotations:
     argocd.argoproj.io/sync-wave: "0"
@@ -128,7 +128,7 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: letsencrypt-storage
+  name: letsencrypt-storage-staging
   namespace: cert-manager
   annotations:
     argocd.argoproj.io/sync-wave: "0"
