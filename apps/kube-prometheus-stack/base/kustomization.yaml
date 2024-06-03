@@ -1,0 +1,66 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: kube-prometheus-stack
+  name: kube-prometheus-stack
+
+# resources:
+  # - resources/blackbox-exporter-dashboard-configmap.yaml
+  # - resources/namespace.yaml
+  # - resources/ingressroute.yaml
+  # - resources/smartctl-exporter-dashboard-configmap.yaml
+  # - resources/smartctl-exporter-prometheus-rules.yaml
+  # - resources/temperature-dashboard-configmap.yaml
+  # - resources/temperature-prometheus-rules.yaml
+  # - resources/alertmanager-telegram-template.yaml
+  # - secrets/alertmanager-secret.yaml
+  # - secrets/grafana-admin-secret.yaml
+  # - resources/grafana-secret.yaml
+
+helmCharts:
+  - name: kube-prometheus-stack
+    version: 59.1.0
+    repo: https://prometheus-community.github.io/helm-charts
+    releaseName: kube-prometheus-stack
+    includeCRDs: true
+    # valuesFile: values1.yaml
+    namespace: monitoring
+
+  # - name: prometheus-blackbox-exporter
+  #   version: 8.16.0
+  #   repo: https://prometheus-community.github.io/helm-charts
+  #   releaseName: monitoring
+  #   includeCRDs: false
+  #   valuesFile: blackbox-exporter-values.yaml
+  #   namespace: monitoring
+
+  # - name: prometheus-smartctl-exporter
+  #   version: 0.13.1
+  #   repo: https://prometheus-community.github.io/helm-charts
+  #   releaseName: monitoring
+  #   valuesFile: smartctl-exporter-values.yaml
+  #   namespace: monitoring
+
+# configMapGenerator:
+# - name: kube-prometheus-stack-config
+#   literals:
+#   - TZ=CET
+
+
+patches:
+  - patch: |-
+      - op: add
+        path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
+        value: "Replace=true"
+    target:
+      group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: prometheuses.monitoring.coreos.com
+      version: v1
+
