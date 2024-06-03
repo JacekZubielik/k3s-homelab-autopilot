@@ -19,26 +19,26 @@ spec:
   duration: 2160h0m0s   # 90d
   renewBefore: 720h0m0s   # 30d
 
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: letsencrypt-infra-staging
-  namespace: cert-manager
-  annotations:
-    argocd.argoproj.io/sync-wave: "5"
-  labels:
-    app.kubernetes.io/name: traefik
-spec:
-  dnsNames:
-    - "infra.anotherlife.org.pl"
-    - "*.infra.anotherlife.org.pl"
-  issuerRef:
-    kind: ClusterIssuer
-    name: route53-letsencrypt-staging
-  secretName: letsencrypt-infra-staging
-  duration: 2160h0m0s   # 90d
-  renewBefore: 720h0m0s   # 30d
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: letsencrypt-infra-staging
+#   namespace: cert-manager
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "5"
+#   labels:
+#     app.kubernetes.io/name: traefik
+# spec:
+#   dnsNames:
+#     - "infra.anotherlife.org.pl"
+#     - "*.infra.anotherlife.org.pl"
+#   issuerRef:
+#     kind: ClusterIssuer
+#     name: route53-letsencrypt-staging
+#   secretName: letsencrypt-infra-staging
+#   duration: 2160h0m0s   # 90d
+#   renewBefore: 720h0m0s   # 30d
 
 # ---
 # apiVersion: cert-manager.io/v1
