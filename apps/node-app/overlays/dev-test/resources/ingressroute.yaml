@@ -9,8 +9,8 @@ metadata:
     external-dns.alpha.kubernetes.io/target: dev.anotherlife.pl
     kubernetes.io/ingress.class: traefik-external
   labels:
-    app.kubernetes.io/name: homepage
-  name: homepage
+    app.kubernetes.io/name: node-app
+  name: node-app
   namespace: dev
 
 spec:
@@ -18,13 +18,13 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`homepage.dev.anotherlife.org.pl`)
+      match: Host(`node-app.dev.anotherlife.org.pl`) && (PathPrefix(`/`))
       middlewares:
         - name: chain-traefik-dashboard
           namespace: traefik
       services:
         - kind: TraefikService
-          name: homepage
+          name: node-app
           port: 3000
   tls:
     domains:
@@ -44,11 +44,11 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "5"
   labels:
-    app.kubernetes.io/name: homepage
-  name: homepage
+    app.kubernetes.io/name: node-app
+  name: node-app
 spec:
   weighted:
     services:
-      - name: homepage
+      - name: node-app
         port: 3000
         weight: 1
