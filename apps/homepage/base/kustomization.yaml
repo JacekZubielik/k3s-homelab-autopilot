@@ -18,5 +18,5 @@ helmCharts:
     repo: https://jameswynn.github.io/helm-charts
     releaseName: homepage
     namespace: dev
-    includeCRDs: true
+    includeCRDs: false
     valuesFile: values.yaml
