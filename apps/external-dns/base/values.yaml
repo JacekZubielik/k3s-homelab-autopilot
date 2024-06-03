@@ -1,5 +1,5 @@
 ---
-dryRun: true  # XXX: Edit to false once you've verified the external-dns pod logs of what it will do
+dryRun: false  # XXX: Edit to false once you've verified the external-dns pod logs of what it will do
 
 policy: upsert-only  # 'upsert-only' or 'sync' - DANGER - sync will delete DNS records from DNS zone, could wipe out existing DNS records - test this wth 'dryRun: true' above
 
@@ -144,10 +144,10 @@ podDisruptionBudget: {}
 
 ## Prometheus Exporter / Metrics
 metrics:
-  enabled: false
+  enabled: true
   podAnnotations: {}
   serviceMonitor:
-    enabled: false
+    enabled: true
     namespace: ""
     interval: ""
     scrapeTimeout: ""
