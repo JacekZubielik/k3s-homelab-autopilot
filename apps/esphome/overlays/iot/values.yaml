@@ -161,9 +161,9 @@ tolerations: []
 
 persistence:
   enabled: true
-  hostPath:
-    type: hostPath
-    path: /mnt/volume-0/apps/esphome
+  type: hostPath
+  retain: true
+  path: /mnt/volume-0/apps/esphome
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 # hostMounts: []
