@@ -161,9 +161,9 @@ tolerations: []
 
 persistence:
   enabled: true
-  # storageClass: "host"
-  storageClassName: "-"
-  hostPath: /mnt/volume-0/apps/esphome
+  storageClass: "host"
+  hostMounts:
+    hostPath: /mnt/volume-0/apps/esphome
 
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
