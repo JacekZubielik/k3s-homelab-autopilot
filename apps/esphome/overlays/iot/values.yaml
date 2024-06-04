@@ -160,7 +160,7 @@ affinity: {}
 tolerations: []
 
 persistence:
-  enabled: true
+  enabled: false
   storageClass: "host"
   hostPath: /mnt/volume-0/apps/esphome
 
