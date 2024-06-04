@@ -170,3 +170,10 @@ persistence:
   # Example
   # - name: zha
   #   hostPath: /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_6120245D-if01-port0
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 10
+  averageCPUUtilizationPercentage: 50
+  averageMemoryUtilizationPercentage: 50
