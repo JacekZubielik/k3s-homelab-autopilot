@@ -161,7 +161,8 @@ tolerations: []
 
 persistence:
   enabled: false
-  storageClass: "host"
+  # storageClass: "host"
+  storageClassName: "-"
   hostPath: /mnt/volume-0/apps/esphome
 
 
