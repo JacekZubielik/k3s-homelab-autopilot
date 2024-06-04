@@ -160,14 +160,17 @@ affinity: {}
 tolerations: []
 
 persistence:
-  enabled: true
+  enabled: false
   storageClass: "host"
   hostMounts:
+    path: /mnt/volume-0/apps/esphome
+
+hostMounts:
+  - name: zha
     hostPath: /mnt/volume-0/apps/esphome
 
-
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
-hostMounts: []
+# hostMounts: []
   # Example
   # - name: zha
   #   hostPath: /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_6120245D-if01-port0
