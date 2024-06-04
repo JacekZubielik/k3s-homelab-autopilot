@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     "helm.sh/hook-delete-policy": hook-succeeded
-  name: config-pvc-volume
+  name: config-esphome-pvc-volume
   namespace: iot-k3s
 spec:
   accessModes:
@@ -14,4 +14,4 @@ spec:
       storage: 5Gi
   storageClassName: host
   volumeMode: Filesystem
-  volumeName: config-pv-volume
+  volumeName: config-esphome-pv-volume

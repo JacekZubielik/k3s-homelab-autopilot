@@ -4,7 +4,7 @@ kind: PersistentVolume
 metadata:
   annotations:
     "helm.sh/hook-delete-policy": hook-succeeded
-  name: config-pv-volume
+  name: config-esphome-pv-volume
   namespace: iot-k3s
   labels:
     type: local
