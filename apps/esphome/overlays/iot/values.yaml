@@ -160,10 +160,13 @@ affinity: {}
 tolerations: []
 
 persistence:
-  enabled: false
+  enabled: true
   # hostPath: /mnt/volume-0/apps/esphome
-  persistentVolumeClaim:
-    claimName: config-pvc-volume
+  existingClaim: 'config-pvc-volume'
+
+
+  # persistentVolumeClaim:
+  #   claimName: config-pvc-volume
 
 
 # hostPath: /mnt/volume-0/apps/esphome
