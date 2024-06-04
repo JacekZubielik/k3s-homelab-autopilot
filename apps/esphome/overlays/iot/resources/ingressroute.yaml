@@ -6,7 +6,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "10"
     cert-manager.io/cluster-issuer: route53-letsencrypt-production
-    external-dns.alpha.kubernetes.io/target: iot.anotherlife.pl
+    external-dns.alpha.kubernetes.io/target: iot.anotherlife.org.pl
     kubernetes.io/ingress.class: traefik-external
   labels:
     app.kubernetes.io/name: esphome
@@ -17,7 +17,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`esphome.iot.anotherlife.pl`)
+      match: Host(`esphome.iot.anotherlife.org.pl`)
       middlewares:
         - name: chain-traefik-dashboard
           namespace: traefik
@@ -27,9 +27,9 @@ spec:
           port: 6052
   tls:
     domains:
-      - main: iot.anotherlife.pl
+      - main: iot.anotherlife.org.pl
         sans:
-          - .iot.anotherlife.pl
+          - .iot.anotherlife.org.pl
     options:
       name: tls-ver13
       namespace: traefik
