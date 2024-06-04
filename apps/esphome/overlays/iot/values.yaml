@@ -148,13 +148,13 @@ ingress:
     #   hosts:
     #     - esphome.local
 
-resources: {}
-#   requests:
-#     cpu: "1"
-#     memory: "256Mi"
-#   limits:
-#     cpu: "1"
-#     memory: "512Mi"
+resources:
+  limits:
+    memory: 0.3Gi
+    cpu: 350m
+  requests:
+    memory: 0.2Gi
+    cpu: 150m
 
 nodeSelector:
   kubernetes.io/hostname: dev-k3s-master-0
