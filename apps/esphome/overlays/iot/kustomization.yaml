@@ -19,7 +19,7 @@ metadata:
 
 helmCharts:
   - name: esphome
-    version: 0.0.6
+    version: 0.0.7
     repo: https://jacekzubielik.github.io/jz-helm-charts
     releaseName: esphome
     includeCRDs: false
