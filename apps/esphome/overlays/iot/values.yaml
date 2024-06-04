@@ -160,14 +160,8 @@ affinity: {}
 tolerations: []
 
 persistence:
-  enabled: false
-  storageClass: "host"
-  hostMounts:
-    path: /mnt/volume-0/apps/esphome
-
-hostMounts:
-  - name: zha
-    hostPath: /mnt/volume-0/apps/esphome
+  enabled: true
+  path: /mnt/volume-0/apps/esphome
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 # hostMounts: []
