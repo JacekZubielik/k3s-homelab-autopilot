@@ -159,20 +159,21 @@ nodeSelector:
 affinity: {}
 tolerations: []
 
-# persistence:
-#   enabled: true
-#   retain: true
-#   hostPath: /mnt/volume-0/apps/esphome
+persistence:
+  enabled: true
+  retain: true
+  hostPath: /mnt/volume-0/apps/esphome
 
+hostPath: /mnt/volume-0/apps/esphome
 
-extraVolumeMounts:
-  - name: config
-    mountPath: /config
-extraVolume:
-  - name: config
-    hostPath:
-      path: /mnt/volume-0/apps/esphome
-      type: DirectoryOrCreate
+# extraVolumeMounts:
+#   - name: config
+#     mountPath: /config
+# extraVolume:
+#   - name: config
+#     hostPath:
+#       path: /mnt/volume-0/apps/esphome
+#       type: DirectoryOrCreate
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 # hostMounts: []
