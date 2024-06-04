@@ -2,6 +2,8 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  annotations:
+    "helm.sh/hook-delete-policy": hook-succeeded
   name: config-pv-volume
   namespace: iot-k3s
   labels:
@@ -16,3 +18,4 @@ spec:
   volumeMode: Filesystem
   hostPath:
     path: "/mnt/volume-0/apps/esphome"
+    type: DirectoryOrCreate
