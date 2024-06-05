@@ -4,13 +4,13 @@ kind: Kustomization
 resources:
 - ../../base
 - secrets/sealed-secrets.yaml
-namespace: external-dns
 
 helmCharts:
 - name: external-dns
   version: 7.5.2
   repo: https://charts.bitnami.com/bitnami
   releaseName: external-dns
+  namespace: external-dns
   includeCRDs: true
   valuesFile: values.yaml
 
@@ -34,3 +34,4 @@ patches:
     version: v1
     kind: ServiceAccount
     name: external-dns
+    namespace: external-dns
