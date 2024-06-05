@@ -1,0 +1,136 @@
+---
+replicaCount: 1
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  web:
+    type: ClusterIP
+    port: 8384
+    targetPort: 8384
+  tcp:
+    type: ClusterIP
+    port: 22000
+    targetPort: 22000
+    externalTrafficPolicy: Local
+  udp:
+    type: ClusterIP
+    port: 22000
+    targetPort: 22000
+    externalTrafficPolicy: Local
+  discovery:
+    type: ClusterIPce
+    port: 21027
+    targetPort: 21027
+    externalTrafficPolicy: Local
+
+monitoring:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    labels: {}
+    honorLabels: true
+    interval: 60s
+    selector: {}
+    namespace: {}
+    scrapeTimeout: 10s
+    scheme: http
+    tlsConfig: {}
+    relabelings: []
+    # - sourceLabels: [__meta_kubernetes_pod_node_name]
+    #   separator: ;
+    #   regex: ^(.*)$
+    #   target_label: nodename
+    #   replacement: $1
+    #   action: replace
+    metricRelabelings: []
+    # - action: keep
+    #   regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
+    #   sourceLabels: [__name__]
+    bearerTokenFile: {}
+    # (use long lived access tokens)
+    bearerTokenSecret: {}
+      # name:
+      # key:
+      # optional:
+
+livenessProbe:
+  enabled: true
+  # scheme: HTTP
+  periodSeconds: 60
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 6
+  initialDelaySeconds: 30
+readinessProbe:
+  enabled: true
+  # scheme: HTTP
+  periodSeconds: 60
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 6
+  initialDelaySeconds: 30
+startupProbe:
+  enabled: true
+  # scheme: HTTP
+  successThreshold: 1
+  failureThreshold: 6
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+  - host: chart-example.local
+    paths:
+    - path: /
+      pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources:
+  limits:
+    memory: 0.3Gi
+    cpu: 350m
+  requests:
+    memory: 0.2Gi
+    cpu: 150m
+
+nodeSelector:
+  kubernetes.io/hostname: dev-k3s-master-0
+tolerations: []
+affinity: {}
+
+persistence:
+  enabled: true
+  existingClaim: 'syncthing-pv-claim'
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 10
+  averageCPUUtilizationPercentage: 50
+  averageMemoryUtilizationPercentage: 50
