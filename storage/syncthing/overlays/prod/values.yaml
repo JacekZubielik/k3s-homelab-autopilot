@@ -38,7 +38,7 @@ service:
     targetPort: 22000
     externalTrafficPolicy: Local
   discovery:
-    type: ClusterIPce
+    type: ClusterIP
     port: 21027
     targetPort: 21027
     externalTrafficPolicy: Local
