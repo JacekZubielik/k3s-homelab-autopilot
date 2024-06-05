@@ -22,6 +22,6 @@ MD013:
 
 MD033:
   allowed_elements:
-    - "div"
-    - "img"
-    - "br"
+  - "div"
+  - "img"
+  - "br"

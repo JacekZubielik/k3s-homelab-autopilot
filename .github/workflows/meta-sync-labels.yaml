@@ -1,32 +1,26 @@
 ---
 name: "Meta: Sync labels"
 
-on: # yamllint disable-line rule:truthy
+on:
   workflow_dispatch:
   push:
     branches:
-      - main
+    - main
     paths:
-      - ".github/labels.yaml"
+    - ".github/labels.yaml"
 
 jobs:
   labels:
     name: Sync Labels
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     steps:
-      - name: Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
-
-      - name: Generate Token
-        uses: tibdex/github-app-token@v2
-        id: generate-token
-        with:
-          app_id: "${{ secrets.BOT_APP_ID }}"
-          private_key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
-
-      - name: Sync Labels
-        uses: EndBug/label-sync@v2
-        with:
-          config-file: .github/labels.yaml
-          token: "${{ steps.generate-token.outputs.token }}"
-          delete-other-labels: true
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Sync Labels
+      uses: EndBug/label-sync@v2
+      with:
+        config-file: .github/labels.yaml
+        token: ${{ secrets.GITHUB_TOKEN }}
+        delete-other-labels: true

@@ -1,25 +1,18 @@
 ---
 name: "Meta: Labeler"
 
-on: # yamllint disable-line rule:truthy
+on:
   pull_request:
     branches:
-      - main
+    - main
 
 jobs:
   labeler:
     name: Labeler
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     steps:
-      - name: Generate Token
-        uses: tibdex/github-app-token@v2
-        id: generate-token
-        with:
-          app_id: "${{ secrets.BOT_APP_ID }}"
-          private_key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
-
-      - name: Labeler
-        uses: actions/labeler@v5
-        with:
-          configuration-path: .github/labeler.yaml
-          repo-token: "${{ steps.generate-token.outputs.token }}"
+    - name: Labeler
+      uses: actions/labeler@v5
+      with:
+        configuration-path: .github/labeler.yaml
+        repo-token: ${{ secrets.GITHUB_TOKEN }}

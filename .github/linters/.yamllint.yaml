@@ -1,4 +1,3 @@
----
 ignore: |
   archive/
   charts/
@@ -7,8 +6,10 @@ ignore: |
   .vscode/
   **/*.sec.*
   **/*.sops.*
+  **/*.secret*.*
   **/templates/*.y*ml
   **/decrypted-secrets/secret*.y*ml
+  **/secrets/*.secret*.y*ml
   temp-off/
   **/temp-off/*.*
 extends: default
@@ -29,7 +30,7 @@ rules:
     max-spaces-inside: 0
   indentation:
     spaces: 2
-    indent-sequences: true
+    indent-sequences: false
     check-multi-line-strings: false
   new-lines:
     type: unix
