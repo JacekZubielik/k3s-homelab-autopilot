@@ -30,4 +30,4 @@ jobs:
 
       - name: Lint all the YAMLs.
         working-directory: ./apps
-        run: yamllint -c '.github/linters/.yamllint.yaml' .
+        run: yamllint -c '.github/linters/yamllint.yaml' .
