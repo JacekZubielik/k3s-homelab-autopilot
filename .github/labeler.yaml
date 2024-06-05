@@ -1,0 +1,25 @@
+---
+area/github:
+  - changed-files:
+      - any-glob-to-any-file: ".github/**/*"
+area/apps:
+  - changed-files:
+      - any-glob-to-any-file: "apps/**/*"
+area/bootstrap:
+  - changed-files:
+      - any-glob-to-any-file: "bootstrap/**/*"
+area/dev:
+  - changed-files:
+      - any-glob-to-any-file: "dev/**/*"
+area/monitoring:
+  - changed-files:
+      - any-glob-to-any-file: "monitoring/**/*"
+area/project:
+  - changed-files:
+      - any-glob-to-any-file: "project/*"
+area/storage:
+  - changed-files:
+      - any-glob-to-any-file: "storage/**/*"
+area/system:
+  - changed-files:
+      - any-glob-to-any-file: "system/**/*"

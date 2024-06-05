@@ -4,46 +4,43 @@
   color: "72ccf3"
   description: >-
     Changes made in the github directory
-
 - name: area/apps
   color: "009900"
   description: >-
     Changes made in the apps directory
-
 - name: area/bootstrap
   color: "ee0000"
   description: >-
     Changes made in the bootstrap directory
-
 - name: area/dev
   color: "72ccf3"
   description: >-
     Changes made in the dev directory
-
 - name: area/monitoring
   color: "72ccf3"
   description: >-
     Changes made in the monitoring directory
-
 - name: area/project
   color: "72ccf3"
   description: >-
     Changes made in the project directory
-
+- name: area/storage
+  color: "72ccf3"
+  description: >-
+    Changes made in the storage directory
 - name: area/system
   color: "72ccf3"
   description: >-
     Changes made in the system directory
-
-# Renovate
-- name: renovate/container
-  color: "ffc300"
-- name: renovate/github-action
-  color: "ffc300"
-- name: renovate/github-release
-  color: "ffc300"
-- name: renovate/helm
-  color: "ffc300"
+# # Renovate
+# - name: renovate/container
+#   color: "ffc300"
+# - name: renovate/github-action
+#   color: "ffc300"
+# - name: renovate/github-release
+#   color: "ffc300"
+# - name: renovate/helm
+#   color: "ffc300"
 # Semantic Type
 - name: dep/patch
   color: "FFEC19"
