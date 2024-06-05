@@ -85,7 +85,6 @@ interval: "1m"
 logLevel: info
 ## @param logFormat Which format to output logs in (options: text, json)
 logFormat: text
-
 registry: "txt"
 txtPrefix: ""
 txtSuffix: ""
