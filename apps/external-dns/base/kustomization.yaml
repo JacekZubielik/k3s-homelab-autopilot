@@ -1,0 +1,26 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- secrets/sealed-secrets.yaml
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: external-dns
+  name: external-dns
+
+helmCharts:
+- name: external-dns
+  version: 7.5.2
+  repo: https://charts.bitnami.com/bitnami
+  releaseName: external-dns
+  includeCRDs: true
+  valuesFile: values.yaml
+
+# configMapGenerator:
+# - name: external-dns-timezone
+#   literals:
+#   - TZ=CET
