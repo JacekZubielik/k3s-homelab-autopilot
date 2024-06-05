@@ -12,15 +12,15 @@ metadata:
   name: cert-manager
 
 helmCharts:
-  - name: cert-manager
-    version: v1.14.5
-    repo: https://charts.jetstack.io
-    releaseName: cert-manager
-    namespace: kube-system
-    includeCRDs: true
-    valuesFile: values.yaml
+- name: cert-manager
+  version: v1.14.5
+  repo: https://charts.jetstack.io
+  releaseName: cert-manager
+  namespace: kube-system
+  includeCRDs: true
+  valuesFile: values.yaml
 
 configMapGenerator:
-  - name: cert-manager-config
-    literals:
-      - TZ=CET
+- name: cert-manager-config
+  literals:
+  - TZ=CET

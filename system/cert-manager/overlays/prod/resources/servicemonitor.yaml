@@ -16,7 +16,7 @@ spec:
       app: cert-manager
   namespaceSelector:
     matchNames:
-      - cert-manager
+    - cert-manager
   endpoints:
-    - port: "9402"
-      path: /metrics
+  - port: "9402"
+    path: /metrics

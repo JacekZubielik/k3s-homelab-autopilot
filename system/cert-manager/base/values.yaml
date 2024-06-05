@@ -45,8 +45,8 @@ dns01RecursiveNameserversOnly: false
 podDnsPolicy: None
 podDnsConfig:
   nameservers:
-    - 1.1.1.1
-    - 8.8.8.8
+  - 1.1.1.1
+  - 8.8.8.8
 
 nodeSelector:
   kubernetes.io/os: linux
@@ -65,7 +65,8 @@ prometheus:
     honorLabels: false
     endpointAdditionalProperties: {}
 
-  # Note: Enabling both PodMonitor and ServiceMonitor is mutually exclusive, enabling both will result in a error.
+  #  Note: Enabling both PodMonitor and ServiceMonitor is mutually exclusive, enabling both will result in a error.
+
   # podmonitor:
   #   enabled: true
   #   prometheusInstance: default
