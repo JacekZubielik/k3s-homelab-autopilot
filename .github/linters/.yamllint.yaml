@@ -9,7 +9,7 @@ ignore: |
   **/*.secret*.*
   **/templates/*.y*ml
   **/decrypted-secrets/secret*.y*ml
-  **/secrets/*.secret*.y*ml
+  secret*.y*ml
   temp-off/
   **/temp-off/*.*
 extends: default
