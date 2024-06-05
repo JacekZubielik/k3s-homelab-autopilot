@@ -2,9 +2,9 @@
 #   run: kubectl patch deploy external-dns --namespace external-dns --type json --patch "$(cat external-dns-deployment.patch.yaml)"
 
 ---
-- op: replace
-  path: /spec/template/spec/containers/0/args/0
-  value: --policy=sync
+# - op: replace
+#   path: /spec/template/spec/containers/0/args/0
+#   value: --policy=sync
 
 # Option to configure Route53 DNS Zone as per the enviornment
 - op: add
