@@ -29,5 +29,5 @@ jobs:
       run: pip3 install yamllint
 
     - name: Lint all the YAMLs.
-      working-directory: ./apps
+      working-directory: apps
       run: yamllint -c '.github/linters/.yamllint.yaml' .
