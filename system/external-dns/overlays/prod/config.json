@@ -3,7 +3,7 @@
   "userGivenName": "external-dns",
   "destNamespace": "external-dns",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "system/external-dns/overlays/system",
+  "srcPath": "system/external-dns/overlays/prod",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "0",
