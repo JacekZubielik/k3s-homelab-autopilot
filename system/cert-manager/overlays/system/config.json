@@ -3,7 +3,7 @@
   "userGivenName": "cert-manager",
   "destNamespace": "cert-manager",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "system/cert-manager/overlays/prod",
+  "srcPath": "system/cert-manager/overlays/system",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "5",
