@@ -1,8 +1,7 @@
+---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: authentik
-  namespace: authentik
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "5"
@@ -11,6 +10,8 @@ metadata:
     kubernetes.io/ingress.class: traefik-external
   labels:
     app.kubernetes.io/name: authentik-server
+  name: authentik
+  namespace: dev
 spec:
   entryPoints:
   - websecure
@@ -38,12 +39,12 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: TraefikService
 metadata:
-  name: authentik-server
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "5"
   labels:
     app.kubernetes.io/name: authentik-server
+  name: authentik-server
 spec:
   weighted:
     services:
