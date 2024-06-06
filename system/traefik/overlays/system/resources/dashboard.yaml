@@ -1,0 +1,42 @@
+---
+kind: IngressRoute
+apiVersion: traefik.io/v1alpha1
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "5"
+    cert-manager.io/cluster-issuer: route53-letsencrypt-production  # staging / production
+    # external-dns.alpha.kubernetes.io/target: infra.anotherlife.org.pl
+    kubernetes.io/ingress.class: traefik-external
+    gethomepage.dev/description: traefik
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Tools
+    gethomepage.dev/icon: homepage.png
+    gethomepage.dev/name: traefik
+    gethomepage.dev/widget.type: "traefik"
+    gethomepage.dev/widget.url: "https://traefik.anotherlife.org.pl"
+  labels:
+    app.kubernetes.io/name: traefik
+  name: dashboard
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`traefik.anotherlife.org.pl`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    middlewares:
+    - name: chain-traefik-dashboard
+      namespace: traefik
+    services:
+    - name: api@internal
+      kind: TraefikService
+  tls:
+    domains:
+    - main: anotherlife.org.pl
+      sans:
+      - .anotherlife.org.pl
+    options:
+      name: tls-ver13
+      namespace: traefik
+    secretName: letsencrypt-production
