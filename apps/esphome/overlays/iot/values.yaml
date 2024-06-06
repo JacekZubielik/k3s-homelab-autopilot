@@ -73,7 +73,7 @@ monitoring:
     honorLabels: true
     interval: 60s
     selector: {}
-    namespace: {} #monitoring
+    namespace: {} # monitoring
     scrapeTimeout: 10s
     scheme: http
     tlsConfig: {}
@@ -97,7 +97,6 @@ monitoring:
 
 livenessProbe:
   enabled: true
-  # scheme: HTTP
   periodSeconds: 60
   timeoutSeconds: 10
   successThreshold: 1
@@ -105,7 +104,6 @@ livenessProbe:
   initialDelaySeconds: 30
 readinessProbe:
   enabled: true
-  # scheme: HTTP
   periodSeconds: 60
   timeoutSeconds: 10
   successThreshold: 1
@@ -113,7 +111,6 @@ readinessProbe:
   initialDelaySeconds: 30
 startupProbe:
   enabled: true
-  # scheme: HTTP
   successThreshold: 1
   failureThreshold: 6
 
@@ -138,10 +135,10 @@ ingress:
         proxy_cache_bypass $http_upgrade;
       }
   hosts:
-    - host: esphome.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
+  - host: esphome.local
+    paths:
+    - path: /
+      pathType: ImplementationSpecific
   tls:
     []
     # - secretName: letsencrypt-staging

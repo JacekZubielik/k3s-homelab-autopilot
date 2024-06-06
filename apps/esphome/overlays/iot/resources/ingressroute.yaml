@@ -14,22 +14,22 @@ metadata:
   namespace: iot-k3s
 spec:
   entryPoints:
-    - websecure
+  - websecure
   routes:
-    - kind: Rule
-      match: Host(`esphome.iot.anotherlife.org.pl`)
-      middlewares:
-        - name: chain-traefik-dashboard
-          namespace: traefik
-      services:
-        - kind: TraefikService
-          name: esphome
-          port: 6052
+  - kind: Rule
+    match: Host(`esphome.iot.anotherlife.org.pl`)
+    middlewares:
+    - name: chain-traefik-dashboard
+      namespace: traefik
+    services:
+    - kind: TraefikService
+      name: esphome
+      port: 6052
   tls:
     domains:
-      - main: iot.anotherlife.org.pl
-        sans:
-          - .iot.anotherlife.org.pl
+    - main: iot.anotherlife.org.pl
+      sans:
+      - .iot.anotherlife.org.pl
     options:
       name: tls-ver13
       namespace: traefik
@@ -48,6 +48,6 @@ metadata:
 spec:
   weighted:
     services:
-      - name: esphome
-        port: 6052
-        weight: 1
+    - name: esphome
+      port: 6052
+      weight: 1

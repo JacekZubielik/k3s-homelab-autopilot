@@ -8,7 +8,7 @@ metadata:
   namespace: iot-k3s
 spec:
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi

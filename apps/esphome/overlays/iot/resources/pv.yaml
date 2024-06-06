@@ -13,7 +13,7 @@ spec:
   capacity:
     storage: 5Gi
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
   hostPath:
