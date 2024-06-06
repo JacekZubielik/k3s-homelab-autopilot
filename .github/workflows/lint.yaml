@@ -1,5 +1,5 @@
 ---
-name: Lint 2
+name: Lint
 
 on:
   push:
