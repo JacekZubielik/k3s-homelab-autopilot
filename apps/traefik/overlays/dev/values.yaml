@@ -222,20 +222,20 @@ metrics:
 
 # -- Global command arguments to be passed to all traefik's pods
 globalArguments:
-  - "--global.checknewversion=false"
-  - "--global.sendanonymoususage=false"
+- "--global.checknewversion=false"
+- "--global.sendanonymoususage=false"
 
 # All available options available on https://docs.traefik.io/reference/static-configuration/cli/
 ## Use curly braces to pass values: `helm install --set="additionalArguments={--providers.kubernetesingress.ingressclass=traefik-internal,--log.level=DEBUG}"`
 additionalArguments:
-  - "--api.dashboard=true"
-  - "--api.insecure=true"
-  - "--ping=true"
-  - "--accesslog.filepath=/data/access.log"
-  - "--entrypoints.websecure.http.tls=true"
-  - "--serversTransport.insecureSkipVerify=true"
-  - "--entryPoints.web.proxyProtocol.insecure"  # < --- for Hass
-  - "--entryPoints.web.forwardedHeaders.insecure"   # < --- for Hass
+- "--api.dashboard=true"
+- "--api.insecure=true"
+- "--ping=true"
+- "--accesslog.filepath=/data/access.log"
+- "--entrypoints.websecure.http.tls=true"
+- "--serversTransport.insecureSkipVerify=true"
+- "--entryPoints.web.proxyProtocol.insecure"  # < --- for Hass
+- "--entryPoints.web.forwardedHeaders.insecure"   # < --- for Hass
 
   # Shouldn't need this if you've got Cert Manager installed
   #
@@ -324,7 +324,7 @@ service:
   labels: {}
   # spec:
   #   loadBalancerIP: 192.168.40.180 # this should be an IP in the MetalLB range
-      #loadBalancerSourceRanges: []
+      # loadBalancerSourceRanges: []
         # - 192.168.0.1/32
         # - 172.16.0.0/16
   ## -- Class of the load balancer implementation
@@ -341,18 +341,18 @@ service:
 
 serviceMonitor:
   metricRelabelings:
-    - sourceLabels: [__name__]
-      separator: ;
-      regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
-      replacement: $1
-      action: drop
+  - sourceLabels: [__name__]
+    separator: ;
+    regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
+    replacement: $1
+    action: drop
   relabelings:
-    - sourceLabels: [__meta_kubernetes_pod_node_name]
-      separator: ;
-      regex: ^(.*)$
-      targetLabel: nodename
-      replacement: $1
-      action: replace
+  - sourceLabels: [__meta_kubernetes_pod_node_name]
+    separator: ;
+    regex: ^(.*)$
+    targetLabel: nodename
+    replacement: $1
+    action: replace
   jobLabel: traefik
   interval: 30s
   honorLabels: true
@@ -369,15 +369,15 @@ prometheusRule:
   additionalLabels: {}
   namespace: "monitoring"
   rules:
-    - alert: TraefikDown
-      expr: up{job="traefik"} == 0
-      for: 5m
-      labels:
-        context: traefik
-        severity: warning
-      annotations:
-        summary: "Traefik Down"
-        description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"
+  - alert: TraefikDown
+    expr: up{job="traefik"} == 0
+    for: 5m
+    labels:
+      context: traefik
+      severity: warning
+    annotations:
+      summary: "Traefik Down"
+      description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"
 
 autoscaling:
   # -- Create HorizontalPodAutoscaler object.
@@ -428,13 +428,13 @@ resources: {}
 affinity:
   podAntiAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
-      - topologyKey: failure-domain.beta.kubernetes.io/zone
-        labelSelector:
-          matchExpressions:
-            - key: app
-              operator: In
-              values:
-                - traefik
+    - topologyKey: failure-domain.beta.kubernetes.io/zone
+      labelSelector:
+        matchExpressions:
+        - key: app
+          operator: In
+          values:
+          - traefik
 nodeSelector: {}
 tolerations: []
 
@@ -473,7 +473,6 @@ extraObjects: []
 # This will override the default Release Namespace for Helm.
 # It will not affect optional CRDs such as `ServiceMonitor` and `PrometheusRules`
 namespaceOverride: traefik
-#
 ## -- This will override the default app.kubernetes.io/instance label for all Objects.
 instanceLabelOverride: traefik
 

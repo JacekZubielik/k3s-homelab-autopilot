@@ -21,21 +21,21 @@ metadata:
   name: dashboard
 spec:
   entryPoints:
-    - websecure
+  - websecure
   routes:
-    - kind: Rule
-      match: Host(`traefik.anotherlife.org.pl`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
-      middlewares:
-        - name: chain-traefik-dashboard
-          namespace: traefik
-      services:
-        - name: api@internal
-          kind: TraefikService
+  - kind: Rule
+    match: Host(`traefik.anotherlife.org.pl`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    middlewares:
+    - name: chain-traefik-dashboard
+      namespace: traefik
+    services:
+    - name: api@internal
+      kind: TraefikService
   tls:
     domains:
-      - main: anotherlife.org.pl
-        sans:
-          - .anotherlife.org.pl
+    - main: anotherlife.org.pl
+      sans:
+      - .anotherlife.org.pl
     options:
       name: tls-ver13
       namespace: traefik
