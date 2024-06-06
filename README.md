@@ -33,7 +33,7 @@ Node-App | Nest framework TypeScript starter repository. | https://github.com/Ja
 - [MinIO](https://min.io/) - S3 & Kubernetes Native Object Storage.
 - [mktxp-exporter](https://github.com/akpw/mktxp) - Mikrotik MKTXP Prometheus exporter.
 - [Mosquitto MQTT](https://github.com/eclipse/mosquitto) - MQTT broker.
-- [Nest framework](https://github.com/nestjs/nest) - Progressive Node.js framework for building efficient and scalable server-side applications.
+- [Nest framework](https://github.com/nestjs/nest) - Progressive Node.js framework for building server-side applications.
 - [Prometheus](https://prometheus.io/) - Monitoring system.
 - [Proxmox](https://www.proxmox.com) - Virtual Environment platform.
 - [Sealed secrets](https://github.com/bitnami-labs/sealed-secrets) - Kubernetes controller for encrypted secrets.
