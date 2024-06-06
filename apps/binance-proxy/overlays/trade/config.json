@@ -1,9 +1,9 @@
 {
   "appName": "binance-proxy",
   "userGivenName": "binance-proxy",
-  "destNamespace": "staging",
+  "destNamespace": "trade",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/binance-proxy/overlays/staging",
+  "srcPath": "apps/binance-proxy/overlays/trade",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "HEAD",
   "syncWave": "10",
