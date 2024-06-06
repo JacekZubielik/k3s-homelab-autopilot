@@ -12,8 +12,8 @@ metadata:
   name: binance-proxy
 
 patches:
-  - target:
-      kind: CustomResourceDefinition
-    patch: |-
-      - op: remove
-        path: /metadata/labels/app.kubernetes.io~1instance
+- target:
+    kind: CustomResourceDefinition
+  patch: |-
+    - op: remove
+      path: /metadata/labels/app.kubernetes.io~1instance

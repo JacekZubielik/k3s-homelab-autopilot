@@ -1,9 +1,8 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-# namespace: staging
 resources:
-  - ../../base
+- ../../base
 
 metadata:
   annotations:
@@ -15,14 +14,15 @@ metadata:
   name: binance-proxy
 
 helmCharts:
-  - name: binance-proxy
-    version: 0.0.4
-    repo: https://jacekzubielik.github.io/jz-helm-charts
-    releaseName: binance-proxy
-    includeCRDs: false
-    valuesFile: values.yaml
+- name: binance-proxy
+  version: 0.0.4
+  repo: https://jacekzubielik.github.io/jz-helm-charts
+  releaseName: binance-proxy
+  includeCRDs: false
+  valuesFile: values.yaml
+  namespace: trade
 
 # configMapGenerator:
-#   - name: binance-proxy-config
-#     literals:
-#       - TZ=CET
+# - name: binance-proxy-config
+#   literals:
+#   - TZ=CET
