@@ -35,7 +35,7 @@ spec:
   generators:
     - git:
         files:
-          - path: apps/**/monitoring/config.json
+          - path: monitoring/**/monitoring/config.json
         repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
         requeueAfterSeconds: 20
         revision: ""
@@ -50,7 +50,7 @@ spec:
               repoURL: ""
     - git:
         files:
-          - path: apps/**/monitoring/config_dir.json
+          - path: monitoring/**/monitoring/config_dir.json
         repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
         requeueAfterSeconds: 20
         revision: ""
