@@ -18,7 +18,7 @@ spec:
       app.kubernetes.io/name: traefik-dashboard
   namespaceSelector:
     matchNames:
-      - prometheus
+    - prometheus
   endpoints:
-    - port: traefik
-      path: /metrics
+  - port: traefik
+    path: /metrics

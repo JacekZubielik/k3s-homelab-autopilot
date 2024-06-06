@@ -12,12 +12,12 @@ metadata:
   name: traefik
 
 patches:
-  - target:
-      group: rbac.authorization.k8s.io
-      version: v1
-      kind: ClusterRoleBinding
-      name: traefik-role-binding
-    patch: |-
-      - op: add
-        path: /subjects/0/namespace
-        value: traefik
+- target:
+    group: rbac.authorization.k8s.io
+    version: v1
+    kind: ClusterRoleBinding
+    name: traefik-role-binding
+  patch: |-
+    - op: add
+      path: /subjects/0/namespace
+      value: traefik

@@ -1,18 +1,17 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: traefik
 resources:
-  - ../../base
-  - resources/chains.yaml
-  - resources/dashboard.yaml
-  - resources/middlewares.yaml
-  - secrets/seal-secrets.yaml
-  - resources/servicemonitor.yaml
-  - resources/tlsoption.yaml
-  # - resources/ingressroute-argocd.yaml
-  # - resources/ingress.yaml
-  # - resources/tlsstore.yaml
+- ../../base
+- resources/chains.yaml
+- resources/dashboard.yaml
+- resources/middlewares.yaml
+- secrets/seal-secrets.yaml
+- resources/servicemonitor.yaml
+- resources/tlsoption.yaml
+# - resources/ingressroute-argocd.yaml
+# - resources/ingress.yaml
+# - resources/tlsstore.yaml
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
@@ -23,14 +22,15 @@ metadata:
   name: traefik
 
 helmCharts:
-  - name: traefik
-    version: 26.1.0
-    repo: https://helm.traefik.io/traefik
-    releaseName: traefik
-    includeCRDs: true
-    valuesFile: values.yaml
+- name: traefik
+  version: 26.1.0
+  repo: https://helm.traefik.io/traefik
+  releaseName: traefik
+  includeCRDs: true
+  valuesFile: values.yaml
+  namespace: traefik
 
 configMapGenerator:
-  - name: traefik-config
-    literals:
-      - TZ=CET
+- name: traefik-config
+  literals:
+  - TZ=CET
