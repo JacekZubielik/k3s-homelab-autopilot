@@ -15,22 +15,22 @@ metadata:
 
 spec:
   entryPoints:
-    - websecure
+  - websecure
   routes:
-    - kind: Rule
-      match: Host(`node-app.anotherlife.org.pl`) && (PathPrefix(`/`))
-      middlewares:
-        - name: chain-traefik-dashboard
-          namespace: traefik
-      services:
-        - kind: TraefikService
-          name: node-app
-          port: 3000
+  - kind: Rule
+    match: Host(`node-app.anotherlife.org.pl`) && (PathPrefix(`/`))
+    middlewares:
+    - name: chain-traefik-dashboard
+      namespace: traefik
+    services:
+    - kind: TraefikService
+      name: node-app
+      port: 3000
   tls:
     domains:
-      - main: anotherlife.org.pl
-        sans:
-          - .anotherlife.org.pl
+    - main: anotherlife.org.pl
+      sans:
+      - .anotherlife.org.pl
     options:
       name: tls-ver13
       namespace: traefik
@@ -49,6 +49,6 @@ metadata:
 spec:
   weighted:
     services:
-      - name: node-app
-        port: 3000
-        weight: 1
+    - name: node-app
+      port: 3000
+      weight: 1
