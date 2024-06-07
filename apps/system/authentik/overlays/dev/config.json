@@ -3,7 +3,7 @@
   "userGivenName": "authentik",
   "destNamespace": "dev",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/authentik/overlays/dev",
+  "srcPath": "apps/system/authentik/overlays/dev",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "dev-authentik",
   "syncWave": "5",
