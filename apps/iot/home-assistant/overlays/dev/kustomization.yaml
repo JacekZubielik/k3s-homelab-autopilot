@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+- resources/ingressroute.yaml
+- resources/service.yaml
+# - resources/servicemonitor.yaml
+# - resources/pvc.yaml
+# - resources/pv-hass-data.yaml
+
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "10"
+  labels:
+    app.kubernetes.io/name: home-assistant
+  name: home-assistant
+
+helmCharts:
+- name: home-assistant
+  repo: https://jacekzubielik.github.io/jz-helm-charts
+  version: 0.0.2
+  releaseName: home-assistant
+  includeCRDs: false
+  valuesFile: values.yaml
+  namespace: iot-k3s
+
+configMapGenerator:
+- name: home-assistant-config
+  literals:
+  - TZ=CET
