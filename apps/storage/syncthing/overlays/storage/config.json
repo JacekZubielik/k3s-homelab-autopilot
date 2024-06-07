@@ -3,7 +3,7 @@
   "userGivenName": "syncthing",
   "destNamespace": "storage",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "storage/syncthing/overlays/storage",
+  "srcPath": "apps/storage/syncthing/overlays/storage",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "10",
