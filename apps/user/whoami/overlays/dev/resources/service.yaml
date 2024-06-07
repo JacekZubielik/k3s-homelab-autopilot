@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "10"
+  labels:
+    app.kubernetes.io/name: whoami
+  name: whoami
+spec:
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  selector:
+    app.kubernetes.io/name: whoami
+    task: whoami
+  # type: ClusterIP
