@@ -1,0 +1,54 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "10"
+    cert-manager.io/cluster-issuer: route53-letsencrypt-production
+    external-dns.alpha.kubernetes.io/target: iot.anotherlife.org.pl
+    kubernetes.io/ingress.class: traefik-external
+  labels:
+    app.kubernetes.io/name: home-assistant
+  name: home-assistant-proxy
+  namespace: iot-k3s
+
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`hass.iot.anotherlife.org.pl`)
+      middlewares:
+        - name: security
+          namespace: traefik
+      services:
+        - kind: TraefikService
+          name: home-assistant-proxy
+          port: 8123
+  tls:
+    domains:
+      - main: iot.anotherlife.org.pl
+        sans:
+          - .iot.anotherlife.org.pl
+    options:
+      name: tls-ver13
+      namespace: traefik
+    secretName: letsencrypt-iot
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+metadata:
+  name: home-assistant-proxy
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "5"
+  labels:
+    app.kubernetes.io/name: home-assistant-proxy
+spec:
+  weighted:
+    services:
+      - name: home-assistant-proxy
+        port: 8123
+        weight: 1
