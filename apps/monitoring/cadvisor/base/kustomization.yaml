@@ -10,6 +10,3 @@ metadata:
   labels:
     app.kubernetes.io/name: cadvisor
   name: cadvisor
-
-
-
