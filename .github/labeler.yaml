@@ -1,28 +1,28 @@
 ---
 area/github:
-  - changed-files:
-      - any-glob-to-any-file: ".github/**/*"
+- changed-files:
+  - any-glob-to-any-file: ".github/**/*"
 area/bootstrap:
-  - changed-files:
-      - any-glob-to-any-file: "bootstrap/**/*"
+- changed-files:
+  - any-glob-to-any-file: "bootstrap/**/*"
 area/project:
-  - changed-files:
-      - any-glob-to-any-file: "project/*"
+- changed-files:
+  - any-glob-to-any-file: "project/*"
 area/apps/iot:
-  - changed-files:
-      - any-glob-to-any-file: "apps/iot/**/*"
+- changed-files:
+  - any-glob-to-any-file: "apps/iot/**/*"
 area/apps/monitoring:
-  - changed-files:
-      - any-glob-to-any-file: "apps/monitoring/**/*"
+- changed-files:
+  - any-glob-to-any-file: "apps/monitoring/**/*"
 area/apps/storage:
-  - changed-files:
-      - any-glob-to-any-file: "apps/storage/**/*"
+- changed-files:
+  - any-glob-to-any-file: "apps/storage/**/*"
 area/apps/system:
-  - changed-files:
-      - any-glob-to-any-file: "apps/system/**/*"
+- changed-files:
+  - any-glob-to-any-file: "apps/system/**/*"
 area/apps/trade:
-  - changed-files:
-      - any-glob-to-any-file: "apps/trade/**/*"
+- changed-files:
+  - any-glob-to-any-file: "apps/trade/**/*"
 area/apps/user:
-  - changed-files:
-      - any-glob-to-any-file: "apps/user/**/*"
+- changed-files:
+  - any-glob-to-any-file: "apps/user/**/*"
