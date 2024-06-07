@@ -16,7 +16,6 @@ metadata:
   labels:
     app.kubernetes.io/name: home-assistant
   name: home-assistant
-    app.kubern
 
 helmCharts:
 - name: home-assistant
