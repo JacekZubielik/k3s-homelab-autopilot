@@ -1,5 +1,5 @@
 ---
-replicaCount: 2
+replicaCount: 1
 timezone: CET
 
 serviceAccount:
@@ -31,7 +31,7 @@ resources:
 
 autoscaling:
   enabled: true
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 5
   averageCPUUtilizationPercentage: 50
   averageMemoryUtilizationPercentage: 50
