@@ -4,34 +4,40 @@
   color: "72ccf3"
   description: >-
     Changes made in the github directory
-- name: area/apps
-  color: "009900"
-  description: >-
-    Changes made in the apps directory
 - name: area/bootstrap
   color: "ee0000"
   description: >-
     Changes made in the bootstrap directory
-- name: area/dev
-  color: "72ccf3"
-  description: >-
-    Changes made in the dev directory
-- name: area/monitoring
-  color: "72ccf3"
-  description: >-
-    Changes made in the monitoring directory
 - name: area/project
   color: "72ccf3"
   description: >-
     Changes made in the project directory
-- name: area/storage
+- name: area/apps/iot
+  color: "009900"
+  description: >-
+    Changes made in the apps directory
+- name: area/apps/monitoring
+  color: "ee5500"
+  description: >-
+    Changes made in the dev directory
+- name: area/apps/storage
   color: "72ccf3"
   description: >-
     Changes made in the storage directory
-- name: area/system
-  color: "72ccf3"
+- name: area/apps/system
+  color: "ee0000"
   description: >-
     Changes made in the system directory
+- name: area/apps/trade
+  color: "84b6eb"
+  description: >-
+    Changes made in the monitoring directory
+- name: area/apps/user
+  color: "72ccf3"
+  description: >-
+    Changes made in the monitoring directory
+
+
 # # Renovate
 # - name: renovate/container
 #   color: "ffc300"
@@ -74,8 +80,6 @@
   description: >-
     Denotes a PR that changes 1000+ lines, ignoring generated files.
 # Uncategorized
-- name: bug
-  color: "ee0701"
 - name: do-not-merge
   color: "ee0701"
 - name: docs
@@ -86,3 +90,51 @@
   color: "7B55D7"
 - name: question
   color: "cc317c"
+# Issue categories
+- name: documentation
+  color: "0075ca"
+- name: bug
+  color: "B60205"
+- name: enhancement
+  color: "a2eeef"
+- name: "help wanted"
+  color: "008672"
+- name: wontfix
+  color: "ffffff"
+- name: "support"
+  color: ffffff
+- name: "incomplete-template"
+  color: ffffff
+# CI Status
+- name: "precommit:ok"
+  color: "0E8A16"
+  description: >-
+    CI status: pre-commit validation successful
+- name: "precommit:failed"
+  color: "D93F0B"
+  description: >-
+    CI status: pre-commit validation failed
+- name: "changelog:ok"
+  color: "0E8A16"
+  description: >-
+    CI status: changelog validation successful
+- name: "changelog:failed"
+  color: "D93F0B"
+  description: >-
+    CI status: changelog validation failed
+- name: "lint:ok"
+  color: "0E8A16"
+  description: >-
+    CI status: linting successful
+- name: "lint:failed"
+  color: "D93F0B"
+  description: >-
+    CI status: linting failed
+- name: "install:ok"
+  color: "0E8A16"
+  description: >-
+    CI status: install successful
+- name: "install:failed"
+  color: "D93F0B"
+  description: >-
+    CI status: install failed
