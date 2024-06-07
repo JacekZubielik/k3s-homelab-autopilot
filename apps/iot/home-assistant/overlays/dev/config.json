@@ -8,8 +8,8 @@
   "srcTargetRevision": "dev-hass",
   "syncWave": "10",
   "appRole": "iot-k3s",
-  "labels": null,
-  "annotations": null,
+  "labels": "",
+  "annotations": "",
   "exclude": "",
   "include": ""
 }
