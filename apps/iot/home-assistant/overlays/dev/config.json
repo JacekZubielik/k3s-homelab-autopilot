@@ -5,7 +5,7 @@
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/iot/home-assistant/overlays/dev",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
-  "srcTargetRevision": "dev-hass",
+  "srcTargetRevision": "",
   "syncWave": "10",
   "appRole": "iot-k3s",
   "labels": "",
