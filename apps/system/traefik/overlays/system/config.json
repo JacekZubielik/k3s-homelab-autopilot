@@ -3,7 +3,7 @@
   "userGivenName": "traefik",
   "destNamespace": "traefik",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "system/traefik/overlays/system",
+  "srcPath": "apps/system/traefik/overlays/system",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "5",
