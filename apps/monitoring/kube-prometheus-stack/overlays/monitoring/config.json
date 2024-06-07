@@ -3,7 +3,7 @@
   "userGivenName": "kube-prometheus-stack",
   "destNamespace": "monitoring",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "monitoring/kube-prometheus-stack/overlays/monitoring",
+  "srcPath": "apps/monitoring/kube-prometheus-stack/overlays/monitoring",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "0",
