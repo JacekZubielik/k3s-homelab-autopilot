@@ -1,0 +1,28 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+- resources/ingressroute.yaml
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "10"
+  labels:
+    app.kubernetes.io/name: uptime-kuma
+  name: uptime-kuma
+
+helmCharts:
+- name: uptime-kuma
+  repo: https://jacekzubielik.github.io/jz-helm-charts
+  version: 0.0.3
+  releaseName: uptime-kuma
+  includeCRDs: false
+  valuesFile: values.yaml
+  namespace: iot-k3s
+
+configMapGenerator:
+- name: uptime-kuma-config
+  literals:
+  - TZ=CET
+  - UPTIME_KUMA_PORT=3001"
