@@ -15,22 +15,22 @@ metadata:
 
 spec:
   entryPoints:
-    - websecure
+  - websecure
   routes:
-    - kind: Rule
-      match: Host(`hass.iot.anotherlife.org.pl`)
-      middlewares:
-        - name: security
-          namespace: traefik
-      services:
-        - kind: TraefikService
-          name: home-assistant-proxy
-          port: 8123
+  - kind: Rule
+    match: Host(`hass.iot.anotherlife.org.pl`)
+    middlewares:
+    - name: security
+      namespace: traefik
+    services:
+    - kind: TraefikService
+      name: home-assistant-proxy
+      port: 8123
   tls:
     domains:
-      - main: iot.anotherlife.org.pl
-        sans:
-          - .iot.anotherlife.org.pl
+    - main: iot.anotherlife.org.pl
+      sans:
+      - .iot.anotherlife.org.pl
     options:
       name: tls-ver13
       namespace: traefik
@@ -49,6 +49,6 @@ metadata:
 spec:
   weighted:
     services:
-      - name: home-assistant-proxy
-        port: 8123
-        weight: 1
+    - name: home-assistant-proxy
+      port: 8123
+      weight: 1

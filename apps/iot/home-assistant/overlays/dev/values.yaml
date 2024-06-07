@@ -57,8 +57,8 @@ service:
   externalTrafficPolicy: {}
   loadBalancerSourceRanges: []
   publishNotReadyAddresses: false
-  httpPort:      "8123"
-  metricsPort:   "9100"
+  httpPort: "8123"
+  metricsPort: "9100"
 
 monitoring:
   enabled: true
@@ -66,7 +66,7 @@ monitoring:
     enabled: true
     labels: {}
     honorLabels: true
-    interval:      60s
+    interval: 60s
     selector: {}
     namespace: monitoring
     scrapeTimeout: 10s
@@ -93,18 +93,18 @@ monitoring:
 livenessProbe:
   enabled: true
   scheme: HTTP
-  periodSeconds:       60
-  timeoutSeconds:      10
-  successThreshold:    1
-  failureThreshold:    6
+  periodSeconds: 60
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 6
   initialDelaySeconds: 30
 readinessProbe:
   enabled: true
   scheme: HTTP
-  periodSeconds:       60
-  timeoutSeconds:      10
-  successThreshold:    1
-  failureThreshold:    6
+  periodSeconds: 60
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 6
   initialDelaySeconds: 30
 
 ingress:
@@ -128,10 +128,10 @@ ingress:
         proxy_cache_bypass $http_upgrade;
       }
   hosts:
-    - host: home-assistant.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
+  - host: home-assistant.local
+    paths:
+    - path: /
+      pathType: ImplementationSpecific
   tls:
     []
     # - secretName: letsencrypt-staging
