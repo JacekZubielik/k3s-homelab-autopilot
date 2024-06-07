@@ -4,7 +4,7 @@ kind: IngressRoute
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "10"
     cert-manager.io/cluster-issuer: route53-letsencrypt-production
     external-dns.alpha.kubernetes.io/target: dev.anotherlife.pl
     kubernetes.io/ingress.class: traefik-external
@@ -15,22 +15,22 @@ metadata:
 
 spec:
   entryPoints:
-    - websecure
+  - websecure
   routes:
-    - kind: Rule
-      match: Host(`homepage.dev.anotherlife.org.pl`)
-      middlewares:
-        - name: chain-traefik-dashboard
-          namespace: traefik
-      services:
-        - kind: TraefikService
-          name: homepage
-          port: 3000
+  - kind: Rule
+    match: Host(`homepage.dev.anotherlife.org.pl`)
+    middlewares:
+    - name: chain-traefik-dashboard
+      namespace: traefik
+    services:
+    - kind: TraefikService
+      name: homepage
+      port: 3000
   tls:
     domains:
-      - main: dev.anotherlife.org.pl
-        sans:
-          - .dev.anotherlife.org.pl
+    - main: dev.anotherlife.org.pl
+      sans:
+      - .dev.anotherlife.org.pl
     options:
       name: tls-ver13
       namespace: traefik
@@ -42,13 +42,13 @@ kind: TraefikService
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "10"
   labels:
     app.kubernetes.io/name: homepage
   name: homepage
 spec:
   weighted:
     services:
-      - name: homepage
-        port: 3000
-        weight: 1
+    - name: homepage
+      port: 3000
+      weight: 1
