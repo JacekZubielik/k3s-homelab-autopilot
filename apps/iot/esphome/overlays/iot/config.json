@@ -3,7 +3,7 @@
   "userGivenName": "esphome",
   "destNamespace": "iot-k3s",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/esphome/overlays/iot",
+  "srcPath": "apps/iot/esphome/overlays/iot",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "10",
