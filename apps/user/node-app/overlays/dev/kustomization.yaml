@@ -6,7 +6,8 @@ resources:
 - resources/deployment.yaml
 - resources/service.yaml
 - resources/ingressroute.yaml
-
+generators:
+  - ./secrets/kustomize-secret-generator.yaml
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
