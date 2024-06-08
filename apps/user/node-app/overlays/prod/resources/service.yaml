@@ -10,6 +10,7 @@ metadata:
   name: node-app
 
 spec:
+  type: ClusterIP
   ports:
   - protocol: TCP
     port: 3000
