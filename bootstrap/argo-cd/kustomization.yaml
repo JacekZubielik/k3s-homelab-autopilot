@@ -39,3 +39,4 @@ resources:
 # - path: kustomize-with-helm.sidecar.yaml
 patchesStrategicMerge:
 - patches/argocd-rbac-cm.yaml
+- patches/argo-cd-repo-server-ksops-patch.yaml
