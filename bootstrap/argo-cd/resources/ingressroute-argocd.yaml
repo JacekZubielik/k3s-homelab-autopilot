@@ -13,22 +13,22 @@ metadata:
   namespace: argocd
 spec:
   entryPoints:
-    - websecure
+  - websecure
   routes:
-    - kind: Rule
-      match: Host(`argo.anotherlife.org.pl`)
-      middlewares:
-        - name: chain-traefik-dashboard
-          namespace: traefik
-      services:
-        - kind: TraefikService
-          name: argocd-server
-          port: 80
+  - kind: Rule
+    match: Host(`argo.anotherlife.org.pl`)
+    middlewares:
+    - name: chain-traefik-dashboard
+      namespace: traefik
+    services:
+    - kind: TraefikService
+      name: argocd-server
+      port: 80
   tls:
     domains:
-      - main: anotherlife.org.pl
-        sans:
-          - .anotherlife.org.pl
+    - main: anotherlife.org.pl
+      sans:
+      - .anotherlife.org.pl
     options:
       name: tls-ver13
       namespace: traefik
@@ -48,6 +48,6 @@ metadata:
 spec:
   weighted:
     services:
-      - name: argocd-server
-        port: 80
-        weight: 1
+    - name: argocd-server
+      port: 80
+      weight: 1

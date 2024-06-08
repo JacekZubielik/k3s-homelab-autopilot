@@ -12,17 +12,17 @@ metadata:
     cert-manager.io/cluster-issuer: route53-letsencrypt-production
 spec:
   tls:
-    - hosts:
-        - argo.anotherlife.org.pl
-      secretName: letsencrypt-production
+  - hosts:
+    - argo.anotherlife.org.pl
+    secretName: letsencrypt-production
   rules:
-    - host: argo.anotherlife.org.pl
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: argocd-server
-                port:
-                  number: 80
+  - host: argo.anotherlife.org.pl
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-server
+            port:
+              number: 80
