@@ -1,3 +1,16 @@
 creation_rules:
-- encrypted_regex: '^(data|stringData)$'
-  age: 'age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h'
+  # - path_regex: secret.yaml
+  #   encrypted_regex: '^(data|stringData)$'
+  # #   # pgp: '6D3FE55384B558E06A1BA364586EFA784A32C981'
+  #   age: 'age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h'
+  # - unencrypted_regex: '^(apiVersion|metadata|kind|type)$'
+  #   # pgp: '6D3FE55384B558E06A1BA364586EFA784A32C981'
+  #   age: 'age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h'
+
+  - path_regex: cluster(\\|/).*\.sec\.(ya?ml|json)
+    encrypted_regex: "^(data|stringData)$"
+    age: >-
+      age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+  - path_regex: cluster(\\|/).*\.sops\.ya?ml
+    age: >-
+      age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
