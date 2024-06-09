@@ -16,7 +16,6 @@ spec:
       volumes:
       - name: custom-tools
         emptyDir: {}
-
       - name: sops-age
         secret:
           secretName: sops-age
@@ -85,12 +84,16 @@ spec:
           mountPath: /helm-working-dir
         - name: plugins
           mountPath: /home/argocd/cmp-server/plugins
-
+        - name: custom-tools
+          mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
+          subPath: ksops
         env:
-        # - name: XDG_CONFIG_HOME
-        #   value: /.config
+        - name: XDG_CONFIG_HOME
+          value: /.config
         - name: SOPS_AGE_KEY_FILE
           value: /.config/sops/age/keys.txt
+        - name: GNUPGHOME
+          value: /home/argocd/.gnupg
         # - name: AWS_ACCESS_KEY_ID
         #   valueFrom:
         #     secretKeyRef:
