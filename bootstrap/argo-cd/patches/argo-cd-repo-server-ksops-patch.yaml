@@ -30,7 +30,11 @@ spec:
         - mountPath: /usr/local/bin/ksops
           name: custom-tools
           subPath: ksops
-        # env:
+        env:
+        - name: XDG_CONFIG_HOME
+          value: /.config
+        - name: SOPS_AGE_KEY_FILE
+          value: /.config/sops/age/keys.txt
         #  - name: AWS_ACCESS_KEY_ID
         #    valueFrom:
         #      secretKeyRef:
