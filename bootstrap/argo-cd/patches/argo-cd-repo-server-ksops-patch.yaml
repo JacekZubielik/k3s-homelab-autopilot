@@ -16,6 +16,33 @@ spec:
       volumes:
       - name: custom-tools
         emptyDir: {}
+
+      - name: sops-age
+        secret:
+          secretName: sops-age
+          defaultMode: 420
+      - name: ssh-known-hosts
+        configMap:
+          name: argocd-ssh-known-hosts-cm
+          defaultMode: 420
+      - name: tls-certs
+        configMap:
+          name: argocd-tls-certs-cm
+          defaultMode: 420
+      - name: gpg-keys
+        configMap:
+          name: argocd-gpg-keys-cm
+          defaultMode: 420
+      - name: gpg-keyring
+        emptyDir: {}
+      - name: tmp
+        emptyDir: {}
+      - name: helm-working-dir
+        emptyDir: {}
+      - name: var-files
+        emptyDir: {}
+      - name: plugins
+        emptyDir: {}
       initContainers:
       - name: install-ksops
         image: viaductoss/ksops:v4.3.1
@@ -31,15 +58,37 @@ spec:
       containers:
       - name: argocd-repo-server
         volumeMounts:
-        - mountPath: /usr/local/bin/kustomize
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /usr/local/bin/kustomize
           subPath: kustomize
-        - mountPath: /usr/local/bin/ksops
-          name: custom-tools
+        - name: custom-tools
+          mountPath: /usr/local/bin/ksops
           subPath: ksops
+        - name: sops-age
+          mountPath: /.config/sops/age/keys.txt
+          subPath: keys.txt
+        - name: custom-tools
+          mountPath: /custom-tools
+        - name: ssh-known-hosts
+          mountPath: /app/config/ssh
+        - name: tls-certs
+          mountPath: /app/config/tls
+        - name: gpg-keys
+          mountPath: /app/config/gpg/source
+        - name: gpg-keyring
+          mountPath: /app/config/gpg/keys
+        - name: argocd-repo-server-tls
+          mountPath: /app/config/reposerver/tls
+        - name: tmp
+          mountPath: /tmp
+        - name: helm-working-dir
+          mountPath: /helm-working-dir
+        - name: plugins
+          mountPath: /home/argocd/cmp-server/plugins
+
         env:
-        - name: XDG_CONFIG_HOME
-          value: /.config
+        # - name: XDG_CONFIG_HOME
+        #   value: /.config
         - name: SOPS_AGE_KEY_FILE
           value: /.config/sops/age/keys.txt
         # - name: AWS_ACCESS_KEY_ID
