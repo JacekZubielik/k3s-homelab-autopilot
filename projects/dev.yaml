@@ -62,11 +62,11 @@ spec:
           destination: {}
           project: ""
           source:
-            directory:
-              exclude: '{{ exclude }}'
-              include: '{{ include }}'
-              jsonnet: {}
-              recurse: true
+            # directory:
+            #   exclude: '{{ exclude }}'
+            #   include: '{{ include }}'
+            #   jsonnet: {}
+            #   recurse: true
             repoURL: ""
   syncPolicy: {}
   template:
