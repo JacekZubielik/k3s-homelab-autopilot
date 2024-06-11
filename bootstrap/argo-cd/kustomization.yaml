@@ -35,4 +35,5 @@ patches:
 # - path: exposeservice.yaml
 # - path: kustomize-with-helm.sidecar.yaml
 - path: ./patches/argocd-rbac-cm.yaml
-- path: ./patches/argo-cd-repo-server-ksops-patch.yaml
+# - path: ./patches/argo-cd-repo-server-ksops-patch.yaml
+- path: ./patches/patch-argocd-repo-server.yaml
