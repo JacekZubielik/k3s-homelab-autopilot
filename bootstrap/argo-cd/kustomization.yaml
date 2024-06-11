@@ -33,7 +33,7 @@ resources:
 - resources/metrics.yaml
 patches:
 # - path: ./patches/expose-service.yaml
-- path: ./patches/helm-sidecar.yaml
-# - path: ./patches/rbac-cm.yaml
-- path: ./patches/ksops.yaml
+# - path: ./patches/helm-sidecar.yaml
+- path: ./patches/rbac-cm.yaml
+# - path: ./patches/ksops.yaml
 # - path: ./patches/patch-argocd-repo-server.yaml
