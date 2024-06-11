@@ -58,6 +58,7 @@ spec:
 
       containers:
       - name: argocd-repo-server
+        command: ["gpg", "--import","/sops-gpg/sops.asc"]
         env:
         - name: XDG_CONFIG_HOME
           value: /.config
@@ -106,3 +107,11 @@ spec:
           mountPath: /app/config/ssh
         - name: tls-certs
           mountPath: /app/config/tls
+      volumes:
+      - name: custom-tools
+        emptyDir: {}
+      - name: gnupg-home
+        emptyDir: {}
+      - name: sops-gpg
+        secret:
+          secretName: sops-gpg
