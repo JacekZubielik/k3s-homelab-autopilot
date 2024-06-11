@@ -1,0 +1,15 @@
+{
+  "appName": "external-secrets",
+  "userGivenName": "external-secrets",
+  "destNamespace": "external-secrets",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/system/external-secrets/overlays/dev",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "dev-external-secrets",
+  "syncWave": "0",
+  "appRole": "system",
+  "labels": "",
+  "annotations": "",
+  "exclude": "",
+  "include": ""
+}
