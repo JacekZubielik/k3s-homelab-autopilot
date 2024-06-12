@@ -31,7 +31,7 @@ resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
 - resources/ingressroute.yaml
 - resources/metrics.yaml
-- resources/kustomize-build-with-helm.yaml
+# - resources/kustomize-build-with-helm.yaml
 patches:
 # - path: ./patches/expose-service.yaml
 # - path: ./patches/helm-sidecar.yaml
