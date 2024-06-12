@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: kustomize-build-with-helm
+  name: argocd-cm-cmp-kustomize-build-with-helm
 data:
   plugin.yaml: |
     apiVersion: argoproj.io/v1alpha1
