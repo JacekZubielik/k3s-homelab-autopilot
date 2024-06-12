@@ -15,7 +15,6 @@ spec:
 
       volumes:
       - configMap:
-          name: kustomize-build-with-helm
         name: kustomize-build-with-helm
       - name: cmp-tmp
         emptyDir: {}

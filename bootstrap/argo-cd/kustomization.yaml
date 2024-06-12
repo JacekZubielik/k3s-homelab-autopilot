@@ -12,14 +12,14 @@ configMapGenerator:
       usernameSecret:
         key: git_username
         name: autopilot-secret
-  - |
-    configManagementPlugins=- name: kustomize-build-with-helm
-      init:
-        command: ["/bin/sh", "-c"]
-        args: ["helm dependency build"]
-      generate:
-        command: [ "sh", "-c" ]
-        args: [ "kustomize build --enable-helm" ]
+  # - |
+  #   configManagementPlugins=- name: kustomize-build-with-helm
+  #     init:
+  #       command: ["/bin/sh", "-c"]
+  #       args: ["helm dependency build"]
+  #     generate:
+  #       command: [ "sh", "-c" ]
+  #       args: [ "kustomize build --enable-helm" ]
   name: argocd-cm
 - behavior: merge
   literals:
@@ -31,6 +31,7 @@ resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
 - resources/ingressroute.yaml
 - resources/metrics.yaml
+- resources/kustomize-build-with-helm.yaml
 patches:
 # - path: ./patches/expose-service.yaml
 - path: ./patches/helm-sidecar.yaml
