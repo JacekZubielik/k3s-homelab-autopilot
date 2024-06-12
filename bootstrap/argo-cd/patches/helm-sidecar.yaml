@@ -15,6 +15,7 @@ spec:
 
       volumes:
       - configMap:
+          name: kustomize-build-with-helm
         name: kustomize-build-with-helm
       - name: cmp-tmp
         emptyDir: {}
@@ -22,7 +23,7 @@ spec:
       containers:
       - name: kustomize-build-with-helm
         command: [/var/run/argocd/argocd-cmp-server]  
-        image: alpine/k8s:1.29.2
+        image: alpine/k8s:1.29.4
         securityContext:
           runAsNonRoot: true
           runAsUser: 999
