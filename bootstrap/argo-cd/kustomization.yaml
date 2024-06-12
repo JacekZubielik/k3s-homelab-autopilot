@@ -25,11 +25,6 @@ configMapGenerator:
   literals:
   - server.insecure="true"
   name: argocd-cmd-params-cm
-  # name: argocd-cm
-- behavior: merge
-  literals:
-  - server.insecure="true"
-  name: argocd-cmd-params-cm
 kind: Kustomization
 namespace: argocd
 resources:
