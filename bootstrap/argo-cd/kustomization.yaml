@@ -20,7 +20,7 @@ configMapGenerator:
   #     generate:
   #       command: [ "sh", "-c" ]
   #       args: [ "kustomize build --enable-helm" ]
-  # name: argocd-cm
+  name: argocd-cm
 - behavior: merge
   literals:
   - server.insecure="true"
