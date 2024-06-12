@@ -3,9 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: argocd-repo-server
-  namespace: argocd
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-repo-server
@@ -14,13 +12,21 @@ spec:
       labels:
         app.kubernetes.io/name: argocd-repo-server
     spec:
+
+      volumes:
+      - configMap:
+        name: kustomize-build-with-helm
+      - name: cmp-tmp
+        emptyDir: {}
+
       containers:
       - name: kustomize-build-with-helm
         command: [/var/run/argocd/argocd-cmp-server]  
-        image: alpine/k8s:1.29.4
+        image: alpine/k8s:1.29.2
         securityContext:
           runAsNonRoot: true
           runAsUser: 999
+
         volumeMounts:
         - mountPath: /var/run/argocd
           name: var-files
@@ -30,13 +36,7 @@ spec:
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
           subPath: plugin.yaml
           name: kustomize-build-with-helm
-        # Starting with v2.4, do NOT mount the same tmp volume as the repo-server container. The filesystem separation helps
-        # mitigate path traversal attacks.
+        # Starting with v2.4, do NOT mount the same tmp volume as the repo-server container. 
+        # The filesystem separation helps mitigate path traversal attacks.
         - mountPath: /tmp
           name: cmp-tmp
-      volumes:
-      - configMap:
-          name: kustomize-build-with-helm
-        name: kustomize-build-with-helm
-      - name: cmp-tmp
-        emptyDir: {}
