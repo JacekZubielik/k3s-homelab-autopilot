@@ -3,7 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 configMapGenerator:
 - behavior: merge
   literals:
-  - kustomize.buildOptions="--enable-alpha-plugins --enable-exec"
+  - kustomize.buildOptions="--enable-helm --enable-alpha-plugins"
   - |
     repository.credentials=- passwordSecret:
         key: git_token
@@ -12,15 +12,20 @@ configMapGenerator:
       usernameSecret:
         key: git_username
         name: autopilot-secret
-  # - |
-  #   configManagementPlugins=- name: kustomize-build-with-helm
-  #     init:
-  #       command: ["/bin/sh", "-c"]
-  #       args: ["helm dependency build"]
-  #     generate:
-  #       command: [ "sh", "-c" ]
-  #       args: [ "kustomize build --enable-helm" ]
+  - |
+    configManagementPlugins=- name: kustomize-build-with-helm
+      init:
+        command: ["/bin/sh", "-c"]
+        args: ["helm dependency build"]
+      generate:
+        command: [ "sh", "-c" ]
+        args: [ "kustomize build --enable-helm" ]
   name: argocd-cm
+- behavior: merge
+  literals:
+  - server.insecure="true"
+  name: argocd-cmd-params-cm
+  # name: argocd-cm
 - behavior: merge
   literals:
   - server.insecure="true"
