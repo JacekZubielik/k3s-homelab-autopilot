@@ -5,49 +5,60 @@ metadata:
   name: argocd-repo-server
   namespace: argocd
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-repo-server
   template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: argocd-repo-server
     spec:
       initContainers:
-        - name: install-ksops
-          image: viaductoss/ksops:v4.3.1
-          securityContext.runAsNonRoot: true
-          command: ["/bin/sh", "-c"]
-          args:
-            - echo "Installing KSOPS and Kustomize...";
-              mv ksops /custom-tools/;
-              mv kustomize /custom-tools/kustomize ;
-              echo "Done.";
-          volumeMounts:
-            - mountPath: /custom-tools
-              name: custom-tools
+      - name: install-ksops
+        image: viaductoss/ksops:v4.3.1
+        securityContext.runAsNonRoot: true
+        command: ["/bin/sh", "-c"]
+        args:
+        - echo "Installing KSOPS and Kustomize...";
+          mv ksops /custom-tools/;
+          mv kustomize /custom-tools/kustomize ;
+          echo "Done.";
+        volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
+
         - name: import-gpg-key
           image: quay.io/argoproj/argocd:v2.10.4
-          command: ["gpg", "--import","/sops-gpg/sops.asc"]
+          command: ["gpg", "--import", "/sops-gpg/sops.asc"]
           env:
-            - name: GNUPGHOME
-              value: /gnupg-home/.gnupg
+          - name: GNUPGHOME
+            value: /gnupg-home/.gnupg
           volumeMounts:
-            - mountPath: /sops-gpg
-              name: sops-gpg
-            - mountPath: /gnupg-home
-              name: gnupg-home
+          - mountPath: /sops-gpg
+            name: sops-gpg
+          - mountPath: /gnupg-home
+            name: gnupg-home
+
       containers:
       - name: argocd-repo-server
         env:
-          - name: XDG_CONFIG_HOME
-            value: /.config
-          - name: GNUPGHOME
-            value: /home/argocd/.gnupg
+        - name: XDG_CONFIG_HOME
+          value: /.config
+        - name: GNUPGHOME
+          value: /home/argocd/.gnupg
+
         volumeMounts:
         - mountPath: /home/argocd/.gnupg
           name: gnupg-home
           subPath: .gnupg
-        - mountPath: /usr/local/bin/ksops
-          name: custom-tools
-          subPath: ksops
-        - mountPath: /usr/local/bin/kustomize
-          name: custom-tools
-          subPath: kustomize
+        # - mountPath: /usr/local/bin/ksops
+        #   name: custom-tools
+        #   subPath: ksops
+        # - mountPath: /usr/local/bin/kustomize
+        #   name: custom-tools
+        #   subPath: kustomize
+
       volumes:
       - name: custom-tools
         emptyDir: {}
@@ -56,8 +67,3 @@ spec:
       - name: sops-gpg
         secret:
           secretName: sops-gpg
-      - name: sops-age
-        secret:
-          secretName: sops-age
-          defaultMode: 420
-
