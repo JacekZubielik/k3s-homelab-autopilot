@@ -1,0 +1,39 @@
+---
+alertmanager:
+  enabled: true
+  persistentVolume:
+    size: 2Gi
+  resources:
+    limits:
+      cpu: 100m
+      memory: 512Mi
+    requests:
+      cpu: 50m
+      memory: 300Mi
+
+nodeExporter:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 100m
+      memory: 512Mi
+
+server:
+  statefulset:
+    enable: true  # avoids "Multi-Attach error for volume pvc... Volume is already used by pod(s) prometheus-server-..." that happens during deployment update bringing 2nd pod online and getting jammed
+  retention: "15d"
+  persistentVolume:
+    size: 8Gi
+  resources:
+    limits:
+      cpu: 100m
+      memory: 3Gi
+    requests:
+      cpu: 100m
+      memory: 2Gi
+
+pushgateway:
+  persistentVolume:
+    size: 2Gi
