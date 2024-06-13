@@ -47,15 +47,6 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: staging
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
-    argocd.argoproj.io/sync-options: Prune=false
-
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: trade
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
