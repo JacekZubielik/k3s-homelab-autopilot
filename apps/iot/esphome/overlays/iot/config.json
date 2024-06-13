@@ -1,0 +1,15 @@
+{
+  "appName": "esphome",
+  "userGivenName": "esphome",
+  "destNamespace": "iot-k3s",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/iot/esphome/overlays/iot",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "",
+  "syncWave": "10",
+  "appRole": "iot",
+  "labels": "",
+  "annotations": "",
+  "exclude": "",
+  "include": ""
+}
