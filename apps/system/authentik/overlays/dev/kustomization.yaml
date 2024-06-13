@@ -3,7 +3,8 @@ kind: Kustomization
 resources:
 - ../../base
 - resources/ingressroute.yaml
-
+generators:
+- secrets/secret-generator.yaml
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
