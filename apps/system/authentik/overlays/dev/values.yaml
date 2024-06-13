@@ -106,7 +106,66 @@ global:
   # See configuration options at https://goauthentik.io/docs/installation/configuration/
   # @default -- `[]` (See [values.yaml])
   env:
-    []
+  - name: AUTHENTIK_EMAIL__HOST
+    valueFrom:
+      secretKeyRef:
+        name: private-authentik
+        key: authentik-email-host
+
+  - name: AUTHENTIK_EMAIL__USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: private-authentik
+        key: authentik-email-username
+
+  - name: AUTHENTIK_EMAIL__PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: private-authentik
+        key: authentik-email-password
+
+  - name: AUTHENTIK_EMAIL__FROM
+    valueFrom:
+      secretKeyRef:
+        name: private-authentik
+        key: authentik_email_from
+
+  - name: AUTHENTIK_SECRET_KEY
+    valueFrom:
+      secretKeyRef:
+        name: private-authentik
+        key: secret-key
+
+  - name: AUTHENTIK_POSTGRESQL__NAME
+    valueFrom:
+      secretKeyRef:
+        name: private-authentik
+        key: authentik-postgresql-name
+
+  - name: AUTHENTIK_POSTGRESQL__USER
+    valueFrom:
+      secretKeyRef:
+        name: private-authentik
+        key: authentik-postgresql-user
+
+  - name: AUTHENTIK_POSTGRESQL__PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: private-authentik
+        key: authentik-postgresql-password
+
+  - name: AUTHENTIK_POSTGRESQL__PORT
+    valueFrom:
+      secretKeyRef:
+        name: private-authentik
+        key: authentik-postgresql-port
+
+  - name: AUTHENTIK_REDIS__PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: private-authentik
+        key: authentik-redis-password
+
     # - name: AUTHENTIK_VAR_NAME
     #   value: VALUE
     # - name: AUTHENTIK_VAR_OTHER
@@ -149,7 +208,7 @@ authentik:
   log_level: info
   # -- Secret key used for cookie singing and unique user IDs,
   # don't change this after the first install
-  secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK" ###########################
+  # secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK" ###########################
   events:
     context_processors:
       # -- Path for the GeoIP City database. If the file doesn't exist, GeoIP features are disabled.
@@ -158,13 +217,13 @@ authentik:
       asn: /geoip/GeoLite2-ASN.mmdb
   email:
     # -- SMTP Server emails are sent from, fully optional
-    host: "smtp.elasticemail.com"
+    # host: "smtp.elasticemail.com"
     # -- SMTP server port
     port: 2525
     # -- SMTP credentials, when left empty, no authentication will be done
-    username: "no-reply@key.system.anotherlife.org.pl"
+    # username: "no-reply@key.system.anotherlife.org.pl"
     # -- SMTP credentials, when left empty, no authentication will be done
-    password: "7DF40CEC031B3C376DE0F295C2A0601556CE"
+    # password: "7DF40CEC031B3C376DE0F295C2A0601556CE"
     # -- Enable either use_tls or use_ssl, they can't be enabled at the same time.
     use_tls: false
     # -- Enable either use_tls or use_ssl, they can't be enabled at the same time.
@@ -172,7 +231,7 @@ authentik:
     # -- Connection timeout
     timeout: 30
     # -- Email from address, can either be in the format "foo@bar.baz" or "authentik <foo@bar.baz>"
-    from: "no-reply@key.system.anotherlife.org.pl"
+    # from: "no-reply@key.system.anotherlife.org.pl"
   outposts:
     # -- Template used for managed outposts. The following placeholders can be used
     # %(type)s - the type of the outpost
@@ -194,17 +253,17 @@ authentik:
     host: "{{ .Release.Name }}-postgresql"
     # -- postgresql Database name
     # @default -- `authentik`
-    name: "authentik"
+    # name: "authentik"
     # -- postgresql Username
     # @default -- `authentik`
-    user: "authentik"
-    password: "nGgi52kpexw5onXl4hGp3sQCQbEjefQXSmmEG4md3Tu2r6A9" ###########################
-    port: 5432
+    # user: "authentik"
+    # password: "nGgi52kpexw5onXl4hGp3sQCQbEjefQXSmmEG4md3Tu2r6A9" ###########################
+    # port: 5432
   redis:
     # -- set the redis hostname to talk to
     # @default -- `{{ .Release.Name }}-redis-master`
     host: "{{ .Release.Name }}-redis-master"
-    password: "" # "9epmI6dObuRpnn5y85AA5CQSi8O+rtzEOl8Z4RRuTUaosMZl" ###########################
+    # password: "" # "9epmI6dObuRpnn5y85AA5CQSi8O+rtzEOl8Z4RRuTUaosMZl" ###########################
 
 blueprints:
   # -- List of config maps to mount blueprints from.
