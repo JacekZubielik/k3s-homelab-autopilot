@@ -3,7 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 configMapGenerator:
 - behavior: merge
   literals:
-  - kustomize.buildOptions="--enable-helm --enable-alpha-plugins"
+  - kustomize.buildOptions="--enable-alpha-plugins --enable-exec --enable-helm"
   - |
     repository.credentials=- passwordSecret:
         key: git_token
@@ -31,11 +31,6 @@ resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
 - resources/ingressroute.yaml
 - resources/metrics.yaml
-# - resources/kustomize-build-with-helm.yaml
-# patches:
-# - path: ./patches/expose-service.yaml
-# - path: ./patches/helm-sidecar.yaml
-# - path: ./patches/rbac-cm.yaml
-# - path: ./patches/ksops.yaml
-# - path: ./patches/patch-argocd-repo-server.yaml
-# - path: ./patches/argo-cd-repo-server-ksops-patch.yaml
+patches:
+- path: ./patches/rbac-cm.yaml
+- path: ./patches/ksops.yaml

@@ -6,6 +6,11 @@ all: help
 copy-kubeconfig:
 	@scp vagrant@192.168.40.119:~/.kube/config ~/.kube/config
 
+.PHONY: argocd-namespace
+argocd-namespace:
+	@kubectl create namespace argocd --dry-run=client --output=yaml \
+			| kubectl apply -f -
+
 .PHONY: import-sealed-secrets
 import-sealed-secrets:
 	@kubectl apply -f sealed-secrets-keytlh79.key
@@ -13,6 +18,14 @@ import-sealed-secrets:
 .PHONY: restart-sealed-secrets
 restart-sealed-secrets:
 	@kubectl delete pod -n kube-system -l app.kubernetes.io/name=sealed-secrets
+
+.PHONY: deploy-sops-age
+deploy-sops-age: ## Deploy a sops-age secret
+	@cat ~/.config/sops/age/keys.txt | kubectl create secret generic sops-age --namespace=argocd --from-file=keys.txt=/dev/stdin
+
+.PHONY: deploy-sops-gpg
+deploy-sops-gpg: ## Deploy a sops-gpg secret
+	@gpg --export-secret-keys --armor "${SOPS_PGP_FP}" | kubectl create secret generic sops-gpg --namespace=argocd --from-file=sops.asc=/dev/stdin
 
 .PHONY: deploy-argocd-autopilot-recovery
 deploy-argocd-autopilot-recovery: ## Deploy Argo CD autopilot on Kubernetes cluster

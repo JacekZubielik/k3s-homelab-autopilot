@@ -15,7 +15,7 @@ Node-App | Nest framework TypeScript starter repository. | https://github.com/Ja
 ## Applications and technologies deployed on the clusters:
 - [Ansible](https://www.ansible.com/) - Configuring the virtual machines and installing k3s.
 - [ArgoCD Autopilot](https://argo-cd.readthedocs.io/) - GitOps tool for deploying applications to the clusters.
-- [Authentik](https://goauthentik.io/) - Identity provider.
+- [Authentik](https://goauthentik.io/) - Identity provider. Authenticate to Kubernetes with OIDC on K3s.
 - [Binance-proxy]() - A websocket proxy written in GoLang.
 - [Cadvisor](https://github.com/google/cadvisor) - Container Advisor.
 - [Cert-Manager](https://cert-manager.io/) - SSL certificates with AWS Route53 DNS challenge.

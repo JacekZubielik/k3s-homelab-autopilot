@@ -131,4 +131,12 @@ spec:
           allowEmpty: true
           prune: true
           selfHeal: false
-status: {}
+status:
+  health: {}
+  summary: {}
+  sync:
+    comparedTo:
+      destination: {}
+      source:
+        repoURL: ""
+    status: ""
