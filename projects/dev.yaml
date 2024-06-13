@@ -21,15 +21,7 @@ spec:
     kind: '*'
   sourceRepos:
   - '*'
-status:
-  health: {}
-  summary: {}
-  sync:
-    comparedTo:
-      destination: {}
-      source:
-        repoURL: ""
-    status: ""
+status: {}
 
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -139,12 +131,4 @@ spec:
           allowEmpty: true
           prune: true
           selfHeal: false
-status:
-  health: {}
-  summary: {}
-  sync:
-    comparedTo:
-      destination: {}
-      source:
-        repoURL: ""
-    status: ""
+status: {}
