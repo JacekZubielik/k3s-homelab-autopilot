@@ -109,61 +109,61 @@ global:
   - name: AUTHENTIK_EMAIL__HOST
     valueFrom:
       secretKeyRef:
-        name: private-authentik
+        name: authentik-private
         key: authentik-email-host
 
   - name: AUTHENTIK_EMAIL__USERNAME
     valueFrom:
       secretKeyRef:
-        name: private-authentik
+        name: authentik-private
         key: authentik-email-username
 
   - name: AUTHENTIK_EMAIL__PASSWORD
     valueFrom:
       secretKeyRef:
-        name: private-authentik
+        name: authentik-private
         key: authentik-email-password
 
-  - name: AUTHENTIK_EMAIL__FROM
-    valueFrom:
-      secretKeyRef:
-        name: private-authentik
-        key: authentik_email_from
+  # - name: AUTHENTIK_EMAIL__FROM
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: authentik_email_from
 
   - name: AUTHENTIK_SECRET_KEY
     valueFrom:
       secretKeyRef:
-        name: private-authentik
+        name: authentik-private
         key: secret-key
 
   - name: AUTHENTIK_POSTGRESQL__NAME
     valueFrom:
       secretKeyRef:
-        name: private-authentik
+        name: authentik-private
         key: authentik-postgresql-name
 
   - name: AUTHENTIK_POSTGRESQL__USER
     valueFrom:
       secretKeyRef:
-        name: private-authentik
+        name: authentik-private
         key: authentik-postgresql-user
 
   - name: AUTHENTIK_POSTGRESQL__PASSWORD
     valueFrom:
       secretKeyRef:
-        name: private-authentik
+        name: authentik-private
         key: authentik-postgresql-password
 
   - name: AUTHENTIK_POSTGRESQL__PORT
     valueFrom:
       secretKeyRef:
-        name: private-authentik
+        name: authentik-private
         key: authentik-postgresql-port
 
   - name: AUTHENTIK_REDIS__PASSWORD
     valueFrom:
       secretKeyRef:
-        name: private-authentik
+        name: authentik-private
         key: authentik-redis-password
 
     # - name: AUTHENTIK_VAR_NAME
@@ -231,7 +231,7 @@ authentik:
     # -- Connection timeout
     timeout: 30
     # -- Email from address, can either be in the format "foo@bar.baz" or "authentik <foo@bar.baz>"
-    # from: "no-reply@key.system.anotherlife.org.pl"
+    from: "no-reply@key.system.anotherlife.org.pl"
   outposts:
     # -- Template used for managed outposts. The following placeholders can be used
     # %(type)s - the type of the outpost
