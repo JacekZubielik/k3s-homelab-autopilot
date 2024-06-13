@@ -18,7 +18,7 @@ helmCharts:
   repo: https://prometheus-community.github.io/helm-charts
   releaseName: kube-prometheus-stack
   includeCRDs: true
-  valuesFile: values.yaml
+  # valuesFile: values.yaml
   namespace: monitoring
 
 # configMapGenerator:
