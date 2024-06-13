@@ -106,28 +106,6 @@ global:
   # See configuration options at https://goauthentik.io/docs/installation/configuration/
   # @default -- `[]` (See [values.yaml])
   env:
-
-    # - name: AUTHENTIK_VAR_NAME
-    #   value: VALUE
-    # - name: AUTHENTIK_VAR_OTHER
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: secret-name
-    #       key: secret-key
-    # - name: AUTHENTIK_VAR_ANOTHER
-    #   valueFrom:
-    #     configMapKeyRef:
-    #       name: config-map-name
-    #       key: config-map-key
-
-  # -- envFrom to pass to all deployed Deployments. Does not apply to GeoIP
-  # @default -- `[]` (See [values.yaml])
-  envFrom:
-    # []
-    # - configMapRef:
-    #     name: config-map-name
-    # - secretRef:
-    #     name: secret-name
   - name: AUTHENTIK_EMAIL__HOST
     valueFrom:
       secretKeyRef:
@@ -187,6 +165,28 @@ global:
       secretKeyRef:
         name: authentik-private
         key: authentik-redis-password
+    # - name: AUTHENTIK_VAR_NAME
+    #   value: VALUE
+    # - name: AUTHENTIK_VAR_OTHER
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: secret-name
+    #       key: secret-key
+    # - name: AUTHENTIK_VAR_ANOTHER
+    #   valueFrom:
+    #     configMapKeyRef:
+    #       name: config-map-name
+    #       key: config-map-key
+
+  # -- envFrom to pass to all deployed Deployments. Does not apply to GeoIP
+  # @default -- `[]` (See [values.yaml])
+  envFrom:
+    []
+    # - configMapRef:
+    #     name: config-map-name
+    # - secretRef:
+    #     name: secret-name
+
   # -- Additional volumeMounts to all deployed Deployments. Does not apply to GeoIP
   # @default -- `[]` (See [values.yaml])
   volumeMounts:
