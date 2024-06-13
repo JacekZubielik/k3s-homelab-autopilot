@@ -21,7 +21,15 @@ spec:
     kind: '*'
   sourceRepos:
   - '*'
-status: {}
+status:
+  health: {}
+  summary: {}
+  sync:
+    comparedTo:
+      destination: {}
+      source:
+        repoURL: ""
+    status: ""
 
 ---
 apiVersion: argoproj.io/v1alpha1
