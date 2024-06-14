@@ -1,68 +1,50 @@
 ---
-# -- Provide a name in place of `authentik`. Prefer using global.nameOverride if possible
-nameOverride: ""
-# -- String to fully override `"authentik.fullname"`. Prefer using global.fullnameOverride if possible
-fullnameOverride: ""
-# -- Override the Kubernetes version, which is used to evaluate certain manifests
-kubeVersionOverride: ""
-
-## Globally shared configuration for authentik components.
 global:
-  # -- Provide a name in place of `authentik`
   nameOverride: ""
-  # -- String to fully override `"authentik.fullname"`
   fullnameOverride: ""
-  # -- Common labels for all resources.
   additionalLabels:
     {}
-    # app: authentik
-
-  # Number of old deployment ReplicaSets to retain. The rest will be garbage collected.
   revisionHistoryLimit: 3
+  # image:
+  #   # -- If defined, a repository applied to all authentik deployments
+  #   repository: ghcr.io/goauthentik/server
+  #   # -- Overrides the global authentik whose default is the chart appVersion
+  #   tag: ""
+  #   # -- If defined, an image digest applied to all authentik deployments
+  #   digest: ""
+  #   # -- If defined, an imagePullPolicy applied to all authentik deployments
+  #   pullPolicy: IfNotPresent
 
-  # Default image used by all authentik components. For GeoIP configuration, see the geoip values below.
-  image:
-    # -- If defined, a repository applied to all authentik deployments
-    repository: ghcr.io/goauthentik/server
-    # -- Overrides the global authentik whose default is the chart appVersion
-    tag: ""
-    # -- If defined, an image digest applied to all authentik deployments
-    digest: ""
-    # -- If defined, an imagePullPolicy applied to all authentik deployments
-    pullPolicy: IfNotPresent
+  # imagePullSecrets: []
 
-  # -- Secrets with credentials to pull images from a private registry
-  imagePullSecrets: []
+  # deploymentAnnotations: {}
 
-  # -- Annotations for all deployed Deployments
-  deploymentAnnotations: {}
+  # # -- Annotations for all deployed pods
+  # podAnnotations: {}
 
-  # -- Annotations for all deployed pods
-  podAnnotations: {}
-
-  # -- Labels for all deployed pods
-  podLabels: {}
+  # # -- Labels for all deployed pods
+  # podLabels: {}
 
   # -- Add Prometheus scrape annotations to all metrics services. This can be used as an alternative to the ServiceMonitors.
   addPrometheusAnnotations: false
 
-  # -- Toggle and define pod-level security context.
-  # @default -- `{}` (See [values.yaml])
-  securityContext:
-    {}
-    # runAsUser: 1000
-    # runAsGroup: 1000
-    # fsGroup: 1000
+  # # -- Toggle and define pod-level security context.
+  # # @default -- `{}` (See [values.yaml])
+  # securityContext:
+  #   {}
+  #   # runAsUser: 1000
+  #   # runAsGroup: 1000
+  #   # fsGroup: 1000
 
   # -- Mapping between IP and hostnames that will be injected as entries in the pod's hosts files
-  hostAliases:
-    []
-    # - ip: 10.20.30.40
-    #   hostnames:
-    #     - my.hostname
+  # hostAliases:
+  #   []
+  #   # - ip: 10.20.30.40
+  #   #   hostnames:
+  #   #     - my.hostname
 
-  # -- Default priority class for all components
-  priorityClassName: ""
+  # # -- Default priority class for all components
+  # priorityClassName: ""
 
   # -- Default node selector for all components
   nodeSelector: {}
@@ -102,9 +84,6 @@ global:
     #   maxSurge: 25%
     #   maxUnavailable: 25%
 
-  # -- Environment variables to pass to all deployed Deployments. Does not apply to GeoIP
-  # See configuration options at https://goauthentik.io/docs/installation/configuration/
-  # @default -- `[]` (See [values.yaml])
   env:
   - name: authentik-email-host
     valueFrom:
@@ -130,41 +109,35 @@ global:
         name: authentik-private
         key: AUTHENTIK_EMAIL__FROM
 
-  # - name: secret_key
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_SECRET_KEY
+  - name: secret_key
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_SECRET_KEY
 
-  # - name: authentik-postgresql-name
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_POSTGRESQL__NAME
+  - name: authentik-postgresql-user
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__USER
 
-  # - name: authentik-postgresql-user
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_POSTGRESQL__USER
+  - name: authentik-postgresql-password
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__PASSWORD
 
-  # - name: authentik-postgresql-password
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_POSTGRESQL__PASSWORD
+  - name: authentik-postgresql-port
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__PORT
 
-  # - name: authentik-postgresql-port
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_POSTGRESQL__PORT
-
-  # - name: authentik-redis-password
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_REDIS__PASSWORD
+  - name: authentik-redis-password
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_REDIS__PASSWORD
 
     # - name: AUTHENTIK_VAR_NAME
     #   value: VALUE
@@ -208,92 +181,50 @@ authentik:
   log_level: info
   # -- Secret key used for cookie singing and unique user IDs,
   # don't change this after the first install
-  secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK" ###########################
+  # secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK" ###########################
   events:
     context_processors:
-      # -- Path for the GeoIP City database. If the file doesn't exist, GeoIP features are disabled.
       geoip: /geoip/GeoLite2-City.mmdb
-      # -- Path for the GeoIP ASN database. If the file doesn't exist, GeoIP features are disabled.
       asn: /geoip/GeoLite2-ASN.mmdb
   email:
-    # -- SMTP Server emails are sent from, fully optional
-    # host: "smtp.elasticemail.com"
-    # -- SMTP server port
     port: 2525
-    # -- SMTP credentials, when left empty, no authentication will be done
     # username: "no-reply@key.system.anotherlife.org.pl"
-    # -- SMTP credentials, when left empty, no authentication will be done
     # password: "7DF40CEC031B3C376DE0F295C2A0601556CE"
-    # -- Enable either use_tls or use_ssl, they can't be enabled at the same time.
     use_tls: false
-    # -- Enable either use_tls or use_ssl, they can't be enabled at the same time.
     use_ssl: false
-    # -- Connection timeout
     timeout: 30
-    # -- Email from address, can either be in the format "foo@bar.baz" or "authentik <foo@bar.baz>"
     # from: "no-reply@key.system.anotherlife.org.pl"
   outposts:
-    # -- Template used for managed outposts. The following placeholders can be used
-    # %(type)s - the type of the outpost
-    # %(version)s - version of your authentik install
-    # %(build_hash)s - only for beta versions, the build hash of the image
     container_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
   error_reporting:
-    # -- This sends anonymous usage-data, stack traces on errors and
-    # performance data to sentry.beryju.org, and is fully opt-in
     enabled: false
-    # -- This is a string that is sent to sentry with your error reports
     environment: "k8s"
-    # -- Send PII (Personally identifiable information) data to sentry
     send_pii: false
   postgresql:
-    # -- set the postgresql hostname to talk to
-    # if unset and .Values.postgresql.enabled == true, will generate the default
-    # @default -- `{{ .Release.Name }}-postgresql`
     host: "{{ .Release.Name }}-postgresql"
-    # -- postgresql Database name
-    # @default -- `authentik`
-    name: "authentik"
+    # name: "authentik"
     # -- postgresql Username
-    # @default -- `authentik`
-    user: "authentik"
-    password: "nGgi52kpexw5onXl4hGp3sQCQbEjefQXSmmEG4md3Tu2r6A9" ###########################
-    port: 5432
+    # user: "authentik"
+    # password: "nGgi52kpexw5onXl4hGp3sQCQbEjefQXSmmEG4md3Tu2r6A9" ###########################
+    # port: 5432
   redis:
-    # -- set the redis hostname to talk to
-    # @default -- `{{ .Release.Name }}-redis-master`
     host: "{{ .Release.Name }}-redis-master"
-    password: "" # "9epmI6dObuRpnn5y85AA5CQSi8O+rtzEOl8Z4RRuTUaosMZl" ###########################
+    # password: "" # "9epmI6dObuRpnn5y85AA5CQSi8O+rtzEOl8Z4RRuTUaosMZl" ###########################
 
 blueprints:
-  # -- List of config maps to mount blueprints from.
-  # Only keys in the configMap ending with `.yaml` will be discovered and applied.
   configMaps: []
-  # -- List of secrets to mount blueprints from.
-  # Only keys in the secret ending with `.yaml` will be discovered and applied.
   secrets: []
 
 ## authentik server
 server:
-  # -- authentik server name
   name: server
-
-  # -- The number of server pods to run
   replicas: 1
-
-  ## authentik server Horizontal Pod Autoscaler
   autoscaling:
-    # -- Enable Horizontal Pod Autoscaler ([HPA]) for the authentik server
     enabled: false
-    # -- Minimum number of replicas for the authentik server [HPA]
     minReplicas: 1
-    # -- Maximum number of replicas for the authentik server [HPA]
     maxReplicas: 5
-    # -- Average CPU utilization percentage for the authentik server [HPA]
     targetCPUUtilizationPercentage: 50
-    # -- Average memory utilization percentage for the authentik server [HPA]
     targetMemoryUtilizationPercentage: ~
-    # -- Configures the scaling behavior of the target in both Up and Down directions.
     behavior:
       {}
       # scaleDown:
@@ -315,17 +246,10 @@ server:
   ## authentik server Pod Disruption Budget
   ## Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
   pdb:
-    # -- Deploy a [PodDistrubtionBudget] for the authentik server
     enabled: false
-    # -- Labels to be added to the authentik server pdb
     labels: {}
-    # -- Annotations to be added to the authentik server pdb
     annotations: {}
-    # -- Number of pods that are available after eviction as number or percentage (eg.: 50%)
-    # @default -- `""` (defaults to 0 if not specified)
     minAvailable: ""
-    # -- Number of pods that are unavailable after eviction as number or percentage (eg.: 50%)
-    ## Has higher precedence over `server.pdb.minAvailable`
     maxUnavailable: ""
 
   ## authentik server image
@@ -423,13 +347,9 @@ server:
     # limits:
     #   memory: 512Mi
 
-  # authentik server container ports
   containerPorts:
-    # -- http container port
     http: 9000
-    # -- https container port
     https: 9443
-    # -- metrics container port
     metrics: 9300
 
   # -- Host Network for authentik server pods
@@ -465,71 +385,40 @@ server:
   ## Liveness, readiness and startup probes for authentik server
   ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
   livenessProbe:
-    # -- Minimum consecutive failures for the [probe] to be considered failed after having succeeded
     failureThreshold: 3
-    # -- Number of seconds after the container has started before [probe] is initiated
     initialDelaySeconds: 5
-    # -- How often (in seconds) to perform the [probe]
     periodSeconds: 10
-    # -- Minimum consecutive successes for the [probe] to be considered successful after having failed
     successThreshold: 1
-    # -- Number of seconds after which the [probe] times out
     timeoutSeconds: 1
-    ## Probe configuration
     httpGet:
       path: /-/health/live/
       port: http
 
   readinessProbe:
-    # -- Minimum consecutive failures for the [probe] to be considered failed after having succeeded
     failureThreshold: 3
-    # -- Number of seconds after the container has started before [probe] is initiated
     initialDelaySeconds: 5
-    # -- How often (in seconds) to perform the [probe]
     periodSeconds: 10
-    # -- Minimum consecutive successes for the [probe] to be considered successful after having failed
     successThreshold: 1
-    # -- Number of seconds after which the [probe] times out
     timeoutSeconds: 1
-    ## Probe configuration
     httpGet:
       path: /-/health/ready/
       port: http
 
   startupProbe:
-    # -- Minimum consecutive failures for the [probe] to be considered failed after having succeeded
     failureThreshold: 60
-    # -- Number of seconds after the container has started before [probe] is initiated
     initialDelaySeconds: 5
-    # -- How often (in seconds) to perform the [probe]
     periodSeconds: 10
-    # -- Minimum consecutive successes for the [probe] to be considered successful after having failed
     successThreshold: 1
-    # -- Number of seconds after which the [probe] times out
     timeoutSeconds: 1
-    ## Probe configuration
     httpGet:
       path: /-/health/live/
       port: http
 
-  # -- terminationGracePeriodSeconds for container lifecycle hook
   terminationGracePeriodSeconds: 30
-
-  # -- Prority class for the authentik server pods
-  # @default -- `""` (defaults to global.priorityClassName)
   priorityClassName: ""
-
-  # -- [Node selector]
-  # @default -- `{}` (defaults to global.nodeSelector)
   nodeSelector:
     kubernetes.io/hostname: dev-k3s-master-0
-
-  # -- [Tolerations] for use with node taints
-  # @default -- `[]` (defaults to global.tolerations)
   tolerations: []
-
-  # -- Assign custom [affinity] rules to the deployment
-  # @default -- `{}` (defaults to the global.affinity preset)
   affinity: {}
 
   # -- Assign custom [TopologySpreadConstraints] rules to the authentik server
@@ -589,10 +478,8 @@ server:
 
   ## authentik server metrics service configuration
   metrics:
-    # -- deploy metrics service
     enabled: true
     service:
-      # -- metrics service type
       type: ClusterIP
       # -- metrics service clusterIP. `None` makes a "headless service" (no virtual IP)
       clusterIP: ""
@@ -632,41 +519,19 @@ server:
       annotations: {}
 
   ingress:
-    # -- enable an ingress resource for the authentik server
     enabled: false
-    # -- additional ingress annotations
     annotations: {}
-    # -- additional ingress labels
     labels: {}
-    # -- defines which ingress controller will implement the resource
     ingressClassName: ""
-    # -- List of ingress hosts
     hosts:
       []
-      # - authentik.domain.tld
-
-    # -- List of ingress paths
     paths:
     - /
-    # -- Ingress path type. One of `Exact`, `Prefix` or `ImplementationSpecific`
     pathType: Prefix
-    # -- additional ingress paths
     extraPaths:
       []
-      # - path: /*
-      #   pathType: Prefix
-      #   backend:
-      #     service:
-      #       name: ssl-redirect
-      #       port:
-      #         name: use-annotation
-
-    # -- ingress TLS configuration
     tls:
       []
-      # - secretName: authentik-tls
-      #   hosts:
-      #     - authentik.domain.tld
 
     # -- uses `server.service.servicePortHttps` instead of `server.service.servicePortHttp`
     https: false
@@ -1023,7 +888,7 @@ redis:
   enabled: true
   architecture: standalone
   auth:
-    enabled: false
+    enabled: true
 
 # -- additional resources to deploy. Those objects are templated.
 additionalObjects: []
