@@ -139,11 +139,11 @@ global:
         name: authentik-private
         key: AUTHENTIK_REDIS__PASSWORD
 
-  - name: postgresql-password
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: auth.postgresPassword
+  # - name: postgresql-password
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: auth.postgresPassword
 
     # - name: AUTHENTIK_VAR_NAME
     #   value: VALUE
