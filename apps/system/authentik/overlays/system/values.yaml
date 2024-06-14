@@ -70,21 +70,21 @@ global:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PORT
 
-  - name: POSTGRESQL_DATABASE
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: POSTGRESQL_DATABASE
-  - name: POSTGRESQL_USER
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: POSTGRESQL_USER
-  - name: POSTGRESQL_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: POSTGRESQL_PASSWORD
+  # - name: POSTGRESQL_DATABASE
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: POSTGRESQL_DATABASE
+  # - name: POSTGRESQL_USER
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: POSTGRESQL_USER
+  # - name: POSTGRESQL_PASSWORD
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: POSTGRESQL_PASSWORD
 
   # -- envFrom to pass to all deployed Deployments. Does not apply to GeoIP
   # @default -- `[]` (See [values.yaml])
@@ -461,22 +461,22 @@ postgresql:
     #   storageClass:
     #   accessModes:
     #     - ReadWriteOnce
-  # env:
-  # - name: POSTGRES_DATABASE
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: POSTGRESQL_DATABASE
-  # - name: POSTGRES_USER
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: POSTGRES_USER
-  # - name: POSTGRES_PASSWORD
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: POSTGRES_PASSWORD
+  env:
+  - name: POSTGRESQL_DATABASE
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: POSTGRESQL_DATABASE
+  - name: POSTGRESQL_USER
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: POSTGRESQL_USER
+  - name: POSTGRESQL_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: POSTGRESQL_PASSWORD
 
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
