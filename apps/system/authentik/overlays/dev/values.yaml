@@ -134,7 +134,7 @@ global:
     valueFrom:
       secretKeyRef:
         name: authentik-private
-        key: AUTHENTIK_SECRET_KEYsecret-key
+        key: AUTHENTIK_SECRET_KEY
 
   - name: authentik-postgresql-name
     valueFrom:
