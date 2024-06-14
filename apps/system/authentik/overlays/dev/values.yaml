@@ -101,11 +101,11 @@ global:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PORT
 
-  - name: AUTHENTIK_REDIS__PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_REDIS__PASSWORD
+  # - name: AUTHENTIK_REDIS__PASSWORD
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_REDIS__PASSWORD
 
     # - name: AUTHENTIK_VAR_NAME
     #   value: VALUE
