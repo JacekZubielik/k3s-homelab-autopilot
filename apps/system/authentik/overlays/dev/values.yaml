@@ -895,6 +895,13 @@ postgresql:
       secretKeyRef:
         name: authentik-postgresql2
         key: postgres-password
+  - name: POSTGRESQL_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: authentik-postgresql2
+        key: postgres-user
+
+
 
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
