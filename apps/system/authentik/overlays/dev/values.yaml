@@ -750,11 +750,11 @@ redis:
         name: authentik-private
         key: REDIS_MASTER_PASSWORD
 
-  - name: REDIS_DAEMON_USER
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: REDIS_DAEMON_USER
+  # - name: REDIS_DAEMON_USER
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: REDIS_DAEMON_USER
 
 # -- additional resources to deploy. Those objects are templated.
 additionalObjects: []
