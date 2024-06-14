@@ -130,7 +130,7 @@ global:
         name: authentik-private
         key: AUTHENTIK_EMAIL__FROM
 
-  - name: authentik_secret-key
+  - name: secret_key
     valueFrom:
       secretKeyRef:
         name: authentik-private
@@ -160,11 +160,11 @@ global:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PORT
 
-  - name: authentik-redis-password
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_REDIS__PASSWORD
+  # - name: authentik-redis-password
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_REDIS__PASSWORD
 
     # - name: AUTHENTIK_VAR_NAME
     #   value: VALUE
@@ -263,7 +263,7 @@ authentik:
     # -- set the redis hostname to talk to
     # @default -- `{{ .Release.Name }}-redis-master`
     host: "{{ .Release.Name }}-redis-master"
-    # password: "" # "9epmI6dObuRpnn5y85AA5CQSi8O+rtzEOl8Z4RRuTUaosMZl" ###########################
+    password: "" # "9epmI6dObuRpnn5y85AA5CQSi8O+rtzEOl8Z4RRuTUaosMZl" ###########################
 
 blueprints:
   # -- List of config maps to mount blueprints from.
