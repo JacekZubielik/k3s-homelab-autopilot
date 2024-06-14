@@ -107,11 +107,11 @@ global:
         name: authentik-private
         key: AUTHENTIK_REDIS__PASSWORD
 
-  - name: AUTHENTIK_REDIS__USERNAME
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_REDIS__USERNAME
+  # - name: AUTHENTIK_REDIS__USERNAME
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_REDIS__USERNAME
 
     # - name: AUTHENTIK_VAR_NAME
     #   value: VALUE
