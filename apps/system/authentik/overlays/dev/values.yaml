@@ -873,7 +873,7 @@ postgresql:
   auth:
     username: authentik
     database: authentik
-    password: "nGgi52kpexw5onXl4hGp3sQCQbEjefQXSmmEG4md3Tu2r6A9"
+    # password: "nGgi52kpexw5onXl4hGp3sQCQbEjefQXSmmEG4md3Tu2r6A9"
   primary:
     extendedConfiguration: |
       max_connections = 500
@@ -895,8 +895,6 @@ postgresql:
       secretKeyRef:
         name: authentik-private
         key: auth.postgresPassword
-
-
 
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
