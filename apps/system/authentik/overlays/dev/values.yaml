@@ -109,11 +109,11 @@ global:
         name: authentik-private
         key: AUTHENTIK_EMAIL__FROM
 
-  - name: authentik-secret_key
+  - name: secret_key
     valueFrom:
       secretKeyRef:
         name: authentik-private
-        key: AUTHENTIK_SECRET_KEY
+        key: AUTHENTIK_SECRET__KEY
 
   - name: authentik-postgresql-user
     valueFrom:
@@ -181,7 +181,7 @@ authentik:
   log_level: info
   # -- Secret key used for cookie singing and unique user IDs,
   # don't change this after the first install
-  # secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK" ###########################
+  secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK"
   events:
     context_processors:
       geoip: /geoip/GeoLite2-City.mmdb
