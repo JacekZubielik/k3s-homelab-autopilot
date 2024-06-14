@@ -7,39 +7,15 @@ global:
   revisionHistoryLimit: 3
   # -- Add Prometheus scrape annotations to all metrics services. This can be used as an alternative to the ServiceMonitors.
   addPrometheusAnnotations: false
-
-  # -- Default node selector for all components
   nodeSelector: {}
-
-  # -- Default tolerations for all components
   tolerations: []
-
-  # Default affinity preset for all components
   affinity:
-    # -- Default pod anti-affinity rules. Either: `none`, `soft` or `hard`
     podAntiAffinity: soft
-    # Node affinity rules
     nodeAffinity:
-      # -- Default node affinity rules. Either `none`, `soft` or `hard`
       type: hard
-      # -- Default match expressions for node affinity
       matchExpressions:
         []
-        # - key: topology.kubernetes.io/zone
-        #   operator: In
-        #   values:
-        #     - zonea
-        #     - zoneb
 
-  # -- Default [TopologySpreadConstraints] rules for all components
-  ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
-  topologySpreadConstraints:
-    []
-    # - maxSkew: 1
-    #   topologyKey: topology.kubernetes.io/zone
-    #   whenUnsatisfiable: DoNotSchedule
-
-  # -- Deployment strategy for all deployed Deployments
   deploymentStrategy:
     type: RollingUpdate
     # rollingUpdate:
@@ -52,60 +28,52 @@ global:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_EMAIL__HOST
-
   - name: AUTHENTIK_EMAIL__USERNAME
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_EMAIL__USERNAME
-
   - name: AUTHENTIK_EMAIL__PASSWORD
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_EMAIL__PASSWORD
-
   - name: AUTHENTIK_EMAIL__FROM
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_EMAIL__FROM
-
-  - name: AUTHENTIK_SECRET__KEY
+  - name: AUTHENTIK_SECRET_KEY
     valueFrom:
       secretKeyRef:
         name: authentik-private
-        key: AUTHENTIK_SECRET__KEY
-
+        key: AUTHENTIK_SECRET_KEY
   - name: AUTHENTIK_POSTGRESQL__NAME
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__NAME
-
   - name: AUTHENTIK_POSTGRESQL__USER
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__USER
-
   - name: AUTHENTIK_POSTGRESQL__PASSWORD
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PASSWORD
-
   - name: AUTHENTIK_POSTGRESQL__PORT
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PORT
 
-  - name: AUTHENTIK_REDIS__PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_REDIS__PASSWORD
+  # - name: AUTHENTIK_REDIS__PASSWORD
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_REDIS__PASSWORD
 
   # - name: AUTHENTIK_REDIS__USERNAME
   #   valueFrom:
@@ -155,11 +123,11 @@ authentik:
   log_level: info
   # -- Secret key used for cookie singing and unique user IDs,
   # don't change this after the first install
-  secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK"
-  events:
-    context_processors:
-      geoip: /geoip/GeoLite2-City.mmdb
-      asn: /geoip/GeoLite2-ASN.mmdb
+  # secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK"
+  # events:
+  #   context_processors:
+  #     geoip: /geoip/GeoLite2-City.mmdb
+  #     asn: /geoip/GeoLite2-ASN.mmdb
   email:
     port: 2525
     # username: "no-reply@key.system.anotherlife.org.pl"
@@ -443,7 +411,6 @@ server:
 worker:
   name: worker
   replicas: 1
-
   autoscaling:
     enabled: false
     minReplicas: 1
@@ -612,80 +579,6 @@ serviceAccount:
     enabled: false
   fullnameOverride: authentik
 
-geoip:
-  enabled: false
-  editionIds: "GeoLite2-City GeoLite2-ASN"
-  updateInterval: 8
-  # -- sign up under https://www.maxmind.com/en/geolite2/signup
-  accountId: ""
-  # -- sign up under https://www.maxmind.com/en/geolite2/signup
-  licenseKey: ""
-  existingSecret:
-    secretName: ""
-    accountId: "account_id"
-    licenseKey: "license_key"
-
-  image:
-    repository: ghcr.io/maxmind/geoipupdate
-    tag: v6.0.0
-    digest: ""
-    pullPolicy: IfNotPresent
-
-  # -- Environment variables to pass to the GeoIP containers
-  # @default -- `[]` (See [values.yaml])
-  env:
-    []
-    # - name: GEOIPUPDATE_VAR_NAME
-    #   value: VALUE
-    # - name: GEOIPUPDATE_VAR_OTHER
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: secret-name
-    #       key: secret-key
-    # - name: GEOIPUPDATE_VAR_ANOTHER
-    #   valueFrom:
-    #     configMapKeyRef:
-    #       name: config-map-name
-    #       key: config-map-key
-
-  # -- envFrom to pass to the GeoIP containers
-  # @default -- `[]` (See [values.yaml])
-  envFrom:
-    []
-    # - configMapRef:
-    #     name: config-map-name
-    # - secretRef:
-    #     name: secret-name
-
-  # -- Additional volumeMounts to the GeoIP containers. Make sure the volumes exists for the server and the worker.
-  volumeMounts:
-    []
-    # - name: custom
-    #   mountPath: /custom
-
-  # -- Resource limits and requests for GeoIP containers
-  resources:
-    {}
-    # requests:
-    #   cpu: 100m
-    #   memory: 128Mi
-    # limits:
-    #   memory: 128Mi
-
-  # -- GeoIP container-level security context
-  # @default -- See [values.yaml]
-  containerSecurityContext:
-    {}
-    # Not all of the following has been tested. Use at your own risk.
-    # runAsNonRoot: true
-    # readOnlyRootFilesystem: true
-    # allowPrivilegeEscalation: false
-    # seccomProfile:
-    #   type: RuntimeDefault
-    # capabilities:
-    #   drop:
-    #     - ALL
-
 prometheus:
   rules:
     enabled: true
@@ -704,10 +597,6 @@ prometheus:
 postgresql:
   # -- enable the Bitnami PostgreSQL chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/postgresql/ for possible values.
   enabled: true
-  auth:
-    # username: authentik
-    # database: authentik
-    # password: "nGgi52kpexw5onXl4hGp3sQCQbEjefQXSmmEG4md3Tu2r6A9"
   primary:
     extendedConfiguration: |
       max_connections = 500
@@ -716,45 +605,42 @@ postgresql:
     #   storageClass:
     #   accessModes:
     #     - ReadWriteOnce
-
   env:
   - name: POSTGRESQL_DATABASE
     valueFrom:
       secretKeyRef:
         name: authentik-private
-        key: postgres-database
-
+        key: POSTGRESQL_DATABASE
   - name: POSTGRESQL_USERNAME
     valueFrom:
       secretKeyRef:
         name: authentik-private
-        key: postgres-user
-
+        key: POSTGRESQL_USERNAME
   - name: POSTGRES_PASSWORD
     valueFrom:
       secretKeyRef:
         name: authentik-private
-        key: postgres-password
+        key: POSTGRES_PASSWORD
 
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
   enabled: true
   architecture: standalone
   auth:
-    enabled: true
+    enabled: false
 
-  env:
+  # env:
   # - name: REDIS_MASTER_PASSWORD
   #   valueFrom:
   #     secretKeyRef:
   #       name: authentik-private
   #       key: REDIS_MASTER_PASSWORD
 
-  - name: REDIS_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: REDIS_PASSWORD
+  # - name: REDIS_PASSWORD
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: REDIS_PASSWORD
 
   # - name: REDIS_DAEMON_USER
   #   valueFrom:
