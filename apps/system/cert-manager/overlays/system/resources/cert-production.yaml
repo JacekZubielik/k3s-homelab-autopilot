@@ -19,27 +19,6 @@ spec:
   duration: 2160h0m0s   # 90d
   renewBefore: 720h0m0s   # 30d
 
-# ---
-# apiVersion: cert-manager.io/v1
-# kind: Certificate
-# metadata:
-#   name: letsencrypt-infra
-#   namespace: authentik
-#   annotations:
-#     argocd.argoproj.io/sync-wave: "10"
-#   labels:
-#     app.kubernetes.io/name: traefik
-# spec:
-#   dnsNames:
-#   - "infra.anotherlife.org.pl"
-#   - "*.infra.anotherlife.org.pl"
-#   issuerRef:
-#     kind: ClusterIssuer
-#     name: route53-letsencrypt-production
-#   secretName: letsencrypt-infra
-#   duration: 2160h0m0s   # 90d
-#   renewBefore: 720h0m0s   # 30d
-
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate

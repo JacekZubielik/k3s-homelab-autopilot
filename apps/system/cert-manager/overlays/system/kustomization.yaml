@@ -14,9 +14,9 @@ metadata:
 resources:
 - ../../base
 - resources/cert-staging.yaml
-# - resources/cert-production.yaml
+- resources/cert-production.yaml
 - resources/letsencrypt-staging.yaml
-# - resources/letsencrypt-production.yaml
+- resources/letsencrypt-production.yaml
 - secrets/sealed.secret.yaml
 - resources/default.svc-certificate.yaml
 - resources/default.svc-issuer.yaml
