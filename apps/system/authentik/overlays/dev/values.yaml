@@ -893,7 +893,7 @@ postgresql:
   - name: POSTGRES_PASSWORD
     valueFrom:
       secretKeyRef:
-        name: authentik-postgresql
+        name: authentik-postgresql2
         key: postgres-password
 
 redis:
