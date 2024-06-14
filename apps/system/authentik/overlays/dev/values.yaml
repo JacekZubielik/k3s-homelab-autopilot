@@ -85,31 +85,31 @@ global:
     #   maxUnavailable: 25%
 
   env:
-  - name: authentik-email-host
+  - name: AUTHENTIK_EMAIL__HOST
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_EMAIL__HOST
 
-  - name: authentik-email-username
+  - name: AUTHENTIK_EMAIL__USERNAME
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_EMAIL__USERNAME
 
-  - name: authentik-email-password
+  - name: AUTHENTIK_EMAIL__PASSWORD
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_EMAIL__PASSWORD
 
-  - name: authentik_email_from
+  - name: AUTHENTIK_EMAIL__FROM
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_EMAIL__FROM
 
-  - name: secret_key
+  - name: AUTHENTIK_SECRET__KEY
     valueFrom:
       secretKeyRef:
         name: authentik-private
@@ -127,13 +127,13 @@ global:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PASSWORD
 
-  - name: authentik-postgresql-port
+  - name: AUTHENTIK_POSTGRESQL__PORT
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PORT
 
-  - name: authentik-redis-password
+  - name: AUTHENTIK_REDIS__PASSWORD
     valueFrom:
       secretKeyRef:
         name: authentik-private
@@ -893,22 +893,20 @@ postgresql:
   - name: POSTGRES_PASSWORD
     valueFrom:
       secretKeyRef:
-        name: authentik-postgresql2
+        name: authentik-private
         key: postgres-password
   - name: POSTGRESQL_USERNAME
     valueFrom:
       secretKeyRef:
-        name: authentik-postgresql2
+        name: authentik-private
         key: postgres-user
-
-
 
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
   enabled: true
   architecture: standalone
   auth:
-    enabled: true
+    enabled: false
 
 # -- additional resources to deploy. Those objects are templated.
 additionalObjects: []
