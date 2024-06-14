@@ -58,6 +58,7 @@ global:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__USER
+
   - name: AUTHENTIK_POSTGRESQL__PASSWORD
     valueFrom:
       secretKeyRef:
@@ -69,21 +70,21 @@ global:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PORT
 
-  - name: POSTGRES_DATABASE
+  - name: POSTGRESQL_DATABASE
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: POSTGRESQL_DATABASE
-  - name: POSTGRES_USER
+  - name: POSTGRESQL_USER
     valueFrom:
       secretKeyRef:
         name: authentik-private
-        key: POSTGRES_USER
-  - name: POSTGRES_PASSWORD
+        key: POSTGRESQL_USER
+  - name: POSTGRESQL_PASSWORD
     valueFrom:
       secretKeyRef:
         name: authentik-private
-        key: POSTGRES_PASSWORD
+        key: POSTGRESQL_PASSWORD
 
   # -- envFrom to pass to all deployed Deployments. Does not apply to GeoIP
   # @default -- `[]` (See [values.yaml])
