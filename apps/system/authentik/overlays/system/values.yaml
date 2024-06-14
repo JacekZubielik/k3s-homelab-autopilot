@@ -445,16 +445,16 @@ postgresql:
     #   accessModes:
     #     - ReadWriteOnce
   env:
-  - name: POSTGRESQL_DATABASE
+  - name: POSTGRES_DATABASE
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: POSTGRESQL_DATABASE
-  - name: POSTGRESQL_USERNAME
+  - name: POSTGRES_USER
     valueFrom:
       secretKeyRef:
         name: authentik-private
-        key: POSTGRESQL_USERNAME
+        key: POSTGRES_USER
   - name: POSTGRES_PASSWORD
     valueFrom:
       secretKeyRef:
