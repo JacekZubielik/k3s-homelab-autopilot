@@ -109,7 +109,7 @@ global:
         name: authentik-private
         key: AUTHENTIK_EMAIL__FROM
 
-  - name: secret_key
+  - name: authentik-secret_key
     valueFrom:
       secretKeyRef:
         name: authentik-private
