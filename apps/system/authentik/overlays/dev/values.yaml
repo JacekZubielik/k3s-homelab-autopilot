@@ -5,46 +5,8 @@ global:
   additionalLabels:
     {}
   revisionHistoryLimit: 3
-  # image:
-  #   # -- If defined, a repository applied to all authentik deployments
-  #   repository: ghcr.io/goauthentik/server
-  #   # -- Overrides the global authentik whose default is the chart appVersion
-  #   tag: ""
-  #   # -- If defined, an image digest applied to all authentik deployments
-  #   digest: ""
-  #   # -- If defined, an imagePullPolicy applied to all authentik deployments
-  #   pullPolicy: IfNotPresent
-
-  # imagePullSecrets: []
-
-  # deploymentAnnotations: {}
-
-  # # -- Annotations for all deployed pods
-  # podAnnotations: {}
-
-  # # -- Labels for all deployed pods
-  # podLabels: {}
-
   # -- Add Prometheus scrape annotations to all metrics services. This can be used as an alternative to the ServiceMonitors.
   addPrometheusAnnotations: false
-
-  # # -- Toggle and define pod-level security context.
-  # # @default -- `{}` (See [values.yaml])
-  # securityContext:
-  #   {}
-  #   # runAsUser: 1000
-  #   # runAsGroup: 1000
-  #   # fsGroup: 1000
-
-  # -- Mapping between IP and hostnames that will be injected as entries in the pod's hosts files
-  # hostAliases:
-  #   []
-  #   # - ip: 10.20.30.40
-  #   #   hostnames:
-  #   #     - my.hostname
-
-  # # -- Default priority class for all components
-  # priorityClassName: ""
 
   # -- Default node selector for all components
   nodeSelector: {}
@@ -115,6 +77,12 @@ global:
         name: authentik-private
         key: AUTHENTIK_SECRET__KEY
 
+  - name: AUTHENTIK_POSTGRESQL__NAME
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__NAME
+
   - name: AUTHENTIK_POSTGRESQL__USER
     valueFrom:
       secretKeyRef:
@@ -133,17 +101,11 @@ global:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PORT
 
-  # - name: AUTHENTIK_REDIS__PASSWORD
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_REDIS__PASSWORD
-
-  # - name: postgresql-password
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: auth.postgresPassword
+  - name: AUTHENTIK_REDIS__PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_REDIS__PASSWORD
 
     # - name: AUTHENTIK_VAR_NAME
     #   value: VALUE
@@ -187,7 +149,7 @@ authentik:
   log_level: info
   # -- Secret key used for cookie singing and unique user IDs,
   # don't change this after the first install
-  secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK"
+  # secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK"
   events:
     context_processors:
       geoip: /geoip/GeoLite2-City.mmdb
@@ -257,26 +219,6 @@ server:
     annotations: {}
     minAvailable: ""
     maxUnavailable: ""
-
-  ## authentik server image
-  ## This should match what is deployed in the worker. Prefer using global.image
-  image:
-    # -- Repository to use to the authentik server
-    # @default -- `""` (defaults to global.image.repository)
-    repository: "" # defaults to global.image.repository
-    # -- Tag to use to the authentik server
-    # @default -- `""` (defaults to global.image.tag)
-    tag: "" # defaults to global.image.tag
-    # -- Digest to use to the authentik server
-    # @default -- `""` (defaults to global.image.digest)
-    digest: "" # defaults to global.image.digest
-    # -- Image pull policy to use to the authentik server
-    # @default -- `""` (defaults to global.image.pullPolicy)
-    pullPolicy: "" # defaults to global.image.pullPolicy
-
-  # -- Secrets with credentials to pull images from a private registry
-  # @default -- `[]` (defaults to global.imagePullSecrets)
-  imagePullSecrets: []
 
   # -- Environment variables to pass to the authentik server. Does not apply to GeoIP
   # See configuration options at https://goauthentik.io/docs/installation/configuration/
@@ -366,28 +308,6 @@ server:
   # -- Alternative DNS policy for authentik server pods
   dnsPolicy: ""
 
-  # -- authentik server pod-level security context
-  # @default -- `{}` (See [values.yaml])
-  securityContext:
-    {}
-    # runAsUser: 1000
-    # runAsGroup: 1000
-    # fsGroup: 1000
-
-  # -- authentik server container-level security context
-  # @default -- See [values.yaml]
-  containerSecurityContext:
-    {}
-    # Not all of the following has been tested. Use at your own risk.
-    # runAsNonRoot: true
-    # readOnlyRootFilesystem: true
-    # allowPrivilegeEscalation: false
-    # seccomProfile:
-    #   type: RuntimeDefault
-    # capabilities:
-    #   drop:
-    #     - ALL
-
   ## Liveness, readiness and startup probes for authentik server
   ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
   livenessProbe:
@@ -447,39 +367,22 @@ server:
 
   ## authentik server service configuration
   service:
-    # -- authentik server service annotations
     annotations: {}
-    # -- authentik server service labels
     labels: {}
-    # -- authentik server service type
     type: ClusterIP
-    # -- authentik server service http port for NodePort service type (only if `server.service.type` is set to `NodePort`)
     nodePortHttp: 30080
-    # -- authentik server service https port for NodePort service type (only if `server.service.type` is set to `NodePort`)
     nodePortHttps: 30443
-    # -- authentik server service http port
     servicePortHttp: 80
-    # -- authentik server service https port
     servicePortHttps: 443
-    # -- authentik server service http port name
     servicePortHttpName: http
-    # -- authentik server service https port name
     servicePortHttpsName: https
-    # -- authentik server service http port appProtocol
     # servicePortHttpAppProtocol: HTTP
-    # -- authentik server service https port appProtocol
     # servicePortHttpsAppProtocol: HTTPS
-    # -- LoadBalancer will get created with the IP specified in this field
     loadBalancerIP: ""
-    # -- Source IP ranges to allow access to service from
     loadBalancerSourceRanges: []
-    # -- authentik server service external IPs
     externalIPs: []
-    # -- Denotes if this service desires to route external traffic to node-local or cluster-wide endpoints
     externalTrafficPolicy: ""
-    # -- Used to maintain session affinity. Supports `ClientIP` and `None`
     sessionAffinity: ""
-    # -- Session affinity configuration
     sessionAffinityConfig: {}
 
   ## authentik server metrics service configuration
@@ -487,31 +390,19 @@ server:
     enabled: true
     service:
       type: ClusterIP
-      # -- metrics service clusterIP. `None` makes a "headless service" (no virtual IP)
       clusterIP: ""
-      # -- metrics service annotations
       annotations: {}
-      # -- metrics service labels
       labels: {}
-      # -- metrics service port
       servicePort: 9300
-      # -- metrics service port name
       portName: metrics
     serviceMonitor:
-      # -- enable a prometheus ServiceMonitor
       enabled: true
-      # -- Prometheus ServiceMonitor interval
       interval: 30s
-      # -- Prometheus ServiceMonitor scrape timeout
       scrapeTimeout: 3s
-      # -- Prometheus [RelabelConfigs] to apply to samples before scraping
       relabelings: []
-      # -- Prometheus [MetricsRelabelConfigs] to apply to samples before ingestion
       metricRelabelings: []
-      # -- Prometheus ServiceMonitor selector
       selector:
         {}
-        # prometheus: kube-prometheus
 
       # -- Prometheus ServiceMonitor scheme
       scheme: ""
@@ -544,25 +435,15 @@ server:
 
 ## authentik worker
 worker:
-  # -- authentik worker name
   name: worker
-
-  # -- The number of worker pods to run
   replicas: 1
 
-  ## authentik worker Horizontal Pod Autoscaler
   autoscaling:
-    # -- Enable Horizontal Pod Autoscaler ([HPA]) for the authentik worker
     enabled: false
-    # -- Minimum number of replicas for the authentik worker [HPA]
     minReplicas: 1
-    # -- Maximum number of replicas for the authentik worker [HPA]
     maxReplicas: 5
-    # -- Average CPU utilization percentage for the authentik worker [HPA]
     targetCPUUtilizationPercentage: 50
-    # -- Average memory utilization percentage for the authentik worker [HPA]
     targetMemoryUtilizationPercentage: ~
-    # -- Configures the scaling behavior of the target in both Up and Down directions.
     behavior:
       {}
       # scaleDown:
@@ -584,38 +465,11 @@ worker:
   ## authentik worker Pod Disruption Budget
   ## Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
   pdb:
-    # -- Deploy a [PodDistrubtionBudget] for the authentik worker
     enabled: false
-    # -- Labels to be added to the authentik worker pdb
     labels: {}
-    # -- Annotations to be added to the authentik worker pdb
     annotations: {}
-    # -- Number of pods that are available after eviction as number or percentage (eg.: 50%)
-    # @default -- `""` (defaults to 0 if not specified)
     minAvailable: ""
-    # -- Number of pods that are unavailable after eviction as number or percentage (eg.: 50%)
-    ## Has higher precedence over `worker.pdb.minAvailable`
     maxUnavailable: ""
-
-  ## authentik worker image
-  ## This should match what is deployed in the server. Prefer using global.image
-  image:
-    # -- Repository to use to the authentik worker
-    # @default -- `""` (defaults to global.image.repository)
-    repository: "" # defaults to global.image.repository
-    # -- Tag to use to the authentik worker
-    # @default -- `""` (defaults to global.image.tag)
-    tag: "" # defaults to global.image.tag
-    # -- Digest to use to the authentik worker
-    # @default -- `""` (defaults to global.image.digest)
-    digest: "" # defaults to global.image.digest
-    # -- Image pull policy to use to the authentik worker
-    # @default -- `""` (defaults to global.image.pullPolicy)
-    pullPolicy: "" # defaults to global.image.pullPolicy
-
-  # -- Secrets with credentials to pull images from a private registry
-  # @default -- `[]` (defaults to global.imagePullSecrets)
-  imagePullSecrets: []
 
   # -- Environment variables to pass to the authentik worker. Does not apply to GeoIP
   # See configuration options at https://goauthentik.io/docs/installation/configuration/
@@ -692,21 +546,10 @@ worker:
     # limits:
     #   memory: 512Mi
 
-  # -- Host Network for authentik worker pods
   hostNetwork: false
 
-  # -- [DNS configuration]
   dnsConfig: {}
-  # -- Alternative DNS policy for authentik worker pods
   dnsPolicy: ""
-
-  # -- authentik worker pod-level security context
-  # @default -- `{}` (See [values.yaml])
-  securityContext:
-    {}
-    # runAsUser: 1000
-    # runAsGroup: 1000
-    # fsGroup: 1000
 
   # -- authentik worker container-level security context
   # @default -- See [values.yaml]
@@ -729,17 +572,9 @@ worker:
   # @default -- `""` (defaults to global.priorityClassName)
   priorityClassName: ""
 
-  # -- [Node selector]
-  # @default -- `{}` (defaults to global.nodeSelector)
   nodeSelector:
     kubernetes.io/hostname: dev-k3s-master-0
-
-  # -- [Tolerations] for use with node taints
-  # @default -- `[]` (defaults to global.tolerations)
   tolerations: []
-
-  # -- Assign custom [affinity] rules to the deployment
-  # @default -- `{}` (defaults to the global.affinity preset)
   affinity: {}
 
   # -- Assign custom [TopologySpreadConstraints] rules to the authentik worker
@@ -762,9 +597,7 @@ worker:
     #   maxUnavailable: 25%
 
 serviceAccount:
-  # -- Create service account. Needed for managed outposts
   create: true
-  # -- additional service account annotations
   annotations: {}
   serviceAccountSecret:
     # As we use the authentik-remote-cluster chart as subchart, and that chart
@@ -774,33 +607,22 @@ serviceAccount:
   fullnameOverride: authentik
 
 geoip:
-  # -- enable GeoIP sidecars for the authentik server and worker pods
   enabled: false
-
   editionIds: "GeoLite2-City GeoLite2-ASN"
-  # -- GeoIP update frequency, in hours
   updateInterval: 8
   # -- sign up under https://www.maxmind.com/en/geolite2/signup
   accountId: ""
   # -- sign up under https://www.maxmind.com/en/geolite2/signup
   licenseKey: ""
-  ## use existing secret instead of values above
   existingSecret:
-    # -- name of an existing secret to use instead of values above
     secretName: ""
-    # -- key in the secret containing the account ID
     accountId: "account_id"
-    # -- key in the secret containing the license key
     licenseKey: "license_key"
 
   image:
-    # -- If defined, a repository for GeoIP images
     repository: ghcr.io/maxmind/geoipupdate
-    # -- If defined, a tag for GeoIP images
     tag: v6.0.0
-    # -- If defined, an image digest for GeoIP images
     digest: ""
-    # -- If defined, an imagePullPolicy for GeoIP images
     pullPolicy: IfNotPresent
 
   # -- Environment variables to pass to the GeoIP containers
@@ -877,8 +699,8 @@ postgresql:
   # -- enable the Bitnami PostgreSQL chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/postgresql/ for possible values.
   enabled: true
   auth:
-    username: authentik
-    database: authentik
+    # username: authentik
+    # database: authentik
     # password: "nGgi52kpexw5onXl4hGp3sQCQbEjefQXSmmEG4md3Tu2r6A9"
   primary:
     extendedConfiguration: |
@@ -890,23 +712,37 @@ postgresql:
     #     - ReadWriteOnce
 
   env:
-  - name: POSTGRES_PASSWORD
+  - name: POSTGRESQL_DATABASE
     valueFrom:
       secretKeyRef:
         name: authentik-private
-        key: postgres-password
+        key: postgres-database
+
   - name: POSTGRESQL_USERNAME
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: postgres-user
 
+  - name: POSTGRES_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: postgres-password
+
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
   enabled: true
   architecture: standalone
   auth:
-    enabled: false
+    enabled: true
+
+  env:
+  - name: REDIS_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: REDIS_PASSWORD
 
 # -- additional resources to deploy. Those objects are templated.
 additionalObjects: []
