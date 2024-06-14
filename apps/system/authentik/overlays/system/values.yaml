@@ -211,7 +211,7 @@ authentik:
   log_level: info
   # -- Secret key used for cookie singing and unique user IDs,
   # don't change this after the first install
-  secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK" ###########################
+  # secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK" ###########################
   events:
     context_processors:
       # -- Path for the GeoIP City database. If the file doesn't exist, GeoIP features are disabled.
