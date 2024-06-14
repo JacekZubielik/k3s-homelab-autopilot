@@ -883,6 +883,21 @@ postgresql:
     #   accessModes:
     #     - ReadWriteOnce
 
+  env:
+  # - name: authentik-postgresql-user
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_POSTGRESQL__USER
+
+  - name: postgresql-password
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: auth.postgresPassword
+
+
+
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
   enabled: true
