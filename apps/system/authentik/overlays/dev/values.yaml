@@ -69,31 +69,6 @@ global:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PORT
 
-  # - name: AUTHENTIK_REDIS__PASSWORD
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_REDIS__PASSWORD
-
-  # - name: AUTHENTIK_REDIS__USERNAME
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_REDIS__USERNAME
-
-    # - name: AUTHENTIK_VAR_NAME
-    #   value: VALUE
-    # - name: AUTHENTIK_VAR_OTHER
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: secret-name
-    #       key: secret-key
-    # - name: AUTHENTIK_VAR_ANOTHER
-    #   valueFrom:
-    #     configMapKeyRef:
-    #       name: config-map-name
-    #       key: config-map-key
-
   # -- envFrom to pass to all deployed Deployments. Does not apply to GeoIP
   # @default -- `[]` (See [values.yaml])
   envFrom:
@@ -119,23 +94,12 @@ global:
 
 ## Authentik configuration
 authentik:
-  # -- Log level for server and worker
   log_level: info
-  # -- Secret key used for cookie singing and unique user IDs,
-  # don't change this after the first install
-  # secret_key: "5vAZ6Yddskl4CC3bmmlT9OEK29vd6SVZcOLHqlU5L+bQFaqK"
-  # events:
-  #   context_processors:
-  #     geoip: /geoip/GeoLite2-City.mmdb
-  #     asn: /geoip/GeoLite2-ASN.mmdb
   email:
     port: 2525
-    # username: "no-reply@key.system.anotherlife.org.pl"
-    # password: "7DF40CEC031B3C376DE0F295C2A0601556CE"
     use_tls: false
     use_ssl: false
     timeout: 30
-    # from: "no-reply@key.system.anotherlife.org.pl"
   outposts:
     container_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
   error_reporting:
@@ -144,14 +108,9 @@ authentik:
     send_pii: false
   postgresql:
     host: "{{ .Release.Name }}-postgresql"
-    # name: "authentik"
-    # -- postgresql Username
-    # user: "authentik"
-    # password: "nGgi52kpexw5onXl4hGp3sQCQbEjefQXSmmEG4md3Tu2r6A9" ###########################
-    # port: 5432
+
   redis:
     host: "{{ .Release.Name }}-redis-master"
-    # password: "" # "9epmI6dObuRpnn5y85AA5CQSi8O+rtzEOl8Z4RRuTUaosMZl" ###########################
 
 blueprints:
   configMaps: []
@@ -194,32 +153,10 @@ server:
     minAvailable: ""
     maxUnavailable: ""
 
-  # -- Environment variables to pass to the authentik server. Does not apply to GeoIP
-  # See configuration options at https://goauthentik.io/docs/installation/configuration/
-  # @default -- `[]` (See [values.yaml])
   env:
     []
-    # - name: AUTHENTIK_VAR_NAME
-    #   value: VALUE
-    # - name: AUTHENTIK_VAR_OTHER
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: secret-name
-    #       key: secret-key
-    # - name: AUTHENTIK_VAR_ANOTHER
-    #   valueFrom:
-    #     configMapKeyRef:
-    #       name: config-map-name
-    #       key: config-map-key
-
-  # -- envFrom to pass to the authentik server. Does not apply to GeoIP
-  # @default -- `[]` (See [values.yaml])
   envFrom:
     []
-    # - configMapRef:
-    #     name: config-map-name
-    # - secretRef:
-    #     name: secret-name
 
   # -- Specify postStart and preStop lifecycle hooks for you authentik server container
   lifecycle: {}
@@ -239,28 +176,15 @@ server:
   #   args:
   #     - echo init
 
-  # -- Additional volumeMounts to the authentik server main container
   volumeMounts:
     []
-    # - name: custom
-    #   mountPath: /custom
-
-  # -- Additional volumes to the authentik server pod
   volumes:
     []
-    # - name: custom
-    #   emptyDir: {}
 
-  # -- Annotations to be added to the authentik server Deployment
+
   deploymentAnnotations: {}
-
-  # -- Annotations to be added to the authentik server pods
   podAnnotations: {}
-
-  # -- Labels to be added to the authentik server pods
   podLabels: {}
-
-  # -- Resource limits and requests for the authentik server
   resources:
     {}
     # requests:
@@ -274,15 +198,6 @@ server:
     https: 9443
     metrics: 9300
 
-  # -- Host Network for authentik server pods
-  hostNetwork: false
-
-  # -- [DNS configuration]
-  dnsConfig: {}
-  # -- Alternative DNS policy for authentik server pods
-  dnsPolicy: ""
-
-  ## Liveness, readiness and startup probes for authentik server
   ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
   livenessProbe:
     failureThreshold: 3
@@ -403,8 +318,6 @@ server:
       []
     tls:
       []
-
-    # -- uses `server.service.servicePortHttps` instead of `server.service.servicePortHttp`
     https: false
 
 ## authentik worker
@@ -444,50 +357,10 @@ worker:
     minAvailable: ""
     maxUnavailable: ""
 
-  # -- Environment variables to pass to the authentik worker. Does not apply to GeoIP
-  # See configuration options at https://goauthentik.io/docs/installation/configuration/
-  # @default -- `[]` (See [values.yaml])
   env:
     []
-    # - name: AUTHENTIK_VAR_NAME
-    #   value: VALUE
-    # - name: AUTHENTIK_VAR_OTHER
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: secret-name
-    #       key: secret-key
-    # - name: AUTHENTIK_VAR_ANOTHER
-    #   valueFrom:
-    #     configMapKeyRef:
-    #       name: config-map-name
-    #       key: config-map-key
-
-  # -- envFrom to pass to the authentik worker. Does not apply to GeoIP
-  # @default -- `[]` (See [values.yaml])
   envFrom:
     []
-    # - configMapRef:
-    #     name: config-map-name
-    # - secretRef:
-    #     name: secret-name
-
-  # -- Specify postStart and preStop lifecycle hooks for you authentik worker container
-  lifecycle: {}
-
-  # -- Additional containers to be added to the authentik worker pod
-  ## Note: Supports use of custom Helm templates
-  extraContainers: []
-  # - name: my-sidecar
-  #   image: nginx:latest
-
-  # -- Init containers to add to the authentik worker pod
-  ## Note: Supports use of custom Helm templates
-  initContainers: []
-  # - name: download-tools
-  #   image: alpine:3
-  #   command: [sh, -c]
-  #   args:
-  #     - echo init
 
   # -- Additional volumeMounts to the authentik worker main container
   volumeMounts:
@@ -495,22 +368,14 @@ worker:
     # - name: custom
     #   mountPath: /custom
 
-  # -- Additional volumes to the authentik worker pod
   volumes:
     []
     # - name: custom
     #   emptyDir: {}
 
-  # -- Annotations to be added to the authentik worker Deployment
   deploymentAnnotations: {}
-
-  # -- Annotations to be added to the authentik worker pods
   podAnnotations: {}
-
-  # -- Labels to be added to the authentik worker pods
   podLabels: {}
-
-  # -- Resource limits and requests for the authentik worker
   resources:
     {}
     # requests:
@@ -520,23 +385,8 @@ worker:
     #   memory: 512Mi
 
   hostNetwork: false
-
   dnsConfig: {}
   dnsPolicy: ""
-
-  # -- authentik worker container-level security context
-  # @default -- See [values.yaml]
-  containerSecurityContext:
-    {}
-    # Not all of the following has been tested. Use at your own risk.
-    # runAsNonRoot: true
-    # readOnlyRootFilesystem: true
-    # allowPrivilegeEscalation: false
-    # seccomProfile:
-    #   type: RuntimeDefault
-    # capabilities:
-    #   drop:
-    #     - ALL
 
   # -- terminationGracePeriodSeconds for container lifecycle hook
   terminationGracePeriodSeconds: 30
@@ -549,16 +399,6 @@ worker:
     kubernetes.io/hostname: dev-k3s-master-0
   tolerations: []
   affinity: {}
-
-  # -- Assign custom [TopologySpreadConstraints] rules to the authentik worker
-  # @default -- `[]` (defaults to global.topologySpreadConstraints)
-  ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
-  ## If labelSelector is left out, it will default to the labelSelector configuration of the deployment
-  topologySpreadConstraints:
-    []
-    # - maxSkew: 1
-    #   topologyKey: topology.kubernetes.io/zone
-    #   whenUnsatisfiable: DoNotSchedule
 
   # -- Deployment strategy to be added to the authentik worker Deployment
   # @default -- `{}` (defaults to global.deploymentStrategy)
@@ -628,25 +468,6 @@ redis:
   architecture: standalone
   auth:
     enabled: false
-
-  # env:
-  # - name: REDIS_MASTER_PASSWORD
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: REDIS_MASTER_PASSWORD
-
-  # - name: REDIS_PASSWORD
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: REDIS_PASSWORD
-
-  # - name: REDIS_DAEMON_USER
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: REDIS_DAEMON_USER
 
 # -- additional resources to deploy. Those objects are templated.
 additionalObjects: []
