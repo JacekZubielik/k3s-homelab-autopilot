@@ -136,29 +136,29 @@ global:
   #       name: authentik-private
   #       key: AUTHENTIK_SECRET_KEY
 
-  - name: authentik-postgresql-name
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_POSTGRESQL__NAME
+  # - name: authentik-postgresql-name
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_POSTGRESQL__NAME
 
-  - name: authentik-postgresql-user
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_POSTGRESQL__USER
+  # - name: authentik-postgresql-user
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_POSTGRESQL__USER
 
-  - name: authentik-postgresql-password
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_POSTGRESQL__PASSWORD
+  # - name: authentik-postgresql-password
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_POSTGRESQL__PASSWORD
 
-  - name: authentik-postgresql-port
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_POSTGRESQL__PORT
+  # - name: authentik-postgresql-port
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_POSTGRESQL__PORT
 
   # - name: authentik-redis-password
   #   valueFrom:
@@ -253,12 +253,12 @@ authentik:
     host: "{{ .Release.Name }}-postgresql"
     # -- postgresql Database name
     # @default -- `authentik`
-    # name: "authentik"
+    name: "authentik"
     # -- postgresql Username
     # @default -- `authentik`
-    # user: "authentik"
-    # password: "nGgi52kpexw5onXl4hGp3sQCQbEjefQXSmmEG4md3Tu2r6A9" ###########################
-    # port: 5432
+    user: "authentik"
+    password: "nGgi52kpexw5onXl4hGp3sQCQbEjefQXSmmEG4md3Tu2r6A9" ###########################
+    port: 5432
   redis:
     # -- set the redis hostname to talk to
     # @default -- `{{ .Release.Name }}-redis-master`
