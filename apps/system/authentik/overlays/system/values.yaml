@@ -220,13 +220,13 @@ authentik:
       asn: /geoip/GeoLite2-ASN.mmdb
   email:
     # -- SMTP Server emails are sent from, fully optional
-    # host: "smtp.elasticemail.com"
+    host: "smtp.elasticemail.com"
     # -- SMTP server port
     port: 2525
     # -- SMTP credentials, when left empty, no authentication will be done
-    # username: "no-reply@key.infra.anotherlife.pl"
+    username: "no-reply@key.infra.anotherlife.pl"
     # -- SMTP credentials, when left empty, no authentication will be done
-    # password: "7DF40CEC031B3C376DE0F295C2A0601556CE"
+    password: "7DF40CEC031B3C376DE0F295C2A0601556CE"
     # -- Enable either use_tls or use_ssl, they can't be enabled at the same time.
     use_tls: false
     # -- Enable either use_tls or use_ssl, they can't be enabled at the same time.
@@ -234,7 +234,7 @@ authentik:
     # -- Connection timeout
     timeout: 30
     # -- Email from address, can either be in the format "foo@bar.baz" or "authentik <foo@bar.baz>"
-    # from: "no-reply@key.infra.anotherlife.pl"
+    from: "no-reply@key.infra.anotherlife.pl"
   outposts:
     # -- Template used for managed outposts. The following placeholders can be used
     # %(type)s - the type of the outpost
