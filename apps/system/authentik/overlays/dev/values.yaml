@@ -115,13 +115,13 @@ global:
         name: authentik-private
         key: AUTHENTIK_SECRET__KEY
 
-  - name: authentik-postgresql-user
+  - name: AUTHENTIK_POSTGRESQL__USER
     valueFrom:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__USER
 
-  - name: authentik-postgresql-password
+  - name: AUTHENTIK_POSTGRESQL__PASSWORD
     valueFrom:
       secretKeyRef:
         name: authentik-private
