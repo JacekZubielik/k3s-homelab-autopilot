@@ -744,11 +744,17 @@ redis:
     enabled: true
 
   env:
-  - name: REDIS_MASTER_PASSWORD
+  # - name: REDIS_MASTER_PASSWORD
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: REDIS_MASTER_PASSWORD
+
+  - name: REDIS_PASSWORD
     valueFrom:
       secretKeyRef:
         name: authentik-private
-        key: REDIS_MASTER_PASSWORD
+        key: REDIS_PASSWORD
 
   # - name: REDIS_DAEMON_USER
   #   valueFrom:
