@@ -69,6 +69,22 @@ global:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PORT
 
+  - name: POSTGRES_DATABASE
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: POSTGRESQL_DATABASE
+  - name: POSTGRES_USER
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: POSTGRES_USER
+  - name: POSTGRES_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: POSTGRES_PASSWORD
+
   # -- envFrom to pass to all deployed Deployments. Does not apply to GeoIP
   # @default -- `[]` (See [values.yaml])
   envFrom:
@@ -444,22 +460,22 @@ postgresql:
     #   storageClass:
     #   accessModes:
     #     - ReadWriteOnce
-  env:
-  - name: POSTGRES_DATABASE
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: POSTGRESQL_DATABASE
-  - name: POSTGRES_USER
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: POSTGRES_USER
-  - name: POSTGRES_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: POSTGRES_PASSWORD
+  # env:
+  # - name: POSTGRES_DATABASE
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: POSTGRESQL_DATABASE
+  # - name: POSTGRES_USER
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: POSTGRES_USER
+  # - name: POSTGRES_PASSWORD
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: POSTGRES_PASSWORD
 
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
