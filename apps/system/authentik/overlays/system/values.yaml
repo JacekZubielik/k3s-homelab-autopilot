@@ -261,7 +261,7 @@ authentik:
     # @default -- `authentik`
     # user: "authentik"
     # password: "nGgi52kpexw5onXl4hGp3sQCQbEjefQXSmmEG4md3Tu2r6A9" ###########################
-    # port: 5432
+    port: 5432
   redis:
     # -- set the redis hostname to talk to
     # @default -- `{{ .Release.Name }}-redis-master`
