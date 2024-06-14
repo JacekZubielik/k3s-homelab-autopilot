@@ -21,7 +21,7 @@ helmCharts:
   releaseName: authentik
   namespace: authentik
   includeCRDs: true
-  valuesFile: values.yaml
+  valuesFile: values1.yaml
 
 configMapGenerator:
 - name: authentik-config
