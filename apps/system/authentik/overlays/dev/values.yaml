@@ -735,7 +735,7 @@ redis:
   enabled: true
   architecture: standalone
   auth:
-    enabled: true
+    enabled: false
 
   env:
   - name: REDIS_PASSWORD
