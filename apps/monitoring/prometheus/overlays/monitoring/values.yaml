@@ -234,7 +234,9 @@ server:
 
   ### The data directory used by prometheus to set --storage.tsdb.path
   ### When empty server.persistentVolume.mountPath is used instead
-  storagePath: ""
+
+
+  storagePath: "/mnt/volume-0/PV/prometheus" ################
 
   global:
     ## How frequently to scrape targets by default
@@ -461,8 +463,8 @@ server:
     ## Prometheus server data Persistent Volume existing claim name
     ## Requires server.persistentVolume.enabled: true
     ## If defined, PVC must be created manually before volume will be bound
-    existingClaim: "prometheus-pvc-volume"
-
+    # existingClaim: "prometheus-pvc-volume"
+    existingClaim: ""
     ## Prometheus server data Persistent Volume mount root path
     ##
     mountPath: /data
