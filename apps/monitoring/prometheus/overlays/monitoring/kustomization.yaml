@@ -9,7 +9,7 @@ resources:
 
 metadata:
   annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-options: ServerSideApply=false
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "0"
   labels:
@@ -40,3 +40,7 @@ patches:
     kind: CustomResourceDefinition
     name: prometheuses.monitoring.coreos.com
     version: v1
+
+metadata: 
+ annotations: 
+  argocd.argoproj.io/sync-options: ServerSideApply=true
