@@ -4,8 +4,8 @@ kind: Kustomization
 resources:
 - ../../base
 # - resources/ingressroute.yaml
-- resources/pv.yaml
-- resources/pvc.yaml
+# - resources/pv.yaml
+# - resources/pvc.yaml
 
 metadata:
   annotations:

@@ -236,7 +236,7 @@ server:
   ### When empty server.persistentVolume.mountPath is used instead
 
 
-  storagePath: "/mnt/volume-0/PV/prometheus" ################
+  storagePath: "" ################
 
   global:
     ## How frequently to scrape targets by default
