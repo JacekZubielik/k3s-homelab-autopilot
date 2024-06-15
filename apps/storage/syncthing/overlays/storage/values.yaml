@@ -127,7 +127,7 @@ persistence:
 
 autoscaling:
   enabled: true
-  minReplicas: 1
-  maxReplicas: 10
+  minReplicas: 2
+  maxReplicas: 4
   averageCPUUtilizationPercentage: 50
   averageMemoryUtilizationPercentage: 50
