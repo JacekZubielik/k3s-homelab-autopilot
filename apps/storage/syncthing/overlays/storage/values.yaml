@@ -126,7 +126,7 @@ persistence:
   existingClaim: 'syncthing-pv-claim'
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 2
   maxReplicas: 4
   averageCPUUtilizationPercentage: 50
