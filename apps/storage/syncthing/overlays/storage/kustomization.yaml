@@ -4,8 +4,8 @@ kind: Kustomization
 # namespace: storage
 resources:
 - ../../base
-# - resources/ingressroute.yaml
-- resources/ingressroute-authentik.yaml
+- resources/ingressroute.yaml
+# - resources/ingressroute-authentik.yaml
 - resources/pvc.yaml
 - resources/pv.yaml
 
