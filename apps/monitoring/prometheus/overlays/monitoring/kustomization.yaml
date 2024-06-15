@@ -40,7 +40,3 @@ patches:
     kind: CustomResourceDefinition
     name: prometheuses.monitoring.coreos.com
     version: v1
-
-metadata: 
- annotations: 
-  argocd.argoproj.io/sync-options: ServerSideApply=true
