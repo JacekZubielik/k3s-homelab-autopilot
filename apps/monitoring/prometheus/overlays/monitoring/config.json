@@ -1,6 +1,6 @@
 {
-  "appName": "kube-prometheus-stack",
-  "userGivenName": "kube-prometheus-stack",
+  "appName": "prometheus",
+  "userGivenName": "prometheus",
   "destNamespace": "monitoring",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/monitoring/prometheus/overlays/monitoring",
