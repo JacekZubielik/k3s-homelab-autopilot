@@ -1,0 +1,31 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+# - resources/ingressroute.yaml
+- resources/pv.yaml
+- resources/pvc.yaml
+
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: prometheus
+  name: prometheus
+
+helmCharts:
+- name: prometheus
+  version: 25.21.0
+  repo: https://prometheus-community.github.io/helm-charts
+  releaseName: prometheus
+  includeCRDs: true
+  valuesFile: values.yaml
+  namespace: monitoring
+
+configMapGenerator:
+- name: prometheus-config
+  literals:
+  - TZ=CET
