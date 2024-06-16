@@ -1,6 +1,10 @@
-resources:
-- https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/longhorn.yaml
-- ./values.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: longhorn-system
+
+# resources:
+# - https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/longhorn.yaml
 patches:
 - path: patches/frontend-service.yaml
   target:
@@ -9,4 +13,11 @@ patches:
 
 patchesStrategicMerge:
 - patches/storageclass.yaml
-namespace: longhorn-system
+
+helmCharts:
+- name: longhorn
+  repo: https://charts.longhorn.io
+  version: 1.5.1
+  releaseName: longhorn
+  namespace: longhorn-system
+  valuesFile: values.yaml
