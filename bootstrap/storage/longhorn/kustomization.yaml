@@ -1,19 +1,19 @@
----
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+# ---
+# apiVersion: kustomize.config.k8s.io/v1beta1
+# kind: Kustomization
 
-metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-wave: "0"
-  labels:
-    app.kubernetes.io/name: longhorn
-  name: longhorn
+# metadata:
+#   annotations:
+#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+#     argocd.argoproj.io/compare-options: IgnoreExtraneous
+#     argocd.argoproj.io/sync-wave: "0"
+#   labels:
+#     app.kubernetes.io/name: longhorn
+#   name: longhorn
 
-resources:
-- https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/longhorn.yaml
-#  - slow-storage-class.yaml
+# resources:
+# - https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/longhorn.yaml
+# #  - slow-storage-class.yaml
 
 patches:
 - path: patches/longhorn-frontend-service.yaml
@@ -37,12 +37,12 @@ patches:
 # patchesStrategicMerge:
 #   - storageclass.yaml
 
-# helmCharts:
-# - name: longhorn
-#   repo: https://charts.longhorn.io
-#   version: 1.6.2
-#   releaseName: longhorn
-#   namespace: longhorn-system
-#   valuesFile: values.yaml
+helmCharts:
+- name: longhorn
+  repo: https://charts.longhorn.io
+  version: 1.6.2
+  releaseName: longhorn
+  namespace: longhorn-system
+  valuesFile: values.yaml
 
-namespace: longhorn-system
+# namespace: longhorn-system
