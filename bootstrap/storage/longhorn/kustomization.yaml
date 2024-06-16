@@ -12,9 +12,10 @@ patches:
   target:
     kind: ConfigMap
 
-- path: patches/ignore-deployment-mutation-patch.yaml
+- path: patches/remove-instance-label.jsonpatch.yaml
   target:
-    kind: Deployment
+    kind: CustomResourceDefinition
+    labelSelector: app.kubernetes.io/instance=longhorn
 
 # patchesStrategicMerge:
 #   - storageclass.yaml
