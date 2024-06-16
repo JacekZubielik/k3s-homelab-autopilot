@@ -31,6 +31,10 @@ patches:
     kind: CustomResourceDefinition
     labelSelector: app.kubernetes.io/instance=longhorn
 
+- path: patches/ignore-deployment-mutation-patch.yaml
+  target:
+    kind: Deployment
+
 # patchesStrategicMerge:
 #   - storageclass.yaml
 
