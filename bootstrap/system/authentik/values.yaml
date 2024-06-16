@@ -451,24 +451,24 @@ postgresql:
       accessModes:
         - ReadWriteOnce
 
-  env:
-  - name: POSTGRES_DATABASE
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: POSTGRES_DB
+    env:
+    - name: POSTGRES_DATABASE
+      valueFrom:
+        secretKeyRef:
+          name: authentik-private
+          key: POSTGRES_DB
 
-  - name: POSTGRES_USERNAME
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: POSTGRES_USER
+    - name: POSTGRES_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: authentik-private
+          key: POSTGRES_USER
 
-  - name: POSTGRES_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: POSTGRES_PASSWORD
+    - name: POSTGRES_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: authentik-private
+          key: POSTGRES_PASSWORD
 
 
 
