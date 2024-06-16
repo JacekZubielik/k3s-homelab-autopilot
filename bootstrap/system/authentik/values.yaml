@@ -451,7 +451,7 @@ postgresql:
       accessModes:
         - ReadWriteOnce
 
-    env:
+    extraEnvVars:
     - name: POSTGRES_DATABASE
       valueFrom:
         secretKeyRef:
@@ -470,13 +470,6 @@ postgresql:
           name: authentik-private
           key: POSTGRES_PASSWORD
 
-
-
-# POSTGRESQL_USERNAME
-# POSTGRESQL_PASSWORD
-# POSTGRESQL_POSTGRES_PASSWORD
-
-# POSTGRESQL_INITSCRIPTS_USERNAME
 
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
