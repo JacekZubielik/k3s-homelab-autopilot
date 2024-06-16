@@ -440,11 +440,11 @@ postgresql:
   primary:
     extendedConfiguration: |
       max_connections = 500
-    # persistence:
-    #   enabled: true
-    #   storageClass:
-    #   accessModes:
-    #     - ReadWriteOnce
+    persistence:
+      enabled: true
+      storageClass:
+      accessModes:
+        - ReadWriteOnce
   env:
   - name: POSTGRESQL_DATABASE
     valueFrom:
