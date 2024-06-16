@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  labels:
-    app.kubernetes.io/managed-by: argocd-autopilot
-    app.kubernetes.io/name: longhorn
+  # labels:
+  #   app.kubernetes.io/managed-by: argocd-autopilot
+  #   app.kubernetes.io/name: longhorn
   name: longhorn
   namespace: argocd
   finalizers:
@@ -15,11 +15,11 @@ spec:
   destination:
     namespace: longhorn-system
     server: https://kubernetes.default.svc
-  ignoreDifferences:
-  - group: argoproj.io
-    jsonPointers:
-    - /status
-    kind: Application
+  # ignoreDifferences:
+  # - group: argoproj.io
+  #   jsonPointers:
+  #   - /status
+  #   kind: Application
   project: default
   source:
     path: bootstrap/storage/longhorn
@@ -31,6 +31,5 @@ spec:
       prune: true
       selfHeal: false
     syncOptions:
-    - allowEmpty=true
-    - CreateNamespace=true
-status: {}
+    # - allowEmpty=true
+    - CreateNamespace=false

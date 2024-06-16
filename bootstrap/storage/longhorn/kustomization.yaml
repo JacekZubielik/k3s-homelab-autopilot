@@ -11,9 +11,8 @@ metadata:
     app.kubernetes.io/name: longhorn
   name: longhorn
 
-
 resources:
-  - https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/longhorn.yaml
+- https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/longhorn.yaml
 #  - slow-storage-class.yaml
 
 patches:
