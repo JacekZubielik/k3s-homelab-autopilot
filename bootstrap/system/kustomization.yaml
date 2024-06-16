@@ -1,3 +1,4 @@
 resources:
 # - ./longhorn
-- ./sealed-secrets
+- ./sealedsecrets
+- ./authentik

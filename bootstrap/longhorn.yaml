@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sealed-secrets
+  name: longhorn
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -11,11 +11,11 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:
   destination:
-    namespace: sealed-secrets
+    namespace: longhorn-system
     server: https://kubernetes.default.svc
   project: default
-  sources:
-    path: bootstrap/system/sealedsecrets
+  source:
+    path: bootstrap/system/longhorn
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
     targetRevision: main
   syncPolicy:
@@ -29,7 +29,7 @@ spec:
     - preserveResourcesOnDeletion=false
     - SkipDryRunOnMissingResource=true
     - Replace=false
-    - ServerSideApply=false
+    - ServerSideApply=true
     - ApplyOutOfSyncOnly=true
     - Validate=false
     - PruneLast=true
