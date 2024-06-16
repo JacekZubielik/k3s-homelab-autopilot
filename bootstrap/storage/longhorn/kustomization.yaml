@@ -12,6 +12,10 @@ patches:
   target:
     kind: ConfigMap
 
+- path: patches/ignore-deployment-mutation-patch.yaml
+  target:
+    kind: Deployment
+
 # patchesStrategicMerge:
 #   - storageclass.yaml
 
