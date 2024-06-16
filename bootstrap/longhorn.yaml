@@ -1,9 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  # labels:
-  #   app.kubernetes.io/managed-by: argocd-autopilot
-  #   app.kubernetes.io/name: longhorn
   name: longhorn
   namespace: argocd
   finalizers:
@@ -15,16 +12,11 @@ spec:
   destination:
     namespace: longhorn-system
     server: https://kubernetes.default.svc
-  # ignoreDifferences:
-  # - group: argoproj.io
-  #   jsonPointers:
-  #   - /status
-  #   kind: Application
   project: default
   source:
     path: bootstrap/storage/longhorn
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
-    targetRevision: "main"
+    targetRevision: main
   syncPolicy:
     automated:
       allowEmpty: true
@@ -33,3 +25,4 @@ spec:
     syncOptions:
     # - allowEmpty=true
     - CreateNamespace=true
+    - ServerSideApply=true
