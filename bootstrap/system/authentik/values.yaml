@@ -276,7 +276,7 @@ server:
 
   ## authentik server metrics service configuration
   metrics:
-    enabled: true
+    enabled: false
     service:
       type: ClusterIP
       clusterIP: ""
@@ -285,7 +285,7 @@ server:
       servicePort: 9300
       portName: metrics
     serviceMonitor:
-      enabled: true
+      enabled: false
       interval: 30s
       scrapeTimeout: 3s
       relabelings: []
