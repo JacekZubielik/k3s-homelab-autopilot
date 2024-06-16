@@ -21,8 +21,12 @@ global:
     # rollingUpdate:
     #   maxSurge: 25%
     #   maxUnavailable: 25%
-
-
+  env:
+  - name: AUTHENTIK_SECRET_KEY
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_SECRET_KEY
 
   # -- envFrom to pass to all deployed Deployments. Does not apply to GeoIP
   # @default -- `[]` (See [values.yaml])
