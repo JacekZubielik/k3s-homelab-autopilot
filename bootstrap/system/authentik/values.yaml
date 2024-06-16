@@ -205,10 +205,6 @@ server:
   redis:
     host: "{{ .Release.Name }}-redis-master"
 
-
-
-  # env:
-  #   []
   envFrom:
     []
 
@@ -234,7 +230,6 @@ server:
     []
   volumes:
     []
-
 
   deploymentAnnotations: {}
   podAnnotations: {}
