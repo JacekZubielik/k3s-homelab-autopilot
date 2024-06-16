@@ -2,6 +2,6 @@ resources:
 - argo-cd.yaml
 - authentik.yaml
 - cluster-resources.yaml
-- longhorn.yaml
+# - longhorn.yaml
 - root.yaml
-- sealed-secrets.yaml
+# - sealed-secrets.yaml
