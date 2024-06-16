@@ -442,7 +442,7 @@ postgresql:
       max_connections = 500
     persistence:
       enabled: true
-      storageClass:
+      storageClass: local-path
       accessModes:
         - ReadWriteOnce
   env:
