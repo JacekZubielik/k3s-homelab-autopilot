@@ -23,4 +23,4 @@ helmCharts:
   namespace: longhorn-system
   valuesFile: values.yaml
 
-namespace: longhorn-system
+# namespace: longhorn-system
