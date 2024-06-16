@@ -410,7 +410,7 @@ worker:
     #   maxUnavailable: 25%
 
 serviceAccount:
-  create: true
+  create: false
   annotations: {}
   serviceAccountSecret:
     # As we use the authentik-remote-cluster chart as subchart, and that chart
@@ -421,7 +421,7 @@ serviceAccount:
 
 prometheus:
   rules:
-    enabled: true
+    enabled: false
     # -- PrometheusRule namespace
     namespace: "authentik"
     # -- PrometheusRule selector
