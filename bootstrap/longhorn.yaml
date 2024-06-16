@@ -24,7 +24,7 @@ spec:
   source:
     path: bootstrap/storage/longhorn
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
-    targetRevision: ""
+    targetRevision: "main"
   syncPolicy:
     automated:
       allowEmpty: true
@@ -32,4 +32,4 @@ spec:
       selfHeal: false
     syncOptions:
     # - allowEmpty=true
-    - CreateNamespace=false
+    - CreateNamespace=true

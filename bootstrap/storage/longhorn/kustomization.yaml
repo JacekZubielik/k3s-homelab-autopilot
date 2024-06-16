@@ -1,18 +1,5 @@
-# ---
-# apiVersion: kustomize.config.k8s.io/v1beta1
-# kind: Kustomization
-
-# metadata:
-#   annotations:
-#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-#     argocd.argoproj.io/compare-options: IgnoreExtraneous
-#     argocd.argoproj.io/sync-wave: "0"
-#   labels:
-#     app.kubernetes.io/name: longhorn
-#   name: longhorn
-
-# resources:
-# - https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/longhorn.yaml
+resources:
+- https://raw.githubusercontent.com/longhorn/longhorn/v1.6.1/deploy/longhorn.yaml
 # #  - slow-storage-class.yaml
 
 patches:
@@ -21,28 +8,28 @@ patches:
     kind: Service
     name: longhorn-frontend
 
-- path: patches/storageclass.yaml
-  target:
-    kind: ConfigMap
+# - path: patches/storageclass.yaml
+#   target:
+#     kind: ConfigMap
 
-- path: patches/remove-instance-label.jsonpatch.yaml
-  target:
-    kind: CustomResourceDefinition
-    labelSelector: app.kubernetes.io/instance=longhorn
+patchesStrategicMerge:
+- patches/storageclass.yaml
 
-- path: patches/ignore-deployment-mutation-patch.yaml
-  target:
-    kind: Deployment
+# - path: patches/remove-instance-label.jsonpatch.yaml
+#   target:
+#     kind: CustomResourceDefinition
+#     labelSelector: app.kubernetes.io/instance=longhorn
 
-# patchesStrategicMerge:
-#   - storageclass.yaml
+# - path: patches/ignore-deployment-mutation-patch.yaml
+#   target:
+#     kind: Deployment
 
-helmCharts:
-- name: longhorn
-  repo: https://charts.longhorn.io
-  version: 1.6.2
-  releaseName: longhorn
-  namespace: longhorn-system
-  valuesFile: values.yaml
+# helmCharts:
+# - name: longhorn
+#   repo: https://charts.longhorn.io
+#   version: 1.6.2
+#   releaseName: longhorn
+#   namespace: longhorn-system
+#   valuesFile: values.yaml
 
-# namespace: longhorn-system
+namespace: longhorn-system
