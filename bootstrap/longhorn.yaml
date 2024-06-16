@@ -15,7 +15,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: bootstrap/storage/longhorn
+    path: bootstrap/system/longhorn
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
     targetRevision: main
   syncPolicy:
