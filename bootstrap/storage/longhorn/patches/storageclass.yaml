@@ -1,4 +1,3 @@
-# Source: longhorn/templates/storageclass.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:

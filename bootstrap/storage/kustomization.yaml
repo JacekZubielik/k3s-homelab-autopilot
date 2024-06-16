@@ -1,3 +1,2 @@
 resources:
-  # - ./nfs-client-provisioner
 - ./longhorn

@@ -1,35 +1,13 @@
 resources:
-- https://raw.githubusercontent.com/longhorn/longhorn/v1.6.1/deploy/longhorn.yaml
-# #  - slow-storage-class.yaml
+- https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/longhorn.yaml
 
 patches:
-- path: patches/longhorn-frontend-service.yaml
+- path: patches/frontend-service.yaml
   target:
     kind: Service
     name: longhorn-frontend
 
-# - path: patches/storageclass.yaml
-#   target:
-#     kind: ConfigMap
-
 patchesStrategicMerge:
 - patches/storageclass.yaml
-
-# - path: patches/remove-instance-label.jsonpatch.yaml
-#   target:
-#     kind: CustomResourceDefinition
-#     labelSelector: app.kubernetes.io/instance=longhorn
-
-# - path: patches/ignore-deployment-mutation-patch.yaml
-#   target:
-#     kind: Deployment
-
-# helmCharts:
-# - name: longhorn
-#   repo: https://charts.longhorn.io
-#   version: 1.6.2
-#   releaseName: longhorn
-#   namespace: longhorn-system
-#   valuesFile: values.yaml
 
 namespace: longhorn-system
