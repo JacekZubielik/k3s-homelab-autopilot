@@ -1,6 +1,6 @@
 resources:
 - https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/longhorn.yaml
-
+- values.yaml
 patches:
 - path: patches/frontend-service.yaml
   target:
