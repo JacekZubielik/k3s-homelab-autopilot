@@ -22,6 +22,93 @@ global:
     #   maxSurge: 25%
     #   maxUnavailable: 25%
 
+
+
+  # -- envFrom to pass to all deployed Deployments. Does not apply to GeoIP
+  # @default -- `[]` (See [values.yaml])
+  envFrom:
+    []
+    # - configMapRef:
+    #     name: config-map-name
+    # - secretRef:
+    #     name: secret-name
+
+  # -- Additional volumeMounts to all deployed Deployments. Does not apply to GeoIP
+  # @default -- `[]` (See [values.yaml])
+  volumeMounts:
+    []
+    # - name: custom
+    #   mountPath: /custom
+
+  # -- Additional volumes to all deployed Deployments.
+  # @default -- `[]` (See [values.yaml])
+  volumes:
+    []
+    # - name: custom
+    #   emptyDir: {}
+
+## Authentik configuration
+authentik:
+  log_level: info
+  email:
+    port: 2525
+    use_tls: false
+    use_ssl: false
+    timeout: 30
+  outposts:
+    container_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
+  error_reporting:
+    enabled: false
+    environment: "k8s"
+    send_pii: false
+  postgresql:
+    host: "{{ .Release.Name }}-postgresql"
+    # name: "authentik"
+    # user: "authentik"
+    # password: "authentik"
+    # port: 5432
+
+blueprints:
+  configMaps: []
+  secrets: []
+
+## authentik server
+server:
+  name: server
+  replicas: 1
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 50
+    targetMemoryUtilizationPercentage: ~
+    behavior:
+      {}
+      # scaleDown:
+      #   stabilizationWindowSeconds: 300
+      #   policies:
+      #     - type: Pods
+      #       value: 1
+      #       periodSeconds: 180
+      # scaleUp:
+      #   stabilizationWindowSeconds: 300
+      #   policies:
+      #     - type: Pods
+      #       value: 2
+      #       periodSeconds: 60
+    # -- Configures custom HPA metrics for the authentik server
+    # Ref: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+    metrics: []
+
+  ## authentik server Pod Disruption Budget
+  ## Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
+  pdb:
+    enabled: false
+    labels: {}
+    annotations: {}
+    minAvailable: ""
+    maxUnavailable: ""
+
   env:
   - name: AUTHENTIK_EMAIL__HOST
     valueFrom:
@@ -68,98 +155,13 @@ global:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PORT
-
-  # -- envFrom to pass to all deployed Deployments. Does not apply to GeoIP
-  # @default -- `[]` (See [values.yaml])
-  envFrom:
-    []
-    # - configMapRef:
-    #     name: config-map-name
-    # - secretRef:
-    #     name: secret-name
-
-  # -- Additional volumeMounts to all deployed Deployments. Does not apply to GeoIP
-  # @default -- `[]` (See [values.yaml])
-  volumeMounts:
-    []
-    # - name: custom
-    #   mountPath: /custom
-
-  # -- Additional volumes to all deployed Deployments.
-  # @default -- `[]` (See [values.yaml])
-  volumes:
-    []
-    # - name: custom
-    #   emptyDir: {}
-
-## Authentik configuration
-authentik:
-  log_level: info
-  email:
-    port: 2525
-    use_tls: false
-    use_ssl: false
-    timeout: 30
-  outposts:
-    container_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
-  error_reporting:
-    enabled: false
-    environment: "k8s"
-    send_pii: false
-  postgresql:
-    host: "{{ .Release.Name }}-postgresql"
-    name: "authentik"
-    user: "authentik"
-    password: "authentik"
-    port: 5432
-
-
   redis:
     host: "{{ .Release.Name }}-redis-master"
 
-blueprints:
-  configMaps: []
-  secrets: []
 
-## authentik server
-server:
-  name: server
-  replicas: 1
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 5
-    targetCPUUtilizationPercentage: 50
-    targetMemoryUtilizationPercentage: ~
-    behavior:
-      {}
-      # scaleDown:
-      #   stabilizationWindowSeconds: 300
-      #   policies:
-      #     - type: Pods
-      #       value: 1
-      #       periodSeconds: 180
-      # scaleUp:
-      #   stabilizationWindowSeconds: 300
-      #   policies:
-      #     - type: Pods
-      #       value: 2
-      #       periodSeconds: 60
-    # -- Configures custom HPA metrics for the authentik server
-    # Ref: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
-    metrics: []
 
-  ## authentik server Pod Disruption Budget
-  ## Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
-  pdb:
-    enabled: false
-    labels: {}
-    annotations: {}
-    minAvailable: ""
-    maxUnavailable: ""
-
-  env:
-    []
+  # env:
+  #   []
   envFrom:
     []
 
@@ -408,8 +410,7 @@ worker:
   # -- Deployment strategy to be added to the authentik worker Deployment
   # @default -- `{}` (defaults to global.deploymentStrategy)
   deploymentStrategy:
-    {}
-    # type: RollingUpdate
+    type: RollingUpdate
     # rollingUpdate:
     #   maxSurge: 25%
     #   maxUnavailable: 25%
@@ -442,11 +443,6 @@ prometheus:
 postgresql:
   # -- enable the Bitnami PostgreSQL chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/postgresql/ for possible values.
   enabled: true
-  # auth:
-  #   username: authentik
-  #   database: authentik
-  #   # password: ""
-
   primary:
     extendedConfiguration: |
       max_connections = 500
@@ -455,26 +451,22 @@ postgresql:
       storageClass: local-path
       accessModes:
         - ReadWriteOnce
-
     extraEnvVars:
     - name: POSTGRES_DATABASE
       valueFrom:
         secretKeyRef:
           name: authentik-private
           key: POSTGRES_DB
-
     - name: POSTGRES_USERNAME
       valueFrom:
         secretKeyRef:
           name: authentik-private
           key: POSTGRES_USER
-
     - name: POSTGRES_PASSWORD
       valueFrom:
         secretKeyRef:
           name: authentik-private
           key: POSTGRES_PASSWORD
-
   readReplicas:
     extraEnvVars:
     - name: POSTGRES_DATABASE
@@ -482,20 +474,16 @@ postgresql:
         secretKeyRef:
           name: authentik-private
           key: POSTGRES_DB
-
     - name: POSTGRES_USERNAME
       valueFrom:
         secretKeyRef:
           name: authentik-private
           key: POSTGRES_USER
-
     - name: POSTGRES_PASSWORD
       valueFrom:
         secretKeyRef:
           name: authentik-private
           key: POSTGRES_PASSWORD
-
-
 
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
