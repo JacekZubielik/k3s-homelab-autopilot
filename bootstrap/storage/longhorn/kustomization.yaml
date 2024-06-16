@@ -6,11 +6,11 @@ namespace: longhorn-system
 # resources:
 # - https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/longhorn.yaml
 
-# patches:
-# - path: patches/frontend-service.yaml
-#   target:
-#     kind: Service
-#     name: longhorn-frontend
+patches:
+- path: patches/frontend-service.yaml
+  target:
+    kind: Service
+    name: longhorn-frontend
 
 patchesStrategicMerge:
 - patches/storageclass.yaml

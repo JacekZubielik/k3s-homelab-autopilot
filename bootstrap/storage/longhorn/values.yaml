@@ -116,7 +116,7 @@ service:
     # -- Service type for Longhorn Manager.
     type: ClusterIP
     # -- NodePort port number for Longhorn Manager. When unspecified, Longhorn selects a free port between 30000 and 32767.
-    nodePort: "32449"
+    nodePort: ""
 
 persistence:
   # -- Setting that allows you to specify the default Longhorn StorageClass.
