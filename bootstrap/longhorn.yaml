@@ -7,23 +7,39 @@ metadata:
   name: longhorn
   namespace: argocd
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: "0"
     argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:
-  project: storage
+  destination:
+    namespace: longhorn-system
+    server: https://kubernetes.default.svc
+  ignoreDifferences:
+  - group: argoproj.io
+    jsonPointers:
+    - /status
+    kind: Application
+  project: default
   source:
+    path: bootstrap/storage/longhorn
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
     targetRevision: main
-    path: bootstrap/storage/longhorn
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: longhorn-system
   syncPolicy:
     automated:
-      selfHeal: false
       allowEmpty: true
       prune: true
+      selfHeal: false
     syncOptions:
-      - CreateNamespace=false
+    - allowEmpty=true
+    - CreateNamespace=false
+    - allowEmpty=true
+status:
+  health: {}
+  summary: {}
+  sync:
+    comparedTo:
+      destination: {}
+      source:
+        repoURL: ""
+    status: ""
