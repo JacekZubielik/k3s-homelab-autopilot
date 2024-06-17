@@ -2,9 +2,9 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "0"
+  # annotations:
+  #   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  #   argocd.argoproj.io/sync-wave: "0"
   name: selfsigned-ca
   namespace: cert-manager
 spec:
@@ -13,9 +13,9 @@ spec:
   secretName: default.svc.tls
   subject:
     organizations:
-      - ACME Inc.
+    - ACME Inc.
     organizationalUnits:
-      - Widgets
+    - Widgets
   privateKey:
     # algorithm: RSA
     # encoding: PKCS8
@@ -23,11 +23,11 @@ spec:
     algorithm: ECDSA
     size: 256
   dnsNames:
-    - "default.svc"
-    - "*.default.svc"
+  - "default.svc"
+  - "*.default.svc"
   ipAddresses:
-    - 127.0.0.1
-    - ::1
+  - 127.0.0.1
+  - ::1
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
