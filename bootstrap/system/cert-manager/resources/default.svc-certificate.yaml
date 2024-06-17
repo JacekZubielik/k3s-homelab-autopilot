@@ -4,9 +4,9 @@ kind: Certificate
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "0"
   name: selfsigned-ca
-  namespace: kube-system
+  namespace: cert-manager
 spec:
   isCA: true
   commonName: selfsigned-ca
