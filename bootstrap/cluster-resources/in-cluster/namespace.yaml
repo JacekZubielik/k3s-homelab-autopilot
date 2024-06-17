@@ -29,7 +29,7 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: iot-k3s
+  name: iot
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
     argocd.argoproj.io/sync-options: Prune=false
@@ -75,6 +75,15 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: media
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-options: Prune=false
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cert-manager
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
     argocd.argoproj.io/sync-options: Prune=false
