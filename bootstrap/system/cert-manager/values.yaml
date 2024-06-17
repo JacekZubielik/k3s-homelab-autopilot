@@ -10,7 +10,7 @@ installCRDs: true
 
 global:
   leaderElection:
-    namespace: "kube-system"
+    namespace: "cert-manager"
   rbac:
     create: true
     aggregateClusterRoles: true
