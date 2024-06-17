@@ -22,9 +22,9 @@ spec:
         secretAccessKeySecretRef:
           name: route53-credentials
           key: secret-access-key
-        selector:
-          dnsZones:
-              - trade.anotherlife.org.pl
-              - anotherlife.org.pl
-              - k3s.anotherlife.org.pl
-              - monitoring.anotherlife.org.pl
+        # selector:
+        #   dnsZones:
+        #       - trade.anotherlife.org.pl
+        #       - anotherlife.org.pl
+        #       - k3s.anotherlife.org.pl
+        #       - monitoring.anotherlife.org.pl
