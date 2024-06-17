@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: kube-system
 
 resources:
-- ../../base
 # - resources/cert-staging.yaml
 # - resources/cert-production.yaml
 # - resources/letsencrypt-staging.yaml
