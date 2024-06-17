@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: cert-manager
 
 resources:
-# - resources/cert-staging.yaml
+- resources/cert-staging.yaml
 # - resources/cert-production.yaml
 - resources/letsencrypt-staging.yaml
 # - resources/letsencrypt-production.yaml
@@ -18,18 +18,10 @@ resources:
 # - resources/secret-generator.yaml
 
 patches:
-# label app.kubernetes.io/instance=cert-manager causes warnings for all 6 Cert Manager CRDs in ArgoCD, eg:
-# https://github.com/argoproj/argo-cd/issues/6728
-
 - path: patches/remove-instance-patch.yaml
   target:
     kind: CustomResourceDefinition
     labelSelector: app.kubernetes.io/instance=cert-manager
-
-# This overlay includes a patch for the Helm chart base that adds the client.lifecycle.config.k8s.io/mutation: 
-# ignore annotation to all Deployment objects. The annotation causes Config Sync to ignore any conflicting 
-# changes to this object in the cluster after you have created it.
-
 - path: patches/mutation-patch.yaml
   target:
     kind: Deployment
