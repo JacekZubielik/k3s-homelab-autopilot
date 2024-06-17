@@ -9,6 +9,8 @@ resources:
 - resources/letsencrypt-staging.yaml
 # - resources/letsencrypt-production.yaml
 - secrets/sealed-secret.yaml
+# - secrets/secret.yaml
+
 # - resources/default.svc-certificate.yaml
 # - resources/default.svc-issuer.yaml
 
