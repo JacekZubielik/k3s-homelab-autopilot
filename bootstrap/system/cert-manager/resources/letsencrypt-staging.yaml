@@ -6,7 +6,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "2"
   name: route53-letsencrypt-staging
-  namespace: cert-manager
+  # namespace: cert-manager
 spec:
   acme:
     email: zumbik@protonmail.com
