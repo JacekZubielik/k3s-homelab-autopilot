@@ -29,7 +29,7 @@ spec:
     - preserveResourcesOnDeletion=false
     - SkipDryRunOnMissingResource=true
     - Replace=false
-    - ServerSideApply=false
+    - ServerSideApply=true
     - ApplyOutOfSyncOnly=true
     - Validate=false
     - PruneLast=true
