@@ -1,0 +1,54 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: kube-system
+
+resources:
+- ../../base
+# - resources/cert-staging.yaml
+# - resources/cert-production.yaml
+# - resources/letsencrypt-staging.yaml
+# - resources/letsencrypt-production.yaml
+- secrets/sealed.secret.yaml
+- resources/default.svc-certificate.yaml
+- resources/default.svc-issuer.yaml
+
+patches:
+# label app.kubernetes.io/instance=cert-manager causes warnings for all 6 Cert Manager CRDs in ArgoCD, eg:
+# https://github.com/argoproj/argo-cd/issues/6728
+
+- path: patches/remove-instance-patch.yaml
+  target:
+    kind: CustomResourceDefinition
+    labelSelector: app.kubernetes.io/instance=cert-manager
+
+# This overlay includes a patch for the Helm chart base that adds the client.lifecycle.config.k8s.io/mutation: 
+# ignore annotation to all Deployment objects. The annotation causes Config Sync to ignore any conflicting 
+# changes to this object in the cluster after you have created it.
+
+- path: patches/mutation-patch.yaml
+  target:
+    kind: Deployment
+
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "2"
+  labels:
+    app.kubernetes.io/name: cert-manager
+  name: cert-manager
+
+helmCharts:
+- name: cert-manager
+  version: v1.14.5
+  repo: https://charts.jetstack.io
+  releaseName: cert-manager
+  namespace: kube-system
+  includeCRDs: true
+  valuesFile: values.yaml
+
+configMapGenerator:
+- name: cert-manager-config
+  literals:
+  - TZ=CET
