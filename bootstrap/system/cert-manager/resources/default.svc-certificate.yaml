@@ -11,23 +11,23 @@ spec:
   isCA: true
   commonName: selfsigned-ca
   secretName: default.svc.tls
-  # subject:
-  #   organizations:
-  #     - ACME Inc.
-  #   organizationalUnits:
-  #     - Widgets
+  subject:
+    organizations:
+      - ACME Inc.
+    organizationalUnits:
+      - Widgets
   privateKey:
     # algorithm: RSA
     # encoding: PKCS8
     # size: 2048
     algorithm: ECDSA
     size: 256
-  # dnsNames:
-  #   - "default.svc"
-  #   - "*.default.svc"
-  # ipAddresses:
-  #   - 127.0.0.1
-  #   - ::1
+  dnsNames:
+    - "default.svc"
+    - "*.default.svc"
+  ipAddresses:
+    - 127.0.0.1
+    - ::1
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer

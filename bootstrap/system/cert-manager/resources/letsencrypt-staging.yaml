@@ -2,10 +2,10 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: route53-letsencrypt-staging
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "2"
+  name: route53-letsencrypt-staging
 spec:
   acme:
     email: zumbik@protonmail.com
@@ -14,22 +14,17 @@ spec:
       name: route53-access-key
     solvers:
     - dns01:
-        route53:
-        - accessKeyID:
-          name: route53-credentials
-          key: accessKeyID
-        - hostedZoneID:
-          name: route53-credentials
-          key: hostedZoneID
-
-        - region:
-          name: route53-credentials
-          key: region
-
-        - role:
-          name: route53-credentials
-          key: role
-
-        - secretAccessKeySecretRef:
+      route53:
+        accessKeyID: AKIATKAIYFFV34T22QYU
+        region: eu-central-1
+        hostedZoneID: Z0010549388CLY75PMF8V
+        # role: arn:aws:iam::227651627371:user/certManagerIAMUser
+        secretAccessKeySecretRef:
           name: route53-credentials
           key: secret-access-key
+        selector:
+          dnsZones:
+              - trade.anotherlife.org.pl
+              - anotherlife.org.pl
+              - k3s.anotherlife.org.pl
+              - monitoring.anotherlife.org.pl
