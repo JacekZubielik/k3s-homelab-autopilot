@@ -22,12 +22,12 @@ spec:
     # size: 2048
     algorithm: ECDSA
     size: 256
-  dnsNames:
-  - "default.svc"
-  - "*.default.svc"
-  ipAddresses:
-  - 127.0.0.1
-  - ::1
+  # dnsNames:
+  # - "default.svc"
+  # - "*.default.svc"
+  # ipAddresses:
+  # - 127.0.0.1
+  # - ::1
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
