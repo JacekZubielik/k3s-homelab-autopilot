@@ -8,9 +8,12 @@ resources:
 # - resources/cert-production.yaml
 # - resources/letsencrypt-staging.yaml
 # - resources/letsencrypt-production.yaml
-# - secrets/sealed-secret.yaml
+- secrets/sealed-secret.yaml
 - resources/default.svc-certificate.yaml
 - resources/default.svc-issuer.yaml
+
+# generators:
+# - resources/secret-generator.yaml
 
 patches:
 # label app.kubernetes.io/instance=cert-manager causes warnings for all 6 Cert Manager CRDs in ArgoCD, eg:
