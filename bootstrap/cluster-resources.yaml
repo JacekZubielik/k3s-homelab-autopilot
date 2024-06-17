@@ -42,7 +42,27 @@ spec:
         repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
         targetRevision: ""
       syncPolicy:
+        retry:
+          backoff:
+            duration: 10s
+            factor: 2
+            maxDuration: 8m0s
+          limit: 2
+        syncOptions:
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - preserveResourcesOnDeletion=false
+        - SkipDryRunOnMissingResource=true
+        - Replace=false
+        - ServerSideApply=true
+        - ApplyOutOfSyncOnly=true
+        - Validate=false
+        - PruneLast=true
+        - Delete=true
+        - RespectIgnoreDifferences=true
+        - FailOnSharedResource=false
         automated:
           allowEmpty: true
+          prune: true
           selfHeal: true
 status: {}
