@@ -1,7 +1,7 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: kube-system
+namespace: sealed-secrets
 
 metadata:
   annotations:
@@ -17,6 +17,6 @@ helmCharts:
   version: 2.3.3
   repo: https://charts.bitnami.com/bitnami
   releaseName: sealed-secrets
-  namespace: kube-system
+  namespace: sealed-secrets
   includeCRDs: true
   valuesFile: values.yaml
