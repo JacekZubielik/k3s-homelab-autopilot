@@ -1,7 +1,7 @@
 resources:
 - argo-cd.yaml
 - authentik.yaml
-- cert-manager
+- cert-manager.yaml
 - cluster-resources.yaml
 - longhorn.yaml
 - root.yaml
