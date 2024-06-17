@@ -6,11 +6,11 @@ namespace: cert-manager
 resources:
 # - resources/cert-staging.yaml
 # - resources/cert-production.yaml
-# - resources/letsencrypt-staging.yaml
+- resources/letsencrypt-staging.yaml
 # - resources/letsencrypt-production.yaml
 - secrets/sealed-secret.yaml
-- resources/default.svc-certificate.yaml
-- resources/default.svc-issuer.yaml
+# - resources/default.svc-certificate.yaml
+# - resources/default.svc-issuer.yaml
 
 # generators:
 # - resources/secret-generator.yaml
