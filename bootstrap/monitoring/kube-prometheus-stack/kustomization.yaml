@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
-- resources/ingressroute.yaml
+# - resources/ingressroute.yaml
 - resources/device-dashboards-cm.yaml
 
 metadata:
