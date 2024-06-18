@@ -108,27 +108,27 @@ spec:
         repoURL: '{{ srcRepoURL }}'
         targetRevision: '{{ srcTargetRevision }}'
       syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - ApplyOutOfSyncOnly=true
+        - CreateNamespace=true
+        - Delete=false
+        - FailOnSharedResource=false
+        - preserveResourcesOnDeletion=false
+        - PruneLast=true
+        - PrunePropagationPolicy=foreground
+        - Replace=false
+        - RespectIgnoreDifferences=true
+        - ServerSideApply=false
+        - SkipDryRunOnMissingResource=true
+        - Validate=false
         retry:
           backoff:
             duration: 10s
             factor: 2
             maxDuration: 8m0s
           limit: 2
-        syncOptions:
-        - CreateNamespace=true
-        - PrunePropagationPolicy=foreground
-        - preserveResourcesOnDeletion=false
-        - SkipDryRunOnMissingResource=true
-        - Replace=false
-        - ServerSideApply=false
-        - ApplyOutOfSyncOnly=true
-        - Validate=false
-        - PruneLast=true
-        - Delete=false
-        - RespectIgnoreDifferences=true
-        - FailOnSharedResource=false
-        automated:
-          allowEmpty: true
-          prune: true
-          selfHeal: true
 status: {}
