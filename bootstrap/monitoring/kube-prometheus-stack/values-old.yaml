@@ -139,7 +139,7 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          accessModes: ReadWriteOnce
+          # accessModes: ReadWriteOnce
           storageClassName: local-path
           resources:
             requests:
@@ -175,7 +175,7 @@ alertmanager:
       volumeClaimTemplate:
         spec:
           storageClassName: local-path
-          accessModes: ReadWriteOnce
+          # accessModes: ReadWriteOnce
           resources:
             requests:
               storage: 10Gi
