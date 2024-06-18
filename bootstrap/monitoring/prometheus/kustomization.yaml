@@ -21,4 +21,4 @@ metadata:
 configMapGenerator:
   - name: prometheus-server-conf
     files:
-    - prometheus_values.yml
+    - values.yml
