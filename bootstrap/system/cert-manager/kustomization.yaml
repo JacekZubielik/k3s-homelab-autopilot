@@ -4,18 +4,11 @@ kind: Kustomization
 namespace: cert-manager
 
 resources:
-- resources/cert-staging.yaml
-# - resources/cert-production.yaml
-- resources/letsencrypt-staging.yaml
-# - resources/letsencrypt-production.yaml
-- secrets/sealed-secret.yaml
-# - secrets/secret.yaml
-
 - resources/default.svc-certificate.yaml
 - resources/default.svc-issuer.yaml
 
-# generators:
-# - resources/secret-generator.yaml
+generators:
+- ksops-generator.yaml
 
 patches:
 - path: patches/remove-instance-patch.yaml
