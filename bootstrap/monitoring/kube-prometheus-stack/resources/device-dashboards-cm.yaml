@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: device-dashboards
+  labels:
+    grafana_dashboard: "device"
+data:
+  router.json: |
+{{ .Files.Get "dashboards/router.json" | indent 4 }}
+  node.json: |
+{{ .Files.Get "dashboards/node.json" | indent 4 }}
