@@ -39,12 +39,12 @@ spec:
     - Delete=false
     - RespectIgnoreDifferences=true
     - FailOnSharedResource=false
-status:
-  health: {}
-  summary: {}
-  sync:
-    comparedTo:
-      destination: {}
-      source:
-        repoURL: ""
-    status: ""
+# status:
+#   health: {}
+#   summary: {}
+#   sync:
+#     comparedTo:
+#       destination: {}
+#       source:
+#         repoURL: ""
+#     status: ""
