@@ -19,6 +19,6 @@ metadata:
   name: prometheus
 
 configMapGenerator:
-  - name: prometheus-server-conf
-    files:
-    - values.yml
+- name: prometheus-server-conf
+  files:
+  - values.yml
