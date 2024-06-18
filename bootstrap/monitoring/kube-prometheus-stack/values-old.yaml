@@ -29,7 +29,7 @@ grafana:
   persistence:
     enabled: true
     size: 10Gi
-    accessModes: ReadWriteOnce
+    # accessModes: ReadWriteOnce
     storageClassName: local-path
 
   additionalDataSources:
