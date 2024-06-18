@@ -8,93 +8,89 @@ kube-prometheus-stack:
   kubeScheduler:
     enabled: true
 
-  grafana:
+grafana:
+  enabled: true
+  defaultDashboardsTimezone: cet
+  deploymentStrategy:
+    type: Recreate
+
+  # admin:
+  #   existingSecret: grafana-admin-secret
+  #   userKey: username
+  #   passwordKey: password
+
+  persistence:
     enabled: true
-    defaultDashboardsTimezone: cet
-    deploymentStrategy:
-      type: Recreate
+    size: 10Gi
+    accessModes: ReadWriteOnce
+    storageClassName: local-path
 
-    # admin:
-    #   existingSecret: grafana-admin-secret
-    #   userKey: username
-    #   passwordKey: password
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      url: http://loki.loki:3100
+      access: proxy
+      isDefault: false
+      version: 1
 
-    plugins:
-    - grafana-piechart-panel
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'default'
+        orgId: 1
+        folder: ''
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /var/lib/grafana/dashboards/default
+      - name: 'device'
+        orgId: 1
+        folder: 'Devices Metrics'
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /var/lib/grafana/dashboards/device
+      - name: 'grafana-dashboards-kubernetes'
+        orgId: 1
+        folder: 'Kubernetes'
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
 
+  # dashboardsConfigMaps:
+  #   device: "device-dashboards"
 
-    persistence:
-      enabled: true
-      size: 10Gi
-      accessModes: ["ReadWriteOnce"]
-      storageClassName: "local-path"
-
-    additionalDataSources:
-      - name: Loki
-        type: loki
-        url: http://loki.loki:3100
-        access: proxy
-        isDefault: false
-        version: 1
-
-    dashboardProviders:
-      dashboardproviders.yaml:
-        apiVersion: 1
-        providers:
-        - name: 'default'
-          orgId: 1
-          folder: ''
-          type: file
-          disableDeletion: true
-          editable: false
-          options:
-            path: /var/lib/grafana/dashboards/default
-        - name: 'device'
-          orgId: 1
-          folder: 'Devices Metrics'
-          type: file
-          disableDeletion: true
-          editable: false
-          options:
-            path: /var/lib/grafana/dashboards/device
-        - name: 'grafana-dashboards-kubernetes'
-          orgId: 1
-          folder: 'Kubernetes'
-          type: file
-          disableDeletion: true
-          editable: false
-          options:
-            path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
-
-    # dashboardsConfigMaps:
-    #   device: "device-dashboards"
-
-    dashboards:
-      grafana-dashboards-kubernetes:
-        k8s-system-api-server:
-          url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
-          token: ''
-        k8s-system-coredns:
-          url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
-          token: ''
-        k8s-views-global:
-          url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
-          token: ''
-        k8s-views-namespaces:
-          url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
-          token: ''
-        k8s-views-nodes:
-          url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
-          token: ''
-        k8s-views-pods:
-          url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
-          token: ''
-        cncf:
-          url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
-          token: ''
-        argocd:
-          url: https://raw.githubusercontent.com/argoproj/argo-cd/master/examples/dashboard.json
-          token: ''
+  dashboards:
+    grafana-dashboards-kubernetes:
+      k8s-system-api-server:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
+        token: ''
+      k8s-system-coredns:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
+        token: ''
+      k8s-views-global:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
+        token: ''
+      k8s-views-namespaces:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
+        token: ''
+      k8s-views-nodes:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
+        token: ''
+      k8s-views-pods:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
+        token: ''
+      cncf:
+        url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
+        token: ''
+      argocd:
+        url: https://raw.githubusercontent.com/argoproj/argo-cd/master/examples/dashboard.json
+        token: ''
 
   alertmanager:
     config:
@@ -127,7 +123,7 @@ kube-prometheus-stack:
         volumeClaimTemplate:
           spec:
             storageClassName: local-path
-            accessModes: ["ReadWriteOnce"]
+            accessModes: ReadWriteOnce
             resources:
               requests:
                 storage: 10Gi
@@ -157,12 +153,12 @@ kube-prometheus-stack:
           cpu: 1
         limits:
           cpu: 2
-          memory: 800Mi
+          memory: 1Gi
 
       storageSpec:
         volumeClaimTemplate:
           spec:
-            accessModes: ["ReadWriteOnce"]
+            accessModes: ReadWriteOnce
             storageClassName: "local-host"
             resources:
               requests:
