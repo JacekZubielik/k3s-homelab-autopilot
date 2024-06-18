@@ -4,16 +4,12 @@ namespace: argocd
 commonLabels:
   app.kubernetes.io/managed-by: argocd
 
-# resources:
-#   - project.yaml
-#   - application-set.yaml
-
 resources:
 - argo-cd.yaml
 - authentik.yaml
 - cert-manager.yaml
 - cluster-resources.yaml
+- kube-prometheus-stack.yaml
 - longhorn.yaml
-# - prometheus.yaml
 - root.yaml
 - sealed-secrets.yaml

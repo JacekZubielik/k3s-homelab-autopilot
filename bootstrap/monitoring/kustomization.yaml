@@ -1,5 +1,5 @@
 resources:
-- ./prometheus
+- ./kube-prom-stack
 # - ./cadvisor
 # - ./kube-state-metrics
 # - ./node-exporter
