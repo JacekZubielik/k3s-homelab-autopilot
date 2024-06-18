@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app.kubernetes.io/name: prometheus
   name: prometheus
   namespace: monitoring
-  labels:
-    app: prometheus
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: prometheus
+      app.kubernetes.io/name: prometheus
   template:
     metadata:
       labels:
-        app: prometheus
+        app.kubernetes.io/name: prometheus
     spec:
       initContainers:
         - name: prometheus-data-permission-setup

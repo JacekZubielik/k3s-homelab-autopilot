@@ -8,7 +8,7 @@ global:
 #   - scheme: http
 #     static_configs:
 #     - targets:
-#       - "alertmanager.observability.svc:9093"
+#       - "alertmanager.monitoring.svc:9093"
 
 # remote_write:
 #   - url: http://mimir-distributed-distributor.mimir.svc.cluster.local:8080/api/v1/push
