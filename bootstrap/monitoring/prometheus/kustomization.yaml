@@ -16,7 +16,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "0"
   labels:
     app.kubernetes.io/name: prometheus
-  name: cert-manager
+  name: prometheus
 
 configMapGenerator:
   - name: prometheus-server-conf
