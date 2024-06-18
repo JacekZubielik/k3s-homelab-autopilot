@@ -15,15 +15,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    helm:
-      values: |-
-        prometheus-node-exporter:
-          hostRootFsMount:
-            enabled: false
-        prometheusOperator:
-          admissionWebhooks:
-            failurePolicy: Ignore
-
     path: bootstrap/monitoring/kube-prometheus-stack
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
     targetRevision: main
