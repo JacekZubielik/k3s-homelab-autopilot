@@ -22,7 +22,7 @@ helmCharts:
   releaseName: kube-prometheus-stack
   namespace: monitoring
   includeCRDs: true
-  valuesFile: values-old.yaml
+  valuesFile: values-kube-prometheus-stack.yaml
 
 patches:
 - patch: |-
