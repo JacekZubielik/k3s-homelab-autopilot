@@ -4,7 +4,7 @@ namespace: monitoring
 
 resources:
 # - resources/ingressroute.yaml
-- resources/device-dashboards-cm.yaml
+# - resources/device-dashboards-cm.yaml
 
 metadata:
   annotations:

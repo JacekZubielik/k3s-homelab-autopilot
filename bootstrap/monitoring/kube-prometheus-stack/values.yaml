@@ -66,8 +66,8 @@ kube-prometheus-stack:
           options:
             path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
 
-    dashboardsConfigMaps:
-      device: "device-dashboards"
+    # dashboardsConfigMaps:
+    #   device: "device-dashboards"
 
     dashboards:
       grafana-dashboards-kubernetes:
