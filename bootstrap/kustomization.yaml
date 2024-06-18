@@ -14,6 +14,6 @@ resources:
 - cert-manager.yaml
 - cluster-resources.yaml
 - longhorn.yaml
-- prometheus.yaml
+# - prometheus.yaml
 - root.yaml
 - sealed-secrets.yaml
