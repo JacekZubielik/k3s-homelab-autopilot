@@ -1045,8 +1045,8 @@ grafana:
     enabled: true
     # type: sts
     storageClassName: "longhorn"
-    accessModes:
-      - ReadWriteOnce
+    # accessModes:
+    #   - ReadWriteOnce
     size: 10Gi
     # finalizers:
     #   - kubernetes.io/pvc-protection
