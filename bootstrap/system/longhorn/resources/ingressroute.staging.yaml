@@ -20,7 +20,7 @@ spec:
   - kind: Rule
     match: Host(`longhorn.system.anotherlife.org.pl`)
     middlewares:
-      - name: svc-longhorn-headers
+      - name: longhorn-dashboard
         namespace: traefik
     services:
     - kind: TraefikService
