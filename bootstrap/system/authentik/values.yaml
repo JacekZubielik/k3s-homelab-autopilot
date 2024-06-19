@@ -5,7 +5,7 @@ global:
   additionalLabels:
     {}
   revisionHistoryLimit: 3
-  # -- Add Prometheus scrape annotations to all metrics services. This can be used as an alternative to the ServiceMonitors.
+  # Add Prometheus scrape annotations to all metrics services. This can be used as an alternative to the ServiceMonitors.
   addPrometheusAnnotations: false
   nodeSelector: {}
   tolerations: []
@@ -70,7 +70,7 @@ global:
         key: AUTHENTIK_POSTGRESQL__PORT
 
 
-  # -- envFrom to pass to all deployed Deployments. Does not apply to GeoIP
+  # envFrom to pass to all deployed Deployments. Does not apply to GeoIP
   # @default -- `[]` (See [values.yaml])
   envFrom:
     []
@@ -79,14 +79,14 @@ global:
     # - secretRef:
     #     name: secret-name
 
-  # -- Additional volumeMounts to all deployed Deployments. Does not apply to GeoIP
+  # Additional volumeMounts to all deployed Deployments. Does not apply to GeoIP
   # @default -- `[]` (See [values.yaml])
   volumeMounts:
     []
     # - name: custom
     #   mountPath: /custom
 
-  # -- Additional volumes to all deployed Deployments.
+  # Additional volumes to all deployed Deployments.
   # @default -- `[]` (See [values.yaml])
   volumes:
     []
