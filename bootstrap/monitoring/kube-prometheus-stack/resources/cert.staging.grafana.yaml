@@ -4,8 +4,8 @@ metadata:
   name: grafana-domain
 spec:
   issuerRef:
-      kind: ClusterIssuer
-      name: route53-letsencrypt-staging
+    kind: ClusterIssuer
+    name: route53-letsencrypt-staging
   commonName: 'grafana.monitoring.anotherlife.org.pl'
   dnsNames:
   - 'grafana.monitoring.anotherlife.org.pl'
