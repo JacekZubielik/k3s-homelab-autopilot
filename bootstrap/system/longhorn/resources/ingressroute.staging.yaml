@@ -24,7 +24,7 @@ spec:
     #     namespace: traefik
     services:
     - kind: TraefikService
-      name: longhorn-frontend
+      name: longhorn-ui
       port: 8000
   tls:
     domains:
@@ -44,11 +44,11 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app.kubernetes.io/name: longhorn-frontend
-  name: longhorn-frontend
+    app.kubernetes.io/name: longhorn-ui
+  name: longhorn-ui
 spec:
   weighted:
     services:
-    - name: longhorn-frontend
+    - name: longhorn-ui
       port: 8000
       weight: 1
