@@ -13,7 +13,7 @@ metadata:
   name: external-dns
 
 generators:
-- secrets/secret-generator.yaml
+- ksops-generator.yaml
 
 helmCharts:
 - name: external-dns
