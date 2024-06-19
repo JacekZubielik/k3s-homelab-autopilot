@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: traefik-domain
+spec:
+  issuerRef:
+    kind: ClusterIssuer
+    name: route53-letsencrypt-staging
+  commonName: 'traefik.system.anotherlife.org.pl'
+  dnsNames:
+  - 'traefik.system.anotherlife.org.pl'
+  secretName: traefik-cf-staging
+  duration: 2160h0m0s
+  renewBefore: 720h0m0s
