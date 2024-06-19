@@ -9,6 +9,7 @@ resources:
 - authentik.yaml
 - cert-manager.yaml
 - cluster-resources.yaml
+- external-dns.yaml
 - kube-prometheus-stack.yaml
 - longhorn.yaml
 - root.yaml
