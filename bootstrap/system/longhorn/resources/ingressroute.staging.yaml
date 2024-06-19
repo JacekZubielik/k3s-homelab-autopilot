@@ -24,8 +24,8 @@ spec:
     #     namespace: traefik
     services:
     - kind: TraefikService
-      name: longhorn-server
-      port: 80
+      name: longhorn-frontend
+      port: 8000
   tls:
     domains:
     - main: system.anotherlife.org.pl
@@ -44,11 +44,11 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app.kubernetes.io/name: longhorn-server
-  name: longhorn-server
+    app.kubernetes.io/name: longhorn-frontend
+  name: longhorn-frontend
 spec:
   weighted:
     services:
-    - name: longhorn-server
-      port: 80
+    - name: longhorn-frontend
+      port: 8000
       weight: 1
