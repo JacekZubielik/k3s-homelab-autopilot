@@ -21,7 +21,7 @@ spec:
     match: Host(`longhorn.system.anotherlife.org.pl`)
     middlewares:
       - name: svc-longhorn-headers
-        namespace: longhorn-system
+        namespace: traefik
     services:
     - kind: TraefikService
       name: longhorn-frontend
