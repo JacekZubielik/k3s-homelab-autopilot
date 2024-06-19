@@ -30,7 +30,7 @@ namespace: argocd
 resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
 # - resources/ingressroute.yaml
-# - resources/metrics.yaml
+- resources/metrics.yaml
 patches:
 - path: ./patches/rbac-cm.yaml
 - path: ./patches/ksops.yaml
