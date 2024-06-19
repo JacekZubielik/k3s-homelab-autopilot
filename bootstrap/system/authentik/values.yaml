@@ -492,7 +492,7 @@ postgresql:
       enabled: true
       storageClass: local-path
       accessModes:
-        - ReadWriteOnce
+      - ReadWriteOnce
     extraEnvVars:
     - name: POSTGRES_DATABASE
       valueFrom:
@@ -540,7 +540,7 @@ redis:
     path: /data
     storageClass: "local-path"
     accessModes:
-      - ReadWriteOnce
+    - ReadWriteOnce
     size: 8Gi
     annotations: {}
     labels: {}
