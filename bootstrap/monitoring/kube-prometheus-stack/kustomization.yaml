@@ -4,11 +4,11 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
-# - resources/cert.production.yaml
 - resources/cert.staging.yaml
 - resources/external-dns.yaml
-# - resources/ingressroute.production.yaml
 - resources/ingressroute.staging.yaml
+# - resources/cert.production.yaml
+# - resources/ingressroute.production.yaml
 
 metadata:
   annotations:
