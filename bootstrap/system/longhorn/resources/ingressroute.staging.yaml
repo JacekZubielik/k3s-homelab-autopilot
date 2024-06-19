@@ -19,13 +19,13 @@ spec:
   routes:
   - kind: Rule
     match: Host(`longhorn.system.anotherlife.org.pl`)
-    # middlewares:
-    #   - name: chain-traefik-dashboard
-    #     namespace: traefik
+    middlewares:
+      - name: svc-longhorn-headers
+        namespace: longhorn-system
     services:
     - kind: TraefikService
       name: longhorn-frontend
-      port: 8000
+      port: 80
   tls:
     domains:
     - main: system.anotherlife.org.pl
@@ -44,11 +44,11 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app.kubernetes.io/name: longhorn-ui
-  name: longhorn-ui
+    app.kubernetes.io/name: longhorn-frontend
+  name: longhorn-frontend
 spec:
   weighted:
     services:
     - name: longhorn-ui
-      port: 8000
+      port: 80
       weight: 1
