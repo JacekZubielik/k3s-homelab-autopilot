@@ -9,6 +9,6 @@ spec:
   commonName: 'grafana.monitoring.anotherlife.org.pl'
   dnsNames:
   - 'grafana.monitoring.anotherlife.org.pl'
-  secretName: grafana-internal-domain
+  secretName: grafana-domain
   duration: 2160h0m0s
   renewBefore: 720h0m0s
