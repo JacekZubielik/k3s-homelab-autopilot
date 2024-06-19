@@ -39,13 +39,13 @@ spec:
 ---
 apiVersion: traefik.io/v1alpha1
 kind: TraefikService
-# metadata:
-#   name: grafana
-#   annotations:
-#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-#     argocd.argoproj.io/sync-wave: "5"
-#   labels:
-#     app.kubernetes.io/name: grafana
+metadata:
+  name: grafana
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "5"
+  labels:
+    app.kubernetes.io/name: grafana
 spec:
   weighted:
     services:
