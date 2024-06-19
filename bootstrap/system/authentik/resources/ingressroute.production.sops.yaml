@@ -1,0 +1,132 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+        argocd.argoproj.io/compare-options: IgnoreExtraneous
+        argocd.argoproj.io/sync-wave: "10"
+        cert-manager.io/cluster-issuer: route53-letsencrypt-production
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:r9fbzDjFzvlxSvKxVHS/MYSXnSri/rhOjQ==,iv:60aMPi8IUhnB4BtFGmzkkNN1kmv7T5FtyN0NO72/xoY=,tag:fiAVisO4INzP4g4vWvV7lA==,type:str]
+        kubernetes.io/ingress.class: traefik-external
+    labels:
+        app.kubernetes.io/name: authentik-server
+    name: authentik
+    namespace: authentik
+spec:
+    entryPoints:
+        - websecure
+    routes:
+        - kind: Rule
+          match: ENC[AES256_GCM,data:Qqt9aiyxuwzLMAhEZcbd5WQKXUL2UfIkLUIZSqDNfCKpUbUxnQ==,iv:ugNOzW/WdbDGLgZmRY1lzGYs2HkBw24+jhgWSB3K+AA=,tag:9i4DZZnu5Kiim0ePh5CRGw==,type:str]
+          middlewares:
+            - name: rate-limit
+              namespace: traefik
+          services:
+            - kind: TraefikService
+              name: authentik-server
+              port: 443
+    tls:
+        domains:
+            - main: ENC[AES256_GCM,data:7fyS1gV0Fuk3pUIqwLoIo1OUZiWHZ7YBsw==,iv:9dPa41NEO5ud/0qyEUlXHyCRNTAcQyyrHv+yGJrjx2I=,tag:Zan8RrUqbiT92pTftu4PXA==,type:str]
+              sans:
+                - ENC[AES256_GCM,data:+sOJDthgFi+NLucRmkODhUGfZ2y6cMtJ10g=,iv:tFIW4fR7FZJLRUArNf6wsXdX5X5S9Z5yvDFy76mj/3Y=,tag:TjNkTYj13EuzUAn4HC/Rwg==,type:str]
+        options:
+            name: tls-ver13
+            namespace: traefik
+        secretName: authentik-cf-production
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAvVlAwS2UvNWVTQUFHc1Vs
+            SE1yandlQ3dxdkdXL3E4S2I2RFpsL0xvMGswCmY2RkNLNXdKM1B2bjVoUVdQS2Vp
+            YzAwUHFPWWRFWnp6SjFpbkljV3RZeHcKLS0tIGtHblVxMHlDRWtIZjB4Q21ubXJB
+            SThXZ2YwWUFaS0U5b0lGNkk4aTBmOE0KqqtCd/wLBHy/rHxgmhOVb3YfvUdujjvD
+            lBpAMgmnGfEyY20e9X4raPWCBRnr6QBcDBhK6E692yixy64YY8NPaQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-06-19T19:02:49Z"
+    mac: ENC[AES256_GCM,data:Nd+vpWDMoSyN+YtW7+Ix+TbkmNEpnKfjnRLUI2MB9O1wwHEi2DZBetkjG2laYGj5pp99dYoWEeOTcc83UYqfHR7UuMGGYJeOPUBGRFup/IFjy2scjM1kNP3FIxad/YKBTrxigV2IhGZUgg0ZStE/zUbUU1XNyPv91zA+Qd2AyZA=,iv:BxGyq+wMxQ6Gf/RfT7tn1IwB10uhgybS//hupM3dh4M=,tag:HB9MGF73Ok3tn/c0OXzz4A==,type:str]
+    pgp:
+        - created_at: "2024-06-19T19:02:49Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVARAAlmmvu7wrWaQlHafJn6EdTFuPFKcB3Q2sE8NYl6AabISN
+            dfSjklTyIEiA+Yg1q71jOknSbCTbDP9a7jaIGikXpE5pwQp+q7kvOXn2c7UKChjT
+            lpyaqXJzrBIzNoOrM41lFgRcD+cWVlneZWHv+06PdOgNqLaLWV3cZ5XsjUJsFpJz
+            ZdmmW3NRWFKbTML7sQ4L4/YGBZUyzCHsASltVy//sT89FG7aKD7bHp0Ts9Ya+pby
+            C24uoqY6DqJ2SFn91cIh2uX9MtZ8ZzhmsZ32aSLoYoJlNMGMOKaLvIMY9OVEbLs5
+            Zay+WQe92XvXeDrFRKOW6RiKUIDQO/mwslxiOk19aJdtEZ2oSL1aD++dlB7XSFx1
+            oDKDWqn6hg/IWF5rmne4UCrqSI+pxCm09nT3vEUBMNJ/Oh6UbypJBjhRc8x5vBlC
+            th/s5Dnh53SwWWqhGr4HJbtJyosVzgfB20lfUTEgU3p24khtn1D8b2KY79Pm+WSJ
+            ncZyQcWghz/+xJl8nu2Zn9P7MSM9FHGOmiKBTGTyqkGoARVUJiTBj+JU8Fp/PUXA
+            Gj/N/AQ3fsnCSWxoxkDojHOFMJQQR+OzRFyfFjhEcQ8taa0goAJHztX97x77PhJv
+            CkK+0TJaTmzJTNF5pKRhxHOa2SiJNTyy6dhh+dQoUmf6Gqk2TPuqE28GLGt/RWfS
+            XgFCPsgYn/i24NV0htwxtdLrR9TNH0xGBfoCQUApTuydJJaDgJLxpp7Dfe1jbve+
+            CAx7vtEx16fy3/nW+DsxTfGRpqVNihPxYv2Ux2qCSLaP6V1aUWCUSBHxA+FeeXM=
+            =W/8e
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1
+---
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+        argocd.argoproj.io/sync-wave: "10"
+    labels:
+        app.kubernetes.io/name: authentik-server
+    name: authentik-server
+spec:
+    weighted:
+        services:
+            - name: authentik-server
+              port: 443
+              weight: 1
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAvVlAwS2UvNWVTQUFHc1Vs
+            SE1yandlQ3dxdkdXL3E4S2I2RFpsL0xvMGswCmY2RkNLNXdKM1B2bjVoUVdQS2Vp
+            YzAwUHFPWWRFWnp6SjFpbkljV3RZeHcKLS0tIGtHblVxMHlDRWtIZjB4Q21ubXJB
+            SThXZ2YwWUFaS0U5b0lGNkk4aTBmOE0KqqtCd/wLBHy/rHxgmhOVb3YfvUdujjvD
+            lBpAMgmnGfEyY20e9X4raPWCBRnr6QBcDBhK6E692yixy64YY8NPaQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-06-19T19:02:49Z"
+    mac: ENC[AES256_GCM,data:Nd+vpWDMoSyN+YtW7+Ix+TbkmNEpnKfjnRLUI2MB9O1wwHEi2DZBetkjG2laYGj5pp99dYoWEeOTcc83UYqfHR7UuMGGYJeOPUBGRFup/IFjy2scjM1kNP3FIxad/YKBTrxigV2IhGZUgg0ZStE/zUbUU1XNyPv91zA+Qd2AyZA=,iv:BxGyq+wMxQ6Gf/RfT7tn1IwB10uhgybS//hupM3dh4M=,tag:HB9MGF73Ok3tn/c0OXzz4A==,type:str]
+    pgp:
+        - created_at: "2024-06-19T19:02:49Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVARAAlmmvu7wrWaQlHafJn6EdTFuPFKcB3Q2sE8NYl6AabISN
+            dfSjklTyIEiA+Yg1q71jOknSbCTbDP9a7jaIGikXpE5pwQp+q7kvOXn2c7UKChjT
+            lpyaqXJzrBIzNoOrM41lFgRcD+cWVlneZWHv+06PdOgNqLaLWV3cZ5XsjUJsFpJz
+            ZdmmW3NRWFKbTML7sQ4L4/YGBZUyzCHsASltVy//sT89FG7aKD7bHp0Ts9Ya+pby
+            C24uoqY6DqJ2SFn91cIh2uX9MtZ8ZzhmsZ32aSLoYoJlNMGMOKaLvIMY9OVEbLs5
+            Zay+WQe92XvXeDrFRKOW6RiKUIDQO/mwslxiOk19aJdtEZ2oSL1aD++dlB7XSFx1
+            oDKDWqn6hg/IWF5rmne4UCrqSI+pxCm09nT3vEUBMNJ/Oh6UbypJBjhRc8x5vBlC
+            th/s5Dnh53SwWWqhGr4HJbtJyosVzgfB20lfUTEgU3p24khtn1D8b2KY79Pm+WSJ
+            ncZyQcWghz/+xJl8nu2Zn9P7MSM9FHGOmiKBTGTyqkGoARVUJiTBj+JU8Fp/PUXA
+            Gj/N/AQ3fsnCSWxoxkDojHOFMJQQR+OzRFyfFjhEcQ8taa0goAJHztX97x77PhJv
+            CkK+0TJaTmzJTNF5pKRhxHOa2SiJNTyy6dhh+dQoUmf6Gqk2TPuqE28GLGt/RWfS
+            XgFCPsgYn/i24NV0htwxtdLrR9TNH0xGBfoCQUApTuydJJaDgJLxpp7Dfe1jbve+
+            CAx7vtEx16fy3/nW+DsxTfGRpqVNihPxYv2Ux2qCSLaP6V1aUWCUSBHxA+FeeXM=
+            =W/8e
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1
