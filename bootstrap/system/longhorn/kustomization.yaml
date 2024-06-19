@@ -4,11 +4,10 @@ kind: Kustomization
 namespace: longhorn-system
 
 resources:
-- resources/cert.staging.yaml
-- resources/external-dns.yaml
-- resources/ingressroute.staging.yaml
-# - resources/cert.production.yaml
-# - resources/ingressroute.production.yaml
+- resources/servicemonitor.yaml
+
+generators:
+- ksops-generator.yaml
 
 metadata:
   annotations:
