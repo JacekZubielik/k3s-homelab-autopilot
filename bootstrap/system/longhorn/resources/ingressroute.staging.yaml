@@ -24,7 +24,7 @@ spec:
     #     namespace: traefik
     services:
     - kind: TraefikService
-      name: longhorn-ui
+      name: longhorn-frontend
       port: 8000
   tls:
     domains:
