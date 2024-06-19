@@ -10,8 +10,8 @@ metadata:
     external-dns.alpha.kubernetes.io/target: system.anotherlife.org.pl
     kubernetes.io/ingress.class: traefik-external
   labels:
-    app.kubernetes.io/name: longhorn-server
-  name: longhorn
+    app.kubernetes.io/name: longhorn-ui
+  name: longhorn-frontend
   namespace: longhorn-system
 spec:
   entryPoints:
@@ -25,7 +25,7 @@ spec:
     services:
     - kind: TraefikService
       name: longhorn-frontend
-      port: 80
+      port: 8000
   tls:
     domains:
     - main: system.anotherlife.org.pl
@@ -50,5 +50,5 @@ spec:
   weighted:
     services:
     - name: longhorn-ui
-      port: 80
+      port: 8000
       weight: 1
