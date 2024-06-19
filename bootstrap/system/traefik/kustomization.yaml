@@ -6,7 +6,6 @@ namespace: traefik
 resources:
 - resources/cert.staging.dashboard.yaml
 - resources/chains.yaml
-- resources/dashboard.yaml
 - resources/ingresroute.staging.dashboard.yaml
 - resources/middlewares.yaml
 - resources/servicemonitor.yaml
