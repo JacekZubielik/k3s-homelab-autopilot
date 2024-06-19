@@ -25,7 +25,7 @@ spec:
     services:
     - kind: TraefikService
       name: longhorn-frontend
-      port: 8000
+      port: 32449
   tls:
     domains:
     - main: system.anotherlife.org.pl
@@ -50,5 +50,5 @@ spec:
   weighted:
     services:
     - name: longhorn-ui
-      port: 8000
+      port: 32449
       weight: 1
