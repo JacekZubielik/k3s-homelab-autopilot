@@ -7,4 +7,3 @@ files:
 - resources/cert.sops.yaml
 - resources/external-dns.sops.yaml
 - resources/ingressroute.sops.yaml
-- secrets/secret.sops.yaml
