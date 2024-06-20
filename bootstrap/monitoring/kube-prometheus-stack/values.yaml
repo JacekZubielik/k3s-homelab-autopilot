@@ -992,11 +992,11 @@ grafana:
   ##
   defaultDashboardsEditable: true
 
-  adminPassword: prom-operator
-  # admin:
-  #   existingSecret: grafana-admin-secret
-  #   userKey: username
-  #   passwordKey: password
+  # adminPassword: prom-operator
+  admin:
+    existingSecret: grafana-admin-secret
+    userKey: username
+    passwordKey: password
 
   rbac:
     ## If true, Grafana PSPs will be created
@@ -1068,6 +1068,44 @@ grafana:
       # Support for new table panels, when enabled grafana auto migrates the old table panels to newer table panels
       enableNewTablePanelSyntax: false
 
+
+      default: # The "default" provider is defined below.
+        nginx-ingress-controller:
+          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/nginx.json
+        ingress-request-performance:
+          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/request-handling-performance.json
+        argocd-overview:
+          gnetId: 14584
+          datasource: Prometheus
+
+      device:
+        prometheus-pve-exporter:
+          gnetId: 10347
+          datasource: Prometheus
+
+      extra:
+        pihole-overview:
+          gnetId: 10176
+          datasource: Prometheus
+        cert-manager-overview:
+          gnetId: 11001
+          datasource: Prometheus
+        external-dns-overview:
+          gnetId: 15038
+          datasource: Prometheus
+        blackbox-exporter-overview:
+          gnetId: 5345
+          datasource: Prometheus
+
+      freqtrade:
+        freqtrade:
+          gnetId: 14632
+          datasource: Prometheus
+
+
+
+
+
       ## Annotations for Grafana dashboard configmaps
       ##
       annotations: {}
@@ -1138,7 +1176,7 @@ grafana:
   additionalDataSources:
   - name: Loki
     type: loki
-    url: http://loki.loki:3100
+    url: http://loki-stack.svc.cluster.local:3100
     access: proxy
     isDefault: false
     version: 1
@@ -1225,14 +1263,26 @@ grafana:
     dashboardproviders.yaml:
       apiVersion: 1
       providers:
-      - name: 'default'
+      - name: default
         orgId: 1
-        folder: ''
+        folder: ""
         type: file
         disableDeletion: true
         editable: false
         options:
           path: /var/lib/grafana/dashboards/default
+
+      - name: "extra"
+        orgId: 1
+        folder: "Extra"
+        type: file
+        disableDeletion: true
+        editable: true
+        allowUiUpdates: true
+        options:
+          path: /var/lib/grafana/dashboards/extra
+
+
       - name: 'device'
         orgId: 1
         folder: 'Devices Metrics'
@@ -1250,7 +1300,14 @@ grafana:
         options:
           path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
 
-
+      - name: "freqtrade"
+        orgId: 1
+        folder: "freqtrade"
+        type: file
+        disableDeletion: true
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/freqtrade
 
 
 

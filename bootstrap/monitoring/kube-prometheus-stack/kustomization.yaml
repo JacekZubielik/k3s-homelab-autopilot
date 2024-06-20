@@ -5,6 +5,7 @@ namespace: monitoring
 
 resources:
 - resources/podmonitor.yaml
+- secrets/secret.yaml
 
 metadata:
   annotations:
@@ -35,6 +36,7 @@ configMapGenerator:
 - name: grafana-dashboards
   files:
   - dashboards/argocd-performance.json
+  - dashboards/authentik.json
 - name: prometheus-server-conf
   files:
   - resources/scrape_configs.yaml
