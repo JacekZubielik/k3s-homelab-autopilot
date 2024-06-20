@@ -4,17 +4,15 @@ kind: Kustomization
 namespace: traefik
 
 resources:
-- resources/cert.staging.yaml
 - resources/chains.yaml
-- resources/external-dns.yaml
-- resources/ingresroute.staging.yaml
 - resources/middlewares.yaml
 - resources/servicemonitor.yaml
 - resources/tlsoption.yaml
 - secrets/sealed-secret.yaml
-# - resources/cert.production.yaml
-# - resources/ingressroute.production.yaml
 # - resources/tlsstore.yaml
+
+generators:
+- ksops-generator.yaml
 
 patches:
 - target:

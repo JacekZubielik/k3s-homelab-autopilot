@@ -1,5 +1,0 @@
-resources:
-- ./kube-prom-stack
-# - ./cadvisor
-# - ./kube-state-metrics
-# - ./node-exporter
