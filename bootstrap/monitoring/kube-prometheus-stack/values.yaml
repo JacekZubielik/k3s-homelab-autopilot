@@ -1125,8 +1125,8 @@ grafana:
 
   sidecar:
 
-    # dashboards:
-    #   enabled: true
+    dashboards:
+      enabled: true
     #   label: grafana_dashboard
     #   labelValue: "1"
     #   # Allow discovery in all namespaces for dashboards
