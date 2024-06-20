@@ -1044,11 +1044,11 @@ grafana:
 
   ## ForceDeployDashboard Create dashboard configmap even if grafana deployment has been disabled
   ##
-  forceDeployDashboards: true
+  forceDeployDashboards: false
 
   ## Deploy default dashboards
   ##
-  defaultDashboardsEnabled: true
+  defaultDashboardsEnabled: false
 
   ## Timezone for the default dashboards
   ## Other options are: browser or a specific timezone, i.e. Europe/Luxembourg
@@ -1059,7 +1059,6 @@ grafana:
   ##
   defaultDashboardsEditable: true
 
-  # adminPassword: prom-operator
   admin:
     existingSecret: grafana-admin-secret
     userKey: username
@@ -1126,25 +1125,25 @@ grafana:
 
   sidecar:
 
-    dashboards:
-      enabled: true
-      label: grafana_dashboard
-      labelValue: "1"
-      # Allow discovery in all namespaces for dashboards
-      searchNamespace: ALL
+    # dashboards:
+    #   enabled: true
+    #   label: grafana_dashboard
+    #   labelValue: "1"
+    #   # Allow discovery in all namespaces for dashboards
+    #   searchNamespace: ALL
 
-      # Support for new table panels, when enabled grafana auto migrates the old table panels to newer table panels
-      enableNewTablePanelSyntax: true
+    #   # Support for new table panels, when enabled grafana auto migrates the old table panels to newer table panels
+    #   enableNewTablePanelSyntax: true
 
 
-      default: # The "default" provider is defined below.
-        nginx-ingress-controller:
-          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/nginx.json
-        ingress-request-performance:
-          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/request-handling-performance.json
-        argocd-overview:
-          gnetId: 14584
-          datasource: Prometheus
+    #   default: # The "default" provider is defined below.
+    #     nginx-ingress-controller:
+    #       url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/nginx.json
+    #     ingress-request-performance:
+    #       url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/request-handling-performance.json
+    #     argocd-overview:
+    #       gnetId: 14584
+    #       datasource: Prometheus
 
       ## Annotations for Grafana dashboard configmaps
       ##
