@@ -325,7 +325,7 @@ server:
 
   ## authentik server metrics service configuration
   metrics:
-    enabled: false
+    enabled: true
     service:
       type: ClusterIP
       clusterIP: ""
@@ -334,7 +334,7 @@ server:
       servicePort: 9300
       portName: metrics
     serviceMonitor:
-      enabled: false
+      enabled: true
       interval: 30s
       scrapeTimeout: 3s
       relabelings: []
@@ -469,7 +469,7 @@ serviceAccount:
 
 prometheus:
   rules:
-    enabled: false
+    enabled: fatruelse
     # -- PrometheusRule namespace
     namespace: "authentik"
     # -- PrometheusRule selector
@@ -490,9 +490,12 @@ postgresql:
       max_connections = 500
     persistence:
       enabled: true
-      storageClass: local-path
+      storageClass: host-path #local-path
       accessModes:
       - ReadWriteOnce
+      existingClaim: authentik-psql-pv-claim
+
+
     extraEnvVars:
     - name: POSTGRES_DATABASE
       valueFrom:
