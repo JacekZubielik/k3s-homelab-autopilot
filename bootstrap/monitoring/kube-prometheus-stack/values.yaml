@@ -987,6 +987,61 @@ grafana:
   #         # Optionally map user groups to Grafana roles
   #         role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
 
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+        - name: default
+          orgId: 1
+          folder: ""
+          type: file
+          disableDeletion: false
+          editable: true
+          allowUiUpdates: true
+          options:
+            path: /var/lib/grafana/dashboards/default
+        - name: "extra"
+          orgId: 1
+          folder: "Extra"
+          type: file
+          disableDeletion: true
+          editable: true
+          allowUiUpdates: true
+          options:
+            path: /var/lib/grafana/dashboards/extra
+        - name: "nginx"
+          orgId: 1
+          folder: "nginx"
+          type: file
+          disableDeletion: true
+          editable: true
+          allowUiUpdates: true
+          options:
+            path: /var/lib/grafana/dashboards/nginx
+        - name: "device"
+          orgId: 1
+          folder: "Devices Metrics"
+          type: file
+          disableDeletion: true
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/device
+        - name: "grafana-dashboards-kubernetes"
+          orgId: 1
+          folder: "Kubernetes"
+          type: file
+          disableDeletion: true
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
+        - name: "freqtrade"
+          orgId: 1
+          folder: "freqtrade"
+          type: file
+          disableDeletion: true
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/freqtrade
 
 
   ## ForceDeployDatasources Create datasource configmap even if grafana deployment has been disabled
