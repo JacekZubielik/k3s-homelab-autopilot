@@ -26,13 +26,13 @@ jellyfin:
 
   persistence:
     enabled: true
-    storageClass: longhorn
+    storageClass: longhorn-static
     accessMode: ReadWriteOnce
     size: 10Gi
     mountPath: /config
     extraVolumes:
       - name: cache
-        storageClass: longhorn
+        storageClass: longhorn-static
         size: 10Gi
         accessMode: ReadWriteOnce
         mountPath: /cache
