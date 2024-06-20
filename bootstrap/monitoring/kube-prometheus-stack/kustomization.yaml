@@ -4,6 +4,8 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
+- resources/cert.staging.yaml
+- resources/ingressroute.staging.yaml
 - resources/podmonitor.yaml
 - secrets/secret.yaml
 
@@ -25,8 +27,8 @@ helmCharts:
   includeCRDs: true
   valuesFile: values.yaml
 
-generators:
-- ksops-generator.yaml
+# generators:
+# - ksops-generator.yaml
 
 # generatorOptions:
 #   disableNameSuffixHash: true
