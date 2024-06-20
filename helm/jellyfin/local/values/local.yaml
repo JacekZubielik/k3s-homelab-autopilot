@@ -1,0 +1,44 @@
+jellyfin:
+  service:
+    web:
+      type: ClusterIP
+      port: 8096
+      targetPort: 8096
+    dlna:
+      type: LoadBalancer
+      port: 1900
+      targetPort: 1900 # udp
+      externalTrafficPolicy: Local
+
+  ingress:
+    enabled: true
+    className: traefik
+    annotations:
+        kubernetes.io/tls-acme: "false"
+        traefik.ingress.kubernetes.io/router.entrypoints: web
+        traefik.ingress.kubernetes.io/router.tls: "false"
+    hosts:
+      - host: media.anotherlife.org.pl
+        paths:
+          - path: /
+            pathType: Prefix
+    tls: []
+
+  persistence:
+    enabled: true
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 10Gi
+    mountPath: /config
+    extraVolumes:
+      - name: cache
+        storageClass: longhorn
+        size: 10Gi
+        accessMode: ReadWriteOnce
+        mountPath: /cache
+      # - name: media 
+      #   existingClaim: "media"
+      #   mountPath: /mnt/volume-0/media
+      - name: music 
+        existingClaim: "music"
+        mountPath: /mnt/volume-0/media/music/playlist

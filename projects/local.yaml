@@ -1,0 +1,95 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: homelab
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  description: Homelab Setup
+  destinations:
+    - namespace: '*'
+      server: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  sourceRepos:  
+    - '*'
+...
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: homelab-manifests
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        directories:
+          - path: manifests/*/**/local
+        repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
+        revision: ""
+        requeueAfterSeconds: 20
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: '{{ path[1] }}-{{ path[2] }}'
+      name: manifests-{{ path[1] }}-{{ path[2] }}
+      namespace: argocd
+    spec:
+      project: homelab
+      destination:
+        namespace: '{{ path[1] }}'
+        server: 'https://kubernetes.default.svc'
+      source:
+        repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
+        targetRevision: 'main'
+        path: '{{ path }}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+...
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: helm-apps
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        files:
+          - path: helm/*/**/values/local.yaml
+        repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
+        revision: ""
+        requeueAfterSeconds: 20
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: '{{ path[1] }}-{{ path[2] }}'
+      name: helm-{{ path[1] }}-{{ path[2] }}
+      namespace: argocd
+    spec:
+      project: homelab
+      destination:
+        namespace: '{{ path[1] }}'
+        server: 'https://kubernetes.default.svc'
+      source:
+        repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
+        targetRevision: 'main'
+        path: '{{ path }}/../chart'
+        helm:
+          valueFiles:
+            - '../values/{{ path.filename }}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+...
