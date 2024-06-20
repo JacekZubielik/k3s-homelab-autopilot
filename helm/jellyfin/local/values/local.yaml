@@ -12,7 +12,7 @@ jellyfin:
 
   ingress:
     enabled: true
-    className: traefik
+    className: traefik-external
     annotations:
         kubernetes.io/tls-acme: "false"
         traefik.ingress.kubernetes.io/router.entrypoints: web
