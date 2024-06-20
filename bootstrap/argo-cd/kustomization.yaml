@@ -1,5 +1,9 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
+
+generators:
+- ksops-generator.yaml
+
 configMapGenerator:
 - behavior: merge
   literals:
@@ -29,8 +33,8 @@ kind: Kustomization
 namespace: argocd
 resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
-# - resources/ingressroute.yaml
 - resources/metrics.yaml
+
 patches:
 - path: ./patches/rbac-cm.yaml
 - path: ./patches/ksops.yaml
