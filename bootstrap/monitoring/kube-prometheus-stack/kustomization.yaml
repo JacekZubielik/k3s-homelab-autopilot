@@ -4,12 +4,7 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
-- resources/cert.staging.yaml
-- resources/external-dns.yaml
-- resources/ingressroute.staging.yaml
 - resources/podmonitor.yaml
-# - resources/cert.production.yaml
-# - resources/ingressroute.production.yaml
 
 metadata:
   annotations:
@@ -28,6 +23,9 @@ helmCharts:
   namespace: monitoring
   includeCRDs: true
   valuesFile: values.yaml
+
+generators:
+- ksops-generator.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
