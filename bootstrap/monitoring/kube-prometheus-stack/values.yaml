@@ -971,6 +971,24 @@ grafana:
   enabled: true
   namespaceOverride: ""
 
+  # grafana.ini:
+  #     auth:
+  #         signout_redirect_url: "https://authentik.company/application/o/<Slug of the application from above>/end-session/"
+  #         oauth_auto_login: true
+  #     auth.generic_oauth:
+  #         name: authentik
+  #         enabled: true
+  #         client_id: "<Client ID from above>"
+  #         client_secret: "<Client Secret from above>"
+  #         scopes: "openid profile email"
+  #         auth_url: "https://authentik.company/application/o/authorize/"
+  #         token_url: "https://authentik.company/application/o/token/"
+  #         api_url: "https://authentik.company/application/o/userinfo/"
+  #         # Optionally map user groups to Grafana roles
+  #         role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
+
+
+
   ## ForceDeployDatasources Create datasource configmap even if grafana deployment has been disabled
   ##
   forceDeployDatasources: false
@@ -1097,10 +1115,10 @@ grafana:
           gnetId: 5345
           datasource: Prometheus
 
-      freqtrade:
         freqtrade:
-          gnetId: 14632
-          datasource: Prometheus
+          freqtrade:
+            gnetId: 14632
+            datasource: Prometheus
 
 
 
