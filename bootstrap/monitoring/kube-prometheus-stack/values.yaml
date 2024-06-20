@@ -1076,6 +1076,7 @@ grafana:
     autoMount: true
 
   sidecar:
+
     dashboards:
       enabled: true
       label: grafana_dashboard
@@ -1095,34 +1096,6 @@ grafana:
         argocd-overview:
           gnetId: 14584
           datasource: Prometheus
-
-      device:
-        prometheus-pve-exporter:
-          gnetId: 10347
-          datasource: Prometheus
-
-      extra:
-        pihole-overview:
-          gnetId: 10176
-          datasource: Prometheus
-        cert-manager-overview:
-          gnetId: 11001
-          datasource: Prometheus
-        external-dns-overview:
-          gnetId: 15038
-          datasource: Prometheus
-        blackbox-exporter-overview:
-          gnetId: 5345
-          datasource: Prometheus
-
-        freqtrade:
-          freqtrade:
-            gnetId: 14632
-            datasource: Prometheus
-
-
-
-
 
       ## Annotations for Grafana dashboard configmaps
       ##
@@ -1250,82 +1223,7 @@ grafana:
     #   replacement: $1
     #   action: replace
 
-  dashboards:
-    grafana-dashboards-kubernetes:
-      k8s-system-api-server:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
-        token: ''
-      k8s-system-coredns:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
-        token: ''
-      k8s-views-global:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
-        token: ''
-      k8s-views-namespaces:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
-        token: ''
-      k8s-views-nodes:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
-        token: ''
-      k8s-views-pods:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
-        token: ''
-      cncf:
-        url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
-        token: ''
-      argocd:
-        url: https://raw.githubusercontent.com/argoproj/argo-cd/master/examples/dashboard.json
-        token: ''
 
-  dashboardProviders:
-    dashboardproviders.yaml:
-      apiVersion: 1
-      providers:
-      - name: default
-        orgId: 1
-        folder: ""
-        type: file
-        disableDeletion: true
-        editable: false
-        options:
-          path: /var/lib/grafana/dashboards/default
-
-      - name: "extra"
-        orgId: 1
-        folder: "Extra"
-        type: file
-        disableDeletion: true
-        editable: true
-        allowUiUpdates: true
-        options:
-          path: /var/lib/grafana/dashboards/extra
-
-
-      - name: 'device'
-        orgId: 1
-        folder: 'Devices Metrics'
-        type: file
-        disableDeletion: true
-        editable: false
-        options:
-          path: /var/lib/grafana/dashboards/device
-      - name: 'grafana-dashboards-kubernetes'
-        orgId: 1
-        folder: 'Kubernetes'
-        type: file
-        disableDeletion: true
-        editable: false
-        options:
-          path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
-
-      - name: "freqtrade"
-        orgId: 1
-        folder: "freqtrade"
-        type: file
-        disableDeletion: true
-        editable: true
-        options:
-          path: /var/lib/grafana/dashboards/freqtrade
 
 
 
