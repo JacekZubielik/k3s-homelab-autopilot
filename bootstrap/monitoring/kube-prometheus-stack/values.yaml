@@ -254,7 +254,7 @@ prometheus-windows-exporter:
   ##
   prometheus:
     monitor:
-      enabled: true
+      enabled: false
       jobLabel: jobLabel
 
   releaseLabel: true

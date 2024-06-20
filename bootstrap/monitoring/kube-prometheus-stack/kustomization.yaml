@@ -34,14 +34,14 @@ helmCharts:
 #   disableNameSuffixHash: true
 #   labels:
 #     grafana_dashboard: "1"
-configMapGenerator:
+# configMapGenerator:
 # - name: grafana-dashboards
 #   files:
 #   - dashboards/argocd-performance.json
 #   - dashboards/authentik.json
-- name: prometheus-server-conf
-  files:
-  - resources/scrape_configs.yaml
+# - name: prometheus-server-conf
+#   files:
+#   - resources/scrape_configs.yaml
 
 # patches:
 # - patch: |-
