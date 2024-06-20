@@ -1124,37 +1124,65 @@ grafana:
     autoMount: true
 
   sidecar:
-
     dashboards:
       enabled: true
-    #   label: grafana_dashboard
-    #   labelValue: "1"
-    #   # Allow discovery in all namespaces for dashboards
-    #   searchNamespace: ALL
 
-    #   # Support for new table panels, when enabled grafana auto migrates the old table panels to newer table panels
-    #   enableNewTablePanelSyntax: true
+      default: # The "default" provider is defined below.
+        nginx-ingress-controller:
+          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/nginx.json
+        ingress-request-performance:
+          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/request-handling-performance.json
+      extra:
+        pihole-overview:
+          gnetId: 10176
+          datasource: Prometheus
+        argocd-overview:
+          gnetId: 14584
+          datasource: Prometheus
+        cert-manager-overview:
+          gnetId: 11001
+          datasource: Prometheus
+        external-dns-overview:
+          gnetId: 15038
+          datasource: Prometheus
+        blackbox-exporter-overview:
+          gnetId: 5345
+          datasource: Prometheus
 
 
-    #   default: # The "default" provider is defined below.
-    #     nginx-ingress-controller:
-    #       url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/nginx.json
-    #     ingress-request-performance:
-    #       url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/request-handling-performance.json
-    #     argocd-overview:
-    #       gnetId: 14584
-    #       datasource: Prometheus
 
-      ## Annotations for Grafana dashboard configmaps
-      ##
-      annotations: {}
-      multicluster:
-        global:
-          enabled: false
-        etcd:
-          enabled: false
-      provider:
-        allowUiUpdates: false
+
+
+
+      # label: grafana_dashboard
+      # labelValue: "1"
+      # # Allow discovery in all namespaces for dashboards
+      # searchNamespace: ALL
+
+      # # Support for new table panels, when enabled grafana auto migrates the old table panels to newer table panels
+      # enableNewTablePanelSyntax: true
+
+      # ## Annotations for Grafana dashboard configmaps
+      # ##
+      # annotations: {}
+      # multicluster:
+      #   global:
+      #     enabled: false
+      #   etcd:
+      #     enabled: false
+      # provider:
+      #   allowUiUpdates: false
+
+
+
+
+
+
+
+
+
+
+
     datasources:
       enabled: true
       defaultDatasourceEnabled: true
