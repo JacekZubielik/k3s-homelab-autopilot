@@ -109,10 +109,6 @@ authentik:
     send_pii: false
   postgresql:
     host: "{{ .Release.Name }}-postgresql"
-    # name: "authentik"
-    # user: "authentik"
-    # password: "authentik"
-    # port: 5432
 
 blueprints:
   configMaps: []
@@ -347,7 +343,7 @@ server:
       # -- Prometheus ServiceMonitor tlsConfig
       tlsConfig: {}
       # -- Prometheus ServiceMonitor namespace
-      namespace: ""
+      namespace: "monitoring"
       # -- Prometheus ServiceMonitor labels
       labels: {}
       # -- Prometheus ServiceMonitor annotations
@@ -469,13 +465,12 @@ serviceAccount:
 
 prometheus:
   rules:
-    enabled: fatruelse
+    enabled: true
     # -- PrometheusRule namespace
-    namespace: "authentik"
+    namespace: "monitoring"
     # -- PrometheusRule selector
     selector:
-      {}
-      # prometheus: kube-prometheus
+      prometheus: kube-prometheus-stack-prometheus
 
     # -- PrometheusRule labels
     labels: {}
