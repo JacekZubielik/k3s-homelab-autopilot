@@ -18,13 +18,13 @@ spec:
       containers:
       - name: cadvisor
         image: gcr.io/cadvisor/cadvisor:v0.49.1
-        # resources:
-        #   requests:
-        #     memory: 400Mi
-        #     cpu: 400m
-        #   limits:
-        #     memory: 2000Mi
-        #     cpu: 800m
+        resources:
+          requests:
+            memory: 400Mi
+            cpu: 400m
+          limits:
+            memory: 2000Mi
+            cpu: 800m
         volumeMounts:
         - name: rootfs
           mountPath: /rootfs
@@ -49,7 +49,14 @@ spec:
           containerPort: 8080
           protocol: TCP
       automountServiceAccountToken: false
-      terminationGracePeriodSeconds: 30
+      terminationGracePeriodSeconds: 60
+      additionalArgs:
+      - --housekeeping_interval=45s   # kubernetes default args
+      - --max_housekeeping_interval=60s
+      - --event_storage_event_limit=default=0
+      - --event_storage_age_limit=default=0
+      - --disable_metrics=percpu,process,sched,tcp,udp,diskIO    # enable only cpu, memory, network, disk
+      - --docker_only
       volumes:
       - name: rootfs
         hostPath:
