@@ -5,6 +5,6 @@ metadata:
 rules:
 - apiGroups: ['policy']
   resources: ['podsecuritypolicies']
-  verbs:     ['use']
+  verbs: ['use']
   resourceNames:
   - cadvisor

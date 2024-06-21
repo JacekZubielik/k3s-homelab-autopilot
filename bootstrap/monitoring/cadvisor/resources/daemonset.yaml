@@ -18,13 +18,13 @@ spec:
       containers:
       - name: cadvisor
         image: gcr.io/cadvisor/cadvisor:v0.49.1
-        resources:
-          requests:
-            memory: 400Mi
-            cpu: 400m
-          limits:
-            memory: 2000Mi
-            cpu: 800m
+        # resources:
+        #   requests:
+        #     memory: 400Mi
+        #     cpu: 400m
+        #   limits:
+        #     memory: 2000Mi
+        #     cpu: 800m
         volumeMounts:
         - name: rootfs
           mountPath: /rootfs
