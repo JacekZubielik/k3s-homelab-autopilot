@@ -15,7 +15,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: bootstrap/system/cadvisor
+    path: bootstrap/monitoring/cadvisor
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
     targetRevision: main
   syncPolicy:
