@@ -6,6 +6,7 @@ ignore: |
   .vscode/
   **/*.sec.*
   **/*.sops.*
+   **/*.enc.*
   **/*secret*.*
   **/templates/*.y*ml
   secret*.y*ml

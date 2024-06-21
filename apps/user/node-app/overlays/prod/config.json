@@ -1,0 +1,15 @@
+{
+  "appName": "node-app",
+  "userGivenName": "node-app",
+  "destNamespace": "prod",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/user/node-app/overlays/prod",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "",
+  "syncWave": "10",
+  "appRole": "test",
+  "labels": "",
+  "annotations": "",
+  "exclude": "",
+  "include": ""
+}
