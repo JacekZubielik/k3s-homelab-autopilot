@@ -1,0 +1,44 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cadvisor
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+spec:
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: bootstrap/system/cadvisor
+    repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
+    - Delete=false
+    - FailOnSharedResource=false
+    - preserveResourcesOnDeletion=false
+    - PruneLast=true
+    - PrunePropagationPolicy=foreground
+    - Replace=false
+    - RespectIgnoreDifferences=true
+    - ServerSideApply=false
+    - SkipDryRunOnMissingResource=true
+    - Validate=false
+    retry:
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 8m0s
+      limit: 2
