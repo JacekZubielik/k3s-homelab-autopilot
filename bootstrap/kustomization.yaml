@@ -7,7 +7,7 @@ commonLabels:
 resources:
 - argo-cd.yaml
 - authentik.yaml
-- cadvisor.yaml
+# - cadvisor.yaml
 - cert-manager.yaml
 - cluster-resources.yaml
 - external-dns.yaml
