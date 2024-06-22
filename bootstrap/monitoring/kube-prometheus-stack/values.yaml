@@ -739,7 +739,6 @@ alertmanager:
       volumeClaimTemplate:
         spec:
           storageClassName: local-path
-          accessModes: ReadWriteOnce
           resources:
             requests:
               storage: 3Gi
@@ -944,10 +943,23 @@ grafana:
     ##
     pspEnabled: false
   persistence:
+    type: pvc
     enabled: true
-    accessModes: ReadWriteOnce
-    size: 10Gi
     storageClassName: local-path
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    # annotations: {}
+    finalizers:
+      - kubernetes.io/pvc-protection
+    # selectorLabels: {}
+    ## Sub-directory of the PV to mount. Can be templated.
+    # subPath: ""
+    ## Name of an existing PVC. Can be templated.
+    # existingClaim:
+    ## Extra labels to apply to a PVC.
+    extraPvcLabels: {}
+
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
@@ -3766,7 +3778,7 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          accessModes: ReadWriteOnce
+          # accessModes: ReadWriteOnce
           storageClassName: local-path
           resources:
             requests:
