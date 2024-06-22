@@ -930,47 +930,24 @@ alertmanager:
 grafana:
   enabled: true
   namespaceOverride: ""
-
-  ## ForceDeployDatasources Create datasource configmap even if grafana deployment has been disabled
-  ##
   forceDeployDatasources: false
-
-  ## ForceDeployDashboard Create dashboard configmap even if grafana deployment has been disabled
-  ##
   forceDeployDashboards: false
-
-  ## Deploy default dashboards
-  ##
   defaultDashboardsEnabled: true
-
-  ## Timezone for the default dashboards
-  ## Other options are: browser or a specific timezone, i.e. Europe/Luxembourg
-  ##
   defaultDashboardsTimezone: cet
-
-  ## Editable flag for the default dashboards
-  ##
   defaultDashboardsEditable: true
-
-  # adminPassword: prom-operator
-
   admin:
     existingSecret: grafana-admin-secret
     userKey: username
     passwordKey: password
-
   rbac:
     ## If true, Grafana PSPs will be created
     ##
     pspEnabled: false
-
-    persistence:
-      enabled: true
-      size: 10Gi
-      accessModes: ReadWriteOnce
-      storageClassName: local-path
-
-
+  persistence:
+    enabled: true
+    accessModes: ReadWriteOnce
+    size: 10Gi
+    storageClassName: local-path
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
@@ -1000,7 +977,8 @@ grafana:
         options:
           path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
 
-
+  dashboardsConfigMaps:
+    device: "device-dashboards"
 
 
 
@@ -2130,7 +2108,7 @@ nodeExporter:
     linux:
       enabled: true
     darwin:
-      enabled: true
+      enabled: false
 
   ## ForceDeployDashboard Create dashboard configmap even if nodeExporter deployment has been disabled
   ##
@@ -3684,7 +3662,7 @@ prometheus:
 
     ## Maximum size of metrics
     ##
-    retentionSize: ""
+    retentionSize: "10GB"
 
     ## Allow out-of-order/out-of-bounds samples ingested into Prometheus for a specified duration
     ## See https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tsdb
@@ -3785,7 +3763,16 @@ prometheus:
     ## Prometheus StorageSpec for persistent data
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
     ##
-    storageSpec: {}
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ReadWriteOnce
+          storageClassName: local-path
+          resources:
+            requests:
+              storage: 10Gi
+
+
     ## Using PersistentVolumeClaim
     ##
     #  volumeClaimTemplate:
