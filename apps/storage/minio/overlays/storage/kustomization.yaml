@@ -8,7 +8,7 @@ resources:
 # #- resources/service.yaml
 # - secrets/sealed.secret.yaml
 #- resources/pvc.yaml
-#- resources/pv.yaml
+- resources/pv.yaml
 #- resources/minio-pv-sc.yaml
 #- resources/deployment.yaml
 # - resources/ingress.yaml
