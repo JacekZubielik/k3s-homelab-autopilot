@@ -4,8 +4,6 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
-- resources/cert.staging.yaml
-- resources/ingressroute.staging.yaml
 - resources/podmonitor.yaml
 - secrets/secret.yaml
 

@@ -29,6 +29,6 @@ helmCharts:
   valuesFile: values.yaml
 
 configMapGenerator:
-- name: authentik-config
+- name: authentik-time
   literals:
   - TZ=CET

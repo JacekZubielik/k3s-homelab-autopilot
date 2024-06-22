@@ -1,0 +1,58 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+        argocd.argoproj.io/sync-wave: "9"
+    name: esphome-staging
+    namespace: argocd
+spec:
+    issuerRef:
+        kind: ClusterIssuer
+        name: route53-letsencrypt-staging
+    commonName: ENC[AES256_GCM,data:VFiq5bJT+X5WWuodxjMvw1SrMLlWZvbEsWUHUGvk,iv:AhgE1vRp8Dl9EaaB7ZVsMOd8HwYoGcfiQRyfd27dl58=,tag:Yl8hf3zmdVyTNpphwoKyBQ==,type:str]
+    dnsNames:
+        - ENC[AES256_GCM,data:2fyXBJ0ZemWWMTxHtVWSzpah+b/3Tk1DC1pf5HJWqYbW,iv:Q9WkwxXTHAxgxbmi/fQVklJ4QLz8NBP53Zwae6eps84=,tag:eibyZqQcBPTmomziobn6nQ==,type:str]
+    secretName: esphome-cf-staging
+    duration: 2160h0m0s
+    renewBefore: 720h0m0s
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpVmRBcEt3RittTWRyQXlW
+            cUI0Z1NiTTM5Qy9CZk52T3lPekRiY1ZjZ2pNCmxCcURPTmRiSXU4UkpLTHp4MWpL
+            UDE4b0xIQmJTWW5hV1VZbHNnS0JKSVUKLS0tIHRRK042UDlYNUc4eUVka0FidlBy
+            clcxTkJtUFlLUWpBUjgvbTV2WTUxNWcKYnKtRsMIjmXa1kVlE7VL6dnvGMMWgQEx
+            XzXVn0Iwad+Fx7P5+paQep1XDMDAH3kMEUY4FqXvXc2YWfbESotxTQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-06-21T23:44:05Z"
+    mac: ENC[AES256_GCM,data:FsmadsZy9lxSz/jKWAbTy0foIuYXkPVDa/hfp07/O3zh0zBMCc4shF1QOsQwlZYRnXcABZEAU6BWqNM/BMMsywrtBsit98jABMSJ1pXugFuf5iqYveZpmzd9QBjyKGkGdFzZr+F/ruq8fXMD4qI3lmjO+9NHjSCCgifR47aInQo=,iv:tLTXnme2c+QSRAFdAdMrnlFKegq5jLWieBYjVyu0nC8=,tag:8nvrG7Ii/wvaV0PdMzVYQA==,type:str]
+    pgp:
+        - created_at: "2024-06-21T23:44:05Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVAQ/+LXLjdGRdc+qTjG0LxTEwSFygJCORsQhsh4Xskf5uzjOG
+            Gky0LtxPjAwV5QSCwnB5EOlD7PjbJJkTqqlyH/R8v13QNn3Cz8b85tSFZpm7JNtd
+            /f8T/khUdPgHzuo5xORaBdMP8SxxzfSpdWZyJjhHM+ZRw2w6mf8byS+JlaYHa3hU
+            IXFgT+aoD85q/1VV2nb5tGk7c2/Cl5bxSWgBl2upaJILI4NqDSgo3Ap0KjNB1kXS
+            /ICeAEGxQNuhb07/sxhwjB4u6CzwWc1pmsZdXH40P3HOWhp8MzuKzNYZVMfKjz1L
+            G1xOinvu00u5ORo1LOq7RtbYdjGmn/wrbT5WRiU5UY6ja0o0EOP7qTFva4CgptvA
+            fHy8b7Zt478Ub7g1TsKB6u7rRj72W84OX+/VoId7UZEysnXzY0xRdxfn3EBjhyqA
+            Dx0C+1Cwo0OVr/ionlQV7PXFvZtFt4DR+GF7XuBlIBdTG348808hcOYrN/VCCIeD
+            /jDb/hxl4kYixOELHPV99YwlF5VV87sGrj1+ExcZj2NgzcMOhMGJkcKMQypu0XRQ
+            I3tGln2VgIb3+SkGBJswfK5cTBBOMFeEnL0TG4wIaCQXHmPExm+/BuMGNuKBaPM7
+            m5rX72AGzT1k2hOjsnFDDLVAv0EJqhdaVSdpxzbgI7LOaZHgLTSwcXgGrfyrmlPS
+            XAEIFjC5XdfTlJjz1v+eL/5AMJvSETvu+2k7bkz0s7xu/UazcV84Clq2mOvuskIb
+            Fi/jFNB4F8ZpEAMtp15KuyVFRapYDomcqs40L8Edeif9dYtKXMNyThLmFV8X
+            =AJO5
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1
