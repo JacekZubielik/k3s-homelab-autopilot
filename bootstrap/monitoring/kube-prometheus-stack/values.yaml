@@ -2288,7 +2288,7 @@ prometheusOperator:
 
 
     deployment:
-      enabled: false
+      enabled: true
 
       ## Number of replicas
       ##
@@ -2296,8 +2296,8 @@ prometheusOperator:
 
       ## Strategy of the deployment
       ##
-      strategy: {}
-
+      strategy:
+        type: Recreate
       # Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
       podDisruptionBudget: {}
         # maxUnavailable: 1
