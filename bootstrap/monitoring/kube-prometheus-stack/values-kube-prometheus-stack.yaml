@@ -3663,8 +3663,8 @@ prometheus:
 
     ## Allow out-of-order/out-of-bounds samples ingested into Prometheus for a specified duration
     ## See https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tsdb
-    tsdb:
-      outOfOrderTimeWindow: 1m
+    # tsdb:
+    #   outOfOrderTimeWindow: 1m
 
     ## Enable compression of the write-ahead log using Snappy.
     ##
@@ -4485,7 +4485,7 @@ thanosRuler:
 
     ## Interval between consecutive evaluations.
     ##
-    evaluationInterval: ""
+    # evaluationInterval: ""
 
     ## Storage is the definition of how storage will be used by the ThanosRuler instances.
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
