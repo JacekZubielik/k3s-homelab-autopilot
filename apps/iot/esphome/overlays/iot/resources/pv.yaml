@@ -5,7 +5,7 @@ metadata:
   annotations:
     "helm.sh/hook-delete-policy": hook-succeeded
   name: config-esphome-pv-volume
-  namespace: iot-k3s
+  namespace: iot
   labels:
     type: local
 spec:
