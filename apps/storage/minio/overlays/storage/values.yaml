@@ -117,7 +117,7 @@ trustedCertsSecret: ""
 persistence:
   enabled: true
   configstorage:
-    hostPath: /mnt/volume-0/apps/minio
+    hostPath: /mnt/volume-0/PV/minio-pv-volume
 
   annotations: {}
   ## A manually managed Persistent Volume and Claim
