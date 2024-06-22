@@ -1,0 +1,36 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+# #- resources/statefulset.yaml
+# #- resources/service.yaml
+- secrets/sealed.secret.yaml
+#- resources/pvc.yaml
+#- resources/pv.yaml
+#- resources/minio-pv-sc.yaml
+#- resources/deployment.yaml
+# - resources/ingress.yaml
+
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  labels:
+    app.kubernetes.io/name: minio
+
+helmCharts:
+- name: minio
+  repo: https://jacekzubielik.github.io/helm-charts
+  version: 0.0.6
+  releaseName: minio
+  namespace: storage
+  includeCRDs: false
+  valuesFile: values.yaml
+  # insecure:
+  # upsert:
+
+# configMapGenerator:
+# - name: minio-time
+#   literals:
+#   - TZ=CET
+
