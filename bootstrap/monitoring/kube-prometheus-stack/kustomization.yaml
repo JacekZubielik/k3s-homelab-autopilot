@@ -24,8 +24,8 @@ helmCharts:
   includeCRDs: true
   valuesFile: values-kube-prometheus-stack.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 # generatorOptions:
 #   disableNameSuffixHash: true
