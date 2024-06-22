@@ -130,7 +130,7 @@ tolerations: []
 
 persistence:
   enabled: true
-  existingClaim: 'config-esphome-pvc-volume'
+  existingClaim: 'esphome-config-pvc-volume'
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 # hostMounts: []

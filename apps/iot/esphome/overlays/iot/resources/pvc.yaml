@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     "helm.sh/hook-delete-policy": hook-succeeded
-  name: config-esphome-pvc-volume
+  name: esphome-config-pvc-volume
   namespace: iot
 spec:
   accessModes:
