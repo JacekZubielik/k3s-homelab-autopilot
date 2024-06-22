@@ -264,7 +264,7 @@ config:
     settings:
       providers:
         longhorn:
-          url: http://longhorn-frontend.kubernetes.default.svc:9500
+          url: 192.168.40.181:8000
         openweathermap: openweathermapapikey
         weatherapi: weatherapiapikey
       title: AnotherHomePage
