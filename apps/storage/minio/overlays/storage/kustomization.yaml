@@ -6,7 +6,7 @@ resources:
 - ../../base
 # #- resources/statefulset.yaml
 # #- resources/service.yaml
-- secrets/sealed.secret.yaml
+# - secrets/sealed.secret.yaml
 #- resources/pvc.yaml
 #- resources/pv.yaml
 #- resources/minio-pv-sc.yaml
