@@ -33,8 +33,6 @@ helmCharts:
   namespace: storage
   includeCRDs: false
   valuesFile: values1.yaml
-  # insecure:
-  # upsert:
 
 configMapGenerator:
 - name: minio-time
