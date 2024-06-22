@@ -985,6 +985,44 @@ grafana:
     ##
     pspEnabled: false
 
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'default'
+        orgId: 1
+        folder: ''
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /var/lib/grafana/dashboards/default
+      - name: 'device'
+        orgId: 1
+        folder: 'Devices Metrics'
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /var/lib/grafana/dashboards/device
+      - name: 'grafana-dashboards-kubernetes'
+        orgId: 1
+        folder: 'Kubernetes'
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
+
+
+
+
+
+
+
+
+
+
   ingress:
     ## If true, Grafana Ingress will be created
     ##
