@@ -2242,7 +2242,7 @@ prometheusOperator:
 
 
     deployment:
-      enabled: false
+      enabled: true
 
       ## Number of replicas
       ##
