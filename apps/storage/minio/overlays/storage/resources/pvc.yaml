@@ -11,7 +11,7 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 16Gi
   storageClassName: host-path
   volumeMode: Filesystem
   volumeName: minio-pv-volume
