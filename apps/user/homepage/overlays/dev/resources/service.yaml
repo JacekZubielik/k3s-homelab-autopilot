@@ -9,13 +9,13 @@ metadata:
     app.kubernetes.io/name: homepage
   name: homepage
 spec:
+  type: LoadBalancer
   ports:
   - name: homepage
-    protocol: TCP
     port: 3000
+    protocol: TCP
     targetPort: 3000
   selector:
     app.kubernetes.io/instance: homepage
     app.kubernetes.io/name: homepage
     task: homepage
-  type: LoadBalancer

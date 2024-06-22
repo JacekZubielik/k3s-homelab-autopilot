@@ -1,22 +1,25 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
 resources:
 - ../../base
 - resources/deployment.yaml
 - resources/service.yaml
-# - resources/ingressroute.yaml
+
+generators:
+- ksops-generator.yaml
 
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-wave: "10"
+    argocd.argoproj.io/sync-wave: "9"
   labels:
     app.kubernetes.io/name: node-app
   name: node-app
 
 configMapGenerator:
-- name: node-app-config
+- name: node-app-time
   literals:
   - TZ=CET
