@@ -1047,7 +1047,7 @@ grafana:
       searchNamespace: ALL
 
       # Support for new table panels, when enabled grafana auto migrates the old table panels to newer table panels
-      enableNewTablePanelSyntax: false
+      enableNewTablePanelSyntax: true
 
       ## Annotations for Grafana dashboard configmaps
       ##
@@ -1058,7 +1058,7 @@ grafana:
         etcd:
           enabled: false
       provider:
-        allowUiUpdates: false
+        allowUiUpdates: true
     datasources:
       enabled: true
       defaultDatasourceEnabled: true
@@ -1101,7 +1101,7 @@ grafana:
         enabled: true
         name: Alertmanager
         uid: alertmanager
-        handleGrafanaManagedAlerts: false
+        handleGrafanaManagedAlerts: true
         implementation: prometheus
 
   extraConfigmapMounts: []
@@ -1160,13 +1160,13 @@ grafana:
     ## RelabelConfigs to apply to samples before scraping
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
     ##
-    relabelings: []
-    # - sourceLabels: [__meta_kubernetes_pod_node_name]
-    #   separator: ;
-    #   regex: ^(.*)$
-    #   targetLabel: nodename
-    #   replacement: $1
-    #   action: replace
+    relabelings:
+    - sourceLabels: [__meta_kubernetes_pod_node_name]
+      separator: ;
+      regex: ^(.*)$
+      targetLabel: nodename
+      replacement: $1
+      action: replace
 
 ## Flag to disable all the kubernetes component scrapers
 ##
@@ -1179,7 +1179,7 @@ kubeApiServer:
   enabled: true
   tlsConfig:
     serverName: kubernetes
-    insecureSkipVerify: false
+    insecureSkipVerify: true
   serviceMonitor:
     ## Scrape interval. If not set, the Prometheus default scrape interval is used.
     ##
@@ -1257,7 +1257,7 @@ kubelet:
     ## Attach metadata to discovered targets. Requires Prometheus v2.45 for endpoints created by the operator.
     ##
     attachMetadata:
-      node: false
+      node: true
 
     ## Scrape interval. If not set, the Prometheus default scrape interval is used.
     ##
@@ -1317,7 +1317,7 @@ kubelet:
     ## Enable scraping /metrics/resource from kubelet's service
     ## This is disabled by default because container metrics are already exposed by cAdvisor
     ##
-    resource: false
+    resource: true
     # From kubernetes 1.18, /metrics/resource/v1alpha1 renamed to /metrics/resource
     resourcePath: "/metrics/resource/v1alpha1"
 
@@ -1516,9 +1516,9 @@ kubeControllerManager:
     port: http-metrics
 
     jobLabel: jobLabel
-    selector: {}
-    #  matchLabels:
-    #    component: kube-controller-manager
+    selector:
+      matchLabels:
+        component: kube-controller-manager
 
     ## Enable scraping kube-controller-manager over https.
     ## Requires proper certs (not self-signed) and delegated authentication/authorization checks.
@@ -1569,8 +1569,8 @@ coreDns:
       enabled: false
       ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
-    # selector:
-    #   k8s-app: kube-dns
+    selector:
+      k8s-app: kube-dns
   serviceMonitor:
     enabled: true
     ## Scrape interval. If not set, the Prometheus default scrape interval is used.
@@ -1606,9 +1606,9 @@ coreDns:
     port: http-metrics
 
     jobLabel: jobLabel
-    selector: {}
-    #  matchLabels:
-    #    k8s-app: kube-dns
+    selector:
+      matchLabels:
+        k8s-app: kube-dns
 
     ## MetricRelabelConfigs to apply to samples after scraping, but before ingestion.
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
@@ -1858,8 +1858,8 @@ kubeScheduler:
       enabled: false
       ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
-    # selector:
-    #   component: kube-scheduler
+    selector:
+      component: kube-scheduler
 
   serviceMonitor:
     enabled: true
@@ -3444,7 +3444,7 @@ prometheus:
     image:
       registry: quay.io
       repository: prometheus/prometheus
-      tag: v2.53.0
+      tag: "" # v2.53.0
       sha: ""
 
     ## Tolerations for use with node taints
@@ -3659,7 +3659,7 @@ prometheus:
 
     ## Maximum size of metrics
     ##
-    retentionSize: ""
+    retentionSize: "10Gi"
 
     ## Allow out-of-order/out-of-bounds samples ingested into Prometheus for a specified duration
     ## See https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tsdb
@@ -3704,10 +3704,10 @@ prometheus:
     ## Standard object's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
     ## Metadata Labels and Annotations gets propagated to the prometheus pods.
     ##
-    podMetadata: {}
-    # labels:
-    #   app: prometheus
-    #   k8s-app: prometheus
+    podMetadata:
+    labels:
+      app: prometheus
+      k8s-app: prometheus
 
     ## Pod anti-affinity can prevent the scheduler from placing Prometheus replicas on the same node.
     ## The default value "soft" means that the scheduler should *prefer* to not schedule two replica pods onto the same node but no guarantee is provided.

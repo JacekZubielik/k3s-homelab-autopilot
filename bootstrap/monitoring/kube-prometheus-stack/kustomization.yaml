@@ -5,7 +5,6 @@ namespace: monitoring
 
 resources:
 - resources/podmonitor.yaml
-- secrets/secret.yaml
 
 metadata:
   annotations:
