@@ -1,7 +1,7 @@
 {
   "appName": "minio",
   "userGivenName": "minio",
-  "destNamespace": "storage",
+  "destNamespace": "minio",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/storage/minio/overlays/storage",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
