@@ -989,16 +989,6 @@ grafana:
         options:
           path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
 
-  dashboardsConfigMaps:
-    device: "device-dashboards"
-
-
-
-
-
-
-
-
   ingress:
     ## If true, Grafana Ingress will be created
     ##
