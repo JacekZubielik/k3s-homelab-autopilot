@@ -152,7 +152,7 @@ config:
               hideErrors: true
               widget:
                   type: prometheus
-                  url: http://kube-prometheus-stack-prometheus.kubernetes.default.svc:9098
+                  url: http://kube-prometheus-stack-prometheus.kubernetes.default.svc:9090
           - Grafana:
               icon: mdi-home-assistant
               href: https://grafana.monitoring.anotherlife.org.pl
@@ -254,10 +254,10 @@ config:
             memory: true
             showLabel: true
     - longhorn:
-      expanded: true
-      total: true
-      labels: true
-      nodes: true
+        expanded: true
+        total: true
+        labels: true
+        nodes: true
     kubernetes:
       # change mode to 'cluster' to use RBAC service account
       mode: cluster
