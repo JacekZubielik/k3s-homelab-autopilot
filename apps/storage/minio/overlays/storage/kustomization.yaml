@@ -13,12 +13,17 @@ resources:
 #- resources/deployment.yaml
 # - resources/ingress.yaml
 
+generators:
+- ksops-generator.yaml
+
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "9"
   labels:
     app.kubernetes.io/name: minio
+  name: minio
 
 helmCharts:
 - name: minio
@@ -31,8 +36,7 @@ helmCharts:
   # insecure:
   # upsert:
 
-# configMapGenerator:
-# - name: minio-time
-#   literals:
-#   - TZ=CET
-
+configMapGenerator:
+- name: minio-time
+  literals:
+  - TZ=CET
