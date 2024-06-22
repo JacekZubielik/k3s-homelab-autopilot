@@ -14,4 +14,4 @@ spec:
       storage: 5Gi
   storageClassName: host-path
   volumeMode: Filesystem
-  volumeName: config-esphome-pv-volume
+  volumeName: esphome-config-pv-volume
