@@ -38,7 +38,7 @@ spec:
     - Validate=false
     retry:
       backoff:
-        duration: 10s
+        duration: 360s
         factor: 2
         maxDuration: 8m0s
-      limit: 2
+      limit: 6
