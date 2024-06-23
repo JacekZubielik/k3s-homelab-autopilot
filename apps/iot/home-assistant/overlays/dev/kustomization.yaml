@@ -1,13 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: iot
-
 resources:
 - ../../base
-- resources/configmap.yaml
-
-generators:
-- ksops-generator.yaml
+- resources/service.yaml
+# - resources/ingressroute.yaml
+# - resources/pv-hass-data.yaml
+# - resources/pvc.yaml
+# - resources/servicemonitor.yaml
 
 metadata:
   annotations:
@@ -15,14 +14,15 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app.kubernetes.io/name: mosquitto
-  name: mosquitto
+    app.kubernetes.io/name: home-assistant
+  name: home-assistant
 
 helmCharts:
-- name: mosquitto
-  version: 0.0.1
+- name: home-assistant
   repo: https://jacekzubielik.github.io/jz-helm-charts
-  releaseName: mosquitto
+  version: 0.0.2
+  releaseName: home-assistant
   includeCRDs: false
-  namespace: iot
   valuesFile: values.yaml
+  namespace: iot
+
