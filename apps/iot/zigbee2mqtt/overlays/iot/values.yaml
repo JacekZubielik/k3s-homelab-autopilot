@@ -3,7 +3,7 @@ fullnameOverride: ""
 revisionHistoryLimit: 4
 hostNetwork: false
 
-#timezone: CET
+# timezone: CET
 
 replicas: 1
 updateStrategy:
@@ -23,10 +23,10 @@ podLabels: {}
 extraEnv: {}
 
 extraEnvSecrets:
-  # This will set ${MQTT_PASSWORD} to the 'password' key from the 'mqtt' secret
-  # MQTT_PASSWORD:
-  #   secret: mqtt
-  #   key: password
+# This will set ${MQTT_PASSWORD} to the 'password' key from the 'mqtt' secret
+# MQTT_PASSWORD:
+#   secret: mqtt
+#   key: password
 
 ## If you'd like to provide your own Kubernetes Secret object instead of passing your values
 ## individually, pass in the name of a created + populated Secret.
@@ -58,7 +58,7 @@ service:
   externalTrafficPolicy: {}
   loadBalancerSourceRanges: []
   publishNotReadyAddresses: false
-  httpPort:    "8080"
+  httpPort: "8080"
   metricsPort: "9100"
 
 monitoring:
@@ -70,24 +70,24 @@ monitoring:
       prometheus.io/port: 9100
     labels: {}
     honorLabels: true
-    interval:      60s
+    interval: 60s
     selector: {}
     scrapeTimeout: 10s
     scheme: http
     tlsConfig: {}
     relabelings:
-      - action: replace
-        regex: ^(.*)$
-        replacement: $1
-        separator: ;
-        sourceLabels:
-          - __meta_kubernetes_pod_node_name
-        targetLabel: nodename
+    - action: replace
+      regex: ^(.*)$
+      replacement: $1
+      separator: ;
+      sourceLabels:
+      - __meta_kubernetes_pod_node_name
+      targetLabel: nodename
     metricRelabelings:
-      - action: keep
-        regex: kube_(daemonset|deployment|pod|namespace|node|statefulset).+
-        sourceLabels:
-          - __name__
+    - action: keep
+      regex: kube_(daemonset|deployment|pod|namespace|node|statefulset).+
+      sourceLabels:
+      - __name__
     bearerTokenFile: {}
     # (use long lived access tokens)
     bearerTokenSecret: {}
@@ -98,18 +98,18 @@ monitoring:
 livenessProbe:
   enabled: true
   scheme: HTTP
-  periodSeconds:       60
-  timeoutSeconds:      10
-  successThreshold:    1
-  failureThreshold:    6
+  periodSeconds: 60
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 6
   initialDelaySeconds: 30
 readinessProbe:
   enabled: true
   scheme: HTTP
-  periodSeconds:       60
-  timeoutSeconds:      10
-  successThreshold:    1
-  failureThreshold:    6
+  periodSeconds: 60
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 6
   initialDelaySeconds: 30
 
 resources: {}
@@ -140,5 +140,5 @@ persistence:
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 hostMounts:
-  - name: sniffer
-    hostPath: /dev/ttyUSB0
+- name: sniffer
+  hostPath: /dev/ttyUSB0

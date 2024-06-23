@@ -1,15 +1,15 @@
 {
   "appName": "zigbee2mqtt",
   "userGivenName": "zigbee2mqtt",
-  "destNamespace": "iot-k3s",
+  "destNamespace": "iot",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "build/apps/zigbee2mqtt/overlays/iot-k3s",
-  "srcRepoURL": "https://github.com/jacekzubielik/homelab-argocd.git",
+  "srcPath": "apps/iot/zigbee2mqtt/overlays/iot",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
-  "syncWave": "4",
-  "appRole": "iot-k3s",
-  "labels": null,
-  "annotations": null,
+  "syncWave": "10",
+  "appRole": "iot",
+  "labels": "",
+  "annotations": "",
   "exclude": "",
   "include": ""
 }
