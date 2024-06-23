@@ -1,21 +1,11 @@
-## Provide a name in place of minio for `app:` labels
-##
 nameOverride: ""
-
-## Provide a name to substitute for the full names of resources
-##
 fullnameOverride: ""
-
-## set kubernetes cluster domain where minio is running
-##
 clusterDomain: cluster.local
 
-## Set default image, imageTag, and imagePullPolicy. mode is used to indicate the
-##
-# image:
-#   repository: quay.io/minio/minio
-#   tag: RELEASE.2024-04-18T19-09-19Z
-#   pullPolicy: IfNotPresent
+image:
+  repository: quay.io/minio/minio
+  tag: "" # RELEASE.2024-04-18T19-09-19Z
+  pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 # - name: "image-pull-secret"
