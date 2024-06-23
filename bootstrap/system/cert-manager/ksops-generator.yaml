@@ -6,6 +6,6 @@ type: Opaque
 files:
 - secrets/secret.sops.yaml
 # - resources/cert.staging.sops.yaml
-# - resources/letsencrypt.staging.sops.yaml
+- resources/letsencrypt.staging.sops.yaml
 # - resources/cert.production.sops.yaml
 # - resources/letsencrypt-production.sops.yaml
