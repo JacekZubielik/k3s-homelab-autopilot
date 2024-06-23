@@ -1,11 +1,11 @@
 nameOverride: ""
 fullnameOverride: ""
-# clusterDomain: cluster.local
+clusterDomain: cluster.local
 
-# image:
-#   repository: quay.io/minio/minio
-#   tag: RELEASE.2024-04-18T19-09-19Z
-#   pullPolicy: IfNotPresent
+image:
+  repository: quay.io/minio/minio
+  tag: RELEASE.2024-04-18T19-09-19Z
+  pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 # - name: "image-pull-secret"
@@ -13,10 +13,10 @@ imagePullSecrets: []
 ## Set default image, imageTag, and imagePullPolicy for the `mc` (the minio
 ## client used to create a default bucket).
 ##
-# mcImage:
-#   repository: quay.io/minio/mc
-#   tag: RELEASE.2024-04-18T16-45-29Z
-#   pullPolicy: IfNotPresent
+mcImage:
+  repository: quay.io/minio/mc
+  tag: RELEASE.2024-04-18T16-45-29Z
+  pullPolicy: IfNotPresent
 
 ## minio mode, i.e. standalone or distributed
 mode: standalone ## other supported values are "standalone"
@@ -110,7 +110,7 @@ bucketRoot: ""
 # Number of drives attached to a node
 drivesPerNode: 1
 # Number of MinIO containers running
-replicas: 16
+replicas: 1
 # Number of expanded MinIO clusters
 pools: 1
 
@@ -279,7 +279,7 @@ podLabels: {}
 ##
 resources:
   requests:
-    memory: 6Gi
+    memory: 3Gi
 
 ## List of policies to be created after minio install
 ##
