@@ -13,14 +13,14 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app.kubernetes.io/name: eclipse-mosquitto
-  name: eclipse-mosquitto
+    app.kubernetes.io/name: mosquitto
+  name: mosquitto
 
 helmCharts:
-- name: eclipse-mosquitto
+- name: mosquitto
   version: 0.0.1
   repo: https://jacekzubielik.github.io/jz-helm-charts
-  releaseName: eclipse-mosquitto
+  releaseName: mosquitto
   includeCRDs: false
   namespace: iot
   valuesFile: values.yaml

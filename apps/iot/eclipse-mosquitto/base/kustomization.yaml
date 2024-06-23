@@ -5,10 +5,10 @@ namespace: iot
 
 metadata:
   labels:
-    app.kubernetes.io/name: eclipse-mosquitto
-  name: eclipse-mosquitto
+    app.kubernetes.io/name: mosquitto
+  name: mosquitto
 
 configMapGenerator:
-- name: eclipse-mosquitto-timezone
+- name: mosquitto-timezone
   literals:
   - TZ=CET
