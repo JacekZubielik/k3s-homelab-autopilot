@@ -1,6 +1,11 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 
+
+resources:
+- github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
+# - resources/metrics.yaml
+
 # generators:
 # - ksops-generator.yaml
 
@@ -31,9 +36,6 @@ configMapGenerator:
   name: argocd-cmd-params-cm
 kind: Kustomization
 namespace: argocd
-resources:
-- github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
-- resources/metrics.yaml
 
 patches:
 - path: ./patches/rbac-cm.yaml
