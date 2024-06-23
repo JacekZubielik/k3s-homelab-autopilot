@@ -138,7 +138,7 @@ persistence:
   ## A manually managed Persistent Volume and Claim
   ## Requires persistence.enabled: true
   ## If defined, PVC must be created manually before volume will be bound
-  existingClaim: "minio-pv-volume"
+  # existingClaim: "minio-pv-volume"
 
   ## minio data Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
