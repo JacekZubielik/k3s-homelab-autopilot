@@ -1,6 +1,9 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "2"
   name: argocd-metrics
   labels:
     release: kube-prometheus-stack-prometheus
@@ -10,10 +13,14 @@ spec:
       app.kubernetes.io/name: argocd-metrics
   endpoints:
   - port: metrics
+
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "2"
   name: argocd-server-metrics
   labels:
     release: kube-prometheus-stack-prometheus
@@ -23,10 +30,14 @@ spec:
       app.kubernetes.io/name: argocd-server-metrics
   endpoints:
   - port: metrics
+
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "2"
   name: argocd-repo-server-metrics
   labels:
     release: kube-prometheus-stack-prometheus
@@ -36,10 +47,14 @@ spec:
       app.kubernetes.io/name: argocd-repo-server
   endpoints:
   - port: metrics
+
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "2"
   name: argocd-applicationset-controller-metrics
   labels:
     release: kube-prometheus-stack-prometheus
