@@ -1,11 +1,11 @@
 nameOverride: ""
 fullnameOverride: ""
-clusterDomain: cluster.local
+# clusterDomain: cluster.local
 
-image:
-  repository: quay.io/minio/minio
-  tag: "" # RELEASE.2024-04-18T19-09-19Z
-  pullPolicy: IfNotPresent
+# image:
+#   repository: quay.io/minio/minio
+#   tag: RELEASE.2024-04-18T19-09-19Z
+#   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 # - name: "image-pull-secret"
@@ -19,7 +19,7 @@ imagePullSecrets: []
 #   pullPolicy: IfNotPresent
 
 ## minio mode, i.e. standalone or distributed
-mode: distributed ## other supported values are "standalone"
+mode: standalone ## other supported values are "standalone"
 
 ## Additional labels to include with deployment or statefulset
 additionalLabels: {}
@@ -59,8 +59,8 @@ minioConsolePort: "9001"
 ## Update strategy for Deployments
 deploymentUpdate:
   type: RollingUpdate
-  maxUnavailable: 0
-  maxSurge: 100%
+  # maxUnavailable: 0
+  # maxSurge: 100%
 
 ## Update strategy for StatefulSets
 statefulSetUpdate:
@@ -524,7 +524,7 @@ networkPolicy:
   allowExternal: true
   # only when using flavor: cilium
   egressEntities:
-   - kube-apiserver
+    - kube-apiserver
 
 ## PodDisruptionBudget settings
 ## ref: https://kubernetes.io/docs/concepts/workloads/pods/disruptions/
