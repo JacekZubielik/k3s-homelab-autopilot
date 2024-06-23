@@ -5,7 +5,9 @@ namespace: iot
 resources:
 - ../../base
 - resources/configmap.yaml
-- secrets/sealed.secret.yaml
+
+generators:
+- ksops-generator.yaml
 
 metadata:
   annotations:
