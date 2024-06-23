@@ -4,7 +4,7 @@
   "destNamespace": "iot",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/iot/eclipse-mosquitto/overlays/iot",
-  "srcRepoURL": "https://github.com/jacekzubielik/homelab-argocd.git",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "10",
   "appRole": "iot",
