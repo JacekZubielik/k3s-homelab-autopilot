@@ -72,19 +72,18 @@ config:
               widget:
                 type: traefik
                 url: http://192.168.40.180:9000
-          # - Portainer:
-          #     icon: mdi-play-network-outline
-          #     href: https://port.anotherlife.org.pl
-          #     description: Portainer
-          #     server: portainer
-          #     container: portainer
-          #     showStats: false
-          #     hideErrors: true
-          #     widget:
-          #       type: portainer
-          #       url: http://192.168.0.13:9001
-          #       env: 1
-          #       key: ptr_My0/9fDm3NgSf1XvA8tMk1eKL+9jxrs7hry/ajflb9U=
+          - longhorn:
+              icon: mdi-play-network-outline
+              href: https://longhorn.system.anotherlife.org.pl/#/dashboard
+              description: longhorn
+              server: longhorn
+              container: longhorn-frontend
+              showStats: false
+              hideErrors: true
+              widget:
+                type: longhorn
+                url: http://192.168.40.181:9001
+                env: 1
           # - Pi-hole:
           #     icon: mdi-play-network-outline
           #     href: https://dns.anotherlife.org.pl
