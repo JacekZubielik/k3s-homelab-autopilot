@@ -1,0 +1,15 @@
+{
+  "appName": "eclipse-mosquitto",
+  "userGivenName": "eclipse-mosquitto",
+  "destNamespace": "iot",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/iot/eclipse-mosquitto/overlays/iot",
+  "srcRepoURL": "https://github.com/jacekzubielik/homelab-argocd.git",
+  "srcTargetRevision": "",
+  "syncWave": "10",
+  "appRole": "iot",
+  "labels": "",
+  "annotations": "",
+  "exclude": "",
+  "include": ""
+}
