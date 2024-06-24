@@ -52,9 +52,9 @@ service:
     prometheus.io/scrape: "true"
     prometheus.io/port: 9100
   labels: {}
-  type: ClusterIP
+  type: LoadBalancer
   externalIPs: []
-  loadBalancerIP: ""
+  loadBalancerIP: "192.168.40.190"
   externalTrafficPolicy: {}
   loadBalancerSourceRanges: []
   publishNotReadyAddresses: false
@@ -72,6 +72,7 @@ monitoring:
     honorLabels: true
     interval: 60s
     selector: {}
+    namespace: monitoring
     scrapeTimeout: 10s
     scheme: http
     tlsConfig: {}
@@ -81,13 +82,13 @@ monitoring:
       replacement: $1
       separator: ;
       sourceLabels:
-      - __meta_kubernetes_pod_node_name
+      - [__meta_kubernetes_pod_node_name]
       targetLabel: nodename
     metricRelabelings:
     - action: keep
-      regex: kube_(daemonset|deployment|pod|namespace|node|statefulset).+
+      regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
       sourceLabels:
-      - __name__
+      - [__name__]
     bearerTokenFile: {}
     # (use long lived access tokens)
     bearerTokenSecret: {}
@@ -111,6 +112,11 @@ readinessProbe:
   successThreshold: 1
   failureThreshold: 6
   initialDelaySeconds: 30
+startupProbe:
+  enabled: true
+  successThreshold: 1
+  failureThreshold: 6
+
 
 resources: {}
 #   requests:

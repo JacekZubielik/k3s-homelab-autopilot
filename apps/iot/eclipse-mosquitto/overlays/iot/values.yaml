@@ -1,12 +1,20 @@
 nameOverride: ""
 fullnameOverride: ""
 revisionHistoryLimit: 4
+hostNetwork: false
+
 replicas: 1
 strategyType:
   RollingUpdate
   # rollingUpdate:
   #   maxUnavailable: 0
   #   maxSurge: 2
+
+serviceAccount:
+  create: true
+  annotations: {}
+  labels: {}
+  automountServiceAccountToken: false
 
 imagePullSecrets: []
 
@@ -26,12 +34,6 @@ securityContext:
   runAsGroup: 999
   fsGroup: 999
 
-serviceAccount:
-  create: true
-  annotations: {}
-  labels: {}
-  automountServiceAccountToken: false
-
 service:
   annotations:
     prometheus.io/scrape: "true"
@@ -46,6 +48,7 @@ service:
   mqttPort: 1883
   mqttsPort: 8883
   metricsPort: 9100
+
 monitoring:
   enabled: true
   serviceMonitor:
@@ -57,6 +60,7 @@ monitoring:
     honorLabels: true
     interval: 60s
     selector: {}
+    namespace: monitoring
     scrapeTimeout: 10s
     scheme: http
     tlsConfig: {}
@@ -66,20 +70,20 @@ monitoring:
       replacement: $1
       separator: ;
       sourceLabels:
-      - __meta_kubernetes_pod_node_name
+      - [__meta_kubernetes_pod_node_name]
       targetLabel: nodename
     metricRelabelings:
     - action: keep
-      regex: kube_(daemonset|deployment|pod|namespace|node|statefulset).+
+      regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
       sourceLabels:
-      - __name__
+      - [__name__]
     bearerTokenFile: {}
     # (use long lived access tokens)
-    bearerTokenSecret:
-      {}
+    bearerTokenSecret: {}
       # name:
       # key:
       # optional:
+
 livenessProbe:
   enabled: false
   scheme: HTTP
@@ -96,6 +100,10 @@ readinessProbe:
   successThreshold: 1
   failureThreshold: 6
   initialDelaySeconds: 30
+startupProbe:
+  enabled: true
+  successThreshold: 1
+  failureThreshold: 6
 
 resources: {}
 #   requests:
@@ -104,10 +112,12 @@ resources: {}
 #   limits:
 #     cpu: "1"
 #     memory: "512Mi"
+
 nodeSelector:
   kubernetes.io/hostname: dev-k3s-master-0
 affinity: {}
 tolerations: []
+
 persistence:
   enabled: true
   storageClass: local-path

@@ -20,6 +20,6 @@ metadata:
   name: node-app
 
 configMapGenerator:
-- name: node-app-time
+- name: node-app-timezone
   literals:
   - TZ=CET

@@ -22,8 +22,8 @@ spec:
   nodeAffinity:
     required:
       nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - dev-k3s-master-0
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - dev-k3s-master-0

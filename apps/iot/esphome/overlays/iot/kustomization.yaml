@@ -22,15 +22,15 @@ metadata:
 
 helmCharts:
 - name: esphome
-  version: 0.0.10
   repo: https://jacekzubielik.github.io/jz-helm-charts
+  version: 0.0.10
   releaseName: esphome
   includeCRDs: false
   namespace: iot
   valuesFile: values.yaml
 
 configMapGenerator:
-- name: esphome-config
+- name: esphome-timezone
   literals:
   - TZ=CET
   - ESPHOME_DASHBOARD_USE_PING=true
