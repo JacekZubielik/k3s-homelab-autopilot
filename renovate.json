@@ -1,7 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base", ":dependencyDashboardApproval"
+    "config:recommended", 
+    ":dependencyDashboardApproval",
+    "helpers:pinGitHubActionDigests"]
   ],
   "packageRules": [
     {
@@ -11,6 +13,7 @@
     }
   ],
   "kubernetes": {
+    "enabled": true,
     "fileMatch": ["\\.yaml$"]
   },
   "argocd": {
