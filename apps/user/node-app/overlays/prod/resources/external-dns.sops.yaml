@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: homepage-extname
+    name: node-app-extname
     annotations:
         external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:DAMRmmKOEvfNjWDUxkwkPrxEeo7WUulrGyDwZt0Xuc4=,iv:rMEWCZy/tKLuo/oOBFE8nfYwnYNYmXyjnJTAzw/SxgQ=,tag:teJc2AQ9Pc/kLO5+AUkL2A==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
@@ -24,8 +24,8 @@ sops:
             ZlV0Qk5FZ3pmSVlEZVJvRUlMWkVvVkEK0XsH4yxcRoBnFgva4OG6OPC7B7P9UtNS
             hRlPI6SBV1Rryn5H7bW6mJpHLPFo3vWGm27t8v7ydOCwjETR0n/law==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-22T20:30:12Z"
-    mac: ENC[AES256_GCM,data:thfR22AO19nvrpIQZ06P30jOLzVuQPBYr8AprMk88E+ak6n2RSHa54tXRTyPt+8DnLkuKJ83W7gBYwMHZF9qcisHmqoYw/0mRGWp/MK5g6qVMPsrqwuRMUyIjoceXt9g8S0iucROmD5FbUzcdqraY0/bk5xyulBqZ+XrT+s7iI4=,iv:lHfLHD0MjjmxmHawuyLDd9AT734Uc6S5IEsKHh9ElZ4=,tag:LiyM8EPv3BjUW9OCeU4loA==,type:str]
+    lastmodified: "2024-06-24T09:35:04Z"
+    mac: ENC[AES256_GCM,data:xGU0wuA0zHYnwwBn3z+/N9QS+NRJ4ZuGcZnT7RoVPVFYRo0Q7L+vDIFdfeRt0IUYTScDQ+RixNkGkNGlI6f/utJc7GY33VsEj5Y48zbqnhQCcgHZ4YMVvfXBdctw0NADRYCQ0lXb2Z/9z0JruyTVESZxqlOo5/q/mztI4ZM3H+M=,iv:Or2cvGClPx8XKsFR03jiYAmbWD5MvDugWbEetFw5Cng=,tag:mB2QifBCOZzSIcWLImYsNQ==,type:str]
     pgp:
         - created_at: "2024-06-22T20:30:12Z"
           enc: |-

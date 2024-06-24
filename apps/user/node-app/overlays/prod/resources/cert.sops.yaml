@@ -4,7 +4,7 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
         argocd.argoproj.io/sync-wave: "9"
-    name: homepage-production
+    name: node-app-production
     namespace: argocd
 spec:
     issuerRef:
@@ -13,7 +13,7 @@ spec:
     commonName: ENC[AES256_GCM,data:N9clfNkkzi7Uu+lnycNBc0kIM0IIOki1HD7+PfPPMlA=,iv:GqkEvTVnkt0qbVdtZq3n1A04kNW2lIBlzox+vFf1+fA=,tag:dHHQ6jk2N3mJ4RcMVcRHMA==,type:str]
     dnsNames:
         - ENC[AES256_GCM,data:5++18P0YKV7cAjJzjVMEkDTTosM3i/5bpfyRyr6D+KE=,iv:R27IF+G8ewvYo7b6vJcWsSl8f6dz0ti+LQ4dexecVx4=,tag:t7Dj5fb9AKPjk50DmtM0JA==,type:str]
-    secretName: homepage-cf-production
+    secretName: node-app-cf-production
     duration: 2160h0m0s
     renewBefore: 720h0m0s
 sops:
@@ -31,8 +31,8 @@ sops:
             NDdMaS9UdVVNUE9VSGJrZDhBckoyeUEKyXMNXNDKNQwyXpIp/resZpic8HAT4j89
             +DaxTJcRZvgVIV5Z6RnQ6We5mqgffFLkprvB/AGxOzG7PD2ebELILg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-22T20:30:08Z"
-    mac: ENC[AES256_GCM,data:xWlRtCUNtTXa3AituBcGOfdFp7uokDWciTBWS0MT4F6Z/IK+5k5V4FvHwo+BwGqxvJ/YDifgMnNOhz7u7tmd0U0PTbe/okxeceYbU1i1weA/fKGdqJLRNYBpYqXVyLl9I73q8wIvICEf9VW67HUVKzu2im0KL9xHYNC8ktM9xaI=,iv:cc9IOaz50RI35Xqt0yNqKKX6D66gLSnsx0PajyiMsxg=,tag:jVc1P/F/75T0PfOC3eEkew==,type:str]
+    lastmodified: "2024-06-24T09:34:50Z"
+    mac: ENC[AES256_GCM,data:3NOd4tXtqOOes65ab/zMnU1Nf8dur1LBS3ZpjswhV144ZyMC7+ikkXfunDhcKH5Sn8cxnQB8IaJtxx8EoxNF8pqyvY9P8Es5yORRW732klrOrxthJE8TqHJ0G/8OZ9reI1nLlL+KtpjPsN+yOgTPPsBp4LKkorFYzAZxI8aCM9U=,iv:h4erHudb4eNqmYeLJGNmBGl0PN7GYnxZbUh8F+WyQbI=,tag:tXk22X6EFzDEJtj1MS/OnQ==,type:str]
     pgp:
         - created_at: "2024-06-22T20:30:08Z"
           enc: |-
