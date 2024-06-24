@@ -50,7 +50,7 @@ securityContext: {}
 
 service:
   annotations:
-    metallb.universe.tf/loadBalancerIPs: "192.168.40.188"
+    # metallb.universe.tf/loadBalancerIPs: "192.168.40.188"
     prometheus.io/scrape: "true"
     prometheus.io/port: 9100
   labels: {}
