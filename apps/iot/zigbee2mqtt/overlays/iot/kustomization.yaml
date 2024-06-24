@@ -3,12 +3,13 @@ kind: Kustomization
 
 resources:
 - ../../base
-# - resources/ingressroute.yaml
 # - resources/deployment.yaml
-# - resources/ingress.yaml
 # - resources/pv.yaml
 # - resources/pvc.yaml
 # - resources/service.yaml
+
+generators:
+- ksops-generator.yaml
 
 metadata:
   annotations:
@@ -23,7 +24,7 @@ helmCharts:
 - name: zigbee2mqtt
   repo: https://jacekzubielik.github.io/jz-helm-charts
   version: 0.0.2
-  releaseName: zigbee2mqtt
   includeCRDs: false
   namespace: iot
+  releaseName: zigbee2mqtt
   valuesFile: values.yaml
