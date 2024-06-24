@@ -6,34 +6,34 @@ metadata:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
         argocd.argoproj.io/sync-wave: "10"
         cert-manager.io/cluster-issuer: route53-letsencrypt-staging
-        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:W+0MKgEz8Nblp7SzxS3wWeosb/qi1A==,iv:mJvnbC995n+YnbiuqjE+9sbWoN1QIfatF0GM60Ob3HE=,tag:8RPBHubA0+kvfD6kENkCbQ==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:YrczHkAQFM8au0aGzS/p2+ZVHBuUkUW/zw8jIv8=,iv:57djkSvQ4/d6lqhV5LMZQQ84PkhdPV2WH8llQqxRVik=,tag:usyxfvgoD7b2gpn3Tyx30w==,type:str]
         kubernetes.io/ingress.class: traefik-external
     labels:
-        app.kubernetes.io/name: esphome
-    name: esphome
-    namespace: iot
+        app.kubernetes.io/name: uptime-kuma
+    name: uptime-kuma
+    namespace: monitoring
 spec:
     entryPoints:
         - websecure
     routes:
         - kind: Rule
-          match: ENC[AES256_GCM,data:Cusx9GOrW9yT6Y/ee1b1joV3z8i41yFIv521/3a82X4dm9jdEKE=,iv:WSOXgUEoGtgOkVR+Gy3MIsnjd0DRw9u7LmKe1jbMvWo=,tag:b4OGVMAlaP4Es96C6l0RiQ==,type:str]
+          match: ENC[AES256_GCM,data:2UuLaoqrF/EpCNkUxFBHCQ9zFShHEv+x+1JisIV+fgVJrLhUNUREDxS8XBw=,iv:vIjXvlcpxfAaiDVkpRHCLmxnxPk7WWJzNmFZhjf2PeQ=,tag:Y4oY+s8cjT3a7ilgfSEwoA==,type:str]
           middlewares:
             - name: chain-traefik-dashboard
               namespace: traefik
           services:
             - kind: TraefikService
-              name: esphome
-              port: 6052
+              name: uptime-kuma
+              port: 3001
     tls:
         domains:
-            - main: ENC[AES256_GCM,data:rQtxabJWeLW4AlLSamsyVcti+TfLvQ==,iv:TAvnlgRa0kO7249IrVlpYEwPboeB4PA96TvNx3HW6K4=,tag:my+uEpSZ0mCAqG6fHGuKNw==,type:str]
+            - main: ENC[AES256_GCM,data:iFcJm2HrTHj40PdzgIbQ9N5Pzth6gNZDCc9maEY=,iv:7wZ1lQBAGrOJEcOE0ubB1dV+iNTJQ7J49rDtdhZZjyQ=,tag:XcI1zt4yaHIEqcKGukh4oQ==,type:str]
               sans:
-                - ENC[AES256_GCM,data:AcGgM7XKIsysQx7rHIeHHHxibIHnI30=,iv:+gfKXYoF/un+dhc5uR+QCOxtLnukwC/s+VAEoUaf+Fc=,tag:5BIgRhQCuzClXUXzV8JnyA==,type:str]
+                - ENC[AES256_GCM,data:TV7f+eH5KRGY9VcuxiCVHOIEuGT+wG0OZvxiTqJa,iv:0QWAOY93oh/xU/b7gRTNNdDAE0wf9QFGl+k9ml4Koe0=,tag:aNAjuhKKxUPBu9QsQKtbFw==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
-        secretName: esphome-cf-staging
+        secretName: uptime-kuma-cf-staging
 sops:
     kms: []
     gcp_kms: []
@@ -49,8 +49,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-24T12:49:08Z"
-    mac: ENC[AES256_GCM,data:oC+kPsqqzhyhS2CHSDLJqXXsZLOj0yH79OBoy0A7iCDJ7YXdbXWbqFaWYg8YSftFP26fpLIbu+VNMBlpn9yPu0EnPTyMuN/Wjw/vCPBCMNqBbH3N+KBnq1rvKnFEIJxAfE0aSg5pOU6Aos/U3Krh1r7qpeRkqwXTBYUG1/c0FTc=,iv:irOhVLNAoeJO8dGT5hbhpjoMyeAyGqKwUxtWjiENurI=,tag:5u3lOMAW/mX0sqyXvTZ9ow==,type:str]
+    lastmodified: "2024-06-24T12:46:40Z"
+    mac: ENC[AES256_GCM,data:+myKgeIEC8fjFrDqrejFxqMCPmvmdiOj7QAtVhj4x7QTy9rPwyfEYhJJQce/N3FwVttjmiBh/NUCcFBaFt9VoPgUgVqUYM6Ec0G60P7qGV3bceGU1jqJU4lAxD/Lqj7pIXPNr3fUmQDcyn1T6GCrgcge4B2XxGMkU77iqzj0Ug4=,iv:X9t/BfzPODtj2wure1gFTGbuwdao/VPNLKalxj1HaAw=,tag:/8qfOOo9ftuyQeQKgRm2dw==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-
@@ -82,13 +82,13 @@ metadata:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
         argocd.argoproj.io/sync-wave: "10"
     labels:
-        app.kubernetes.io/name: esphome
-    name: esphome
+        app.kubernetes.io/name: uptime-kuma
+    name: uptime-kuma
 spec:
     weighted:
         services:
-            - name: esphome
-              port: 6052
+            - name: uptime-kuma
+              port: 3001
               weight: 1
 sops:
     kms: []
@@ -105,8 +105,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-24T12:49:08Z"
-    mac: ENC[AES256_GCM,data:oC+kPsqqzhyhS2CHSDLJqXXsZLOj0yH79OBoy0A7iCDJ7YXdbXWbqFaWYg8YSftFP26fpLIbu+VNMBlpn9yPu0EnPTyMuN/Wjw/vCPBCMNqBbH3N+KBnq1rvKnFEIJxAfE0aSg5pOU6Aos/U3Krh1r7qpeRkqwXTBYUG1/c0FTc=,iv:irOhVLNAoeJO8dGT5hbhpjoMyeAyGqKwUxtWjiENurI=,tag:5u3lOMAW/mX0sqyXvTZ9ow==,type:str]
+    lastmodified: "2024-06-24T12:46:40Z"
+    mac: ENC[AES256_GCM,data:+myKgeIEC8fjFrDqrejFxqMCPmvmdiOj7QAtVhj4x7QTy9rPwyfEYhJJQce/N3FwVttjmiBh/NUCcFBaFt9VoPgUgVqUYM6Ec0G60P7qGV3bceGU1jqJU4lAxD/Lqj7pIXPNr3fUmQDcyn1T6GCrgcge4B2XxGMkU77iqzj0Ug4=,iv:X9t/BfzPODtj2wure1gFTGbuwdao/VPNLKalxj1HaAw=,tag:/8qfOOo9ftuyQeQKgRm2dw==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-
