@@ -34,8 +34,8 @@ spec:
           envFrom:
             - configMapRef:
               name: homepage-timezone
-            - secretRef: 
-              name: homepage-secret
+            # - secretRef: 
+            #   name: homepage-secret
           ports:
           - containerPort: 3000
             name: http
