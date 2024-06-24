@@ -129,7 +129,7 @@ affinity: {}
 tolerations: []
 
 persistence:
-  enabled: false
+  enabled: true
   configstorage:
     hostPath: /mnt/volume-0/apps/home-assistant
   pvc:
