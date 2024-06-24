@@ -1,0 +1,275 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage
+  namespace: dev
+  labels:
+    app: homepage
+data:
+  kubernetes.yaml: |
+    mode: cluster
+
+  settings.yaml: |
+    title: AnotherHomePage
+    iconStyle: theme
+    headerStyle: boxed
+    language: pl
+    quicklaunch:
+      searchDescriptions: true
+      hideInternetSearch: true
+      hideVisitURL: true
+    providers:
+      openweathermap: openweathermapapikey
+      weatherapi: weatherapiapikey
+      longhorn:
+        url: 192.168.40.181:8000
+
+    # background:
+    #   image: https://cdnb.artstation.com/p/assets/images/images/006/897/659/large/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg
+    #   blur: sm # sm, md, xl... see https://tailwindcss.com/docs/backdrop-blur
+    #   saturate: 100 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
+    #   brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
+    #   opacity: 100 # 0-100
+
+    theme: dark
+    color: slate
+
+    useEqualHeights: true
+
+    layout:
+      Metrics:
+        header: true
+        style: row
+        columns: 4
+      Network:
+        header: true
+        style: row
+        columns: 4
+      Storage:
+        header: true
+        style: row
+        columns: 4
+      Media:
+        header: true
+        style: row
+        columns: 4
+      Home Automation:
+        header: true
+        style: row
+        columns: 4
+      Other:
+        header: true
+        style: row
+        columns: 4
+
+  custom.css: ""
+  custom.js: ""
+
+  bookmarks.yaml: |
+    - Developer:
+        - Github:
+            - abbr: GH
+              href: https://github.com/JacekZubielik?tab=repositories/
+              icon: mdi mdi-git
+        - mxToolbox:
+            - abbr: MX
+              href: https://mxtoolbox.com/
+        - ITTools:
+            - abbr: IT
+              href: https://tools.anotherlife.org.pl/
+        - Security Headers:
+            - abbr: SH
+              href: https://securityheaders.com/
+        - Social:
+            - X.com:
+                - abbr: X
+                  href: https://x.com/
+        - Entertainment:
+            - YouTube:
+                - abbr: YT
+                  href: https://youtube.com/
+
+  services.yaml: |
+    - Metrics:
+        - Alertmanager:
+            icon: pi-hole.svg
+            href: "{{HOMEPAGE_VAR_PIHOLE_URL_1}}"
+            description: quasar
+            widget:
+                type: pihole
+                url: "{{HOMEPAGE_VAR_PIHOLE_URL_1}}"
+                key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY_1}}"
+        - Prometheus:
+            icon: pi-hole.svg
+            href: "{{HOMEPAGE_VAR_PIHOLE_URL_2}}"
+            description: blazar
+            widget:
+                type: pihole
+                url: "{{HOMEPAGE_VAR_PIHOLE_URL_2}}"
+                key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY_2}}"
+        - Grafana:
+            icon: pi-hole.svg
+            href: "{{HOMEPAGE_VAR_PIHOLE_URL_3}}"
+            description: electron
+            widget:
+              type: pihole
+              url: "{{HOMEPAGE_VAR_PIHOLE_URL_3}}"
+              key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY_3}}"
+        - Uptime Kuma:
+            icon: uptime-kuma.svg
+            href: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
+            description: internal
+            widget:
+                type: uptimekuma
+                url: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
+                slug: home
+
+    - Network:
+        - Treafik:
+            icon: mdi-play-network-outline
+            href: https://traefik.system.anotherlife.org.pl/dashboard/#/
+            description: Reverse Proxy
+            server: traefik
+            container: traefik
+            showStats: false
+            hideErrors: true
+            widget:
+              type: traefik
+              url: http://192.168.40.180:9000
+
+        - Proxmox:
+            icon: proxmox.svg
+            href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+            description: pve1
+            widget:
+                type: proxmox
+                url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+                username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
+                password: "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
+                node: xing-01
+
+    - Storage:
+        - SyncThing:
+            icon: truenas.svg
+            href: "{{HOMEPAGE_VAR_SYNCTHING_URL}}"
+            description: scale
+            widget:
+                type: truenas
+                url: "{{HOMEPAGE_VAR_TRUENAS_URL}}"
+                key: "{{HOMEPAGE_VAR_TRUENAS_API_KEY}}"
+
+        - MinIO:
+            icon: minio.svg
+            href: "{{HOMEPAGE_VAR_MINIO_URL}}"
+            description: object storage
+
+        - Longhorn:
+            icon: longhorn.svg
+            href: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
+            description: k8s storage
+
+    - Media:
+        - Plex:
+            icon: plex.svg
+            href: "{{HOMEPAGE_VAR_PLEX_URL}}"
+            description: media server
+            widget:
+                type: plex
+                url: "{{HOMEPAGE_VAR_PLEX_URL}}"
+                key: "{{HOMEPAGE_VAR_PLEX_API_TOKEN}}"
+        - LMS:
+            icon: tautulli.svg
+            href: "{{HOMEPAGE_VAR_LMS_URL}}"
+            description: Logitech Media Server
+            widget:
+                url: "{{HOMEPAGE_VAR_LMS_URL}}"
+        - YouTubeDL:
+            icon: mdi-youtube
+            href: "{{HOMEPAGE_VAR_HDHOMERUN_URL}}"
+            description: YouTubeDL
+
+    - Home Automation:
+        - Home Assistant:
+            icon: home-assistant.svg
+            href: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
+            description: Home Assistant
+            widget:
+              type: homeassistant
+              url: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
+              key: "{{HOMEPAGE_VAR_HOME_ASSISTANT_API_KEY}}"
+        - zigbee2mqtt:
+            icon: mdi-zigbee
+            href: "{{HOMEPAGE_VAR_UNIFI_PROTECT_URL}}"
+            description: zigbee2mqtt
+        - espHome:
+            icon: mdi-home-assistant
+            href: "{{HOMEPAGE_VAR_SCRYPTED_URL}}"
+            description: esphome
+        - MqttExplorer:
+            icon: mdi-play-network-outline
+            href: "{{HOMEPAGE_VAR_BROADLINK_CONTROL_URL}}"
+            description: Mqtt Explorer
+
+    - Other:
+        - GitLab:
+            icon: gitlab.svg
+            href: https://gitlab.com
+            description: source code
+        - GitHub:
+            icon: github.svg
+            href: https://github.com
+            description: source code
+        - Shlink:
+            icon: https://shlink.io/images/shlink-logo-blue.svg
+            href: "{{HOMEPAGE_VAR_SHLINK_URL}}"
+            description: dashboard
+
+  widgets.yaml: |
+    - resources:
+        cpu: true
+        memory: true
+        disk: /
+        backend: resources
+        expanded: true
+
+    - datetime:
+        text_size: xl
+        locale: pl
+        format:
+          timeStyle: short
+          dateStyle: long
+
+    - openmeteo:
+        label: Gdańsk
+        latitude: 54.345112
+        longitude: 18.600742
+        timezone: CET
+        units: metric
+        # Time in minutes to cache API responses, to stay within limits
+        cache: 5
+
+    - search:
+        provider: duckduckgo
+        focus: true
+        target: _blank
+
+    - kubernetes:
+        cluster:
+            show: true
+            cpu: true
+            memory: true
+            showLabel: true
+            label: cluster
+        nodes:
+            show: true
+            cpu: true
+            memory: true
+            showLabel: true
+
+    - longhorn:
+        expanded: true
+        total: true
+        labels: true
+        nodes: true
+
+  docker.yaml: ""
