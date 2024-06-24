@@ -29,6 +29,12 @@ spec:
       - name: node-app
         image: ghcr.io/jacekzubielik/node-app:2.2.0
         imagePullPolicy: IfNotPresent
+        env:
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: node-app-timezone
+              key: TZ
         ports:
         - containerPort: 3000
         readinessProbe:
