@@ -5,6 +5,9 @@ namespace: media
 resources:
 - ../../base
 
+generators:
+- ksops-generator.yaml
+
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
@@ -18,9 +21,9 @@ helmCharts:
 - name: lms
   repo: https://jacekzubielik.github.io/jz-helm-charts
   version: 0.0.2
-  releaseName: lms
   includeCRDs: false
   namespace: media
+  releaseName: lms
   valuesFile: values.yaml
 
 configMapGenerator:
