@@ -31,11 +31,9 @@ spec:
             requests:
               memory: 128Mi
               cpu: 200m
-          envFrom:
-            - configMapRef:
-              name: homepage-timezone
-            # - secretRef: 
-            #   name: homepage-secret
+          valueFrom:
+            - secretRef:
+              name: homepage-secret
           ports:
           - containerPort: 3000
             name: http
