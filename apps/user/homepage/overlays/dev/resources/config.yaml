@@ -117,7 +117,7 @@ data:
                 slug: home
     - Network:
         - Treafik:
-            icon: traefikproxy-color.svg
+            icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/traefik.svg
             href: https://traefik.system.anotherlife.org.pl/dashboard/#/
             description: Reverse Proxy
             server: traefik
