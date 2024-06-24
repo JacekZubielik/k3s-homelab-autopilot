@@ -33,8 +33,8 @@ spec:
             memory: 128Mi
             cpu: 200m
         envFrom:
-        - secretRef:
-          name: homepage-secret
+          - secretRef:
+            name: homepage-secret
         ports:
         - containerPort: 3000
           name: http
