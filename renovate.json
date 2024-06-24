@@ -3,7 +3,7 @@
   "extends": [
     "config:recommended", 
     ":dependencyDashboardApproval",
-    "helpers:pinGitHubActionDigests"]
+    "helpers:pinGitHubActionDigests"
   ],
   "packageRules": [
     {
