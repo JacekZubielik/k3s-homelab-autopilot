@@ -117,7 +117,7 @@ data:
                 slug: home
     - Network:
         - Treafik:
-            icon: mdi-play-network-outline
+            icon: traefikproxy-color.svg
             href: https://traefik.system.anotherlife.org.pl/dashboard/#/
             description: Reverse Proxy
             server: traefik

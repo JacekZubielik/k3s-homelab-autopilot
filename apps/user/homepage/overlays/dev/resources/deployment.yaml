@@ -22,19 +22,18 @@ spec:
     metadata:
       labels:
         app: homepage
-      # annotations:
-      #   deploy-date: "deploy-date-value"
     spec:
       containers:
         - name: homepage
-          image: ghcr.io/gethomepage/homepage:v0.8.4
-          # envFrom:
-          # - secretRef:
-          #   name: homepage-secret
+          image: ghcr.io/gethomepage/homepage
+          tag: "v0.8.4"
           resources:
             requests:
               memory: 128Mi
               cpu: 200m
+          envFrom:
+            - secretRef:
+              name: homepage-secret
           ports:
           - containerPort: 3000
             name: http
