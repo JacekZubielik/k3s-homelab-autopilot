@@ -3,7 +3,7 @@
   "userGivenName": "lms",
   "destNamespace": "media",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/user/lms/overlays/media",
+  "srcPath": "apps/user/lms/overlays/dev",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "5",
