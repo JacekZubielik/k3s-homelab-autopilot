@@ -12,7 +12,7 @@ spec:
       app: homepage
   replicas: 1
   progressDeadlineSeconds: 600
-  revisionHistoryLimit: 1
+  revisionHistoryLimit: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:

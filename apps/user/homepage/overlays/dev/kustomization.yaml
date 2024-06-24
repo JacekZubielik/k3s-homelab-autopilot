@@ -21,15 +21,6 @@ metadata:
     app.kubernetes.io/name: homepage
   name: homepage
 
-# helmCharts:
-# - name: homepage
-#   version: 1.2.3
-#   repo: https://jameswynn.github.io/helm-charts
-#   releaseName: homepage
-#   namespace: dev
-#   includeCRDs: false
-#   valuesFile: values.yaml
-
 configMapGenerator:
 - name: homepage-timezone
   literals:

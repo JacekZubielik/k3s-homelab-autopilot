@@ -271,5 +271,4 @@ data:
         total: true
         labels: true
         nodes: true
-
   docker.yaml: ""
