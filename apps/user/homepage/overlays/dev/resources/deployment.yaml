@@ -10,7 +10,7 @@ spec:
   selector:
     matchLabels:
       app: homepage
-  replicas: 2
+  replicas: 1
   progressDeadlineSeconds: 600
   revisionHistoryLimit: 2
   strategy:
