@@ -16,6 +16,4 @@ spec:
     protocol: TCP
     targetPort: 3000
   selector:
-    app.kubernetes.io/instance: node-app
     app: node-app
-    task: node-app
