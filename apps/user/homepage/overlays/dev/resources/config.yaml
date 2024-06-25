@@ -22,8 +22,8 @@ data:
       weatherapi: weatherapiapikey
       longhorn:
         url: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
-        username: "{{HOMEPAGE_VAR_LONGHORN_USERNAME}}"
-        password: "{{HOMEPAGE_VAR_LONGHORN_PASSWORD}}"
+        # username: "{{HOMEPAGE_VAR_LONGHORN_USERNAME}}"
+        # password: "{{HOMEPAGE_VAR_LONGHORN_PASSWORD}}"
     # background:
     #   image: https://cdnb.artstation.com/p/assets/images/images/006/897/659/large/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg
     #   blur: sm # sm, md, xl... see https://tailwindcss.com/docs/backdrop-blur
@@ -137,6 +137,8 @@ data:
             icon: syncthing.svg
             href: "{{HOMEPAGE_VAR_SYNCTHING_URL}}"
             description: Syncthing Relay Server
+            app: syncthing
+            namespace: storage
             widget:
               type: strelaysrv
               url: "{{HOMEPAGE_VAR_SYNCTHING_URL_SRS}}"
@@ -184,6 +186,9 @@ data:
             icon: esphome.svg
             href: "{{HOMEPAGE_VAR_ESPHOME_URL}}"
             description: esphome
+            widget:
+              type: esphome
+              url: "{{HOMEPAGE_VAR_ESPHOME_URL}}"
         - MqttExplorer:
             icon: mqtt.svg
             href: "{{HOMEPAGE_VAR_MQTTEXPLORER_URL}}"
