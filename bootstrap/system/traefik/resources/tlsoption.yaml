@@ -3,7 +3,7 @@ apiVersion: traefik.io/v1alpha1
 kind: TLSOption
 metadata:
   labels:
-    app: treafik
+    app.kubernetes.io/name: treafik
   name: tls-ver13
 spec:
   minVersion: VersionTLS13
@@ -29,7 +29,7 @@ apiVersion: traefik.io/v1alpha1
 kind: TLSOption
 metadata:
   labels:
-    app: treafik
+    app.kubernetes.io/name: treafik
   name: tls-ver12
 spec:
   minVersion: VersionTLS12

@@ -24,7 +24,7 @@ kind: Middleware
 metadata:
   name: traefik-dashboard-auth
   labels:
-    app: traefik
+    app.kubernetes.io/name: traefik
 spec:
   basicAuth:
     secret: traefik-dashboard-auth
@@ -36,7 +36,7 @@ kind: Middleware
 metadata:
   name: headers
   labels:
-    app: traefik
+    app.kubernetes.io/name: traefik
 spec:
   headers:
     browserXssFilter: true
@@ -55,7 +55,7 @@ kind: Middleware
 metadata:
   name: rate-limit
   labels:
-    app: traefik
+    app.kubernetes.io/name: traefik
 spec:
   rateLimit:
     average: 100
@@ -78,7 +78,7 @@ kind: Middleware
 metadata:
   name: whitelist
   labels:
-    app: traefik
+    app.kubernetes.io/name: traefik
 spec:
   ipWhiteList:
     sourceRange:
@@ -105,7 +105,7 @@ kind: Middleware
 metadata:
   name: home-whitelist
   labels:
-    app: traefik
+    app.kubernetes.io/name: traefik
 spec:
   ipWhiteList:
     sourceRange:
@@ -120,7 +120,7 @@ kind: Middleware
 metadata:
   name: security
   labels:
-    app: traefik
+    app.kubernetes.io/name: traefik
 spec:
   headers:
     frameDeny: true   # the page can not be loaded in an iframe, Set frameDeny to true to add the X-Frame-Options header with the value of DENY.

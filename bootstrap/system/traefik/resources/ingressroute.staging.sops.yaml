@@ -16,7 +16,7 @@ metadata:
         gethomepage.dev/widget.type: traefik
         gethomepage.dev/widget.url: https://traefik.system.anotherlife.org.pl
     labels:
-        app: traefik
+        app.kubernetes.io/name: traefik
     name: dashboard
     namespace: traefik
 spec:
@@ -55,8 +55,8 @@ sops:
             R1ZMK3JNdTVZS2w4eDhNYmVxK0NEcHMK5SGWW2f7V92NEm2aODzBumJ8KdO8kPkA
             OR9z4d12YQnMGLmHQ3g69OosdtV45hGRyERcuyRRAgTp3dpSmwTJJQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-25T21:16:34Z"
-    mac: ENC[AES256_GCM,data:sKpTEHeQZ1MwFL0rXp9uxsEmNovTOekr+1ILw4J6AuG9C8hc05ocLRgddKjxoJzmjC7LRGA2g5OD1EIZ0l1SWqc6Xca8R0fzFBRRQJuvbnYrxdjOxXp1VYlnKvaNTH8DMLwR7rwT74YG13XnX1i70XM7cdahUGx/OD6ghDe26JY=,iv:ldeYyLVLX1guwVm/APfEcRDf2V6o+ldYJ/sZYKBwMWg=,tag:zAggu9FWMO3T9d48MMNBvQ==,type:str]
+    lastmodified: "2024-06-25T23:32:41Z"
+    mac: ENC[AES256_GCM,data:N+ci6YyT9zrOfcdWxWynGtvcoAvQX537j5LbyNxE1CTxEwHoIbZHmJvZVXwObGLjEiZ5J3bSdVezwlTHGHvZJNS+WUZlqTPrx5YiepPxVgDjQ2SREm3nKwTYhEjrgW4Y+wwn792hC6vlaftcVjZ8Rceg6hot579+y4UfSqvAmrA=,iv:e7SsexFpj88HjaNviVYoJ0q2ezjz5ZpX7P5FoROCdUU=,tag:L+eWEZNtsdjtA3f8DwnuKw==,type:str]
     pgp:
         - created_at: "2024-06-21T22:54:02Z"
           enc: |-
