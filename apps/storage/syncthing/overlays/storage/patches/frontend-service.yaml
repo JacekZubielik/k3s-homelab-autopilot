@@ -13,7 +13,6 @@ spec:
   - port: 21027
     protocol: TCP
     targetPort: 21027
-    name: discovery
   type: LoadBalancer
   selector:
     app: syncthing-discovery
