@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
   labels:
-    app.kubernetes.io/name: zigbee2mqtt
+    app: zigbee2mqtt
 
 configMapGenerator:
 - name: zigbee2mqtt-timezone

@@ -6,7 +6,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app.kubernetes.io/name: home-assistant
+    app: home-assistant
 spec:
   externalName: 192.168.40.191
   ports:
@@ -19,4 +19,4 @@ spec:
   #   app.kubernetes.io/instance: home-assistant
   selector:
     app.kubernetes.io/instance: traefik
-    app.kubernetes.io/name: traefik
+    app: traefik

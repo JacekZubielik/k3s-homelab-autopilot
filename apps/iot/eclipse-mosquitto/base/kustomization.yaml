@@ -5,7 +5,7 @@ namespace: iot
 
 metadata:
   labels:
-    app.kubernetes.io/name: mosquitto
+    app: mosquitto
   name: mosquitto
 
 configMapGenerator:

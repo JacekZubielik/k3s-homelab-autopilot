@@ -4,7 +4,7 @@ metadata:
   name: mosquitto
 ###############################################    password_file /mosquitto/password_file
   labels:
-    app.kubernetes.io/name: mosquitto
+    app: mosquitto
 data:
   mosquitto.conf: |-
     allow_anonymous true
