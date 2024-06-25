@@ -9,7 +9,7 @@ metadata:
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:T/Kj9lhEVENjuwzsTRV817WfOvQMqqrmzdY=,iv:KdfrxXTjSI4EicRkFs+jJ0CA47xFRjlFWrsOZgYGxyE=,tag:FHYh16N4cHBpqYEhxlvQYw==,type:str]
         kubernetes.io/ingress.class: traefik-external
     labels:
-        app.kubernetes.io/name: syncthing-web
+        app: syncthing-web
     name: syncthing
     namespace: storage
 spec:
@@ -49,8 +49,8 @@ sops:
             M1g3a2xHemh4MW1yRXBGQ1hvVkl2TnMKgo/sQGoKeW2XInlGmVF38eMEWdtTE7Oz
             UZndue4hBMfKREpxApA4iI93Rt/FpvbauNOQ0N2/R2cgvpJjPf6oHw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-21T23:56:27Z"
-    mac: ENC[AES256_GCM,data:46ktdnLhGCZlyDLKQoB08LPaMSjR0KL97a4DhBjhTlk8KlToFuRr2MpVK6SUncPM1jrj4yLQLY1rDXGsyfS4H7OLgkaCLrhDI9IqoBrix/+nBf7k0sloCsvZ+Nj8ptqTAn3hi+aZ1i2qNpYzI61gpmI+ebiH03X+ktKGSX1A+0s=,iv:CXDPECVpTRmaqZvBJWiDptEhELkmT4yB3exESrbWZko=,tag:A0bBd/JOcVCTU6qqakpGxA==,type:str]
+    lastmodified: "2024-06-25T21:01:31Z"
+    mac: ENC[AES256_GCM,data:cRj5SEkpTHXBICAXCn8WyNxany35R6ajthzfvoSOnPEhfyGqr8Gs1VKxRtrTCQbcCXdYdMn+9BCBPMgIuSY7zrecBIPv4HErQdLCNvToPJm/v5iCo5f7gz0BazlFmLZtaKx7T9f3TG/SnocUtXhMHwfvJOKP5ngP6+4UYsZI+9s=,iv:sI79si5Gxhhrs7xSvffysFWWTPguIaIdytqGv5PpxPw=,tag:RChbJtGAa2cbCJFhe9+tvQ==,type:str]
     pgp:
         - created_at: "2024-06-21T23:56:27Z"
           enc: |-
@@ -83,7 +83,7 @@ metadata:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
         argocd.argoproj.io/sync-wave: "10"
     labels:
-        app.kubernetes.io/name: syncthing-web
+        app: syncthing-web
 spec:
     weighted:
         services:
@@ -105,8 +105,8 @@ sops:
             M1g3a2xHemh4MW1yRXBGQ1hvVkl2TnMKgo/sQGoKeW2XInlGmVF38eMEWdtTE7Oz
             UZndue4hBMfKREpxApA4iI93Rt/FpvbauNOQ0N2/R2cgvpJjPf6oHw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-21T23:56:27Z"
-    mac: ENC[AES256_GCM,data:46ktdnLhGCZlyDLKQoB08LPaMSjR0KL97a4DhBjhTlk8KlToFuRr2MpVK6SUncPM1jrj4yLQLY1rDXGsyfS4H7OLgkaCLrhDI9IqoBrix/+nBf7k0sloCsvZ+Nj8ptqTAn3hi+aZ1i2qNpYzI61gpmI+ebiH03X+ktKGSX1A+0s=,iv:CXDPECVpTRmaqZvBJWiDptEhELkmT4yB3exESrbWZko=,tag:A0bBd/JOcVCTU6qqakpGxA==,type:str]
+    lastmodified: "2024-06-25T21:01:31Z"
+    mac: ENC[AES256_GCM,data:cRj5SEkpTHXBICAXCn8WyNxany35R6ajthzfvoSOnPEhfyGqr8Gs1VKxRtrTCQbcCXdYdMn+9BCBPMgIuSY7zrecBIPv4HErQdLCNvToPJm/v5iCo5f7gz0BazlFmLZtaKx7T9f3TG/SnocUtXhMHwfvJOKP5ngP6+4UYsZI+9s=,iv:sI79si5Gxhhrs7xSvffysFWWTPguIaIdytqGv5PpxPw=,tag:RChbJtGAa2cbCJFhe9+tvQ==,type:str]
     pgp:
         - created_at: "2024-06-21T23:56:27Z"
           enc: |-

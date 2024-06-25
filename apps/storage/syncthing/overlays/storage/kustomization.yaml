@@ -17,7 +17,7 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app.kubernetes.io/name: syncthing
+    app: syncthing
   name: syncthing
 
 helmCharts:
@@ -33,3 +33,9 @@ configMapGenerator:
 - name: syncthing-time
   literals:
   - TZ=CET
+
+patches:
+- path: patches/frontend-service.yaml
+  target:
+    kind: Service
+    name: longhorn-frontend
