@@ -21,7 +21,7 @@ data:
       openweathermap: openweathermapapikey
       weatherapi: weatherapiapikey
       longhorn:
-        url: http://192.168.40.181
+        url: http://192.168.40.181:8000
     # background:
     #   image: https://cdnb.artstation.com/p/assets/images/images/006/897/659/large/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg
     #   blur: sm # sm, md, xl... see https://tailwindcss.com/docs/backdrop-blur
@@ -85,7 +85,7 @@ data:
     - Metrics:
         - Alertmanager:
             icon: alertmanager.svg
-            href: "{{HOMEPAGE_VAR_PIHOLE_URL_1}}"
+            href: "{{HOMEPAGE_VAR_ALERTMANAGER_URL}}"
             description: quasar
             widget:
                 type: pihole
@@ -93,7 +93,7 @@ data:
                 key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY_1}}"
         - Prometheus:
             icon: prometheus.svg
-            href: "{{HOMEPAGE_VAR_PIHOLE_URL_2}}"
+            href: "{{HOMEPAGE_VAR_PROMETHEUS_URL}}"
             description: blazar
             widget:
                 type: pihole
@@ -101,7 +101,7 @@ data:
                 key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY_2}}"
         - Grafana:
             icon: grafana.svg
-            href: "{{HOMEPAGE_VAR_PIHOLE_URL_3}}"
+            href: "{{HOMEPAGE_VAR_GRAFANA_URL}}"
             description: electron
             widget:
               type: pihole
@@ -118,7 +118,7 @@ data:
     - Network:
         - Treafik:
             icon: traefik.svg
-            href: https://traefik.system.anotherlife.org.pl/dashboard/#/
+            href: "{{HOMEPAGE_VAR_TREAFIK_URL}}"
             description: Reverse Proxy
             server: traefik
             container: traefik
@@ -126,30 +126,28 @@ data:
             hideErrors: true
             widget:
               type: traefik
-              url: http://192.168.40.180:9000
+              url: {{HOMEPAGE_VAR_TREAFIK_URL}}
         - Proxmox:
             icon: proxmox.svg
             href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
-            description: pve1
+            description: pve
             widget:
                 type: proxmox
                 url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
                 username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
                 password: "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
-                node: xing-01
+                node: pve
     - Storage:
         - SyncThing:
             icon: syncthing.svg
             href: "{{HOMEPAGE_VAR_SYNCTHING_URL}}"
             description: scale
-            widget:
-                type: truenas
-                url: "{{HOMEPAGE_VAR_TRUENAS_URL}}"
-                key: "{{HOMEPAGE_VAR_TRUENAS_API_KEY}}"
+
         - MinIO:
             icon: minio.svg
             href: "{{HOMEPAGE_VAR_MINIO_URL}}"
             description: object storage
+
         - Longhorn:
             icon: longhorn.svg
             href: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
@@ -164,14 +162,14 @@ data:
                 url: "{{HOMEPAGE_VAR_PLEX_URL}}"
                 key: "{{HOMEPAGE_VAR_PLEX_API_TOKEN}}"
         - LMS:
-            icon: tautulli.svg
+            icon: logitech.svg
             href: "{{HOMEPAGE_VAR_LMS_URL}}"
             description: Logitech Media Server
             widget:
                 url: "{{HOMEPAGE_VAR_LMS_URL}}"
         - YouTubeDL:
-            icon: mdi-youtube
-            href: "{{HOMEPAGE_VAR_HDHOMERUN_URL}}"
+            icon: youtubedl.svg
+            href: "{{HOMEPAGE_VAR_YOUTUBEDL_URL}}"
             description: YouTubeDL
     - Home Automation:
         - Home Assistant:
@@ -183,16 +181,16 @@ data:
               url: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
               key: "{{HOMEPAGE_VAR_HOME_ASSISTANT_API_KEY}}"
         - zigbee2mqtt:
-            icon: mdi-zigbee
-            href: "{{HOMEPAGE_VAR_UNIFI_PROTECT_URL}}"
+            icon: zigbee2mqtt.svg
+            href: "{{HOMEPAGE_VAR_ZIGBEE2MQTT_URL}}"
             description: zigbee2mqtt
         - espHome:
-            icon: mdi-home-assistant
-            href: "{{HOMEPAGE_VAR_SCRYPTED_URL}}"
+            icon: esphome.svg
+            href: "{{HOMEPAGE_VAR_ESPHOME_URL}}"
             description: esphome
         - MqttExplorer:
-            icon: mdi-play-network-outline
-            href: "{{HOMEPAGE_VAR_BROADLINK_CONTROL_URL}}"
+            icon: mqtt.svg
+            href: "{{HOMEPAGE_VAR_MQTTEXPLORER_URL}}"
             description: Mqtt Explorer
     - Other:
         - GitLab:
