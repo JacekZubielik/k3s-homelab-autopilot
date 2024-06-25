@@ -33,9 +33,3 @@ configMapGenerator:
 - name: syncthing-time
   literals:
   - TZ=CET
-
-patches:
-- path: patches/frontend-service.yaml
-  target:
-    kind: Service
-    name: syncthing-discovery
