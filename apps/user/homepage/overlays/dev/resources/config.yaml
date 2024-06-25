@@ -72,6 +72,7 @@ data:
             description: Monitoring
             widget:
                 type: prometheus
+                url: "{{HOMEPAGE_VAR_PROMETHEUS_URL}}"
         - Grafana:
             icon: grafana.svg
             href: "{{HOMEPAGE_VAR_GRAFANA_URL}}"
@@ -92,8 +93,6 @@ data:
             icon: argocd.svg
             href: "{{HOMEPAGE_VAR_ARGOCD_URL}}"
             description: Monitoring
-
-
     - Network:
         - Mikrotik:
             icon: mikrotik.svg
@@ -254,7 +253,7 @@ data:
         labels: true
         nodes: true
         include:
-          - node1
+          - dev-k3s-master-0
   docker.yaml: ""
   bookmarks.yaml: |
     - Developer:
