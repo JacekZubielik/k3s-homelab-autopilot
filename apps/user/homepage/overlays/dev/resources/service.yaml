@@ -17,4 +17,4 @@ spec:
     protocol: TCP
     targetPort: 3000
   selector:
-    app: homepage
+    app.kubernetes.io/name: homepage
