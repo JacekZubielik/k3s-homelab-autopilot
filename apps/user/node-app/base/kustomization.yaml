@@ -8,5 +8,5 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app.kubernetes.io/name: node-app
+    app: node-app
   name: node-app
