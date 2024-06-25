@@ -15,7 +15,7 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "0"
   labels:
-    app.kubernetes.io/name: longhorn
+    app: longhorn
   name: longhorn
 
 helmCharts:

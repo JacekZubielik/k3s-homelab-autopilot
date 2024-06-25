@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: longhorn-manager
+      app.kubernetes.io/name: longhorn-manager
   namespaceSelector:
     matchNames:
     - longhorn-system

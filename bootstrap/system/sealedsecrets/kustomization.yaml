@@ -10,7 +10,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "0"
     sealedsecrets.bitnami.com/cluster-wide: "true"
   labels:
-    app.kubernetes.io/name: sealed-secrets
+    app: sealed-secrets
   name: sealed-secrets
 
 helmCharts:

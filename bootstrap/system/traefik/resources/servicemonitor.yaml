@@ -15,7 +15,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/instance: infra-traefik
-      app: traefik-dashboard
+      app.kubernetes.io/name: traefik-dashboard
   namespaceSelector:
     matchNames:
     - prometheus
