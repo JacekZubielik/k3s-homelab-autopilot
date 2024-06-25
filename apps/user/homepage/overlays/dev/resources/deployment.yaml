@@ -22,8 +22,8 @@ spec:
     metadata:
       labels:
         app: homepage
-      annotations:
-        deploy-date: "deploy-date-value"
+      # annotations:
+      #   deploy-date: "deploy-date-value"
     spec:
       containers:
         - name: homepage
@@ -32,9 +32,9 @@ spec:
             requests:
               memory: 128Mi
               cpu: 200m
-          envFrom:
-            - secretRef:
-              name: homepage-secret
+          # envFrom:
+          #   - secretRef:
+          #     name: homepage-secret
           ports:
             - containerPort: 3000
               name: http

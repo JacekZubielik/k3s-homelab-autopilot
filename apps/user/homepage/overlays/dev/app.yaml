@@ -1,0 +1,11 @@
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  template:
+    spec:
+      containers:
+        - name: homepage
+          envFrom:
+            - secretRef:
+                name: homepage-secret
