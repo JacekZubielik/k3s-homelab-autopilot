@@ -31,7 +31,7 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "2"
   labels:
-    app.kubernetes.io/name: traefik
+    app: traefik
   name: traefik
 
 helmCharts:
