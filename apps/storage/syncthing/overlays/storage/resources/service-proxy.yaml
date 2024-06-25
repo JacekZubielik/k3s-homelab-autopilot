@@ -10,10 +10,10 @@ metadata:
 spec:
   externalName: 192.168.40.193
   ports:
-  - name: discovery
-    protocol: TCP
+  - protocol: TCP
     port: 21027
     targetPort: 21027
+    # name: discovery
   type: ExternalName
   selector:
     app.kubernetes.io/instance: traefik
