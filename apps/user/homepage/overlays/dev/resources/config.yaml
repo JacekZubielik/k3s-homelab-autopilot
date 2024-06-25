@@ -215,7 +215,6 @@ data:
         cpu: true
         memory: true
         disk:
-          - /
           - /mnt/volume-0
         expanded: true
         backend: resources

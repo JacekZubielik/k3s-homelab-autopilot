@@ -6,7 +6,6 @@ resources:
 - ../../base
 - resources/deployment.yaml
 - resources/config.yaml
-# - secrets/secret.yaml
 - resources/service.yaml
 
 generators:
@@ -29,23 +28,7 @@ generatorOptions:
 #   literals:
 #   - TZ=CET
 
-# secretGenerator:
-# - behavior: create
-#   envs:
-#   - homepage.sops.env
-#   name: homepage-secret
-
-# secretGenerator:
-# - name: homepage-secret
-#   files:
-#   # behavior: create
-#   # envs:
-#   # - homepage.sops.env
-#   - secret.yaml
-  
-
-
 patches:
-- path: homepage-secret-deployment.yaml
+- path: patches/homepage-secret-deployment.yaml
   target:
     kind: Deployment

@@ -6,8 +6,10 @@ metadata:
     argocd.argoproj.io/sync-wave: "10"
     metallb.universe.tf/loadBalancerIPs: 192.168.40.183
   labels:
-    app.kubernetes.io/name: homepage
+    # app.kubernetes.io/name: homepage
+    app: homepage
   name: homepage
+  namespace: dev
 spec:
   type: LoadBalancer
   ports:
@@ -16,6 +18,6 @@ spec:
     protocol: TCP
     targetPort: 3000
   selector:
-    app.kubernetes.io/instance: homepage
-    app.kubernetes.io/name: homepage
-    task: homepage
+    # app.kubernetes.io/name: homepage
+    app: homepage
+    # task: homepage
