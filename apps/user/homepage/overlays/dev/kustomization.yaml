@@ -35,12 +35,13 @@ generatorOptions:
 #   - homepage.sops.env
 #   name: homepage-secret
 
-secretGenerator:
-- name: homepage-secret
-  # files:
-  # behavior: create
-  envs:
-  - homepage.sops.env
+# secretGenerator:
+# - name: homepage-secret
+#   files:
+#   # behavior: create
+#   # envs:
+#   # - homepage.sops.env
+#   - secret.yaml
   
 
 
