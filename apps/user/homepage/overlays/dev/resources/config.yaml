@@ -131,7 +131,7 @@ data:
             description: dashboard
             widget:
               type: authentik
-              url: "{{HOMEPAGE_VAR_AUTHENTIK_URL_LOCAL}}"
+              url: "{{HOMEPAGE_VAR_AUTHENTIK_URL}}"
               key: "{{HOMEPAGE_VAR_AUTHENTIK_API_KEY}}"
     - Storage:
         - SyncThing:
