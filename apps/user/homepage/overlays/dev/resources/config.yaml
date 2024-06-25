@@ -24,10 +24,6 @@ data:
         url: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
         username: "{{HOMEPAGE_VAR_LONGHORN_USERNAME}}"
         password: "{{HOMEPAGE_VAR_LONGHORN_PASSWORD}}"
-
-
-
-
     # background:
     #   image: https://cdnb.artstation.com/p/assets/images/images/006/897/659/large/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg
     #   blur: sm # sm, md, xl... see https://tailwindcss.com/docs/backdrop-blur
@@ -64,29 +60,6 @@ data:
         columns: 4
   custom.css: ""
   custom.js: ""
-  bookmarks.yaml: |
-    - Developer:
-        - Github:
-            - abbr: GH
-              href: https://github.com/JacekZubielik?tab=repositories/
-              icon: github.svg
-        - mxToolbox:
-            - abbr: MX
-              href: https://mxtoolbox.com/
-        - ITTools:
-            - abbr: IT
-              href: https://tools.anotherlife.org.pl/
-        - Security Headers:
-            - abbr: SH
-              href: https://securityheaders.com/
-    - Social:
-        - X.com:
-            - abbr: X
-              href: https://x.com/
-    - Entertainment:
-        - YouTube:
-            - abbr: YT
-              href: https://youtube.com/
   services.yaml: |
     - Metrics:
         - Alertmanager:
@@ -115,6 +88,12 @@ data:
                 type: uptimekuma
                 url: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL_LOCAL}}"
                 slug: statuspageslug
+        - ArgoCD:
+            icon: argocd.svg
+            href: "{{HOMEPAGE_VAR_ARGOCD_URL}}"
+            description: Monitoring
+
+
     - Network:
         - Mikrotik:
             icon: mikrotik.svg
@@ -146,6 +125,14 @@ data:
                 username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
                 password: "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
                 node: pve
+        - Authentik:
+            icon: https://raw.githubusercontent.com/goauthentik/authentik/main/web/icons/icon.svg
+            href: "{{HOMEPAGE_VAR_AUTHENTIK_URL}}"
+            description: dashboard
+            widget:
+              type: authentik
+              url: "{{HOMEPAGE_VAR_AUTHENTIK_URL_LOCAL}}"
+              key: "{{HOMEPAGE_VAR_AUTHENTIK_API_KEY}}"
     - Storage:
         - SyncThing:
             icon: syncthing.svg
@@ -158,7 +145,6 @@ data:
             icon: minio.svg
             href: "{{HOMEPAGE_VAR_MINIO_URL}}"
             description: object storage
-
         - Longhorn:
             icon: longhorn.svg
             href: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
@@ -204,6 +190,14 @@ data:
             href: "{{HOMEPAGE_VAR_MQTTEXPLORER_URL}}"
             description: Mqtt Explorer
     - Other:
+        - HomeLab:
+            icon: jekyll.svg
+            href: "{{HOMEPAGE_VAR_JEKYLL_URL}}"
+            description: source code
+        - ITTools:
+            icon: it-tools.svg
+            href: "{{HOMEPAGE_VAR_ITTOOLS_URL}}"
+            description: source code
         - GitLab:
             icon: gitlab.svg
             href: https://gitlab.com
@@ -262,5 +256,28 @@ data:
         nodes: true
         include:
           - node1
-
   docker.yaml: ""
+  bookmarks.yaml: |
+    - Developer:
+        - Github:
+            - abbr: GH
+              href: https://github.com/JacekZubielik?tab=repositories/
+              icon: github.svg
+        - mxToolbox:
+            - abbr: MX
+              href: https://mxtoolbox.com/
+        - ITTools:
+            - abbr: IT
+              href: https://tools.anotherlife.org.pl/
+        - Security Headers:
+            - abbr: SH
+              href: https://securityheaders.com/
+    - Social:
+        - X.com:
+            - abbr: X
+              href: https://x.com/
+    - Entertainment:
+        - YouTube:
+            - abbr: YT
+              href: https://youtube.com/
+              icon: youtube.svg

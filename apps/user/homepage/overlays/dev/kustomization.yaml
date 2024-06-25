@@ -7,9 +7,10 @@ resources:
 - resources/deployment.yaml
 - resources/config.yaml
 # - secrets/secret.yaml
-# - resources/service.yaml
-# generators:
-# - ksops-generator.yaml
+- resources/service.yaml
+
+generators:
+- ksops-generator.yaml
 
 metadata:
   annotations:
@@ -23,20 +24,27 @@ metadata:
 generatorOptions:
   disableNameSuffixHash: true
 
-
 # configMapGenerator:
 # - name: homepage-timezone
 #   literals:
 #   - TZ=CET
 
+# secretGenerator:
+# - behavior: create
+#   envs:
+#   - homepage.sops.env
+#   name: homepage-secret
+
 secretGenerator:
-- behavior: create
+- name: homepage-secret
+  # files:
+  # behavior: create
   envs:
-  - my.env
-  name: homepage-secret
-# patchesStrategicMerge:
-# - app.yaml
+  - homepage.sops.env
+  
+
+
 patches:
-- path: app.yaml
+- path: homepage-secret-deployment.yaml
   target:
     kind: Deployment
