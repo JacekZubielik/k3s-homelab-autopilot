@@ -17,4 +17,4 @@ spec:
     port: 8081
     targetPort: telemetry
   selector:
-    app: kube-state-metrics
+    app.kubernetes.io/name: kube-state-metrics
