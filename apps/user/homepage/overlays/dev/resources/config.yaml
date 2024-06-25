@@ -117,7 +117,7 @@ data:
                 slug: statuspageslug
     - Network:
         - Mikrotik:
-            icon: traefik.svg
+            icon: mikrotik.svg
             href: "{{HOMEPAGE_VAR_MIKROTIK_URL}}"
             description: Router
             widget:
