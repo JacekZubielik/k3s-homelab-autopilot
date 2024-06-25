@@ -10,7 +10,7 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app.kubernetes.io/name: binance-proxy
+    app: binance-proxy
   name: binance-proxy
 
 helmCharts:
