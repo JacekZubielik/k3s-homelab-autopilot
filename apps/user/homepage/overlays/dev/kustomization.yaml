@@ -21,7 +21,11 @@ metadata:
     app.kubernetes.io/name: homepage
   name: homepage
 
-configMapGenerator:
-- name: homepage-timezone
-  literals:
-  - TZ=CET
+generatorOptions:
+  disableNameSuffixHash: true
+
+
+# configMapGenerator:
+# - name: homepage-timezone
+#   literals:
+#   - TZ=CET
