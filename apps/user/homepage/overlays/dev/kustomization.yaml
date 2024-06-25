@@ -17,7 +17,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "9"
   labels:
-    app.kubernetes.io/name: homepage
+    app: homepage
   name: homepage
 
 generatorOptions:
