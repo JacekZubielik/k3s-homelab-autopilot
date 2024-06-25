@@ -21,7 +21,7 @@ data:
       openweathermap: openweathermapapikey
       weatherapi: weatherapiapikey
       longhorn:
-        url: 192.168.40.181:8000
+        url: http://192.168.40.181
     # background:
     #   image: https://cdnb.artstation.com/p/assets/images/images/006/897/659/large/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg
     #   blur: sm # sm, md, xl... see https://tailwindcss.com/docs/backdrop-blur
@@ -63,7 +63,7 @@ data:
         - Github:
             - abbr: GH
               href: https://github.com/JacekZubielik?tab=repositories/
-              icon: mdi mdi-git
+              icon: github.svg
         - mxToolbox:
             - abbr: MX
               href: https://mxtoolbox.com/
@@ -73,14 +73,14 @@ data:
         - Security Headers:
             - abbr: SH
               href: https://securityheaders.com/
-        - Social:
-            - X.com:
-                - abbr: X
-                  href: https://x.com/
-        - Entertainment:
-            - YouTube:
-                - abbr: YT
-                  href: https://youtube.com/
+    - Social:
+        - X.com:
+            - abbr: X
+              href: https://x.com/
+    - Entertainment:
+        - YouTube:
+            - abbr: YT
+              href: https://youtube.com/
   services.yaml: |
     - Metrics:
         - Alertmanager:
