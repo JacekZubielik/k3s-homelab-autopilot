@@ -17,4 +17,4 @@ spec:
   type: ExternalName
   selector:
     app.kubernetes.io/instance: traefik
-    app: traefik
+    app.kubernetes.io/name: traefik
