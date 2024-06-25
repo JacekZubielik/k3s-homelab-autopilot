@@ -150,6 +150,8 @@ data:
             icon: longhorn.svg
             href: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
             description: k8s storage
+            app: longhorn
+            namespace: longhorn-system
     - Media:
         - Plex:
             icon: plex.svg
@@ -174,6 +176,8 @@ data:
             icon: home-assistant.svg
             href: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
             description: Home Assistant
+            app: home-assistant
+            namespace: iot
             widget:
               type: homeassistant
               url: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
