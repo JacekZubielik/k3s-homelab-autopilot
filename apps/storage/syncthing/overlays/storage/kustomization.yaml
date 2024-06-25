@@ -38,4 +38,4 @@ patches:
 - path: patches/frontend-service.yaml
   target:
     kind: Service
-    name: longhorn-frontend
+    name: syncthing-discovery

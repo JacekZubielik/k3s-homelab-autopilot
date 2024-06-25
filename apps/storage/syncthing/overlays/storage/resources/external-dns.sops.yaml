@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: authentik-extname
+    name: syncthing-extname
     annotations:
-        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:cnX5c80WDtvBchW4FBdQixlJ8tEGPlq8tLjEtDk=,iv:DsFUo5I9lEmT8V4hF1HOz6Q1Sp/RKi2LSEtmmbK+rhU=,tag:riON+U7YGUC8CQGcJp+P3A==,type:str]
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:XbZW3Qx/9ZoV8kvuwZTYBs15yN8uB/KYBhZnoP3HbI62bnK/,iv:tqng3LX+e8fIXdIHMXMtfi2pPFB+PX77RpMOz9eiyMs=,tag:Hc096A6WjvGqCVEBDjjr5w==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
 spec:
     type: ExternalName
-    externalName: ENC[AES256_GCM,data:h7LSv1tRUdv1tm8EEhP7RGgB/aNWerisJBTXRGU=,iv:ols8n+uYbmTVWUpMYBdgSQDfgyMVngme0bXPVbPOHuM=,tag:CRcdhTj5CqTibUTG9VRR6Q==,type:str]
+    externalName: ENC[AES256_GCM,data:iQYqiLKl6Kau75EMpBqnbPIOqDDozW50aNFl9m3zqL097Z7c,iv:bW7rHI9ahVMOHNcaSqETiJD7FbC57BJCd6A8sFD0azI=,tag:zQD7iPEeElgESvH+wktCLA==,type:str]
     sessionAffinity: None
 sops:
     kms: []
@@ -24,8 +24,8 @@ sops:
             dnpzVktjaTBDdEo1TEl0b3c2MWE3OWsK6zebdT8vMyp3I2ncaRYh/WWHqMNP5Xm9
             L02tXFQ3m5OVwmyFOlNhRgvjArM6CNgpfs/go22ulM+g5y74fVCKZA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-20T14:22:21Z"
-    mac: ENC[AES256_GCM,data:+l6YXNnp6kJdz1gmYY6LsxUDfwxbnBErzl7wm9fqli6sxIKfEit/pt5DFDGmUIeilvCKtTEQhf2PqZD/QmyX348eb/sBTjjT/83Ve70o5zHxhdcSQtwHfhkrxZ5iArJo6Xu/BBhdPmPwWjBGeA5aLT6pAIBpw/Gr5uJNxdRndso=,iv:eO/aBgIEFuQXlmB+Io9lAqHNF63otfqSoaRt88Rou9E=,tag:ded0osaZn/ktpR6eG6+sAw==,type:str]
+    lastmodified: "2024-06-25T21:57:46Z"
+    mac: ENC[AES256_GCM,data:JjEJZV6y4+esgLrmb/6qJCIVqJha8vspiMaTvnxjaV+mVJyV9GY9GCYLcBzKHT7f+21HQ3gLLBvYGT+ljVtFXhhyOKyR0JNsVzbLPcsyCjcPeY5kuRFBdyB5dGh2u29OW+mDsqiS7ef6kbd1GiCj1qHrTFmdxJ80tc8C6si4uJY=,iv:PNGUQAyRZiY+K1d8jNI2hVFNBkj4wC+2LZNmoH7gh/E=,tag:Mq02PUiD4CC8iPW8+mlWPg==,type:str]
     pgp:
         - created_at: "2024-06-20T14:22:21Z"
           enc: |-
