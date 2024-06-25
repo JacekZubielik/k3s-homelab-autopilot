@@ -8,7 +8,6 @@ metadata:
 data:
   kubernetes.yaml: |
     mode: cluster
-
   settings.yaml: |
     title: AnotherHomePage
     iconStyle: theme
@@ -22,20 +21,18 @@ data:
       openweathermap: openweathermapapikey
       weatherapi: weatherapiapikey
       longhorn:
-        url: 192.168.40.181:8000
-
+        url: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
+        # username: "{{HOMEPAGE_VAR_LONGHORN_USERNAME}}"
+        # password: "{{HOMEPAGE_VAR_LONGHORN_PASSWORD}}"
     # background:
     #   image: https://cdnb.artstation.com/p/assets/images/images/006/897/659/large/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg
     #   blur: sm # sm, md, xl... see https://tailwindcss.com/docs/backdrop-blur
     #   saturate: 100 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
     #   brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
     #   opacity: 100 # 0-100
-
     theme: dark
     color: slate
-
     useEqualHeights: true
-
     layout:
       Metrics:
         header: true
@@ -61,113 +58,98 @@ data:
         header: true
         style: row
         columns: 4
-
   custom.css: ""
   custom.js: ""
-
-  bookmarks.yaml: |
-    - Developer:
-        - Github:
-            - abbr: GH
-              href: https://github.com/JacekZubielik?tab=repositories/
-              icon: mdi mdi-git
-        - mxToolbox:
-            - abbr: MX
-              href: https://mxtoolbox.com/
-        - ITTools:
-            - abbr: IT
-              href: https://tools.anotherlife.org.pl/
-        - Security Headers:
-            - abbr: SH
-              href: https://securityheaders.com/
-        - Social:
-            - X.com:
-                - abbr: X
-                  href: https://x.com/
-        - Entertainment:
-            - YouTube:
-                - abbr: YT
-                  href: https://youtube.com/
-
   services.yaml: |
     - Metrics:
         - Alertmanager:
-            icon: pi-hole.svg
-            href: "{{HOMEPAGE_VAR_PIHOLE_URL_1}}"
-            description: quasar
-            widget:
-                type: pihole
-                url: "{{HOMEPAGE_VAR_PIHOLE_URL_1}}"
-                key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY_1}}"
+            icon: alertmanager.svg
+            href: "{{HOMEPAGE_VAR_ALERTMANAGER_URL}}"
+            description: Monitoring
         - Prometheus:
-            icon: pi-hole.svg
-            href: "{{HOMEPAGE_VAR_PIHOLE_URL_2}}"
-            description: blazar
+            icon: prometheus.svg
+            href: "{{HOMEPAGE_VAR_PROMETHEUS_URL}}"
+            description: Monitoring
             widget:
-                type: pihole
-                url: "{{HOMEPAGE_VAR_PIHOLE_URL_2}}"
-                key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY_2}}"
+                type: prometheus
+                url: "{{HOMEPAGE_VAR_PROMETHEUS_URL}}"
         - Grafana:
-            icon: pi-hole.svg
-            href: "{{HOMEPAGE_VAR_PIHOLE_URL_3}}"
-            description: electron
+            icon: grafana.svg
+            href: "{{HOMEPAGE_VAR_GRAFANA_URL}}"
+            description: Monitoring
             widget:
-              type: pihole
-              url: "{{HOMEPAGE_VAR_PIHOLE_URL_3}}"
-              key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY_3}}"
+              type: grafana
+              username: "{{HOMEPAGE_VAR_GRAFANA_USERNAME}}"
+              password: "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}"
         - Uptime Kuma:
             icon: uptime-kuma.svg
             href: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
-            description: internal
+            description: Monitoring
             widget:
                 type: uptimekuma
-                url: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
-                slug: home
-
+                url: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL_LOCAL}}"
+                slug: statuspageslug
+        - ArgoCD:
+            icon: argocd.svg
+            href: "{{HOMEPAGE_VAR_ARGOCD_URL}}"
+            description: Monitoring
     - Network:
+        - Mikrotik:
+            icon: mikrotik.svg
+            href: "{{HOMEPAGE_VAR_MIKROTIK_URL}}"
+            description: Router
+            widget:
+              type: mikrotik
+              url: {{HOMEPAGE_VAR_MIKROTIK_URL}}
+              username: "{{HOMEPAGE_VAR_MIKROTIK_USERNAME}}"
+              password: "{{HOMEPAGE_VAR_MIKROTIK_PASSWORD}}"
         - Treafik:
-            icon: mdi-play-network-outline
-            href: https://traefik.system.anotherlife.org.pl/dashboard/#/
+            icon: traefik.svg
+            href: "{{HOMEPAGE_VAR_TREAFIK_URL}}"
             description: Reverse Proxy
-            server: traefik
-            container: traefik
-            showStats: false
-            hideErrors: true
+            # server: traefik
+            # container: traefik
+            # showStats: false
+            # hideErrors: true
             widget:
               type: traefik
-              url: http://192.168.40.180:9000
-
+              url: {{HOMEPAGE_VAR_TREAFIK_URL}}
         - Proxmox:
             icon: proxmox.svg
             href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
-            description: pve1
+            description: pve
             widget:
                 type: proxmox
                 url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
                 username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
                 password: "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
-                node: xing-01
-
+                node: pve
+        - Authentik:
+            icon: https://raw.githubusercontent.com/goauthentik/authentik/main/web/icons/icon.svg
+            href: "{{HOMEPAGE_VAR_AUTHENTIK_URL}}"
+            description: dashboard
+            widget:
+              type: authentik
+              url: "{{HOMEPAGE_VAR_AUTHENTIK_URL}}"
+              key: "{{HOMEPAGE_VAR_AUTHENTIK_API_KEY}}"
     - Storage:
         - SyncThing:
-            icon: truenas.svg
+            icon: syncthing.svg
             href: "{{HOMEPAGE_VAR_SYNCTHING_URL}}"
-            description: scale
+            description: Syncthing Relay Server
+            app: syncthing
+            namespace: storage
             widget:
-                type: truenas
-                url: "{{HOMEPAGE_VAR_TRUENAS_URL}}"
-                key: "{{HOMEPAGE_VAR_TRUENAS_API_KEY}}"
-
+              type: strelaysrv
+              url: "{{HOMEPAGE_VAR_SYNCTHING_URL_SRS}}"
         - MinIO:
             icon: minio.svg
             href: "{{HOMEPAGE_VAR_MINIO_URL}}"
             description: object storage
-
         - Longhorn:
             icon: longhorn.svg
             href: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
             description: k8s storage
-
     - Media:
         - Plex:
             icon: plex.svg
@@ -178,16 +160,15 @@ data:
                 url: "{{HOMEPAGE_VAR_PLEX_URL}}"
                 key: "{{HOMEPAGE_VAR_PLEX_API_TOKEN}}"
         - LMS:
-            icon: tautulli.svg
+            icon: logitech.svg
             href: "{{HOMEPAGE_VAR_LMS_URL}}"
             description: Logitech Media Server
             widget:
                 url: "{{HOMEPAGE_VAR_LMS_URL}}"
         - YouTubeDL:
-            icon: mdi-youtube
-            href: "{{HOMEPAGE_VAR_HDHOMERUN_URL}}"
+            icon: youtubedl.svg
+            href: "{{HOMEPAGE_VAR_YOUTUBEDL_URL}}"
             description: YouTubeDL
-
     - Home Automation:
         - Home Assistant:
             icon: home-assistant.svg
@@ -198,19 +179,29 @@ data:
               url: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
               key: "{{HOMEPAGE_VAR_HOME_ASSISTANT_API_KEY}}"
         - zigbee2mqtt:
-            icon: mdi-zigbee
-            href: "{{HOMEPAGE_VAR_UNIFI_PROTECT_URL}}"
+            icon: zigbee2mqtt.svg
+            href: "{{HOMEPAGE_VAR_ZIGBEE2MQTT_URL}}"
             description: zigbee2mqtt
         - espHome:
-            icon: mdi-home-assistant
-            href: "{{HOMEPAGE_VAR_SCRYPTED_URL}}"
+            icon: esphome.svg
+            href: "{{HOMEPAGE_VAR_ESPHOME_URL}}"
             description: esphome
+            widget:
+              type: esphome
+              url: "{{HOMEPAGE_VAR_ESPHOME_URL}}"
         - MqttExplorer:
-            icon: mdi-play-network-outline
-            href: "{{HOMEPAGE_VAR_BROADLINK_CONTROL_URL}}"
+            icon: mqtt.svg
+            href: "{{HOMEPAGE_VAR_MQTTEXPLORER_URL}}"
             description: Mqtt Explorer
-
     - Other:
+        - HomeLab:
+            icon: jekyll.svg
+            href: "{{HOMEPAGE_VAR_JEKYLL_URL}}"
+            description: source code
+        - ITTools:
+            icon: it-tools.svg
+            href: "{{HOMEPAGE_VAR_ITTOOLS_URL}}"
+            description: source code
         - GitLab:
             icon: gitlab.svg
             href: https://gitlab.com
@@ -223,36 +214,32 @@ data:
             icon: https://shlink.io/images/shlink-logo-blue.svg
             href: "{{HOMEPAGE_VAR_SHLINK_URL}}"
             description: dashboard
-
   widgets.yaml: |
     - resources:
         cpu: true
         memory: true
-        disk: /
-        backend: resources
+        disk:
+          - /mnt/volume-0
         expanded: true
-
+        backend: resources
     - datetime:
         text_size: xl
         locale: pl
         format:
           timeStyle: short
           dateStyle: long
-
     - openmeteo:
-        label: Gdańsk
-        latitude: 54.345112
-        longitude: 18.600742
-        timezone: CET
+        label: "{{HOMEPAGE_VAR_OPENMETEO_LABEL}}"
+        latitude: "{{HOMEPAGE_VAR_OPENMETEO_LATITUDE}}"
+        longitude: "{{HOMEPAGE_VAR_OPENMETEO_LONGITUDE}}"
+        timezone: "{{HOMEPAGE_VAR_OPENMETEO_TIMEZONE}}"
         units: metric
         # Time in minutes to cache API responses, to stay within limits
         cache: 5
-
     - search:
         provider: duckduckgo
         focus: true
         target: _blank
-
     - kubernetes:
         cluster:
             show: true
@@ -265,11 +252,35 @@ data:
             cpu: true
             memory: true
             showLabel: true
-
     - longhorn:
         expanded: true
         total: true
         labels: true
         nodes: true
-
+        include:
+          - dev-k3s-master-0
   docker.yaml: ""
+  bookmarks.yaml: |
+    - Developer:
+        - Github:
+            - abbr: GH
+              href: https://github.com/JacekZubielik?tab=repositories/
+              icon: github.svg
+        - mxToolbox:
+            - abbr: MX
+              href: https://mxtoolbox.com/
+        - ITTools:
+            - abbr: IT
+              href: https://tools.anotherlife.org.pl/
+        - Security Headers:
+            - abbr: SH
+              href: https://securityheaders.com/
+    - Social:
+        - X.com:
+            - abbr: X
+              href: https://x.com/
+    - Entertainment:
+        - YouTube:
+            - abbr: YT
+              href: https://youtube.com/
+              icon: youtube.svg

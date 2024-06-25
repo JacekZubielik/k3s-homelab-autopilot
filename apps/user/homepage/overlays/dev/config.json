@@ -6,7 +6,7 @@
   "srcPath": "apps/user/homepage/overlays/dev",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "dev-homepage",
-  "syncWave": "10",
+  "syncWave": "9",
   "appRole": "dev",
   "labels": "",
   "annotations": "",
