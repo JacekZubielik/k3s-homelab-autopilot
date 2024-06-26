@@ -8,9 +8,9 @@ hostNetwork: false
 replicas: 1
 updateStrategy:
   type: RollingUpdate
-  rollingUpdate:
-    maxUnavailable: 25%
-    maxSurge: 1
+  # rollingUpdate:
+  #   maxUnavailable: 25%
+  #   maxSurge: 1
 
 serviceAccount:
   create: true
