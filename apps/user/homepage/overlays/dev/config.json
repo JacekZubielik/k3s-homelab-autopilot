@@ -5,10 +5,10 @@
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/user/homepage/overlays/dev",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
-  "srcTargetRevision": "",
+  "srcTargetRevision": "dev-homepage",
   "syncWave": "9",
   "appRole": "dev",
-  "labels": "",
+  "labels": "test",
   "annotations": "",
   "exclude": "",
   "include": ""
