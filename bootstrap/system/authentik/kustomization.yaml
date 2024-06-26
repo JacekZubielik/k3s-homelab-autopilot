@@ -21,14 +21,14 @@ metadata:
 
 helmCharts:
 - name: authentik
-  version: 2024.4.2
+  version: 2024.6.0
   repo: https://charts.goauthentik.io
-  releaseName: authentik
-  namespace: authentik
   includeCRDs: true
+  namespace: authentik
+  releaseName: authentik
   valuesFile: values.yaml
 
-configMapGenerator:
-- name: authentik-time
-  literals:
-  - TZ=CET
+# configMapGenerator:
+# - name: authentik-tz
+#   literals:
+#   - TZ=CET

@@ -18,9 +18,9 @@ global:
 
   deploymentStrategy:
     type: RollingUpdate
-    # rollingUpdate:
-    #   maxSurge: 25%
-    #   maxUnavailable: 25%
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
 
   env:
   - name: AUTHENTIK_EMAIL__HOST
@@ -295,9 +295,9 @@ server:
   # @default -- `{}` (defaults to global.deploymentStrategy)
   deploymentStrategy:
     type: RollingUpdate
-    # rollingUpdate:
-    #   maxSurge: 25%
-    #   maxUnavailable: 25%
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
 
   ## authentik server service configuration
   service:
@@ -449,12 +449,12 @@ worker:
   # @default -- `{}` (defaults to global.deploymentStrategy)
   deploymentStrategy:
     type: RollingUpdate
-    # rollingUpdate:
-    #   maxSurge: 25%
-    #   maxUnavailable: 25%
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
 
 serviceAccount:
-  create: false
+  create: true
   annotations: {}
   serviceAccountSecret:
     # As we use the authentik-remote-cluster chart as subchart, and that chart
@@ -489,7 +489,6 @@ postgresql:
       accessModes:
       - ReadWriteOnce
       existingClaim: authentik-psql-pv-claim
-
 
     extraEnvVars:
     - name: POSTGRES_DATABASE
