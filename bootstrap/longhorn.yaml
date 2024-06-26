@@ -26,12 +26,12 @@ spec:
     syncOptions:
     - ApplyOutOfSyncOnly=true
     - CreateNamespace=true
-    - Delete=false
+    - Delete=true
     - FailOnSharedResource=false
     - preserveResourcesOnDeletion=false
     - PruneLast=true
     - PrunePropagationPolicy=foreground
-    - Replace=false
+    - Replace=true
     - RespectIgnoreDifferences=true
     - ServerSideApply=true
     - SkipDryRunOnMissingResource=true
