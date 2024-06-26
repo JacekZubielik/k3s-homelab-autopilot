@@ -11,7 +11,7 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:
   destination:
-    namespace: kube-system
+    namespace: kube-state
     server: https://kubernetes.default.svc
   project: default
   source:
