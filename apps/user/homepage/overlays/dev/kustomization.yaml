@@ -4,9 +4,11 @@ namespace: dev
 
 resources:
 - ../../base
-- resources/deployment.yaml
+- resources/cluster-role.yaml
 - resources/config.yaml
+- resources/deployment.yaml
 - resources/service.yaml
+- resources/serviceaccount.yaml
 
 generators:
 - ksops-generator.yaml

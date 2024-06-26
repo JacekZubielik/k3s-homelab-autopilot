@@ -5,8 +5,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "10"
     metallb.universe.tf/loadBalancerIPs: 192.168.40.183
-  # labels:
-  #   app: homepage
+  labels:
+    app.kubernetes.io/name:: homepage
   name: homepage
   namespace: dev
 spec:
