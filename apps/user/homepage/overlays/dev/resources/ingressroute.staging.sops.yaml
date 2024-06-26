@@ -49,8 +49,8 @@ sops:
             WWpKdUhSUlA5QTZLV0xsd0JMc1diVDQK7f36t00wMkDSAoTlnJs+8RNiJiZn4wcM
             wj7URiBAtcXd/z/KQE98YADoCd/cMIgsQo6HE9gmkIXv8inkdz9KNQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-22T15:17:47Z"
-    mac: ENC[AES256_GCM,data:p/Ct31J/VdsgRVcT4q6PMl8kHvsDS7Hsf1POQIokvyeL30ooEcRFlgpIaghZXB2Z/MEn2T29SOHZ+UlaAx2AgvWE9gHNpZLrDps8tpoNAjI+oQLEQyd5ka6A0k14xXcoPkbcvgX4/7dU9iWDd7oa+7IAYjMYmzVKr/Kp453nExc=,iv:rZFdV/T/ji981XwieUcDmMazCZAGOYFk+HfauAGDt0c=,tag:RKhUTIeQWlIUp7i+fMSk/w==,type:str]
+    lastmodified: "2024-06-26T00:07:49Z"
+    mac: ENC[AES256_GCM,data:obodJVsX9hA/1Q/ZuUEuQO0GFJOHAif2e38Rfs46lPemPAL9AhvCMLwy9jPLqohFV3+ousFbTJg4sUMZmNJ2mSXrsSPErJh2aZiIzWllWmFbBPrjZMGLSxTswGkbEvuwBAWdfnPzGAIqs3ZUo88RUCRR7AnudTO/eaM0Rvt5C4E=,iv:XnyMUFRdDsKWGEu+zt+qTl8t4hi/AORg9xONRtlPXpc=,tag:YZSU276+9F2UVuU9HD5Riw==,type:str]
     pgp:
         - created_at: "2024-06-22T15:17:47Z"
           enc: |-
@@ -84,7 +84,6 @@ metadata:
     labels:
         app.kubernetes.io/name: homepage
     name: homepage
-    namespace: argocd
 spec:
     weighted:
         services:
@@ -106,8 +105,8 @@ sops:
             WWpKdUhSUlA5QTZLV0xsd0JMc1diVDQK7f36t00wMkDSAoTlnJs+8RNiJiZn4wcM
             wj7URiBAtcXd/z/KQE98YADoCd/cMIgsQo6HE9gmkIXv8inkdz9KNQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-22T15:17:47Z"
-    mac: ENC[AES256_GCM,data:p/Ct31J/VdsgRVcT4q6PMl8kHvsDS7Hsf1POQIokvyeL30ooEcRFlgpIaghZXB2Z/MEn2T29SOHZ+UlaAx2AgvWE9gHNpZLrDps8tpoNAjI+oQLEQyd5ka6A0k14xXcoPkbcvgX4/7dU9iWDd7oa+7IAYjMYmzVKr/Kp453nExc=,iv:rZFdV/T/ji981XwieUcDmMazCZAGOYFk+HfauAGDt0c=,tag:RKhUTIeQWlIUp7i+fMSk/w==,type:str]
+    lastmodified: "2024-06-26T00:07:49Z"
+    mac: ENC[AES256_GCM,data:obodJVsX9hA/1Q/ZuUEuQO0GFJOHAif2e38Rfs46lPemPAL9AhvCMLwy9jPLqohFV3+ousFbTJg4sUMZmNJ2mSXrsSPErJh2aZiIzWllWmFbBPrjZMGLSxTswGkbEvuwBAWdfnPzGAIqs3ZUo88RUCRR7AnudTO/eaM0Rvt5C4E=,iv:XnyMUFRdDsKWGEu+zt+qTl8t4hi/AORg9xONRtlPXpc=,tag:YZSU276+9F2UVuU9HD5Riw==,type:str]
     pgp:
         - created_at: "2024-06-22T15:17:47Z"
           enc: |-
