@@ -306,7 +306,7 @@ data:
         memory: true
         disk:
           - /
-          - /mnt/volume-0
+          # - /mnt/volume-0
         expanded: true
         backend: resources
     - datetime:
