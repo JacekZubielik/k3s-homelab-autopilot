@@ -27,12 +27,12 @@ spec:
       - name: node-app
         image: ghcr.io/jacekzubielik/node-app:2.2.1
         imagePullPolicy: IfNotPresent
-        # env:
-        # - name: TZ
-        #   valueFrom:
-        #     configMapKeyRef:
-        #       name: node-app-tz
-        #       key: TZ
+        env:
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: node-app-tz
+              key: TZ
         ports:
         - containerPort: 3000
         readinessProbe:
@@ -44,9 +44,9 @@ spec:
           httpGet:
             path: /health
             port: 3000
-        envFrom:
-        - configMapRef:
-            name: node-app-tz
+        # envFrom:
+        # - configMapRef:
+        #     name: node-app-tz
         resources:
           requests:
             memory: 256Mi
