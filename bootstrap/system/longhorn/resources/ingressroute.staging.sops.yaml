@@ -9,7 +9,7 @@ metadata:
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:ocd7OKJI1DkEpKn/rtkUlg6UqaSE8bqwqQ==,iv:6PDV5yth7LKRObjWRvN+kRL8NhtNorELlUPM/4fdw5s=,tag:9qekRfbH8B6NKBgPb50JRw==,type:str]
         kubernetes.io/ingress.class: traefik-external
     labels:
-        app.kubernetes.io/name: longhorn-frontend
+        app: longhorn-frontend
     name: longhorn-frontend
     namespace: longhorn-system
 spec:
@@ -24,7 +24,7 @@ spec:
           services:
             - kind: TraefikService
               name: longhorn-frontend
-              port: 8000
+              port: 80
     tls:
         domains:
             - main: ENC[AES256_GCM,data:gun0iagtHl8GohzvtxKU6eM0F7JU5ADGuw==,iv:fMcAhWa+27Aj1hKrReqHtfYd9cYF8fVmog4mXYhmAOk=,tag:pcTFvH6ohKAao3dHknRExA==,type:str]
@@ -49,8 +49,8 @@ sops:
             OFBMd0g0dlpJU1VFV0Myd3U3bDdoZDQKvcse5ifCxIMmrtXpBLNOZlAneeHDGCjK
             lbBz81rCe+wE1PdB9tCftp3LB9XpWHvjsGkUr+3EM+6U514ene3vrQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-26T00:16:02Z"
-    mac: ENC[AES256_GCM,data:wpWJBvobO5pjuzN0H0uzGdDou6XTq+nwIu1gaq8M0pXmqlpE5q+0krVU9Np1IAHvQZrdiFyCZCIY9TSZpOu4ajYL21uqp65Gad5OPvSmuUc+yfGplShkkEWqsKInCY5As0xXHWQ6oTHbMZr/axtiNRRsyPR8UnT5BqqOeZ18bes=,iv:HynnCwQ/LSO3NoCyulzU+DyzUAfhW0Jg7fprP9a93xM=,tag:O5b9dIqZ9TOYo+/hBkPnAA==,type:str]
+    lastmodified: "2024-06-26T00:19:50Z"
+    mac: ENC[AES256_GCM,data:vFFlYZadBTX9LSQJ5iInp1mAKR9Ba2CV9YkRitZSu/18XEogZ+RSCntQhvhVQp55QyRPEXeAjUObMFuyWYsHBaH8uLXOjUSAK4dqIU+lGKqhx+Er7T7fV8nZe79rNkBnqySCnyIFeFH8NkY2mHLx1ZuBp+sIXaVIO4KB73l1zKs=,iv:z137sLfdW9pGVrErwlPc/4lUcjK2qEoJ0lLf/wUedJk=,tag:8FuU9TcfNDONLLTXI6oHqg==,type:str]
     pgp:
         - created_at: "2024-06-23T20:00:48Z"
           enc: |-
@@ -82,13 +82,13 @@ metadata:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
         argocd.argoproj.io/sync-wave: "5"
     labels:
-        app.kubernetes.io/name: longhorn-frontend
+        app: longhorn-frontend
     name: longhorn-frontend
 spec:
     weighted:
         services:
             - name: longhorn-frontend
-              port: 8000
+              port: 80
               weight: 1
 sops:
     kms: []
@@ -105,8 +105,8 @@ sops:
             OFBMd0g0dlpJU1VFV0Myd3U3bDdoZDQKvcse5ifCxIMmrtXpBLNOZlAneeHDGCjK
             lbBz81rCe+wE1PdB9tCftp3LB9XpWHvjsGkUr+3EM+6U514ene3vrQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-26T00:16:02Z"
-    mac: ENC[AES256_GCM,data:wpWJBvobO5pjuzN0H0uzGdDou6XTq+nwIu1gaq8M0pXmqlpE5q+0krVU9Np1IAHvQZrdiFyCZCIY9TSZpOu4ajYL21uqp65Gad5OPvSmuUc+yfGplShkkEWqsKInCY5As0xXHWQ6oTHbMZr/axtiNRRsyPR8UnT5BqqOeZ18bes=,iv:HynnCwQ/LSO3NoCyulzU+DyzUAfhW0Jg7fprP9a93xM=,tag:O5b9dIqZ9TOYo+/hBkPnAA==,type:str]
+    lastmodified: "2024-06-26T00:19:50Z"
+    mac: ENC[AES256_GCM,data:vFFlYZadBTX9LSQJ5iInp1mAKR9Ba2CV9YkRitZSu/18XEogZ+RSCntQhvhVQp55QyRPEXeAjUObMFuyWYsHBaH8uLXOjUSAK4dqIU+lGKqhx+Er7T7fV8nZe79rNkBnqySCnyIFeFH8NkY2mHLx1ZuBp+sIXaVIO4KB73l1zKs=,iv:z137sLfdW9pGVrErwlPc/4lUcjK2qEoJ0lLf/wUedJk=,tag:8FuU9TcfNDONLLTXI6oHqg==,type:str]
     pgp:
         - created_at: "2024-06-23T20:00:48Z"
           enc: |-
