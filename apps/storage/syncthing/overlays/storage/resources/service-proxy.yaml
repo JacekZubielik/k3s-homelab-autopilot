@@ -6,7 +6,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app: syncthing-discovery
+    app.kubernetes.io/name: syncthing-discovery
 spec:
   externalName: 192.168.40.193
   ports:
