@@ -2,39 +2,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-wave: "10"
   labels:
-    app: node-app
+    app.kubernetes.io/name: node-app
   name: node-app
+  namespace: prod
 spec:
+  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: node-app
+      app.kubernetes.io/name: node-app
   strategy:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
-      maxUnavailable: 0
+      maxUnavailable: 25%
   template:
     metadata:
       labels:
-        app: node-app
+        app.kubernetes.io/name: node-app
     spec:
       containers:
       - name: node-app
-        image: ghcr.io/jacekzubielik/node-app:2.2.0
+        image: ghcr.io/jacekzubielik/node-app.kubernetes.io/name:2.2.0
         imagePullPolicy: IfNotPresent
-        env:
-        - name: TZ
-          valueFrom:
-            configMapKeyRef:
-              name: node-app-timezone
-              key: TZ
+        # env:
+        # - name: TZ
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: node-app-tz
+        #       key: TZ
         ports:
         - containerPort: 3000
         readinessProbe:

@@ -16,10 +16,10 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "9"
   labels:
-    app: node-app
+    app.kubernetes.io/name: node-app
   name: node-app
 
 configMapGenerator:
-- name: node-app-timezone
+- name: node-app-tz
   literals:
   - TZ=CET
