@@ -24,7 +24,6 @@ rules:
   - get
   - list
 - apiGroups:
-    # - traefik.containo.us
   - traefik.io
   resources:
   - ingressroutes
@@ -55,4 +54,3 @@ subjects:
 - kind: ServiceAccount
   name: homepage
   namespace: dev
-

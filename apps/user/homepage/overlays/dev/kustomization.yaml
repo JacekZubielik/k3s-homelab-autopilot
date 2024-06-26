@@ -25,11 +25,6 @@ metadata:
 generatorOptions:
   disableNameSuffixHash: true
 
-# configMapGenerator:
-# - name: homepage-timezone
-#   literals:
-#   - TZ=CET
-
 patches:
 - path: patches/homepage-secret-deployment.yaml
   target:
