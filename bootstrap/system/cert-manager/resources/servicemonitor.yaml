@@ -13,7 +13,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: cert-manager
+      app.kubernetes.io/name: cert-manager
   namespaceSelector:
     matchNames:
     - cert-manager

@@ -52,9 +52,9 @@ nodeSelector:
   kubernetes.io/os: linux
 
 prometheus:
-  enabled: false
+  enabled: true
   servicemonitor:
-    enabled: true
+    enabled: false
     prometheusInstance: default
     targetPort: 9402
     path: /metrics

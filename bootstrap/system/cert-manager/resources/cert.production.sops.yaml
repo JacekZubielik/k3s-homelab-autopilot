@@ -2,8 +2,6 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
     name: letsencrypt-production
-    labels:
-        app.kubernetes.io/name: traefik
 spec:
     dnsNames:
         - ENC[AES256_GCM,data:64ZIpaAgWUvkMXk7YKKdnTQe,iv:2DKXa7Ed0GU5iP40PFJblssOQHsGiEuw541U/ziJcqc=,tag:RI1f7NWPpGVPt7prIw3MKQ==,type:str]
@@ -31,8 +29,8 @@ sops:
             L3NyQ1N3clJUUUNJWGJMWUxPYW1jREkKvcbdQ84DsRoicOgsfXfvSStW1HMcl5Jf
             XhOuCCFphpIZYkpG22Ib4K/8xmQhE3RXHyBN0jGb1TfCrPaNtNuHug==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-19T18:28:01Z"
-    mac: ENC[AES256_GCM,data:n/dn4rzj0LWJ5FXaXmwueBe1UnBK6MMPnLBRZJ+59qxE85HeXAN/DgdgVP/mVXo8wleNxF5xuTyWcOKLR+M6LMKondUftqYfriAVZyo7Qnh9anWwaCyXSflfC4z91rZQ+5mnZZqLLCPW+vxxc/fP4qjizvV1865AGXK7nhA3GYQ=,iv:I1qqrE10+aHrqwU6CrZNfZzYYbbTqAI27HMWv4c4+XE=,tag:VLSSEGmdVOmyDo8YAb1qVw==,type:str]
+    lastmodified: "2024-06-26T18:38:12Z"
+    mac: ENC[AES256_GCM,data:crUqQActR11jimEhipH+nR93agls76GKljAfZ7ju9vIdJ55SAslP725vf4R00rJ/QHv+r/QPBiaHcZzD+SjuuUmWJhMwPLlYQLlWyFJjMruYYngxalgMBQTmy6MjgWAld09LSD2i/AsFVZpC2KaO0eO7mVwrkecs9L1UmbLpzJs=,iv:RlR7oAyH+ux+UFUPlDfuIpdP3jIL5tRR+fgbMQNu1QI=,tag:v4IkrJWLV8ENZZzb4EDPUw==,type:str]
     pgp:
         - created_at: "2024-06-19T18:28:01Z"
           enc: |-
