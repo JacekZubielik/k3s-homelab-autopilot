@@ -24,7 +24,7 @@ spec:
           services:
             - kind: TraefikService
               name: longhorn-frontend
-              port: 80
+              port: 8000
     tls:
         domains:
             - main: ENC[AES256_GCM,data:gun0iagtHl8GohzvtxKU6eM0F7JU5ADGuw==,iv:fMcAhWa+27Aj1hKrReqHtfYd9cYF8fVmog4mXYhmAOk=,tag:pcTFvH6ohKAao3dHknRExA==,type:str]
@@ -49,8 +49,8 @@ sops:
             OFBMd0g0dlpJU1VFV0Myd3U3bDdoZDQKvcse5ifCxIMmrtXpBLNOZlAneeHDGCjK
             lbBz81rCe+wE1PdB9tCftp3LB9XpWHvjsGkUr+3EM+6U514ene3vrQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-25T23:27:23Z"
-    mac: ENC[AES256_GCM,data:WL5Gk+Jxwfb/clN6DHUmK7MuNGNM34ZD51FzB4hdJ9sFJIoypsdfUOYrFotnfU7TntiKa5xUhPwRiq5WTX4VXOoSB6zRDSf6OrVkpkwWQF6DWecqTC70ujxtmH7Ke3sgcfRL/3PIBfPgkzi28B2Tby708LG5a5haB2XWkhTKKKg=,iv:TmdgO/GJgre4LFCbKierq5EBdTDpvTo04LUZmLwgGg8=,tag:YLwI1aaOITsIc10lM0DGwg==,type:str]
+    lastmodified: "2024-06-26T00:16:02Z"
+    mac: ENC[AES256_GCM,data:wpWJBvobO5pjuzN0H0uzGdDou6XTq+nwIu1gaq8M0pXmqlpE5q+0krVU9Np1IAHvQZrdiFyCZCIY9TSZpOu4ajYL21uqp65Gad5OPvSmuUc+yfGplShkkEWqsKInCY5As0xXHWQ6oTHbMZr/axtiNRRsyPR8UnT5BqqOeZ18bes=,iv:HynnCwQ/LSO3NoCyulzU+DyzUAfhW0Jg7fprP9a93xM=,tag:O5b9dIqZ9TOYo+/hBkPnAA==,type:str]
     pgp:
         - created_at: "2024-06-23T20:00:48Z"
           enc: |-
@@ -88,7 +88,7 @@ spec:
     weighted:
         services:
             - name: longhorn-frontend
-              port: 80
+              port: 8000
               weight: 1
 sops:
     kms: []
@@ -105,8 +105,8 @@ sops:
             OFBMd0g0dlpJU1VFV0Myd3U3bDdoZDQKvcse5ifCxIMmrtXpBLNOZlAneeHDGCjK
             lbBz81rCe+wE1PdB9tCftp3LB9XpWHvjsGkUr+3EM+6U514ene3vrQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-25T23:27:23Z"
-    mac: ENC[AES256_GCM,data:WL5Gk+Jxwfb/clN6DHUmK7MuNGNM34ZD51FzB4hdJ9sFJIoypsdfUOYrFotnfU7TntiKa5xUhPwRiq5WTX4VXOoSB6zRDSf6OrVkpkwWQF6DWecqTC70ujxtmH7Ke3sgcfRL/3PIBfPgkzi28B2Tby708LG5a5haB2XWkhTKKKg=,iv:TmdgO/GJgre4LFCbKierq5EBdTDpvTo04LUZmLwgGg8=,tag:YLwI1aaOITsIc10lM0DGwg==,type:str]
+    lastmodified: "2024-06-26T00:16:02Z"
+    mac: ENC[AES256_GCM,data:wpWJBvobO5pjuzN0H0uzGdDou6XTq+nwIu1gaq8M0pXmqlpE5q+0krVU9Np1IAHvQZrdiFyCZCIY9TSZpOu4ajYL21uqp65Gad5OPvSmuUc+yfGplShkkEWqsKInCY5As0xXHWQ6oTHbMZr/axtiNRRsyPR8UnT5BqqOeZ18bes=,iv:HynnCwQ/LSO3NoCyulzU+DyzUAfhW0Jg7fprP9a93xM=,tag:O5b9dIqZ9TOYo+/hBkPnAA==,type:str]
     pgp:
         - created_at: "2024-06-23T20:00:48Z"
           enc: |-
