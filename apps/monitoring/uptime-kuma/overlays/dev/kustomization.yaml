@@ -14,7 +14,7 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app: uptime-kuma
+    app.kubernetes.io/name: uptime-kuma
   name: uptime-kuma
 
 helmCharts:
