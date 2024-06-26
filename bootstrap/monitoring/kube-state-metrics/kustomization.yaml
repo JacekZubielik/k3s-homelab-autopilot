@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: kube-state
 
 resources:
-- resources/alerts.yaml
+# - resources/alerts.yaml
 - resources/cluster-role.yaml
 - resources/deployment.yaml
 - resources/service-account.yaml
