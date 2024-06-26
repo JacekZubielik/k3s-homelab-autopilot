@@ -225,8 +225,6 @@ data:
               app.kubernetes.io/instance in (
                   lms
               )
-            widget:
-                url: "{{HOMEPAGE_VAR_LMS_URL}}"
 
         - YouTubeDL:
             icon: youtubedl.svg
