@@ -22,8 +22,8 @@ metadata:
 
 helmCharts:
 - name: esphome
-  repo: https://jacekzubielik.github.io/jz-helm-charts
   version: 0.0.10
+  repo: https://jacekzubielik.github.io/jz-helm-charts
   includeCRDs: false
   namespace: iot
   releaseName: esphome
