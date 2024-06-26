@@ -73,7 +73,7 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/managed-by: argocd-autopilot
-        app: '{{ appName }}'
+        app.kubernetes.io/name: '{{ appName }}'
         application-role: '{{ appRole }}'
       annotations:
         argocd.argoproj.io/sync-wave: '{{ syncWave }}'
@@ -115,12 +115,12 @@ spec:
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
-        - Delete=false
+        - Delete=true
         - FailOnSharedResource=false
         - preserveResourcesOnDeletion=false
         - PruneLast=true
         - PrunePropagationPolicy=foreground
-        - Replace=false
+        - Replace=true
         - RespectIgnoreDifferences=true
         - ServerSideApply=false
         - SkipDryRunOnMissingResource=true
