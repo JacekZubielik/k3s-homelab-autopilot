@@ -185,9 +185,9 @@ data:
               app.kubernetes.io/instance in (
                   syncthing
               )
-            widget:
-              type: strelaysrv
-              url: "{{HOMEPAGE_VAR_SYNCTHING_URL_SRS}}"
+            # widget:
+            #   type: strelaysrv
+            #   url: "{{HOMEPAGE_VAR_SYNCTHING_URL_SRS}}"
 
         - MinIO:
             icon: minio.svg
