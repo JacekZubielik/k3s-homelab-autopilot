@@ -38,9 +38,9 @@ helmCharts:
 - name: traefik
   version: 26.1.0
   repo: https://helm.traefik.io/traefik
-  releaseName: traefik
-  namespace: traefik
   includeCRDs: true
+  namespace: traefik
+  releaseName: traefik
   valuesFile: values.yaml
 
 configMapGenerator:

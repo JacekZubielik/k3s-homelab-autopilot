@@ -8,15 +8,8 @@ metadata:
         cert-manager.io/cluster-issuer: route53-letsencrypt-production
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:IMBzsSbTeEzj//+qwHcDQFHB8KH7azZ9aA==,iv:CBPzDjynFA0wP3t9SIxBLp6RUMIsu+jbxmoTrtbSfH0=,tag:kIPKRMDvcTy7DyrqhVkr6A==,type:str]
         kubernetes.io/ingress.class: traefik-external
-        gethomepage.dev/description: traefik
-        gethomepage.dev/enabled: "true"
-        gethomepage.dev/group: Tools
-        gethomepage.dev/icon: homepage.png
-        gethomepage.dev/name: traefik
-        gethomepage.dev/widget.type: traefik
-        gethomepage.dev/widget.url: https://traefik.system.anotherlife.org.pl
-    labels:
-        app.kubernetes.io/name: traefik
+    # labels:
+    #     app.kubernetes.io/name: traefik
     name: dashboard
     namespace: traefik
 spec:
@@ -46,8 +39,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-06-25T23:32:48Z"
-    mac: ENC[AES256_GCM,data:SwdNNzsNEBv8pqT8r4mo8hlWYwLdoauf7jYSSiJIueFSxYj9GnJvArcb7Q29Wc0LgOY4O4Z8/Gmeb3sjvtEcAZr9UwPZhtta4WLMPbpOzgaogsv97K7WXefemuRc5prvAuRIGEWpyFMewFyrdKJmRHOGqnX7p+MBOdZ088qVQn4=,iv:i1m9evn9AV5Q6WVlfKNZ4DFDOTlCDzMA+1RXmBU6YcE=,tag:l/1JfP1KNcGp6+fyFhfjLQ==,type:str]
+    lastmodified: "2024-06-26T18:24:22Z"
+    mac: ENC[AES256_GCM,data:wJh4gkBKMYzDcL2QVv95zy/gi8pC9q2la5bOJnBnlHoNbs9rf2YewwDtCiMBSPo7Ezlxf/vqZGgAzS5AT95GS/wB0K/eT9teuq0ZRl6usRojj0qL0Z6qQJzAPDNkVCid7x8O0wi7Vrwn1QIo9emOfvtlsKfZKHNuYy1POq9D3vg=,iv:JyCDQL+I4lyMkHxV0uvYYaNT/4+bQQdfGWdlgAQDotY=,tag:tdMRfETlX0TVDlM7KKk7LA==,type:str]
     pgp:
         - created_at: "2024-06-25T21:16:26Z"
           enc: |-
