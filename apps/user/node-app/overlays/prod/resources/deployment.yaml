@@ -46,7 +46,7 @@ spec:
             port: 3000
         envFrom:
         - configMapRef:
-            name: node-app-timezone
+            name: node-app-tz
         resources:
           requests:
             memory: 256Mi
