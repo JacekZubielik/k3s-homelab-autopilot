@@ -3,8 +3,7 @@ kind: ClusterRole
 metadata:
   labels:
     app.kubernetes.io/component: exporter
-    app: kube-state-metrics
-    app.kubernetes.io/version: 2.12.0
+    app.kubernetes.io/name: kube-state-metrics
   name: kube-state-metrics
 rules:
 - apiGroups:
@@ -107,3 +106,20 @@ rules:
   verbs:
   - list
   - watch
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/component: exporter
+    app.kubernetes.io/name: kube-state-metrics
+  name: kube-state-metrics
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kube-state-metrics
+subjects:
+- kind: ServiceAccount
+  name: kube-state-metrics
+  namespace: kube-state
