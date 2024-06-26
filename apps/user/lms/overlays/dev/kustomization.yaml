@@ -14,7 +14,7 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app: lms
+    app.kubernetes.io/name: lms
   name: lms
 
 helmCharts:
@@ -27,7 +27,7 @@ helmCharts:
   valuesFile: values.yaml
 
 configMapGenerator:
-- name: lms-timezone
+- name: lms-tz
   literals:
   - TZ=CET
   - PUID=1000

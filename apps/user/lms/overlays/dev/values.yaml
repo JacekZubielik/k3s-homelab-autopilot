@@ -6,7 +6,6 @@ hostNetwork: false
 
 # strategyType: RollingUpdate
 
-
 updateStrategy:
   type: RollingUpdate
   # rollingUpdate:
@@ -125,13 +124,13 @@ startupProbe:
 ingress:
   enabled: false
 
-resources: {}
-#   requests:
-#     cpu: "1"
-#     memory: "256Mi"
-#   limits:
-#     cpu: "1"
-#     memory: "512Mi"
+resources:
+  requests:
+    cpu: 150m
+    memory: 0.4Gi
+  limits:
+    cpu: 850m
+    memory: 0.8Gi
 
 nodeSelector:
   kubernetes.io/hostname: dev-k3s-master-0
