@@ -31,7 +31,12 @@ patches:
 - path: patches/frontend-service.yaml
   target:
     kind: Service
-    name: longhorn-frontend
+    name: longhorn-frontend-traefik
 
-patchesStrategicMerge:
-- patches/storageclass.yaml
+- path: patches/frontend-service.yaml
+  target:
+    kind: ConfigMap
+    name: longhorn-storageclass
+
+# patchesStrategicMerge:
+# - patches/storageclass.yaml
