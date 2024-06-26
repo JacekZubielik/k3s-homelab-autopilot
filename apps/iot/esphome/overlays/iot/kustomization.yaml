@@ -17,7 +17,7 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "10"
   labels:
-    app: esphome
+    app.kubernetes.io/name: esphome
   name: esphome
 
 helmCharts:
