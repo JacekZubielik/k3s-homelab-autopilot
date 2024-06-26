@@ -3,8 +3,8 @@ kind: ConfigMap
 metadata:
   name: homepage
   namespace: dev
-  labels:
-    app: homepage
+  # labels:
+  #   app.kubernetes.io/name: homepage
 data:
   kubernetes.yaml: |
     mode: default
@@ -137,7 +137,7 @@ data:
             icon: syncthing.svg
             href: "{{HOMEPAGE_VAR_SYNCTHING_URL}}"
             description: Syncthing Relay Server
-            app: syncthing
+            app.kubernetes.io/name: syncthing
             namespace: storage
             widget:
               type: strelaysrv

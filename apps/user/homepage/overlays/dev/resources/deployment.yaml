@@ -4,12 +4,12 @@ kind: Deployment
 metadata:
   name: homepage
   namespace: default
-  labels:
-    app: homepage
+  # labels:
+  #   app.kubernetes.io/name: homepage
 spec:
   selector:
     matchLabels:
-      app: homepage
+      app.kubernetes.io/name: homepage
   replicas: 2
   progressDeadlineSeconds: 600
   revisionHistoryLimit: 2
@@ -19,9 +19,9 @@ spec:
       maxUnavailable: 25%
       maxSurge: 1
   template:
-    metadata:
-      labels:
-        app: homepage
+    # metadata:
+    #   labels:
+    #     app.kubernetes.io/name: homepage
     spec:
       containers:
         - name: homepage
@@ -87,4 +87,4 @@ spec:
       #     whenUnsatisfiable: DoNotSchedule
       #     labelSelector:
       #       matchLabels:
-      #         app: homepage
+      #         app.kubernetes.io/name: homepage
