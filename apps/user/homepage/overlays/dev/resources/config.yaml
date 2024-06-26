@@ -178,6 +178,10 @@ data:
             description: Home Assistant
             app: home-assistant
             namespace: iot
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  dev-home-assistant
+              )
             widget:
               type: homeassistant
               url: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
