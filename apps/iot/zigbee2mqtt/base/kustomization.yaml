@@ -1,15 +1,14 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
   labels:
-    app: zigbee2mqtt
+    app.kubernetes.io/name: zigbee2mqtt
 
 configMapGenerator:
-- name: zigbee2mqtt-timezone
+- name: zigbee2mqtt-tz
   literals:
   - TZ=CET
