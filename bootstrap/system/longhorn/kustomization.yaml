@@ -1,10 +1,10 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-# namespace: longhorn-system
+namespace: longhorn-system
 
-# resources:
-# - resources/servicemonitor.yaml
+resources:
+- resources/servicemonitor.yaml
 
 generators:
 - ksops-generator.yaml
@@ -33,10 +33,10 @@ patches:
     kind: Service
     name: longhorn-frontend-traefik
 
-- path: patches/storageclass.yaml
-  target:
-    kind: ConfigMap
-    name: longhorn-storageclass
+# - path: patches/storageclass.yaml
+#   target:
+#     kind: ConfigMap
+#     name: longhorn-storageclass
 
-# patchesStrategicMerge:
-# - patches/storageclass.yaml
+patchesStrategicMerge:
+- patches/storageclass.yaml
