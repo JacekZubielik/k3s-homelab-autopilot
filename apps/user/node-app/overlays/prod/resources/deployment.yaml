@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: ghcr.io/jacekzubielik/node-app.kubernetes.io/name:2.2.0
+        image: ghcr.io/jacekzubielik/node-app:2.2.1
         imagePullPolicy: IfNotPresent
         # env:
         # - name: TZ
