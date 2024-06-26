@@ -10,7 +10,7 @@ metadata:
         kubernetes.io/ingress.class: traefik-external
     # labels:
     #     app.kubernetes.io/name: homepage
-    name: homepage
+    name: homepage-staging
     namespace: dev
 spec:
     entryPoints:
@@ -49,8 +49,8 @@ sops:
             WWpKdUhSUlA5QTZLV0xsd0JMc1diVDQK7f36t00wMkDSAoTlnJs+8RNiJiZn4wcM
             wj7URiBAtcXd/z/KQE98YADoCd/cMIgsQo6HE9gmkIXv8inkdz9KNQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-26T09:53:30Z"
-    mac: ENC[AES256_GCM,data:QkdqOuDyBa65IuB6QkZT8SIyYc7Xcu++qz15F114naLlNK91tTbbwhn1AwVq4w/JAGD/Akn4SozBR3YriZ5R3oZ+ajtnH5EptGrClVNcEbbccHfXnfAMUjdUFhcO/KSKFbPnMvVyjeu+qAiYbCjKUy2qNRVA7EGzJurk+A1jg+k=,iv:3WQ8RgjEyk/Yl4Ac4M/R59MY6x0xTLnxn9YjKdaBmVc=,tag:04/CGkHFQiUlRKLJAnUFSQ==,type:str]
+    lastmodified: "2024-06-26T11:26:18Z"
+    mac: ENC[AES256_GCM,data:jCb13Q8uUPqIEijpeFAiUZnsLpuGUQlT1EJR7MaCs6nVxtwXGElcQBFvC2W13XBhsQdnmn+z0jsrb8K93ZxY68W+5Q/NR2YcidZmeLcxqXIKzLY2yS+e3MasOC0olgWOkP9NMcGDJ8u9EvjOypoyiSxDo4q9xCzx/S4H3qqfbd8=,iv:4Y3Yd3qc1dVlhDN9yy8OIfQjPkxnzfGKNxkl9t1+pMU=,tag:aSbHvJumRQtkVqolmOB9FQ==,type:str]
     pgp:
         - created_at: "2024-06-22T15:17:47Z"
           enc: |-
@@ -105,8 +105,8 @@ sops:
             WWpKdUhSUlA5QTZLV0xsd0JMc1diVDQK7f36t00wMkDSAoTlnJs+8RNiJiZn4wcM
             wj7URiBAtcXd/z/KQE98YADoCd/cMIgsQo6HE9gmkIXv8inkdz9KNQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-26T09:53:30Z"
-    mac: ENC[AES256_GCM,data:QkdqOuDyBa65IuB6QkZT8SIyYc7Xcu++qz15F114naLlNK91tTbbwhn1AwVq4w/JAGD/Akn4SozBR3YriZ5R3oZ+ajtnH5EptGrClVNcEbbccHfXnfAMUjdUFhcO/KSKFbPnMvVyjeu+qAiYbCjKUy2qNRVA7EGzJurk+A1jg+k=,iv:3WQ8RgjEyk/Yl4Ac4M/R59MY6x0xTLnxn9YjKdaBmVc=,tag:04/CGkHFQiUlRKLJAnUFSQ==,type:str]
+    lastmodified: "2024-06-26T11:26:18Z"
+    mac: ENC[AES256_GCM,data:jCb13Q8uUPqIEijpeFAiUZnsLpuGUQlT1EJR7MaCs6nVxtwXGElcQBFvC2W13XBhsQdnmn+z0jsrb8K93ZxY68W+5Q/NR2YcidZmeLcxqXIKzLY2yS+e3MasOC0olgWOkP9NMcGDJ8u9EvjOypoyiSxDo4q9xCzx/S4H3qqfbd8=,iv:4Y3Yd3qc1dVlhDN9yy8OIfQjPkxnzfGKNxkl9t1+pMU=,tag:aSbHvJumRQtkVqolmOB9FQ==,type:str]
     pgp:
         - created_at: "2024-06-22T15:17:47Z"
           enc: |-
