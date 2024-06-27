@@ -39,10 +39,10 @@ namespace: argocd
 patches:
 - path: patches/rbac-cm.yaml
 - path: patches/ksops.yaml
-# - path: patches/frontend-service.yaml
-#   target:
-#     kind: Service
-#     name: argocd-server-frontend
+- path: patches/frontend-service.yaml
+  target:
+    kind: Service
+    name: argocd-server
 
-patchesStrategicMerge:
-- patches/frontend-service.yaml
+# patchesStrategicMerge:
+# - patches/frontend-service.yaml
