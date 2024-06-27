@@ -490,7 +490,7 @@ alertmanager:
     #   targetPort: 8082
 
     externalIPs: []
-    loadBalancerIP: ""
+    loadBalancerIP: "192.168.40.195"
     loadBalancerSourceRanges: []
 
     ## Denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints
@@ -511,7 +511,7 @@ alertmanager:
 
     ## Service type
     ##
-    type: ClusterIP
+    type: LoadBalancer # ClusterIP
 
   ## Configuration for creating a separate Service for each statefulset Alertmanager replica
   ##
@@ -3082,7 +3082,7 @@ prometheus:
 
     ## Denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints
     externalTrafficPolicy: Cluster
-    type: LoadBalancer #ClusterIP
+    type: LoadBalancer # ClusterIP
 
     ## Additional ports to open for Prometheus service
     additionalPorts: []
