@@ -197,7 +197,7 @@ data:
             namespace: storage
             pod-selector: >-
               app.kubernetes.io/instance in (
-                  storage-minio
+                  minio
               )
 
         - Longhorn:
