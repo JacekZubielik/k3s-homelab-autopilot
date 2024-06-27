@@ -98,7 +98,7 @@ consoleService:
   clusterIP: ~
   port: "9001"
   nodePort: 32001
-  loadBalancerIP: ~
+  loadBalancerIP: 192.168.40.196
   externalIPs: []
   annotations: {}
 
