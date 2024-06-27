@@ -18,6 +18,7 @@ spec:
     - Widgets
 
   privateKey:
+    rotationPolicy: Always
     # algorithm: RSA
     # encoding: PKCS8
     # size: 2048
