@@ -115,14 +115,14 @@ spec:
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
-        - Delete=false
+        - Delete=true
         - FailOnSharedResource=false
         - preserveResourcesOnDeletion=false
         - PruneLast=true
         - PrunePropagationPolicy=foreground
-        - Replace=true
+        - Replace=false
         - RespectIgnoreDifferences=true
-        - ServerSideApply=true
+        - ServerSideApply=false
         - SkipDryRunOnMissingResource=true
         - Validate=false
         retry:

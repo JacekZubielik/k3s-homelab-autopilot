@@ -120,9 +120,9 @@ spec:
         - preserveResourcesOnDeletion=false
         - PruneLast=true
         - PrunePropagationPolicy=foreground
-        - Replace=true
+        - Replace=false
         - RespectIgnoreDifferences=true
-        - ServerSideApply=true
+        - ServerSideApply=false
         - SkipDryRunOnMissingResource=true
         - Validate=false
         retry:
