@@ -4,10 +4,7 @@ kind: Service
 metadata:
   annotations:
     metallb.universe.tf/loadBalancerIPs: 192.168.40.182
-  # labels:
-  #   app: argocd-server
   name: argocd-server
-  # namespace: argocd
 spec:
   ports:
   - name: http

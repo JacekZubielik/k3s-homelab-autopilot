@@ -2,16 +2,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "2"
-  labels:
-    app: traefik
   name: traefik
   namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: traefik
@@ -29,7 +27,7 @@ spec:
     syncOptions:
     - ApplyOutOfSyncOnly=true
     - CreateNamespace=true
-    - Delete=false
+    - Delete=true
     - FailOnSharedResource=false
     - preserveResourcesOnDeletion=false
     - PruneLast=true

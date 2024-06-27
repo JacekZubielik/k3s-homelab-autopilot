@@ -1136,14 +1136,12 @@ grafana:
   #   version: 1
 
   ## Passed to grafana subchart and used by servicemonitor below
-  ##
   service:
     portName: http-web
 
   serviceMonitor:
     # If true, a ServiceMonitor CRD is created for a prometheus operator
     # https://github.com/coreos/prometheus-operator
-    #
     enabled: true
 
     # Path to use for scraping metrics. Might be different if server.root_url is set
@@ -3077,7 +3075,6 @@ prometheus:
     ## Only used if service.type is 'NodePort'
     ##
     nodePort: 30090
-
     ## Loadbalancer IP
     ## Only use if service.type is "LoadBalancer"
     loadBalancerIP: "192.168.40.194"
