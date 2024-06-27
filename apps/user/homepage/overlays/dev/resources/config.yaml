@@ -193,11 +193,11 @@ data:
             icon: minio.svg
             href: "{{HOMEPAGE_VAR_MINIO_URL}}"
             description: S3 object storage
-            app: minio
+            app: storage-minio
             namespace: storage
             pod-selector: >-
               app.kubernetes.io/instance in (
-                  minio
+                  storage-minio
               )
 
         - Longhorn:
