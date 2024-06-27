@@ -2,10 +2,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: homepage
-  namespace: dev
   labels:
     app.kubernetes.io/name: homepage
+  name: homepage
+  namespace: dev
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
