@@ -5,30 +5,35 @@ metadata:
   name: selfsigned-ca
   namespace: cert-manager
 spec:
-  isCA: true
   commonName: selfsigned-ca
+  duration: 2160h0m0s   # 90d
+  isCA: true
+  renewBefore: 720h0m0s   # 30d
   secretName: default.svc.tls
+
   subject:
     organizations:
     - ACME Inc.
     organizationalUnits:
     - Widgets
+
   privateKey:
     # algorithm: RSA
     # encoding: PKCS8
     # size: 2048
     algorithm: ECDSA
-    size: 256
-  # dnsNames:
-  # - "default.svc"
-  # - "*.default.svc"
+    encoding: PKCS1
+    size: 384
+    # size: 256
+  usages:
+  - cert sign
+  dnsNames:
+  - "default.svc"
+  - "*.default.svc"
   # ipAddresses:
   # - 127.0.0.1
   # - ::1
   issuerRef:
-    group: cert-manager.io
+    # group: cert-manager.io
     kind: ClusterIssuer
     name: selfsigned-issuer
-
-  duration: 2160h0m0s   # 90d
-  renewBefore: 720h0m0s   # 30d
