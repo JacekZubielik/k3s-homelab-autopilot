@@ -13,7 +13,7 @@ spec:
 
   subject:
     organizations:
-    - ACME Inc.
+    - ANOTHERLIFE Inc.
     organizationalUnits:
     - Widgets
 
@@ -24,17 +24,17 @@ spec:
     # size: 2048
     algorithm: ECDSA
     encoding: PKCS1
-    size: 384
-    # size: 256
+    # size: 384
+    size: 256
   usages:
   - cert sign
   dnsNames:
   - "default.svc"
   - "*.default.svc"
-  # ipAddresses:
-  # - 127.0.0.1
-  # - ::1
+  ipAddresses:
+  - 127.0.0.1
+  - ::1
   issuerRef:
-    # group: cert-manager.io
+    group: cert-manager.io
     kind: ClusterIssuer
     name: selfsigned-issuer
