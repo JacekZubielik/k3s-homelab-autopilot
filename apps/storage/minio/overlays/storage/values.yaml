@@ -127,7 +127,7 @@ securityContext:
 
 resources:
   requests:
-    memory: 512M #1Gi
+    memory: 1Gi
 
 policies:
   - name: loki
