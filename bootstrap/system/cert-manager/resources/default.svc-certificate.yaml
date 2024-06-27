@@ -15,7 +15,7 @@ spec:
     organizations:
     - ANOTHERLIFE Inc.
     organizationalUnits:
-    - Widgets
+    - kubernetes.default.svc
 
   privateKey:
     rotationPolicy: Always
@@ -28,6 +28,8 @@ spec:
     size: 256
   usages:
   - cert sign
+  - server auth
+  - client auth
   dnsNames:
   - "default.svc"
   - "*.default.svc"
