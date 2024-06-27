@@ -4,16 +4,20 @@ kind: Service
 metadata:
   annotations:
     metallb.universe.tf/loadBalancerIPs: 192.168.40.182
-  labels:
-    app: argocd-server-ui
+  # labels:
+  #   app: argocd-server
   name: argocd-server-frontend
-  namespace: argocd
+  # namespace: argocd
 spec:
   ports:
-  - port: 80
+  - name: http
     protocol: TCP
-    targetPort: 80
-    name: web
+    port: 80
+    targetPort: 8080
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 8080
   type: LoadBalancer
   selector:
-    app: argocd-server-ui
+    app.kubernetes.io/name: argocd-server
