@@ -46,7 +46,7 @@ loki:
         schema: v13
         index:
           prefix: index_
-          period: 12h
+          period: 24h
 
 
 # Configuration for the write
