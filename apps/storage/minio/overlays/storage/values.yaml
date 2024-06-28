@@ -70,7 +70,7 @@ persistence:
   # storageClass: "longhorn"
   # accessMode: ReadWriteOnce
   # size: 10Gi
-  existingClaim: "minio-pv-volume"
+  existingClaim: "minio-pv-claim"
 
 ## Expose the MinIO service to be accessed from outside the cluster (LoadBalancer service).
 ## or access it from within the cluster (ClusterIP service). Set the service type and the port to serve it.
