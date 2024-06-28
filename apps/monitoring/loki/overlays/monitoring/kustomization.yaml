@@ -22,7 +22,7 @@ helmCharts:
   version: 6.6.3
   repo: https://grafana.github.io/helm-charts
   includeCRDs: false
-  namespace: monitoring
+  namespace: loki
   releaseName: loki
   valuesFile: values.yaml
 
