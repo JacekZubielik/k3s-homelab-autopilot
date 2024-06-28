@@ -46,17 +46,14 @@ loki:
         schema: v13
         index:
           prefix: index_
-          period: 24h
+          period: 12h
 
 
 # Configuration for the write
 write:
-  # Number of replicas for the write
   replicas: 1
   persistence:
-    # -- Size of persistent disk
     size: 10Gi
-    # -- Storage class to be used.
     storageClass: longhorn
 
   # Enable environment variables in config file
