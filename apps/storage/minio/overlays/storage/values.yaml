@@ -6,16 +6,9 @@ mode: standalone ## other supported values are "standalone"
 ## is restarted. This can result in unnecessary restarts under GitOps tooling such as
 ## flux, so set to "true" to disable this behaviour.
 ignoreChartChecksums: true #false
-
-## Internal port number for MinIO S3 API container
-## Change service.port to change external port number
 minioAPIPort: "9000"
-
-## Internal port number for MinIO Browser Console container
-## Change consoleService.port to change external port number
 minioConsolePort: "9001"
 
-## Update strategy for Deployments
 deploymentUpdate:
   type: RollingUpdate
   # maxUnavailable: 0
@@ -67,14 +60,8 @@ trustedCertsSecret: ""
 
 persistence:
   enabled: true
-  # storageClass: "longhorn"
-  # accessMode: ReadWriteOnce
-  # size: 10Gi
   existingClaim: "minio-pv-claim"
 
-## Expose the MinIO service to be accessed from outside the cluster (LoadBalancer service).
-## or access it from within the cluster (ClusterIP service). Set the service type and the port to serve it.
-## ref: http://kubernetes.io/docs/user-guide/services/
 service:
   type: LoadBalancer
   clusterIP: ~
@@ -93,8 +80,6 @@ consoleService:
   externalIPs: []
   annotations: {}
 
-## Node labels for pod assignment
-## Ref: https://kubernetes.io/docs/user-guide/node-selection/
 nodeSelector:
   kubernetes.io/hostname: dev-k3s-master-0
 affinity:
@@ -122,7 +107,6 @@ securityContext:
 #   prometheus.io/path: "/minio/v2/metrics/cluster"
 #   prometheus.io/port: "9000"
 
-
 resources:
   requests:
     memory: 1.5Gi
@@ -137,42 +121,47 @@ buckets:
     purge: false
     versioning: false
   - name: k3s-authentik-backup
-    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    objectlocking: false
     policy: none
     purge: false
     versioning: false
   - name: k3s-backend
-    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    objectlocking: false
     policy: none
     purge: false
     versioning: false
   - name: k3s-audio
-    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    objectlocking: false
     policy: none
     purge: false
     versioning: false
   - name: k3s-video
-    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    objectlocking: false
     policy: none
     purge: false
     versioning: false
   - name: k3s-syncthing-backup
-    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    objectlocking: false
     policy: none
     purge: false
     versioning: false
   - name: k3s-loki
-    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    objectlocking: false
+    policy: none
+    purge: false
+    versioning: false
+  - name: k3s-longhorn-backup
+    objectlocking: false
     policy: none
     purge: false
     versioning: false
   - name: k3s-tempo
-    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    objectlocking: false
     policy: none
     purge: false
     versioning: false
   - name: k3s-temp
-    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    objectlocking: false
     policy: none
     purge: false
     versioning: false
@@ -226,30 +215,60 @@ policies:
           - "s3:PutObject"
           - "s3:GetObjectTagging"
           - "s3:PutObjectTagging"
-  - name: temp
+  - name: backend
     statements:
-      - effect: Allow  # this is the default
-        resources:
+      - resources:
           - 'arn:aws:s3:::k3s-temp'
           - 'arn:aws:s3:::k3s-temp/*'
           - 'arn:aws:s3:::k3s-tempo'
           - 'arn:aws:s3:::k3s-tempo/*'
           - 'arn:aws:s3:::k3s-loki'
           - 'arn:aws:s3:::k3s-loki/*'
+          - 'arn:aws:s3:::k3s-authentik'
+          - 'arn:aws:s3:::k3s-authentik/*'
+          - 'arn:aws:s3:::k3s-authentik-backup'
+          - 'arn:aws:s3:::k3s-authentik-backup/*'
+          - 'arn:aws:s3:::k3s-backend'
+          - 'arn:aws:s3:::k3s-backend/*'
+          - 'arn:aws:s3:::k3s-audio'
+          - 'arn:aws:s3:::k3s-audio/*'
+          - 'arn:aws:s3:::k3s-video'
+          - 'arn:aws:s3:::k3s-video/*'
+          - 'arn:aws:s3:::k3s-syncthing-backup'
+          - 'arn:aws:s3:::k3s-syncthing-backup/*'
+          - 'arn:aws:s3:::k3s-longhorn-backup'
+          - 'arn:aws:s3:::k3s-longhorn-backup/*'
         actions:
           - "s3:AbortMultipartUpload"
           - "s3:GetObject"
           - "s3:DeleteObject"
           - "s3:PutObject"
           - "s3:ListMultipartUploadParts"
-      - resources:
-          - 'arn:aws:s3:::example*'
-        actions:
-          - "s3:CreateBucket"
-          - "s3:DeleteBucket"
+          # test
           - "s3:GetBucketLocation"
           - "s3:ListBucket"
           - "s3:ListBucketMultipartUploads"
+      - name: lms
+        statements:
+          - resources:
+              - 'arn:aws:s3:::k3s-audio/*'
+            actions:
+              - "s3:GetObject"
+          - resources:
+              - 'arn:aws:s3:::k3s-audio'
+            actions:
+              - "s3:GetBucketLocation"
+              - "s3:ListBucket"
+              - "s3:ListBucketMultipartUploads"
+
+      # - resources:
+      #     - 'arn:aws:s3:::example*'
+      #   actions:
+      #     - "s3:CreateBucket"
+      #     - "s3:DeleteBucket"
+      #     - "s3:GetBucketLocation"
+      #     - "s3:ListBucket"
+      #     - "s3:ListBucketMultipartUploads"
 
 ## readonlyexamplepolicy policy grants access to buckets with name starting with example.
 ## In addition, grants objects read permissions on buckets starting with example.
