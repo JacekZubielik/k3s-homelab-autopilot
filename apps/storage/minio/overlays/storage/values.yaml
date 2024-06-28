@@ -109,9 +109,9 @@ securityContext:
 
 resources:
   requests:
-    memory: 1.5Gi
+    memory: 0.8Gi
   limits:
-    memory: 2Gi
+    memory: 1.2Gi
 
 # Minio Buckets
 buckets:
