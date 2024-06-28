@@ -116,6 +116,13 @@ securityContext:
   fsGroup: 1000
   fsGroupChangePolicy: "OnRootMismatch"
 
+# Additational pod annotations
+# podAnnotations:
+#   prometheus.io/scrape: "true"
+#   prometheus.io/path: "/minio/v2/metrics/cluster"
+#   prometheus.io/port: "9000"
+
+
 resources:
   requests:
     memory: 1.5Gi
