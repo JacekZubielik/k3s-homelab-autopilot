@@ -30,3 +30,4 @@ configMapGenerator:
 - name: loki-tz
   literals:
   - TZ=CET
+  
