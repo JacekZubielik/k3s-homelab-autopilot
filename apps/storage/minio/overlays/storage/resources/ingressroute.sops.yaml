@@ -19,7 +19,7 @@ spec:
           match: ENC[AES256_GCM,data:dQq1q+j+AOMlW1k1OBq6DeELhoDZ96w4k8CtzlhwHPBr9QY/4g==,iv:DJ9yzLfym4WGq/NnbxaG+RTcTlYdrpJzNrtumdWb35U=,tag:q2q5PIr2IMU3F8BDqz8hYw==,type:str]
           services:
             - kind: TraefikService
-              name: minio
+              name: s3
               port: 9000
     tls:
         domains:
@@ -45,8 +45,8 @@ sops:
             LzYxYlVnR3ZDNmxnV0dqUzNNWk8xUW8K56pJW5h4scnmO8xiljjkrSoSvvAUA1Cc
             y/CHD5RWYCNJjm+i4EJJsos96FEwHxOCK2tbzXShpwMDYoLiH+2QeQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T16:06:46Z"
-    mac: ENC[AES256_GCM,data:b4QZVnFrZuaqNj6M5eF6x7y0TtNbTErGUyHx7Vr54XwILVBc53KMaBX6VYvUNRxyI8VSxSTFB7kYC8a12Q4mrUC3GbOw/+zOScdFZVI4q4E924/nDeDhCD3DAeYRYA2bvfs0CNTDHul3XT3gDZJxNTqr59Y2ENoWPgMHOq+zDAI=,iv:TIch3MDQkLGQ1qgnh6jJRSxm/7SYTRI+mClAvSZbJiM=,tag:Ssdtq6efljlfKmrcKIGWFQ==,type:str]
+    lastmodified: "2024-06-28T16:29:51Z"
+    mac: ENC[AES256_GCM,data:G2xV89Kd1900LqvxEsFj/9lwZhpIXqO1clB/Dq0bz8tIa2aRfERt/XRu6yCzuAIII+lzijaZYZCrMUvkwHs2rs0Wc0oaald8N7OBoM/IpvmfpsjTF2ufDBj6riVeUA+vfDwTx2iwZDvFFmzd1SkVwkl35Houzn6rz6jPmCxLQWo=,iv:oupxRh1UhtavtJ1x37yrp4Re6ueWPf5c3yMYxZ+9+2s=,tag:mGVexravnc0HT6UZFB+DmQ==,type:str]
     pgp:
         - created_at: "2024-06-28T13:28:15Z"
           enc: |-
@@ -99,8 +99,8 @@ sops:
             LzYxYlVnR3ZDNmxnV0dqUzNNWk8xUW8K56pJW5h4scnmO8xiljjkrSoSvvAUA1Cc
             y/CHD5RWYCNJjm+i4EJJsos96FEwHxOCK2tbzXShpwMDYoLiH+2QeQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T16:06:46Z"
-    mac: ENC[AES256_GCM,data:b4QZVnFrZuaqNj6M5eF6x7y0TtNbTErGUyHx7Vr54XwILVBc53KMaBX6VYvUNRxyI8VSxSTFB7kYC8a12Q4mrUC3GbOw/+zOScdFZVI4q4E924/nDeDhCD3DAeYRYA2bvfs0CNTDHul3XT3gDZJxNTqr59Y2ENoWPgMHOq+zDAI=,iv:TIch3MDQkLGQ1qgnh6jJRSxm/7SYTRI+mClAvSZbJiM=,tag:Ssdtq6efljlfKmrcKIGWFQ==,type:str]
+    lastmodified: "2024-06-28T16:29:51Z"
+    mac: ENC[AES256_GCM,data:G2xV89Kd1900LqvxEsFj/9lwZhpIXqO1clB/Dq0bz8tIa2aRfERt/XRu6yCzuAIII+lzijaZYZCrMUvkwHs2rs0Wc0oaald8N7OBoM/IpvmfpsjTF2ufDBj6riVeUA+vfDwTx2iwZDvFFmzd1SkVwkl35Houzn6rz6jPmCxLQWo=,iv:oupxRh1UhtavtJ1x37yrp4Re6ueWPf5c3yMYxZ+9+2s=,tag:mGVexravnc0HT6UZFB+DmQ==,type:str]
     pgp:
         - created_at: "2024-06-28T13:28:15Z"
           enc: |-
@@ -175,8 +175,8 @@ sops:
             LzYxYlVnR3ZDNmxnV0dqUzNNWk8xUW8K56pJW5h4scnmO8xiljjkrSoSvvAUA1Cc
             y/CHD5RWYCNJjm+i4EJJsos96FEwHxOCK2tbzXShpwMDYoLiH+2QeQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T16:06:46Z"
-    mac: ENC[AES256_GCM,data:b4QZVnFrZuaqNj6M5eF6x7y0TtNbTErGUyHx7Vr54XwILVBc53KMaBX6VYvUNRxyI8VSxSTFB7kYC8a12Q4mrUC3GbOw/+zOScdFZVI4q4E924/nDeDhCD3DAeYRYA2bvfs0CNTDHul3XT3gDZJxNTqr59Y2ENoWPgMHOq+zDAI=,iv:TIch3MDQkLGQ1qgnh6jJRSxm/7SYTRI+mClAvSZbJiM=,tag:Ssdtq6efljlfKmrcKIGWFQ==,type:str]
+    lastmodified: "2024-06-28T16:29:51Z"
+    mac: ENC[AES256_GCM,data:G2xV89Kd1900LqvxEsFj/9lwZhpIXqO1clB/Dq0bz8tIa2aRfERt/XRu6yCzuAIII+lzijaZYZCrMUvkwHs2rs0Wc0oaald8N7OBoM/IpvmfpsjTF2ufDBj6riVeUA+vfDwTx2iwZDvFFmzd1SkVwkl35Houzn6rz6jPmCxLQWo=,iv:oupxRh1UhtavtJ1x37yrp4Re6ueWPf5c3yMYxZ+9+2s=,tag:mGVexravnc0HT6UZFB+DmQ==,type:str]
     pgp:
         - created_at: "2024-06-28T13:28:15Z"
           enc: |-
@@ -229,8 +229,8 @@ sops:
             LzYxYlVnR3ZDNmxnV0dqUzNNWk8xUW8K56pJW5h4scnmO8xiljjkrSoSvvAUA1Cc
             y/CHD5RWYCNJjm+i4EJJsos96FEwHxOCK2tbzXShpwMDYoLiH+2QeQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T16:06:46Z"
-    mac: ENC[AES256_GCM,data:b4QZVnFrZuaqNj6M5eF6x7y0TtNbTErGUyHx7Vr54XwILVBc53KMaBX6VYvUNRxyI8VSxSTFB7kYC8a12Q4mrUC3GbOw/+zOScdFZVI4q4E924/nDeDhCD3DAeYRYA2bvfs0CNTDHul3XT3gDZJxNTqr59Y2ENoWPgMHOq+zDAI=,iv:TIch3MDQkLGQ1qgnh6jJRSxm/7SYTRI+mClAvSZbJiM=,tag:Ssdtq6efljlfKmrcKIGWFQ==,type:str]
+    lastmodified: "2024-06-28T16:29:51Z"
+    mac: ENC[AES256_GCM,data:G2xV89Kd1900LqvxEsFj/9lwZhpIXqO1clB/Dq0bz8tIa2aRfERt/XRu6yCzuAIII+lzijaZYZCrMUvkwHs2rs0Wc0oaald8N7OBoM/IpvmfpsjTF2ufDBj6riVeUA+vfDwTx2iwZDvFFmzd1SkVwkl35Houzn6rz6jPmCxLQWo=,iv:oupxRh1UhtavtJ1x37yrp4Re6ueWPf5c3yMYxZ+9+2s=,tag:mGVexravnc0HT6UZFB+DmQ==,type:str]
     pgp:
         - created_at: "2024-06-28T13:28:15Z"
           enc: |-
