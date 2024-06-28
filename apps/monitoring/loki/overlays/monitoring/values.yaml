@@ -9,7 +9,7 @@ loki:
       ruler: k3s-loki
     type: s3
     s3:
-      endpoint: minio.minio:9000 #s3.storage.anotherlife.org.pl
+      endpoint: s3.storage.anotherlife.org.pl # minio.minio:9000
       region: eu-west-1
       secretAccessKey: ${MINIO_SECRET_ACCESS_KEY}
       accessKeyId: ${MINIO_ACCESS_KEY_ID}
