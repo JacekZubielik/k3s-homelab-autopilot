@@ -8,8 +8,8 @@ metadata:
         cert-manager.io/cluster-issuer: route53-letsencrypt-staging
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:C6uQXActMeMQugMhLImjYqkXAg4gO+XrPwQ=,iv:pJUOqQmnxYuOuyQ/zZ/uPBZH6l6p6j4rX5EyZ1kr+6w=,tag:lKp3oEghvBeHAVTR4aK9qA==,type:str]
         kubernetes.io/ingress.class: traefik-external
-        # ingress.kubernetes.io/ssl-passthrough: "true"
-    name: s3-staging
+        ingress.kubernetes.io/ssl-passthrough: "true"
+    name: s3
     namespace: minio
 spec:
     entryPoints:
@@ -17,7 +17,6 @@ spec:
     routes:
         - kind: Rule
           match: ENC[AES256_GCM,data:CKYt//Prujpw12G+LOJXj2FxmPqU08Jlwpvp2dnkVfgIBfmiRQ==,iv:C2muaEBo0DnW/UMK0aCj8CBtZ2mGqZ3H9Om7M451G7c=,tag:ATGls264iAE4iNbi2IR4ZA==,type:str]
-          priority: 2
           services:
             - kind: TraefikService
               name: s3
@@ -46,8 +45,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T14:08:31Z"
-    mac: ENC[AES256_GCM,data:bUBlXj+pMmnqYxJsJomSNaqF62QnVQ7J3IVgUKUNDFKq5x73qBL+TD6YvA0DcrjU+cLq2TTUcpN/btvp78LgJgjjF9/1mKXU0qLnN+6FDfyGYR0hjc1jbkU/c5jAz4sxfvZ63of3IDMpkPG7bq60vJJWlO7tr8SxFMC91QuHJC4=,iv:wfNnJMVT4+/CcRPhKvVTrSaV+FNSAGdiLetwat2P9EQ=,tag:y6NvFBeIul/NbUMFURJoZQ==,type:str]
+    lastmodified: "2024-06-28T17:24:17Z"
+    mac: ENC[AES256_GCM,data:8FPnNyHvvLXd+h8cxVZ483fWOhe+ULQZmFDu7XYJNAl62ZSHL+yVsUVbJnGJcAJ5BLfPN91gzvOCI8RO/ivZxRgK4T3SZ5EQknnsGHPkkJE3M1ITHR8lfGzL+hbHD3pfMNwZKExpUPscYzsh00eZGMljDD8BzhcWqZu6JBgZu+Y=,iv:DgxvieQ51UDkbvIH+pd/3KwnuLw8LL4omrHeIfYvu4s=,tag:EASKIw/Sko+gH7OCiZ0ILg==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-
@@ -82,7 +81,7 @@ metadata:
 spec:
     weighted:
         services:
-            - name: s3
+            - name: minio
               port: 9000
               weight: 1
 sops:
@@ -100,8 +99,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T14:08:31Z"
-    mac: ENC[AES256_GCM,data:bUBlXj+pMmnqYxJsJomSNaqF62QnVQ7J3IVgUKUNDFKq5x73qBL+TD6YvA0DcrjU+cLq2TTUcpN/btvp78LgJgjjF9/1mKXU0qLnN+6FDfyGYR0hjc1jbkU/c5jAz4sxfvZ63of3IDMpkPG7bq60vJJWlO7tr8SxFMC91QuHJC4=,iv:wfNnJMVT4+/CcRPhKvVTrSaV+FNSAGdiLetwat2P9EQ=,tag:y6NvFBeIul/NbUMFURJoZQ==,type:str]
+    lastmodified: "2024-06-28T17:24:17Z"
+    mac: ENC[AES256_GCM,data:8FPnNyHvvLXd+h8cxVZ483fWOhe+ULQZmFDu7XYJNAl62ZSHL+yVsUVbJnGJcAJ5BLfPN91gzvOCI8RO/ivZxRgK4T3SZ5EQknnsGHPkkJE3M1ITHR8lfGzL+hbHD3pfMNwZKExpUPscYzsh00eZGMljDD8BzhcWqZu6JBgZu+Y=,iv:DgxvieQ51UDkbvIH+pd/3KwnuLw8LL4omrHeIfYvu4s=,tag:EASKIw/Sko+gH7OCiZ0ILg==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-
@@ -137,7 +136,7 @@ metadata:
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:C6uQXActMeMQugMhLImjYqkXAg4gO+XrPwQ=,iv:pJUOqQmnxYuOuyQ/zZ/uPBZH6l6p6j4rX5EyZ1kr+6w=,tag:lKp3oEghvBeHAVTR4aK9qA==,type:str]
         kubernetes.io/ingress.class: traefik-external
         ingress.kubernetes.io/ssl-passthrough: "true"
-    name: minio-console-staging
+    name: minio-console
     namespace: minio
 spec:
     entryPoints:
@@ -176,8 +175,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T14:08:31Z"
-    mac: ENC[AES256_GCM,data:bUBlXj+pMmnqYxJsJomSNaqF62QnVQ7J3IVgUKUNDFKq5x73qBL+TD6YvA0DcrjU+cLq2TTUcpN/btvp78LgJgjjF9/1mKXU0qLnN+6FDfyGYR0hjc1jbkU/c5jAz4sxfvZ63of3IDMpkPG7bq60vJJWlO7tr8SxFMC91QuHJC4=,iv:wfNnJMVT4+/CcRPhKvVTrSaV+FNSAGdiLetwat2P9EQ=,tag:y6NvFBeIul/NbUMFURJoZQ==,type:str]
+    lastmodified: "2024-06-28T17:24:17Z"
+    mac: ENC[AES256_GCM,data:8FPnNyHvvLXd+h8cxVZ483fWOhe+ULQZmFDu7XYJNAl62ZSHL+yVsUVbJnGJcAJ5BLfPN91gzvOCI8RO/ivZxRgK4T3SZ5EQknnsGHPkkJE3M1ITHR8lfGzL+hbHD3pfMNwZKExpUPscYzsh00eZGMljDD8BzhcWqZu6JBgZu+Y=,iv:DgxvieQ51UDkbvIH+pd/3KwnuLw8LL4omrHeIfYvu4s=,tag:EASKIw/Sko+gH7OCiZ0ILg==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-
@@ -230,8 +229,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T14:08:31Z"
-    mac: ENC[AES256_GCM,data:bUBlXj+pMmnqYxJsJomSNaqF62QnVQ7J3IVgUKUNDFKq5x73qBL+TD6YvA0DcrjU+cLq2TTUcpN/btvp78LgJgjjF9/1mKXU0qLnN+6FDfyGYR0hjc1jbkU/c5jAz4sxfvZ63of3IDMpkPG7bq60vJJWlO7tr8SxFMC91QuHJC4=,iv:wfNnJMVT4+/CcRPhKvVTrSaV+FNSAGdiLetwat2P9EQ=,tag:y6NvFBeIul/NbUMFURJoZQ==,type:str]
+    lastmodified: "2024-06-28T17:24:17Z"
+    mac: ENC[AES256_GCM,data:8FPnNyHvvLXd+h8cxVZ483fWOhe+ULQZmFDu7XYJNAl62ZSHL+yVsUVbJnGJcAJ5BLfPN91gzvOCI8RO/ivZxRgK4T3SZ5EQknnsGHPkkJE3M1ITHR8lfGzL+hbHD3pfMNwZKExpUPscYzsh00eZGMljDD8BzhcWqZu6JBgZu+Y=,iv:DgxvieQ51UDkbvIH+pd/3KwnuLw8LL4omrHeIfYvu4s=,tag:EASKIw/Sko+gH7OCiZ0ILg==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-

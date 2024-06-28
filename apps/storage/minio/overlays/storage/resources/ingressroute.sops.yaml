@@ -45,8 +45,8 @@ sops:
             LzYxYlVnR3ZDNmxnV0dqUzNNWk8xUW8K56pJW5h4scnmO8xiljjkrSoSvvAUA1Cc
             y/CHD5RWYCNJjm+i4EJJsos96FEwHxOCK2tbzXShpwMDYoLiH+2QeQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T16:29:51Z"
-    mac: ENC[AES256_GCM,data:G2xV89Kd1900LqvxEsFj/9lwZhpIXqO1clB/Dq0bz8tIa2aRfERt/XRu6yCzuAIII+lzijaZYZCrMUvkwHs2rs0Wc0oaald8N7OBoM/IpvmfpsjTF2ufDBj6riVeUA+vfDwTx2iwZDvFFmzd1SkVwkl35Houzn6rz6jPmCxLQWo=,iv:oupxRh1UhtavtJ1x37yrp4Re6ueWPf5c3yMYxZ+9+2s=,tag:mGVexravnc0HT6UZFB+DmQ==,type:str]
+    lastmodified: "2024-06-28T17:23:33Z"
+    mac: ENC[AES256_GCM,data:dl0VvP4oFvlS6cvZhC9GF145VBXNlUbFkFwn/uhc2LhPY5u1AapPpElCpklRGbJOngszkwyz9J9VRPZXvfl4VxPYDT5phJaOvOdq7Xeddx0c38Qf1O3dcxc0onjpLWd2M+EmKYUKY4GhNUnYXC+snjDv2GcWBLMQHs05xBBsMfw=,iv:qWs6SM4zowHkxXJLXe0ZPqj0v+z+zlEI4IZbgP6FtPA=,tag:4HThOfLP5AB7h5akgOd7Ew==,type:str]
     pgp:
         - created_at: "2024-06-28T13:28:15Z"
           enc: |-
@@ -99,8 +99,8 @@ sops:
             LzYxYlVnR3ZDNmxnV0dqUzNNWk8xUW8K56pJW5h4scnmO8xiljjkrSoSvvAUA1Cc
             y/CHD5RWYCNJjm+i4EJJsos96FEwHxOCK2tbzXShpwMDYoLiH+2QeQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T16:29:51Z"
-    mac: ENC[AES256_GCM,data:G2xV89Kd1900LqvxEsFj/9lwZhpIXqO1clB/Dq0bz8tIa2aRfERt/XRu6yCzuAIII+lzijaZYZCrMUvkwHs2rs0Wc0oaald8N7OBoM/IpvmfpsjTF2ufDBj6riVeUA+vfDwTx2iwZDvFFmzd1SkVwkl35Houzn6rz6jPmCxLQWo=,iv:oupxRh1UhtavtJ1x37yrp4Re6ueWPf5c3yMYxZ+9+2s=,tag:mGVexravnc0HT6UZFB+DmQ==,type:str]
+    lastmodified: "2024-06-28T17:23:33Z"
+    mac: ENC[AES256_GCM,data:dl0VvP4oFvlS6cvZhC9GF145VBXNlUbFkFwn/uhc2LhPY5u1AapPpElCpklRGbJOngszkwyz9J9VRPZXvfl4VxPYDT5phJaOvOdq7Xeddx0c38Qf1O3dcxc0onjpLWd2M+EmKYUKY4GhNUnYXC+snjDv2GcWBLMQHs05xBBsMfw=,iv:qWs6SM4zowHkxXJLXe0ZPqj0v+z+zlEI4IZbgP6FtPA=,tag:4HThOfLP5AB7h5akgOd7Ew==,type:str]
     pgp:
         - created_at: "2024-06-28T13:28:15Z"
           enc: |-
@@ -136,7 +136,7 @@ metadata:
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:eboeC+KxXQ1iB8b+yPk6OPfustoPHjcxFnM=,iv:DNoc9x4WAT17TLBbhSUmQI+luzPAXCCK/Igxo7P0+sQ=,tag:JTzZcmZFS/Wkq6KxL0pw6w==,type:str]
         kubernetes.io/ingress.class: traefik-external
         ingress.kubernetes.io/ssl-passthrough: "true"
-    name: minio-console-production
+    name: minio-console
     namespace: minio
 spec:
     entryPoints:
@@ -175,8 +175,8 @@ sops:
             LzYxYlVnR3ZDNmxnV0dqUzNNWk8xUW8K56pJW5h4scnmO8xiljjkrSoSvvAUA1Cc
             y/CHD5RWYCNJjm+i4EJJsos96FEwHxOCK2tbzXShpwMDYoLiH+2QeQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T16:29:51Z"
-    mac: ENC[AES256_GCM,data:G2xV89Kd1900LqvxEsFj/9lwZhpIXqO1clB/Dq0bz8tIa2aRfERt/XRu6yCzuAIII+lzijaZYZCrMUvkwHs2rs0Wc0oaald8N7OBoM/IpvmfpsjTF2ufDBj6riVeUA+vfDwTx2iwZDvFFmzd1SkVwkl35Houzn6rz6jPmCxLQWo=,iv:oupxRh1UhtavtJ1x37yrp4Re6ueWPf5c3yMYxZ+9+2s=,tag:mGVexravnc0HT6UZFB+DmQ==,type:str]
+    lastmodified: "2024-06-28T17:23:33Z"
+    mac: ENC[AES256_GCM,data:dl0VvP4oFvlS6cvZhC9GF145VBXNlUbFkFwn/uhc2LhPY5u1AapPpElCpklRGbJOngszkwyz9J9VRPZXvfl4VxPYDT5phJaOvOdq7Xeddx0c38Qf1O3dcxc0onjpLWd2M+EmKYUKY4GhNUnYXC+snjDv2GcWBLMQHs05xBBsMfw=,iv:qWs6SM4zowHkxXJLXe0ZPqj0v+z+zlEI4IZbgP6FtPA=,tag:4HThOfLP5AB7h5akgOd7Ew==,type:str]
     pgp:
         - created_at: "2024-06-28T13:28:15Z"
           enc: |-
@@ -229,8 +229,8 @@ sops:
             LzYxYlVnR3ZDNmxnV0dqUzNNWk8xUW8K56pJW5h4scnmO8xiljjkrSoSvvAUA1Cc
             y/CHD5RWYCNJjm+i4EJJsos96FEwHxOCK2tbzXShpwMDYoLiH+2QeQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T16:29:51Z"
-    mac: ENC[AES256_GCM,data:G2xV89Kd1900LqvxEsFj/9lwZhpIXqO1clB/Dq0bz8tIa2aRfERt/XRu6yCzuAIII+lzijaZYZCrMUvkwHs2rs0Wc0oaald8N7OBoM/IpvmfpsjTF2ufDBj6riVeUA+vfDwTx2iwZDvFFmzd1SkVwkl35Houzn6rz6jPmCxLQWo=,iv:oupxRh1UhtavtJ1x37yrp4Re6ueWPf5c3yMYxZ+9+2s=,tag:mGVexravnc0HT6UZFB+DmQ==,type:str]
+    lastmodified: "2024-06-28T17:23:33Z"
+    mac: ENC[AES256_GCM,data:dl0VvP4oFvlS6cvZhC9GF145VBXNlUbFkFwn/uhc2LhPY5u1AapPpElCpklRGbJOngszkwyz9J9VRPZXvfl4VxPYDT5phJaOvOdq7Xeddx0c38Qf1O3dcxc0onjpLWd2M+EmKYUKY4GhNUnYXC+snjDv2GcWBLMQHs05xBBsMfw=,iv:qWs6SM4zowHkxXJLXe0ZPqj0v+z+zlEI4IZbgP6FtPA=,tag:4HThOfLP5AB7h5akgOd7Ew==,type:str]
     pgp:
         - created_at: "2024-06-28T13:28:15Z"
           enc: |-
