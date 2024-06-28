@@ -20,16 +20,30 @@ loki:
         response_header_timeout: 0s
         insecure_skip_verify: false
 
-    # Storage Schema
-    schemaConfig:
+    # # Storage Schema
+    # schemaConfig:
+    #   configs:
+    #   - from: 2024-06-28
+    #     store: tsdb
+    #     index:
+    #       prefix: loki_index_
+    #       period: 24h
+    #     object_store: s3
+    #     schema: v13
+
+    #schema config
+    useTestSchema: true
+    testSchemaConfig:
       configs:
-      - from: 2024-06-28
-        store: tsdb
-        index:
-          prefix: loki_index_
-          period: 24h
-        object_store: s3
-        schema: v13
+        - from: 2024-04-01
+          store: tsdb
+          object_store: filesystem
+          schema: v13
+          index:
+            prefix: index_
+            period: 24h
+
+
 
 # Configuration for the write
 write:
