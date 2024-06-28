@@ -25,7 +25,7 @@ helmCharts:
   version: 5.2.0
   releaseName: minio
   namespace: minio
-  # includeCRDs: true
+  includeCRDs: true
   valuesFile: values.yaml
 
 configMapGenerator:
