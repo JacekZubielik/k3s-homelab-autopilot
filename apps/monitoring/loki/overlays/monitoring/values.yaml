@@ -141,3 +141,10 @@ monitoring:
 # Disable helm-test
 test:
   enabled: false
+
+
+memcachedExporter:
+  allocatedMemory: 512
+
+chunksCache:
+  allocatedMemory: 1024
