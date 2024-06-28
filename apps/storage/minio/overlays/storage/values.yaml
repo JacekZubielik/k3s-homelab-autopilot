@@ -131,6 +131,36 @@ resources:
 
 # Minio Buckets
 buckets:
+  - name: k3s-authentik
+    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    policy: none
+    purge: false
+    versioning: false
+  - name: k3s-authentik-backup
+    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    policy: none
+    purge: false
+    versioning: false
+  - name: k3s-backend
+    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    policy: none
+    purge: false
+    versioning: false
+  - name: k3s-audio
+    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    policy: none
+    purge: false
+    versioning: false
+  - name: k3s-video
+    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    policy: none
+    purge: false
+    versioning: false
+  - name: k3s-syncthing-backup
+    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+    policy: none
+    purge: false
+    versioning: false
   - name: k3s-loki
     objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
     policy: none
@@ -148,10 +178,26 @@ buckets:
     versioning: false
 
 users:
+  - accessKey: authentik
+    existingSecret: minio-secret
+    existingSecretKey: authentikPassword
+    policy: authentik
+  - accessKey: backend
+    existingSecret: minio-secret
+    existingSecretKey: backendPassword
+    policy: backend
   - accessKey: loki
     existingSecret: minio-secret
     existingSecretKey: lokiPassword
     policy: loki
+  - accessKey: lms
+    existingSecret: minio-secret
+    existingSecretKey: lmsPassword
+    policy: lms
+  - accessKey: syncthing
+    existingSecret: minio-secret
+    existingSecretKey: syncthingPassword
+    policy: syncthing
   - accessKey: tempo
     existingSecret: minio-secret
     existingSecretKey: tempoPassword
@@ -253,7 +299,7 @@ serviceAccount:
 
 metrics:
   serviceMonitor:
-    enabled: false
+    enabled: true
     # scrape each node/pod individually for additional metrics
     includeNode: true
     public: true
