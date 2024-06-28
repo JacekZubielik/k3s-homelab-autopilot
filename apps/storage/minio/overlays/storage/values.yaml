@@ -179,6 +179,10 @@ users:
     existingSecret: minio-secret
     existingSecretKey: lokiPassword
     policy: loki
+  - accessKey: longhorn
+    existingSecret: minio-secret
+    existingSecretKey: longhornPassword
+    policy: longhorn
   - accessKey: lms
     existingSecret: minio-secret
     existingSecretKey: lmsPassword
