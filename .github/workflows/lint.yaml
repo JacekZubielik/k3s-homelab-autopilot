@@ -20,11 +20,11 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       with:
         fetch-depth: 0
     - name: MegaLinter
-      uses: oxsecurity/megalinter@v7.12.0
+      uses: oxsecurity/megalinter@5199c6377b4cb7faff749a1971636f3343db9fe6 # v7.12.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PRINT_ALPACA: false
