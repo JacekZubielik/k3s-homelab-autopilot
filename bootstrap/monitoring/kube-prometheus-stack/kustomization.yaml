@@ -20,7 +20,7 @@ metadata:
 
 helmCharts:
 - name: kube-prometheus-stack
-  version: 60.5.0
+  version: 61.1.0
   repo: https://prometheus-community.github.io/helm-charts
   releaseName: kube-prometheus-stack
   includeCRDs: true
