@@ -55,7 +55,7 @@ write:
   replicas: 1
   persistence:
     # -- Size of persistent disk
-    size: 4Gi
+    size: 10Gi
     # -- Storage class to be used.
     storageClass: longhorn
 
@@ -79,7 +79,7 @@ write:
 read:
   replicas: 1
   persistence:
-    size: 4Gi
+    size: 10Gi
     storageClass: longhorn
 
   # Enable environment variables in config file
@@ -102,7 +102,7 @@ read:
 backend:
   replicas: 1
   persistence:
-    size: 4Gi
+    size: 10Gi
     storageClass: longhorn
 
   # Enable environment variables in config file
