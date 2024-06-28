@@ -1,17 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: storage
+namespace: minio
 
 resources:
 - ../../base
-# - resources/service.yaml
-# - resources/ingress.yaml
-# - resources/pv.yaml
-# - resources/pvc.yaml
-# - secrets/sealed.secret.yaml
-# #- resources/statefulset.yaml
-#- resources/deployment.yaml
-#- resources/minio-pv-sc.yaml
+- resources/pv.yaml
+- resources/pvc.yaml
 
 generators:
 - ksops-generator.yaml
@@ -30,7 +24,7 @@ helmCharts:
   repo: https://charts.min.io/
   version: 5.2.0
   releaseName: minio
-  namespace: storage
+  namespace: minio
   # includeCRDs: true
   valuesFile: values.yaml
 
