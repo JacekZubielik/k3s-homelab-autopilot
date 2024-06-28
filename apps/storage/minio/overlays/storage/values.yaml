@@ -247,18 +247,19 @@ policies:
           - "s3:GetBucketLocation"
           - "s3:ListBucket"
           - "s3:ListBucketMultipartUploads"
-      - name: lms
-        statements:
-          - resources:
-              - 'arn:aws:s3:::k3s-audio/*'
-            actions:
-              - "s3:GetObject"
-          - resources:
-              - 'arn:aws:s3:::k3s-audio'
-            actions:
-              - "s3:GetBucketLocation"
-              - "s3:ListBucket"
-              - "s3:ListBucketMultipartUploads"
+      # - name: lms
+      #   statements:
+      #     - resources:
+      #         - 'arn:aws:s3:::k3s-audio'
+      #         - 'arn:aws:s3:::k3s-audio/*'
+      #       actions:
+      #         - "s3:GetObject"
+      #     - resources:
+      #         - 'arn:aws:s3:::k3s-audio'
+      #       actions:
+      #         - "s3:GetBucketLocation"
+      #         - "s3:ListBucket"
+      #         - "s3:ListBucketMultipartUploads"
 
       # - resources:
       #     - 'arn:aws:s3:::example*'
