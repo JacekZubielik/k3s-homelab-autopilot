@@ -25,7 +25,7 @@ spec:
               name: minio-console
               port: 9001
         - kind: Rule
-          match: ENC[AES256_GCM,data:K9WoQvU1ZEG98i9f,iv:cyc+6EmHMyv/f8JduI6S+lJWWa2hPaGQLgVJ/dACUCo=,tag:QWGm+/14BlAHwinwF0xpSQ==,type:str]
+          match: ENC[AES256_GCM,data:g2a+4gG21xre/QHex2n2PDwqRTFCvmg9lPaXEKWibFTge3DT4JGIfjJJA1OjwgdhVNWwxPsjdIyOWQ==,iv:T8n/XgM7uzfQtKFlv1jbc5kYMY2gk0OPWZoaI5OIo0g=,tag:+YMOWQXq8bM5KpjgqcsYFA==,type:str]
           priority: 2
           services:
             - kind: TraefikService
@@ -55,8 +55,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T13:05:40Z"
-    mac: ENC[AES256_GCM,data:1vL5vNrhqbINwt6ti1DgsxxRhG6U35dMAKSgqGKuKdcGCame3lY0xbTYJuc6oeVBu3/xDFeaSMUDQXgooTwu5Fs9UORzub7/I8iCh5lVGwsVc8ZqV0Jz6sgHX1x/g+d6qL3n//Hzs/Wwi8cJy9HbxpUUxbrJdFWoe/VroesNyl0=,iv:9Dv+qqQrr1PQQ4uxrIN09WHGl4txuL8O249pycfP/BQ=,tag:sN3as+ZV8e5H54DxOrg0jw==,type:str]
+    lastmodified: "2024-06-28T13:07:09Z"
+    mac: ENC[AES256_GCM,data:PbcvABfZL0HuBEZCH2D5+OJdXzgwsSyclfe0wLiTj5Hhrj+/u9aPM88JJP4Y/9FEPCPLXe2C9Ygiq9mFiZ9kF/hG+qGcahBUWNALY544UFyB+FhPzAjgSu6qqWJt4oxlwnnZA8CIAoxyK9R1BxQB0zdlgixR1dXa0ppCVYAuDiI=,iv:EOseTa6wCRIB3pFW0hER3ocefeFd0Yx8TjIFipLA+9o=,tag:OLfmeuWS7cJqFTkxg3VQZA==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-
@@ -142,8 +142,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T13:05:40Z"
-    mac: ENC[AES256_GCM,data:1vL5vNrhqbINwt6ti1DgsxxRhG6U35dMAKSgqGKuKdcGCame3lY0xbTYJuc6oeVBu3/xDFeaSMUDQXgooTwu5Fs9UORzub7/I8iCh5lVGwsVc8ZqV0Jz6sgHX1x/g+d6qL3n//Hzs/Wwi8cJy9HbxpUUxbrJdFWoe/VroesNyl0=,iv:9Dv+qqQrr1PQQ4uxrIN09WHGl4txuL8O249pycfP/BQ=,tag:sN3as+ZV8e5H54DxOrg0jw==,type:str]
+    lastmodified: "2024-06-28T13:07:09Z"
+    mac: ENC[AES256_GCM,data:PbcvABfZL0HuBEZCH2D5+OJdXzgwsSyclfe0wLiTj5Hhrj+/u9aPM88JJP4Y/9FEPCPLXe2C9Ygiq9mFiZ9kF/hG+qGcahBUWNALY544UFyB+FhPzAjgSu6qqWJt4oxlwnnZA8CIAoxyK9R1BxQB0zdlgixR1dXa0ppCVYAuDiI=,iv:EOseTa6wCRIB3pFW0hER3ocefeFd0Yx8TjIFipLA+9o=,tag:OLfmeuWS7cJqFTkxg3VQZA==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-
@@ -196,8 +196,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-28T13:05:40Z"
-    mac: ENC[AES256_GCM,data:1vL5vNrhqbINwt6ti1DgsxxRhG6U35dMAKSgqGKuKdcGCame3lY0xbTYJuc6oeVBu3/xDFeaSMUDQXgooTwu5Fs9UORzub7/I8iCh5lVGwsVc8ZqV0Jz6sgHX1x/g+d6qL3n//Hzs/Wwi8cJy9HbxpUUxbrJdFWoe/VroesNyl0=,iv:9Dv+qqQrr1PQQ4uxrIN09WHGl4txuL8O249pycfP/BQ=,tag:sN3as+ZV8e5H54DxOrg0jw==,type:str]
+    lastmodified: "2024-06-28T13:07:09Z"
+    mac: ENC[AES256_GCM,data:PbcvABfZL0HuBEZCH2D5+OJdXzgwsSyclfe0wLiTj5Hhrj+/u9aPM88JJP4Y/9FEPCPLXe2C9Ygiq9mFiZ9kF/hG+qGcahBUWNALY544UFyB+FhPzAjgSu6qqWJt4oxlwnnZA8CIAoxyK9R1BxQB0zdlgixR1dXa0ppCVYAuDiI=,iv:EOseTa6wCRIB3pFW0hER3ocefeFd0Yx8TjIFipLA+9o=,tag:OLfmeuWS7cJqFTkxg3VQZA==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-
