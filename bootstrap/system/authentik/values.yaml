@@ -112,7 +112,7 @@ authentik:
     host: "{{ .Release.Name }}-postgresql"
     name: ""
     # user: ""
-    password: ""
+    # password: ""
     # port: ""
 
 blueprints:
@@ -459,7 +459,7 @@ postgresql:
     existingSecret: "authentik-private"
     secretKeys:
       # adminPasswordKey: ""
-      userPasswordKey: "POSTGRES_PASSWORD"
+      userPasswordKey: "postgres-password"
       # replicationPasswordKey: ""
 
   primary:
