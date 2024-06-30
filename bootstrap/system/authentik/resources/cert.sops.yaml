@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-    name: authentik-production
+    name: authentik
 spec:
     issuerRef:
         kind: ClusterIssuer
@@ -27,8 +27,8 @@ sops:
             TzJJdUNzelJJbXB4dHE0LzVhNnFyWTAKgIwsqevEKL7pT7A+UH0Pt5yijCnZ0AbT
             y1c0t1u8nuLdDZL14h+Xba3IH2wlcCFO3Rm6KNN9jfY1lLB10YBvbg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-19T18:50:33Z"
-    mac: ENC[AES256_GCM,data:wLxquNpeHrfmRigoscROoJNtmPMIf67Q2S9P4aNwFiQkSTwFGTx+HgSo4CRd//XzY2w0HSi+iagacFBOfsNSn1dWN6yp3UJ1pmC+OykyCxy2b2fEZxf4iLm8RjkI7e3yi7Omic6KrFiaA7mo4Ac66JEZqv+3MmKhWIWZrbtjUmc=,iv:InKoyGaFyu6hz2iRSiopwC9lR06qyedAPkFJcBRlFm8=,tag:M7PDCcXPmbKzpoMjOBxmAg==,type:str]
+    lastmodified: "2024-06-30T14:07:18Z"
+    mac: ENC[AES256_GCM,data:xytWEdgRL+aCmkGL13Fx5DQyTyo2LE1US/nT+FUEGUIf0ojCj4/OBLTqpNoNDyy8srGZWcmvvvxLtihp2U5wU+FvFO5O+wue7RIcdK2XEPoStGEwKhcTqlMQDKjt3r7Yw129QRh+XbKVPq1ON8aPA7DXlL1kz4hmW0MpWJNXJMA=,iv:x4Z1Pgcs+6p8A8lB2F+7qYQ6q/fCCRKViS0hhk31YEc=,tag:EgzjL86kRDx5PiAgDXYD7A==,type:str]
     pgp:
         - created_at: "2024-06-19T18:50:33Z"
           enc: |-
