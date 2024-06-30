@@ -23,26 +23,26 @@ global:
       maxUnavailable: 25%
 
   env:
-  - name: AUTHENTIK_EMAIL__HOST
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_EMAIL__HOST
-  - name: AUTHENTIK_EMAIL__USERNAME
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_EMAIL__USERNAME
-  - name: AUTHENTIK_EMAIL__PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_EMAIL__PASSWORD
-  - name: AUTHENTIK_EMAIL__FROM
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_EMAIL__FROM
+  # - name: AUTHENTIK_EMAIL__HOST
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_EMAIL__HOST
+  # - name: AUTHENTIK_EMAIL__USERNAME
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_EMAIL__USERNAME
+  # - name: AUTHENTIK_EMAIL__PASSWORD
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_EMAIL__PASSWORD
+  # - name: AUTHENTIK_EMAIL__FROM
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_EMAIL__FROM
   - name: AUTHENTIK_SECRET_KEY
     valueFrom:
       secretKeyRef:
