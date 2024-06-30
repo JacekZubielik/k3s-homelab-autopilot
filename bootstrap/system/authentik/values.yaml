@@ -112,7 +112,7 @@ authentik:
     # name: ""
     # user: ""
     # password: ""
-    port: ""
+    # port: ""
 
 
 
