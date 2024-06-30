@@ -22,6 +22,20 @@ global:
       maxSurge: 25%
       maxUnavailable: 25%
 
+  postgresql:
+    auth:
+      postgresPassword: ""
+      username: ""
+      password: ""
+      database: ""
+      existingSecret: "authentik-private"
+      secretKeys:
+        adminPasswordKey: "password"
+        userPasswordKey: "postgres-password"
+        replicationPasswordKey: "replication-password"
+
+
+
   env:
   - name: AUTHENTIK_SECRET_KEY
     valueFrom:
@@ -181,11 +195,11 @@ server:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_EMAIL__FROM
-  - name: AUTHENTIK_SECRET_KEY
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_SECRET_KEY
+  # - name: AUTHENTIK_SECRET_KEY
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_SECRET_KEY
   # - name: AUTHENTIK_POSTGRESQL__NAME
   #   valueFrom:
   #     secretKeyRef:
@@ -472,15 +486,15 @@ prometheus:
 postgresql:
   # -- enable the Bitnami PostgreSQL chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/postgresql/ for possible values.
   enabled: true
-  auth:
-    username: "authentik"
-    database: "authentik"
-    # password: ""
-    existingSecret: authentik-private
-    secretKeys:
-      # adminPasswordKey: password
-      userPasswordKey: postgres-password
-      # replicationPasswordKey: replication-password
+  # auth:
+  #   username: "authentik"
+  #   database: "authentik"
+  #   # password: ""
+  #   existingSecret: authentik-private
+  #   secretKeys:
+  #     # adminPasswordKey: password
+  #     userPasswordKey: postgres-password
+  #     # replicationPasswordKey: replication-password
 
   primary:
     extendedConfiguration: |
