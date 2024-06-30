@@ -38,5 +38,10 @@ patches:
     kind: ConfigMap
     name: longhorn-storageclass
 
+- path: patches/storageclass-nvme-0.yaml
+  target:
+    kind: ConfigMap
+    name: longhorn-storageclass
+
 # patchesStrategicMerge:
 # - patches/storageclass.yaml
