@@ -489,23 +489,32 @@ postgresql:
       accessModes:
       - ReadWriteOnce
       existingClaim: authentik-psql-pv-claim
+  auth:
+    username: "authentik"
+    database: "authentik"
+    password: "bkdnaTUya3BleHc1b25YbDRoR3Azc1FDUWJFamVmUVhTbW1FRzRtZDNUdTJyNkE5"
+    # existingSecret: authentik-private
+    # secretKeys:
+    #   # adminPasswordKey: password
+    #   userPasswordKey: postgres-password
+    #   # replicationPasswordKey: replication-password
 
-    extraEnvVars:
-    - name: POSTGRES_DATABASE
-      valueFrom:
-        secretKeyRef:
-          name: authentik-private
-          key: POSTGRES_DB
-    - name: POSTGRES_USERNAME
-      valueFrom:
-        secretKeyRef:
-          name: authentik-private
-          key: POSTGRES_USER
-    - name: POSTGRES_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: authentik-private
-          key: POSTGRES_PASSWORD
+    # extraEnvVars:
+    # - name: POSTGRES_DATABASE
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: authentik-private
+    #       key: POSTGRES_DB
+    # - name: POSTGRES_USERNAME
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: authentik-private
+    #       key: POSTGRES_USER
+    # - name: POSTGRES_PASSWORD
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: authentik-private
+    #       key: POSTGRES_PASSWORD
   # readReplicas:
   #   extraEnvVars:
   #   - name: POSTGRES_DATABASE
