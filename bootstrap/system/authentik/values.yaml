@@ -477,7 +477,7 @@ postgresql:
       - ReadWriteOnce
       existingClaim: authentik-psql-pv-claim
 
-    extraEnvVars:
+    extraEnvVars: {}
     # - name: POSTGRES_DATABASE
     #   valueFrom:
     #     secretKeyRef:
