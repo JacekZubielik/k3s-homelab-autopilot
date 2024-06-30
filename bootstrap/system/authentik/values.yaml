@@ -452,6 +452,16 @@ prometheus:
 postgresql:
   # -- enable the Bitnami PostgreSQL chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/postgresql/ for possible values.
   enabled: true
+  auth:
+    username: "authentik"
+    database: "authentik"
+    # password: ""
+    existingSecret: "authentik-private"
+    secretKeys:
+      # adminPasswordKey: ""
+      userPasswordKey: "POSTGRES_PASSWORD"
+      # replicationPasswordKey: ""
+
   primary:
     extendedConfiguration: |
       max_connections = 500
@@ -462,22 +472,22 @@ postgresql:
       - ReadWriteOnce
       existingClaim: authentik-psql-pv-claim
 
-    extraEnvVars:
-    - name: POSTGRES_DATABASE
-      valueFrom:
-        secretKeyRef:
-          name: authentik-private
-          key: POSTGRES_DB
-    - name: POSTGRES_USERNAME
-      valueFrom:
-        secretKeyRef:
-          name: authentik-private
-          key: POSTGRES_USER
-    - name: POSTGRES_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: authentik-private
-          key: POSTGRES_PASSWORD
+    # extraEnvVars:
+    # - name: POSTGRES_DATABASE
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: authentik-private
+    #       key: POSTGRES_DB
+    # - name: POSTGRES_USERNAME
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: authentik-private
+    #       key: POSTGRES_USER
+    # - name: POSTGRES_PASSWORD
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: authentik-private
+    #       key: POSTGRES_PASSWORD
   # readReplicas:
   #   extraEnvVars:
   #   - name: POSTGRES_DATABASE
