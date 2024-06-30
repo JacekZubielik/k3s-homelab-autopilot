@@ -504,12 +504,12 @@ postgresql:
   auth:
     username: "authentik"
     database: "authentik"
-    password: "bkdnaTUya3BleHc1b25YbDRoR3Azc1FDUWJFamVmUVhTbW1FRzRtZDNUdTJyNkE5"
-    # existingSecret: authentik-private
-    # secretKeys:
-    #   # adminPasswordKey: password
-    #   userPasswordKey: postgres-password
-    #   # replicationPasswordKey: replication-password
+    password: ""
+    existingSecret: authentik-private
+    secretKeys:
+      # adminPasswordKey: password
+      userPasswordKey: password
+      # replicationPasswordKey: replication-password
 
     # extraEnvVars:
     # - name: POSTGRES_DATABASE
