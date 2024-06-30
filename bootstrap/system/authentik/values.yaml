@@ -111,7 +111,7 @@ authentik:
     host: "{{ .Release.Name }}-postgresql"
     name: ""
     user: ""
-    password: ""
+    password: "{{POSTGRES_PASSWORD}}"
     port: ""
 
 
