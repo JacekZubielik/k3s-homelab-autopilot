@@ -488,11 +488,11 @@ postgresql:
     #     secretKeyRef:
     #       name: authentik-private
     #       key: POSTGRES_USER
-    - name: POSTGRES_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: authentik-private
-          key: POSTGRES_PASSWORD
+    # - name: POSTGRES_PASSWORD
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: authentik-private
+    #       key: POSTGRES_PASSWORD
   # readReplicas:
   #   extraEnvVars:
   #   - name: POSTGRES_DATABASE
