@@ -22,7 +22,7 @@ global:
       maxSurge: 25%
       maxUnavailable: 25%
 
-  env: {}
+  env:
   # - name: AUTHENTIK_EMAIL__HOST
   #   valueFrom:
   #     secretKeyRef:
@@ -43,11 +43,11 @@ global:
   #     secretKeyRef:
   #       name: authentik-private
   #       key: AUTHENTIK_EMAIL__FROM
-  # - name: AUTHENTIK_SECRET_KEY
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_SECRET_KEY
+  - name: AUTHENTIK_SECRET_KEY
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_SECRET_KEY
   # - name: AUTHENTIK_POSTGRESQL__NAME
   #   valueFrom:
   #     secretKeyRef:
@@ -172,11 +172,11 @@ server:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_EMAIL__FROM
-  - name: AUTHENTIK_SECRET_KEY
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_SECRET_KEY
+  # - name: AUTHENTIK_SECRET_KEY
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_SECRET_KEY
   # - name: AUTHENTIK_POSTGRESQL__NAME
   #   valueFrom:
   #     secretKeyRef:
