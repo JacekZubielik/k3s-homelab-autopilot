@@ -42,11 +42,6 @@ global:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_SECRET_KEY
-  # - name: postgresPassword
-  #     valueFrom:
-  #       secretKeyRef:
-  #         name: authentik-private
-  #         key: AUTHENTIK_POSTGRESQL__PASSWORD
   # - name: AUTHENTIK_EMAIL__HOST
   #   valueFrom:
   #     secretKeyRef:
@@ -77,11 +72,11 @@ global:
   #     secretKeyRef:
   #       name: authentik-private
   #       key: AUTHENTIK_POSTGRESQL__USER
-  # - name: AUTHENTIK_POSTGRESQL__PASSWORD
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_POSTGRESQL__PASSWORD
+  - name: AUTHENTIK_POSTGRESQL__PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__PASSWORD
   # - name: AUTHENTIK_POSTGRESQL__PORT
   #   valueFrom:
   #     secretKeyRef:
