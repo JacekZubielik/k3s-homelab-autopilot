@@ -28,7 +28,11 @@ global:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_SECRET_KEY
-
+  # - name: postgresPassword
+  #     valueFrom:
+  #       secretKeyRef:
+  #         name: authentik-private
+  #         key: AUTHENTIK_POSTGRESQL__PASSWORD
   # - name: AUTHENTIK_EMAIL__HOST
   #   valueFrom:
   #     secretKeyRef:
@@ -59,11 +63,11 @@ global:
   #     secretKeyRef:
   #       name: authentik-private
   #       key: AUTHENTIK_POSTGRESQL__USER
-  - name: AUTHENTIK_POSTGRESQL__PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_POSTGRESQL__PASSWORD
+  # - name: AUTHENTIK_POSTGRESQL__PASSWORD
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_POSTGRESQL__PASSWORD
   # - name: AUTHENTIK_POSTGRESQL__PORT
   #   valueFrom:
   #     secretKeyRef:
@@ -453,14 +457,14 @@ postgresql:
   # -- enable the Bitnami PostgreSQL chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/postgresql/ for possible values.
   enabled: true
   auth:
-    username: "authentik"
-    database: "authentik"
+    # username: "authentik"
+    # database: "authentik"
     # password: ""
-    existingSecret: "authentik-private"
+    existingSecret: authentik-private
     secretKeys:
-      adminPasswordKey: "password"
-      userPasswordKey: "postgres-password"
-      # replicationPasswordKey: ""
+      adminPasswordKey: password
+      userPasswordKey: postgres-password
+      replicationPasswordKey: replication-password
 
   primary:
     extendedConfiguration: |
