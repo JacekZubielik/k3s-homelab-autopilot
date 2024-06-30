@@ -33,15 +33,15 @@ patches:
     kind: Service
     name: longhorn-frontend-traefik
 
-- path: patches/storageclass.yaml
+- path: patches/storageclass-ssd-0.yaml
   target:
     kind: ConfigMap
-    name: longhorn-storageclass
+    name: longhorn-storageclass-ssd-0
 
 - path: patches/storageclass-nvme-0.yaml
   target:
     kind: ConfigMap
-    name: longhorn-storageclass
+    name: longhorn-storageclass-nvme-0
 
 # patchesStrategicMerge:
 # - patches/storageclass.yaml
