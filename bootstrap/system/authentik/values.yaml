@@ -111,7 +111,7 @@ authentik:
     host: "{{ .Release.Name }}-postgresql"
     # name: ""
     # user: ""
-    password: ""
+    # password: ""
     port: ""
 
 
@@ -472,7 +472,7 @@ postgresql:
       max_connections = 500
     persistence:
       enabled: true
-      storageClass: host-path #local-path
+      storageClass: host-path
       accessModes:
       - ReadWriteOnce
       existingClaim: authentik-psql-pv-claim
