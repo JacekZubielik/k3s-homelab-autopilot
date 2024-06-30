@@ -22,17 +22,17 @@ global:
       maxSurge: 25%
       maxUnavailable: 25%
 
-  postgresql:
-    auth:
-      postgresPassword: ""
-      username: ""
-      password: ""
-      database: ""
-      existingSecret: "authentik-private"
-      secretKeys:
-        adminPasswordKey: "password"
-        userPasswordKey: "postgres-password"
-        replicationPasswordKey: "replication-password"
+  # postgresql:
+  #   auth:
+  #     postgresPassword: ""
+  #     username: ""
+  #     password: ""
+  #     database: ""
+  #     existingSecret: "authentik-private"
+  #     secretKeys:
+  #       adminPasswordKey: "password"
+  #       userPasswordKey: "postgres-password"
+  #       replicationPasswordKey: "replication-password"
 
 
 
@@ -127,6 +127,24 @@ authentik:
     # user: ""
     # password: ""
     # port: ""
+    env:
+    # - name: AUTHENTIK_POSTGRESQL__NAME
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: authentik-private
+    #       key: AUTHENTIK_POSTGRESQL__NAME
+    # - name: AUTHENTIK_POSTGRESQL__USER
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: authentik-private
+    #       key: AUTHENTIK_POSTGRESQL__USER
+    - name: AUTHENTIK_POSTGRESQL__PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: authentik-private
+          key: AUTHENTIK_POSTGRESQL__PASSWORD
+
+
 
 blueprints:
   configMaps: []
@@ -481,15 +499,15 @@ prometheus:
 postgresql:
   # -- enable the Bitnami PostgreSQL chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/postgresql/ for possible values.
   enabled: true
-  # auth:
-  #   username: "authentik"
-  #   database: "authentik"
-  #   # password: ""
-  #   existingSecret: authentik-private
-  #   secretKeys:
-  #     # adminPasswordKey: password
-  #     userPasswordKey: postgres-password
-  #     # replicationPasswordKey: replication-password
+  auth:
+    username: "authentik"
+    database: "authentik"
+    password: "bkdnaTUya3BleHc1b25YbDRoR3Azc1FDUWJFamVmUVhTbW1FRzRtZDNUdTJyNkE5"
+    # existingSecret: authentik-private
+    # secretKeys:
+    #   # adminPasswordKey: password
+    #   userPasswordKey: postgres-password
+    #   # replicationPasswordKey: replication-password
 
   primary:
     extendedConfiguration: |
