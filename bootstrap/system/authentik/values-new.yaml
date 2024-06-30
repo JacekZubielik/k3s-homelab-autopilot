@@ -504,7 +504,7 @@ postgresql:
   auth:
     username: "authentik"
     database: "authentik"
-    password: "N1dhTHRDaWtmM0VuMVROWGxLMkRETVlHTmNqTElGOWZxYXdyNWVwaEJFYmJLWEVJ"
+    password: "bkdnaTUya3BleHc1b25YbDRoR3Azc1FDUWJFamVmUVhTbW1FRzRtZDNUdTJyNkE5"
     # existingSecret: authentik-private
     # secretKeys:
     #   # adminPasswordKey: password
