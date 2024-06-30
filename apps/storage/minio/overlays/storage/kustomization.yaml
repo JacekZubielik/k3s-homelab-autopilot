@@ -14,7 +14,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-wave: "9"
+    argocd.argoproj.io/sync-wave: "4"
   labels:
     app.kubernetes.io/name: minio
   name: minio
