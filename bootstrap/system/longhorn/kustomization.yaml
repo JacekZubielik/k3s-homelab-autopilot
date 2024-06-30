@@ -36,12 +36,12 @@ patches:
 - path: patches/storageclass-ssd-0.yaml
   target:
     kind: ConfigMap
-    name: longhorn-storageclass-ssd-0
+    name: longhorn-ssd-0
 
 - path: patches/storageclass-nvme-0.yaml
   target:
     kind: ConfigMap
-    name: longhorn-storageclass-nvme-0
+    name: longhorn-nvme-0
 
 # patchesStrategicMerge:
 # - patches/storageclass.yaml
