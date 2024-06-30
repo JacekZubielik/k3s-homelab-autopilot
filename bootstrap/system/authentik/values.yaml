@@ -109,9 +109,9 @@ authentik:
     send_pii: false
   postgresql:
     host: "{{ .Release.Name }}-postgresql"
-    name: ""
-    user: ""
-    password: "{{POSTGRES_PASSWORD}}"
+    # name: ""
+    # user: ""
+    password: ""
     port: ""
 
 
@@ -478,16 +478,16 @@ postgresql:
       existingClaim: authentik-psql-pv-claim
 
     extraEnvVars:
-    - name: POSTGRES_DATABASE
-      valueFrom:
-        secretKeyRef:
-          name: authentik-private
-          key: POSTGRES_DB
-    - name: POSTGRES_USERNAME
-      valueFrom:
-        secretKeyRef:
-          name: authentik-private
-          key: POSTGRES_USER
+    # - name: POSTGRES_DATABASE
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: authentik-private
+    #       key: POSTGRES_DB
+    # - name: POSTGRES_USERNAME
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: authentik-private
+    #       key: POSTGRES_USER
     - name: POSTGRES_PASSWORD
       valueFrom:
         secretKeyRef:
