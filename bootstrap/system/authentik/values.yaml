@@ -478,9 +478,9 @@ postgresql:
     # password: ""
     existingSecret: authentik-private
     secretKeys:
-      adminPasswordKey: password
+      # adminPasswordKey: password
       userPasswordKey: postgres-password
-      replicationPasswordKey: replication-password
+      # replicationPasswordKey: replication-password
 
   primary:
     extendedConfiguration: |
