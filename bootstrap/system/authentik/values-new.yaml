@@ -22,7 +22,7 @@ global:
       maxSurge: 25%
       maxUnavailable: 25%
 
-  env:
+  # env:
   # - name: AUTHENTIK_EMAIL__HOST
   #   valueFrom:
   #     secretKeyRef:
@@ -48,21 +48,21 @@ global:
   #     secretKeyRef:
   #       name: authentik-private
   #       key: AUTHENTIK_SECRET_KEY
-  - name: AUTHENTIK_POSTGRESQL__NAME
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_POSTGRESQL__NAME
-  - name: AUTHENTIK_POSTGRESQL__USER
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_POSTGRESQL__USER
-  - name: AUTHENTIK_POSTGRESQL__PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_POSTGRESQL__PASSWORD
+  # - name: AUTHENTIK_POSTGRESQL__NAME
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_POSTGRESQL__NAME
+  # - name: AUTHENTIK_POSTGRESQL__USER
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_POSTGRESQL__USER
+  # - name: AUTHENTIK_POSTGRESQL__PASSWORD
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: authentik-private
+  #       key: AUTHENTIK_POSTGRESQL__PASSWORD
   # - name: AUTHENTIK_POSTGRESQL__PORT
   #   valueFrom:
   #     secretKeyRef:
@@ -177,26 +177,26 @@ server:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_SECRET_KEY
-  # - name: AUTHENTIK_POSTGRESQL__NAME
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_POSTGRESQL__NAME
-  # - name: AUTHENTIK_POSTGRESQL__USER
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_POSTGRESQL__USER
-  # - name: AUTHENTIK_POSTGRESQL__PASSWORD
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_POSTGRESQL__PASSWORD
-  # - name: AUTHENTIK_POSTGRESQL__PORT
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: authentik-private
-  #       key: AUTHENTIK_POSTGRESQL__PORT
+  - name: AUTHENTIK_POSTGRESQL__NAME
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__NAME
+  - name: AUTHENTIK_POSTGRESQL__USER
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__USER
+  - name: AUTHENTIK_POSTGRESQL__PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__PASSWORD
+  - name: AUTHENTIK_POSTGRESQL__PORT
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__PORT
 
   redis:
     host: "{{ .Release.Name }}-redis-master"
