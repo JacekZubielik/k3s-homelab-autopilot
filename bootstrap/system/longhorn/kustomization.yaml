@@ -22,7 +22,7 @@ helmCharts:
 - name: longhorn
   version: 1.6.2
   repo: https://charts.longhorn.io
-  includeCRDs: false
+  includeCRDs: true
   namespace: longhorn-system
   releaseName: longhorn
   valuesFile: values.yaml
