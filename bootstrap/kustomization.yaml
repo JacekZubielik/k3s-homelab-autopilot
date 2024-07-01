@@ -13,7 +13,7 @@ resources:
 - external-dns.yaml
 - kube-prometheus-stack.yaml
 - kube-state-metrics.yaml
-# - longhorn.yaml
+- longhorn.yaml
 - root.yaml
 - sealed-secrets.yaml
 - traefik.yaml
