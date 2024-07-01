@@ -127,7 +127,7 @@ persistence:
   # -- Data locality of the default Longhorn StorageClass. (Options: "disabled", "best-effort")
   defaultDataLocality: disabled
   # -- Reclaim policy that provides instructions for handling of a volume after its claim is released. (Options: "Retain", "Delete")
-  reclaimPolicy: Delete
+  reclaimPolicy: Retain
   # -- Setting that allows you to enable live migration of a Longhorn volume from one node to another.
   migratable: false
   # -- Set NFS mount options for Longhorn StorageClass for RWX volumes
