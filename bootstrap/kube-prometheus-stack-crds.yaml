@@ -8,7 +8,7 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: "0"
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    # argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:
   destination:
     namespace: monitoring
@@ -17,12 +17,12 @@ spec:
   source:
     path: charts/kube-prometheus-stack/crds/
     repoURL: https://github.com/prometheus-community/helm-charts.git
-    targetRevision: kube-prometheus-stack-13.0.1
+    targetRevision: kube-prometheus-stack-61.2.0
     directory:
       recurse: true
   syncPolicy:
     automated:
-      allowEmpty: true
+      # allowEmpty: true
       prune: true
       selfHeal: true
     syncOptions:
