@@ -15,7 +15,7 @@ metadata:
 
 helmCharts:
 - name: sealed-secrets
-  version: 2.3.6
+  version: 2.3.7
   repo: https://charts.bitnami.com/bitnami
   releaseName: sealed-secrets
   namespace: sealed-secrets

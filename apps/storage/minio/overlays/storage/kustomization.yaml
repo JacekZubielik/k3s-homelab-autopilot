@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: minio
+
+resources:
+- ../../base
+- resources/pv.yaml
+- resources/pvc.yaml
+
+generators:
+- ksops-generator.yaml
+
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "4"
+  labels:
+    app.kubernetes.io/name: minio
+  name: minio
+
+helmCharts:
+- name: minio
+  repo: https://charts.min.io/
+  version: 5.2.0
+  releaseName: minio
+  namespace: minio
+  includeCRDs: true
+  valuesFile: values.yaml
+
+configMapGenerator:
+- name: minio-tz
+  literals:
+  - TZ=CET
