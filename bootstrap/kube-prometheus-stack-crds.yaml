@@ -2,12 +2,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crds
+  name: kube-prometheus-stack-crds
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
     argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:
   destination:
@@ -15,27 +15,19 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: bootstrap/crds
-    repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
-    targetRevision: main
+    path: charts/kube-prometheus-stack/crds/
+    repoURL: https://github.com/prometheus-community/helm-charts.git
+    targetRevision: kube-prometheus-stack-13.0.1
+    directory:
+      recurse: true
   syncPolicy:
     automated:
       allowEmpty: true
       prune: true
       selfHeal: true
     syncOptions:
-    - ApplyOutOfSyncOnly=true
     - CreateNamespace=true
-    - Delete=false
-    - FailOnSharedResource=false
-    - preserveResourcesOnDeletion=false
-    - PruneLast=true
-    - PrunePropagationPolicy=foreground
     - Replace=false
-    - RespectIgnoreDifferences=true
-    - ServerSideApply=false
-    - SkipDryRunOnMissingResource=true
-    - Validate=false
     retry:
       backoff:
         duration: 10s
