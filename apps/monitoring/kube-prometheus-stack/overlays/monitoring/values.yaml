@@ -270,7 +270,7 @@ alertmanager:
     create: true
     name: ""
     annotations: {}
-    automountServiceAccountToken: false
+    automountServiceAccountToken: true
   podDisruptionBudget:
     enabled: false
     minAvailable: 1
@@ -649,7 +649,7 @@ alertmanager:
 
     ## If false then the user will opt out of automounting API credentials.
     ##
-    automountServiceAccountToken: false
+    automountServiceAccountToken: true
 
     ## ConfigMaps is a list of ConfigMaps in the same namespace as the Alertmanager object, which shall be mounted into the Alertmanager Pods.
     ## The ConfigMaps are mounted into /etc/alertmanager/configmaps/.
@@ -2464,7 +2464,7 @@ prometheusOperator:
 
       ## If false then the user will opt out of automounting API credentials.
       ##
-      automountServiceAccountToken: false
+      automountServiceAccountToken: true
 
     patch:
       enabled: true
@@ -2502,7 +2502,7 @@ prometheusOperator:
       ##
       serviceAccount:
         create: true
-        automountServiceAccountToken: false
+        automountServiceAccountToken: true
 
     # Security context for create job container
     createSecretJob:
@@ -2582,7 +2582,7 @@ prometheusOperator:
   serviceAccount:
     create: true
     name: ""
-    automountServiceAccountToken: false
+    automountServiceAccountToken: true
 
   ## Configuration for Prometheus operator service
   ##
@@ -2897,7 +2897,7 @@ prometheusOperator:
 
   ## If false then the user will opt out of automounting API credentials.
   ##
-  automountServiceAccountToken: false
+  automountServiceAccountToken: true
 
   ## Additional volumes
   ##
@@ -2952,7 +2952,7 @@ prometheus:
     create: true
     name: ""
     annotations: {}
-    automountServiceAccountToken: false
+    automountServiceAccountToken: true
 
   # Service for thanos service discovery on sidecar
   # Enable this can make Thanos Query can use
@@ -3378,6 +3378,12 @@ prometheus:
 
     ## If true, pass --storage.tsdb.max-block-duration=2h to prometheus. This is already done if using Thanos
     ##
+    ## AutomountServiceAccountToken indicates whether a service account token should be automatically mounted in the pod,
+    ## If the field isn’t set, the operator mounts the service account token by default.
+    ## Warning: be aware that by default, Prometheus requires the service account token for Kubernetes service discovery,
+    ## It is possible to use strategic merge patch to project the service account token into the ‘prometheus’ container.
+    automountServiceAccountToken: true
+
     disableCompaction: false
     ## APIServerConfig
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#apiserverconfig
