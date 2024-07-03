@@ -1,6 +1,0 @@
-resources:
-- ./authentik
-- ./cert-manager
-- ./longhorn
-- ./sealedsecrets
-- ./traefik
