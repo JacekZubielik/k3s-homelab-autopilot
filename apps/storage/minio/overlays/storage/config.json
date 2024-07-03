@@ -6,7 +6,7 @@
   "srcPath": "apps/storage/minio/overlays/storage",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "dev-minio",
-  "syncWave": "",
+  "syncWave": "4",
   "appRole": "storage",
   "labels": "",
   "annotations": "",
