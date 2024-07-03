@@ -6,7 +6,8 @@ commonLabels:
 
 resources:
 - argo-cd.yaml
-- crds.yaml
+# - crds.yaml
+- kube-prometheus-stack-crds.yaml
 # - cadvisor.yaml
 # - cert-manager.yaml
 - cluster-resources.yaml
