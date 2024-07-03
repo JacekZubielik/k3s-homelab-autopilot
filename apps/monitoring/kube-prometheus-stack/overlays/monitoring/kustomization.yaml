@@ -5,7 +5,7 @@ namespace: monitoring
 
 resources:
 - ../../base
-- resources/podmonitor.yaml
+# - resources/podmonitor.yaml
 
 generators:
 - ksops-generator.yaml
@@ -44,11 +44,11 @@ helmCharts:
 #   labels:
 #     grafana_dashboard: "1"
 
-configMapGenerator:
-- name: grafana-dashboards
-  files:
-#   - dashboards/argocd-performance.json
-  - dashboards/authentik.json
-# - name: prometheus-server-conf
+# configMapGenerator:
+# - name: grafana-dashboards
 #   files:
-#   - resources/scrape_configs.yaml
+# #   - dashboards/argocd-performance.json
+#   - dashboards/authentik.json
+# # - name: prometheus-server-conf
+# #   files:
+# #   - resources/scrape_configs.yaml

@@ -270,7 +270,7 @@ alertmanager:
     create: true
     name: ""
     annotations: {}
-    automountServiceAccountToken: true
+    automountServiceAccountToken: false
   podDisruptionBudget:
     enabled: false
     minAvailable: 1
