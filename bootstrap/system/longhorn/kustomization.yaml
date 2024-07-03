@@ -5,6 +5,8 @@ namespace: longhorn-system
 
 resources:
 - resources/servicemonitor.yaml
+# - patches/storageclass-ssd-0.yaml
+- resources/storageclass-nvme-0.yaml
 
 generators:
 - ksops-generator.yaml
@@ -22,7 +24,7 @@ helmCharts:
 - name: longhorn
   version: 1.6.2
   repo: https://charts.longhorn.io
-  includeCRDs: false
+  includeCRDs: true
   namespace: longhorn-system
   releaseName: longhorn
   valuesFile: values.yaml
@@ -33,10 +35,15 @@ patches:
     kind: Service
     name: longhorn-frontend-traefik
 
-- path: patches/storageclass.yaml
+- path: patches/storageclass-ssd-0.yaml
   target:
     kind: ConfigMap
-    name: longhorn-storageclass
+    name: longhorn-ssd-0
+
+# - path: patches/storageclass-nvme-0.yaml
+#   target:
+#     kind: ConfigMap
+#     name: longhorn-nvme-0
 
 # patchesStrategicMerge:
 # - patches/storageclass.yaml

@@ -115,7 +115,7 @@ spec:
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
-        - Delete=true
+        - Delete=false
         - FailOnSharedResource=false
         - preserveResourcesOnDeletion=false
         - PruneLast=true
