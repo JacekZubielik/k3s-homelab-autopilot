@@ -6,14 +6,14 @@ commonLabels:
 
 resources:
 - argo-cd.yaml
-- authentik.yaml
+# - authentik.yaml
 # - cadvisor.yaml
-- cert-manager.yaml
+# - cert-manager.yaml
 - cluster-resources.yaml
-- external-dns.yaml
-- kube-prometheus-stack.yaml
-- kube-state-metrics.yaml
-- longhorn.yaml
+# - external-dns.yaml
+# - kube-prometheus-stack.yaml
+# - kube-state-metrics.yaml
+# - longhorn.yaml
 - root.yaml
-- sealed-secrets.yaml
-- traefik.yaml
+# - sealed-secrets.yaml
+# - traefik.yaml
