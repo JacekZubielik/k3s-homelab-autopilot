@@ -110,9 +110,9 @@ spec:
       syncPolicy:
         retry:
           backoff:
-            duration: 10s
+            duration: 360s
             factor: 2
-            maxDuration: 8m0s
+            maxDuration: 12m0s
           limit: 2
         syncOptions:
           - CreateNamespace=true
