@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prometheus-stack-crds
+  name: traefik-crds
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -11,13 +11,13 @@ metadata:
     # argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:
   destination:
-    namespace: monitoring
+    namespace: traefik
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: charts/kube-prometheus-stack/charts/crds/
-    repoURL: https://github.com/prometheus-community/helm-charts.git
-    targetRevision: kube-prometheus-stack-61.2.0
+    # path: charts/kube-prometheus-stack/charts/crds/
+    repoURL: https://github.com/traefik/traefik-helm-chart/tree/master/traefik/crds/?ref=v26.1.0
+    # targetRevision: kube-prometheus-stack-61.2.0
     directory:
       recurse: true
   syncPolicy:
