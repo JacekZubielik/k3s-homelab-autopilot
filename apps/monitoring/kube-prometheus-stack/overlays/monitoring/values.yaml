@@ -242,7 +242,7 @@ prometheus-windows-exporter:
   ##
   prometheus:
     monitor:
-      enabled: true
+      enabled: false # true
       jobLabel: jobLabel
 
   releaseLabel: true
@@ -548,7 +548,7 @@ alertmanager:
   serviceMonitor:
     ## If true, a ServiceMonitor will be created for the AlertManager service.
     ##
-    selfMonitor: true
+    selfMonitor: false # true
 
     ## Scrape interval. If not set, the Prometheus default scrape interval is used.
     ##
@@ -587,7 +587,7 @@ alertmanager:
 
     ## enableHttp2: Whether to enable HTTP2.
     ## See https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#endpoint
-    enableHttp2: true
+    enableHttp2: false # true
 
     ## tlsConfig: TLS configuration to use when scraping the endpoint. For example if using istio mTLS.
     ## Of type: https://github.com/coreos/prometheus-operator/blob/main/Documentation/api.md#tlsconfig
@@ -649,7 +649,7 @@ alertmanager:
 
     ## If false then the user will opt out of automounting API credentials.
     ##
-    automountServiceAccountToken: true
+    automountServiceAccountToken: false
 
     ## ConfigMaps is a list of ConfigMaps in the same namespace as the Alertmanager object, which shall be mounted into the Alertmanager Pods.
     ## The ConfigMaps are mounted into /etc/alertmanager/configmaps/.
@@ -1146,7 +1146,7 @@ grafana:
   serviceMonitor:
     # If true, a ServiceMonitor CRD is created for a prometheus operator
     # https://github.com/coreos/prometheus-operator
-    enabled: true
+    enabled: false # true
 
     # Path to use for scraping metrics. Might be different if server.root_url is set
     # in grafana.ini
