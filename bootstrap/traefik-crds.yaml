@@ -15,7 +15,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    # path: charts/kube-prometheus-stack/charts/crds/
+    path: traefik/crds/
     repoURL: https://github.com/traefik/traefik-helm-chart/tree/master/traefik/crds/?ref=v26.1.0
     # targetRevision: kube-prometheus-stack-61.2.0
     directory:
