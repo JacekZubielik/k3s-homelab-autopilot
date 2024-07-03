@@ -2464,7 +2464,7 @@ prometheusOperator:
 
       ## If false then the user will opt out of automounting API credentials.
       ##
-      automountServiceAccountToken: true
+      automountServiceAccountToken: false
 
     patch:
       enabled: true
@@ -2502,7 +2502,7 @@ prometheusOperator:
       ##
       serviceAccount:
         create: true
-        automountServiceAccountToken: true
+        automountServiceAccountToken: false
 
     # Security context for create job container
     createSecretJob:
@@ -2582,7 +2582,7 @@ prometheusOperator:
   serviceAccount:
     create: true
     name: ""
-    automountServiceAccountToken: true
+    automountServiceAccountToken: false
 
   ## Configuration for Prometheus operator service
   ##
@@ -2897,7 +2897,7 @@ prometheusOperator:
 
   ## If false then the user will opt out of automounting API credentials.
   ##
-  automountServiceAccountToken: true
+  automountServiceAccountToken: false
 
   ## Additional volumes
   ##
@@ -2952,7 +2952,7 @@ prometheus:
     create: true
     name: ""
     annotations: {}
-    automountServiceAccountToken: true
+    automountServiceAccountToken: false
 
   # Service for thanos service discovery on sidecar
   # Enable this can make Thanos Query can use
