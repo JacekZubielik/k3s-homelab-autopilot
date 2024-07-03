@@ -16,8 +16,8 @@ spec:
   project: default
   source:
     path: traefik/crds/
-    repoURL: https://github.com/traefik/traefik-helm-chart/tree/master/traefik/crds/?ref=v26.1.0
-    # targetRevision: kube-prometheus-stack-61.2.0
+    repoURL: https://helm.traefik.io/traefik.git
+    targetRevision: 26.1.0
     directory:
       recurse: true
   syncPolicy:
