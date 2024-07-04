@@ -8,6 +8,7 @@ resources:
 - argo-cd.yaml
 - cluster-resources.yaml
 - kube-prometheus-stack-crds.yaml
+- cert-manager-crds-kustomize.yaml
 - root.yaml
 - traefik-crds.yaml
 # - cert-manager-crds/crds.yaml
