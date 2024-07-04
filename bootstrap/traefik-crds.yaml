@@ -16,7 +16,7 @@ spec:
   project: default
   source:
     path: traefik/crds/
-    repoURL: https://helm.traefik.io/traefik.git
+    repoURL: traefik-crds
     targetRevision: 26.1.0
     directory:
       recurse: true
