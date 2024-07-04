@@ -33,4 +33,4 @@ spec:
         duration: 60s
         factor: 2
         maxDuration: 8m0s
-      limit: 2
+      limit: 8
