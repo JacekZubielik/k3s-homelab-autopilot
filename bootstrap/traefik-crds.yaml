@@ -2,10 +2,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-wave: "-1"
+  # annotations:
+  #   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  #   argocd.argoproj.io/compare-options: IgnoreExtraneous
+  #   argocd.argoproj.io/sync-wave: "-1"
   name: traefik-crds
   namespace: argocd
   finalizers:
@@ -16,9 +16,11 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: bootstrap/crds/traefik
+    path: bootstrap/crds/traefik/
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
     targetRevision: main
+    directory:
+      recurse: true
   syncPolicy:
     automated:
       allowEmpty: true
