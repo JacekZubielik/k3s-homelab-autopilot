@@ -11,6 +11,8 @@ resources:
 configMapGenerator:
 - behavior: merge
   literals:
+  - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+  - kustomize.buildOptions.v4.4.0="--output /tmp"
   - kustomize.buildOptions="--enable-alpha-plugins --enable-exec --enable-helm"
   - |
     repository.credentials=- passwordSecret:
@@ -37,7 +39,7 @@ kind: Kustomization
 namespace: argocd
 
 patches:
-- path: patches/argocd-cm.yaml
+# - path: patches/argocd-cm.yaml
 - path: patches/rbac-cm.yaml
 - path: patches/ksops.yaml
 - path: patches/frontend-service.yaml
