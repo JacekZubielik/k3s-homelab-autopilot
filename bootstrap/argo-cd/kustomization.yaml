@@ -37,6 +37,7 @@ kind: Kustomization
 namespace: argocd
 
 patches:
+- path: patches/argocd-cm.yaml
 - path: patches/rbac-cm.yaml
 - path: patches/ksops.yaml
 - path: patches/frontend-service.yaml
