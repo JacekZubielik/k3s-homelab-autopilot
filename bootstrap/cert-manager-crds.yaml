@@ -17,7 +17,7 @@ spec:
   source:
     path: deploy/crds/
     repoURL: https://github.com/cert-manager/cert-manager.git
-    targetRevision: v1.15.1
+    targetRevision: 1.15.1
     directory:
       include: '*.yaml'
       # recurse: true
