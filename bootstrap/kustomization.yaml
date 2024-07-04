@@ -9,7 +9,7 @@ resources:
 - cluster-resources.yaml
 - kube-prometheus-stack-crds.yaml
 - root.yaml
-# - traefik-crds.yaml
+- traefik-crds.yaml
 # - cadvisor.yaml
 # - cert-manager.yaml
 # - crds.yaml
