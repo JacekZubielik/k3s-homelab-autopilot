@@ -2,14 +2,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-wave: "-1"
   name: traefik-crds
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   destination:
     namespace: traefik
@@ -18,7 +17,7 @@ spec:
   source:
     path: traefik/crds/
     repoURL: https://github.com/traefik/traefik-helm-chart/
-    targetRevision: master
+    targetRevision: 26.1.0
     directory:
       recurse: true
   syncPolicy:
@@ -29,19 +28,11 @@ spec:
     syncOptions:
     - ApplyOutOfSyncOnly=true
     - CreateNamespace=true
-    - Delete=true
-    - FailOnSharedResource=false
-    - preserveResourcesOnDeletion=false
-    - PruneLast=true
-    - PrunePropagationPolicy=foreground
     - Replace=false
-    - RespectIgnoreDifferences=true
     - ServerSideApply=true
-    - SkipDryRunOnMissingResource=true
-    - Validate=false
     retry:
       backoff:
-        duration: 10m0s
-        factor: 4
-        maxDuration: 12m0s
-      limit: 6
+        duration: 60s
+        factor: 2
+        maxDuration: 8m0s
+      limit: 4
