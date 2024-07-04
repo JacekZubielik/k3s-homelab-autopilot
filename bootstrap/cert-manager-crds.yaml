@@ -19,7 +19,8 @@ spec:
     repoURL: https://github.com/cert-manager/cert-manager.git
     targetRevision: v1.15.1
     directory:
-      recurse: true
+      include: '*.yaml'
+      # recurse: true
   syncPolicy:
     automated:
       allowEmpty: true
