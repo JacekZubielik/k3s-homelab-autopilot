@@ -16,9 +16,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    # path: bootstrap/crds/traefik/
-    repoURL: https://github.com/traefik/traefik-helm-chart/traefik/crds/?ref=v26.1.0
-    targetRevision: main
+    path: traefik/crds/
+    repoURL: https://github.com/traefik/traefik-helm-chart/
+    targetRevision: master
     directory:
       recurse: true
   syncPolicy:
