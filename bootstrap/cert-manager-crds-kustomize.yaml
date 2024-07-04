@@ -18,8 +18,8 @@ spec:
     path: bootstrap/cert-manager-crds
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
     targetRevision: main
-    directory:
-      include: '*.yaml'
+    # directory:
+    #   include: '*.yaml'
       # recurse: true
   syncPolicy:
     automated:
