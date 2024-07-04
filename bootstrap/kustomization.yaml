@@ -10,7 +10,7 @@ resources:
 - kube-prometheus-stack-crds.yaml
 - root.yaml
 - traefik-crds.yaml
-- cert-manager-crds/crds.yaml
+# - cert-manager-crds/crds.yaml
 # - cert-manager-crds.yaml
 # - cadvisor.yaml
 # - cert-manager.yaml
