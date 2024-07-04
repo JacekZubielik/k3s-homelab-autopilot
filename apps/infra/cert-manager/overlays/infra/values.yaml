@@ -6,7 +6,7 @@ startupapicheck:
   timeout: 10m
   backoffLimit: 6
 
-installCRDs: true
+# installCRDs: true
 
 global:
   leaderElection:
@@ -99,12 +99,12 @@ webhook:
   serviceType: ClusterIP
 
   serviceMonitor:
-    path: /metrics
-    targetPort: 9402
     enabled: true
-    interval: 60s
-    scrapeTimeout: 30s
     honorLabels: false
+    interval: 60s
+    path: /metrics
+    scrapeTimeout: 30s
+    targetPort: 9402
 
   resources:
     requests:
