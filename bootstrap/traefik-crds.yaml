@@ -18,8 +18,8 @@ spec:
     path: traefik/crds/
     repoURL: https://github.com/traefik/traefik-helm-chart/
     targetRevision: v26.1.0
-    directory:
-      recurse: true
+    # directory:
+    #   recurse: true
     kustomize:
       commonAnnotationsEnvsubst: true
       commonAnnotations:
