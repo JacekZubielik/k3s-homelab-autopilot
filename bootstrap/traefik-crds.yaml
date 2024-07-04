@@ -20,6 +20,10 @@ spec:
     targetRevision: v26.1.0
     directory:
       recurse: true
+    kustomize:
+      commonAnnotationsEnvsubst: true
+      commonAnnotations:
+        app-source: ${ARGOCD_APP_NAME}
   syncPolicy:
     automated:
       allowEmpty: true
