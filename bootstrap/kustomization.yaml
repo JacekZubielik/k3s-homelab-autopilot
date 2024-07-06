@@ -6,19 +6,8 @@ commonLabels:
 
 resources:
 - argo-cd.yaml
+- cert-manager-crds.yaml
 - cluster-resources.yaml
 - kube-prometheus-stack-crds.yaml
-- cert-manager-crds-kustomize.yaml
 - root.yaml
 - traefik-crds.yaml
-# - cert-manager-crds/crds.yaml
-# - cert-manager-crds.yaml
-# - cadvisor.yaml
-# - cert-manager.yaml
-# - crds.yaml
-# - external-dns.yaml
-# - kube-prometheus-stack.yaml
-# - kube-state-metrics.yaml
-# - longhorn.yaml
-# - sealed-secrets.yaml
-# - traefik.yaml

@@ -15,12 +15,16 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: deploy/crds/
-    repoURL: https://github.com/cert-manager/cert-manager.git
-    targetRevision: v1.15.1
-    directory:
-      include: '*.yaml'
+    path: bootstrap/crds/cert-manager
+    repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
+    targetRevision: main
+    # directory:
+    #   include: '*.yaml'
       # recurse: true
+    kustomize:
+      commonAnnotationsEnvsubst: true
+      commonAnnotations:
+        app-source: ${ARGOCD_APP_NAME}
   syncPolicy:
     automated:
       allowEmpty: true

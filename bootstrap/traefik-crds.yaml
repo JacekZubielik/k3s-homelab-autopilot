@@ -13,7 +13,7 @@ spec:
   destination:
     namespace: traefik
     server: https://kubernetes.default.svc
-  project: default
+  project: infra # default
   source:
     path: traefik/crds/
     repoURL: https://github.com/traefik/traefik-helm-chart/
