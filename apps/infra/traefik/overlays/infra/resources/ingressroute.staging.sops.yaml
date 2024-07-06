@@ -4,7 +4,7 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
         argocd.argoproj.io/compare-options: IgnoreExtraneous
-        argocd.argoproj.io/sync-wave: "5"
+        argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:lG+RF0VtVKwIfY7P2lN3lMutNCa+2OwH,iv:0bEmKcpjU76aafCldP+Jo7qOocVwN1GtcuoxgL4ba6w=,tag:noDzLOZzkyPpEgi9YCb+OA==,type:str]
         kubernetes.io/ingress.class: traefik-external
@@ -48,8 +48,8 @@ sops:
             R1ZMK3JNdTVZS2w4eDhNYmVxK0NEcHMK5SGWW2f7V92NEm2aODzBumJ8KdO8kPkA
             OR9z4d12YQnMGLmHQ3g69OosdtV45hGRyERcuyRRAgTp3dpSmwTJJQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-03T14:54:21Z"
-    mac: ENC[AES256_GCM,data:YTgQOZdyEYlqe/nqyXtiqYMwOzVJVdiwPo2opO4RidwNmWxi0fM3qDZY0ebybpo76o49AsGPKUqsz3hGfnZdFBplg2QkiVmA7/QNJdeF+SpbS8AxYCNs4aSKbs/LwWomyF0CCVaqbZeMNzcz1d3Yb1ZdMUBM79xwFIaFiL4/oo4=,iv:vHjDrJiTUbH9LCQNz9kj2AEG9nb6R6vLE8T5HDe5EDI=,tag:DXhz3Zx3lnzjhpaGkrYisQ==,type:str]
+    lastmodified: "2024-07-06T17:45:24Z"
+    mac: ENC[AES256_GCM,data:PP5o/jB/2o/qxx4CAmL+/8cvtbnDbq8bpuxibyVFp9YpbeXt+Kjx2U5WuZsrhErflGzS20GTQ3N/xk/SSI0DU8naChe/C3tDPye8593QY3/TtojPYsktdHDPwWp/34pHnV8j/upzZmIexnbpseakGrlZt78MgLSuuKTbnq2oktw=,iv:vFUispwCCYglz0jXLIgAfE+/6QvooKw/9r0pdSPYpkU=,tag:J7e5mzIo4VfNBrVmxaQGXg==,type:str]
     pgp:
         - created_at: "2024-06-21T22:54:02Z"
           enc: |-

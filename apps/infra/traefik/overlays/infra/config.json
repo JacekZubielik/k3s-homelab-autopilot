@@ -1,15 +1,15 @@
 {
+  "annotations": "",
   "appName": "traefik",
-  "userGivenName": "traefik",
+  "appRole": "infra",
   "destNamespace": "traefik",
   "destServer": "https://kubernetes.default.svc",
+  "exclude": "",
+  "include": "",
+  "labels": "",
   "srcPath": "apps/infra/traefik/overlays/infra",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "0",
-  "appRole": "infra",
-  "labels": "",
-  "annotations": "",
-  "exclude": "",
-  "include": ""
+  "userGivenName": "traefik"
 }

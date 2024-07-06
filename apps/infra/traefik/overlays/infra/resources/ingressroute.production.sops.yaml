@@ -4,7 +4,7 @@ metadata:
     annotations:
         argocd.argoproj.io/compare-options: IgnoreExtraneous
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-        argocd.argoproj.io/sync-wave: "5"
+        argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-production
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:Pgk6QLWX567i8Lo3M5fBIzXfSXI4j9lM,iv:xjxrGRE6U+vZia7/Fdk8vPPmXpwUCGp6Pmr0A/QS4kg=,tag:zqtxCUf90LgS0U603quyFA==,type:str]
         kubernetes.io/ingress.class: traefik-external
@@ -39,8 +39,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-07-03T14:55:42Z"
-    mac: ENC[AES256_GCM,data:HApnbpa8VHhN8SdksdSj5pRccRaI8P8+6D8bjb+N68RnSoCbbZZPqUq5LFTgwrEfn926aDuZzmyVqL6gF3n1HUPoAR0w/YIifcwl0SE3CM20Iqkwi9RFsuKo7UuCG9VrOzDXeLTxDlrR0fSN3o+abxlry+thW46Ib8MVzzUK8FE=,iv:vwwwpNqvfBcHo0ve32ibCDq2qDlfOsAtMAEFExoY2G0=,tag:7YFyWvb8u/TmQ28GClTeaw==,type:str]
+    lastmodified: "2024-07-06T17:45:13Z"
+    mac: ENC[AES256_GCM,data:JF+6KomIRPb3qinpJWswoJ0iamBHO7sxp7EhXIZnJKkkYgp5FUhbFA/ja9l5nksX7OshWp87xZvQZWQrgJhbxvJBW5lSqK+kfF8NEF0CvKPlgztQdTEkPk+gQCYf2PKXBk5+Eg0TsnE8rQuQ9hkqr/d+y2SD1SGe/EaCSJjsdGk=,iv:FfHBf0KaOj00WU8GqQZN3FQ2KmKTy+kbgstWOyd7SMA=,tag:R1UbtKnuuEPSu6RGHulNhQ==,type:str]
     pgp:
         - created_at: "2024-06-25T21:16:26Z"
           enc: |-
