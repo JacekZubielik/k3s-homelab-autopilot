@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/name: syncthing
   name: syncthing
 
-  configMapGenerator:
-- name: syncthing-time
-  literals:
-  - TZ=CET
+#   configMapGenerator:
+# - name: syncthing-time
+#   literals:
+#   - TZ=CET
