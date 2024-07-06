@@ -1,0 +1,15 @@
+{
+  "annotations": "",
+  "appName": "minio",
+  "appRole": "storage",
+  "destNamespace": "minio",
+  "destServer": "https://kubernetes.default.svc",
+  "exclude": "",
+  "labels": "",
+  "srcPath": "apps/storage/minio/overlays/storage",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "",
+  "syncWave": "1",
+  "userGivenName": "minio",
+  "include": ""
+}
