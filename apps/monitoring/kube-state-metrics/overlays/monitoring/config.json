@@ -1,0 +1,15 @@
+{
+  "annotations": "",
+  "appName": "kube-state-metrics",
+  "appRole": "monitoring",
+  "destNamespace": "kube-state",
+  "destServer": "https://kubernetes.default.svc",
+  "exclude": "",
+  "include": "",
+  "labels": "",
+  "srcPath": "apps/monitoring/kube-state-metrics/overlays/monitoring",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "",
+  "syncWave": "2",
+  "userGivenName": "kube-state-metrics"
+}
