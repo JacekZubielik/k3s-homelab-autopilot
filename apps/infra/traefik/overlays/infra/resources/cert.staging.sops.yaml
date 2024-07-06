@@ -4,11 +4,11 @@ metadata:
     name: traefik-staging
 spec:
     dnsNames:
-        - ENC[AES256_GCM,data:sUf9vuSdUQGmWwYBItC7/FuUHIj9+hy5w0utoVDBl/uI,iv:52W2E0u3ATewZVgQSPGHdEU6g5EfALjpMxNuRlWx1EI=,tag:Y8+Fo/6P1S+G7/EuuVv+RQ==,type:str]
+        - ENC[AES256_GCM,data:fzNUZ2W5oIoNyH3zP6+l+ArWpjWIkZTX1hot7i7KCxE=,iv:ycvmMm+sNEGJa4qhp6xijEWXOTKESmM5ZyzUnvzkaQc=,tag:pkoX75zNrdAutjS+4qLYlw==,type:str]
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-staging
-    commonName: ENC[AES256_GCM,data:DdXskGWksODLIgIBdWXEXsOQ3+v4rpWuv7+WgExODGsW,iv:QqOUu3jPjRMZk+uNO6NqmK0S40KD0AiV4DhIKUBTzik=,tag:EEXvAeOjVo7Oha3TON5VdA==,type:str]
+    commonName: ENC[AES256_GCM,data:02cXYBfGivJATm3nDNo101Nht8DCOfpakPE+ZJpSzAA=,iv:NfK+rDOsqca6iFTlR5NTkfnkJ/m/Xc1qFhAsekoloNI=,tag:HVtPFu2GV1GVUiYAEUycfQ==,type:str]
     secretName: traefik-cf-staging
     # 90d
     duration: 2160h0m0s
@@ -29,8 +29,8 @@ sops:
             anp5ZUVKQkNZYmpIWHN1OVRtSm1IVzAKXW1SxH/Dahx1B8XOUGlBSW7bGVxNXaUs
             fDBKIWLZOqhPV6MUImdcQ8fsk/xX4kTIvea8xsDSKOdu2L3Q1pNL4w==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-03T14:56:19Z"
-    mac: ENC[AES256_GCM,data:K1pzUj+tzkbcpDahTHPHO5O+5O2LdiLz38LmyRJ5Ju/THH8FY4fZM6BkqmV4mlfTjRyGMjOBmx3T0ydYAHO4I/n+A85u/7nYNCRoFqQocVxl/EbP3vo/ugoEIY+haShWYOGymKOgEC+1W7QIrm/w17MJBtRS6WM61lhFmUicptw=,iv:PnxcFOUBg681qklAatsdeiQBR56Z1gkpJwD3cXvfRRM=,tag:sv6iaIxLFOqW95xCbE9Psw==,type:str]
+    lastmodified: "2024-07-06T15:51:13Z"
+    mac: ENC[AES256_GCM,data:fHCZGVdDguB1ve8qWju8ByQH2zCqm7M2una0AsQo7ET4K4Vz45aNLipCsqqSEEyDbFa8Rqzq5j4ZcFtQ/9hXNT8+B/eHR4vfOsvB5oR1PhRYy9Wf6vY/KG1AV2rPK4B8b02KVIIZr/XAOdyevJS0gf1Y8iXs1RFKAKf7OLQzrBE=,iv:oVXixiUWW4ToAznvp85Un94LteukRam790hVwPG1Lqs=,tag:dKQTYloh4sP3+uQEtF+Nzw==,type:str]
     pgp:
         - created_at: "2024-06-22T17:13:15Z"
           enc: |-

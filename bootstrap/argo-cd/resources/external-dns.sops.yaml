@@ -3,11 +3,11 @@ kind: Service
 metadata:
     name: argocd-server-extname
     annotations:
-        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:YEuA6ZA7besCCLgrAYHVpGIZR83oOaLbGTHX1PPf,iv:5iib5ar3uEsHT+C6P8r+oYVp6bseRUoOXT8+tO57/nE=,tag:+lzgeHVAK36pcnAoOUl0xg==,type:str]
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:NVBXUXeXjqbspUSZXhzR0NayLw+X5G/HlmX43d4=,iv:ShBm1hsOej7sX08Dvc3X/4/RkRaHP1YJrZoal2MKMI8=,tag:IDMM+7rEXVT+3yyz1gUrsg==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
 spec:
     type: ExternalName
-    externalName: ENC[AES256_GCM,data:Mqd6jEYLCK2v+40LRdNa/QJ1B2p8t/zpmxP70qKy,iv:w0K0NJhUTXazxeya3haNZ6jT15BJiUWtU9ovoUv6Rxc=,tag:JTr9oygjz3aLs7uX/8zrmA==,type:str]
+    externalName: ENC[AES256_GCM,data:fAvrUD/WUgVsf7eS++78RTLimq1jSfPzBBF46G4=,iv:lqm9/WFRiElR0UnGBOom6cqp3WdQfxM5Rz/6BYudeUg=,tag:B7P7plGEWNnjNdg3rzIuiw==,type:str]
     sessionAffinity: None
 sops:
     kms: []
@@ -24,8 +24,8 @@ sops:
             Zk1QQTJyNTlxVUhybkdKMEFNOStocUkKYopkvDZIvSndlGi5eF+O6uLjwCa470g5
             IVaBQSRw7op0DlpAHowoMRO57t4zfrwAXvU2ASSFna198wXdLbdpAA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-06-20T12:45:33Z"
-    mac: ENC[AES256_GCM,data:LLGpqzhqxivJdIiB6L9gdE0sDe8ZCNQ3eFjlI++NtIxcO6orKfdL27yxrFUSWt4qW3buk6S4/VCJZoub18nCbhZdmBUvytJ9a54JFvTlg65HCi9YAnRF13ELWtQlGhu3wNSM+u6RgOuiECXhW6ll3ZxmqaoRkaE0V0Ob9axPMfA=,iv:S7n4kby/+fqjPFvYsFs6AIQM9hB/tC52JtOo9Mu7CNY=,tag:bafzdaF5cSN+XGZPaDbkYw==,type:str]
+    lastmodified: "2024-07-06T15:47:10Z"
+    mac: ENC[AES256_GCM,data:5wGkR89ZPTiR7Oy83tqte+qZJ7TC1QhGwLyPRoG5bC1V6SlfXwmzAdMN8wBK9TdAxYXD8iqJmT4gg5HcBQ0w7KTgtpvTNUWbBWenhx6WI7azfkq1VUea6Akh7rMKbukrHSfGvKP5QTQ5MWKO6JIWfz1fXzngPm7Kt5XJf/a7yxQ=,iv:5t+xZ44RYDeGaT0OWgMJv3+S2mUA4fSaAT17BAe74Bw=,tag:KsnA+bqkp55Ru4rWdjqUhA==,type:str]
     pgp:
         - created_at: "2024-06-20T12:45:33Z"
           enc: |-
