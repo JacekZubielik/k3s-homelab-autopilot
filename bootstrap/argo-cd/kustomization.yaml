@@ -5,8 +5,8 @@ resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
 # - resources/metrics.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 configMapGenerator:
 - behavior: merge
