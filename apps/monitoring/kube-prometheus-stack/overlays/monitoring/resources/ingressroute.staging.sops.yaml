@@ -4,7 +4,7 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
         argocd.argoproj.io/compare-options: IgnoreExtraneous
-        argocd.argoproj.io/sync-wave: "5"
+        argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:qSqFYmfpouGIrQT5OLUZyThsrjz60FytA8GeahA=,iv:GpJR5wegNL8irywMtMQ2bzyMP8SLGdRXrTitKuUnviQ=,tag:uFO/bdtHuGkQWeDfkQXuzA==,type:str]
         kubernetes.io/ingress.class: traefik-external
@@ -49,8 +49,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-06T15:59:29Z"
-    mac: ENC[AES256_GCM,data:SILSDxwUZMnbMigKQ9lMbw0G2gW5u7YQoCNh1KY9I58D7VC+jBsclDN67RUHw/Mj2PnU9CX6eRBVZOSwHfSNVIt+QpcK0Ai1reKQ96+CpsLUR/yldQFAfjeRQ9RaJXZRoeVTnRTpEfqoSFD+Kz2uJSBuQBJf2BhI6RiGEaaTK4U=,iv:RS0hTCvM+YHOz9y7amTEaNx9iO4G/1sdES9IcOtbY00=,tag:R82JcQIqJnBUgsGir/lqkA==,type:str]
+    lastmodified: "2024-07-06T17:51:24Z"
+    mac: ENC[AES256_GCM,data:IbErXA5pjYIFWNS0DAC96sVWE7a0GVgly6H2ssjpklaDAJEyU3VS1jUqKnXlpCCfadPgUpDDWifuOhsH6J4w+4PD0O1BhsE84OCvgt1V6X5J82E0Czs0gnyPVU9gxyaX8EoxNDr3ndxhHlW9SOavO2jq3njd7ufhYa6tTbyaP08=,iv:+lWEdbZ3NftKVtIWoZRCLHKD5tANPfjp2U4H3CLKPGA=,tag:KADB93Pn7Z/fiATWJIXR/A==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -81,7 +81,7 @@ metadata:
     name: grafana
     annotations:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-        argocd.argoproj.io/sync-wave: "5"
+        argocd.argoproj.io/sync-wave: "3"
     labels:
         app.kubernetes.io/name: grafana
 spec:
@@ -105,8 +105,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-06T15:59:29Z"
-    mac: ENC[AES256_GCM,data:SILSDxwUZMnbMigKQ9lMbw0G2gW5u7YQoCNh1KY9I58D7VC+jBsclDN67RUHw/Mj2PnU9CX6eRBVZOSwHfSNVIt+QpcK0Ai1reKQ96+CpsLUR/yldQFAfjeRQ9RaJXZRoeVTnRTpEfqoSFD+Kz2uJSBuQBJf2BhI6RiGEaaTK4U=,iv:RS0hTCvM+YHOz9y7amTEaNx9iO4G/1sdES9IcOtbY00=,tag:R82JcQIqJnBUgsGir/lqkA==,type:str]
+    lastmodified: "2024-07-06T17:51:24Z"
+    mac: ENC[AES256_GCM,data:IbErXA5pjYIFWNS0DAC96sVWE7a0GVgly6H2ssjpklaDAJEyU3VS1jUqKnXlpCCfadPgUpDDWifuOhsH6J4w+4PD0O1BhsE84OCvgt1V6X5J82E0Czs0gnyPVU9gxyaX8EoxNDr3ndxhHlW9SOavO2jq3njd7ufhYa6tTbyaP08=,iv:+lWEdbZ3NftKVtIWoZRCLHKD5tANPfjp2U4H3CLKPGA=,tag:KADB93Pn7Z/fiATWJIXR/A==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -137,7 +137,7 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
         argocd.argoproj.io/compare-options: IgnoreExtraneous
-        argocd.argoproj.io/sync-wave: "5"
+        argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:qSqFYmfpouGIrQT5OLUZyThsrjz60FytA8GeahA=,iv:GpJR5wegNL8irywMtMQ2bzyMP8SLGdRXrTitKuUnviQ=,tag:uFO/bdtHuGkQWeDfkQXuzA==,type:str]
         kubernetes.io/ingress.class: traefik-external
@@ -182,8 +182,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-06T15:59:29Z"
-    mac: ENC[AES256_GCM,data:SILSDxwUZMnbMigKQ9lMbw0G2gW5u7YQoCNh1KY9I58D7VC+jBsclDN67RUHw/Mj2PnU9CX6eRBVZOSwHfSNVIt+QpcK0Ai1reKQ96+CpsLUR/yldQFAfjeRQ9RaJXZRoeVTnRTpEfqoSFD+Kz2uJSBuQBJf2BhI6RiGEaaTK4U=,iv:RS0hTCvM+YHOz9y7amTEaNx9iO4G/1sdES9IcOtbY00=,tag:R82JcQIqJnBUgsGir/lqkA==,type:str]
+    lastmodified: "2024-07-06T17:51:24Z"
+    mac: ENC[AES256_GCM,data:IbErXA5pjYIFWNS0DAC96sVWE7a0GVgly6H2ssjpklaDAJEyU3VS1jUqKnXlpCCfadPgUpDDWifuOhsH6J4w+4PD0O1BhsE84OCvgt1V6X5J82E0Czs0gnyPVU9gxyaX8EoxNDr3ndxhHlW9SOavO2jq3njd7ufhYa6tTbyaP08=,iv:+lWEdbZ3NftKVtIWoZRCLHKD5tANPfjp2U4H3CLKPGA=,tag:KADB93Pn7Z/fiATWJIXR/A==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -214,7 +214,7 @@ metadata:
     name: prometheus
     annotations:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-        argocd.argoproj.io/sync-wave: "5"
+        argocd.argoproj.io/sync-wave: "3"
     labels:
         app.kubernetes.io/name: prometheus
 spec:
@@ -238,8 +238,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-06T15:59:29Z"
-    mac: ENC[AES256_GCM,data:SILSDxwUZMnbMigKQ9lMbw0G2gW5u7YQoCNh1KY9I58D7VC+jBsclDN67RUHw/Mj2PnU9CX6eRBVZOSwHfSNVIt+QpcK0Ai1reKQ96+CpsLUR/yldQFAfjeRQ9RaJXZRoeVTnRTpEfqoSFD+Kz2uJSBuQBJf2BhI6RiGEaaTK4U=,iv:RS0hTCvM+YHOz9y7amTEaNx9iO4G/1sdES9IcOtbY00=,tag:R82JcQIqJnBUgsGir/lqkA==,type:str]
+    lastmodified: "2024-07-06T17:51:24Z"
+    mac: ENC[AES256_GCM,data:IbErXA5pjYIFWNS0DAC96sVWE7a0GVgly6H2ssjpklaDAJEyU3VS1jUqKnXlpCCfadPgUpDDWifuOhsH6J4w+4PD0O1BhsE84OCvgt1V6X5J82E0Czs0gnyPVU9gxyaX8EoxNDr3ndxhHlW9SOavO2jq3njd7ufhYa6tTbyaP08=,iv:+lWEdbZ3NftKVtIWoZRCLHKD5tANPfjp2U4H3CLKPGA=,tag:KADB93Pn7Z/fiATWJIXR/A==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -270,7 +270,7 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
         argocd.argoproj.io/compare-options: IgnoreExtraneous
-        argocd.argoproj.io/sync-wave: "5"
+        argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:qSqFYmfpouGIrQT5OLUZyThsrjz60FytA8GeahA=,iv:GpJR5wegNL8irywMtMQ2bzyMP8SLGdRXrTitKuUnviQ=,tag:uFO/bdtHuGkQWeDfkQXuzA==,type:str]
         kubernetes.io/ingress.class: traefik-external
@@ -315,8 +315,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-06T15:59:29Z"
-    mac: ENC[AES256_GCM,data:SILSDxwUZMnbMigKQ9lMbw0G2gW5u7YQoCNh1KY9I58D7VC+jBsclDN67RUHw/Mj2PnU9CX6eRBVZOSwHfSNVIt+QpcK0Ai1reKQ96+CpsLUR/yldQFAfjeRQ9RaJXZRoeVTnRTpEfqoSFD+Kz2uJSBuQBJf2BhI6RiGEaaTK4U=,iv:RS0hTCvM+YHOz9y7amTEaNx9iO4G/1sdES9IcOtbY00=,tag:R82JcQIqJnBUgsGir/lqkA==,type:str]
+    lastmodified: "2024-07-06T17:51:24Z"
+    mac: ENC[AES256_GCM,data:IbErXA5pjYIFWNS0DAC96sVWE7a0GVgly6H2ssjpklaDAJEyU3VS1jUqKnXlpCCfadPgUpDDWifuOhsH6J4w+4PD0O1BhsE84OCvgt1V6X5J82E0Czs0gnyPVU9gxyaX8EoxNDr3ndxhHlW9SOavO2jq3njd7ufhYa6tTbyaP08=,iv:+lWEdbZ3NftKVtIWoZRCLHKD5tANPfjp2U4H3CLKPGA=,tag:KADB93Pn7Z/fiATWJIXR/A==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -347,7 +347,7 @@ metadata:
     name: alertmanager
     annotations:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-        argocd.argoproj.io/sync-wave: "5"
+        argocd.argoproj.io/sync-wave: "3"
     labels:
         app.kubernetes.io/name: alertmanager
 spec:
@@ -371,8 +371,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-06T15:59:29Z"
-    mac: ENC[AES256_GCM,data:SILSDxwUZMnbMigKQ9lMbw0G2gW5u7YQoCNh1KY9I58D7VC+jBsclDN67RUHw/Mj2PnU9CX6eRBVZOSwHfSNVIt+QpcK0Ai1reKQ96+CpsLUR/yldQFAfjeRQ9RaJXZRoeVTnRTpEfqoSFD+Kz2uJSBuQBJf2BhI6RiGEaaTK4U=,iv:RS0hTCvM+YHOz9y7amTEaNx9iO4G/1sdES9IcOtbY00=,tag:R82JcQIqJnBUgsGir/lqkA==,type:str]
+    lastmodified: "2024-07-06T17:51:24Z"
+    mac: ENC[AES256_GCM,data:IbErXA5pjYIFWNS0DAC96sVWE7a0GVgly6H2ssjpklaDAJEyU3VS1jUqKnXlpCCfadPgUpDDWifuOhsH6J4w+4PD0O1BhsE84OCvgt1V6X5J82E0Czs0gnyPVU9gxyaX8EoxNDr3ndxhHlW9SOavO2jq3njd7ufhYa6tTbyaP08=,iv:+lWEdbZ3NftKVtIWoZRCLHKD5tANPfjp2U4H3CLKPGA=,tag:KADB93Pn7Z/fiATWJIXR/A==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-

@@ -5,7 +5,7 @@ metadata:
 type: Opaque
 files:
 - resources/cert.staging.sops.yaml
-# - resources/external-dns.sops.yaml
+- resources/external-dns.sops.yaml
 - resources/ingressroute.staging.sops.yaml
 - secrets/secret.sops.yaml
 # - resources/cert.production.sops.yaml
