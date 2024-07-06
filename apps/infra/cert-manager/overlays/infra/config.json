@@ -1,15 +1,15 @@
 {
+  "annotations": "",
   "appName": "cert-manager",
-  "userGivenName": "cert-manager",
+  "appRole": "infra",
   "destNamespace": "cert-manager",
   "destServer": "https://kubernetes.default.svc",
+  "exclude": "",
+  "include": "",
+  "labels": "",
   "srcPath": "apps/infra/cert-manager/overlays/infra",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
-  "syncWave": "1",
-  "appRole": "infra",
-  "labels": "",
-  "annotations": "",
-  "exclude": "",
-  "include": ""
+  "syncWave": "0",
+  "userGivenName": "cert-manager"
 }
