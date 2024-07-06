@@ -1,0 +1,13 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: external-dns
+metadata:
+  labels:
+    app.kubernetes.io/name: external-dns
+  name: external-dns
+
+configMapGenerator:
+  - name: external-dns-tz
+    literals:
+      - TZ=CET

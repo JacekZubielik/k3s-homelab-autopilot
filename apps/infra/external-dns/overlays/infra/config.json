@@ -1,0 +1,15 @@
+{
+  "annotations": "",
+  "appName": "external-dns",
+  "appRole": "infra",
+  "destNamespace": "external-dns",
+  "destServer": "https://kubernetes.default.svc",
+  "exclude": "",
+  "include": "",
+  "labels": "",
+  "srcPath": "apps/infra/external-dns/overlays/infra",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "",
+  "syncWave": "1",
+  "userGivenName": "external-dns"
+}
