@@ -9,7 +9,7 @@ metadata:
 spec:
     issuerRef:
         kind: ClusterIssuer
-        name: route53-letsencrypt-production
+        name: letsencrypt-production
     commonName: ENC[AES256_GCM,data:ceLijGOlaFTegKsJHYLQgCideQAA1tYrHYZmsbo=,iv:rMDZU285R71SaBsj+s7qspVxyr2JIwIxP9u4KV3AHWE=,tag:prpuhf2yheE3IAsMlG8Frw==,type:str]
     dnsNames:
         - ENC[AES256_GCM,data:GqzdGUvz/B+v2ATQ00sD6QplHqu/mxkIWKZm5bM=,iv:zXKJuZcYqVY3ZAmujQWzH/XxnleIePRguNMUKX94EGs=,tag:qkPZWZ1fbwO6tto6yW52Dw==,type:str]
@@ -31,8 +31,8 @@ sops:
             VEpobno1L3dVZ2JGRk52aU5ROUdadDAKXlWkoAfl1xUKKBjNduHDuVjwugSaeRjS
             QIfqkdmHnCyBluyBP8otU/1WMhA9ku4fAey46QnjTe67HxUab/YSpg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-06T15:46:57Z"
-    mac: ENC[AES256_GCM,data:U+g+RqXBKclv049EaXPfcY2S1qS5j5+ixNJkV/3bQ1DD4jiKVdxFCLN6jGwGr/qVc8mnM2PEGEQvYFyURVNcFau977vwnTJcFu7SPtZ71LAjGF5oDllnYFuSHO9TZCvtP6agJJpjJuAMJVyPq+1iWdwMBy1g6U+gZ+b/fjwC+p0=,iv:Pgo4g++c3OLjUwianuLzxfDDrq95MkmdwVif5VQantQ=,tag:KaVGqBMvs+ETXkTEzkPLpg==,type:str]
+    lastmodified: "2024-07-06T16:00:43Z"
+    mac: ENC[AES256_GCM,data:E6sXMa9DAuWB3TF5hUs5rCNUgHa5qpc1YqD4CbWLKGRHK12y9WbhOgXN/4lY8y5u7Pk7fDsyz0Y+ti0WVb8PCO9YS4c/7shMQHwRz+i+IBgAs+nAeRuNFGB71kFUO5N430xWmqRfZi1rj+PTSp38tGne4IaMUmu0Hq1YHIxGPWk=,iv:3UixTvZKFyHh+D2IWxAZFlyCC+ft6VMkOQpMSIft/ro=,tag:aWHy/SwBsROBDDKUMnvgfg==,type:str]
     pgp:
         - created_at: "2024-06-20T12:44:20Z"
           enc: |-
