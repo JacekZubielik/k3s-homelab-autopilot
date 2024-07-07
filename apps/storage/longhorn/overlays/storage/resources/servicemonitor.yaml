@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/name: longhorn
     release: kube-prometheus-stack
   name: longhorn-prometheus-servicemonitor
-  namespace: longhorn
+  namespace: longhorn-system
 spec:
   jobLabel: longhorn-metrics
   selector:

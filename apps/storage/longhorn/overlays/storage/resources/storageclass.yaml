@@ -5,6 +5,7 @@ metadata:
   name: longhorn-hdd-0
   annotations:
     storageclass.kubernetes.io/is-default-class: "false"
+    app.kubernetes.io/instance: storage-longhorn
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 reclaimPolicy: "Retain"
@@ -25,6 +26,7 @@ metadata:
   name: longhorn-ssd-0
   annotations:
     storageclass.kubernetes.io/is-default-class: "false"
+    app.kubernetes.io/instance: storage-longhorn
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 reclaimPolicy: "Retain"
@@ -45,6 +47,7 @@ metadata:
   name: longhorn-nvme-0
   annotations:
     storageclass.kubernetes.io/is-default-class: "false"
+    app.kubernetes.io/instance: storage-longhorn
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 reclaimPolicy: "Retain"
