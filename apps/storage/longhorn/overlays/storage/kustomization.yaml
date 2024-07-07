@@ -17,10 +17,6 @@ patches:
     kind: CustomResourceDefinition
     labelSelector: app.kubernetes.io/instance=longhorn
 
-# - path: patches/mutation-patch.yaml
-#   target:
-#     kind: Deployment
-
 - path: patches/frontend-service.yaml
   target:
     kind: Service
@@ -31,15 +27,13 @@ patches:
 #     kind: ConfigMap
 #     name: longhorn-ssd-0
 
-# # - path: patches/storageclass-nvme-0.yaml
-# #   target:
-# #     kind: ConfigMap
-# #     name: longhorn-nvme-0
+# - path: patches/storageclass-nvme-0.yaml
+#   target:
+#     kind: ConfigMap
+#     name: longhorn-nvme-0
 
 # patchesStrategicMerge:
 # - patches/storageclass.yaml
-
-
 
 metadata:
   annotations:

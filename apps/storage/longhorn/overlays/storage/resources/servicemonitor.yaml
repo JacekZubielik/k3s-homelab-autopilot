@@ -8,6 +8,7 @@ metadata:
   labels:
     app.kubernetes.io/name: longhorn
     release: kube-prometheus-stack
+    name: longhorn-prometheus-servicemonitor
   name: longhorn-prometheus-servicemonitor
   namespace: longhorn-system
 spec:
@@ -17,7 +18,7 @@ spec:
       app.kubernetes.io/name: longhorn-manager
   namespaceSelector:
     matchNames:
-    - longhorn
+    - longhorn-system
   endpoints:
   - port: manager
     path: /metrics
