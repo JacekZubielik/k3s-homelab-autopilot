@@ -1,0 +1,19 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: binance-proxy
+  # namespace: prometheus
+  # labels:
+  #   release: prometheus
+spec:
+  namespaceSelector:
+    matchNames:
+    - trade
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: binance-proxy
+  podMetricsEndpoints:
+  - port: port-spot
+    scheme: http
+    path: /metrics
