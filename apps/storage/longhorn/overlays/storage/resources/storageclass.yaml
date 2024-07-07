@@ -17,7 +17,7 @@ parameters:
   fsType: "ext4"
   dataLocality: "strict-local"
   diskSelector: "hdd-0"
-  nodeSelector: "k3s-master"
+  nodeSelector: "dev-k3s-master-0"
 
 ---
 kind: StorageClass
@@ -38,7 +38,7 @@ parameters:
   fsType: "ext4"
   dataLocality: "strict-local"
   diskSelector: "ssd-0"
-  nodeSelector: "k3s-master"
+  nodeSelector: "dev-k3s-master-0"
 
 ---
 kind: StorageClass
@@ -59,4 +59,4 @@ parameters:
   fsType: "ext4"
   dataLocality: "strict-local"
   diskSelector: "nvme-0"
-  nodeSelector: "k3s-master"
+  nodeSelector: "dev-k3s-master-0"
