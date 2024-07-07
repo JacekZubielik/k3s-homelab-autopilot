@@ -11,25 +11,16 @@ resources:
 generators:
 - ksops-generator.yaml
 
-metadata:
-  annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "0"
-  labels:
-    app.kubernetes.io/name: longhorn
-  name: longhorn
-
-helmCharts:
-- name: longhorn
-  version: 1.6.2
-  repo: https://charts.longhorn.io
-  includeCRDs: true
-  namespace: longhorn-system
-  releaseName: longhorn
-  valuesFile: values.yaml
-
 patches:
+- path: patches/remove-instance-patch.yaml
+  target:
+    kind: CustomResourceDefinition
+    labelSelector: app.kubernetes.io/instance=longhorn
+
+# - path: patches/mutation-patch.yaml
+#   target:
+#     kind: Deployment
+
 - path: patches/frontend-service.yaml
   target:
     kind: Service
@@ -47,3 +38,23 @@ patches:
 
 # patchesStrategicMerge:
 # - patches/storageclass.yaml
+
+
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: longhorn
+  name: longhorn
+
+helmCharts:
+- name: longhorn
+  version: 1.6.2
+  repo: https://charts.longhorn.io
+  includeCRDs: true
+  namespace: longhorn-system
+  releaseName: longhorn
+  valuesFile: values.yaml
