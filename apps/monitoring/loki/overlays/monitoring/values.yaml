@@ -10,7 +10,7 @@ loki:
     type: s3
     s3:
       endpoint: s3.storage.anotherlife.org.pl # minio.minio:9000
-      region: eu-west-1
+      region: eu-east-1
       secretAccessKey: ${MINIO_SECRET_ACCESS_KEY}
       accessKeyId: ${MINIO_ACCESS_KEY_ID}
       s3ForcePathStyle: true
@@ -54,7 +54,7 @@ write:
   replicas: 1
   persistence:
     size: 10Gi
-    storageClass: longhorn
+    storageClass: longhorn-ssd-0
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
@@ -77,7 +77,7 @@ read:
   replicas: 1
   persistence:
     size: 10Gi
-    storageClass: longhorn
+    storageClass: longhorn-ssd-0
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
@@ -100,7 +100,7 @@ backend:
   replicas: 1
   persistence:
     size: 10Gi
-    storageClass: longhorn
+    storageClass: longhorn-ssd-0
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
