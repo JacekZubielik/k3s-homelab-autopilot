@@ -48,13 +48,12 @@ loki:
           prefix: index_
           period: 24h
 
-
 # Configuration for the write
 write:
   replicas: 1
   persistence:
     size: 8Gi
-    storageClass: longhorn-nvme-0
+    storageClass: local-path # longhorn-nvme-0
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
@@ -77,7 +76,7 @@ read:
   replicas: 1
   persistence:
     size: 10Gi
-    storageClass: longhorn-nvme-0
+    storageClass: local-path # longhorn-nvme-0
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
@@ -100,7 +99,7 @@ backend:
   replicas: 1
   persistence:
     size: 10Gi
-    storageClass: longhorn-nvme-0
+    storageClass: local-path # longhorn-nvme-0
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
@@ -141,7 +140,6 @@ monitoring:
 # Disable helm-test
 test:
   enabled: false
-
 
 memcachedExporter:
   allocatedMemory: 512
