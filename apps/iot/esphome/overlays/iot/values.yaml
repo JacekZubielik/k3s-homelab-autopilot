@@ -121,13 +121,13 @@ ingress:
   enabled: false
   # className: ""
 
-resources:
-  limits:
-    memory: 0.3Gi
-    cpu: 350m
-  requests:
-    memory: 0.2Gi
-    cpu: 150m
+# resources:
+#   limits:
+#     memory: 0.3Gi
+#     cpu: 350m
+#   requests:
+#     memory: 0.2Gi
+#     cpu: 150m
 
 nodeSelector:
   kubernetes.io/hostname: dev-k3s-master-0
