@@ -12,7 +12,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-wave: "10"
+    argocd.argoproj.io/sync-wave: "2"
   labels:
     app.kubernetes.io/name: loki
   name: loki
@@ -21,13 +21,7 @@ helmCharts:
 - name: loki
   version: 6.6.3
   repo: https://grafana.github.io/helm-charts
-  includeCRDs: false
+  includeCRDs: true
   namespace: loki
   releaseName: loki
   valuesFile: values.yaml
-
-configMapGenerator:
-- name: loki-tz
-  literals:
-  - TZ=CET
-  
