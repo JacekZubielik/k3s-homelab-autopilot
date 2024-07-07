@@ -100,7 +100,7 @@ backend:
   replicas: 1
   persistence:
     size: 2Gi
-    storageClass: local-path # longhorn-ssd-0
+    storageClass: longhorn-nvme-0
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
