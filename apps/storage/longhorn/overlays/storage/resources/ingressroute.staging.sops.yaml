@@ -12,7 +12,7 @@ metadata:
     # labels:
     #     app.kubernetes.io/name: longhorn-frontend
     name: longhorn-frontend-staging
-    namespace: longhorn-storage
+    namespace: longhorn
 spec:
     entryPoints:
         - websecure
@@ -50,8 +50,8 @@ sops:
             a0M5R2o1QnBUMDJQOTcvL3JPbm81dkEKyWyD1kzJJJSdec6MMabEuWxcBt7ahl+T
             0vEP1BDNFpIrFu5ZBwoB9poTGrfqKHbFnB0qXgiXwz6EBECisaDjSg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-07T10:31:05Z"
-    mac: ENC[AES256_GCM,data:qjnE4EklWFQlyBE1a+YaApVc44mcIIUux9vizrVKakXeLQJWU8qPFf+MiZ2EhVvWVnU1RGv9+8whFEaMom5pJVeepXX6DzDHx0Hpge38w7Q/aLhlXxbt0O8CeO4DdH2KTKc1oYTV2SixEor/8b8EPl6tXqAGGB/COixHPGFr2Ho=,iv:EFsahC+VOSnn+C0Ox2JC4W3DSe51ajMKdT6uTEATYhc=,tag:8ZMMgHmjSghz0dT4qvYF8w==,type:str]
+    lastmodified: "2024-07-07T11:03:03Z"
+    mac: ENC[AES256_GCM,data:I36IF4mP56Cl4DGNBPZxsMR1+cfRHJlCgsbz9giGO/9I6WQZEl9hzX4v/Pt3DhEPkPCUfkjFJac08Tq05LfNBGAH36InjVc0YK1TECy2aeXbHwbrqZvbdZ03Z5KmRd7azunEynB1wdExwHa8rt523qBeXf5nDFOPjl36qfdc5gs=,iv:gZiw33KGaMbswOzGLsgXiLtDy1T334XBPm3ugYnK/o0=,tag:vMXUjH318j8t1xrGb6MFnw==,type:str]
     pgp:
         - created_at: "2024-07-07T10:31:05Z"
           enc: |-
@@ -106,8 +106,8 @@ sops:
             a0M5R2o1QnBUMDJQOTcvL3JPbm81dkEKyWyD1kzJJJSdec6MMabEuWxcBt7ahl+T
             0vEP1BDNFpIrFu5ZBwoB9poTGrfqKHbFnB0qXgiXwz6EBECisaDjSg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-07T10:31:05Z"
-    mac: ENC[AES256_GCM,data:qjnE4EklWFQlyBE1a+YaApVc44mcIIUux9vizrVKakXeLQJWU8qPFf+MiZ2EhVvWVnU1RGv9+8whFEaMom5pJVeepXX6DzDHx0Hpge38w7Q/aLhlXxbt0O8CeO4DdH2KTKc1oYTV2SixEor/8b8EPl6tXqAGGB/COixHPGFr2Ho=,iv:EFsahC+VOSnn+C0Ox2JC4W3DSe51ajMKdT6uTEATYhc=,tag:8ZMMgHmjSghz0dT4qvYF8w==,type:str]
+    lastmodified: "2024-07-07T11:03:03Z"
+    mac: ENC[AES256_GCM,data:I36IF4mP56Cl4DGNBPZxsMR1+cfRHJlCgsbz9giGO/9I6WQZEl9hzX4v/Pt3DhEPkPCUfkjFJac08Tq05LfNBGAH36InjVc0YK1TECy2aeXbHwbrqZvbdZ03Z5KmRd7azunEynB1wdExwHa8rt523qBeXf5nDFOPjl36qfdc5gs=,iv:gZiw33KGaMbswOzGLsgXiLtDy1T334XBPm3ugYnK/o0=,tag:vMXUjH318j8t1xrGb6MFnw==,type:str]
     pgp:
         - created_at: "2024-07-07T10:31:05Z"
           enc: |-

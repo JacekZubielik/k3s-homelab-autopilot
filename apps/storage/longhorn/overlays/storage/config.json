@@ -2,7 +2,7 @@
   "annotations": "",
   "appName": "longhorn",
   "appRole": "storage",
-  "destNamespace": "longhorn-system",
+  "destNamespace": "longhorn",
   "destServer": "https://kubernetes.default.svc",
   "exclude": "",
   "include": "",
