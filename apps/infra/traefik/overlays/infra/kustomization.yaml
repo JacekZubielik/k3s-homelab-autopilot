@@ -14,16 +14,16 @@ resources:
 generators:
 - ksops-generator.yaml
 
-patches:
-- patch: |-
-    - op: add
-      path: /subjects/0/namespace
-      value: traefik
-  target:
-    group: rbac.authorization.k8s.io
-    kind: ClusterRoleBinding
-    name: traefik-role-binding
-    version: v1
+# patches:
+# - patch: |-
+#     - op: add
+#       path: /subjects/0/namespace
+#       value: traefik
+#   target:
+#     group: rbac.authorization.k8s.io
+#     kind: ClusterRoleBinding
+#     name: traefik-role-binding
+#     version: v1
 
 metadata:
   annotations:
