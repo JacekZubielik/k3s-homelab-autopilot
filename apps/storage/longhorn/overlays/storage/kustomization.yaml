@@ -6,7 +6,7 @@ namespace: longhorn-system
 resources:
 - resources/servicemonitor.yaml
 - resources/storageclass.yaml
-- resources/volume-snapshotclass.yaml
+# - resources/volume-snapshotclass.yaml
 
 generators:
 - ksops-generator.yaml
