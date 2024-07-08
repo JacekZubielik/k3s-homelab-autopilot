@@ -11,7 +11,7 @@ allowVolumeExpansion: true
 reclaimPolicy: "Retain"
 volumeBindingMode: Immediate
 parameters:
-  numberOfReplicas: "2"
+  numberOfReplicas: "1"
   staleReplicaTimeout: "2880" # 48 hours in minutes
   fromBackup: ""
   fsType: "ext4"
@@ -53,7 +53,7 @@ allowVolumeExpansion: true
 reclaimPolicy: "Retain"
 volumeBindingMode: Immediate
 parameters:
-  numberOfReplicas: "2"
+  numberOfReplicas: "1"
   staleReplicaTimeout: "2880" # 48 hours in minutes
   fromBackup: ""
   fsType: "ext4"
