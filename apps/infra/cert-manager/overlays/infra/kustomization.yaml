@@ -7,7 +7,8 @@ resources:
 - ../../base
 - resources/cert.default.svc.yaml
 - resources/issuer.default.svc.yaml
-# - resources/servicemonitor.yaml <-- move to prometheus
+- resources/issuer.k3s.ca-cluster.yaml
+- resources/servicemonitor.yaml
 
 generators:
 - ksops-generator.yaml
