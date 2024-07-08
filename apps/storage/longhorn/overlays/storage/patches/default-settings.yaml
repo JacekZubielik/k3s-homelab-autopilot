@@ -45,7 +45,6 @@ data:
     default-data-path: /var/lib/longhorn/
     default-replica-count: 1
     defaultDataLocality: disabled
-    defaultLonghornStaticStorageClass: longhorn-nvme-0
     deleting-confirmation-flag: true
     nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
     priorityClass: system-cluster-critical
