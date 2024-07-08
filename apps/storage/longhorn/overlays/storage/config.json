@@ -1,0 +1,15 @@
+{
+  "annotations": "",
+  "appName": "longhorn",
+  "appRole": "storage",
+  "destNamespace": "longhorn-system",
+  "destServer": "https://kubernetes.default.svc",
+  "exclude": "",
+  "include": "",
+  "labels": "",
+  "srcPath": "apps/storage/longhorn/overlays/storage",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "",
+  "syncWave": "1",
+  "userGivenName": "longhorn"
+}
