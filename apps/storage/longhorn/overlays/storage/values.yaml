@@ -109,9 +109,8 @@ image:
 service:
   ui:
     # -- Service type for Longhorn UI. (Options: "ClusterIP", "NodePort", "LoadBalancer", "Rancher-Proxy")
-    type: LoadBalancer
+    type: ClusterIP
     nodePort: "32449"
-    loadBalancerIPs: 192.168.40.181
   manager:
     type: ClusterIP
     # -- NodePort port number for Longhorn Manager. When unspecified, Longhorn selects a free port between 30000 and 32767.
@@ -127,7 +126,7 @@ persistence:
   # -- Replica count of the default Longhorn StorageClass.
   defaultClassReplicaCount: 1
   # -- Data locality of the default Longhorn StorageClass. (Options: "disabled", "best-effort")
-  defaultDataLocality: strict-local
+  defaultDataLocality: disabled
   # -- Reclaim policy that provides instructions for handling of a volume after its claim is released. (Options: "Retain", "Delete")
   reclaimPolicy: Retain
   # -- Setting that allows you to enable live migration of a Longhorn volume from one node to another.
@@ -396,7 +395,7 @@ longhornDriver:
 
 longhornUI:
   # -- Replica count for Longhorn UI.
-  replicas: 2
+  replicas: 1
   # -- PriorityClass for Longhorn UI.
   priorityClass: *defaultPriorityClassNameRef
   # -- Toleration for Longhorn UI on nodes allowed to run Longhorn components.
