@@ -5,17 +5,6 @@ metadata:
   namespace: longhorn-system
 data:
   default-setting.yaml: |-
-    deleting-confirmation-flag: true
-    upgrade-checker: false
-    create-default-disk-labeled-nodes: true
-    default-data-path: /var/lib/longhorn/
-    storage-minimal-available-percentage: 25
-    default-replica-count: 1
-    nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
-    priorityClass: system-cluster-critical
-
-    # backup-target-credential-secret: minio-secret
-    # backup-target: s3://backupbucket@us-east-1/backupstore
     # allow-recurring-job-while-volume-detached:
     # allow-volume-creation-with-degraded-availability:
     # auto-cleanup-system-generated-snapshot:
@@ -23,6 +12,7 @@ data:
     # auto-salvage:
     # backing-image-cleanup-wait-interval:
     # backing-image-recovery-wait-interval:
+    # backup-target-credential-secret: minio-secret
     # backupstore-poll-interval:
     # concurrent-automatic-engine-upgrade-per-node-limit:
     # concurrent-replica-rebuild-per-node-limit:
@@ -49,3 +39,15 @@ data:
     # system-managed-pods-image-pull-policy:
     # taint-toleration:
     # upgrade-checker:
+    backup-target: s3://backupbucket@us-east-1/backupstore
+    backupstorePollInterval: 500
+    create-default-disk-labeled-nodes: true
+    default-data-path: /var/lib/longhorn/
+    default-replica-count: 1
+    defaultDataLocality: disabled
+    defaultLonghornStaticStorageClass: longhorn-nvme-0
+    deleting-confirmation-flag: true
+    nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
+    priorityClass: system-cluster-critical
+    storage-minimal-available-percentage: 25
+    upgrade-checker: false
