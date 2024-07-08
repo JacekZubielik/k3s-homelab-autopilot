@@ -58,5 +58,7 @@ parameters:
   fromBackup: ""
   fsType: "ext4"
   dataLocality: "strict-local"
-  diskSelector: "nvme-0"
+  diskSelector: "nvme-0,fast"
   nodeSelector:  "storage,fast"
+
+  "nvme-0","fast","storage"
