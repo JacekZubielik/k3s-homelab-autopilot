@@ -42,7 +42,7 @@ data:
     backup-target: s3://backupbucket@us-east-1/backupstore
     backupstorePollInterval: 500
     create-default-disk-labeled-nodes: true
-    default-data-path: /var/lib/longhorn/
+    default-data-path: /mnt/volume-0/PV/longhorn # /var/lib/longhorn/
     default-replica-count: 1
     defaultDataLocality: disabled
     deleting-confirmation-flag: true

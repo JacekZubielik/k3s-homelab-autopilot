@@ -17,19 +17,3 @@ spec:
   type: LoadBalancer
   selector:
     app.kubernetes.io/name: longhorn-ui
-
-
-
-metadata:
-  labels:
-    app: longhorn-ui
-  name: longhorn-frontend
-  namespace: longhorn-system
-spec:
-  ports:
-  - port: 8000
-    protocol: TCP
-    targetPort: 8000
-    name: web
-  selector:
-    app: longhorn-ui
