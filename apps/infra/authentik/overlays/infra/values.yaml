@@ -420,7 +420,7 @@ postgresql:
       storageClass: longhorn-nvme-0 #host-path #local-path
       accessModes:
       - ReadWriteOnce
-      existingClaim: authentik-psql-pv-claim
+      # existingClaim: authentik-psql-pv-claim
   auth:
     username: "authentik"
     database: "authentik"
