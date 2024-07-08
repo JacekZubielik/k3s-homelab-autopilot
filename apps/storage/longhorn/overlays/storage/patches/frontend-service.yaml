@@ -2,8 +2,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    metallb.universe.tf/loadBalancerIPs: 192.168.40.181
+  # annotations:
+  #   metallb.universe.tf/loadBalancerIPs: 192.168.40.181
   labels:
     app.kubernetes.io/name: longhorn-ui
   name: longhorn-frontend-traefik
@@ -17,3 +17,19 @@ spec:
   type: LoadBalancer
   selector:
     app.kubernetes.io/name: longhorn-ui
+
+
+
+metadata:
+  labels:
+    app: longhorn-ui
+  name: longhorn-frontend
+  namespace: longhorn-system
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+    name: web
+  selector:
+    app: longhorn-ui
