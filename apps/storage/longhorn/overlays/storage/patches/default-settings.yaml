@@ -10,7 +10,10 @@ data:
     create-default-disk-labeled-nodes: true
     default-data-path: /var/lib/longhorn/
     storage-minimal-available-percentage: 25
-    default-replica-count: 2
+    default-replica-count: 1
+    nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
+    priorityClass: system-cluster-critical
+
     # backup-target-credential-secret: minio-secret
     # backup-target: s3://backupbucket@us-east-1/backupstore
     # allow-recurring-job-while-volume-detached:
@@ -23,7 +26,6 @@ data:
     # backupstore-poll-interval:
     # concurrent-automatic-engine-upgrade-per-node-limit:
     # concurrent-replica-rebuild-per-node-limit:
-    # create-default-disk-labeled-nodes:
     # default-data-locality:
     # default-longhorn-static-storage-class:
     # disable-revision-counter:

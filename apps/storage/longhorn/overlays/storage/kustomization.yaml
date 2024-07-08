@@ -9,8 +9,8 @@ resources:
 # - resources/volume-snapshotclass.yaml
 # - patches/default-settings.yaml
 
-generators:
-- ksops-generator.yaml
+# generators:
+# - ksops-generator.yaml
 
 patches:
 - path: patches/remove-instance-patch.yaml
@@ -18,10 +18,10 @@ patches:
     kind: CustomResourceDefinition
     labelSelector: app.kubernetes.io/instance=longhorn
 
-- path: patches/frontend-service.yaml
-  target:
-    kind: Service
-    name: longhorn-frontend-traefik
+# - path: patches/frontend-service.yaml
+#   target:
+#     kind: Service
+#     name: longhorn-frontend-traefik
 
 - path: patches/hook.yaml
   target:
