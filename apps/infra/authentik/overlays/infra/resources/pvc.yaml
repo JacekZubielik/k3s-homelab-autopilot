@@ -11,7 +11,7 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 8Gi
   storageClassName: longhorn-nvme-0
   volumeMode: Filesystem
   volumeName: authentik-psql-pv-volume
