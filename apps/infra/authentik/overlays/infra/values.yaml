@@ -417,10 +417,10 @@ postgresql:
       max_connections = 500
     persistence:
       enabled: true
-      storageClass: longhorn-nvme-0 #host-path #local-path
+      storageClass: longhorn-nvme-0
       accessModes:
       - ReadWriteOnce
-      # existingClaim: authentik-psql-pv-claim
+      existingClaim: authentik-psql-pv-claim
   auth:
     username: "authentik"
     database: "authentik"
@@ -474,7 +474,7 @@ redis:
   persistence:
     enabled: true
     path: /data
-    storageClass: "longhorn"
+    storageClass: "longhorn-nvme-0"
     accessModes:
     - ReadWriteOnce
     size: 8Gi
