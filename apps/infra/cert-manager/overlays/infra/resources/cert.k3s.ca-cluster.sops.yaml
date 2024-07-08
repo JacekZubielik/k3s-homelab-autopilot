@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
     name: dev-k3s-homelab-net
-    namespace: default
+    namespace: cert-manager
 spec:
     commonName: dev.k3s.homelab.net
     # 90d
@@ -53,8 +53,8 @@ sops:
             M3A3VHpzVmxEVk9mdVVmSUdaZ1l3Tk0KqJckKchBsuYPnB7rweS0IEYr3cTI0Lot
             Blhkk6wHFH/Qiyr229YIEQbZHGmUvkRFDBlBFcyFYBlSR1NUEK5UxQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-08T23:09:39Z"
-    mac: ENC[AES256_GCM,data:GuSgZFUjad71FT0h+BMH1Wy7MXclWJCwV8Eml3qi9p+lWqlaz7fUWn3nbMJmBT9v8zNte4EV4Rm1oQCjPWU2wCCAOw3GN0g3SmWLKMBR+21z7bCvQfj+Y4NKTsukcCLfM+7s0zz38nK0NI145rq0iw5BWEQ9HGTE3rbODiEz02g=,iv:VWB1mAFCCzGsSlB5TJCbuhOWTA0dV30Uknpku391Abc=,tag:ZVFlLskOlAfXaeMToV4L7A==,type:str]
+    lastmodified: "2024-07-08T23:29:20Z"
+    mac: ENC[AES256_GCM,data:1hl1STSAXSffRfzjtpjYOTgjSk/H7W018JQmld8C16q98TZSWyKXkcENPoQz0VWVfNq5uhrRowItiYsELVh9RE+PqqBte/tYc7rI/gQSm8YZwFZoAhXg7/aJ6sfAJkzSiGrFSwy3CKck0VdSQCqFla+J1XXDXnzv4vwomOF447M=,iv:0g6+HnrCK2WMR2rLEsiBH6Myq5EHWNW2ocwxzoZ4Hys=,tag:O5w3yAovwFFbwFH/O4OtNg==,type:str]
     pgp:
         - created_at: "2024-07-08T23:09:39Z"
           enc: |-
