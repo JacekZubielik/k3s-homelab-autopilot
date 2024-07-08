@@ -4,4 +4,7 @@ metadata:
   name: k3s-ca-cluster-issuer
 spec:
   ca:
-    secretName: k3s-ca-key-pair
+    secretName: dev-k3s-homelab-net.tls
+  selfSigned:
+    crlDistributionPoints:
+    - "http://dev.k3s.homelab.net"
