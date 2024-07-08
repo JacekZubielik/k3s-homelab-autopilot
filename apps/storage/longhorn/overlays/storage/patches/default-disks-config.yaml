@@ -1,0 +1,16 @@
+---
+- op: add
+  path: /metadata/annotations
+  value:
+    node.longhorn.io:
+      default-disks-config:
+      - path: /var/lib/longhorn
+        allowScheduling: 'true'
+        name: 'Default DISK'
+      - path: /mnt/volume-0/PV/longhorn
+        allowScheduling: 'true'
+        name: 'nvme-0'
+        storageReserved: '10485760'
+        tags: '["nvme-0","fast"]'
+  target: 
+  name: ".*"
