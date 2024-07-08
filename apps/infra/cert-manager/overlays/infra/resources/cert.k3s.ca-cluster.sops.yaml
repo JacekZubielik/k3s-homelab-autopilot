@@ -10,7 +10,7 @@ spec:
     isCA: true
     # 30d
     renewBefore: 720h0m0s
-    secretName: dev-k3s-homelab-net.tls
+    secretName: dev.k3s.homelab.tls
     subject:
         organizations:
             - ENC[AES256_GCM,data:XpJhBlXQaq8QrM1U7rPfcg==,iv:an2Wdx93YwfsgpIj9lRIHRz8MSJaHQJwfGFa50ta3/Q=,tag:pK7/il9sZsUnQD5c7PMmig==,type:str]
@@ -53,8 +53,8 @@ sops:
             M3A3VHpzVmxEVk9mdVVmSUdaZ1l3Tk0KqJckKchBsuYPnB7rweS0IEYr3cTI0Lot
             Blhkk6wHFH/Qiyr229YIEQbZHGmUvkRFDBlBFcyFYBlSR1NUEK5UxQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-08T23:29:20Z"
-    mac: ENC[AES256_GCM,data:1hl1STSAXSffRfzjtpjYOTgjSk/H7W018JQmld8C16q98TZSWyKXkcENPoQz0VWVfNq5uhrRowItiYsELVh9RE+PqqBte/tYc7rI/gQSm8YZwFZoAhXg7/aJ6sfAJkzSiGrFSwy3CKck0VdSQCqFla+J1XXDXnzv4vwomOF447M=,iv:0g6+HnrCK2WMR2rLEsiBH6Myq5EHWNW2ocwxzoZ4Hys=,tag:O5w3yAovwFFbwFH/O4OtNg==,type:str]
+    lastmodified: "2024-07-08T23:40:08Z"
+    mac: ENC[AES256_GCM,data:jNj6uSZahKtyhSJ9/KAdmMzU2c1gBLpOM6DWpP8lyE0OfqKTrH+18V0h2beLLHxJ2pVISgtUr5+4TKgd3lCpxesHHRlxXevt3rF1gLf5sphrotk5gNHxoBTZtEvB0W5UL3GIEgphw9Tk3dwMPUyHljsHeiyfX4HWeFwVJgn0+zg=,iv:mCGS1+gZuVQYMEYCIBj4NPC0Ez1s6TgbdBP8ZdD453s=,tag:gyBp/zPW/NAKRnaaUlhm5g==,type:str]
     pgp:
         - created_at: "2024-07-08T23:09:39Z"
           enc: |-

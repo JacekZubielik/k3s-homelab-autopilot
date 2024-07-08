@@ -4,4 +4,4 @@ metadata:
   name: k3s-ca-cluster-issuer
 spec:
   ca:
-    secretName: dev-k3s-homelab-net.tls
+    secretName: dev.k3s.homelab.tls
