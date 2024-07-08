@@ -5,7 +5,7 @@ namespace: authentik
 
 resources:
 - ../../base
-- resources/pv.yaml
+# - resources/pv.yaml
 - resources/pvc.yaml
 
 generators:
