@@ -59,4 +59,4 @@ parameters:
   fsType: "ext4"
   dataLocality: "strict-local"
   diskSelector: "nvme-0"
-  nodeSelector: "dev-k3s-master-0"
+  nodeSelector:  "fast" #"dev-k3s-master-0"
