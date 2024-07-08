@@ -109,9 +109,9 @@ image:
 service:
   ui:
     # -- Service type for Longhorn UI. (Options: "ClusterIP", "NodePort", "LoadBalancer", "Rancher-Proxy")
-    type: ClusterIP
+    type: LoadBalancer
     # -- NodePort port number for Longhorn UI. When unspecified, Longhorn selects a free port between 30000 and 32767.
-    nodePort: "32449"
+    nodePort: "32450"
   manager:
     # -- Service type for Longhorn Manager.
     type: ClusterIP
