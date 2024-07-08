@@ -346,7 +346,11 @@ longhornManager:
   # -- PriorityClass for Longhorn Manager.
   priorityClass: *defaultPriorityClassNameRef
   # -- Toleration for Longhorn Manager on nodes allowed to run Longhorn Manager.
-  tolerations: []
+  tolerations:
+    - key: ""
+      operator: "Exists"
+      effect: "NoSchedule"
+  # tolerations: []
   ## If you want to set tolerations for Longhorn Manager DaemonSet, delete the `[]` in the line above
   ## and uncomment this example block
   # - key: "key"
@@ -370,7 +374,12 @@ longhornDriver:
   # -- PriorityClass for Longhorn Driver.
   priorityClass: *defaultPriorityClassNameRef
   # -- Toleration for Longhorn Driver on nodes allowed to run Longhorn components.
-  tolerations: []
+  tolerations:
+    - key: ""
+      operator: "Exists"
+      effect: "NoSchedule"
+
+  # tolerations: []
   ## If you want to set tolerations for Longhorn Driver Deployer Deployment, delete the `[]` in the line above
   ## and uncomment this example block
   # - key: "key"
