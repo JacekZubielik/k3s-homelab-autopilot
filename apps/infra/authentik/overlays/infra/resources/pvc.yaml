@@ -14,4 +14,4 @@ spec:
       storage: 5Gi
   storageClassName: longhorn-nvme-0 #host-path
   volumeMode: Filesystem
-  volumeName: authentik-psql-pv-volume
+  # volumeName: authentik-psql-pv-volume 
