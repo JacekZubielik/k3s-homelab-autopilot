@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    "helm.sh/hook-delete-policy": hook-succeeded
+  name: authentik-psql-pv-claim
+  namespace: authentik
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: longhorn-nvme-0
+  volumeMode: Filesystem
+  volumeName: authentik-psql-pv-volume
