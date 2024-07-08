@@ -7,4 +7,4 @@ data:
   default-setting.yaml: |-
     deleting-confirmation-flag: true
     upgrade-checker: false
-    create-default-disk-labeled-nodes: True
+    create-default-disk-labeled-nodes: true
