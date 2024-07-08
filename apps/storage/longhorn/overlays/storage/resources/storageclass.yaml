@@ -57,6 +57,6 @@ parameters:
   staleReplicaTimeout: "2880" # 48 hours in minutes
   fromBackup: ""
   fsType: "ext4"
-  dataLocality: "strict-local"
-  diskSelector: "nvme-0,fast"
+  # dataLocality: "strict-local"
+  # diskSelector: "nvme-0,fast"
   nodeSelector:  "storage,fast"
