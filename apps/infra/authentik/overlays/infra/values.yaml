@@ -417,7 +417,7 @@ postgresql:
       max_connections = 500
     persistence:
       enabled: true
-      storageClass: host-path #local-path
+      storageClass: longhorn-nvme-0 #host-path #local-path
       accessModes:
       - ReadWriteOnce
       existingClaim: authentik-psql-pv-claim
