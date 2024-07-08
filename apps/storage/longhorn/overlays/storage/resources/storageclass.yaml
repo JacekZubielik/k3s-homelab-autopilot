@@ -48,12 +48,6 @@ metadata:
   annotations:
     storageclass.kubernetes.io/is-default-class: "false"
     app.kubernetes.io/instance: storage-longhorn
-    node.longhorn.io/default-disks-config:
-      '[{"path":"/home/longhorn","allowScheduling":true, "tags":["nvme-0", "fast"]},
-        {"path":"/mnt/volume-0/PV/longhorn","allowScheduling":true,"storageReserved":1024,"tags":["nvme-0","fast"]}]'
-    node.longhorn.io/default-node-tags: '["fast","storage"]'
-  labels:
-    node.longhorn.io/create-default-disk: "config"
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 reclaimPolicy: "Retain"
@@ -66,11 +60,3 @@ parameters:
   dataLocality: "strict-local"
   diskSelector: "nvme-0"
   nodeSelector: "dev-k3s-master-0"
-
-
-
-annotations:
-    node.longhorn.io/default-disks-config:
-        '[{"path":"/home/longhorn","allowScheduling":true, "tags":["hdd", "slow"]},
-          {"path":"/mnt/disk","allowScheduling":true,"storageReserved":1024,"tags":["hdd","slow"]}]'
-    node.longhorn.io/default-node-tags: '["slow","storage"]'
