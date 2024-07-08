@@ -144,7 +144,9 @@ persistence:
   accessModes:
   - ReadWriteOnce
   # existingClaim: esphome-config-pvc-volume
-
+  resources:
+    requests:
+      storage: 2Gi
 
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
