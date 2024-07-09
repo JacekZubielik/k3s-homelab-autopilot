@@ -23,7 +23,6 @@ statefulSetUpdate:
 ## Distributed MinIO ref: https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html
 rootUser: ""
 rootPassword: ""
-
 existingSecret: "minio-secret"
 
 ## Directory on the MinIO pof
@@ -115,164 +114,184 @@ resources:
 
 # Minio Buckets
 buckets:
-  - name: k3s-authentik
-    objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
-    policy: none
-    purge: false
-    versioning: false
-  - name: k3s-authentik-backup
-    objectlocking: false
-    policy: none
-    purge: false
-    versioning: false
-  - name: k3s-backend
-    objectlocking: false
-    policy: none
-    purge: false
-    versioning: false
-  - name: k3s-audio
-    objectlocking: false
-    policy: none
-    purge: false
-    versioning: false
-  - name: k3s-video
-    objectlocking: false
-    policy: none
-    purge: false
-    versioning: false
-  - name: k3s-syncthing-backup
-    objectlocking: false
-    policy: none
-    purge: false
-    versioning: false
-  - name: k3s-loki
-    objectlocking: false
-    policy: none
-    purge: false
-    versioning: false
-  - name: k3s-longhorn-backup
-    objectlocking: false
-    policy: none
-    purge: false
-    versioning: false
-  - name: k3s-tempo
-    objectlocking: false
-    policy: none
-    purge: false
-    versioning: false
-  - name: k3s-temp
-    objectlocking: false
-    policy: none
-    purge: false
-    versioning: false
+- name: k3s-audio
+  objectlocking: false
+  policy: lms
+  purge: false
+  versioning: false
+
+- name: k3s-authentik-backup
+  objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+  policy: authentik
+  purge: false
+  versioning: false
+
+- name: k3s-backend
+  objectlocking: false
+  policy: backend
+  purge: false
+  versioning: false
+
+- name: k3s-loki
+  objectlocking: false
+  policy: loki
+  purge: false
+  versioning: false
+
+- name: k3s-longhorn-backup
+  objectlocking: false
+  policy: longhorn
+  purge: false
+  versioning: false
+
+- name: k3s-syncthing
+  objectlocking: false
+  policy: syncthing
+  purge: false
+  versioning: false
+
+- name: k3s-tempo
+  objectlocking: false
+  policy: tempo
+  purge: false
+  versioning: false
+
+- name: k3s-video
+  objectlocking: false
+  policy: lms
+  purge: false
+  versioning: false
 
 users:
-  - accessKey: authentik
-    existingSecret: minio-secret
-    existingSecretKey: authentikPassword
-    policy: authentik
-  - accessKey: backend
-    existingSecret: minio-secret
-    existingSecretKey: backendPassword
-    policy: backend
-  - accessKey: loki
-    existingSecret: minio-secret
-    existingSecretKey: lokiPassword
-    policy: loki
-  - accessKey: longhorn
-    existingSecret: minio-secret
-    existingSecretKey: longhornPassword
-    policy: longhorn
-  - accessKey: lms
-    existingSecret: minio-secret
-    existingSecretKey: lmsPassword
-    policy: lms
-  - accessKey: syncthing
-    existingSecret: minio-secret
-    existingSecretKey: syncthingPassword
-    policy: syncthing
-  - accessKey: tempo
-    existingSecret: minio-secret
-    existingSecretKey: tempoPassword
-    policy: tempo
+- accessKey: authentik
+  existingSecret: minio-secret
+  existingSecretKey: authentikPassword
+  policy: authentik
+- accessKey: backend
+  existingSecret: minio-secret
+  existingSecretKey: backendPassword
+  policy: backend
+- accessKey: lms
+  existingSecret: minio-secret
+  existingSecretKey: lmsPassword
+  policy: lms
+- accessKey: loki
+  existingSecret: minio-secret
+  existingSecretKey: lokiPassword
+  policy: loki
+- accessKey: longhorn
+  existingSecret: minio-secret
+  existingSecretKey: longhornPassword
+  policy: longhorn
+- accessKey: syncthing
+  existingSecret: minio-secret
+  existingSecretKey: syncthingPassword
+  policy: syncthing
+- accessKey: tempo
+  existingSecret: minio-secret
+  existingSecretKey: tempoPassword
+  policy: tempo
 
 policies:
-  - name: loki
-    statements:
-      - resources:
-          - 'arn:aws:s3:::k3s-loki'
-          - 'arn:aws:s3:::k3s-loki/*'
-        actions:
-          - "s3:DeleteObject"
-          - "s3:GetObject"
-          - "s3:ListBucket"
-          - "s3:PutObject"
-  - name: tempo
-    statements:
-      - resources:
-          - 'arn:aws:s3:::k3s-tempo'
-          - 'arn:aws:s3:::k3s-tempo/*'
-        actions:
-          - "s3:DeleteObject"
-          - "s3:GetObject"
-          - "s3:ListBucket"
-          - "s3:PutObject"
-          - "s3:GetObjectTagging"
-          - "s3:PutObjectTagging"
-  - name: backend
-    statements:
-      - resources:
-          - 'arn:aws:s3:::k3s-temp'
-          - 'arn:aws:s3:::k3s-temp/*'
-          - 'arn:aws:s3:::k3s-tempo'
-          - 'arn:aws:s3:::k3s-tempo/*'
-          - 'arn:aws:s3:::k3s-loki'
-          - 'arn:aws:s3:::k3s-loki/*'
-          - 'arn:aws:s3:::k3s-authentik'
-          - 'arn:aws:s3:::k3s-authentik/*'
-          - 'arn:aws:s3:::k3s-authentik-backup'
-          - 'arn:aws:s3:::k3s-authentik-backup/*'
-          - 'arn:aws:s3:::k3s-backend'
-          - 'arn:aws:s3:::k3s-backend/*'
-          - 'arn:aws:s3:::k3s-audio'
-          - 'arn:aws:s3:::k3s-audio/*'
-          - 'arn:aws:s3:::k3s-video'
-          - 'arn:aws:s3:::k3s-video/*'
-          - 'arn:aws:s3:::k3s-syncthing-backup'
-          - 'arn:aws:s3:::k3s-syncthing-backup/*'
-          - 'arn:aws:s3:::k3s-longhorn-backup'
-          - 'arn:aws:s3:::k3s-longhorn-backup/*'
-        actions:
-          - "s3:AbortMultipartUpload"
-          - "s3:GetObject"
-          - "s3:DeleteObject"
-          - "s3:PutObject"
-          - "s3:ListMultipartUploadParts"
-          - "s3:GetBucketLocation"
-          - "s3:ListBucket"
-          - "s3:ListBucketMultipartUploads"
-      # - name: lms
-      #   statements:
-      #     - resources:
-      #         - 'arn:aws:s3:::k3s-audio'
-      #         - 'arn:aws:s3:::k3s-audio/*'
-      #       actions:
-      #         - "s3:GetObject"
-      #     - resources:
-      #         - 'arn:aws:s3:::k3s-audio'
-      #       actions:
-      #         - "s3:GetBucketLocation"
-      #         - "s3:ListBucket"
-      #         - "s3:ListBucketMultipartUploads"
+- name: authentik
+  statements:
+  - resources:
+    - 'arn:aws:s3:::k3s-authentik-backup'
+    - 'arn:aws:s3:::k3s-authentik-backup/*'
+    actions:
+    - "s3:DeleteObject"
+    - "s3:GetObject"
+    - "s3:ListBucket"
+    - "s3:PutObject"
 
-      # - resources:
-      #     - 'arn:aws:s3:::example*'
-      #   actions:
-      #     - "s3:CreateBucket"
-      #     - "s3:DeleteBucket"
-      #     - "s3:GetBucketLocation"
-      #     - "s3:ListBucket"
-      #     - "s3:ListBucketMultipartUploads"
+- name: backend
+  statements:
+  - resources:
+    - 'arn:aws:s3:::k3s-audio'
+    - 'arn:aws:s3:::k3s-audio/*'
+    - 'arn:aws:s3:::k3s-authentik-backup'
+    - 'arn:aws:s3:::k3s-authentik-backup/*'
+    - 'arn:aws:s3:::k3s-backend'
+    - 'arn:aws:s3:::k3s-backend/*'
+    - 'arn:aws:s3:::k3s-loki'
+    - 'arn:aws:s3:::k3s-loki/*'
+    - 'arn:aws:s3:::k3s-longhorn-backup'
+    - 'arn:aws:s3:::k3s-longhorn-backup/*'
+    - 'arn:aws:s3:::k3s-syncthing'
+    - 'arn:aws:s3:::k3s-syncthing/*'
+    - 'arn:aws:s3:::k3s-tempo'
+    - 'arn:aws:s3:::k3s-tempo/*'
+    - 'arn:aws:s3:::k3s-video'
+    - 'arn:aws:s3:::k3s-video/*'
+    actions:
+    - "s3:AbortMultipartUpload"
+    - "s3:GetObject"
+    - "s3:DeleteObject"
+    - "s3:PutObject"
+    - "s3:ListMultipartUploadParts"
+    - "s3:GetBucketLocation"
+    - "s3:ListBucket"
+    - "s3:ListBucketMultipartUploads"
+
+- name: lms
+  statements:
+  - resources:
+    - 'arn:aws:s3:::k3s-audio'
+    - 'arn:aws:s3:::k3s-audio/*'
+    actions:
+    - "s3:GetObject"
+  - resources:
+    - 'arn:aws:s3:::k3s-audio'
+    actions:
+    - "s3:GetBucketLocation"
+    - "s3:ListBucket"
+    - "s3:ListBucketMultipartUploads"
+
+- name: loki
+  statements:
+  - resources:
+    - 'arn:aws:s3:::k3s-loki'
+    - 'arn:aws:s3:::k3s-loki/*'
+    actions:
+    - "s3:DeleteObject"
+    - "s3:GetObject"
+    - "s3:ListBucket"
+    - "s3:PutObject"
+
+- name: longhorn
+  statements:
+  - resources:
+    - 'arn:aws:s3:::k3s-longhorn-backup'
+    - 'arn:aws:s3:::k3s-longhorn-backup/*'
+    actions:
+    - "s3:DeleteObject"
+    - "s3:GetObject"
+    - "s3:ListBucket"
+    - "s3:PutObject"
+
+- name: syncthing
+  statements:
+  - resources:
+    - 'arn:aws:s3:::k3s-syncthing'
+    - 'arn:aws:s3:::k3s-syncthing/*'
+    actions:
+    - "s3:DeleteObject"
+    - "s3:GetObject"
+    - "s3:ListBucket"
+    - "s3:PutObject"
+
+- name: tempo
+  statements:
+  - resources:
+    - 'arn:aws:s3:::k3s-tempo'
+    - 'arn:aws:s3:::k3s-tempo/*'
+    actions:
+    - "s3:DeleteObject"
+    - "s3:GetObject"
+    - "s3:ListBucket"
+    - "s3:PutObject"
+    - "s3:GetObjectTagging"
+    - "s3:PutObjectTagging"
 
 ## readonlyexamplepolicy policy grants access to buckets with name starting with example.
 ## In addition, grants objects read permissions on buckets starting with example.
