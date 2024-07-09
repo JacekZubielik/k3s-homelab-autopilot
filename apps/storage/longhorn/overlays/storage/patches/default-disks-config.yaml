@@ -10,7 +10,7 @@
       - path: /mnt/volume-0/PV/longhorn
         allowScheduling: 'true'
         name: 'nvme-0'
-        storageReserved: '10485760'
+        storageReserved: '10Gi'
         tags: '["nvme-0","fast"]'
   target: 
   name: ".*"
