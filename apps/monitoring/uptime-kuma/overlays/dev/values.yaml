@@ -144,16 +144,16 @@ nodeSelector:
 affinity: {}
 tolerations: []
 
-persistence:
-  enabled: true
-  pvc:
-    enabled: true
-    accessModes:
-      - ReadWriteOnce
-    resources:
-      requests:
-        storage: 2Gi
-    storageClassName: "longhorn-nvme-0"
+# persistence:
+#   enabled: true
+#   pvc:
+#     enabled: true
+#     accessModes:
+#       - ReadWriteOnce
+#     resources:
+#       requests:
+#         storage: 2Gi
+#     storageClassName: "longhorn-nvme-0"
 
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
