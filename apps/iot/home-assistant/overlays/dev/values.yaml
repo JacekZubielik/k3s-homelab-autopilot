@@ -130,8 +130,8 @@ tolerations: []
 
 persistence:
   enabled: true
-  # configstorage:
-  #   hostPath: /mnt/volume-0/apps/home-assistant
+  configstorage:
+    hostPath: /mnt/volume-0/apps/home-assistant
   pvc:
     enabled: false
     accessModes:
@@ -139,7 +139,7 @@ persistence:
     resources:
       requests:
         storage: 2Gi
-    storageClassName: "longhorn-nvme-0"
+    # storageClassName: "longhorn-nvme-0"
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 hostMounts: []
