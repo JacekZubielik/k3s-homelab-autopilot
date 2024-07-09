@@ -147,7 +147,7 @@ tolerations: []
 persistence:
   enabled: true
   pvc:
-    enabled: false
+    enabled: true
     accessModes:
       - ReadWriteOnce
     resources:
