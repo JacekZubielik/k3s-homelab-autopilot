@@ -116,7 +116,7 @@ resources:
 buckets:
 - name: k3s-audio
   objectlocking: false
-  policy: lms
+  policy: none
   purge: false
   versioning: false
 
