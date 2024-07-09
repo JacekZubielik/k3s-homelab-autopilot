@@ -146,6 +146,10 @@ tolerations: []
 
 persistence:
   enabled: true
+  pvc:
+    enabled: false
+    accessModes:
+      - ReadWriteOnce
     resources:
       requests:
         storage: 2Gi
