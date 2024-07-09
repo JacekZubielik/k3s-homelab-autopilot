@@ -945,7 +945,7 @@ grafana:
   persistence:
     type: pvc
     enabled: true
-    storageClassName: local-path
+    storageClassName: longhorn-nvme-0
     accessModes:
       - ReadWriteOnce
     size: 10Gi
