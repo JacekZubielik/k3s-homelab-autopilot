@@ -122,43 +122,43 @@ buckets:
 
 - name: k3s-authentik-backup
   objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
-  policy: authentik
+  policy: none
   purge: false
   versioning: false
 
 - name: k3s-backend
   objectlocking: false
-  policy: backend
+  policy: none
   purge: false
   versioning: false
 
 - name: k3s-loki
   objectlocking: false
-  policy: loki
+  policy: none
   purge: false
   versioning: false
 
 - name: k3s-longhorn-backup
   objectlocking: false
-  policy: longhorn
+  policy: none
   purge: false
   versioning: false
 
 - name: k3s-syncthing
   objectlocking: false
-  policy: syncthing
+  policy: none
   purge: false
   versioning: false
 
 - name: k3s-tempo
   objectlocking: false
-  policy: tempo
+  policy: none
   purge: false
   versioning: false
 
 - name: k3s-video
   objectlocking: false
-  policy: lms
+  policy: none
   purge: false
   versioning: false
 
