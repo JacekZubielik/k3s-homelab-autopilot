@@ -23,10 +23,10 @@ patches:
     kind: Service
     name: longhorn-frontend-traefik
 
-# - path: patches/hook.yaml
-#   target:
-#     name: pre-hook
-#     kind: Job
+- path: patches/hook.yaml
+  target:
+    name: pre-hook
+    kind: Job
 
 - path: patches/default-settings-cm.yaml
   target:
@@ -47,64 +47,6 @@ patches:
 #   target:
 #     kind: ConfigMap
 #     name: longhorn-nvme-0
-
-# patchesJson6902:
-#   - target: 
-#     name: ".*"
-#     patch: |-
-#     - op: add
-#       path: /metadata/labels
-#       value:
-#         "node.longhorn.io/create-default-disk": "config"
-
-#     - op: add
-#       path: /metadata/labels
-#       value:
-#         "node.longhorn.io/create-default-disk": "true"
-
-#     - op: add
-#       path: /metadata/labels
-#       value:
-#         "storage": "longhorn"
-
-#     # - op: add
-#     #   path: /metadata/annotations
-#     #   value:
-#     #     "node.longhorn.io/default-disks-config": "cilium"
-#     #     "meta.helm.sh/release-namespace": "kube-system"
-#     # target: 
-#     #   name: ".*"
-
-#     - op: add
-#       path: /metadata/annotations
-#       value:
-#         "node.longhorn.io/default-node-tags": '["fast","storage"]'
-#     target: 
-#       name: ".*"
-
-#     # - op: add
-#     #   path: /metadata/annotations
-#     #   value:
-#     #     "node.longhorn.io/default-disks-config": "cilium"
-#     #     "meta.helm.sh/release-namespace": "kube-system"
-#     # target: 
-#     #   name: ".*"
-
-#     - op: add
-#       path: /metadata/annotations
-#       value:
-#         node.longhorn.io:
-#           default-disks-config:
-#           - path: /var/lib/longhorn
-#             allowScheduling: 'true'
-#             name: 'Default DISK'
-#           - path: /mnt/volume-0/PV/longhorn
-#             allowScheduling: 'true'
-#             name: 'nvme-0'
-#             storageReserved: '10485760'
-#             tags: '["nvme-0","fast"]'
-#       target: 
-#       name: ".*"
 
 metadata:
   annotations:

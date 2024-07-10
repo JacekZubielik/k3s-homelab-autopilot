@@ -50,5 +50,3 @@ data:
     priorityClass: system-cluster-critical
     storage-minimal-available-percentage: 25
     upgrade-checker: false
-
-        # default-data-path: /mnt/volume-0/PV/longhorn # /var/lib/longhorn/

@@ -6,7 +6,7 @@
       default-disks-config:
       - path: /var/lib/longhorn
         allowScheduling: 'true'
-        name: 'Default DISK'
+        name: 'Default-DISK'
       - path: /mnt/volume-0/PV/longhorn
         allowScheduling: 'true'
         name: 'nvme-0'
