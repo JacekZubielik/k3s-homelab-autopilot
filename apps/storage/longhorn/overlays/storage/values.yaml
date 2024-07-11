@@ -122,7 +122,7 @@ service:
 
 persistence:
   # -- Setting that allows you to specify the default Longhorn StorageClass.
-  defaultClass: false
+  defaultClass: true
   # -- Filesystem type of the default Longhorn StorageClass.
   defaultFsType: ext4
   # -- mkfs parameters of the default Longhorn StorageClass.
@@ -130,7 +130,7 @@ persistence:
   # -- Replica count of the default Longhorn StorageClass.
   defaultClassReplicaCount: 1
   # -- Data locality of the default Longhorn StorageClass. (Options: "disabled", "best-effort")
-  defaultDataLocality: disabled
+  defaultDataLocality: best-effort
   # -- Reclaim policy that provides instructions for handling of a volume after its claim is released. (Options: "Retain", "Delete")
   reclaimPolicy: Retain
   # -- Setting that allows you to enable live migration of a Longhorn volume from one node to another.
@@ -191,7 +191,7 @@ defaultSettings:
   allowRecurringJobWhileVolumeDetached: ~
   # -- Setting that allows Longhorn to automatically create a default disk only on nodes with the label "node.longhorn.io/create-default-disk=true" (if no other disks exist).
   # When this setting is disabled, Longhorn creates a default disk on each node that is added to the cluster.
-  createDefaultDiskLabeledNodes: false #true
+  createDefaultDiskLabeledNodes: true
   # -- Default path for storing data on a host. The default value is "/var/lib/longhorn/".
   defaultDataPath: "/mnt/nvme-0/PV/longhorn"
   # -- Default data locality. A Longhorn volume has data locality if a local replica of the volume exists on the same node as the pod that is using the volume.
