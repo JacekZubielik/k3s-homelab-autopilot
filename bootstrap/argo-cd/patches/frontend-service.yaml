@@ -1,10 +1,9 @@
----
 apiVersion: v1
 kind: Service
 metadata:
-  # annotations:
-  #   metallb.universe.tf/loadBalancerIPs: 192.168.40.182
-  #   kube-vip.io/loadbalancerIPs: 192.168.40.182
+  annotations:
+    # metallb.universe.tf/loadBalancerIPs: 192.168.40.182
+    kube-vip.io/loadbalancerIPs: 192.168.40.182
   name: argocd-server
 spec:
   ports:
