@@ -4,7 +4,7 @@ metadata:
   name: kube-prometheus-stack-crds
   namespace: argocd
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
     argocd.argoproj.io/compare-options: IgnoreExtraneous
@@ -25,10 +25,10 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - ApplyOutOfSyncOnly=true
-      - CreateNamespace=true
-      - Replace=false
-      - ServerSideApply=true
+    - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
+    - Replace=false
+    - ServerSideApply=true
     retry:
       backoff:
         duration: 60s
