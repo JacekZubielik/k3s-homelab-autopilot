@@ -8,12 +8,12 @@ deploy-all:copy-kubeconfig deploy-longhorn-tags
 
 copy-kubeconfig: ## Copy 'kubeconfig'.
 	@echo "\nCopy kubeconfig to ~/.kube/ ...\n"
-	@scp vagrant@192.168.40.110:~/.kube/config ~/.kube/config
+	@scp vagrant@192.168.40.200:~/.kube/config ~/.kube/config
 	@kubectl get nodes --show-kind
 
 deploy-longhorn-tags1: ## Create a disk on a specific set of nodes.
 	@echo "\nCreate a disk on a specific set of nodes ...\n"
-	@kubectl annotate --overwrite node dev-k3s-master-0 node.longhorn.io/default-disks-config='[{"path":"/var/lib/longhorn","allowScheduling":true},{"name":"nvme-0","path":"/mnt/volume-0/PV/longhorn","allowScheduling":false,"storageReserved":10Gi,"tags":["nvme-0","fast"]}]'
+	@kubectl annotate --overwrite node dev-k3s-master-0 node.longhorn.io/default-disks-config='[{"name":"nvme-0","path":"/mnt/nvme-0/PV/longhorn","allowScheduling":false,"storageReserved":10Gi,"tags":["nvme-0","fast"]}]'
 	@kubectl annotate --overwrite node dev-k3s-master-0 node.longhorn.io/default-node-tags='["fast","storage"]'
 	@echo "\n"
 	@kubectl annotate --list nodes dev-k3s-master-0
@@ -27,7 +27,7 @@ deploy-longhorn-tags1: ## Create a disk on a specific set of nodes.
 
 deploy-longhorn-tags2: ## Create a disk on a specific set of nodes.
 	@echo "\nCreate a disk on a specific set of nodes ...\n"
-	@kubectl annotate --overwrite node dev-k3s-master-0 node.longhorn.io/default-disks-config='{"path":"/var/lib/longhorn","allowScheduling":true},{"name":"nvme-0","path":"/mnt/volume-0/PV/longhorn","allowScheduling":false,"storageReserved":10Gi,"tags":["nvme-0","fast"]}'
+	@kubectl annotate --overwrite node dev-k3s-master-0 node.longhorn.io/default-disks-config='{"name":"nvme-0","path":"/mnt/nvme-0/PV/longhorn","allowScheduling":false,"storageReserved":10Gi,"tags":["nvme-0","fast"]}'
 	@kubectl annotate --overwrite node dev-k3s-master-0 node.longhorn.io/default-node-tags='["fast","storage"]'
 	@echo "\n"
 	@kubectl annotate --list nodes dev-k3s-master-0
