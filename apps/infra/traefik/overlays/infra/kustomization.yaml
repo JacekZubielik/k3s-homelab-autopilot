@@ -1,19 +1,15 @@
----
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: traefik
-
 resources:
-- ../../base
-- resources/chains.yaml
-- resources/middlewares.yaml
-- resources/tlsoption.yaml
-# - resources/servicemonitor.yaml <-- move to prometheus
-# - resources/tlsstore.yaml
-
+  - ../../base
+  - resources/chains.yaml
+  - resources/middlewares.yaml
+  - resources/tlsoption.yaml
+  # - resources/servicemonitor.yaml <-- move to prometheus
+  # - resources/tlsstore.yaml
 generators:
-- ksops-generator.yaml
-
+  - ksops-generator.yaml
 # patches:
 # - patch: |-
 #     - op: add
@@ -24,7 +20,6 @@ generators:
 #     kind: ClusterRoleBinding
 #     name: traefik-role-binding
 #     version: v1
-
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
@@ -33,12 +28,11 @@ metadata:
   labels:
     app.kubernetes.io/name: traefik
   name: traefik
-
 helmCharts:
-- name: traefik
-  version: 26.1.0
-  repo: https://helm.traefik.io/traefik
-  includeCRDs: false
-  namespace: traefik
-  releaseName: traefik
-  valuesFile: values.yaml
+  - name: traefik
+    version: 26.1.0
+    repo: https://helm.traefik.io/traefik
+    includeCRDs: true
+    namespace: traefik
+    releaseName: traefik
+    valuesFile: values.yaml
