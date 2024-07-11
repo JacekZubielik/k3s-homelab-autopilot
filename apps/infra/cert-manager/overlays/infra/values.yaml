@@ -81,7 +81,7 @@ prometheus:
 ####################################
 webhook:
   replicaCount: 1
-  timeoutSeconds: 60
+  timeoutSeconds: 30
 
   nodeSelector:
     kubernetes.io/os: linux
@@ -99,7 +99,7 @@ webhook:
   serviceType: ClusterIP
 
   serviceMonitor:
-    enabled: true
+    enabled: false
     honorLabels: false
     interval: 60s
     path: /metrics
