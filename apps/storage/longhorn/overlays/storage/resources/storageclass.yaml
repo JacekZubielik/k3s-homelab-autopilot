@@ -11,7 +11,7 @@ allowVolumeExpansion: true
 reclaimPolicy: "Retain"
 volumeBindingMode: Immediate
 parameters:
-  numberOfReplicas: "1"
+  numberOfReplicas: "2"
   staleReplicaTimeout: "2880" # 48 hours in minutes
   fromBackup: ""
   fsType: "ext4"
@@ -21,8 +21,21 @@ parameters:
   dataLocality: "strict-local" # "disabled" / "strict-local"
   diskSelector: "hdd,slow"
   nodeSelector:  "storage,fast"
-  recurringJobs: '[{"name":"snap", "task":"snapshot", "cron":"*/1 * * * *", "retain":1},
-                  {"name":"backup", "task":"backup", "cron":"*/2 * * * *", "retain":1, "labels": {"interval":"2m"}}]'
+  recurringJobs: '[
+    {
+      "name":"snap",
+      "task":"snapshot",
+      "cron":"* */2 * * *",
+      "retain":1
+    },
+    {
+      "name":"backup",
+      "task":"backup",
+      "cron":"* */12, * * *",
+      "retain":20,
+      "labels": {"interval":"2m"}
+    }
+    ]'
 
 ---
 kind: StorageClass
@@ -47,5 +60,18 @@ parameters:
   dataLocality: "disabled"
   diskSelector: "data,fast"
   nodeSelector:  "storage,fast"
-  recurringJobs: '[{"name":"snap", "task":"snapshot", "cron":"*/1 * * * *", "retain":1},
-                  {"name":"backup", "task":"backup", "cron":"*/2 * * * *", "retain":1, "labels": {"interval":"2m"}}]'
+  recurringJobs: '[
+    {
+      "name":"snap",
+      "task":"snapshot",
+      "cron":"* */2 * * *",
+      "retain":1
+    },
+    {
+      "name":"backup",
+      "task":"backup",
+      "cron":"* */12, * * *",
+      "retain":20,
+      "labels": {"interval":"2m"}
+    }
+    ]'
