@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    "helm.sh/hook-delete-policy": hook-succeeded
+  name: esphome-pv
+  namespace: iot
+  labels:
+    type: local
+spec:
+  storageClassName: longhorn-data
+  capacity:
+    storage: 2Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  # hostPath:
+  #   path: "/mnt/volume-0/apps/esphome"
+  #   type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - dev-k3s-master-0

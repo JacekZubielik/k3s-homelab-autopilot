@@ -134,19 +134,19 @@ nodeSelector:
 affinity: {}
 tolerations: []
 
-# persistence:
-#   enabled: true
-  # existingClaim: 'esphome-config-pvc-volume'
-
 persistence:
   enabled: true
-  storageClass: longhorn-data
-  accessModes:
-  - ReadWriteOnce
-  # existingClaim: esphome-config-pvc-volume
-  resources:
-    requests:
-      storage: 4Gi
+  existingClaim: 'esphome-pvc'
+
+# persistence:
+#   enabled: true
+#   storageClass: longhorn-data
+#   accessModes:
+#   - ReadWriteOnce
+#   # existingClaim: esphome-config-pvc-volume
+#   resources:
+#     requests:
+#       storage: 4Gi
 
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
