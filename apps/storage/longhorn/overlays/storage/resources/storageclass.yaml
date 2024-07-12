@@ -18,7 +18,7 @@ parameters:
   mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
   unmapMarkSnapChainRemoved: "ignored"
   nfsOptions: "soft,timeo=150,retrans=3"
-  dataLocality: "strict-local"
+  dataLocality: "strict-local" # "disabled" / "strict-local"
   diskSelector: "hdd,slow"
   nodeSelector:  "storage,fast"
   recurringJobs: '[{"name":"snap", "task":"snapshot", "cron":"*/1 * * * *", "retain":1},
@@ -44,7 +44,7 @@ parameters:
   mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
   unmapMarkSnapChainRemoved: "ignored"
   nfsOptions: "soft,timeo=150,retrans=3"
-  dataLocality: "strict-local"
+  dataLocality: "disabled"
   diskSelector: "data,fast"
   nodeSelector:  "storage,fast"
   recurringJobs: '[{"name":"snap", "task":"snapshot", "cron":"*/1 * * * *", "retain":1},
