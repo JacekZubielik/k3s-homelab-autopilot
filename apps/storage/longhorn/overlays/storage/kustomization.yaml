@@ -13,10 +13,10 @@ patches:
     target:
       kind: CustomResourceDefinition
       labelSelector: app.kubernetes.io/instance=longhorn
-  # - path: patches/frontend-service.yaml
-  #   target:
-  #     kind: Service
-  #     name: longhorn-frontend-traefik
+  - path: patches/frontend-service.yaml
+    target:
+      kind: Service
+      name: longhorn-frontend-traefik
   - path: patches/hook.yaml
     target:
       name: pre-hook
