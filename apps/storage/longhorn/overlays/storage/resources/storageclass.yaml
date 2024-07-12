@@ -16,13 +16,9 @@ parameters:
   fromBackup: ""
   fsType: "ext4"
   mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
-  backingImage: "test"
-  backingImageDataSourceType: "download"
-  # backingImageDataSourceParameters: '{"url": "https://backing-image-example.s3-region.amazonaws.com/test-backing-image"}'
-  # backingImageChecksum: "SHA512 checksum of the backing image"
   unmapMarkSnapChainRemoved: "ignored"
   nfsOptions: "soft,timeo=150,retrans=3"
-  dataLocality: "strict-local" # "disabled" / "strict-local"
+  dataLocality: "strict-local"
   diskSelector: "hdd,slow"
   nodeSelector:  "storage,fast"
   recurringJobs: '[{"name":"snap", "task":"snapshot", "cron":"*/1 * * * *", "retain":1},
@@ -46,15 +42,9 @@ parameters:
   fromBackup: ""
   fsType: "ext4"
   mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
-  backingImage: "test"
-  backingImageDataSourceType: "download" 
-  backingImageDataSourceParameters: '{"url": "http://192.168.40.187:9000/test-backing-image"}'
-
-  # backingImageDataSourceParameters: '{"url": "https://backing-image-example.s3-region.amazonaws.com/test-backing-image"}'
-  backingImageChecksum: "SHA512 checksum of the backing image"
   unmapMarkSnapChainRemoved: "ignored"
   nfsOptions: "soft,timeo=150,retrans=3"
-  dataLocality: "strict-local" # "disabled" / "strict-local"
+  dataLocality: "strict-local"
   diskSelector: "data,fast"
   nodeSelector:  "storage,fast"
   recurringJobs: '[{"name":"snap", "task":"snapshot", "cron":"*/1 * * * *", "retain":1},
