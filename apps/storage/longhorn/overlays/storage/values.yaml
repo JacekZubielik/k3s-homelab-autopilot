@@ -182,7 +182,7 @@ csi:
 
 defaultSettings:
   # -- Endpoint used to access the backupstore. (Options: "NFS", "CIFS", "AWS", "GCP", "AZURE")
-  backupTarget: "s3://k3s-longhorn-backup@us-east-1/backupstore/"
+  backupTarget: "s3://k3s-longhorn-backup@us-east-1/"
   # -- Name of the Kubernetes secret associated with the backup target.
   backupTargetCredentialSecret: s3-backup
   # -- Setting that allows Longhorn to automatically attach a volume and create snapshots or backups when recurring jobs are run.
