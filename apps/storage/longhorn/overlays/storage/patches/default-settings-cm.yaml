@@ -41,7 +41,7 @@ data:
     # upgrade-checker:
     backup-target: s3://backupbucket@us-east-1/backupstore
     backupstorePollInterval: 500
-    create-default-disk-labeled-nodes: true
+    createdefault-disk-labeled-nodes: true
     # defaultDataPath: /mnt/nvme-0/PV/longhorn
     defaultDataPath: /mnt/data
     default-replica-count: 1
