@@ -21,10 +21,10 @@ patches:
     target:
       name: pre-hook
       kind: Job
-  - path: patches/default-settings-cm.yaml
-    target:
-      kind: ConfigMap
-      name: longhorn-default-setting
+  # - path: patches/default-settings-cm.yaml
+  #   target:
+  #     kind: ConfigMap
+  #     name: longhorn-default-setting
   # - path: patches/default-disks-config.yaml
   #   target:
   #     kind: CustomResourceDefinition
