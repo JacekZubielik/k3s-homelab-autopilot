@@ -13,5 +13,5 @@ spec:
     requests:
       storage: 10Gi
   storageClassName: longhorn-data
-  volumeMode: Filesystem
-  volumeName: authentik-psql-pv-claim
+  # volumeMode: Filesystem
+  # volumeName: authentik-psql-pv-claim
