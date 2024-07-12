@@ -265,6 +265,7 @@ policies:
     - "s3:GetObject"
     - "s3:ListBucket"
     - "s3:PutObject"
+    effect: "Allow"
 
 - name: syncthing
   statements:
