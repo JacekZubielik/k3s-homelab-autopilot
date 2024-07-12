@@ -46,7 +46,7 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: longhorn-nvme-0
   annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
+    storageclass.kubernetes.io/is-default-class: "false"
     app.kubernetes.io/instance: storage-longhorn
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
@@ -57,9 +57,36 @@ parameters:
   staleReplicaTimeout: "2880" # 48 hours in minutes
   fromBackup: ""
   fsType: "ext4"
+#  mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
+#  backingImage: "bi-test"
+#  backingImageDataSourceType: "download"
+#  backingImageDataSourceParameters: '{"url": "https://backing-image-example.s3-region.amazonaws.com/test-backing-image"}'
+#  backingImageChecksum: "SHA512 checksum of the backing image"
+#  unmapMarkSnapChainRemoved: "ignored"
+  nfsOptions: "soft,timeo=150,retrans=3"
   dataLocality: "strict-local" # "disabled" / "strict-local"
   diskSelector: "nvme-0,fast"
   nodeSelector:  "storage,fast"
-  recurringJobs: '[{"name":"snap", "task":"snapshot", "cron":"*/1 * * * *", "retain":1},
-                  {"name":"backup", "task":"backup", "cron":"*/2 * * * *", "retain":1,
-                  "labels": {"interval":"2m"}}]'
+  # recurringJobs: '[{"name":"snap", "task":"snapshot", "cron":"*/1 * * * *", "retain":1},
+  #                 {"name":"backup", "task":"backup", "cron":"*/2 * * * *", "retain":1, "labels": {"interval":"2m"}}]'
+
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: longhorn-data
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+    app.kubernetes.io/instance: storage-longhorn
+provisioner: driver.longhorn.io
+allowVolumeExpansion: true
+reclaimPolicy: "Retain"
+volumeBindingMode: Immediate
+parameters:
+  numberOfReplicas: "1"
+  staleReplicaTimeout: "2880" # 48 hours in minutes
+  fromBackup: ""
+  fsType: "ext4"
+  dataLocality: "strict-local"
+  diskSelector: "data"
+  nodeSelector: "storage,fast"
