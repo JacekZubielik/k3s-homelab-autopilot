@@ -6,7 +6,7 @@ namespace: authentik
 resources:
 - ../../base
 # - resources/pv.yaml
-# - resources/pvc.yaml
+- resources/pvc.yaml
 
 generators:
 - ksops-generator.yaml
