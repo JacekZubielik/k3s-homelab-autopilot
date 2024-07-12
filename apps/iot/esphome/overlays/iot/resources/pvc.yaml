@@ -14,4 +14,4 @@ spec:
       storage: 2Gi
   storageClassName: longhorn-data
   # volumeMode: Filesystem
-  # volumeName: esphome-pv
+  volumeName: esphome-pv
