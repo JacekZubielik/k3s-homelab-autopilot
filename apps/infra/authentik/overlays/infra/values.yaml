@@ -421,9 +421,9 @@ postgresql:
     enabled: true
     accessModes:
     - ReadWriteOnce
-    # resources:
-    #   requests:
-    #     storage: 8Gi
+    resources:
+      requests:
+        storage: 8Gi
     storageClassName: longhorn-data
     volumeMode: Filesystem
     volumeName: pvc-authentik-psql-0
@@ -442,9 +442,9 @@ redis:
     enabled: true
     accessModes:
     - ReadWriteOnce
-    # resources:
-    #   requests:
-    #     storage: 8Gi
+    resources:
+      requests:
+        storage: 8Gi
     storageClassName: longhorn-data
     volumeMode: Filesystem
     volumeName: pvc-authentik-redis-0
