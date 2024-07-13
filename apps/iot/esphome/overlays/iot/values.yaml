@@ -143,7 +143,7 @@ persistence:
   selector: {}
   dataSource: {}
   existingClaim: esphome-pv-claim
-  volumeName: esphome-pv-claim
+  # volumeName: esphome-pv-claim
 persistentVolumeClaimRetentionPolicy:
   enabled: true
   whenScaled: Retain
