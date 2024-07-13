@@ -138,9 +138,7 @@ persistence:
   enabled: true
   path: /config
   accessModes: ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
+  size: 2Gi
   storageClass: longhorn-hdd
   persistentVolumeClaim:
     claimName: longhorn-volv-pvc
