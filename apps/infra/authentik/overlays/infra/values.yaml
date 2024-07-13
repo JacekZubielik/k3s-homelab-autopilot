@@ -398,15 +398,10 @@ serviceAccount:
 prometheus:
   rules:
     enabled: true
-    # -- PrometheusRule namespace
     namespace: "monitoring"
-    # -- PrometheusRule selector
     selector:
       prometheus: kube-prometheus-stack-prometheus
-
-    # -- PrometheusRule labels
     labels: {}
-    # -- PrometheusRule annotations
     annotations: {}
 
 postgresql:
@@ -423,51 +418,10 @@ postgresql:
     storageClass: "longhorn-data"
     accessModes:
       - ReadWriteOnce
-    size: 10Gi
-    existingClaim: "data-authentik-postgresql-0"
-    # persistentVolumeClaim: 
-      # claimName: "data-authentik-postgresql-0"
   persistentVolumeClaimRetentionPolicy:
     enabled: true
     whenScaled: Retain
     whenDeleted: Retain
-    mountPath: /bitnami/postgresql
-
-
-
-    # extraEnvVars:
-    # - name: POSTGRES_DATABASE
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: authentik-private
-    #       key: POSTGRES_DB
-    # - name: POSTGRES_USERNAME
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: authentik-private
-    #       key: POSTGRES_USER
-    # - name: POSTGRES_PASSWORD
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: authentik-private
-    #       key: POSTGRES_PASSWORD
-  # readReplicas:
-  #   extraEnvVars:
-  #   - name: POSTGRES_DATABASE
-  #     valueFrom:
-  #       secretKeyRef:
-  #         name: authentik-private
-  #         key: POSTGRES_DB
-  #   - name: POSTGRES_USERNAME
-  #     valueFrom:
-  #       secretKeyRef:
-  #         name: authentik-private
-  #         key: POSTGRES_USER
-  #   - name: POSTGRES_PASSWORD
-  #     valueFrom:
-  #       secretKeyRef:
-  #         name: authentik-private
-  #         key: POSTGRES_PASSWORD
 
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
@@ -475,16 +429,11 @@ redis:
   architecture: standalone
   auth:
     enabled: false
-  # master:
   persistence:
     enabled: true
-    path: /data
     storageClass: "longhorn-data"
-    volumeName: "pvc-authentik-redis"
     accessModes:
       - ReadWriteOnce
-    size: 4Gi
-    existingClaim: "pvc-authentik-redis"
   persistentVolumeClaimRetentionPolicy:
     enabled: true
     whenScaled: Retain
