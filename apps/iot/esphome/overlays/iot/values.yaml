@@ -139,7 +139,9 @@ persistence:
   path: /data
   storageClass: longhorn-data
   accessModes: ReadWriteOnce
-  size: 2Gi
+  resources:
+    requests:
+      storage: 2Gi
   selector: {}
   dataSource: {}
   existingClaim: esphome-pv-claim
