@@ -135,7 +135,7 @@ affinity: {}
 tolerations: []
 
 persistence:
-  enabled: true
+  enabled: false
   path: /data
   storageClass: "longhorn-data"
   accessModes:
