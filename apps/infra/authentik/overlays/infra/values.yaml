@@ -427,9 +427,9 @@ postgresql:
       accessModes:
         - ReadWriteOnce
       size: 4Gi
-      existingClaim: "pvc-65b06e97-c32b-45f3-9ccd-d4e55c36a590"
+      existingClaim: "data-authentik-postgresql-0"
       persistentVolumeClaim: 
-        claimName: "pvc-65b06e97-c32b-45f3-9ccd-d4e55c36a590"
+        claimName: "data-authentik-postgresql-0"
     persistentVolumeClaimRetentionPolicy:
       enabled: true
       whenScaled: Retain
