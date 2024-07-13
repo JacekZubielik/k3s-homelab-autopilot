@@ -411,31 +411,6 @@ prometheus:
 
 postgresql:
   enabled: true
-  primary:
-    extendedConfiguration: |
-      max_connections = 500
-  # #   persistence:
-  # #     enabled: true
-  # #     storageClass: longhorn-data
-  # #     accessModes:
-  # #     - ReadWriteOnce
-  # # existingClaim: authentik-psql-pv-claim
-
-  persistence:
-    enabled: true
-    storageClass: "longhorn-data"
-    accessModes:
-      - ReadWriteOnce
-    size: 4Gi
-    existingClaim: "data-authentik-postgresql-0"
-    persistentVolumeClaim: 
-      # claimName: "data-authentik-postgresql-0"
-  persistentVolumeClaimRetentionPolicy:
-    enabled: true
-    whenScaled: Retain
-    whenDeleted: Retain
-    mountPath: /bitnami/postgresql
-
   auth:
     username: "authentik"
     database: "authentik"
@@ -443,6 +418,25 @@ postgresql:
     existingSecret: authentik-private
     secretKeys:
       userPasswordKey: password
+  primary:
+    extendedConfiguration: |
+      max_connections = 500
+    persistence:
+      enabled: true
+      storageClass: "longhorn-data"
+      accessModes:
+        - ReadWriteOnce
+      size: 4Gi
+      existingClaim: "data-authentik-postgresql-0"
+      persistentVolumeClaim: 
+        # claimName: "data-authentik-postgresql-0"
+    persistentVolumeClaimRetentionPolicy:
+      enabled: true
+      whenScaled: Retain
+      whenDeleted: Retain
+      mountPath: /bitnami/postgresql
+
+
 
     # extraEnvVars:
     # - name: POSTGRES_DATABASE
