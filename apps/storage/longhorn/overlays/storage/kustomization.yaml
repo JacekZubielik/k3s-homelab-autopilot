@@ -7,7 +7,7 @@ resources:
   - resources/servicemonitor.yaml
   - resources/storageclass.yaml
   # - patches/default-settings.yaml
-  - resources/volume-snapshotclass.yaml
+  # - resources/volume-snapshotclass.yaml
 generators:
   - ksops-generator.yaml
 patches:
