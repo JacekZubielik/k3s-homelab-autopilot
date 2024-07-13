@@ -832,15 +832,32 @@ grafana:
     passwordKey: password
   rbac:
     pspEnabled: false
+
   persistence:
-    type: pvc
-    enabled: false
+    enabled: true
+    accessModes:
+    - ReadWriteOnce
+    # resources:
+    #   requests:
+    #     storage: 8Gi
     storageClassName: longhorn-data
-    accessModes: ReadWriteOnce
-    size: 10Gi
-    # annotations: {}
-    finalizers:
-      - kubernetes.io/pvc-protection
+    volumeMode: Filesystem
+    volumeName: pvc-grafana-db-0
+    # persistentVolumeClaimRetentionPolicy:
+    #   enabled: true
+    #   whenScaled: Retain
+    #   whenDeleted: Retain
+
+  # persistence:
+  #   enabled: true
+  #   type: sts
+  #   storageClassName: "storageClassName"
+  #   accessModes:
+  #     - ReadWriteOnce
+  #   size: 20Gi
+  #   finalizers:
+  #     - kubernetes.io/pvc-protection
+
     # selectorLabels: {}
     ## Sub-directory of the PV to mount. Can be templated.
     # subPath: ""
@@ -903,15 +920,7 @@ grafana:
     #   - grafana.example.com
   # # To make Grafana persistent (Using Statefulset)
   # #
-  # persistence:
-  #   enabled: true
-  #   type: sts
-  #   storageClassName: "storageClassName"
-  #   accessModes:
-  #     - ReadWriteOnce
-  #   size: 20Gi
-  #   finalizers:
-  #     - kubernetes.io/pvc-protection
+
   serviceAccount:
     create: true
     autoMount: true
