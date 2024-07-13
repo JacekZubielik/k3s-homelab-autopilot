@@ -4,11 +4,11 @@ kind: PersistentVolume
 metadata:
   annotations:
     "helm.sh/hook-delete-policy": hook-succeeded
-  name: esphome-pvc-claim
+  name: esphome-pv-claim
   namespace: iot
   labels:
-    volume: esphome-pvc-claim
-    name: esphome-pvc-claim
+    volume: esphome-pv-claim
+    name: esphome-pv-claim
     type: longhorn
 spec:
   storageClassName: longhorn-data
