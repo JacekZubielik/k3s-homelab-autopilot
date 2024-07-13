@@ -662,6 +662,10 @@ alertmanager:
           resources:
             requests:
               storage: 3Gi
+          volumeMode: Filesystem
+          volumeName: pvc-alertmanager-db-0
+
+
     ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
     ##
     externalUrl:
