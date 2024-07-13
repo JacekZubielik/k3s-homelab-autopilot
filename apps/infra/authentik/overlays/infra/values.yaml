@@ -421,20 +421,20 @@ postgresql:
   primary:
     extendedConfiguration: |
       max_connections = 500
-  persistence:
-    enabled: true
-    storageClass: "longhorn-data"
-    accessModes:
-      - ReadWriteOnce
-    size: 10Gi
-    existingClaim: "data-authentik-postgresql-0"
-    persistentVolumeClaim: 
-      # claimName: "data-authentik-postgresql-0"
-  persistentVolumeClaimRetentionPolicy:
-    enabled: true
-    whenScaled: Retain
-    whenDeleted: Retain
-    mountPath: /bitnami/postgresql
+    persistence:
+      enabled: true
+      storageClass: "longhorn-data"
+      accessModes:
+        - ReadWriteOnce
+      size: 10Gi
+      existingClaim: "data-authentik-postgresql-0"
+      persistentVolumeClaim: 
+        # claimName: "data-authentik-postgresql-0"
+    persistentVolumeClaimRetentionPolicy:
+      enabled: true
+      whenScaled: Retain
+      whenDeleted: Retain
+      mountPath: /bitnami/postgresql
 
 
 
@@ -492,17 +492,3 @@ redis:
     enabled: true
     whenScaled: Retain
     whenDeleted: Retain
-  replica:
-    persistence:
-      enabled: true
-      path: /data
-      storageClass: "longhorn-data"
-      volumeName: "pvc-authentik-redis"
-      accessModes:
-        - ReadWriteOnce
-      size: 4Gi
-      existingClaim: "pvc-authentik-redis"
-    persistentVolumeClaimRetentionPolicy:
-      enabled: true
-      whenScaled: Retain
-      whenDeleted: Retain
