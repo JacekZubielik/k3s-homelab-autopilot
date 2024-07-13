@@ -21,9 +21,7 @@ parameters:
   dataLocality: "disabled" # "disabled" / "strict-local"
   diskSelector: "hdd,slow"
   nodeSelector:  "storage,fast"
-  recurringJobs:
-  - 12-hour-snapshots
-  - 48-hour-backups
+  recurringJobs: "12-hour-snapshots,48-hour-backups"
 
 
   # recurringJobs: '[
@@ -65,6 +63,4 @@ parameters:
   dataLocality: "disabled"
   diskSelector: "data,fast"
   nodeSelector:  "storage,fast"
-  recurringJobs:
-  - 12-hour-snapshots
-  - 48-hour-backups
+  recurringJobs: "12-hour-snapshots,48-hour-backups"
