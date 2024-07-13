@@ -136,14 +136,12 @@ tolerations: []
 
 persistence:
   enabled: true
-  path: /data
-  storageClass: longhorn-hdd
+  path: /config
   accessModes: ReadWriteOnce
   resources:
     requests:
       storage: 2Gi
-
-  existingClaim: longhorn-volv-pvc
+  storageClass: longhorn-hdd
   persistentVolumeClaim:
     claimName: longhorn-volv-pvc
 
