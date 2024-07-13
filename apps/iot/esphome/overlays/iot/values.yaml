@@ -135,14 +135,15 @@ affinity: {}
 tolerations: []
 
 persistence:
-  enabled: false
+  enabled: true
   path: /data
-  storageClass: "longhorn-data"
-  accessModes:
-    - ReadWriteOnce
+  storageClass: longhorn-data
+  accessModes: ReadWriteOnce
+  size: 2Gi
   selector: {}
   dataSource: {}
-  existingClaim: "esphome-pv-claim"
+  existingClaim: esphome-pv-claim
+  volumeName: esphome-pv-claim
 persistentVolumeClaimRetentionPolicy:
   enabled: true
   whenScaled: Retain
