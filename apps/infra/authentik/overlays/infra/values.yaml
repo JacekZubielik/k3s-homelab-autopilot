@@ -411,9 +411,9 @@ prometheus:
 
 postgresql:
   enabled: true
-  # primary:
-  # #   extendedConfiguration: |
-  # #     max_connections = 500
+  primary:
+  #   extendedConfiguration: |
+  #     max_connections = 500
   # #   persistence:
   # #     enabled: true
   # #     storageClass: longhorn-data
@@ -421,17 +421,19 @@ postgresql:
   # #     - ReadWriteOnce
   # # existingClaim: authentik-psql-pv-claim
 
-  persistence:
-    enabled: true
-    storageClass: "longhorn-data"
-    accessModes:
-      - ReadWriteOnce
-    size: 4Gi
-    existingClaim: "authentik-psql-pv-claim"
-  persistentVolumeClaimRetentionPolicy:
-    enabled: true
-    whenScaled: Retain
-    whenDeleted: Retain
+    persistence:
+      enabled: true
+      storageClass: "longhorn-data"
+      accessModes:
+        - ReadWriteOnce
+      size: 4Gi
+      # existingClaim: "authentik-psql-pv-claim"
+      persistentVolumeClaim: 
+        claimName: "authentik-psql-pv-claim"
+    persistentVolumeClaimRetentionPolicy:
+      enabled: true
+      whenScaled: Retain
+      whenDeleted: Retain
 
   auth:
     username: "authentik"
