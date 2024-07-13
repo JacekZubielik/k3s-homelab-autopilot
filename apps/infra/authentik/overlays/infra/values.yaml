@@ -413,9 +413,9 @@ postgresql:
     existingSecret: authentik-private
     secretKeys:
       userPasswordKey: password
-  primary:
-    extendedConfiguration: |
-      max_connections = 500
+  # primary:
+  #   extendedConfiguration: |
+  #     max_connections = 500
 
   persistence:
     enabled: true
