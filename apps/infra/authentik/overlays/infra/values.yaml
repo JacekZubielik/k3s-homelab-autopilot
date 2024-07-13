@@ -420,7 +420,12 @@ postgresql:
       storageClass: longhorn-data
       accessModes:
       - ReadWriteOnce
-      existingClaim: authentik-psql-pv-claim
+  existingClaim: authentik-psql-pv-claim
+  persistentVolumeClaimRetentionPolicy:
+    enabled: true
+    whenScaled: Retain
+    whenDeleted: Retain
+
   auth:
     username: "authentik"
     database: "authentik"
@@ -469,36 +474,16 @@ redis:
   architecture: standalone
   auth:
     enabled: false
-# -- additional resources to deploy. Those objects are templated.
-# additionalObjects: []
-  # master:
-  #   persistence:
-  #     enabled: true
-  #     path: /data
-  #     storageClass: longhorn-data
-  #     accessModes:
-  #     - ReadWriteOnce
-  #     size: 4Gi
-  #     existingClaim: "authentik-redis-pv-claim"
-
-
   persistence:
     enabled: true
     path: /data
     storageClass: "longhorn-data"
     accessModes:
       - ReadWriteOnce
-    size: 8Gi
+    # size: 8Gi
     selector: {}
-    ## @param master.persistence.dataSource Custom PVC data source
     dataSource: {}
-    ## @param master.persistence.existingClaim Use a existing PVC which must be created manually before bound
     existingClaim: "authentik-redis-pv-claim"
-  ## persistentVolumeClaimRetentionPolicy
-  ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#persistentvolumeclaim-retention
-  ## @param master.persistentVolumeClaimRetentionPolicy.enabled Controls if and how PVCs are deleted during the lifecycle of a StatefulSet
-  ## @param master.persistentVolumeClaimRetentionPolicy.whenScaled Volume retention behavior when the replica count of the StatefulSet is reduced
-  ## @param master.persistentVolumeClaimRetentionPolicy.whenDeleted Volume retention behavior that applies when the StatefulSet is deleted
   persistentVolumeClaimRetentionPolicy:
     enabled: true
     whenScaled: Retain
