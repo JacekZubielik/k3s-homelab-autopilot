@@ -142,9 +142,12 @@ persistence:
   resources:
     requests:
       storage: 2Gi
-  selector: {}
-  dataSource: {}
-  existingClaim: esphome-pv-claim
+
+  # existingClaim: esphome-pv-claim
+  persistentVolumeClaim:
+    claimName: longhorn-volv-pvc
+
+
   # volumeName: esphome-pv-claim
 persistentVolumeClaimRetentionPolicy:
   enabled: true
