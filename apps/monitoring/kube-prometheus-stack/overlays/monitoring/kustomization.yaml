@@ -51,3 +51,14 @@ helmCharts:
 # # - name: prometheus-server-conf
 # #   files:
 # #   - resources/scrape_configs.yaml
+
+spec:
+  ignoreDifferences:
+  - kind: PersistentVolume
+    jsonPointers:
+    - /spec/claimRef/resourceVersion
+    - /spec/claimRef/uid
+    - /status/lastPhaseTransitionTime
+  syncPolicy:
+    syncOptions:
+    - RespectIgnoreDifferences=true

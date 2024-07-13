@@ -27,3 +27,14 @@ helmCharts:
   namespace: authentik
   releaseName: authentik
   valuesFile: values.yaml
+
+spec:
+  ignoreDifferences:
+  - kind: PersistentVolume
+    jsonPointers:
+    - /spec/claimRef/resourceVersion
+    - /spec/claimRef/uid
+    - /status/lastPhaseTransitionTime
+  syncPolicy:
+    syncOptions:
+    - RespectIgnoreDifferences=true
