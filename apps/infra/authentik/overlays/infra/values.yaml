@@ -478,16 +478,31 @@ redis:
   architecture: standalone
   auth:
     enabled: false
-  persistence:
-    enabled: false
-    path: /data
-    storageClass: "longhorn-data"
-    volumeName: "pvc-authentik-redis"
-    accessModes:
-      - ReadWriteOnce
-    size: 4Gi
-    existingClaim: "pvc-authentik-redis"
-  persistentVolumeClaimRetentionPolicy:
-    enabled: true
-    whenScaled: Retain
-    whenDeleted: Retain
+  master:
+    persistence:
+      enabled: false
+      path: /data
+      storageClass: "longhorn-data"
+      volumeName: "pvc-authentik-redis"
+      accessModes:
+        - ReadWriteOnce
+      size: 4Gi
+      existingClaim: "pvc-authentik-redis"
+    persistentVolumeClaimRetentionPolicy:
+      enabled: true
+      whenScaled: Retain
+      whenDeleted: Retain
+  replica:
+    persistence:
+      enabled: false
+      path: /data
+      storageClass: "longhorn-data"
+      volumeName: "pvc-authentik-redis"
+      accessModes:
+        - ReadWriteOnce
+      size: 4Gi
+      existingClaim: "pvc-authentik-redis"
+    persistentVolumeClaimRetentionPolicy:
+      enabled: true
+      whenScaled: Retain
+      whenDeleted: Retain
