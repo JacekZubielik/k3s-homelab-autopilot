@@ -410,7 +410,7 @@ prometheus:
     annotations: {}
 
 postgresql:
-  enabled: true
+  enabled: false
   auth:
     username: "authentik"
     database: "authentik"
@@ -426,7 +426,7 @@ postgresql:
     storageClass: "longhorn-data"
     accessModes:
       - ReadWriteOnce
-    size: 4Gi
+    size: 10Gi
     existingClaim: "data-authentik-postgresql-0"
     persistentVolumeClaim: 
       # claimName: "data-authentik-postgresql-0"
@@ -479,7 +479,7 @@ redis:
   auth:
     enabled: false
   persistence:
-    enabled: true
+    enabled: false
     path: /data
     storageClass: "longhorn-data"
     volumeName: "pvc-authentik-redis"
