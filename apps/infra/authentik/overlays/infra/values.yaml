@@ -484,14 +484,14 @@ redis:
   auth:
     enabled: false
   persistence:
-    enabled: false
+    enabled: true
     path: /data
     storageClass: "longhorn-data"
-    volumeName: pvc-authentik-redis
+    volumeName: "pvc-authentik-redis"
     accessModes:
       - ReadWriteOnce
     size: 4Gi
-    existingClaim: "authentik-redis-pv-claim"
+    existingClaim: "pvc-authentik-redis"
   persistentVolumeClaimRetentionPolicy:
     enabled: true
     whenScaled: Retain
