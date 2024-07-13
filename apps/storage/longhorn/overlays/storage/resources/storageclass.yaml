@@ -21,21 +21,26 @@ parameters:
   dataLocality: "disabled" # "disabled" / "strict-local"
   diskSelector: "hdd,slow"
   nodeSelector:  "storage,fast"
-  recurringJobs: '[
-    {
-      "name":"snap",
-      "task":"snapshot",
-      "cron":"* */2 * * *",
-      "retain":1
-    },
-    {
-      "name":"backup",
-      "task":"backup",
-      "cron":"* */12, * * *",
-      "retain":20,
-      "labels": {"interval":"2m"}
-    }
-    ]'
+  recurringJobs:
+  - 12-hour-snapshots
+  - 48-hour-backups
+
+
+  # recurringJobs: '[
+  #   {
+  #     "name":"snap",
+  #     "task":"snapshot",
+  #     "cron":"* */2 * * *",
+  #     "retain":1
+  #   },
+  #   {
+  #     "name":"backup",
+  #     "task":"backup",
+  #     "cron":"* */12, * * *",
+  #     "retain":20,
+  #     "labels": {"interval":"2m"}
+  #   }
+  #   ]'
 
 ---
 kind: StorageClass
@@ -60,18 +65,6 @@ parameters:
   dataLocality: "disabled"
   diskSelector: "data,fast"
   nodeSelector:  "storage,fast"
-  recurringJobs: '[
-    {
-      "name":"snap",
-      "task":"snapshot",
-      "cron":"* */2 * * *",
-      "retain":1
-    },
-    {
-      "name":"backup",
-      "task":"backup",
-      "cron":"* */12, * * *",
-      "retain":20,
-      "labels": {"interval":"2m"}
-    }
-    ]'
+  recurringJobs:
+  - 12-hour-snapshots
+  - 48-hour-backups
