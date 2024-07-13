@@ -2,10 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: longhorn-system
 resources:
+  - resources/recurring_backup_job.yaml
+  - resources/recurring_snapshot_job.yaml
   - resources/servicemonitor.yaml
   - resources/storageclass.yaml
-  # - resources/volume-snapshotclass.yaml
   # - patches/default-settings.yaml
+  - resources/volume-snapshotclass.yaml
 generators:
   - ksops-generator.yaml
 patches:
