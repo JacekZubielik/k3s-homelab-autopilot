@@ -188,7 +188,7 @@ server:
   livenessProbe:
     failureThreshold: 3
     initialDelaySeconds: 20
-    periodSeconds: 10
+    periodSeconds: 20
     successThreshold: 1
     timeoutSeconds: 5
     httpGet:
@@ -198,7 +198,7 @@ server:
   readinessProbe:
     failureThreshold: 3
     initialDelaySeconds: 20
-    periodSeconds: 10
+    periodSeconds: 20
     successThreshold: 1
     timeoutSeconds: 5
     httpGet:
@@ -206,9 +206,9 @@ server:
       port: http
 
   startupProbe:
-    failureThreshold: 60
+    failureThreshold: 3
     initialDelaySeconds: 20
-    periodSeconds: 10
+    periodSeconds: 20
     successThreshold: 1
     timeoutSeconds: 5
     httpGet:
