@@ -429,7 +429,7 @@ postgresql:
       size: 4Gi
       # existingClaim: "authentik-psql-pv-claim"
       persistentVolumeClaim: 
-        claimName: "authentik-psql-pv-claim"
+        claimName: "data-authentik-postgresql-0"
     persistentVolumeClaimRetentionPolicy:
       enabled: true
       whenScaled: Retain
