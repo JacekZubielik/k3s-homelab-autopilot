@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  # annotations:
-  #   "helm.sh/hook-delete-policy": hook-succeeded
-  name: esphome-pv
+  annotations:
+    "helm.sh/hook-delete-policy": hook-succeeded
+  name: esphome-pv-claim
   namespace: iot
 spec:
   storageClassName: longhorn-data
