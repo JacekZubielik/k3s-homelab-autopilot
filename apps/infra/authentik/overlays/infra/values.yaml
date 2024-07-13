@@ -412,8 +412,8 @@ prometheus:
 postgresql:
   enabled: true
   primary:
-  #   extendedConfiguration: |
-  #     max_connections = 500
+    extendedConfiguration: |
+      max_connections = 500
   # #   persistence:
   # #     enabled: true
   # #     storageClass: longhorn-data
@@ -429,11 +429,12 @@ postgresql:
       size: 4Gi
       existingClaim: "data-authentik-postgresql-0"
       persistentVolumeClaim: 
-        claimName: "data-authentik-postgresql-0"
+        # claimName: "data-authentik-postgresql-0"
     persistentVolumeClaimRetentionPolicy:
       enabled: true
       whenScaled: Retain
       whenDeleted: Retain
+      mountPath: /bitnami/postgresql
 
   auth:
     username: "authentik"
