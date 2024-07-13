@@ -136,18 +136,17 @@ tolerations: []
 
 persistence:
   enabled: true
-  existingClaim: 'esphome-pvc'
-
-# persistence:
-#   enabled: true
-#   storageClass: longhorn-data
-#   accessModes:
-#   - ReadWriteOnce
-#   # existingClaim: esphome-config-pvc-volume
-#   resources:
-#     requests:
-#       storage: 4Gi
-
+  path: /data
+  storageClass: "longhorn-data"
+  accessModes:
+    - ReadWriteOnce
+  selector: {}
+  dataSource: {}
+  existingClaim: "esphome-pv-claim"
+persistentVolumeClaimRetentionPolicy:
+  enabled: true
+  whenScaled: Retain
+  whenDeleted: Retain
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 # hostMounts: []
