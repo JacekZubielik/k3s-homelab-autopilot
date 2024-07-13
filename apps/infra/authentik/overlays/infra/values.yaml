@@ -411,23 +411,22 @@ prometheus:
 
 postgresql:
   enabled: true
-  primary:
-  #   extendedConfiguration: |
-  #     max_connections = 500
-  #   persistence:
-  #     enabled: true
-  #     storageClass: longhorn-data
-  #     accessModes:
-  #     - ReadWriteOnce
-  # existingClaim: authentik-psql-pv-claim
+  # primary:
+  # #   extendedConfiguration: |
+  # #     max_connections = 500
+  # #   persistence:
+  # #     enabled: true
+  # #     storageClass: longhorn-data
+  # #     accessModes:
+  # #     - ReadWriteOnce
+  # # existingClaim: authentik-psql-pv-claim
 
   persistence:
     enabled: true
     storageClass: "longhorn-data"
     accessModes:
       - ReadWriteOnce
-    selector: {}
-    dataSource: {}
+    size: 4Gi
     existingClaim: "authentik-psql-pv-claim"
   persistentVolumeClaimRetentionPolicy:
     enabled: true
@@ -483,13 +482,13 @@ redis:
   auth:
     enabled: false
   persistence:
-    enabled: true
+    enabled: false
     path: /data
     storageClass: "longhorn-data"
+    volumeName: pvc-authentik-redis
     accessModes:
       - ReadWriteOnce
-    selector: {}
-    dataSource: {}
+    size: 4Gi
     existingClaim: "authentik-redis-pv-claim"
   persistentVolumeClaimRetentionPolicy:
     enabled: true
