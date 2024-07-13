@@ -62,11 +62,11 @@ spec:
           destination: {}
           project: ""
           source:
-            # directory:
-            #   exclude: '{{ exclude }}'
-            #   include: '{{ include }}'
-            #   jsonnet: {}
-            #   recurse: true
+            directory:
+              exclude: '{{ exclude }}'
+              include: '{{ include }}'
+              jsonnet: {}
+              recurse: true
             repoURL: ""
   syncPolicy: {}
   template:
@@ -113,22 +113,22 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-        - ApplyOutOfSyncOnly=true
-        - CreateNamespace=true
-        - Delete=true
-        - FailOnSharedResource=false
-        - preserveResourcesOnDeletion=false
-        - PruneLast=true
-        - PrunePropagationPolicy=foreground
-        - Replace=false
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
-        - Validate=false
+          - ApplyOutOfSyncOnly=true
+          - CreateNamespace=true
+          - Delete=true
+          - FailOnSharedResource=false
+          - preserveResourcesOnDeletion=false
+          - PruneLast=true
+          - PrunePropagationPolicy=foreground
+          - Replace=false
+          - RespectIgnoreDifferences=true
+          - ServerSideApply=true
+          - SkipDryRunOnMissingResource=true
+          - Validate=false
         retry:
           backoff:
-            duration: 10s
+            duration: 360s
             factor: 2
-            maxDuration: 8m0s
+            maxDuration: 12m0s
           limit: 2
 status: {}
