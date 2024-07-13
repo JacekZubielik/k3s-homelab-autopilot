@@ -14,6 +14,7 @@ parameters:
   numberOfReplicas: "2"
   staleReplicaTimeout: "2880" # 48 hours in minutes
   fromBackup: ""
+  migratable: "true"
   fsType: "ext4"
   mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
   unmapMarkSnapChainRemoved: "ignored"
@@ -22,23 +23,6 @@ parameters:
   diskSelector: "hdd,slow"
   nodeSelector:  "storage,fast"
   recurringJobs: "12-hour-snapshots,48-hour-backups"
-
-
-  # recurringJobs: '[
-  #   {
-  #     "name":"snap",
-  #     "task":"snapshot",
-  #     "cron":"* */2 * * *",
-  #     "retain":1
-  #   },
-  #   {
-  #     "name":"backup",
-  #     "task":"backup",
-  #     "cron":"* */12, * * *",
-  #     "retain":20,
-  #     "labels": {"interval":"2m"}
-  #   }
-  #   ]'
 
 ---
 kind: StorageClass
@@ -56,6 +40,7 @@ parameters:
   numberOfReplicas: "1"
   staleReplicaTimeout: "2880" # 48 hours in minutes
   fromBackup: ""
+  migratable: "true"
   fsType: "ext4"
   mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
   unmapMarkSnapChainRemoved: "ignored"

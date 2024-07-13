@@ -210,7 +210,7 @@ defaultSettings:
   defaultReplicaCount: "2"
   # -- Default Longhorn StorageClass. "storageClassName" is assigned to PVs and PVCs that are created for an existing Longhorn volume. "storageClassName" can also be used as a label,
   # so it is possible to use a Longhorn StorageClass to bind a workload to an existing PV without creating a Kubernetes StorageClass object. The default value is "longhorn-static".
-  defaultLonghornStaticStorageClass: ~
+  defaultLonghornStaticStorageClass: "longhorn-data"
   # -- Number of seconds that Longhorn waits before checking the backupstore for new backups. The default value is "300". When the value is "0", polling is disabled.
   backupstorePollInterval: ~
   # -- Number of minutes that Longhorn keeps a failed backup resource. When the value is "0", automatic deletion is disabled.
@@ -238,7 +238,7 @@ defaultSettings:
   autoSalvage: ~
   # -- Setting that allows Longhorn to automatically delete a workload pod that is managed by a controller (for example, daemonset) whenever a Longhorn volume is detached unexpectedly (for example, during Kubernetes upgrades).
   # After deletion, the controller restarts the pod and then Kubernetes handles volume reattachment and remounting.
-  autoDeletePodWhenVolumeDetachedUnexpectedly: ~
+  autoDeletePodWhenVolumeDetachedUnexpectedly: "false"
   # -- Setting that prevents Longhorn Manager from scheduling replicas on a cordoned Kubernetes node. This setting is enabled by default.
   disableSchedulingOnCordonedNode: ~
   # -- Setting that allows Longhorn to schedule new replicas of a volume to nodes in the same zone as existing healthy replicas. Nodes that do not belong to any zone are treated as existing in the zone that contains healthy replicas.
