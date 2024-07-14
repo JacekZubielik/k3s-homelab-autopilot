@@ -1,6 +1,7 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
-
+kind: Kustomization
+namespace: argocd
 resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
 # - resources/metrics.yaml
@@ -13,12 +14,12 @@ resources:
 #     # disables status field diffing in specified resource types
 #     ignoreAggregatedRoles: true
 
-
 configMapGenerator:
 - behavior: merge
+  name: argocd-cm
   literals:
-  - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-  - kustomize.buildOptions="--enable-alpha-plugins --enable-exec --enable-helm" # --load-restrictor LoadRestrictionsNone"
+  # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+  - kustomize.buildOptions="--enable-alpha-plugins --enable-exec --enable-helm --load-restrictor LoadRestrictionsNone"
   - kustomize.buildOptions.v4.4.0="--output /tmp"
   - resource.compareoptions.ignoreAggregatedRoles="true"
   - |
@@ -37,13 +38,11 @@ configMapGenerator:
       generate:
         command: [ "sh", "-c" ]
         args: [ "kustomize build --enable-helm" ]
-  name: argocd-cm
+
 - behavior: merge
+  name: argocd-cmd-params-cm
   literals:
   - server.insecure="true"
-  name: argocd-cmd-params-cm
-kind: Kustomization
-namespace: argocd
 
 patches:
 - path: patches/frontend-service.yaml
@@ -52,5 +51,5 @@ patches:
     name: argocd-server
 - path: patches/ksops.yaml
 - path: patches/rbac-cm.yaml
-- path: patches/resources.yaml
+# - path: patches/resources.yaml
 
