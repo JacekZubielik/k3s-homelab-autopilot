@@ -1,0 +1,10 @@
+---
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: ClusterConfiguration
+apiServer:
+  extraArgs:
+    feature-gates: PersistentVolumeLastPhaseTransitionTime=true
+controllerManager:
+  extraArgs:
+    cluster-cidr: 10.244.0.0/16
+    feature-gates: PersistentVolumeLastPhaseTransitionTime=true
