@@ -8,13 +8,13 @@
 #     # disables status field diffing in specified resource types
 #     ignoreAggregatedRoles: true
 
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-cmd-params-cm
-data: 
-  ignore.normalizer.jq.timeout: "5s"
+# ---
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: argocd-cmd-params-cm
+# data: 
+#   ignore.normalizer.jq.timeout: "5s"
 
 ---
 apiVersion: v1
