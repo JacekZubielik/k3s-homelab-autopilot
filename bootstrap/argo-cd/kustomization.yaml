@@ -5,6 +5,7 @@ namespace: argocd
 resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
 # - resources/metrics.yaml
+- resources/last-phase-transition.yaml
 
 # generators:
 # - ksops-generator.yaml
@@ -16,7 +17,7 @@ configMapGenerator:
   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
   - kustomize.buildOptions="--enable-alpha-plugins --enable-exec --enable-helm --load-restrictor LoadRestrictionsNone"
   - kustomize.buildOptions.v4.4.0="--output /tmp"
-  # - resource.compareoptions.ignoreAggregatedRoles="true"
+  - resource.compareoptions.ignoreAggregatedRoles="true"
   - |
     repository.credentials=- passwordSecret:
         key: git_token
@@ -38,8 +39,8 @@ configMapGenerator:
   name: argocd-cmd-params-cm
   literals:
   - server.insecure="true"
-  # - controller.diff.server.side="true"
-  # - controller.diff.include.mutation.webhook="true"
+  - controller.diff.server.side="true"
+  - controller.diff.include.mutation.webhook="true"
 
 patches:
 - path: patches/frontend-service.yaml
@@ -48,5 +49,5 @@ patches:
     name: argocd-server
 - path: patches/ksops.yaml
 - path: patches/rbac-cm.yaml
-- path: patches/last-phase-transition.yaml
+# - path: patches/last-phase-transition.yaml
 
