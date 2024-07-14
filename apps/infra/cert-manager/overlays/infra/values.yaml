@@ -82,6 +82,10 @@ prometheus:
 webhook:
   replicaCount: 1
   timeoutSeconds: 30
+  hostNetwork: true
+  securePort: 10250
+
+
 
   nodeSelector:
     kubernetes.io/os: linux
