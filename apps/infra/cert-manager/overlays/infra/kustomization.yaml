@@ -19,8 +19,7 @@ configMapGenerator:
   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
   - resource.compareoptions.ignoreAggregatedRoles="true"
 
-- behavior: merge
-  name: argocd-cmd-params-cm
+- name: argocd-cmd-params-cm
   literals:
   # - server.insecure="true"
   - controller.diff.server.side="true"
