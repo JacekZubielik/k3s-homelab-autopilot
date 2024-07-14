@@ -10,9 +10,6 @@ resources:
 generators:
 - ksops-generator.yaml
 
-patches:
-- path: patches/resources.yaml
-
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous

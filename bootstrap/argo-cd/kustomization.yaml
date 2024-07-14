@@ -8,12 +8,19 @@ resources:
 # generators:
 # - ksops-generator.yaml
 
+# data:
+#   resource.compareoptions: |
+#     # disables status field diffing in specified resource types
+#     ignoreAggregatedRoles: true
+
+
 configMapGenerator:
 - behavior: merge
   literals:
-  # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+  - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
   - kustomize.buildOptions="--enable-alpha-plugins --enable-exec --enable-helm" # --load-restrictor LoadRestrictionsNone"
   - kustomize.buildOptions.v4.4.0="--output /tmp"
+  - resource.compareoptions.ignoreAggregatedRoles="true"
   - |
     repository.credentials=- passwordSecret:
         key: git_token
