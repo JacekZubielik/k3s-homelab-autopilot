@@ -649,12 +649,12 @@ alertmanager:
       volumeClaimTemplate:
         spec:
           storageClassName: longhorn-data
+          accessModes: ["ReadWriteOnce"]
           resources:
             requests:
               storage: 8Gi
           volumeMode: Filesystem
           volumeName: pvc-alertmanager-db-0
-
 
     ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
     ##
@@ -829,28 +829,17 @@ grafana:
 
   persistence:
     enabled: true
-    accessModes:
-    - ReadWriteOnce
-    # resources:
-    #   requests:
-    #     storage: 8Gi
     storageClassName: longhorn-data
+    accessModes: ["ReadWriteOnce"]
+    resources:
+      requests:
+        storage: 8Gi
     volumeMode: Filesystem
     volumeName: pvc-grafana-db-0
     # persistentVolumeClaimRetentionPolicy:
     #   enabled: true
     #   whenScaled: Retain
     #   whenDeleted: Retain
-
-  # persistence:
-  #   enabled: true
-  #   type: sts
-  #   storageClassName: "storageClassName"
-  #   accessModes:
-  #     - ReadWriteOnce
-  #   size: 20Gi
-  #   finalizers:
-  #     - kubernetes.io/pvc-protection
 
     # selectorLabels: {}
     ## Sub-directory of the PV to mount. Can be templated.
@@ -3246,11 +3235,18 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          # accessModes: ReadWriteOnce
           storageClassName: longhorn-data
+          accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 10Gi
+              storage: 8Gi
+          volumeMode: Filesystem
+          volumeName: pvc-prometheus-db-0
+          # persistentVolumeClaimRetentionPolicy:
+          #   enabled: true
+          #   whenScaled: Retain
+          #   whenDeleted: Retain
+
     ## Using PersistentVolumeClaim
     ##
     #  volumeClaimTemplate:
