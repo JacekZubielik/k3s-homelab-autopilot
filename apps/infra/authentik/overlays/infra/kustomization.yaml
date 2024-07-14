@@ -10,6 +10,9 @@ resources:
 generators:
 - ksops-generator.yaml
 
+patches:
+- path: patches/resources.yaml
+
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
@@ -27,14 +30,3 @@ helmCharts:
   namespace: authentik
   releaseName: authentik
   valuesFile: values.yaml
-
-spec:
-  ignoreDifferences:
-  - kind: PersistentVolume
-    jsonPointers:
-    - /spec/claimRef/resourceVersion
-    - /spec/claimRef/uid
-    - /status/lastPhaseTransitionTime
-  syncPolicy:
-    syncOptions:
-    - RespectIgnoreDifferences=true
