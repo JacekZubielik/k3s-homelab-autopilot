@@ -23,16 +23,16 @@ generators:
 # #   files:
 # #   - resources/scrape_configs.yaml
 
-patches:
-- patch: |-
-    - op: add
-      path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
-      value: "Replace=true"
-  target:
-    group: apiextensions.k8s.io
-    kind: CustomResourceDefinition
-    name: prometheuses.monitoring.coreos.com
-    version: v1
+# patches:
+# - patch: |-
+#     - op: add
+#       path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
+#       value: "Replace=true"
+#   target:
+#     group: apiextensions.k8s.io
+#     kind: CustomResourceDefinition
+#     name: prometheuses.monitoring.coreos.com
+#     version: v1
 
 metadata:
   annotations:
@@ -51,6 +51,3 @@ helmCharts:
     namespace: monitoring
     releaseName: kube-prometheus-stack
     valuesFile: values.yaml
-
-
-
