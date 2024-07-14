@@ -45,4 +45,5 @@ patches:
     name: argocd-server
 - path: patches/ksops.yaml
 - path: patches/rbac-cm.yaml
+- path: patches/resources.yaml
 
