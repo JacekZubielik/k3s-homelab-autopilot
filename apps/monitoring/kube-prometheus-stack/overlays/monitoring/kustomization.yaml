@@ -9,7 +9,10 @@ resources:
 generators:
   - ksops-generator.yaml
 
-# patches:
+patches:
+- path: patches/resources.yaml
+
+
 # - patch: |-
 #     - op: add
 #       path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
