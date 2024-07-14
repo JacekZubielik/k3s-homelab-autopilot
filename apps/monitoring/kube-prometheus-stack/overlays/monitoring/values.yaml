@@ -661,7 +661,7 @@ alertmanager:
           storageClassName: longhorn-data
           resources:
             requests:
-              storage: 3Gi
+              storage: 8Gi
           volumeMode: Filesystem
           volumeName: pvc-alertmanager-db-0
 
