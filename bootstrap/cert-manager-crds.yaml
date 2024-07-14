@@ -37,7 +37,7 @@ spec:
     - ServerSideApply=true
     retry:
       backoff:
-        duration: 60s
+        duration: 120s
         factor: 2
         maxDuration: 8m0s
       limit: 4

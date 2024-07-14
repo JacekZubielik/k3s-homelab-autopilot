@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -16,7 +17,7 @@ spec:
   source:
     path: charts/kube-prometheus-stack/charts/crds/
     repoURL: https://github.com/prometheus-community/helm-charts.git
-    targetRevision: kube-prometheus-stack-61.3.0
+    targetRevision: kube-prometheus-stack-61.3.1
     directory:
       recurse: true
   syncPolicy:
@@ -31,7 +32,7 @@ spec:
     - ServerSideApply=true
     retry:
       backoff:
-        duration: 60s
+        duration: 120s
         factor: 2
         maxDuration: 8m0s
       limit: 4

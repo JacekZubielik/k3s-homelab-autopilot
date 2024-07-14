@@ -9,34 +9,6 @@ resources:
 generators:
   - ksops-generator.yaml
 
-# - patch: |-
-#     - op: add
-#       path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
-#       value: "Replace=true"
-#   target:
-#     group: apiextensions.k8s.io
-#     kind: CustomResourceDefinition
-#     name: prometheuses.monitoring.coreos.com
-#     version: v1
-
-metadata:
-  annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "2"
-  labels:
-    app: kube-prometheus-stack
-  name: kube-prometheus-stack
-
-helmCharts:
-  - name: kube-prometheus-stack
-    version: 61.3.0
-    repo: https://prometheus-community.github.io/helm-charts
-    includeCRDs: false
-    namespace: monitoring
-    releaseName: kube-prometheus-stack
-    valuesFile: values.yaml
-
 # generatorOptions:
 #   disableNameSuffixHash: true
 #   labels:
@@ -50,4 +22,35 @@ helmCharts:
 # # - name: prometheus-server-conf
 # #   files:
 # #   - resources/scrape_configs.yaml
+
+patches:
+- patch: |-
+    - op: add
+      path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
+      value: "Replace=true"
+  target:
+    group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: prometheuses.monitoring.coreos.com
+    version: v1
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "2"
+  labels:
+    app: kube-prometheus-stack
+  name: kube-prometheus-stack
+
+helmCharts:
+  - name: kube-prometheus-stack
+    version: 61.3.1
+    repo: https://prometheus-community.github.io/helm-charts
+    includeCRDs: false
+    namespace: monitoring
+    releaseName: kube-prometheus-stack
+    valuesFile: values.yaml
+
+
 
