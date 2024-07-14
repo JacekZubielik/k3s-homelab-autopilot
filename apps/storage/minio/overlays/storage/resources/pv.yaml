@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: minio-pv-volume
+  name: pvc-minio-0
   namespace: minio
-  labels:
-    type: local
+  # labels:
+  #   type: local
 spec:
   storageClassName: host-path
   capacity:

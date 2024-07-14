@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     "helm.sh/hook-delete-policy": hook-succeeded
-  name: minio-pv-claim
+  name: pvc-minio-0
   namespace: minio
 spec:
   accessModes:
@@ -14,4 +14,4 @@ spec:
       storage: 100Gi
   storageClassName: host-path
   volumeMode: Filesystem
-  volumeName: minio-pv-volume
+  volumeName: pvc-minio-0

@@ -10,6 +10,28 @@ resources:
 generators:
 - ksops-generator.yaml
 
+configMapGenerator:
+- behavior: merge
+  name: argocd-cm
+  literals:
+  # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+  - resource.compareoptions.ignoreAggregatedRoles="true"
+
+
+- behavior: merge
+  name: argocd-cmd-params-cm
+  literals:
+  # - server.insecure="true"
+  - controller.diff.server.side="true"
+  - controller.diff.include.mutation.webhook="true"
+
+- behavior: merge
+  name: minio-tz
+  literals:
+  - TZ=CET
+
+
+
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
@@ -28,7 +50,7 @@ helmCharts:
   includeCRDs: true
   valuesFile: values.yaml
 
-configMapGenerator:
-- name: minio-tz
-  literals:
-  - TZ=CET
+# configMapGenerator:
+# - name: minio-tz
+#   literals:
+#   - TZ=CET
