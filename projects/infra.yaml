@@ -127,7 +127,7 @@ spec:
           - PrunePropagationPolicy=foreground
           - Replace=false
           - RespectIgnoreDifferences=true
-          - ServerSideApply=false
+          - ServerSideApply=true
           - SkipDryRunOnMissingResource=true
           - Validate=false
         retry:

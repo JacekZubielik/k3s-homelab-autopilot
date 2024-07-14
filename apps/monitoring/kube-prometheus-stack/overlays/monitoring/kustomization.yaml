@@ -21,7 +21,7 @@ generators:
 
 metadata:
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "2"
   labels:
