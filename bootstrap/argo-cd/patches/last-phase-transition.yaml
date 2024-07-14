@@ -4,7 +4,7 @@ kind: ClusterConfiguration
 apiServer:
   extraArgs:
     feature-gates: PersistentVolumeLastPhaseTransitionTime=true
-controllerManager:
-  extraArgs:
-    cluster-cidr: 10.244.0.0/16
-    feature-gates: PersistentVolumeLastPhaseTransitionTime=true
+  controllerManager:
+    extraArgs:
+      cluster-cidr: 10.52.0.0/16
+      feature-gates: PersistentVolumeLastPhaseTransitionTime=true
