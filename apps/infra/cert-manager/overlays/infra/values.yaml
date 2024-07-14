@@ -85,8 +85,6 @@ webhook:
   hostNetwork: true
   securePort: 10250
 
-
-
   nodeSelector:
     kubernetes.io/os: linux
 
