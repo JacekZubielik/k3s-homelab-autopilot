@@ -1,0 +1,61 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: cert-manager
+
+resources:
+- ../../base
+# - resources/cert.default.svc.yaml
+# - resources/issuer.default.svc.yaml
+# - resources/issuer.k3s.ca-cluster.yaml
+# - resources/servicemonitor.yaml
+- resources/selfsigned-issuer-test.yaml
+- resources/cert-test.yaml
+
+generators:
+- ksops-generator.yaml
+
+configMapGenerator:
+- name: argocd-cm
+  literals:
+  # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+  - resource.compareoptions.ignoreAggregatedRoles="true"
+
+- name: argocd-cmd-params-cm
+  literals:
+  # - server.insecure="true"
+  - controller.diff.server.side="true"
+  - controller.diff.include.mutation.webhook="true"
+
+- behavior: merge
+  name: cert-manager-tz
+  literals:
+  - TZ=CET
+
+patches:
+- path: patches/remove-instance-patch.yaml
+  target:
+    kind: CustomResourceDefinition
+    labelSelector: app.kubernetes.io/instance=cert-manager
+- path: patches/mutation-patch.yaml
+  target:
+    kind: Deployment
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=false
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "0"
+    cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
+  labels:
+    app.kubernetes.io/name: cert-manager
+  name: cert-manager
+
+helmCharts:
+- name: cert-manager
+  version: v1.15.1
+  repo: https://charts.jetstack.io
+  includeCRDs: false
+  namespace: cert-manager
+  releaseName: cert-manager
+  valuesFile: values.yaml

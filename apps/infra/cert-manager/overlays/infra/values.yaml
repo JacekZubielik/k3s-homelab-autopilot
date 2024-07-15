@@ -1,0 +1,132 @@
+# helm repo add jetstack https://charts.jetstack.io
+# helm show values jetstack/cert-manager >> cert-manager-values.yaml
+---
+startupapicheck:
+  enabled: true
+  timeout: 10m
+  backoffLimit: 6
+
+# installCRDs: true
+
+global:
+  leaderElection:
+    namespace: "cert-manager"
+  rbac:
+    create: true
+    aggregateClusterRoles: true
+
+  podSecurityPolicy:
+    enabled: false
+    useAppArmor: true
+
+fullnameOverride: "cert-manager"
+namespace: "cert-manager"
+replicaCount: 1
+
+# The maximum number of challenges that can be scheduled as 'processing' at once
+maxConcurrentChallenges: 10
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations:
+    eks.amazonaws.com/role-arn: aws:iam::227651627371:user/certManagerIAMUser
+  # labels: {}
+  automountServiceAccountToken: true
+
+# securityContext:
+#   fsGroup: 1001
+
+# When this flag is enabled, secrets will be automatically removed when the certificate resource is deleted
+enableCertificateOwnerRef: true
+
+dns01RecursiveNameservers: "1.1.1.1:53,9.9.9.9:53"
+dns01RecursiveNameserversOnly: false
+podDnsPolicy: None
+podDnsConfig:
+  nameservers:
+  - 1.1.1.1
+  - 9.9.9.9
+
+nodeSelector:
+  kubernetes.io/os: linux
+
+prometheus:
+  enabled: true
+  servicemonitor:
+    enabled: false
+    prometheusInstance: default
+    targetPort: 9402
+    path: /metrics
+    interval: 60s
+    scrapeTimeout: 30s
+    labels: {}
+    annotations: {}
+    honorLabels: false
+    endpointAdditionalProperties: {}
+
+  #  Note: Enabling both PodMonitor and ServiceMonitor is mutually exclusive, enabling both will result in a error.
+
+  # podmonitor:
+  #   enabled: true
+  #   prometheusInstance: default
+  #   path: /metrics
+  #   interval: 60s
+  #   scrapeTimeout: 30s
+  #   labels: {}
+  #   annotations: {}
+  #   honorLabels: false
+  #   endpointAdditionalProperties: {}
+
+####################################
+webhook:
+  replicaCount: 1
+  timeoutSeconds: 30
+  hostNetwork: true
+  securePort: 10251
+
+  nodeSelector:
+    kubernetes.io/os: linux
+
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+
+  serviceAccount:
+    create: true
+    automountServiceAccountToken: true
+
+  serviceType: ClusterIP
+
+  serviceMonitor:
+    enabled: false
+    honorLabels: false
+    interval: 60s
+    path: /metrics
+    scrapeTimeout: 30s
+    targetPort: 9402
+
+  resources:
+    requests:
+      cpu: 50m
+      memory: 256Mi
+      ephemeral-storage: 500Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+      ephemeral-storage: 500Mi
+
+####################################
+cainjector:
+  enabled: true
+  replicaCount: 1
+
+  resources:
+    requests:
+      cpu: 10m
+      memory: 32Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
