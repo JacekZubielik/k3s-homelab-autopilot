@@ -9,17 +9,17 @@ resources:
 # - resources/issuer.default.svc.yaml
 # - resources/issuer.k3s.ca-cluster.yaml
 # - resources/servicemonitor.yaml
-# - resources/selfsigned-issuer-test.yaml
+- resources/selfsigned-issuer-test.yaml
 # - resources/cert-test.yaml
 
 generators:
 - ksops-generator.yaml
 
-# configMapGenerator:
-# - name: argocd-cm
-#   literals:
-#   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-#   - resource.compareoptions.ignoreAggregatedRoles="true"
+configMapGenerator:
+- name: argocd-cm
+  literals:
+  # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+  - resource.compareoptions.ignoreAggregatedRoles="true"
 
 # - name: argocd-cmd-params-cm
 #   literals:
@@ -38,8 +38,8 @@ generators:
 
 metadata:
   annotations:
-    # argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=false
-    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,ServerSideApply=false
+    argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=false
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,ServerSideApply=false
     argocd.argoproj.io/sync-wave: "0"
     # cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
   # labels:
