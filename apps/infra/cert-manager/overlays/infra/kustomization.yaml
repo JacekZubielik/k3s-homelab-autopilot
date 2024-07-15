@@ -24,8 +24,8 @@ configMapGenerator:
 - name: argocd-cmd-params-cm
   literals:
   - server.insecure="true"
-  # - controller.diff.server.side="true"
-  # - controller.diff.include.mutation.webhook="true"
+  - controller.diff.server.side="true"
+  - controller.diff.include.mutation.webhook="true"
 
 # patches:
 # - path: patches/remove-instance-patch.yaml
