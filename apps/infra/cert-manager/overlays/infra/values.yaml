@@ -6,7 +6,7 @@ startupapicheck:
   timeout: 10m
   backoffLimit: 6
 
-# installCRDs: true
+installCRDs: true
 
 global:
   leaderElection:
