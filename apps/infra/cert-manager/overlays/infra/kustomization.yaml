@@ -27,11 +27,11 @@ generators:
   # - controller.diff.server.side="true"
   # - controller.diff.include.mutation.webhook="true"
 
-patches:
-- path: patches/remove-instance-patch.yaml
-  target:
-    kind: CustomResourceDefinition
-    labelSelector: app.kubernetes.io/instance=infra-cert-manager
+# patches:
+# - path: patches/remove-instance-patch.yaml
+#   target:
+#     kind: CustomResourceDefinition
+#     labelSelector: app.kubernetes.io/instance=infra-cert-manager
 # - path: patches/mutation-patch.yaml
 #   target:
 #     kind: Deployment
