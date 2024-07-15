@@ -35,12 +35,12 @@ configMapGenerator:
         command: [ "sh", "-c" ]
         args: [ "kustomize build --enable-helm" ]
 
-# - behavior: merge
-#   name: argocd-cmd-params-cm
-#   literals:
-#   - server.insecure="true"
-#   - controller.diff.server.side="true"
-#   - controller.diff.include.mutation.webhook="true"
+- behavior: merge
+  name: argocd-cmd-params-cm
+  literals:
+  - server.insecure="true"
+  - controller.diff.server.side="true"
+  - controller.diff.include.mutation.webhook="true"
 
 patches:
 - path: patches/frontend-service.yaml
