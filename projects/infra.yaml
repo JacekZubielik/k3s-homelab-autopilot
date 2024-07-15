@@ -92,16 +92,16 @@ spec:
           kind: Application
           jsonPointers:
             - /operation
-        - group: "apps"
-          kind: "Deployment"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
-        - group: "apps"
-          kind: "StatefulSet"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
+        # - group: "apps"
+        #   kind: "Deployment"
+        #   jsonPointers:
+        #     - /spec/template/metadata/annotations
+        #     - /spec/template/metadata/labels
+        # - group: "apps"
+        #   kind: "StatefulSet"
+        #   jsonPointers:
+        #     - /spec/template/metadata/annotations
+        #     - /spec/template/metadata/labels
         # - kind: PersistentVolume
         #   jsonPointers:
         #   - /spec/claimRef/resourceVersion
