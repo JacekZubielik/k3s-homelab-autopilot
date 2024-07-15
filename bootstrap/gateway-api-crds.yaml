@@ -15,7 +15,7 @@ spec:
   project: infra
   source:
     path: config/crd
-    repoURL: https://github.com/kubernetes-sigs/gateway-api/tree/main/config/crd
+    repoURL: https://github.com/kubernetes-sigs/gateway-api/
     targetRevision: v1.1.0
     directory:
       recurse: true
