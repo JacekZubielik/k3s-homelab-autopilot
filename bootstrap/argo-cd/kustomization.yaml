@@ -15,9 +15,9 @@ configMapGenerator:
   name: argocd-cm
   literals:
   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-  - kustomize.buildOptions="--enable-alpha-plugins --enable-exec --enable-helm --load-restrictor LoadRestrictionsNone"
+  - kustomize.buildOptions="--enable-alpha-plugins --enable-exec --enable-helm" # --load-restrictor LoadRestrictionsNone"
   - kustomize.buildOptions.v4.4.0="--output /tmp"
-  - resource.compareoptions.ignoreAggregatedRoles="true"
+  # - resource.compareoptions.ignoreAggregatedRoles="true"
   - |
     repository.credentials=- passwordSecret:
         key: git_token
@@ -35,12 +35,12 @@ configMapGenerator:
         command: [ "sh", "-c" ]
         args: [ "kustomize build --enable-helm" ]
 
-- behavior: merge
-  name: argocd-cmd-params-cm
-  literals:
-  - server.insecure="true"
-  - controller.diff.server.side="true"
-  - controller.diff.include.mutation.webhook="true"
+# - behavior: merge
+#   name: argocd-cmd-params-cm
+#   literals:
+#   - server.insecure="true"
+#   - controller.diff.server.side="true"
+#   - controller.diff.include.mutation.webhook="true"
 
 patches:
 - path: patches/frontend-service.yaml
