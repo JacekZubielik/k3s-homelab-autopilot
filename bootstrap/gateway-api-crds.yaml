@@ -17,8 +17,8 @@ spec:
     path: config/crd
     repoURL: https://github.com/kubernetes-sigs/gateway-api/
     targetRevision: v1.1.0
-    directory:
-      recurse: true
+    # directory:
+    #   recurse: true
     kustomize:
       commonAnnotationsEnvsubst: true
       commonAnnotations:
