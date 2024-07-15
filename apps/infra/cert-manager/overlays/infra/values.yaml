@@ -16,8 +16,8 @@ global:
   leaderElection:
     namespace: "kube-system"
   rbac:
-    create: true
-    aggregateClusterRoles: true
+    create: false
+
 
   podSecurityPolicy:
     enabled: false
