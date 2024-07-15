@@ -14,7 +14,7 @@ maxConcurrentChallenges: 10
 ##########
 global:
   leaderElection:
-    namespace: "kube-system"
+    namespace: "cert-manager"  #"kube-system"
   rbac:
     create: false
 
