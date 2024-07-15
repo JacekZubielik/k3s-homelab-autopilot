@@ -83,7 +83,7 @@ webhook:
   replicaCount: 1
   timeoutSeconds: 30
   hostNetwork: true
-  securePort: 10250
+  # securePort: 10251
 
   nodeSelector:
     kubernetes.io/os: linux
