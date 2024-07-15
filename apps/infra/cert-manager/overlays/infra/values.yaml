@@ -1,16 +1,20 @@
 # helm repo add jetstack https://charts.jetstack.io
 # helm show values jetstack/cert-manager >> cert-manager-values.yaml
 ---
-startupapicheck:
-  enabled: true
-  timeout: 10m
-  backoffLimit: 6
+installCRDs: false
+fullnameOverride: "cert-manager"
+namespace: "cert-manager"
+replicaCount: 1
+#
+automountServiceAccountToken: false
 
-installCRDs: true
+# The maximum number of challenges that can be scheduled as 'processing' at once
+maxConcurrentChallenges: 10
 
+##########
 global:
   leaderElection:
-    namespace: "cert-manager"
+    namespace: "kube-system"
   rbac:
     create: true
     aggregateClusterRoles: true
@@ -19,12 +23,23 @@ global:
     enabled: false
     useAppArmor: true
 
-fullnameOverride: "cert-manager"
-namespace: "cert-manager"
-replicaCount: 1
+#
+  priorityClassName: system-cluster-critical
 
-# The maximum number of challenges that can be scheduled as 'processing' at once
-maxConcurrentChallenges: 10
+
+
+##########
+startupapicheck:
+  enabled: true
+  timeout: 10m
+  backoffLimit: 6
+
+  automountServiceAccountToken: false
+  serviceAccount:
+    automountServiceAccountToken: false
+
+
+
 
 serviceAccount:
   create: true
@@ -88,6 +103,9 @@ webhook:
   nodeSelector:
     kubernetes.io/os: linux
 
+#
+  automountServiceAccountToken: false
+
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:
@@ -96,7 +114,7 @@ webhook:
 
   serviceAccount:
     create: true
-    automountServiceAccountToken: true
+    automountServiceAccountToken: false
 
   serviceType: ClusterIP
 
@@ -130,3 +148,8 @@ cainjector:
     limits:
       cpu: 200m
       memory: 256Mi
+
+#
+  automountServiceAccountToken: false
+  serviceAccount:
+    automountServiceAccountToken: false
