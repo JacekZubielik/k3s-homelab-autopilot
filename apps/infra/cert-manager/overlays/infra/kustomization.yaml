@@ -10,7 +10,7 @@ resources:
 # - resources/issuer.k3s.ca-cluster.yaml
 # - resources/servicemonitor.yaml
 - resources/selfsigned-issuer-test.yaml
-- resources/ca-issuer-test.yaml
+- resources/cert-test.yaml
 
 generators:
 - ksops-generator.yaml
