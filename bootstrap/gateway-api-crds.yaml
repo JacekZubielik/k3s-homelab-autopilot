@@ -10,7 +10,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
 spec:
   destination:
-    namespace: envoy-gateway-system
+    # namespace: envoy-gateway-system
     server: https://kubernetes.default.svc
   project: infra
   source:
