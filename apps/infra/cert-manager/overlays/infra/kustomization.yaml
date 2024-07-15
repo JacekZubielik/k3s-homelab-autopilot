@@ -9,8 +9,8 @@ resources:
 # - resources/issuer.default.svc.yaml
 # - resources/issuer.k3s.ca-cluster.yaml
 # - resources/servicemonitor.yaml
-- resources/selfsigned-issuer-test.yaml
-- resources/cert-test.yaml
+# - resources/selfsigned-issuer-test.yaml
+# - resources/cert-test.yaml
 
 generators:
 - ksops-generator.yaml
@@ -50,7 +50,7 @@ helmCharts:
 - name: cert-manager
   version: v1.15.1
   repo: https://charts.jetstack.io
-  includeCRDs: false
+  includeCRDs: true
   namespace: cert-manager
   releaseName: cert-manager
   valuesFile: values.yaml

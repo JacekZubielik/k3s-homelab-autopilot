@@ -6,7 +6,7 @@ type: Opaque
 files:
 # - resources/cert.k3s.ca-cluster.sops.yaml
 # - resources/issuer.route53.production.sops.yaml
-# - resources/issuer.route53.staging.sops.yaml
+- resources/issuer.route53.staging.sops.yaml
 - secrets/secret.sops.yaml
 # - resources/cert.route53.production.sops.yaml
 # - resources/cert.route53.staging.sops.yaml
