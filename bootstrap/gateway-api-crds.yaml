@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gateway-api-crds
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  destination:
+    namespace: traefik
+    server: https://kubernetes.default.svc
+  project: infra
+  source:
+    path: config/crd
+    repoURL: https://github.com/kubernetes-sigs/gateway-api/blob/main/config/crd/
+    targetRevision: v1.1.0
+    directory:
+      recurse: true
+    kustomize:
+      commonAnnotationsEnvsubst: true
+      commonAnnotations:
+        app-source: ${ARGOCD_APP_NAME}
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+        - ApplyOutOfSyncOnly=true
+        - CreateNamespace=true
+        - Delete=true
+        - FailOnSharedResource=false
+        - preserveResourcesOnDeletion=false
+        - PruneLast=true
+        - PrunePropagationPolicy=foreground
+        - Replace=false
+        - RespectIgnoreDifferences=true
+        - ServerSideApply=true
+        - SkipDryRunOnMissingResource=true
+        - Validate=false
+    retry:
+      backoff:
+        duration: 60s
+        factor: 2
+        maxDuration: 8m0s
+      limit: 4
