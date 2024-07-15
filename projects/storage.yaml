@@ -39,14 +39,14 @@ spec:
       repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
       requeueAfterSeconds: 20
       revision: ""
-    kustomize:
-      namespace: job-test
-      patches:
-        - patch: |
-            - path: /metadata/annotations
-              op: remove
-          target:
-            kind: Job
+    # kustomize:
+    #   namespace: job-test
+    #   patches:
+    #     - patch: |
+    #         - path: /metadata/annotations
+    #           op: remove
+    #       target:
+    #         kind: Job
 
 
       template:
