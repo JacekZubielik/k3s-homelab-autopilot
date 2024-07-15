@@ -73,7 +73,7 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/managed-by: argocd-autopilot
-        # app.kubernetes.io/name: '{{ appName }}'
+        app.kubernetes.io/name: '{{ appName }}'
         application-role: '{{ appRole }}'
       annotations:
         argocd.argoproj.io/sync-wave: '{{ syncWave }}'
@@ -92,21 +92,21 @@ spec:
           kind: Application
           jsonPointers:
             - /operation
-        - group: "apps"
-          kind: "Deployment"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
-        - group: "apps"
-          kind: "StatefulSet"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
-        - kind: PersistentVolume
-          jsonPointers:
-          - /spec/claimRef/resourceVersion
-          - /spec/claimRef/uid
-          - /status/lastPhaseTransitionTime
+        # - group: "apps"
+        #   kind: "Deployment"
+        #   jsonPointers:
+        #     - /spec/template/metadata/annotations
+        #     - /spec/template/metadata/labels
+        # - group: "apps"
+        #   kind: "StatefulSet"
+        #   jsonPointers:
+        #     - /spec/template/metadata/annotations
+        #     - /spec/template/metadata/labels
+        # - kind: PersistentVolume
+        #   jsonPointers:
+        #   - /spec/claimRef/resourceVersion
+        #   - /spec/claimRef/uid
+        #   - /status/lastPhaseTransitionTime
       project: infra
       source:
         path: '{{ srcPath }}'
