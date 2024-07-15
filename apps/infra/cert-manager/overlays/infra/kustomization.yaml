@@ -32,9 +32,9 @@ patches:
   target:
     kind: CustomResourceDefinition
     labelSelector: app.kubernetes.io/instance=infra-cert-manager
-- path: patches/mutation-patch.yaml
-  target:
-    kind: Deployment
+# - path: patches/mutation-patch.yaml
+#   target:
+#     kind: Deployment
 
 metadata:
   annotations:
