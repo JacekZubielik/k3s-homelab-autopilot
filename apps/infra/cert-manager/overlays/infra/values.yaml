@@ -81,7 +81,7 @@ prometheus:
 ####################################
 webhook:
   replicaCount: 1
-  timeoutSeconds: 30
+  timeoutSeconds: 60
   hostNetwork: true
   securePort: 10251
 
