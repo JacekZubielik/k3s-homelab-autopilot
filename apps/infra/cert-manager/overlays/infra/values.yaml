@@ -1209,7 +1209,7 @@ startupapicheck:
     readOnlyRootFilesystem: true
 
   # Timeout for 'kubectl check api' command.
-  timeout: 1m
+  timeout: 5m
 
   # Job backoffLimit
   backoffLimit: 4
