@@ -24,8 +24,8 @@ configMapGenerator:
 - name: argocd-cmd-params-cm
   literals:
   - server.insecure="true"
-  - controller.diff.server.side="true"
-  - controller.diff.include.mutation.webhook="true"
+  # - controller.diff.server.side="true"
+  # - controller.diff.include.mutation.webhook="true"
 
 # patches:
 # - path: patches/remove-instance-patch.yaml
@@ -39,7 +39,7 @@ configMapGenerator:
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=false
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,ServerSideApply=false
     argocd.argoproj.io/sync-wave: "0"
     # cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
   labels:
