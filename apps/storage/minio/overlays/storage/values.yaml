@@ -58,10 +58,14 @@ tls:
 trustedCertsSecret: ""
 
 persistence:
-  enabled: false
-  existingClaim: "pvc-minio-0"
+  enabled: enable
+  existingClaim: pvc-minio-0
   storageClassName: host-path
   volumeName: pvc-minio-0
+
+
+
+
 
 # persistence:
 #   enabled: true
