@@ -5,7 +5,7 @@ metadata:
   annotations:
     "helm.sh/hook-delete-policy": hook-succeeded
   name: pvc-minio-0
-  namespace: minio
+  # namespace: minio
 spec:
   accessModes:
   - ReadWriteOnce
