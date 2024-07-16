@@ -59,10 +59,10 @@ trustedCertsSecret: ""
 
 persistence:
   enabled: enable
-  existingClaim: pvc-minio-0
+  # existingClaim: pvc-minio-0
   storageClassName: host-path
   accessModes: ReadWriteOnce
-  # volumeName: pvc-minio-0
+  volumeName: pvc-minio-0
   # volumeMode: Filesystem
   # size: 100Gi
   # persistentVolumeClaimRetentionPolicy:
