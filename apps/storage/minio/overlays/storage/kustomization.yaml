@@ -31,8 +31,8 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "1"
-  labels:
-    app.kubernetes.io/name: minio
+  # labels:
+  #   app.kubernetes.io/name: minio
   name: minio
 
 helmCharts:
