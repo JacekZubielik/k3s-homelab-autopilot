@@ -5,34 +5,9 @@ namespace: minio
 resources:
 - ../../base
 - resources/pv.yaml
-# - resources/pvc.yaml
 
 generators:
 - ksops-generator.yaml
-
-# configMapGenerator:
-# - name: argocd-cm
-#   literals:
-#   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-#   - resource.compareoptions.ignoreAggregatedRoles="true"
-
-# - name: argocd-cmd-params-cm
-#   literals:
-#   # - server.insecure="true"
-#   - controller.diff.server.side="true"
-#   - controller.diff.include.mutation.webhook="true"
-
-# - name: minio-tz
-#   literals:
-#   - TZ=CET
-
-# patches:
-# - path: patches/service.yaml
-#   target:
-#     version: v1
-#     kind: Service
-#     name: minio
-#     namespace: minio
 
 metadata:
   annotations:

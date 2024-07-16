@@ -3,10 +3,10 @@ kind: Service
 metadata:
   # annotations:
   #   kube-vip.io/loadbalancerIPs: 192.168.40.181
-    # metallb.universe.tf/loadBalancerIPs: 192.168.40.181
+  #   metallb.universe.tf/loadBalancerIPs: 192.168.40.181
   # labels:
   #   app=longhorn-ui
-  name: longhorn-frontend-traefik
+  name: longhorn-frontend
   namespace: longhorn-system
 spec:
   ports:
