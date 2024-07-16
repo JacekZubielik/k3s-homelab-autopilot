@@ -57,9 +57,21 @@ tls:
 ## If certSecret is left empty and tls is enabled, this chart installs the public certificate from .Values.tls.certSecret.
 trustedCertsSecret: ""
 
+# persistence:
+#   enabled: false
+#   existingClaim: "pvc-minio-0"
+
 persistence:
-  enabled: false
-  existingClaim: "pvc-minio-0"
+  enabled: true
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: longhorn-data
+  volumeMode: Filesystem
+  volumeName: pvc-minio-0
+
 
 service:
   type: LoadBalancer
