@@ -4,8 +4,8 @@ kind: PersistentVolume
 metadata:
   name: pvc-minio-0
   namespace: minio
-  # labels:
-  #   type: local
+  labels:
+    type: local
 spec:
   storageClassName: host-path
   capacity:

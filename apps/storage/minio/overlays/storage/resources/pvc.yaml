@@ -13,5 +13,5 @@ spec:
     requests:
       storage: 100Gi
   storageClassName: host-path
-  volumeMode: Filesystem
+  # volumeMode: Filesystem
   volumeName: pvc-minio-0
