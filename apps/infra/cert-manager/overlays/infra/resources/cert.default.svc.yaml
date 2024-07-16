@@ -14,7 +14,7 @@ spec:
     organizations:
     - ANOTHERLIFE Inc.
     organizationalUnits:
-    - kubernetes.default.svc
+    - kubernetes.default.svc.cluster.local
   privateKey:
     rotationPolicy: Always
     # algorithm: RSA
@@ -28,11 +28,11 @@ spec:
   - server auth
   - client auth
   dnsNames:
-  - "default.svc"
-  - "*.default.svc"
-  ipAddresses:
-  - 127.0.0.1
-  - ::1
+  - "svc.cluster.local"
+  - "*..svc.cluster.local"
+  # ipAddresses:
+  # - 127.0.0.1
+  # - ::1
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
