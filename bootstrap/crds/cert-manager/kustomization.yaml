@@ -4,7 +4,8 @@ kind: Kustomization
 namespace: cert-manager
 
 resources:
-- https://github.com/cert-manager/cert-manager/releases/download/v1.15.1/cert-manager.crds.yaml
+# - https://github.com/cert-manager/cert-manager/releases/download/v1.15.1/cert-manager.crds.yaml
+- https://github.com/jetstack/cert-manager/releases/download/v1.15.1/cert-manager.crds.yaml
 
   # CDRs can be installed manually.
   # cert-manager helm chart to be installed with value installCDRs=false
