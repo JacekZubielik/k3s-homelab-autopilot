@@ -8,7 +8,7 @@
   "include": "",
   "labels": "",
   "srcPath": "apps/infra/metal-lb/overlays/infra",
-  "srcRepoURL": "https://github.com/jacekzubielik/homelab-argocd.git",
+  "srcRepoURL": "https://github.com/jacekzubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "0",
   "userGivenName": "metallb"
