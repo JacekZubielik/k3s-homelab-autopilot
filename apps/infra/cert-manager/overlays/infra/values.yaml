@@ -811,12 +811,12 @@ webhook:
   #     operator: Equal
   #     value: master
   #     effect: NoSchedule
-  # tolerations: []
+  tolerations: []
 
-  tolerations:
-  - key: node-restriction.kubernetes.io/reserved-for
-    operator: Equal
-    value: platform
+  # tolerations:
+  # - key: node-restriction.kubernetes.io/reserved-for
+  #   operator: Equal
+  #   value: platform
 
   # A list of Kubernetes TopologySpreadConstraints, if required. For more information, see [Topology spread constraint v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#topologyspreadconstraint-v1-core).
   #
@@ -1139,12 +1139,12 @@ cainjector:
   #     operator: Equal
   #     value: master
   #     effect: NoSchedule
-  # tolerations: []
+  tolerations: []
 
-  tolerations:
-  - key: node-restriction.kubernetes.io/reserved-for
-    operator: Equal
-    value: platform
+  # tolerations:
+  # - key: node-restriction.kubernetes.io/reserved-for
+  #   operator: Equal
+  #   value: platform
 
   # A list of Kubernetes TopologySpreadConstraints, if required. For more information, see [Topology spread constraint v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#topologyspreadconstraint-v1-core).
   #
@@ -1368,12 +1368,12 @@ startupapicheck:
   #     operator: Equal
   #     value: master
   #     effect: NoSchedule
-  # tolerations: []
+  tolerations: []
 
-  tolerations:
-  - key: node-restriction.kubernetes.io/reserved-for
-    operator: Equal
-    value: platform
+  # tolerations:
+  # - key: node-restriction.kubernetes.io/reserved-for
+  #   operator: Equal
+  #   value: platform
 
   # Optional additional labels to add to the startupapicheck Pods.
   podLabels: {}
