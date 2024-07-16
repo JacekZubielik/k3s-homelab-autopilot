@@ -12,7 +12,7 @@ spec:
   secretName: default.svc.tls
   subject:
     organizations:
-    - ANOTHERLIFE Inc.
+    - K3s
     organizationalUnits:
     - kubernetes.default.svc.cluster.local
   privateKey:
