@@ -19,7 +19,7 @@ metadata:
   name: l2-advertisement
   namespace: metallb-system
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "-1"
   labels:
     app.kubernetes.io/name: metallb
 spec:

@@ -14,10 +14,10 @@ metadata:
     argocd.argoproj.io/sync-wave: "0"
   labels:
     app.kubernetes.io/name: metallb
-    pod-security.kubernetes.io/audit: privileged
-    pod-security.kubernetes.io/enforce: privileged
-    pod-security.kubernetes.io/warn: privileged
-    existingConfigMap: metallb-config
+    # pod-security.kubernetes.io/audit: privileged
+    # pod-security.kubernetes.io/enforce: privileged
+    # pod-security.kubernetes.io/warn: privileged
+    # existingConfigMap: metallb-config
 
 helmCharts:
   - name: metallb
@@ -28,33 +28,33 @@ helmCharts:
     includeCRDs: true
     valuesFile: values.yaml
 
-    valuesInline:
-      spec:
-        ignoreDifferences:
-          # ------------- MetalLB patch
-          - group: "apiextensions.k8s.io"
-            kind: CustomResourceDefinition
-            name: bgppeers.metallb.io
-            jsonPointers:
-              - /spec/conversion/webhook/clientConfig/caBundle
-          - group: "apiextensions.k8s.io"
-            kind: CustomResourceDefinition
-            name: addresspools.metallb.io
-            jsonPointers:
-              - /spec/conversion/webhook/clientConfig/caBundle
+    # valuesInline:
+    #   spec:
+    #     ignoreDifferences:
+    #       # ------------- MetalLB patch
+    #       - group: "apiextensions.k8s.io"
+    #         kind: CustomResourceDefinition
+    #         name: bgppeers.metallb.io
+    #         jsonPointers:
+    #           - /spec/conversion/webhook/clientConfig/caBundle
+    #       - group: "apiextensions.k8s.io"
+    #         kind: CustomResourceDefinition
+    #         name: addresspools.metallb.io
+    #         jsonPointers:
+    #           - /spec/conversion/webhook/clientConfig/caBundle
 
 configMapGenerator:
   - name: metallb-config
     literals:
       - TZ=CET
 
-patchesJson6902:
-  - path: patches/metallb-no-deprecation-warning.yaml
-    target:
-      group: apiextensions.k8s.io
-      kind: CustomResourceDefinition
-      name: addresspools.metallb.io
-      version: v1
+# patchesJson6902:
+#   - path: patches/metallb-no-deprecation-warning.yaml
+#     target:
+#       group: apiextensions.k8s.io
+#       kind: CustomResourceDefinition
+#       name: addresspools.metallb.io
+#       version: v1
 
 # resources:
 # - namespace.yaml
