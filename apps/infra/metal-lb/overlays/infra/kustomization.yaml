@@ -5,6 +5,7 @@ namespace: metallb-system
 resources:
 - ../../base
 - resources/ipaddresspool.yaml
+- resources/crds.yaml
 
 metadata:
   annotations:
@@ -25,7 +26,7 @@ helmCharts:
     version: 0.14.6
     releaseName: metallb
     namespace: metallb-system
-    includeCRDs: true
+    includeCRDs: false
     valuesFile: values.yaml
 
     # valuesInline:
