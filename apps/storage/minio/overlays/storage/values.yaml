@@ -59,7 +59,7 @@ trustedCertsSecret: ""
 
 persistence:
   enabled: true
-  existingClaim: "minio-pv-claim"
+  existingClaim: "pvc-minio-0"
 
 service:
   type: LoadBalancer
