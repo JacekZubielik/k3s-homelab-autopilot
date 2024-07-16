@@ -1,0 +1,16 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  annotations:
+    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: ServerSideApply=false
+  # labels:
+  #   app.kubernetes.io/name: metallb
+  #   pod-security.kubernetes.io/audit: privileged
+  #   pod-security.kubernetes.io/enforce: privileged
+  #   pod-security.kubernetes.io/warn: privileged
+  #   existingConfigMap: metallb-config
+
