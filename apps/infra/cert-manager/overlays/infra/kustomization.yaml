@@ -20,8 +20,8 @@ generators:
 configMapGenerator:
 - name: argocd-cm
   literals:
-#   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-    - resource.compareoptions.ignoreAggregatedRoles="true"
+  - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+  - resource.compareoptions.ignoreAggregatedRoles="true"
 
 # - name: argocd-cmd-params-cm
 #   literals:
