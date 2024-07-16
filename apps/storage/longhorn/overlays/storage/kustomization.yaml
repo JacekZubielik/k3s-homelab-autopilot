@@ -8,6 +8,7 @@ resources:
   - resources/servicemonitor.yaml
   - resources/storageclass.yaml
   # - resources/volume-snapshotclass.yaml
+  - resources/frontend-service.yaml
 
 generators:
   - ksops-generator.yaml
@@ -17,10 +18,10 @@ patches:
     target:
       kind: CustomResourceDefinition
       labelSelector: app.kubernetes.io/instance=longhorn
-  - path: patches/frontend-service.yaml
-    target:
-      kind: Service
-      name: longhorn-frontend-traefik
+  # - path: patches/frontend-service.yaml
+  #   target:
+  #     kind: Service
+  #     name: longhorn-frontend-traefik
   - path: patches/hook.yaml
     target:
       name: pre-hook
