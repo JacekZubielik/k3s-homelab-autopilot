@@ -410,6 +410,7 @@ hostAliases: []
 # +docs:property
 nodeSelector:
   kubernetes.io/os: linux
+  node-restriction.kubernetes.io/reserved-for: platform
 
 # +docs:ignore
 ingressShim: {}
