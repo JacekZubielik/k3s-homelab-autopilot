@@ -61,9 +61,9 @@ persistence:
   enabled: enable
   existingClaim: pvc-minio-0
   storageClassName: host-path
-  volumeName: pvc-minio-0
-  volumeMode: Filesystem
-  size: 100Gi
+  # volumeName: pvc-minio-0
+  # volumeMode: Filesystem
+  # size: 100Gi
   # persistentVolumeClaimRetentionPolicy:
   #   enabled: true
   #   whenScaled: Retain
