@@ -58,7 +58,7 @@ tls:
 trustedCertsSecret: ""
 
 persistence:
-  enabled: true
+  enabled: false
   existingClaim: "pvc-minio-0"
 
 service:
