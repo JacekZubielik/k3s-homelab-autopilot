@@ -1,0 +1,51 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metallb-crds
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+spec:
+  destination:
+    namespace: metallb
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: bootstrap/crds/metallb
+    repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
+    targetRevision: main
+    # directory:
+    #   include: '*.yaml'
+      # recurse: true
+    kustomize:
+      commonAnnotationsEnvsubst: true
+      commonAnnotations:
+        app-source: ${ARGOCD_APP_NAME}
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+        - ApplyOutOfSyncOnly=true
+        - CreateNamespace=true
+        - Delete=true
+        - FailOnSharedResource=false
+        - preserveResourcesOnDeletion=false
+        - PruneLast=true
+        - PrunePropagationPolicy=foreground
+        - Replace=false
+        - RespectIgnoreDifferences=true
+        - ServerSideApply=true
+        - SkipDryRunOnMissingResource=true
+        - Validate=false
+    retry:
+      backoff:
+        duration: 120s
+        factor: 2
+        maxDuration: 8m0s
+      limit: 4
