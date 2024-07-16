@@ -26,11 +26,19 @@ generators:
 #   literals:
 #   - TZ=CET
 
+patches:
+- path: patches/service.yaml
+  target:
+    version: v1
+    kind: Service
+    name: minio
+    namespace: minio
+
 metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "0"
   # labels:
   #   app.kubernetes.io/name: minio
   name: minio
