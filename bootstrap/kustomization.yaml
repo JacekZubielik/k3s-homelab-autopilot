@@ -12,3 +12,4 @@ resources:
 - kube-prometheus-stack-crds.yaml
 - root.yaml
 - traefik-crds.yaml
+- metallb-crds.yaml
