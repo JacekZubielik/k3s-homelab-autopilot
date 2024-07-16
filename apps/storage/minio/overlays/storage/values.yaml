@@ -64,7 +64,7 @@ persistence:
   accessModes: ReadWriteOnce
   volumeName: pvc-minio-0
   # volumeMode: Filesystem
-  # size: 100Gi
+  size: 100Gi
   # persistentVolumeClaimRetentionPolicy:
   #   enabled: true
   #   whenScaled: Retain
