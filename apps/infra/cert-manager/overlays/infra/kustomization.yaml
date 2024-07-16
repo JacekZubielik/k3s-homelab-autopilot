@@ -11,6 +11,8 @@ resources:
 # - resources/servicemonitor.yaml
 # - resources/selfsigned-issuer-test.yaml
 # - resources/cert-test.yaml
+- https://github.com/jetstack/cert-manager/releases/download/v1.15.1/cert-manager.crds.yaml
+
 
 generators:
 - ksops-generator.yaml
