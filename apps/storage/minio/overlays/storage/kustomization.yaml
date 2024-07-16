@@ -4,7 +4,7 @@ namespace: minio
 
 resources:
 - ../../base
-# - resources/pv.yaml
+- resources/pv.yaml
 # - resources/pvc.yaml
 
 generators:
