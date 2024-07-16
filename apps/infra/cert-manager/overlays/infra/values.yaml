@@ -410,7 +410,7 @@ hostAliases: []
 # +docs:property
 nodeSelector:
   kubernetes.io/os: linux
-  node-restriction.kubernetes.io/reserved-for: platform
+  # node-restriction.kubernetes.io/reserved-for: platform
 
 # +docs:ignore
 ingressShim: {}
@@ -788,7 +788,7 @@ webhook:
   # +docs:property
   nodeSelector:
     kubernetes.io/os: linux
-    node-restriction.kubernetes.io/reserved-for: platform
+    # node-restriction.kubernetes.io/reserved-for: platform
 
   # A Kubernetes Affinity, if required. For more information, see [Affinity v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#affinity-v1-core).
   #
@@ -1116,7 +1116,7 @@ cainjector:
   # +docs:property
   nodeSelector:
     kubernetes.io/os: linux
-    node-restriction.kubernetes.io/reserved-for: platform
+    # node-restriction.kubernetes.io/reserved-for: platform
 
   # A Kubernetes Affinity, if required. For more information, see [Affinity v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#affinity-v1-core).
   #
@@ -1346,7 +1346,7 @@ startupapicheck:
   # +docs:property
   nodeSelector:
     kubernetes.io/os: linux
-    node-restriction.kubernetes.io/reserved-for: platform
+    # node-restriction.kubernetes.io/reserved-for: platform
 
   # A Kubernetes Affinity, if required. For more information, see [Affinity v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#affinity-v1-core).
   # For example:
