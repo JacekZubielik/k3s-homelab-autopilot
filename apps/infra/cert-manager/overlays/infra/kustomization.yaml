@@ -41,12 +41,13 @@ patches:
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=false
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true #,ServerSideApply=false
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,ServerSideApply=false
     argocd.argoproj.io/sync-wave: "0"
     cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
   labels:
     app.kubernetes.io/name: cert-manager
   name: cert-manager
+
 
 helmCharts:
 - name: cert-manager
@@ -56,3 +57,33 @@ helmCharts:
   namespace: cert-manager
   releaseName: cert-manager
   valuesFile: values.yaml
+
+  valuesInline:
+    spec:
+      ignoreDifferences:
+        # # ------------- MetalLB patch
+        # - group: "apiextensions.k8s.io"
+        #   kind: CustomResourceDefinition
+        #   name: bgppeers.metallb.io
+        #   jsonPointers:
+        #     - /spec/conversion/webhook/clientConfig/caBundle
+        # - group: "apiextensions.k8s.io"
+        #   kind: CustomResourceDefinition
+        #   name: addresspools.metallb.io
+        #   jsonPointers:
+        #     - /spec/conversion/webhook/clientConfig/caBundle
+        - group: "apps"
+          kind: "Deployment"
+          jsonPointers:
+            - /spec/template/metadata/annotations
+            - /spec/template/metadata/labels
+        - group: "apps"
+          kind: "StatefulSet"
+          jsonPointers:
+            - /spec/template/metadata/annotations
+            - /spec/template/metadata/labels
+        # - kind: PersistentVolume
+        #   jsonPointers:
+        #   - /spec/claimRef/resourceVersion
+        #   - /spec/claimRef/uid
+        #   - /status/lastPhaseTransitionTime
