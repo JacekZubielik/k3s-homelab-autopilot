@@ -11,7 +11,7 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:
   destination:
-    namespace: metallb
+    namespace: metallb-system
     server: https://kubernetes.default.svc
   project: default
   source:
