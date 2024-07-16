@@ -26,7 +26,7 @@ global:
   # revisionHistoryLimit: 1
 
   # The optional priority class to be used for the cert-manager pods.
-  priorityClassName: ""
+  priorityClassName: "system-cluster-critical"
 
   rbac:
     # Create required ClusterRoles and ClusterRoleBindings for cert-manager.
@@ -308,10 +308,35 @@ containerSecurityContext:
   readOnlyRootFilesystem: true
 
 # Additional volumes to add to the cert-manager controller pod.
-volumes: []
+# volumes: []
+
+volumes:
+- name: serviceaccount-token
+  projected:
+    defaultMode: 0444
+    sources:
+    - serviceAccountToken:
+        expirationSeconds: 3607
+        path: token
+    - configMap:
+        name: kube-root-ca.crt
+        items:
+        - key: ca.crt
+          path: ca.crt
+    - downwardAPI:
+        items:
+        - path: namespace
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
 
 # Additional volume mounts to add to the cert-manager controller container.
-volumeMounts: []
+# volumeMounts: []
+
+volumeMounts:
+- mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+  name: serviceaccount-token
+  readOnly: true
 
 # Optional additional annotations to add to the controller Deployment.
 # +docs:property
@@ -762,6 +787,7 @@ webhook:
   # +docs:property
   nodeSelector:
     kubernetes.io/os: linux
+    node-restriction.kubernetes.io/reserved-for: platform
 
   # A Kubernetes Affinity, if required. For more information, see [Affinity v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#affinity-v1-core).
   #
@@ -785,8 +811,12 @@ webhook:
   #     operator: Equal
   #     value: master
   #     effect: NoSchedule
-  tolerations: []
+  # tolerations: []
 
+  tolerations:
+  - key: node-restriction.kubernetes.io/reserved-for
+    operator: Equal
+    value: platform
 
   # A list of Kubernetes TopologySpreadConstraints, if required. For more information, see [Topology spread constraint v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#topologyspreadconstraint-v1-core).
   #
@@ -925,10 +955,35 @@ webhook:
           cidr: 0.0.0.0/0
 
   # Additional volumes to add to the cert-manager controller pod.
-  volumes: []
+  # volumes: []
+
+  volumes:
+  - name: serviceaccount-token
+    projected:
+      defaultMode: 0444
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          name: kube-root-ca.crt
+          items:
+          - key: ca.crt
+            path: ca.crt
+      - downwardAPI:
+          items:
+          - path: namespace
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
 
   # Additional volume mounts to add to the cert-manager controller container.
-  volumeMounts: []
+  # volumeMounts: []
+
+  volumeMounts:
+  - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+    name: serviceaccount-token
+    readOnly: true
 
   # enableServiceLinks indicates whether information about services should be
   # injected into the pod's environment variables, matching the syntax of Docker
@@ -1027,9 +1082,14 @@ cainjector:
 
   # Additional command line flags to pass to cert-manager cainjector binary.
   # To see all available flags run `docker run quay.io/jetstack/cert-manager-cainjector:<version> --help`.
-  extraArgs: []
+  # extraArgs: []
   # Enable profiling for cainjector.
   # - --enable-profiling=true
+
+  extraArgs:
+  - --namespace=cert-manager
+  - --enable-certificates-data-source=false
+
 
   # Comma separated list of feature gates that should be enabled on the
   # cainjector pod.
@@ -1055,6 +1115,7 @@ cainjector:
   # +docs:property
   nodeSelector:
     kubernetes.io/os: linux
+    node-restriction.kubernetes.io/reserved-for: platform
 
   # A Kubernetes Affinity, if required. For more information, see [Affinity v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#affinity-v1-core).
   #
@@ -1078,7 +1139,12 @@ cainjector:
   #     operator: Equal
   #     value: master
   #     effect: NoSchedule
-  tolerations: []
+  # tolerations: []
+
+  tolerations:
+  - key: node-restriction.kubernetes.io/reserved-for
+    operator: Equal
+    value: platform
 
   # A list of Kubernetes TopologySpreadConstraints, if required. For more information, see [Topology spread constraint v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#topologyspreadconstraint-v1-core).
   #
@@ -1142,10 +1208,35 @@ cainjector:
   # automountServiceAccountToken: true
 
   # Additional volumes to add to the cert-manager controller pod.
-  volumes: []
+  # volumes: []
+
+  volumes:
+  - name: serviceaccount-token
+    projected:
+      defaultMode: 0444
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          name: kube-root-ca.crt
+          items:
+          - key: ca.crt
+            path: ca.crt
+      - downwardAPI:
+          items:
+          - path: namespace
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
 
   # Additional volume mounts to add to the cert-manager controller container.
-  volumeMounts: []
+  # volumeMounts: []
+
+  volumeMounts:
+  - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+    name: serviceaccount-token
+    readOnly: true
 
   # enableServiceLinks indicates whether information about services should be
   # injected into the pod's environment variables, matching the syntax of Docker
@@ -1254,6 +1345,7 @@ startupapicheck:
   # +docs:property
   nodeSelector:
     kubernetes.io/os: linux
+    node-restriction.kubernetes.io/reserved-for: platform
 
   # A Kubernetes Affinity, if required. For more information, see [Affinity v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#affinity-v1-core).
   # For example:
@@ -1276,7 +1368,12 @@ startupapicheck:
   #     operator: Equal
   #     value: master
   #     effect: NoSchedule
-  tolerations: []
+  # tolerations: []
+
+  tolerations:
+  - key: node-restriction.kubernetes.io/reserved-for
+    operator: Equal
+    value: platform
 
   # Optional additional labels to add to the startupapicheck Pods.
   podLabels: {}
@@ -1339,10 +1436,35 @@ startupapicheck:
     # labels: {}
 
   # Additional volumes to add to the cert-manager controller pod.
-  volumes: []
+  # volumes: []
+
+  volumes:
+  - name: serviceaccount-token
+    projected:
+      defaultMode: 0444
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          name: kube-root-ca.crt
+          items:
+          - key: ca.crt
+            path: ca.crt
+      - downwardAPI:
+          items:
+          - path: namespace
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
 
   # Additional volume mounts to add to the cert-manager controller container.
-  volumeMounts: []
+  # volumeMounts: []
+
+  volumeMounts:
+  - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+    name: serviceaccount-token
+    readOnly: true
 
   # enableServiceLinks indicates whether information about services should be
   # injected into pod's environment variables, matching the syntax of Docker
