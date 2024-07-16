@@ -1,20 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  # annotations:
-  #   kube-vip.io/loadbalancerIPs: 192.168.40.181
-  #   metallb.universe.tf/loadBalancerIPs: 192.168.40.181
-  # labels:
-  #   app=longhorn-ui
+  annotations:
+    kube-vip.io/loadbalancerIPs: 192.168.40.181
+    # metallb.universe.tf/loadBalancerIPs: 192.168.40.181
   name: longhorn-frontend-ui
   namespace: longhorn-system
 spec:
   ports:
-    - port: 8000
-      protocol: TCP
-      targetPort: 32450
-      name: ui
+  - port: 80
+    protocol: TCP
+    targetPort: 8000
+    name: ui
   type: LoadBalancer
-  loadBalancerIP: 192.168.40.181
   selector:
-    app=longhorn-ui
+    app: longhorn-ui
