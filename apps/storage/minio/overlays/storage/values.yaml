@@ -63,7 +63,7 @@ persistence:
   storageClassName: host-path
   accessModes: ReadWriteOnce
   volumeName: pvc-minio-0
-  # volumeMode: Filesystem
+  volumeMode: Filesystem
   size: 100Gi
   # persistentVolumeClaimRetentionPolicy:
   #   enabled: true
