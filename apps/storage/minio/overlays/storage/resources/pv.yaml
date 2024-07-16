@@ -4,8 +4,8 @@ kind: PersistentVolume
 metadata:
   name: pvc-minio-0
   namespace: minio
-  labels:
-    type: local
+  # labels:
+  #   type: local
 spec:
   storageClassName: host-path
   capacity:
@@ -17,11 +17,11 @@ spec:
   hostPath:
     path: "/mnt/data/PV/minio-pv-volume"
     type: DirectoryOrCreate
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - dev-k3s-master-0
+  # nodeAffinity:
+  #   required:
+  #     nodeSelectorTerms:
+  #       - matchExpressions:
+  #           - key: kubernetes.io/hostname
+  #             operator: In
+  #             values:
+  #               - dev-k3s-master-0

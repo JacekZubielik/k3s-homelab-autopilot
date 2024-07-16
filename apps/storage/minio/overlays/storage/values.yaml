@@ -62,7 +62,10 @@ persistence:
   existingClaim: pvc-minio-0
   storageClassName: host-path
   volumeName: pvc-minio-0
-
+  persistentVolumeClaimRetentionPolicy:
+    enabled: true
+    whenScaled: Retain
+    whenDeleted: Retain
 
 
 
