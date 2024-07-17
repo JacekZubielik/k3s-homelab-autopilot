@@ -14,7 +14,7 @@ spec:
   csi:
     driver: driver.longhorn.io
     fsType: ext4
-    type: "/v3/cluster/schemas/csiPersistentVolumeSource"
+    # type: "/v3/cluster/schemas/csiPersistentVolumeSource"
     volumeAttributes:
       numberOfReplicas: '1'
       staleReplicaTimeout: '2880'
@@ -36,7 +36,7 @@ spec:
   csi:
     driver: driver.longhorn.io
     fsType: ext4
-    type: "/v3/cluster/schemas/csiPersistentVolumeSource"
+    # type: "/v3/cluster/schemas/csiPersistentVolumeSource"
     volumeAttributes:
       numberOfReplicas: '1'
       staleReplicaTimeout: '2880'
