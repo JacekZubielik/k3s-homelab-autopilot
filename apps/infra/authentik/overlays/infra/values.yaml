@@ -427,10 +427,10 @@ postgresql:
     storageClassName: longhorn-data
     volumeMode: Filesystem
     volumeName: pvc-authentik-psql-0
-    # persistentVolumeClaimRetentionPolicy:
-    #   enabled: true
-    #   whenScaled: Retain
-    #   whenDeleted: Retain
+    persistentVolumeClaimRetentionPolicy:
+      enabled: true
+      whenScaled: Retain
+      whenDeleted: Retain
 
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
@@ -448,7 +448,7 @@ redis:
     storageClassName: longhorn-data
     volumeMode: Filesystem
     volumeName: pvc-authentik-redis-0
-    # persistentVolumeClaimRetentionPolicy:
-    #   enabled: true
-    #   whenScaled: Retain
-    #   whenDeleted: Retain
+    persistentVolumeClaimRetentionPolicy:
+      enabled: true
+      whenScaled: Retain
+      whenDeleted: Retain

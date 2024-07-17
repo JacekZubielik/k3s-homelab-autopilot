@@ -39,3 +39,21 @@ helmCharts:
   namespace: authentik
   releaseName: authentik
   valuesFile: values.yaml
+  valuesInline:
+    spec:
+      ignoreDifferences:
+        - group: "apps"
+          kind: "Deployment"
+          jsonPointers:
+            - /spec/template/metadata/annotations
+            - /spec/template/metadata/labels
+        - group: "apps"
+          kind: "StatefulSet"
+          jsonPointers:
+            - /spec/template/metadata/annotations
+            - /spec/template/metadata/labels
+        - kind: PersistentVolume
+          jsonPointers:
+          - /spec/claimRef/resourceVersion
+          - /spec/claimRef/uid
+          - /status/lastPhaseTransitionTime
