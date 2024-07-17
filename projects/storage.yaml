@@ -102,21 +102,21 @@ spec:
         kind: Application
         jsonPointers:
         - /operation
-      # - group: "apps"
-      #   kind: "Deployment"
-      #   jsonPointers:
-      #   - /spec/template/metadata/annotations
-      #   - /spec/template/metadata/labels
-      # - group: "apps"
-      #   kind: "StatefulSet"
-      #   jsonPointers:
-      #   - /spec/template/metadata/annotations
-      #   - /spec/template/metadata/labels
-      - kind: PersistentVolume
+      - group: "apps"
+        kind: "Deployment"
         jsonPointers:
-        - /spec/claimRef/resourceVersion
-        - /spec/claimRef/uid
-        - /status/lastPhaseTransitionTime
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+      - group: "apps"
+        kind: "StatefulSet"
+        jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+      # - kind: PersistentVolume
+      #   jsonPointers:
+      #   - /spec/claimRef/resourceVersion
+      #   - /spec/claimRef/uid
+      #   - /status/lastPhaseTransitionTime
       project: storage
       source:
         path: '{{ srcPath }}'
