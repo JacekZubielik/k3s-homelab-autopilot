@@ -44,10 +44,6 @@ configMapGenerator:
   - controller.diff.include.mutation.webhook="true"
 
 patches:
-# - path: patches/frontend-service.yaml
-#   target:
-#     kind: Service
-#     name: argocd-server
 - path: patches/ksops.yaml
 - path: patches/rbac-cm.yaml
 # - path: patches/last-phase-transition.yaml
