@@ -34,8 +34,9 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: longhorn-data
   csi:
-    driver: io.rancher.longhorn #driver.longhorn.io
+    driver: driver.longhorn.io
     fsType: ext4
+    type: "/v3/cluster/schemas/csiPersistentVolumeSource"
     volumeAttributes:
       numberOfReplicas: '1'
       staleReplicaTimeout: '2880'
