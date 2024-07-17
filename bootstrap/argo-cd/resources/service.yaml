@@ -6,7 +6,7 @@ metadata:
   annotations:
     kube-vip.io/loadbalancerIPs: 192.168.40.182
     # io.cilium/lb-ipam-ips: 192.168.40.182
-  name: argocd-server-lb
+  name: argocd-server-ui
   namespace: argocd
 spec:
   ports:

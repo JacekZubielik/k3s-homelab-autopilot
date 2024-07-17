@@ -4,12 +4,12 @@ kind: Kustomization
 namespace: argocd
 resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
-- resources/service.yaml
+# - resources/service.yaml
 # - resources/last-phase-transition.yaml
 # - resources/metrics.yaml
 
-generators:
-- ksops-generator.yaml
+# generators:
+# - ksops-generator.yaml
 
 configMapGenerator:
 - behavior: merge
@@ -40,8 +40,8 @@ configMapGenerator:
   name: argocd-cmd-params-cm
   literals:
   - server.insecure="true"
-  - controller.diff.server.side="true"
-  - controller.diff.include.mutation.webhook="true"
+  # - controller.diff.server.side="true"
+  # - controller.diff.include.mutation.webhook="true"
 
 patches:
 - path: patches/ksops.yaml
