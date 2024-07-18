@@ -52,6 +52,6 @@ helmCharts:
         syncOptions:
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
-        - SkipDryRunOnMissingResource=false
+        - SkipDryRunOnMissingResource=true #false
         - Delete=true
         - Replace=true
