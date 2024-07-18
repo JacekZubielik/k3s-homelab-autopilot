@@ -238,7 +238,7 @@ config: {}
 # For more information, see the [cert-manager documentation](https://cert-manager.io/docs/configuration/acme/dns01/#setting-nameservers-for-dns01-self-check).
 
 # A comma-separated string with the host and port of the recursive nameservers cert-manager should query.
-dns01RecursiveNameservers: "1.1.1.1:53,8.8.8.8:53"
+dns01RecursiveNameservers: "8.8.8.8:53,1.1.1.1:53"
 
 
 # Forces cert-manager to use only the recursive nameservers for verification.
@@ -272,7 +272,7 @@ approveSignerNames:
 #    - --controllers=*,-certificaterequests-approver
 
 extraArgs:
-- --enable-gateway-api
+# - --enable-gateway-api
 
 # Additional environment variables to pass to cert-manager controller binary.
 extraEnv: []
@@ -308,35 +308,35 @@ containerSecurityContext:
   readOnlyRootFilesystem: true
 
 # Additional volumes to add to the cert-manager controller pod.
-volumes: []
+# volumes: []
 
-# volumes:
-# - name: serviceaccount-token
-#   projected:
-#     defaultMode: 0444
-#     sources:
-#     - serviceAccountToken:
-#         expirationSeconds: 3607
-#         path: token
-#     - configMap:
-#         name: kube-root-ca.crt
-#         items:
-#         - key: ca.crt
-#           path: ca.crt
-#     - downwardAPI:
-#         items:
-#         - path: namespace
-#           fieldRef:
-#             apiVersion: v1
-#             fieldPath: metadata.namespace
+volumes:
+- name: serviceaccount-token
+  projected:
+    defaultMode: 0444
+    sources:
+    - serviceAccountToken:
+        expirationSeconds: 3607
+        path: token
+    - configMap:
+        name: kube-root-ca.crt
+        items:
+        - key: ca.crt
+          path: ca.crt
+    - downwardAPI:
+        items:
+        - path: namespace
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.namespace
 
 # Additional volume mounts to add to the cert-manager controller container.
-volumeMounts: []
+# volumeMounts: []
 
-# volumeMounts:
-# - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-#   name: serviceaccount-token
-#   readOnly: true
+volumeMounts:
+- mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+  name: serviceaccount-token
+  readOnly: true
 
 # Optional additional annotations to add to the controller Deployment.
 # +docs:property
@@ -388,8 +388,9 @@ podLabels: {}
 podDnsPolicy: None
 podDnsConfig:
   nameservers:
-  - 1.1.1.1
   - 8.8.8.8
+  - 1.1.1.1
+
 
 # Optional hostAliases for cert-manager-controller pods. May be useful when performing ACME DNS-01 self checks.
 hostAliases: []
