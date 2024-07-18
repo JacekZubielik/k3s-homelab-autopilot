@@ -39,3 +39,20 @@ helmCharts:
   namespace: minio
   includeCRDs: true
   valuesFile: values.yaml
+  valuesInline:
+    spec:
+      ignoreDifferences:
+        - kind: PersistentVolume
+          jsonPointers:
+          - /spec/claimRef/resourceVersion
+          - /spec/claimRef/uid
+          - /status/lastPhaseTransitionTime
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: false
+        syncOptions:
+        - RespectIgnoreDifferences=true
+        - ServerSideApply=false
+        - SkipDryRunOnMissingResource=true
