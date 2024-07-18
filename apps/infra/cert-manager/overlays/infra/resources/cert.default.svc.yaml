@@ -14,7 +14,7 @@ spec:
     organizations:
     - K3s
   privateKey:
-    rotationPolicy: Always
+    # rotationPolicy: Always
     # algorithm: RSA
     # encoding: PKCS8
     # size: 2048
