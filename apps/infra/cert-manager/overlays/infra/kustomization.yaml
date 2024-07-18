@@ -5,22 +5,20 @@ namespace: cert-manager
 
 resources:
 - ../../base
-# - resources/cert.default.svc.yaml
-# - resources/issuer.default.svc.yaml
-# - resources/issuer.k3s.ca-cluster.yaml
+- resources/cert.default.svc.yaml
+- resources/issuer.default.svc.yaml
+- resources/issuer.k3s.ca-cluster.yaml
 # - resources/servicemonitor.yaml
-# - resources/selfsigned-issuer-test.yaml
-# - resources/cert-test.yaml
 
 generators:
 - ksops-generator.yaml
 
 metadata:
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=false
+    argocd.argoproj.io/compare-options: IgnoreExtraneous #,ServerSideDiff=true,IncludeMutationWebhook=false
     # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "0"
-    cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
+    # cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
   labels:
     app.kubernetes.io/name: cert-manager
   name: cert-manager

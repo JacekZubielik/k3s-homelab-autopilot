@@ -2,19 +2,17 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: selfsigned-ca
+  name: default-selfsigned-ca
   namespace: cert-manager
 spec:
-  commonName: default.svc
-  duration: 2160h0m0s   # 90d
   isCA: true
-  renewBefore: 720h0m0s   # 30d
+  commonName: default-selfsigned-ca
   secretName: default.svc.tls
+  duration: 2160h0m0s   # 90d
+  renewBefore: 720h0m0s   # 30d
   subject:
     organizations:
     - K3s
-    organizationalUnits:
-    - kubernetes.default.svc.cluster.local
   privateKey:
     rotationPolicy: Always
     # algorithm: RSA
@@ -27,13 +25,13 @@ spec:
   - cert sign
   - server auth
   - client auth
-  dnsNames:
-  - "svc.cluster.local"
-  - "*..svc.cluster.local"
+  # dnsNames:
+  # - "svc.cluster.local"
+  # - "*..svc.cluster.local"
   # ipAddresses:
   # - 127.0.0.1
   # - ::1
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
-    name: selfsigned-issuer
+    name: default-issuer-selfsigned
