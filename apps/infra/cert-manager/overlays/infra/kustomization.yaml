@@ -17,7 +17,7 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=false
     argocd.argoproj.io/sync-wave: "0"
-    # cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
+    cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
   labels:
     app.kubernetes.io/name: cert-manager
   name: cert-manager
