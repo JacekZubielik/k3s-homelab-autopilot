@@ -4,7 +4,7 @@ metadata:
   name: ksops-generator
 type: Opaque
 files:
-- resources/cert.route53.staging.sops.yaml
+# - resources/cert.route53.staging.sops.yaml
 - resources/issuer.route53.staging.sops.yaml
 - secrets/secret.sops.yaml
 # - resources/cert.k3s.ca-cluster.sops.yaml
