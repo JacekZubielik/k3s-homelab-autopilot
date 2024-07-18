@@ -48,7 +48,6 @@ spec:
     #       target:
     #         kind: Job
 
-
       template:
         metadata:
           labels:
@@ -133,7 +132,7 @@ spec:
         # - Delete=false
         # - FailOnSharedResource=false
         # - preserveResourcesOnDeletion=false
-        # - PruneLast=true
+        - PruneLast=true
         # - PrunePropagationPolicy=foreground
         # - Replace=false
         # - RespectIgnoreDifferences=true

@@ -1,0 +1,60 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: minio
+
+resources:
+- ../../base
+- resources/pv.yaml
+
+generators:
+- ksops-generator.yaml
+
+configMapGenerator:
+# - name: argocd-cm
+#   literals:
+#   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+#   - resource.compareoptions.ignoreAggregatedRoles="true"
+
+- name: argocd-cmd-params-cm
+  literals:
+#   # - server.insecure="true"
+  - controller.diff.server.side="true"
+  - controller.diff.include.mutation.webhook="true"
+
+
+metadata:
+  annotations:
+    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: minio
+  name: minio
+
+helmCharts:
+- name: minio
+  version: 5.2.0
+  repo: https://charts.min.io/
+  includeCRDs: true
+  namespace: minio
+  releaseName: minio
+  valuesFile: values.yaml
+  valuesInline:
+    spec:
+      ignoreDifferences:
+        - kind: PersistentVolume
+          jsonPointers:
+          - /spec/claimRef/resourceVersion
+          - /spec/claimRef/uid
+          - /status/lastPhaseTransitionTime
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: false
+        syncOptions:
+        - RespectIgnoreDifferences=true
+        - ServerSideApply=true
+        - SkipDryRunOnMissingResource=false
+        - Delete=true
+        - Replace=true
