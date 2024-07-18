@@ -830,12 +830,14 @@ grafana:
 
   persistence:
     enabled: true
+    type: sts
     storageClassName: longhorn-data
-    accessModes: ["ReadWriteOnce"]
+    accessModes:
+      - ReadWriteOnce
     resources:
       requests:
         storage: 8Gi
-    volumeMode: Filesystem
+    # volumeMode: Filesystem
     volumeName: pvc-grafana-db-0
     # persistentVolumeClaimRetentionPolicy:
     #   enabled: true
@@ -3237,7 +3239,7 @@ prometheus:
       volumeClaimTemplate:
         spec:
           storageClassName: longhorn-data
-          accessModes: "ReadWriteOnce"
+          accessModes: ReadWriteOnce
           resources:
             requests:
               storage: 8Gi
