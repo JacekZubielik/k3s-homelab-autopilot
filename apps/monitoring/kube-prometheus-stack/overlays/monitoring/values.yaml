@@ -3237,7 +3237,7 @@ prometheus:
       volumeClaimTemplate:
         spec:
           storageClassName: longhorn-data
-          accessModes: ["ReadWriteOnce"]
+          accessModes: "ReadWriteOnce"
           resources:
             requests:
               storage: 8Gi
