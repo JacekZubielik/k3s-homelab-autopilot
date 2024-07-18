@@ -19,7 +19,7 @@ spec:
     # encoding: PKCS8
     # size: 2048
     algorithm: ECDSA
-    encoding: PKCS1
+    # encoding: PKCS1
     size: 256
   usages:
   - cert sign
