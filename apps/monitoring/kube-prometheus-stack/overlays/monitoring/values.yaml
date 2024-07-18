@@ -645,6 +645,7 @@ alertmanager:
     logLevel: info
     replicas: 1
     retention: 120h
+
     storage:
       volumeClaimTemplate:
         spec:
@@ -653,8 +654,8 @@ alertmanager:
           resources:
             requests:
               storage: 8Gi
-          volumeMode: Filesystem
-          volumeName: pvc-alertmanager-db-0
+          # volumeMode: Filesystem
+          # volumeName: pvc-alertmanager-db-0
 
     ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
     ##
