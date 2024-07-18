@@ -33,11 +33,11 @@ metadata:
 
 helmCharts:
 - name: minio
-  repo: https://charts.min.io/
   version: 5.2.0
-  releaseName: minio
-  namespace: minio
+  repo: https://charts.min.io/
   includeCRDs: true
+  namespace: minio
+  releaseName: minio
   valuesFile: values.yaml
   valuesInline:
     spec:
