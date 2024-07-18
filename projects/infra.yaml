@@ -92,16 +92,16 @@ spec:
           kind: Application
           jsonPointers:
             - /operation
-        - group: "apps"
-          kind: "Deployment"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
-        - group: "apps"
-          kind: "StatefulSet"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
+        # - group: "apps"
+        #   kind: "Deployment"
+        #   jsonPointers:
+        #     - /spec/template/metadata/annotations
+        #     - /spec/template/metadata/labels
+        # - group: "apps"
+        #   kind: "StatefulSet"
+        #   jsonPointers:
+        #     - /spec/template/metadata/annotations
+        #     - /spec/template/metadata/labels
         # - kind: PersistentVolume
         #   jsonPointers:
         #   - /spec/claimRef/resourceVersion
@@ -116,7 +116,7 @@ spec:
         automated:
           allowEmpty: true
           prune: true
-          selfHeal: true
+          # selfHeal: true
         syncOptions:
           # - ApplyOutOfSyncOnly=true
           - CreateNamespace=true
