@@ -24,7 +24,7 @@ spec:
   usages:
   - cert sign
   - server auth
-  - client auth
+  # - client auth
   # dnsNames:
   # - "svc.cluster.local"
   # - "*..svc.cluster.local"
