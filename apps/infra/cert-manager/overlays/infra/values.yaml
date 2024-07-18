@@ -249,7 +249,7 @@ dns01RecursiveNameserversOnly: false
 # approves all CertificateRequests that reference issuers matching the 'approveSignerNames'
 # option. This 'disableAutoApproval' option is useful when you want to make all approval decisions
 # using a different approver (like approver-policy - https://github.com/cert-manager/approver-policy).
-disableAutoApproval: false
+disableAutoApproval: true #false
 
 # List of signer names that cert-manager will approve by default. CertificateRequests
 # referencing these signer names will be auto-approved by cert-manager. Defaults to just
