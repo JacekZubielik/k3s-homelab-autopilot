@@ -53,8 +53,11 @@ helmCharts:
           prune: true
           selfHeal: false
         syncOptions:
+        - ApplyOutOfSyncOnly=true
+        - Delete=false
+        - FailOnSharedResource=false
+        - Replace=false
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
-        - SkipDryRunOnMissingResource=false
-        - Delete=true
-        - Replace=true
+        - SkipDryRunOnMissingResource=true
+        

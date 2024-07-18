@@ -127,12 +127,12 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-        # - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
+        - PruneLast=true
+        # - ApplyOutOfSyncOnly=true
         # - Delete=false
         # - FailOnSharedResource=false
         # - preserveResourcesOnDeletion=false
-        - PruneLast=true
         # - PrunePropagationPolicy=foreground
         # - Replace=false
         # - RespectIgnoreDifferences=true
