@@ -18,7 +18,7 @@ generators:
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=false
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "0"
     cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
   labels:
@@ -46,3 +46,14 @@ helmCharts:
           jsonPointers:
             - /spec/template/metadata/annotations
             - /spec/template/metadata/labels
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: false
+        syncOptions:
+        - RespectIgnoreDifferences=true
+        - ServerSideApply=true
+        - SkipDryRunOnMissingResource=false
+        - Delete=true
+        - Replace=true
