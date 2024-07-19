@@ -136,19 +136,12 @@ tolerations: []
 
 persistence:
   enabled: true
-  path: /config
-  accessModes: ReadWriteOnce
-  size: 2Gi
-  storageClass: longhorn-data
+  # path: /config
+  # accessModes: ReadWriteOnce
+  # size: 2Gi
+  # storageClass: longhorn-data
   persistentVolumeClaim:
     claimName: pvc-esphome-0
-
-
-  # volumeName: pvc-esphome-0
-persistentVolumeClaimRetentionPolicy:
-  enabled: true
-  whenScaled: Retain
-  whenDeleted: Retain
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 # hostMounts: []
