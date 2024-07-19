@@ -135,7 +135,7 @@ affinity: {}
 tolerations: []
 
 persistence:
-  enabled: true
+  enabled: false
   # path: /config
   # accessModes: ReadWriteOnce
   # size: 2Gi
