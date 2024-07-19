@@ -136,13 +136,16 @@ affinity: {}
 tolerations: []
 
 persistence:
-  enabled: true
+  enabled: false
   # path: /config
-  accessModes: ReadWriteOnce
-  size: 2Gi
-  storageClass: longhorn-data
-  persistentVolumeClaim:
+  # accessModes: ReadWriteOnce
+  # size: 2Gi
+  # storageClass: longhorn-data
+  existingClaim:
+  # persistentVolumeClaim:
     claimName: pvc-esphome-0
+  # volumeMode: Filesystem
+  # volumeName: pvc-esphome-0
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 # hostMounts: []
