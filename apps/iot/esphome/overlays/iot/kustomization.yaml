@@ -63,9 +63,3 @@ helmCharts:
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
-
-
-
-
-
-

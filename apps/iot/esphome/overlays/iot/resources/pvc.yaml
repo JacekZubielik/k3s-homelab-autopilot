@@ -18,4 +18,4 @@ spec:
       storage: 2Gi
   storageClassName: longhorn-data
   # volumeMode: Filesystem
-  # volumeName: pvc-esphome-0
+  volumeName: pvc-esphome-0
