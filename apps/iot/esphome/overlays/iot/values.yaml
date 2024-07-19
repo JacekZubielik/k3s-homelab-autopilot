@@ -142,10 +142,7 @@ persistence:
   # size: 2Gi
   # storageClass: longhorn-data
   existingClaim:
-  # persistentVolumeClaim:
     claimName: pvc-esphome-0
-  # volumeMode: Filesystem
-  # volumeName: pvc-esphome-0
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 # hostMounts: []
