@@ -6,8 +6,3 @@ metadata:
   labels:
     app.kubernetes.io/name: traefik
   name: traefik
-
-configMapGenerator:
-- name: traefik-tz
-  literals:
-  - TZ=CET
