@@ -25,6 +25,7 @@ spec:
     volumeAttributes:
       numberOfReplicates: '1'
       staleReplicaTimeout: '2880'
+      dataLocality: "disabled"
     volumeHandle: pvc-esphome-0
 
   # hostPath:

@@ -136,11 +136,11 @@ affinity: {}
 tolerations: []
 
 persistence:
-  enabled: false
-  # path: /config
-  # accessModes: ReadWriteOnce
-  # size: 2Gi
-  # storageClass: longhorn-data
+  enabled: true
+  path: /config
+  accessModes: ReadWriteOnce
+  size: 2Gi
+  storageClass: longhorn-data
   persistentVolumeClaim:
     claimName: pvc-esphome-0
 
