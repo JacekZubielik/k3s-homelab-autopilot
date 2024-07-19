@@ -91,22 +91,22 @@ spec:
       - group: argoproj.io
         kind: Application
         jsonPointers:
-        - /operation
-      - group: "apps"
-        kind: "Deployment"
-        jsonPointers:
-        - /spec/template/metadata/annotations
-        - /spec/template/metadata/labels
-      - group: "apps"
-        kind: "StatefulSet"
-        jsonPointers:
-        - /spec/template/metadata/annotations
-        - /spec/template/metadata/labels
-      - kind: PersistentVolume
-        jsonPointers:
-        - /spec/claimRef/resourceVersion
-        - /spec/claimRef/uid
-        - /status/lastPhaseTransitionTime
+      #   - /operation
+      # - group: "apps"
+      #   kind: "Deployment"
+      #   jsonPointers:
+      #   - /spec/template/metadata/annotations
+      #   - /spec/template/metadata/labels
+      # - group: "apps"
+      #   kind: "StatefulSet"
+      #   jsonPointers:
+      #   - /spec/template/metadata/annotations
+      #   - /spec/template/metadata/labels
+      # - kind: PersistentVolume
+      #   jsonPointers:
+      #   - /spec/claimRef/resourceVersion
+      #   - /spec/claimRef/uid
+      #   - /status/lastPhaseTransitionTime
       project: trade
       source:
         path: '{{ srcPath }}'
@@ -120,16 +120,16 @@ spec:
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
-        - Delete=true
-        - FailOnSharedResource=false
-        - preserveResourcesOnDeletion=false
-        - PruneLast=true
-        - PrunePropagationPolicy=foreground
-        - Replace=false
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
-        - Validate=false
+        # - Delete=true
+        # - FailOnSharedResource=false
+        # - preserveResourcesOnDeletion=false
+        # - PruneLast=true
+        # - PrunePropagationPolicy=foreground
+        # - Replace=false
+        # - RespectIgnoreDifferences=true
+        # - ServerSideApply=true
+        # - SkipDryRunOnMissingResource=true
+        # - Validate=false
         retry:
           backoff:
             duration: 10s
