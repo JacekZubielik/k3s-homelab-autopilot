@@ -137,7 +137,7 @@ tolerations: []
 
 persistence:
   enabled: true
-  path: /config
+  # path: /config
   accessModes: ReadWriteOnce
   size: 2Gi
   storageClass: longhorn-data
