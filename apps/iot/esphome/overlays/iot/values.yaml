@@ -53,6 +53,7 @@ service:
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: 9100
+    kube-vip.io/loadbalancerIPs: "192.168.40.184"
   labels: {}
   type: LoadBalancer
   externalIPs: []
