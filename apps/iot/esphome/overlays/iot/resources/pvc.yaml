@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    "helm.sh/hook-delete-policy": hook-succeeded
+  name: pvc-esphome-0
+  namespace: iot
+  labels:
+    volume: pvc-esphome-0
+    name: pvc-esphome-0
+    type: longhorn
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: longhorn-data
+  # volumeMode: Filesystem
+  # volumeName: pvc-esphome-0
