@@ -139,7 +139,7 @@ persistence:
   path: /config
   accessModes: ReadWriteOnce
   size: 2Gi
-  storageClass: longhorn-hdd
+  storageClass: longhorn-data
   persistentVolumeClaim:
     claimName: pvc-esphome-0
 
