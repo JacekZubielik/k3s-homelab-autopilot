@@ -17,3 +17,6 @@ spec:
   storageClassName: longhorn-data
   volumeMode: Filesystem
   volumeName: pv-esphome-0
+  selector:
+    matchLabels:
+      volume: pvc-esphome-0
