@@ -10,7 +10,7 @@ spec:
   storageClassName: longhorn-data
   resources:
     requests:
-      storage: 2Gi
+      storage: 10Gi
   volumeMode: Filesystem
   volumeName: pv-esphome-0
   selector:

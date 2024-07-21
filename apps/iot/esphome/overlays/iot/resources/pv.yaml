@@ -10,7 +10,7 @@ metadata:
     type: longhorn
 spec:
   capacity:
-    storage: 2Gi
+    storage: 10Gi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
