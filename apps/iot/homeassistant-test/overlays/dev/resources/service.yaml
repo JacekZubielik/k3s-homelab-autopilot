@@ -24,11 +24,11 @@ kind: Service
 metadata:
   name: homeassistant-tcp
 spec:
-  selector:
-    app: homeassistant-test
   type: LoadBalancer
   loadBalancerIP: 192.168.40.191
   ports:
-    - port: 8123 #443
-      name: hassio-gui-api
-      targetPort: 8123
+  - port: 8123 #443
+    name: web
+    targetPort: 8123
+  selector:
+    app: homeassistant-test
