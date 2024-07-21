@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-home-assistant-data
+  name: pvc-ha-data
   namespace: iot
 spec:
   accessModes:
@@ -12,7 +12,7 @@ spec:
     requests:
       storage: 10Gi
   volumeMode: Filesystem
-  volumeName: pv-home-assistant-data
+  volumeName: pv-ha-data
   selector:
     matchLabels:
-      volume: home-assistant-data
+      volume: ha-data

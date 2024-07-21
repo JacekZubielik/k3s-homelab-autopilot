@@ -2,11 +2,11 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-home-assistant-data
+  name: pv-ha-data
   namespace: iot
   labels:
-    volume: home-assistant-data
-    name: home-assistant-data
+    volume: ha-data
+    name: ha-data
     type: longhorn
 spec:
   capacity:
@@ -24,4 +24,4 @@ spec:
       numberOfReplicates: '1'
       staleReplicaTimeout: '2880'
       dataLocality: "disabled"
-    volumeHandle: pvc-home-assistant-data
+    volumeHandle: pvc-ha-data
