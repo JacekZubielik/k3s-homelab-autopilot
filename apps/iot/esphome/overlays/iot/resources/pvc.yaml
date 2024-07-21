@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-esphome-0
+  namespace: iot
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: longhorn-data
+  resources:
+    requests:
+      storage: 2Gi
+  volumeMode: Filesystem
+  volumeName: pv-esphome-0
+  selector:
+    matchLabels:
+      volume: config
