@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homeassistant-test
+  labels:
+    app: homeassistant-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homeassistant-test
+  template:
+    metadata:
+      labels:
+        app: homeassistant-test
+        name: homeassistant-test
+    spec:
+      hostNetwork: true
+      containers:
+      - name: homeassistant-test
+        image: homeassistant/home-assistant:2023.10
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: homeassistant-env
+              key: TZ
+        volumeMounts:
+        - name: homeassistant-data-volume
+          mountPath: /config
+      volumes:
+      - name: homeassistant-data-volume
+        persistentVolumeClaim:
+          claimName: pvc-homeassistant-data

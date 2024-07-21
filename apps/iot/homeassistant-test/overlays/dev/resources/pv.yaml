@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-homeassistant-data
+  namespace: iot
+  labels:
+    volume: homeassistant-data
+    name: homeassistant-data
+    type: longhorn
+spec:
+  capacity:
+    storage: 2Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: longhorn-data
+
+  csi:
+    driver: driver.longhorn.io #io.rancher.longhorn
+    fsType: ext4
+    volumeAttributes:
+      numberOfReplicates: '1'
+      staleReplicaTimeout: '2880'
+      dataLocality: "disabled"
+    volumeHandle: pvc-homeassistant-data
