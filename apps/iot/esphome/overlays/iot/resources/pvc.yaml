@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pvc-esphome-0
-  # namespace: iot
+  namespace: iot
   # labels:
   #   volume: pvc-esphome-0
   #   name: pvc-esphome-0
