@@ -1,0 +1,38 @@
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: home-assistant-proxy
+#   annotations:
+#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+#     argocd.argoproj.io/sync-wave: "10"
+#   labels:
+#     app.kubernetes.io/name: home-assistant
+# spec:
+#   externalName: 192.168.40.191
+#   ports:
+#   - name: http
+#     protocol: TCP
+#     port: 8123
+#     targetPort: 8123
+#   type: ExternalName
+#   selector:
+#     app.kubernetes.io/instance: traefik
+#     app.kubernetes.io/name: traefik
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.40.191
+  ports:
+  - port: 8123
+    name: web
+    targetPort: 8123
+  - port: 9100
+    name: metricsPort
+    targetPort: 9100
+
+  selector:
+    app: home-assistant
