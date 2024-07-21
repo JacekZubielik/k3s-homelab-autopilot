@@ -9,8 +9,8 @@ resources:
 - resources/deployment.yaml
 - resources/service.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 configMapGenerator:
 - name: home-assistant-tz

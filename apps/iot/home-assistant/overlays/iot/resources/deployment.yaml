@@ -41,38 +41,11 @@ spec:
             cpu: 1000m
             memory: 2Gi
         volumeMounts:
-        - name: home-assistant-data-volume
+        - name: ha-data-volume
           mountPath: /config
-        # nodeSelector:
-        #   kubernetes.io/hostname: dev-k3s-master-0
-        # affinity: {}
-        # tolerations: []
-        # livenessProbe:
-        #   enabled: true
-        #   scheme: HTTP
-        #   periodSeconds: 60
-        #   timeoutSeconds: 10
-        #   successThreshold: 1
-        #   failureThreshold: 6
-        #   initialDelaySeconds: 30
-        # readinessProbe:
-        #   enabled: true
-        #   scheme: HTTP
-        #   periodSeconds: 60
-        #   timeoutSeconds: 10
-        #   successThreshold: 1
-        #   failureThreshold: 6
-        #   initialDelaySeconds: 30
-        # startupProbe:
-        #   enabled: true
-        #   successThreshold: 1
-        #   failureThreshold: 6
-
-
-
       volumes:
-      - name: home-assistant-data-volume
+      - name: ha-data-volume
         persistentVolumeClaim:
-          claimName: pvc-home-assistant-data
+          claimName: pvc-ha-data
 
 
