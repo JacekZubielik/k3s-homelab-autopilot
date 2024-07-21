@@ -15,4 +15,4 @@ spec:
   volumeName: pv-esphome-0
   selector:
     matchLabels:
-      volume: esphome-config
+      volume: config

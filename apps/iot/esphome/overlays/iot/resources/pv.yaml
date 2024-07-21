@@ -5,8 +5,8 @@ metadata:
   name: pv-esphome-0
   namespace: iot
   labels:
-    volume: esphome-config
-    name: esphome-config
+    volume: config
+    name: config
     type: longhorn
 spec:
   capacity:
