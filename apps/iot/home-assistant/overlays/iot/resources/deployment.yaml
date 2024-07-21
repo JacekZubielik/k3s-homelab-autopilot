@@ -47,26 +47,26 @@ spec:
         #   kubernetes.io/hostname: dev-k3s-master-0
         # affinity: {}
         # tolerations: []
-        livenessProbe:
-          enabled: true
-          scheme: HTTP
-          periodSeconds: 60
-          timeoutSeconds: 10
-          successThreshold: 1
-          failureThreshold: 6
-          initialDelaySeconds: 30
-        readinessProbe:
-          enabled: true
-          scheme: HTTP
-          periodSeconds: 60
-          timeoutSeconds: 10
-          successThreshold: 1
-          failureThreshold: 6
-          initialDelaySeconds: 30
-        startupProbe:
-          enabled: true
-          successThreshold: 1
-          failureThreshold: 6
+        # livenessProbe:
+        #   enabled: true
+        #   scheme: HTTP
+        #   periodSeconds: 60
+        #   timeoutSeconds: 10
+        #   successThreshold: 1
+        #   failureThreshold: 6
+        #   initialDelaySeconds: 30
+        # readinessProbe:
+        #   enabled: true
+        #   scheme: HTTP
+        #   periodSeconds: 60
+        #   timeoutSeconds: 10
+        #   successThreshold: 1
+        #   failureThreshold: 6
+        #   initialDelaySeconds: 30
+        # startupProbe:
+        #   enabled: true
+        #   successThreshold: 1
+        #   failureThreshold: 6
 
 
 
