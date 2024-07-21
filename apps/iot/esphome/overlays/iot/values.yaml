@@ -141,7 +141,7 @@ persistence:
   # accessModes: ReadWriteOnce
   # size: 2Gi
   # storageClass: longhorn-data
-  existingClaim: pv-esphome-0
+  existingClaim: pvc-esphome-0
     # claimName: 
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
