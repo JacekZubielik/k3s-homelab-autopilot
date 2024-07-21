@@ -10,7 +10,7 @@ resources:
 - resources/service.yaml
 
 
-- resources/service.yaml
+# - resources/service.yaml
 # - resources/pv-hass-data.yaml
 # - resources/pvc.yaml
 # - resources/servicemonitor.yaml
