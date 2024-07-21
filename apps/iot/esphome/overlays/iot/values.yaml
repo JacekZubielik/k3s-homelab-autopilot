@@ -136,8 +136,8 @@ affinity: {}
 tolerations: []
 
 persistence:
-  enabled: false
-  # path: /config
+  enabled: true
+  path: /config
   # accessModes: ReadWriteOnce
   # size: 2Gi
   # storageClass: longhorn-data
