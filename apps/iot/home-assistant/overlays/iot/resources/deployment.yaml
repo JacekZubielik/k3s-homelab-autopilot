@@ -26,7 +26,7 @@ spec:
           containerPort: 8123
         - name: metrics
           containerPort: 9100
-          targetPort: 9100
+          # targetPort: 9100
         env:
         - name: TZ
           valueFrom:
