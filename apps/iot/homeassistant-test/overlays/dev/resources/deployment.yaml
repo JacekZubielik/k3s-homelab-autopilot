@@ -16,7 +16,7 @@ spec:
         app: homeassistant-test
         name: homeassistant-test
     spec:
-      hostNetwork: true
+      hostNetwork: false
       containers:
       - name: homeassistant-test
         image: homeassistant/home-assistant:2023.10
