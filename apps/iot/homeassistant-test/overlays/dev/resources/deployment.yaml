@@ -25,7 +25,7 @@ spec:
         - name: TZ
           valueFrom:
             configMapKeyRef:
-              name: homeassistant-env
+              name: home-assistant-timezone
               key: TZ
         volumeMounts:
         - name: homeassistant-data-volume

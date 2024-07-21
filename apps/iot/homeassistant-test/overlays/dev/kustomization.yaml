@@ -18,6 +18,11 @@ resources:
 # generators:
 # - ksops-generator.yaml
 
+configMapGenerator:
+- name: home-assistant-timezone
+  literals:
+  - TZ=CET
+
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
