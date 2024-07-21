@@ -43,10 +43,10 @@ spec:
         volumeMounts:
         - name: home-assistant-data-volume
           mountPath: /config
-        nodeSelector:
-          kubernetes.io/hostname: dev-k3s-master-0
-        affinity: {}
-        tolerations: []
+        # nodeSelector:
+        #   kubernetes.io/hostname: dev-k3s-master-0
+        # affinity: {}
+        # tolerations: []
         livenessProbe:
           enabled: true
           scheme: HTTP
