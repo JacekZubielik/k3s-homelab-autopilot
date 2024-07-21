@@ -10,7 +10,7 @@ metadata:
         kubernetes.io/ingress.class: traefik-external
     # labels:
     #     app.kubernetes.io/name: home-assistant
-    name: home-assistant-proxy-staging
+    name: home-assistant-staging
     namespace: iot
 spec:
     entryPoints:
@@ -23,7 +23,7 @@ spec:
               namespace: traefik
           services:
             - kind: TraefikService
-              name: home-assistant-proxy
+              name: home-assistant
               port: 8123
     tls:
         domains:
@@ -49,8 +49,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-07T15:34:04Z"
-    mac: ENC[AES256_GCM,data:yrmVc7WCV4JfkXad7dojS0fC0ZKlDhxjueKCsBP74GhXIrvCmycm5yit86OBXdASfDNnqmPS4GUNjH7ZQxb6onn3G63jLYQojKxB57zjQP1SmMpDz7ALrQWNMYZz3l8IXGKX07nCc/SZlak9IJAGxaS6CMs0hfokTZ3zwgOYuTw=,iv:arncBtxsI5EKCrYJ6h3n8cYugATqcF8V5L/sQ90M57c=,tag:Rs8ESN8KeOcQRKnhTQV2lQ==,type:str]
+    lastmodified: "2024-07-21T20:20:33Z"
+    mac: ENC[AES256_GCM,data:M9Ll+CHoh2gKctZeHOEH9xsW9YlwBSvsGSJNvIsz99A3ttyAkwITbcnCq1qw9TDBocei0RuduC6mWPcQqIvjRSJKWkd3mqTbsRAnZM5dXwGKYAWUq1ohAAiecwyPhnDjEUiwAZynvJFYLSw2tNqFftB+CqKi17ia1fPrr1yeruA=,iv:UXRxN7ll3sN1QxV9vJjdB2SysIuLz+d4SrO8x0SDEFM=,tag:g2NsW2zeEwXkqhHZY2m0+A==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-
@@ -82,12 +82,12 @@ metadata:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
         argocd.argoproj.io/sync-wave: "10"
     labels:
-        app.kubernetes.io/name: home-assistant-proxy
-    name: home-assistant-proxy
+        app.kubernetes.io/name: home-assistant
+    name: home-assistant
 spec:
     weighted:
         services:
-            - name: home-assistant-proxy
+            - name: home-assistant
               port: 8123
               weight: 1
 sops:
@@ -105,8 +105,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-07T15:34:04Z"
-    mac: ENC[AES256_GCM,data:yrmVc7WCV4JfkXad7dojS0fC0ZKlDhxjueKCsBP74GhXIrvCmycm5yit86OBXdASfDNnqmPS4GUNjH7ZQxb6onn3G63jLYQojKxB57zjQP1SmMpDz7ALrQWNMYZz3l8IXGKX07nCc/SZlak9IJAGxaS6CMs0hfokTZ3zwgOYuTw=,iv:arncBtxsI5EKCrYJ6h3n8cYugATqcF8V5L/sQ90M57c=,tag:Rs8ESN8KeOcQRKnhTQV2lQ==,type:str]
+    lastmodified: "2024-07-21T20:20:33Z"
+    mac: ENC[AES256_GCM,data:M9Ll+CHoh2gKctZeHOEH9xsW9YlwBSvsGSJNvIsz99A3ttyAkwITbcnCq1qw9TDBocei0RuduC6mWPcQqIvjRSJKWkd3mqTbsRAnZM5dXwGKYAWUq1ohAAiecwyPhnDjEUiwAZynvJFYLSw2tNqFftB+CqKi17ia1fPrr1yeruA=,iv:UXRxN7ll3sN1QxV9vJjdB2SysIuLz+d4SrO8x0SDEFM=,tag:g2NsW2zeEwXkqhHZY2m0+A==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-

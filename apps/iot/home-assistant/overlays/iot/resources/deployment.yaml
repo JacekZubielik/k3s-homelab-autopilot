@@ -47,5 +47,3 @@ spec:
       - name: ha-data-volume
         persistentVolumeClaim:
           claimName: pvc-ha-data
-
-
