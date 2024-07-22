@@ -7,7 +7,7 @@
   "exclude": "",
   "include": "",
   "labels": "",
-  "srcPath": "apps/iot/home-assistant/overlays/dev",
+  "srcPath": "apps/iot/home-assistant/overlays/iot",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "10",
