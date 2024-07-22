@@ -21,7 +21,7 @@ metadata:
 
 helmCharts:
 - name: zigbee2mqtt
-  version: 0.0.4
+  version: 0.0.5
   repo: https://jacekzubielik.github.io/jz-helm-charts
   includeCRDs: false
   namespace: iot
