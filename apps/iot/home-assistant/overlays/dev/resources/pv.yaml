@@ -5,8 +5,8 @@ metadata:
   name: pv-ha-data
   namespace: iot
   labels:
-    volume: data
-    name: data
+    volume: ha-data
+    name: ha-data
     type: longhorn
 spec:
   capacity:
