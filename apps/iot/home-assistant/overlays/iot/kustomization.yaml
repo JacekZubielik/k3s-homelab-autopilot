@@ -9,8 +9,8 @@ resources:
 - resources/pvc.yaml
 # - resources/servicemonitor.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 metadata:
   annotations:
