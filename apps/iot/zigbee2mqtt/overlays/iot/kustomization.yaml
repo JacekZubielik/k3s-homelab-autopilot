@@ -7,8 +7,8 @@ resources:
 - resources/pv.yaml
 - resources/pvc.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 metadata:
   annotations:
@@ -21,7 +21,7 @@ metadata:
 
 helmCharts:
 - name: zigbee2mqtt
-  version: 0.0.5
+  version: 0.0.6
   repo: https://jacekzubielik.github.io/jz-helm-charts
   includeCRDs: false
   namespace: iot
