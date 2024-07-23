@@ -356,7 +356,7 @@ extraContainerVolumes: []
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
 persistence:
-  type: pvc
+  # type: pvc
   enabled: true
   storageClassName: longhorn-data
   accessModes:
@@ -373,7 +373,7 @@ persistence:
   ## Sub-directory of the PV to mount. Can be templated.
   # subPath: ""
   ## Name of an existing PVC. Can be templated.
-  # existingClaim: pvc-grafana
+  #existingClaim: pvc-grafana
   ## Extra labels to apply to a PVC.
   extraPvcLabels: {}
   disableWarning: false
