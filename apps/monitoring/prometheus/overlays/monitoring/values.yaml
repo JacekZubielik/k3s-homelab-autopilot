@@ -60,7 +60,7 @@ configmapReload:
     ##
     image:
       repository: quay.io/prometheus-operator/prometheus-config-reloader
-      tag: v0.73.2
+      tag: ""
       # When digest is set to a non-empty value, images will be pulled by digest (regardless of tag value).
       digest: ""
       pullPolicy: IfNotPresent
@@ -452,7 +452,13 @@ server:
 
     ## Prometheus server data Persistent Volume labels
     ##
-    labels: {}
+    # labels: {}
+
+    labels:
+      volume: storage
+      name: storage
+      type: longhorn
+
 
     ## Prometheus server data Persistent Volume annotations
     ##
@@ -461,7 +467,7 @@ server:
     ## Prometheus server data Persistent Volume existing claim name
     ## Requires server.persistentVolume.enabled: true
     ## If defined, PVC must be created manually before volume will be bound
-    existingClaim: ""
+    existingClaim: "pvc-prometheus-server"
 
     ## Prometheus server data Persistent Volume mount root path
     ##
@@ -469,7 +475,7 @@ server:
 
     ## Prometheus server data Persistent Volume size
     ##
-    size: 8Gi
+    # size: 8Gi
 
     ## Prometheus server data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
@@ -1226,7 +1232,7 @@ extraManifests: []
 alertmanager:
   ## If false, alertmanager will not be installed
   ##
-  enabled: true
+  enabled: false
 
   persistence:
     size: 2Gi
