@@ -366,7 +366,8 @@ persistence:
   # finalizers:
   #   - kubernetes.io/pvc-protection
   # selectorLabels: {}
-  selectorLabels: grafana-storage
+  selectorLabels:
+    volume: grafana-storage
 
   ## Sub-directory of the PV to mount. Can be templated.
   # subPath: ""
