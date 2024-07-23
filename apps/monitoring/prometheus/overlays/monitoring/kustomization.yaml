@@ -1,0 +1,42 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+# - resources/ingressroute.yaml
+# - resources/pv.yaml
+# - resources/pvc.yaml
+
+metadata:
+  annotations:
+    # argocd.argoproj.io/sync-options: ServerSideApply=false
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: prometheus
+  name: prometheus
+
+helmCharts:
+- name: prometheus
+  version: 25.24.1
+  repo: https://prometheus-community.github.io/helm-charts
+  releaseName: prometheus
+  includeCRDs: true
+  valuesFile: values.yaml
+  namespace: monitoring
+
+# configMapGenerator:
+# - name: prometheus-config
+#   literals:
+#   - TZ=CET
+
+# patches:
+# - patch: |-
+#     - op: add
+#       path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
+#       value: "Replace=true"
+#   target:
+#     group: apiextensions.k8s.io
+#     kind: CustomResourceDefinition
+#     name: prometheuses.monitoring.coreos.com
+#     version: v1
