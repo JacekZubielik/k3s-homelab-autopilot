@@ -58,12 +58,12 @@ configmapReload:
 
     ## configmap-reload container image
     ##
-    image:
-      repository: quay.io/prometheus-operator/prometheus-config-reloader
-      tag: ""
-      # When digest is set to a non-empty value, images will be pulled by digest (regardless of tag value).
-      digest: ""
-      pullPolicy: IfNotPresent
+    # image:
+    #   repository: quay.io/prometheus-operator/prometheus-config-reloader
+    #   tag: ""
+    #   # When digest is set to a non-empty value, images will be pulled by digest (regardless of tag value).
+    #   digest: ""
+    #   pullPolicy: IfNotPresent
 
     containerPort: 9533
 
@@ -163,13 +163,13 @@ server:
 
   ## Prometheus server container image
   ##
-  image:
-    repository: quay.io/prometheus/prometheus
-    # if not set appVersion field from Chart.yaml is used
-    tag: ""
-    # When digest is set to a non-empty value, images will be pulled by digest (regardless of tag value).
-    digest: ""
-    pullPolicy: IfNotPresent
+  # image:
+  #   repository: quay.io/prometheus/prometheus
+  #   # if not set appVersion field from Chart.yaml is used
+  #   tag: ""
+  #   # When digest is set to a non-empty value, images will be pulled by digest (regardless of tag value).
+  #   digest: ""
+  #   pullPolicy: IfNotPresent
 
   ## Prometheus server command
   ##
