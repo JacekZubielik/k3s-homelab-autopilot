@@ -368,6 +368,7 @@ persistence:
   finalizers:
     - longhorn.io
 
+volumeName: grafana-storage
   # selectorLabels: {}
   selectorLabels:
     volume: grafana-storage
