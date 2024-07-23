@@ -4,6 +4,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: pvc-grafana
   namespace: monitoring
+  labels:
+    volume: grafana-storage
+    name: grafana-storage
+    type: longhorn
 spec:
   accessModes:
   - ReadWriteOnce
