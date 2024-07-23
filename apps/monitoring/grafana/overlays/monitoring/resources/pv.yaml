@@ -5,8 +5,8 @@ metadata:
   name: pv-grafana
   namespace: monitoring
   labels:
-    volume: storage
-    name: storage
+    volume: grafana-storage
+    name: grafana-storage
     type: longhorn
 spec:
   capacity:

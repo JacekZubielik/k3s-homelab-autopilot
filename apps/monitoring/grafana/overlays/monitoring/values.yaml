@@ -363,9 +363,11 @@ persistence:
   #   - ReadWriteOnce
   # size: 10Gi
   # annotations: {}
-  finalizers:
-    - kubernetes.io/pvc-protection
+  # finalizers:
+  #   - kubernetes.io/pvc-protection
   # selectorLabels: {}
+  selectorLabels: grafana-storage
+
   ## Sub-directory of the PV to mount. Can be templated.
   # subPath: ""
   ## Name of an existing PVC. Can be templated.
@@ -426,10 +428,9 @@ adminUser: admin
 
 # Use an existing secret for the admin user.
 admin:
-  ## Name of the secret. Can be templated.
-  existingSecret: "grafana-admin-secret"
-  userKey: admin-user
-  passwordKey: admin-password
+  existingSecret: grafana-admin-secret
+  userKey: username
+  passwordKey: password
 
 ## Define command to be executed at startup by grafana container
 ## Needed if using `vault-env` to manage secrets (ref: https://banzaicloud.com/blog/inject-secrets-into-pods-vault/)
