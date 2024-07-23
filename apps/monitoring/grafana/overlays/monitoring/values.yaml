@@ -358,13 +358,13 @@ extraContainerVolumes: []
 persistence:
   type: pvc
   enabled: true
-  # storageClassName: default
-  # accessModes:
-  #   - ReadWriteOnce
-  # size: 10Gi
-  # annotations: {}
-  # finalizers:
-  #   - kubernetes.io/pvc-protection
+  storageClassName: longhorn-data
+  accessModes:
+    - ReadWriteOnce
+  size: 20Gi
+  annotations: {}
+  finalizers:
+    - kubernetes.io/pvc-protection
 
   # selectorLabels: {}
   selectorLabels:
@@ -373,7 +373,7 @@ persistence:
   ## Sub-directory of the PV to mount. Can be templated.
   # subPath: ""
   ## Name of an existing PVC. Can be templated.
-  existingClaim: pvc-grafana
+  # existingClaim: pvc-grafana
   ## Extra labels to apply to a PVC.
   extraPvcLabels: {}
   disableWarning: false
