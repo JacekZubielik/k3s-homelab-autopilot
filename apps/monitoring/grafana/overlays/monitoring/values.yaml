@@ -365,12 +365,10 @@ persistence:
   # annotations: {}
   # finalizers:
   #   - kubernetes.io/pvc-protection
-  finalizers:
-    - longhorn.io
 
   # selectorLabels: {}
   selectorLabels:
-    volume: grafana-storage
+    volume: storage
 
   ## Sub-directory of the PV to mount. Can be templated.
   # subPath: ""
@@ -1480,7 +1478,7 @@ networkPolicy:
 
 # Enable backward compatibility of kubernetes where version below 1.13 doesn't have the enableServiceLinks option
 enableKubeBackwardCompatibility: false
-useStatefulSet: false
+useStatefulSet: true
 # Create a dynamic manifests via values:
 extraObjects:
   []
