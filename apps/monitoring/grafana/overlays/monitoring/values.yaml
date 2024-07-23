@@ -368,7 +368,6 @@ persistence:
   finalizers:
     - longhorn.io
 
-volumeName: grafana-storage
   # selectorLabels: {}
   selectorLabels:
     volume: grafana-storage
@@ -1481,7 +1480,7 @@ networkPolicy:
 
 # Enable backward compatibility of kubernetes where version below 1.13 doesn't have the enableServiceLinks option
 enableKubeBackwardCompatibility: false
-useStatefulSet: true
+useStatefulSet: false
 # Create a dynamic manifests via values:
 extraObjects:
   []
