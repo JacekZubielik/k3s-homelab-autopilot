@@ -356,8 +356,8 @@ extraContainerVolumes: []
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
 persistence:
-  # type: pvc
-  enabled: false
+  type: pvc
+  enabled: true
   # storageClassName: default
   # accessModes:
   #   - ReadWriteOnce
