@@ -452,12 +452,12 @@ server:
 
     ## Prometheus server data Persistent Volume labels
     ##
-    # labels: {}
+    labels: {}
 
-    labels:
-      volume: storage
-      name: storage
-      type: longhorn
+    # labels:
+    #   volume: storage
+    #   name: storage
+    #   type: longhorn
 
 
     ## Prometheus server data Persistent Volume annotations
