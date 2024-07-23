@@ -365,6 +365,9 @@ persistence:
   # annotations: {}
   # finalizers:
   #   - kubernetes.io/pvc-protection
+  finalizers:
+    - longhorn.io
+
   # selectorLabels: {}
   selectorLabels:
     volume: grafana-storage
