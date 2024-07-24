@@ -83,7 +83,7 @@ read:
   persistence:
     size: 14Gi
     storageClass: local-path # longhorn-nvme-0
-
+    enableStatefulSetAutoDeletePVC: false
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
   extraArgs:
@@ -105,12 +105,12 @@ backend:
   replicas: 1
   persistence:
     size: 14Gi
-    storageClass: longhorn-data
+    storageClass: "-" #longhorn-data
     existingClaim: data-loki-backend
 
     volumeClaimsEnabled: true
     enableStatefulSetAutoDeletePVC: false
-    # selector: pv-loki-backend
+    selector: pvc-loki-backend
 
 
 
