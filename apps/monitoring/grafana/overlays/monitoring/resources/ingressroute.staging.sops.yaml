@@ -49,8 +49,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-24T11:08:14Z"
-    mac: ENC[AES256_GCM,data:iG06dsr9JVd7oYue0QiZ5tJF+jRCOSSWkBY0yQWQ33cusQcDUDfT9hUbE8l/mzj2e5o+lhgynb16ZguG3HZT4LM3OSJG+AM3b4igMFNLpRpWi2CfiCOLMfGHQM/6vmDJ5aAh0fvJ355YED3LtIFWyPreg/olpLAIHhSacnQrVHM=,iv:8W0xy43OaXOUGkL0nmNK0O/7nzuMQSqVlGMaxNSMIQU=,tag:3BNZtD429/wKDkDZsKcMCA==,type:str]
+    lastmodified: "2024-07-24T11:31:35Z"
+    mac: ENC[AES256_GCM,data:JrOFgks4n9Q/jsOLeAbL0iqWonpuNusi6bA+e2a3a/ijG6hnJ/2amqpi3ZXm7t2vnrOe5PFn7DZ8oXg1w+ytieqs9v8D2qBM7nOFr/Yvw63YwxxVAfjn8FEnbLt8KDnsskhbeElTi60Yi+y29ZrwpAP8DLD9mHt4QPqWfxfKSzY=,iv:U3U8e63OzlFc6dnnGGieBDnBM0NM/qrjMggRq3zQ5KY=,tag:0xWiPIAQa66wR1bSuYwLJw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -87,7 +87,8 @@ metadata:
 spec:
     weighted:
         services:
-            - name: kube-prometheus-stack-grafana
+            #kube-prometheus-stack-grafana
+            - name: grafana
               port: 80
               weight: 1
 sops:
@@ -105,8 +106,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-24T11:08:14Z"
-    mac: ENC[AES256_GCM,data:iG06dsr9JVd7oYue0QiZ5tJF+jRCOSSWkBY0yQWQ33cusQcDUDfT9hUbE8l/mzj2e5o+lhgynb16ZguG3HZT4LM3OSJG+AM3b4igMFNLpRpWi2CfiCOLMfGHQM/6vmDJ5aAh0fvJ355YED3LtIFWyPreg/olpLAIHhSacnQrVHM=,iv:8W0xy43OaXOUGkL0nmNK0O/7nzuMQSqVlGMaxNSMIQU=,tag:3BNZtD429/wKDkDZsKcMCA==,type:str]
+    lastmodified: "2024-07-24T11:31:35Z"
+    mac: ENC[AES256_GCM,data:JrOFgks4n9Q/jsOLeAbL0iqWonpuNusi6bA+e2a3a/ijG6hnJ/2amqpi3ZXm7t2vnrOe5PFn7DZ8oXg1w+ytieqs9v8D2qBM7nOFr/Yvw63YwxxVAfjn8FEnbLt8KDnsskhbeElTi60Yi+y29ZrwpAP8DLD9mHt4QPqWfxfKSzY=,iv:U3U8e63OzlFc6dnnGGieBDnBM0NM/qrjMggRq3zQ5KY=,tag:0xWiPIAQa66wR1bSuYwLJw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
