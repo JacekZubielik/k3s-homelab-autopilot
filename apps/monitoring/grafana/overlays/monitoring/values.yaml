@@ -357,7 +357,7 @@ extraContainerVolumes: []
 ##
 persistence:
   # type: pvc
-  enabled: false
+  enabled: true
   # storageClassName: longhorn-data
   # accessModes:
   #   - ReadWriteOnce
