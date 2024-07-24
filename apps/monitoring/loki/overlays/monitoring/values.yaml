@@ -104,17 +104,12 @@ read:
 backend:
   replicas: 1
   persistence:
-    size: 14Gi
+    size: 12Gi
     storageClass: longhorn-data
-    # existingClaim: data-loki-backend-0
-
     volumeClaimsEnabled: false
     enableStatefulSetAutoDeletePVC: false
     selector: 
     - volume: pvc-loki-backend
-
-
-
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
