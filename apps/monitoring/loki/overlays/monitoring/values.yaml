@@ -104,11 +104,11 @@ backend:
   persistence:
     # size: 10Gi
     # storageClass: local-path # longhorn-nvme-0
-    existingClaim: pvc-loki-backend
+    # existingClaim: pvc-loki-backend
 
-    volumeClaimsEnabled: false
+    volumeClaimsEnabled: true
     enableStatefulSetAutoDeletePVC: false
-    selector: pvc-loki-backend
+    selector: pv-loki-backend
 
 
 
