@@ -24,7 +24,7 @@ spec:
           services:
             - kind: TraefikService
               name: prometheus
-              port: 9090
+              port: 80
     tls:
         domains:
             - main: ENC[AES256_GCM,data:phe5b90UlY/rs5CU+dLB093oGsEOG7taWKM9sms=,iv:Pofqu6mGLvtL0jkY3LLDvxHmiYJHmN74DGN/8LLxV8c=,tag:aFUyueATTdsxkTDuor6R0w==,type:str]
@@ -49,8 +49,8 @@ sops:
             MmI0ekZacDVibUJpNDNYVk5zMStQOHcKuoo3w+iCiYfJY8lbabF0gglTDtAWFXJ0
             Dj602MJB1MakaWTnNzMoaEKtH9ATDif7cQ8cSERPqklrsN+Vxjiapg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-24T11:50:36Z"
-    mac: ENC[AES256_GCM,data:FxNng5eCPSho92C6OmxGJZmr0+j0T+4kw1DHWVvEEa4awz+1GzADpv15Hthn/o24s41efemJqA+/kbGp12AqVu2vaKgOK6kQr7uZ2NYFiFjUqyaN7conBW9tFKvFX5/Fgn1CgGgoHY/FNXTPbOk82OpJr8LoxH4+nnjGVFFVoFk=,iv:ykQf/Opx+I8sQh63N5DWAU9ECTPzrmge6oGlvdce7WY=,tag:DW+dp6dcVTUMOFPgmeY66w==,type:str]
+    lastmodified: "2024-07-24T12:35:24Z"
+    mac: ENC[AES256_GCM,data:Gb6JAIi6KA9ulLTZ45M4TZNft75udLIHwUj6srLvRb1gjIR1iUGQFmfGTPe5ZTrFwxgL1Fi8sreKUgZ2+2YC2rFkexHs3xt10PkTesGAgUyqtxzDTQ6kJKm4wnlZwplotvs2LK3EildRpyVLM9piqQxt6xcc/hA6TIOB/ZltNoY=,iv:lEh8Dmswj/aXYuPTu7ffedLGdQKa0Nzb+K5Dtp3QWA8=,tag:KV0gYvXKTgInbNC8U5hw9w==,type:str]
     pgp:
         - created_at: "2024-06-20T13:15:19Z"
           enc: |-
@@ -88,7 +88,7 @@ spec:
     weighted:
         services:
             - name: prometheus-server
-              port: 9090
+              port: 80
               weight: 1
 sops:
     kms: []
@@ -105,8 +105,8 @@ sops:
             MmI0ekZacDVibUJpNDNYVk5zMStQOHcKuoo3w+iCiYfJY8lbabF0gglTDtAWFXJ0
             Dj602MJB1MakaWTnNzMoaEKtH9ATDif7cQ8cSERPqklrsN+Vxjiapg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-24T11:50:36Z"
-    mac: ENC[AES256_GCM,data:FxNng5eCPSho92C6OmxGJZmr0+j0T+4kw1DHWVvEEa4awz+1GzADpv15Hthn/o24s41efemJqA+/kbGp12AqVu2vaKgOK6kQr7uZ2NYFiFjUqyaN7conBW9tFKvFX5/Fgn1CgGgoHY/FNXTPbOk82OpJr8LoxH4+nnjGVFFVoFk=,iv:ykQf/Opx+I8sQh63N5DWAU9ECTPzrmge6oGlvdce7WY=,tag:DW+dp6dcVTUMOFPgmeY66w==,type:str]
+    lastmodified: "2024-07-24T12:35:24Z"
+    mac: ENC[AES256_GCM,data:Gb6JAIi6KA9ulLTZ45M4TZNft75udLIHwUj6srLvRb1gjIR1iUGQFmfGTPe5ZTrFwxgL1Fi8sreKUgZ2+2YC2rFkexHs3xt10PkTesGAgUyqtxzDTQ6kJKm4wnlZwplotvs2LK3EildRpyVLM9piqQxt6xcc/hA6TIOB/ZltNoY=,iv:lEh8Dmswj/aXYuPTu7ffedLGdQKa0Nzb+K5Dtp3QWA8=,tag:KV0gYvXKTgInbNC8U5hw9w==,type:str]
     pgp:
         - created_at: "2024-06-20T13:15:19Z"
           enc: |-
