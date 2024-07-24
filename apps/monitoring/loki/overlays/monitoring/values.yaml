@@ -109,7 +109,7 @@ backend:
     volumeClaimsEnabled: true
     enableStatefulSetAutoDeletePVC: false
     selector: 
-    - volume: pvc-loki-backend
+    - volume: loki-backend
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
