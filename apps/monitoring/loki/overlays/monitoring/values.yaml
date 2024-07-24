@@ -52,9 +52,9 @@ loki:
 write:
   replicas: 1
   persistence:
-    size: 8Gi
-    storageClass: local-path # longhorn-nvme-0
-
+    # size: 8Gi
+    # storageClass: local-path # longhorn-nvme-0
+    existingClaim: pvc-loki-write
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
   extraArgs:
@@ -98,8 +98,11 @@ read:
 backend:
   replicas: 1
   persistence:
-    size: 10Gi
-    storageClass: local-path # longhorn-nvme-0
+    # size: 10Gi
+    # storageClass: local-path # longhorn-nvme-0
+    existingClaim: pvc-loki-backend
+
+
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration

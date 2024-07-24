@@ -1,0 +1,44 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-loki-backend
+  namespace: loki
+  labels:
+    volume: loki-backend
+    name: loki-backend
+    type: longhorn
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: longhorn-data
+  resources:
+    requests:
+      storage: 12Gi
+  volumeMode: Filesystem
+  volumeName: pv-loki-backend
+  selector:
+    matchLabels:
+      volume: loki-backend
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-loki-write
+  namespace: loki
+  labels:
+    volume: loki-write
+    name: loki-write
+    type: longhorn
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: longhorn-data
+  resources:
+    requests:
+      storage: 12Gi
+  volumeMode: Filesystem
+  volumeName: pv-loki-write
+  selector:
+    matchLabels:
+      volume: loki-write
