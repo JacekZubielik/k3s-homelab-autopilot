@@ -356,15 +356,15 @@ extraContainerVolumes: []
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
 persistence:
-  type: pvc
-  enabled: true
-  storageClassName: longhorn-data
-  accessModes:
-    - ReadWriteOnce
-  size: 20Gi
-  annotations: {}
-  finalizers:
-    - kubernetes.io/pvc-protection
+  # type: pvc
+  enabled: false
+  # storageClassName: longhorn-data
+  # accessModes:
+  #   - ReadWriteOnce
+  # size: 20Gi
+  # annotations: {}
+  # finalizers:
+  #   - kubernetes.io/pvc-protection
 
   # selectorLabels: {}
   selectorLabels:
@@ -373,7 +373,7 @@ persistence:
   ## Sub-directory of the PV to mount. Can be templated.
   # subPath: ""
   ## Name of an existing PVC. Can be templated.
-  #existingClaim: pvc-grafana
+  existingClaim: pvc-grafana
   ## Extra labels to apply to a PVC.
   extraPvcLabels: {}
   disableWarning: false
@@ -1478,7 +1478,7 @@ networkPolicy:
 
 # Enable backward compatibility of kubernetes where version below 1.13 doesn't have the enableServiceLinks option
 enableKubeBackwardCompatibility: false
-useStatefulSet: true
+useStatefulSet: false
 # Create a dynamic manifests via values:
 extraObjects:
   []
