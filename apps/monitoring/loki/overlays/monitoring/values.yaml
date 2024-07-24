@@ -108,7 +108,7 @@ backend:
 
     volumeClaimsEnabled: false
     enableStatefulSetAutoDeletePVC: false
-    selector: null
+    selector: pvc-loki-backend
 
 
 
