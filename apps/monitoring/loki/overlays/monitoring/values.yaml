@@ -106,7 +106,7 @@ backend:
   persistence:
     size: 14Gi
     storageClass: "" #longhorn-data
-    existingClaim: data-loki-backend
+    existingClaim: data-loki-backend-0
 
     volumeClaimsEnabled: true
     enableStatefulSetAutoDeletePVC: false
