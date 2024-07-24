@@ -52,11 +52,13 @@ loki:
 write:
   replicas: 1
   persistence:
-    volumeClaimsEnabled: false
-    # size: 8Gi
-    storageClass: longhorn-data
-    existingClaim: pvc-loki-write
+    size: 14Gi
+    storageClass: local-path # longhorn-nvme-0
+    # existingClaim: pvc-loki-backend
 
+    volumeClaimsEnabled: true
+    enableStatefulSetAutoDeletePVC: false
+    # selector: pv-loki-backend
 
 
   # Enable environment variables in config file
@@ -103,8 +105,8 @@ backend:
   replicas: 1
   persistence:
     size: 14Gi
-    storageClass: local-path # longhorn-nvme-0
-    # existingClaim: pvc-loki-backend
+    storageClass: longhorn-data
+    existingClaim: data-loki-backend
 
     volumeClaimsEnabled: true
     enableStatefulSetAutoDeletePVC: false
