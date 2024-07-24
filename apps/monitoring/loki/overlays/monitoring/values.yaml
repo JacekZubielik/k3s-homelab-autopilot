@@ -52,14 +52,10 @@ loki:
 write:
   replicas: 1
   persistence:
-    size: 14Gi
-    storageClass: local-path # longhorn-nvme-0
-    # existingClaim: pvc-loki-backend
-
+    size: 8Gi
+    storageClass: local-path
     volumeClaimsEnabled: true
     enableStatefulSetAutoDeletePVC: false
-    # selector: pv-loki-backend
-
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
@@ -82,8 +78,9 @@ read:
   replicas: 1
   persistence:
     size: 14Gi
-    storageClass: local-path # longhorn-nvme-0
+    storageClass: local-path
     enableStatefulSetAutoDeletePVC: false
+
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
   extraArgs:
@@ -104,12 +101,10 @@ read:
 backend:
   replicas: 1
   persistence:
-    size: 12Gi
-    storageClass: longhorn-data
+    size: 8Gi
+    storageClass: local-path
     volumeClaimsEnabled: true
     enableStatefulSetAutoDeletePVC: false
-    selector: 
-    - loki-backend
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
