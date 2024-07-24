@@ -53,7 +53,7 @@ write:
   replicas: 1
   persistence:
     # size: 8Gi
-    # storageClass: local-path # longhorn-nvme-0
+    storageClass: longhorn-data
     existingClaim: pvc-loki-write
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
