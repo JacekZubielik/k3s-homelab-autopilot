@@ -7,7 +7,6 @@ resources:
 - resources/pv.yaml
 - resources/pvc.yaml
 # - resources/blackbox-exporter-dashboard-configmap.yaml
-# - resources/ingressroute.yaml
 # - resources/smartctl-exporter-dashboard-configmap.yaml
 # - resources/temperature-dashboard-configmap.yaml
 
