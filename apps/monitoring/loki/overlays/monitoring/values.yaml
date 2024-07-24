@@ -77,7 +77,7 @@ write:
 read:
   replicas: 1
   persistence:
-    size: 14Gi
+    size: 8Gi
     storageClass: local-path
     enableStatefulSetAutoDeletePVC: false
 
