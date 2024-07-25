@@ -6,10 +6,9 @@ resources:
 - ../../base
 - resources/pv.yaml
 - resources/pvc.yaml
-# - resources/ingressroute.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 metadata:
   annotations:
