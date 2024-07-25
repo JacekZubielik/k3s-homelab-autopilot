@@ -272,7 +272,7 @@ persistence:
   # storageClass: "-"
   accessModes:
     - ReadWriteOnce
-  size: 50Mi
+  size: 100Mi
 
 configAnnotations: {}
   ## For example if you want to provide private data from a secret vault

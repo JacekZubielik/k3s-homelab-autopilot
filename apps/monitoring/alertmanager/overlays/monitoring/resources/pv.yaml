@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: pv-alertmanager
-  namespace: monitoring
+  # namespace: monitoring
   labels:
     volume: storage
     name: storage
@@ -23,4 +23,4 @@ spec:
       numberOfReplicates: '1'
       staleReplicaTimeout: '2880'
       dataLocality: "strict-local"
-    volumeHandle: storage-alertmanager-0 #pv-alertmanager #pvc-alertmanager
+    volumeHandle: pv-alertmanager #pvc-alertmanager
