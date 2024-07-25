@@ -4,6 +4,11 @@ kind: PersistentVolumeClaim
 metadata:
   name: storage-alertmanager-0
   namespace: monitoring
+  labels:
+    volume: storage
+    name: storage
+    type: longhorn
+
 spec:
   accessModes:
   - ReadWriteOnce
