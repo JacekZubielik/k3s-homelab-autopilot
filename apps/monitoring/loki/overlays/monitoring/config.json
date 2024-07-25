@@ -1,0 +1,15 @@
+{
+  "annotations": "",
+  "appName": "loki",
+  "appRole": "monitoring",
+  "destNamespace": "monitoring",
+  "destServer": "https://kubernetes.default.svc",
+  "exclude": "",
+  "include": "",
+  "labels": "",
+  "srcPath": "apps/monitoring/loki/overlays/monitoring",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "",
+  "syncWave": "2",
+  "userGivenName": "loki"
+}
