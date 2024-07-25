@@ -8,7 +8,6 @@ metadata:
     volume: storage
     name: storage
     type: longhorn
-
 spec:
   accessModes:
   - ReadWriteOnce
@@ -16,8 +15,4 @@ spec:
   resources:
     requests:
       storage: 100Mi
-  # volumeMode: Filesystem
   volumeName: pv-alertmanager-0
-  # selector:
-  #   matchLabels:
-  #     volume: storage
