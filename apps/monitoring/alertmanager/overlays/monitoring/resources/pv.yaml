@@ -23,4 +23,4 @@ spec:
       numberOfReplicates: '1'
       staleReplicaTimeout: '2880'
       dataLocality: "strict-local"
-    volumeHandle: storage-alertmanager-0 #pvc-alertmanager
+    volumeHandle: storage #storage-alertmanager-0 #pvc-alertmanager
