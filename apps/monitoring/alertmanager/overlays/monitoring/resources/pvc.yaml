@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: storage-monitoring-alertmanager-0
+  name: storage-alertmanager-0
   namespace: monitoring
 spec:
   accessModes:
