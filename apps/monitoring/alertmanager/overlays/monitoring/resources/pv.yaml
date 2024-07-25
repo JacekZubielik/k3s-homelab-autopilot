@@ -4,10 +4,10 @@ kind: PersistentVolume
 metadata:
   name: pv-alertmanager-0
   # namespace: monitoring
-  labels:
-    volume: storage
-    name: storage
-    type: longhorn
+  # labels:
+  #   volume: storage
+  #   name: storage
+  #   type: longhorn
 spec:
   capacity:
     storage: 100Mi
