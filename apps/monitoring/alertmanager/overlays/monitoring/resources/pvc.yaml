@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: storage-alertmanager
+  name: storage-alertmanager-0
   namespace: monitoring
 spec:
   accessModes:
@@ -12,7 +12,7 @@ spec:
     requests:
       storage: 100Mi
   # volumeMode: Filesystem
-  volumeName: pv-alertmanager
+  volumeName: pv-alertmanager-0
   # selector:
   #   matchLabels:
   #     volume: storage
