@@ -6,7 +6,7 @@ metadata:
   labels:
     volume: storage
     name: storage
-    type: longhorn9
+    type: longhorn
 spec:
   capacity:
     storage: 100Mi
