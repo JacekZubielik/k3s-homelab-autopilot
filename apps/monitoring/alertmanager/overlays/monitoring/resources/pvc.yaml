@@ -11,8 +11,8 @@ spec:
   resources:
     requests:
       storage: 100Mi
-  volumeMode: Filesystem
+  # volumeMode: Filesystem
   volumeName: pv-alertmanager
-  selector:
-    matchLabels:
-      volume: storage
+  # selector:
+  #   matchLabels:
+  #     volume: storage
