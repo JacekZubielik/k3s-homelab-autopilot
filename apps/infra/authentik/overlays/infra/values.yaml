@@ -419,7 +419,7 @@ postgresql:
 
 persistence:
   enabled: true
-  existingClaim: pvc-authentik-psql
+  # existingClaim: pvc-authentik-psql
 
 
 redis:
@@ -431,5 +431,5 @@ redis:
 
 persistence:
   enabled: true
-  existingClaim: pvc-authentik-redis
+  # existingClaim: pvc-authentik-redis
 
