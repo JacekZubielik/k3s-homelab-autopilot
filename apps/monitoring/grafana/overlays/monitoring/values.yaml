@@ -358,10 +358,10 @@ extraContainerVolumes: []
 persistence:
   # type: pvc
   enabled: true
-  # storageClassName: longhorn-data
-  # accessModes:
-  #   - ReadWriteOnce
-  # size: 20Gi
+  storageClassName: longhorn-data
+  accessModes:
+    - ReadWriteOnce
+  size: 20Gi
   # annotations: {}
   # finalizers:
   #   - kubernetes.io/pvc-protection
