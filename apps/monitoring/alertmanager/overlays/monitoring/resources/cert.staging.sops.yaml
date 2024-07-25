@@ -1,15 +1,15 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-    name: prometheus-staging
+    name: alertmanager-staging
 spec:
     dnsNames:
-        - ENC[AES256_GCM,data:pRRtOlW3KvZUuMVyslzoyr3tVeqCGHGigV0myZHDBIVqpYM7McOSug==,iv:feikpeLJeuWP0MpuSm05xLxQe5hAkvn2v7TO6DDCheY=,tag:bPqb4NMAJiAjmutNytik7Q==,type:str]
+        - ENC[AES256_GCM,data:NTM5t3suFsHn1dZ5uW670AWhlXFKEcorDAA59JR3qLM9y40YFt9yludl,iv:ABn5S+sXGO3rTpswKB15CqKGZCExUz3s+Y+O/j48ogk=,tag:5fddy0mCCqLzrGw+kHOo+Q==,type:str]
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-staging
-    commonName: ENC[AES256_GCM,data:zPd6gujlGvbUVqMQoM77gHsfYeTA9FKPsKCW/THd0nbNNV1HgTygYQ==,iv:mpNswiI4tey1SutFG+kcjYnc06etWahbg8WJ05MqOQc=,tag:Kh0E5nbVA8cbiMYQ/6orag==,type:str]
-    secretName: prometheus-cf-staging
+    commonName: ENC[AES256_GCM,data:tXNQM46YVUep3bhiVJvz3MCEJU9lCfF4TDn55xqPv+h10TJGTOvOwePP,iv:FDkzPKheCnlpmp+XWcI4kL33Zj0kTZn6ZDKwRe4w5yo=,tag:epTajrbajL60CQ5Bm4NiKg==,type:str]
+    secretName: alertmanager-cf-staging
     # 90d
     duration: 2160h0m0s
     # 30d
@@ -29,8 +29,8 @@ sops:
             eDhnUk9DMUQ4K1VERXYyMHd1NU9oTnMKSu8QqkYC8kY1dnQxHWvKATEwEvqOvix0
             iPorEFMn8E7y1jh/YhwRhqbYri+tvykQ4YYDe3MlJNb5OL63wNVJGg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-24T11:52:52Z"
-    mac: ENC[AES256_GCM,data:Vi4RQbimKu4PkBEf1Ek+Cp1P+FfMRC+3UUFzQYXauX4cQAjyJ230y4SMvLtdAbWMS3IlbMM6/z9UjX2zc+YsSEo5a5relu7reRc2JZJXcRwWtakzgzsWLL6dLK0JEQBPOAmHYmF4yRfvhEHHJiZCRwX8iMvc1cc2MAsHpZkwiXU=,iv:5HHxckenJlqwrCaSPZoB/FiY4KFCca6lVDETlJGue+g=,tag:X7VZSQTuvW0p2OTRrVYucQ==,type:str]
+    lastmodified: "2024-07-25T22:44:52Z"
+    mac: ENC[AES256_GCM,data:Ce9XcHMFbKq4D7We90m5/90hDwnBX2+k9wUcwY35theOk5eF1k1B1cgqXiHBslltj0EakLyXlfC237TLVwG/6oZl64FkkzU0ew46lBF5f6Jn1RyHFjhl1NYBshzGgc8ITnPyq24p+ak0LOX9yUU0RlJJv/D9CtT3ykWh1xfCxFs=,iv:a7+8Nvf80iDdpmPEZfae+2B9RGJokhBeMmI3KXzNTXo=,tag:FJVuzoFWUd1ULCktPiyiBQ==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:11Z"
           enc: |-
