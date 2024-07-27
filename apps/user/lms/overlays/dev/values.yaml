@@ -155,8 +155,8 @@ persistence:
     ##
     ## If you want to use a volume on the host machine instead of a PVC:
     # hostPath: /path/to/the/config/folder
-    accessMode: ReadWriteOnce
-    size: 4Gi
+    # accessMode: ReadWriteOnce
+    # size: 4Gi
 
   musicstorage:
     enabled: false
