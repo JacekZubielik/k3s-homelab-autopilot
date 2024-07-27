@@ -4,8 +4,6 @@ fullnameOverride: ""
 revisionHistoryLimit: 4
 hostNetwork: false
 
-# strategyType: RollingUpdate
-
 updateStrategy:
   type: RollingUpdate
   # rollingUpdate:
@@ -33,7 +31,10 @@ extraEnvSecrets:
 ## All secrets will be mounted as environment variables, with each key/value mapping to a
 ## corresponding environment variable.
 extraSecretForEnvFrom: []
-# - lms-secrets
+# extraSecretForEnvFrom:
+# # - lms-secrets
+#   - configMapRef:
+#       name: lms-tz
 
 podSecurityContext: {}
   # fsGroup: 2000
