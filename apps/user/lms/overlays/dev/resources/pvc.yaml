@@ -16,3 +16,19 @@ spec:
   selector:
     matchLabels:
       volume: lms-config
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-musicstorage
+  namespace: media
+spec:
+  accessModes:
+  - ReadWriteMany 
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 100Gi
+  # volumeMode: Filesystem
+  volumeName: pv-musicstorage

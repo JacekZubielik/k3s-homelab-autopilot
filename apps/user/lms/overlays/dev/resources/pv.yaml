@@ -24,3 +24,24 @@ spec:
       staleReplicaTimeout: "2880"
       dataLocality: "strict-local"
     volumeHandle: pvc-lms-config
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-musicstorage
+  labels:
+    volume: musicstorage
+    name: musicstorage
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.40.110 # nfs-server.default.svc.cluster.local
+    path: "/mnt/data/nfs_share/audio"
+    readOnly: true
+  mountOptions:
+    - nfsvers=4.2
+  persistentVolumeReclaimPolicy: Retain
