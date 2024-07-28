@@ -160,12 +160,10 @@ persistence:
     # size: 4Gi
 
   musicstorage:
-    enabled: false
+    enabled: true
     # storageClass: "-"
-    # existingClaim: your-claim
+    existingClaim: pvc-musicstorage
     # hostPath: /path/to/the/music/folder
-    accessMode: ReadWriteOnce
-    size: 4Gi
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 hostMounts: []
