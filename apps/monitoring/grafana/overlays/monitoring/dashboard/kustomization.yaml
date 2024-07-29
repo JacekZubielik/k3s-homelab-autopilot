@@ -11,7 +11,7 @@ generatorOptions:
   labels:
     grafana-dashboard: 'true'
   annotations:
-    k8s-sidecar-target-directory: /tmp/dashboards/Network
+    k8s-sidecar-target-directory: /var/lib/grafana/dashboards/Network # /tmp/dashboards/Network
 
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
