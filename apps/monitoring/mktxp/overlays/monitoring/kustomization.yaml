@@ -7,6 +7,7 @@ resources:
 - secrets/secret.sops.yaml
 - resources/deployment.yaml
 - resources/service.yaml
+- resources/dashboard
 
 # generators:
 # - ksops-generator.yaml
