@@ -783,6 +783,17 @@ dashboardProviders:
         options:
           path: /var/lib/grafana/dashboards/freqtrade
 
+      - name: "Network"
+        orgId: 1
+        folder: "Network"
+        type: file
+        disableDeletion: true
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/Network
+
+
+
 ## Configure grafana dashboard to import
 ## NOTE: To use dashboards you must also enable/configure dashboardProviders
 ## ref: https://grafana.com/dashboards
