@@ -4,11 +4,9 @@ namespace: monitoring
 
 resources:
 - ../../base
+- dashboard
 - resources/pv.yaml
 - resources/pvc.yaml
-# - resources/blackbox-exporter-dashboard-configmap.yaml
-# - resources/smartctl-exporter-dashboard-configmap.yaml
-# - resources/temperature-dashboard-configmap.yaml
 
 generators:
 - ksops-generator.yaml

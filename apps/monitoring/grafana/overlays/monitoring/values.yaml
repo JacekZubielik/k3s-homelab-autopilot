@@ -783,33 +783,17 @@ dashboardProviders:
         options:
           path: /var/lib/grafana/dashboards/freqtrade
 
-#  dashboardproviders.yaml:
-#    apiVersion: 1
-#    providers:
-#    - name: 'default'
-#      orgId: 1
-#      folder: ''
-#      type: file
-#      disableDeletion: false
-#      editable: true
-#      options:
-#        path: /var/lib/grafana/dashboards/default
-
 ## Configure grafana dashboard to import
 ## NOTE: To use dashboards you must also enable/configure dashboardProviders
 ## ref: https://grafana.com/dashboards
 ##
 ## dashboards per provider, use provider name as key.
-##
 dashboards:
   default: # The "default" provider is defined below.
     nginx-ingress-controller:
       url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/nginx.json
     ingress-request-performance:
       url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/request-handling-performance.json
-    argocd-overview:
-      gnetId: 14584
-      datasource: Prometheus
 
   device:
     prometheus-pve-exporter:
@@ -828,6 +812,9 @@ dashboards:
       datasource: Prometheus
     blackbox-exporter-overview:
       gnetId: 5345
+      datasource: Prometheus
+    argocd-overview:
+      gnetId: 14584
       datasource: Prometheus
 
   freqtrade:
@@ -861,19 +848,7 @@ dashboards:
   #   url: https://raw.githubusercontent.com/argoproj/argo-cd/master/examples/dashboard.json
   #   token: ""
 
-  # extra:
-  #   argocd-overview:
-  #     gnetId: 14584
-  #     datasource: Prometheus
-  #   cert-manager-overview:
-  #     gnetId: 11001
-  #     datasource: Prometheus
-  #   external-dns-overview:
-  #     gnetId: 15038
-  #     datasource: Prometheus
-  #   blackbox-exporter-overview:
-  #     gnetId: 5345
-  #     datasource: Prometheus
+
 
   # default:
   #   some-dashboard:
