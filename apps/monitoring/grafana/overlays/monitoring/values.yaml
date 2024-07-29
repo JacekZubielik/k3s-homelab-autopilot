@@ -784,7 +784,7 @@ dashboardProviders:
           path: /var/lib/grafana/dashboards/freqtrade
 
       - name: "Network"
-        orgId: 1
+        orgId: 2
         folder: "Network"
         type: file
         disableDeletion: true
