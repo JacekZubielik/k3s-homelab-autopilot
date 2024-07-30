@@ -3233,13 +3233,6 @@ prometheus:
     ##
     storageSpec:
       volumeClaimTemplate:
-      - metadata:
-      #     name: storage
-          namespace: monitoring
-          labels:
-            volume: storage
-            name: pv-prometheus-server-0
-            type: longhorn
         spec:
           accessModes:
           - ReadWriteOnce
@@ -3247,7 +3240,7 @@ prometheus:
           resources:
             requests:
               storage: 20Gi
-          volumeName: pv-prometheus-server-0 # must reference Persistent Volume
+          volumeName: pv-prometheus-server # must reference Persistent Volume
 
     ## Using tmpfs volume
     ##
