@@ -1,21 +1,21 @@
----
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-namespace: monitoring
+# ---
+# apiVersion: kustomize.config.k8s.io/v1beta1
+# kind: Kustomization
+# namespace: monitoring
 
-generatorOptions:
-  disableNameSuffixHash: true
-  labels:
-    grafana_dashboard: "1"
-  annotations:
-    k8s-sidecar-target-directory: /var/lib/grafana/dashboards/network
+# generatorOptions:
+#   disableNameSuffixHash: true
+#   labels:
+#     grafana_dashboard: "1"
+#   annotations:
+#     k8s-sidecar-target-directory: /var/lib/grafana/dashboards/network
 
-commonAnnotations:
-  grafana_folder: "Network"
+# commonAnnotations:
+#   grafana_folder: "Network"
 
-configMapGenerator:
-  - name: grafana-dashboard-network
-    files: [ 13679_rev22.json ]
+# configMapGenerator:
+#   - name: grafana-dashboard-network
+#     files: [ 13679_rev22.json ]
 
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -38,17 +38,17 @@ configMapGenerator:
 
 
 
-# ---
-# apiVersion: kustomize.config.k8s.io/v1beta1
-# kind: Kustomization
-# namespace: monitoring
-# configMapGenerator:
-#   - name: grafana-dashboard-minio
-#     files:
-#       - minio.json
-# generatorOptions:
-#   disableNameSuffixHash: true
-#   labels:
-#     grafana-dashboard: 'true'
-#   annotations:
-#     k8s-sidecar-target-directory: /tmp/dashboards/Storage
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+configMapGenerator:
+  - name: grafana-dashboard-minio
+    files:
+      - minio.json
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    grafana-dashboard: 'true'
+  annotations:
+    k8s-sidecar-target-directory: /tmp/dashboards/storage

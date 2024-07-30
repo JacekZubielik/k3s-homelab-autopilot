@@ -859,6 +859,12 @@ dashboards:
       gnetId: 14632
       datasource: Prometheus
 
+  network:
+    mikrotik:
+      gnetId: 13679
+      datasource: Prometheus
+
+
   storage:
     minio-dashboard:
       gnetId: 13502
