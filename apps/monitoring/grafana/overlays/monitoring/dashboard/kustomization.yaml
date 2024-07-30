@@ -14,7 +14,7 @@ commonAnnotations:
   grafana_folder: "Network"
 
 configMapGenerator:
-  - name: grafana-dashboard-network
+  - name: network # grafana-dashboard-network
     files: [ 13679_rev22.json ]
 
 ---
@@ -33,7 +33,7 @@ commonAnnotations:
   grafana_folder: "Storage"
 
 configMapGenerator:
-  - name: grafana-dashboard-storage
+  - name: storage # grafana-dashboard-storage
     files: [ minio.json ]
 
 
