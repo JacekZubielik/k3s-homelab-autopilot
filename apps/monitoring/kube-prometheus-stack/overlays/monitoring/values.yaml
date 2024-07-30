@@ -3232,9 +3232,8 @@ prometheus:
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
     ##
     storageSpec:
-      # existingClaim: pv-prometheus-server-0 # pvc-kube-prometheus
       volumeClaimTemplate:
-        metadata:
+      - metadata:
           name: storage-prometheus-server-0
           namespace: monitoring
           labels:
@@ -3250,15 +3249,10 @@ prometheus:
               storage: 20Gi
           volumeName: pv-prometheus-server-0 # must reference Persistent Volume
 
-
-
-
     ## Using tmpfs volume
     ##
     #  emptyDir:
     #    medium: Memory
-
-
 
     # Additional volumes on the output StatefulSet definition.
     volumes: []
