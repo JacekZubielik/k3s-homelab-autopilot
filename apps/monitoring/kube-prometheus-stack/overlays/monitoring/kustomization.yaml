@@ -10,11 +10,6 @@ resources:
 generators:
   - ksops-generator.yaml
 
-# generatorOptions:
-#   disableNameSuffixHash: true
-#   labels:
-#     grafana_dashboard: "1"
-
 configMapGenerator:
 - name: argocd-cm
   literals:
@@ -36,21 +31,9 @@ configMapGenerator:
   files:
   - resources/scrape_configs.yaml
 
-# patches:
-# - patch: |-
-#     - op: add
-#       path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
-#       value: "Replace=true"
-#   target:
-#     group: apiextensions.k8s.io
-#     kind: CustomResourceDefinition
-#     name: prometheuses.monitoring.coreos.com
-#     version: v1
-
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "2"
   labels:
     app: kube-prometheus-stack
@@ -78,10 +61,10 @@ helmCharts:
           prune: false
           selfHeal: true
         syncOptions:
-        # - RespectIgnoreDifferences=true
+        - RespectIgnoreDifferences=true
         - ServerSideApply=true
         - CreateNamespace=true
         - PruneLast=true
-        # - SkipDryRunOnMissingResource=false
+        - SkipDryRunOnMissingResource=true
         # - Delete=true
-        # - Replace=true
+        - Replace=true
