@@ -3262,7 +3262,7 @@ prometheus:
     #  emptyDir:
     #    medium: Memory
   persistentVolume:
-    existingClaim: pvc-kube-prometheus
+    existingClaim: pv-prometheus-server-0 # pvc-kube-prometheus
 
     # Additional volumes on the output StatefulSet definition.
     volumes: []
