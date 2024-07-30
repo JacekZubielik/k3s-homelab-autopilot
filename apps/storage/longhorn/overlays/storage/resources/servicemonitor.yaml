@@ -1,15 +1,15 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "1"
+  # annotations:
+  #   argocd.argoproj.io/compare-options: IgnoreExtraneous
+  #   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  #   argocd.argoproj.io/sync-wave: "1"
   labels:
     app.kubernetes.io/name: longhorn
-    release: kube-prometheus-stack
-    name: longhorn-prometheus-servicemonitor
-  name: longhorn-prometheus-servicemonitor
+    release: prometheus
+    name: longhorn-metrics
+  name: longhorn-metrics
   namespace: longhorn-system
 spec:
   jobLabel: longhorn-metrics

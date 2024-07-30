@@ -357,10 +357,10 @@ metrics:
     # for node metrics
     relabelConfigs: {}
     # for cluster metrics
-    relabelConfigsCluster: {}
-      # metricRelabelings:
-      #   - regex: (server|pod)
-      #     action: labeldrop
+    relabelConfigsCluster: # {}
+      metricRelabelings:
+        - regex: (server|pod)
+          action: labeldrop
     namespace: ~
     # Scrape interval, for example `interval: 30s`
     interval: 30s

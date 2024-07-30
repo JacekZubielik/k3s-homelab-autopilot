@@ -816,11 +816,6 @@ dashboards:
       datasource: Prometheus
 
   kubernetes:
-    k3s-cluster:
-      gnetId: 16450
-      datasource:
-      - name: VAR_DS_PROMETHEUS
-        value: Prometheus
     k8s-addons-prometheus:
       gnetId: 19105
       datasource: Prometheus
