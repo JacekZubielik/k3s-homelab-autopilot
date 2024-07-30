@@ -804,7 +804,7 @@ dashboards:
       gnetId: 14837
       datasource: Prometheus
     cert-manager-overview:
-      gnetId: 11001
+      gnetId: 20842
       datasource:
       - name: DS_PROMETHEUS
         value: Prometheus
@@ -858,7 +858,9 @@ dashboards:
       datasource: Prometheus
     minio-bucket:
       gnetId: 19237
-      datasource: Prometheus
+      datasources:
+      - name: DS_PROMETHEUS
+        value: Prometheus
     longhorn:
       gnetId: 16888
       datasource:
