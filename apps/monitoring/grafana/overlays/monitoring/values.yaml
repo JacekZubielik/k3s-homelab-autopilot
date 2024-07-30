@@ -863,7 +863,9 @@ dashboards:
     minio-dashboard:
       gnetId: 13502
       datasource: Prometheus
-
+    minio-bucket:
+      gnetId: 19237
+      datasource: Prometheus
 
 
 
