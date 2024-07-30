@@ -733,7 +733,7 @@ dashboardProviders:
     providers:
       - name: "default"
         orgId: 1
-        folder: ""
+        folder: "Default"
         type: file
         disableDeletion: false
         editable: true
@@ -770,9 +770,9 @@ dashboardProviders:
         options:
           path: /var/lib/grafana/dashboards/storage
 
-      - name: "device"
+      - name: "devices"
         orgId: 1
-        folder: "Devices Metrics"
+        folder: "Devices"
         type: file
         disableDeletion: true
         editable: true
@@ -806,15 +806,44 @@ dashboardProviders:
 ##
 ## dashboards per provider, use provider name as key.
 dashboards:
-  default: # The "default" provider is defined below.
+  default:
     nginx-ingress-controller:
       url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/nginx.json
     ingress-request-performance:
       url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/request-handling-performance.json
 
-  device:
+  grafana-dashboards-kubernetes:
+    k8s-system-api-server:
+      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
+      token: ""
+    k8s-system-coredns:
+      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
+      token: ""
+    k8s-views-global:
+      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
+      token: ""
+    k8s-views-namespaces:
+      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
+      token: ""
+    k8s-views-nodes:
+      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
+      token: ""
+    k8s-views-pods:
+      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
+      token: ""
+    cncf:
+      url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
+      token: ''
+    argocd:
+      url: https://raw.githubusercontent.com/argoproj/argo-cd/master/examples/dashboard.json
+      token: ""
+
+  devices:
     prometheus-pve-exporter:
       gnetId: 10347
+      datasource: Prometheus
+    blackbox-exporter-overview:
+      gnetId: 5345
       datasource: Prometheus
 
   extra:
@@ -827,9 +856,6 @@ dashboards:
     external-dns-overview:
       gnetId: 15038
       datasource: Prometheus
-    blackbox-exporter-overview:
-      gnetId: 5345
-      datasource: Prometheus
     argocd-overview:
       gnetId: 14584
       datasource: Prometheus
@@ -838,33 +864,6 @@ dashboards:
     freqtrade:
       gnetId: 14632
       datasource: Prometheus
-
-  # grafana-dashboards-kubernetes:
-  #   k8s-system-api-server:
-  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
-  #     token: ""
-  # k8s-system-coredns:
-  #   url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
-  #   token: ""
-  # k8s-views-global:
-  #   url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
-  #   token: ""
-  # k8s-views-namespaces:
-  #   url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
-  #   token: ""
-  # k8s-views-nodes:
-  #   url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
-  #   token: ""
-  # k8s-views-pods:
-  #   url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
-  #   token: ""
-  # cncf:
-  #   url: https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/docs/src/samples/monitoring/grafana-dashboard.json
-  #   token: ''
-  # argocd:
-  #   url: https://raw.githubusercontent.com/argoproj/argo-cd/master/examples/dashboard.json
-  #   token: ""
-
 
 
   # default:
