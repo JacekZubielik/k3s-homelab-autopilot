@@ -3234,12 +3234,12 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
       - metadata:
-          name: storage
-          # namespace: monitoring
-          # labels:
-          #   volume: storage
-          #   name: storage
-          #   type: longhorn
+      #     name: storage
+          namespace: monitoring
+          labels:
+            volume: storage
+            name: storage
+            type: longhorn
         spec:
           accessModes:
           - ReadWriteOnce
