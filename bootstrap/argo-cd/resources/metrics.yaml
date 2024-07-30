@@ -12,6 +12,8 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-metrics
+  namespaceSelector:
+    any: true
   endpoints:
   - port: metrics
 
@@ -30,6 +32,8 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-server-metrics
+  namespaceSelector:
+    any: true
   endpoints:
   - port: metrics
 
@@ -48,6 +52,8 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-repo-server
+  namespaceSelector:
+    any: true
   endpoints:
   - port: metrics
 
@@ -66,5 +72,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-applicationset-controller
+  namespaceSelector:
+    any: true
   endpoints:
   - port: metrics
