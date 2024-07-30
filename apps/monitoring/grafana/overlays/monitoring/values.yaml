@@ -798,6 +798,9 @@ dashboards:
     argocd-overview:
       gnetId: 14584
       datasource: Prometheus
+    authentik:
+      gnetId: 14837
+      datasource: Prometheus
     cert-manager-overview:
       gnetId: 11001
       datasource: Prometheus
