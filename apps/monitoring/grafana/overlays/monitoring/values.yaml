@@ -614,7 +614,7 @@ datasources:
         isDefault: true
       - name: Loki
         type: loki
-        url: http://loki:3100 # http://loki-stack.svc.cluster.local:3100
+        url: http://loki-gateway:3100 # http://loki-stack.svc.cluster.local:3100
         access: proxy
 
 # datasources: {}
@@ -723,33 +723,46 @@ notifiers: {}
 #    delete_notifiers:
 
 ## Configure grafana dashboard providers
-## ref: http://docs.grafana.org/administration/provisioning/#dashboards
-##
-## `path` must be /var/lib/grafana/dashboards/<provider_name>
-##
 dashboardProviders:
   dashboardproviders.yaml:
     apiVersion: 1
     providers:
-      # - name: "default"
-      #   orgId: 1
-      #   folder: "Default"
-      #   type: file
-      #   disableDeletion: false
-      #   editable: true
-      #   allowUiUpdates: true
-      #   options:
-      #     path: /var/lib/grafana/dashboards/default
+      - name: "devices"
+        orgId: 1
+        folder: "Devices"
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/device
 
-      # - name: "extra"
-      #   orgId: 1
-      #   folder: "Extra"
-      #   type: file
-      #   disableDeletion: false
-      #   editable: true
-      #   allowUiUpdates: true
-      #   options:
-      #     path: /var/lib/grafana/dashboards/extra
+      - name: "extra"
+        orgId: 1
+        folder: "Extra"
+        type: file
+        disableDeletion: false
+        editable: true
+        allowUiUpdates: true
+        options:
+          path: /var/lib/grafana/dashboards/extra
+
+      - name: "freqtrade"
+        orgId: 1
+        folder: "Freqtrade"
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/freqtrade
+
+      - name: "kubernetes"
+        orgId: 1
+        folder: "Kubernetes"
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/kubernetes
 
       - name: "network"
         orgId: 1
@@ -770,138 +783,90 @@ dashboardProviders:
         options:
           path: /var/lib/grafana/dashboards/storage
 
-      # - name: "devices"
-      #   orgId: 1
-      #   folder: "Devices"
-      #   type: file
-      #   disableDeletion: false
-      #   editable: true
-      #   options:
-      #     path: /var/lib/grafana/dashboards/device
+## Configure grafana dashboard
+dashboards:
+  devices:
+    prometheus-pve-exporter:
+      gnetId: 10347
+      datasource: Prometheus
+    blackbox-exporter-overview:
+      gnetId: 5345
+      datasource: Prometheus
 
-      # - name: "kubernetes"
-      #   orgId: 1
-      #   folder: "Kubernetes"
-      #   type: file
-      #   disableDeletion: false
-      #   editable: true
-      #   options:
-      #     path: /var/lib/grafana/dashboards/kubernetes
+  extra:
+    argocd-overview:
+      gnetId: 14584
+      datasource: Prometheus
+    cert-manager-overview:
+      gnetId: 11001
+      datasource: Prometheus
+    external-dns-overview:
+      gnetId: 15038
+      datasource: Prometheus
 
-      # - name: "freqtrade"
-      #   orgId: 1
-      #   folder: "Freqtrade"
-      #   type: file
-      #   disableDeletion: false
-      #   editable: true
-      #   options:
-      #     path: /var/lib/grafana/dashboards/freqtrade
+  freqtrade:
+    freqtrade:
+      gnetId: 14632
+      datasource: Prometheus
 
+  kubernetes:
+    k8s-addons-prometheus:
+      gnetId: 19105
+      datasource: Prometheus
+    k8s-addons-trivy-operator:
+      gnetId: 16337
+      datasource: Prometheus
+    k8s-system-api-server:
+      gnetId: 15761
+      datasource: Prometheus
+    k8s-system-coredns:
+      gnetId: 15762
+      datasource: Prometheus
+    k8s-views-global:
+      gnetId: 15757
+      datasource: Prometheus
+    k8s-views-namespaces:
+      gnetId: 15758
+      datasource: Prometheus
+    k8s-views-nodes:
+      gnetId: 15759
+      datasource: Prometheus
+    k8s-views-pods:
+      gnetId: 15760
+      datasource: Prometheus
 
+  network:
+    mikrotik:
+      gnetId: 13679
+      datasource: Prometheus
 
+  storage:
+    minio-dashboard:
+      gnetId: 13502
+      datasource: Prometheus
+    minio-bucket:
+      gnetId: 19237
+      datasource: Prometheus
 
-## Configure grafana dashboard to import
-## NOTE: To use dashboards you must also enable/configure dashboardProviders
-## ref: https://grafana.com/dashboards
-##
-## dashboards per provider, use provider name as key.
-# dashboards:
-#   default:
-#     nginx-ingress-controller:
-#       url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/nginx.json
-#     ingress-request-performance:
-#       url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/request-handling-performance.json
-
-#   kubernetes:
-#     k8s-system-api-server:
-#       url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
-#       token: ""
-#     k8s-system-coredns:
-#       url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
-#       token: ""
-#     k8s-views-global:
-#       url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
-#       token: ""
-#     k8s-views-namespaces:
-#       url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
-#       token: ""
-#     k8s-views-nodes:
-#       url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
-#       token: ""
-#     k8s-views-pods:
-#       url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
-#       token: ""
-
-#   devices:
-#     prometheus-pve-exporter:
-#       gnetId: 10347
-#       datasource: Prometheus
-#     blackbox-exporter-overview:
-#       gnetId: 5345
-#       datasource: Prometheus
-
-#   extra:
-#     pihole-overview:
-#       gnetId: 10176
-#       datasource: Prometheus
-#     cert-manager-overview:
-#       gnetId: 11001
-#       datasource: Prometheus
-#     external-dns-overview:
-#       gnetId: 15038
-#       datasource: Prometheus
-#     argocd-overview:
-#       gnetId: 14584
-#       datasource: Prometheus
-
-#   freqtrade:
-#     freqtrade:
-#       gnetId: 14632
-#       datasource: Prometheus
-
-#   network:
-#     mikrotik:
-#       gnetId: 13679
-#       datasource: Prometheus
-
-
-#   storage:
-#     minio-dashboard:
-#       gnetId: 13502
-#       datasource: Prometheus
-#     minio-bucket:
-#       gnetId: 19237
-#       datasource: Prometheus
-
-
-
-  # default:
-  #   some-dashboard:
-  #     json: |
-  #       $RAW_JSON
-  #   custom-dashboard:
-  #     file: dashboards/custom-dashboard.json
-  #   prometheus-stats:
-  #     gnetId: 2
-  #     revision: 2
-  #     datasource: Prometheus
-  #   local-dashboard:
-  #     url: https://example.com/repository/test.json
-  #     token: ''
-  #   local-dashboard-base64:
-  #     url: https://example.com/repository/test-b64.json
-  #     token: ''
-  #     b64content: true
-  #   local-dashboard-gitlab:
-  #     url: https://example.com/repository/test-gitlab.json
-  #     gitlabToken: ''
-  #   local-dashboard-bitbucket:
-  #     url: https://example.com/repository/test-bitbucket.json
-  #     bearerToken: ''
-  #   local-dashboard-azure:
-  #     url: https://example.com/repository/test-azure.json
-  #     basic: ''
-  #     acceptHeader: '*/*'
+  # kubernetes:
+  #   k8s-system-api-server:
+  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
+  #     token: ""
+  #   k8s-system-coredns:
+  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
+  #     token: ""
+  #   k8s-views-global:
+  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
+  #     token: ""
+  #   k8s-views-namespaces:
+  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
+  #     token: ""
+  #   k8s-views-nodes:
+  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
+  #     token: ""
+  #   k8s-views-pods:
+  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
+  #     token: ""
 
 ## Reference to external ConfigMap per provider. Use provider name as key and ConfigMap name as value.
 ## A provider dashboards must be defined either by external ConfigMaps or in values.yaml, not in both.
