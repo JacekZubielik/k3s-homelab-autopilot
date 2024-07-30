@@ -789,7 +789,9 @@ dashboards:
     prometheus-pve-exporter:
       gnetId: 10347
       revision: 5
-      datasource: Prometheus
+      datasource:
+      - name: DS_PROMETHEUS
+        value: Prometheus
     blackbox-exporter-overview:
       gnetId: 5345
       datasource: Prometheus
@@ -816,7 +818,9 @@ dashboards:
   kubernetes:
     k3s-cluster:
       gnetId: 16450
-      datasource: Prometheus
+      datasource:
+      - name: VAR_DS_PROMETHEUS
+        value: Prometheus
     k8s-addons-prometheus:
       gnetId: 19105
       datasource: Prometheus
@@ -851,7 +855,9 @@ dashboards:
     mikrotik:
       gnetId: 13679
       revision: 22
-      datasource: Prometheus
+      datasource:
+      - name: DS_PROMETHEUS
+        value: Prometheus
 
   storage:
     minio-dashboard:
