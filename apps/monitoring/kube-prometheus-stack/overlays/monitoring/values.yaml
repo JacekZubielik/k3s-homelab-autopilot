@@ -3234,6 +3234,13 @@ prometheus:
     storageSpec:
       # existingClaim: pv-prometheus-server-0 # pvc-kube-prometheus
       volumeClaimTemplate:
+        metadata:
+          name: storage-prometheus-server-0
+          namespace: monitoring
+          labels:
+            volume: storage
+            name: storage
+            type: longhorn
         spec:
           accessModes:
           - ReadWriteOnce
