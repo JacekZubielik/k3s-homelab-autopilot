@@ -5,7 +5,7 @@ namespace: monitoring
 resources:
   - ../../base
   - resources/pv.yaml
-  - resources/pvc.yaml
+  # - resources/pvc.yaml
 
 generators:
   - ksops-generator.yaml
@@ -15,11 +15,11 @@ generators:
 #   labels:
 #     grafana_dashboard: "1"
 
-# configMapGenerator:
-# - name: argocd-cm
-#   literals:
-#   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-#   - resource.compareoptions.ignoreAggregatedRoles="true"
+configMapGenerator:
+- name: argocd-cm
+  literals:
+  # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+  - resource.compareoptions.ignoreAggregatedRoles="true"
 
 # - name: argocd-cmd-params-cm
 #   literals:
@@ -32,9 +32,9 @@ generators:
 #   - dashboards/argocd-performance.json
 #   - dashboards/authentik.json
 
-# - name: prometheus-server-conf
-#   files:
-#   - resources/scrape_configs.yaml
+- name: prometheus-server-conf
+  files:
+  - resources/scrape_configs.yaml
 
 # patches:
 # - patch: |-
@@ -66,12 +66,12 @@ helmCharts:
   valuesFile: values.yaml
   valuesInline:
     spec:
-      # ignoreDifferences:
-      #   - kind: PersistentVolume
-      #     jsonPointers:
-      #     - /spec/claimRef/resourceVersion
-      #     - /spec/claimRef/uid
-      #     - /status/lastPhaseTransitionTime
+      ignoreDifferences:
+        - kind: PersistentVolume
+          jsonPointers:
+          - /spec/claimRef/resourceVersion
+          - /spec/claimRef/uid
+          - /status/lastPhaseTransitionTime
       syncPolicy:
         automated:
           allowEmpty: true

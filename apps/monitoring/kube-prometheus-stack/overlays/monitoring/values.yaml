@@ -3232,16 +3232,15 @@ prometheus:
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
     ##
     storageSpec:
-      storage: {}
-      # volumeClaimTemplate:
-      #   spec:
-      #     accessModes:
-      #     - ReadWriteOnce
-      #     storageClassName: longhorn-data
-      #     resources:
-      #       requests:
-      #         storage: 20Gi
-          # volumeName: pv-prometheus-server # must reference Persistent Volume
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          storageClassName: longhorn-data
+          resources:
+            requests:
+              storage: 20Gi
+          volumeName: pv-prometheus-server # must reference Persistent Volume
 
     ## Using tmpfs volume
     ##
