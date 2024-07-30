@@ -3233,8 +3233,8 @@ prometheus:
     ##
     storageSpec:
       volumeClaimTemplate:
-      - metadata:
-          name: storage-prometheus-server-0
+      # - metadata:
+      #     name: storage-prometheus-server-0
           # namespace: monitoring
           # labels:
           #   volume: storage
