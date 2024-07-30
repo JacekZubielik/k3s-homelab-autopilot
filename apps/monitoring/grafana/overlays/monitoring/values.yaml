@@ -595,7 +595,7 @@ plugins:
   # []
   - digrich-bubblechart-panel
   - grafana-clock-panel
-  - grafana-piechart-panel
+  # - grafana-piechart-panel
   ## You can also use other plugin download URL, as long as they are valid zip files,
   ## and specify the name of the plugin after the semicolon. Like this:
   # - https://grafana.com/api/plugins/marcusolsson-json-datasource/versions/1.3.2/download;marcusolsson-json-datasource
@@ -614,7 +614,7 @@ datasources:
         isDefault: true
       - name: Loki
         type: loki
-        url: http://loki-stack.svc.cluster.local:3100
+        url: http://loki-backend:3100 # http://loki-stack.svc.cluster.local:3100
         access: proxy
 
 # datasources: {}
