@@ -240,6 +240,10 @@ alertmanager:
   annotations: {}
   apiVersion: v2
   enableFeatures: []
+
+  replicaCount: 1
+  revisionHistoryLimit: 5
+
   serviceAccount:
     create: true
     name: ""
@@ -388,7 +392,7 @@ alertmanager:
     ##
     ## Prefix for the per replica ingress that will have `-$replicaNumber`
     ## appended to the end
-    hostPrefix: ""
+    hostPrefix: "alertmanager"
     ## Domain that will be used for the per replica ingress
     hostDomain: ""
     ## Paths to use for ingress rules
@@ -474,7 +478,7 @@ alertmanager:
   serviceMonitor:
     ## If true, a ServiceMonitor will be created for the AlertManager service.
     ##
-    selfMonitor: false # true
+    selfMonitor: true
     ## Scrape interval. If not set, the Prometheus default scrape interval is used.
     ##
     interval: ""
