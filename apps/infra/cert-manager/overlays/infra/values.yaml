@@ -562,7 +562,7 @@ prometheus:
   # Note that you can not enable both PodMonitor and ServiceMonitor as they are mutually exclusive. Enabling both will result in a error.
   podmonitor:
     # Create a PodMonitor to add cert-manager to Prometheus.
-    enabled: true
+    enabled: false
 
     # Specifies the `prometheus` label on the created PodMonitor. This is
     # used when different Prometheus instances have label selectors matching
