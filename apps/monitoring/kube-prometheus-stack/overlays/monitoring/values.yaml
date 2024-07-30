@@ -3232,31 +3232,19 @@ prometheus:
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
     ##
     storageSpec:
-      existingClaim: pv-prometheus-server-0 # pvc-kube-prometheus
-    #   volumeClaimTemplate:
-    #     spec:
-    #       # storageClassName: longhorn-data
-    #       # accessModes: ReadWriteOnce
-    #       # resources:
-    #       #   requests:
-    #       #     storage: 20Gi
-    #       # volumeMode: Filesystem
-    #       volumeName: pvc-kube-prometheus
-          # persistentVolumeClaimRetentionPolicy:
-          #   enabled: true
-          #   whenScaled: Retain
-          #   whenDeleted: Retain
+      # existingClaim: pv-prometheus-server-0 # pvc-kube-prometheus
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          storageClassName: longhorn-data
+          resources:
+            requests:
+              storage: 20Gi
+          volumeName: pv-prometheus-server-0 # must reference Persistent Volume
 
-    ## Using PersistentVolumeClaim
-    ##
-    #  volumeClaimTemplate:
-    #    spec:
-    #      storageClassName: gluster
-    #      accessModes: ["ReadWriteOnce"]
-    #      resources:
-    #        requests:
-    #          storage: 50Gi
-    #    selector: {}
+
+
 
     ## Using tmpfs volume
     ##
