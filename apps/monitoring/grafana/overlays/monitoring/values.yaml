@@ -805,10 +805,7 @@ dashboards:
       datasource: Prometheus
     cert-manager-overview:
       gnetId: 20842
-      datasource:
-      - name: DS_PROMETHEUS
-        value: Prometheus
-
+      datasource: Prometheus
     external-dns-overview:
       gnetId: 15038
       datasource: Prometheus
