@@ -745,7 +745,7 @@ dashboardProviders:
         orgId: 1
         folder: "Extra"
         type: file
-        disableDeletion: true
+        disableDeletion: false
         editable: true
         allowUiUpdates: true
         options:
@@ -755,7 +755,7 @@ dashboardProviders:
         orgId: 1
         folder: "Network"
         type: file
-        disableDeletion: true
+        disableDeletion: false
         editable: true
         options:
           path: /var/lib/grafana/dashboards/network
@@ -764,7 +764,7 @@ dashboardProviders:
         orgId: 1
         folder: "Storage"
         type: file
-        disableDeletion: true
+        disableDeletion: false
         editable: true
         allowUiUpdates: true
         options:
@@ -774,7 +774,7 @@ dashboardProviders:
         orgId: 1
         folder: "Devices"
         type: file
-        disableDeletion: true
+        disableDeletion: false
         editable: true
         options:
           path: /var/lib/grafana/dashboards/device
@@ -783,7 +783,7 @@ dashboardProviders:
         orgId: 1
         folder: "Kubernetes"
         type: file
-        disableDeletion: true
+        disableDeletion: false
         editable: true
         options:
           path: /var/lib/grafana/dashboards/kubernetes
@@ -792,7 +792,7 @@ dashboardProviders:
         orgId: 1
         folder: "Freqtrade"
         type: file
-        disableDeletion: true
+        disableDeletion: false
         editable: true
         options:
           path: /var/lib/grafana/dashboards/freqtrade
@@ -812,25 +812,25 @@ dashboards:
     ingress-request-performance:
       url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/request-handling-performance.json
 
-  # kubernetes:
-  #   k8s-system-api-server:
-  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
-  #     token: ""
-  #   k8s-system-coredns:
-  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
-  #     token: ""
-  #   k8s-views-global:
-  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
-  #     token: ""
-  #   k8s-views-namespaces:
-  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
-  #     token: ""
-  #   k8s-views-nodes:
-  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
-  #     token: ""
-  #   k8s-views-pods:
-  #     url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
-  #     token: ""
+  kubernetes:
+    k8s-system-api-server:
+      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
+      token: ""
+    k8s-system-coredns:
+      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
+      token: ""
+    k8s-views-global:
+      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
+      token: ""
+    k8s-views-namespaces:
+      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
+      token: ""
+    k8s-views-nodes:
+      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
+      token: ""
+    k8s-views-pods:
+      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
+      token: ""
 
   devices:
     prometheus-pve-exporter:
@@ -858,6 +858,13 @@ dashboards:
     freqtrade:
       gnetId: 14632
       datasource: Prometheus
+
+  storage:
+    minio-dashboard:
+      gnetId: 13502
+      datasource: Prometheus
+
+
 
 
   # default:
