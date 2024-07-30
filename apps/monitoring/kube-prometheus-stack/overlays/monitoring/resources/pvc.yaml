@@ -5,7 +5,7 @@ metadata:
   labels:
     app: prometheus
     prometheus: prometheus-operator-prometheus
-  name:  prometheus-prometheus-operator-prometheus-db-prometheus-prometheus-operator-prometheus-0
+  name: prometheus-kube-prometheus-stack-prometheus-db-prometheus-kube-prometheus-stack-prometheus-0
 spec:
   storageClassName: longhorn-data
   accessModes:
@@ -13,3 +13,4 @@ spec:
   resources:
     requests:
       storage: 20Gi
+  volumeName: pvc-prometheus-operator-prometheus-0
