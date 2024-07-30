@@ -803,7 +803,7 @@ dashboards:
     authentik:
       gnetId: 14837
       datasource: Prometheus
-    cert-manager-overview:
+    cert-manager:
       gnetId: 20842
       datasource: Prometheus
     external-dns-overview:
