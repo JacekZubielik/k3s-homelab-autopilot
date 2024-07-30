@@ -742,7 +742,7 @@ dashboardProviders:
           path: /var/lib/grafana/dashboards/default
 
       - name: "extra"
-        orgId: 1
+        orgId: 2
         folder: "Extra"
         type: file
         disableDeletion: false
@@ -752,7 +752,7 @@ dashboardProviders:
           path: /var/lib/grafana/dashboards/extra
 
       - name: "network"
-        orgId: 1
+        orgId: 3
         folder: "Network"
         type: file
         disableDeletion: false
@@ -761,7 +761,7 @@ dashboardProviders:
           path: /var/lib/grafana/dashboards/network
 
       - name: "storage"
-        orgId: 1
+        orgId: 4
         folder: "Storage"
         type: file
         disableDeletion: false
@@ -771,7 +771,7 @@ dashboardProviders:
           path: /var/lib/grafana/dashboards/storage
 
       - name: "devices"
-        orgId: 1
+        orgId: 5
         folder: "Devices"
         type: file
         disableDeletion: false
@@ -780,7 +780,7 @@ dashboardProviders:
           path: /var/lib/grafana/dashboards/device
 
       - name: "kubernetes"
-        orgId: 1
+        orgId: 6
         folder: "Kubernetes"
         type: file
         disableDeletion: false
@@ -789,7 +789,7 @@ dashboardProviders:
           path: /var/lib/grafana/dashboards/kubernetes
 
       - name: "freqtrade"
-        orgId: 1
+        orgId: 7
         folder: "Freqtrade"
         type: file
         disableDeletion: false
