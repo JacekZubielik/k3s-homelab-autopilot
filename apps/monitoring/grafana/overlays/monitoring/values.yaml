@@ -814,6 +814,9 @@ dashboards:
       datasource: Prometheus
 
   kubernetes:
+    k3s-cluster:
+      gnetId: 16450
+      datasource: Prometheus
     k8s-addons-prometheus:
       gnetId: 19105
       datasource: Prometheus
@@ -838,10 +841,14 @@ dashboards:
     k8s-views-pods:
       gnetId: 15760
       datasource: Prometheus
+    longhorn:
+      gnetId: 16888
+      datasource: Prometheus
 
   network:
     mikrotik:
       gnetId: 13679
+      revision: 22
       datasource: Prometheus
 
   storage:
