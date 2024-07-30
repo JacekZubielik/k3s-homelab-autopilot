@@ -805,7 +805,10 @@ dashboards:
       datasource: Prometheus
     cert-manager-overview:
       gnetId: 11001
-      datasource: Prometheus
+      datasource:
+      - name: DS_PROMETHEUS
+        value: Prometheus
+
     external-dns-overview:
       gnetId: 15038
       datasource: Prometheus
@@ -840,11 +843,6 @@ dashboards:
     k8s-views-pods:
       gnetId: 15760
       datasource: Prometheus
-    longhorn:
-      gnetId: 16888
-      datasource:
-      - name: DS_PROMETHEUS
-        value: Prometheus
 
   network:
     mikrotik:
@@ -861,6 +859,12 @@ dashboards:
     minio-bucket:
       gnetId: 19237
       datasource: Prometheus
+    longhorn:
+      gnetId: 16888
+      datasource:
+      - name: DS_PROMETHEUS
+        value: Prometheus
+
 
   # kubernetes:
   #   k8s-system-api-server:
