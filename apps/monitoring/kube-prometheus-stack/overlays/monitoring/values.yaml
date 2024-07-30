@@ -236,7 +236,7 @@ prometheus-windows-exporter:
 ## ref: https://prometheus.io/docs/alerting/alertmanager/
 ##
 alertmanager:
-  enabled: true
+  enabled: false ################################
   annotations: {}
   apiVersion: v2
   enableFeatures: []
@@ -561,11 +561,11 @@ alertmanager:
     podMetadata: {}
     ## Image of Alertmanager
     ##
-    image:
-      registry: quay.io
-      repository: prometheus/alertmanager
-      tag: v0.27.0
-      sha: ""
+    # image:
+    #   registry: quay.io
+    #   repository: prometheus/alertmanager
+    #   tag: v0.27.0
+    #   sha: ""
     ## If true then the user will be responsible to provide a secret with alertmanager configuration
     ## So when true the config part will be ignored (including templateFiles) and the one in the secret will be used
     ##
@@ -814,7 +814,7 @@ alertmanager:
     #     someoneelse:$apr1$DMZX2Z4q$6SbQIfyuLQd.xmo/P0m2c.
 ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 grafana:
-  enabled: true
+  enabled: false
   namespaceOverride: ""
   forceDeployDatasources: false
   forceDeployDashboards: false
