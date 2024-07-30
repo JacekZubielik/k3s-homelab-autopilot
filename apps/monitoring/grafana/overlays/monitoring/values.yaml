@@ -614,7 +614,7 @@ datasources:
         isDefault: true
       - name: Loki
         type: loki
-        url: http://loki-backend:3100 # http://loki-stack.svc.cluster.local:3100
+        url: http://loki:3100 # http://loki-stack.svc.cluster.local:3100
         access: proxy
 
 # datasources: {}
@@ -761,7 +761,7 @@ dashboardProviders:
           path: /var/lib/grafana/dashboards/network
 
       - name: "storage"
-        orgId: 2
+        orgId: 1
         folder: "Storage"
         type: file
         disableDeletion: false
@@ -913,6 +913,9 @@ dashboardProviders:
 ##
 dashboardsConfigMaps: {}
 #  default: ""
+      # default: "org-1-dashboards"
+      # client-1: "org-2-dashboards"
+      # client-2: "org-3-dashboards"
 
 ## Grafana's primary configuration
 ## NOTE: values in map will be converted to ini format
