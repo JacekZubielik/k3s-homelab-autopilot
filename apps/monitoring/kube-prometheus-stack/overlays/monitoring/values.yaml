@@ -3231,16 +3231,16 @@ prometheus:
     ## Prometheus StorageSpec for persistent data
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
     ##
-    storageSpec:
-      volumeClaimTemplate:
-        spec:
-          # storageClassName: longhorn-data
-          # accessModes: ReadWriteOnce
-          # resources:
-          #   requests:
-          #     storage: 20Gi
-          # volumeMode: Filesystem
-          volumeName: pvc-kube-prometheus
+    # storageSpec:
+    #   volumeClaimTemplate:
+    #     spec:
+    #       # storageClassName: longhorn-data
+    #       # accessModes: ReadWriteOnce
+    #       # resources:
+    #       #   requests:
+    #       #     storage: 20Gi
+    #       # volumeMode: Filesystem
+    #       volumeName: pvc-kube-prometheus
           # persistentVolumeClaimRetentionPolicy:
           #   enabled: true
           #   whenScaled: Retain
@@ -3261,6 +3261,8 @@ prometheus:
     ##
     #  emptyDir:
     #    medium: Memory
+  persistentVolume:
+    existingClaim: pvc-kube-prometheus
 
     # Additional volumes on the output StatefulSet definition.
     volumes: []
