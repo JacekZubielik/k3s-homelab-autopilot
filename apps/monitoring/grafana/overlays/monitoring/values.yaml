@@ -731,7 +731,7 @@ dashboardProviders:
   dashboardproviders.yaml:
     apiVersion: 1
     providers:
-      - name: default
+      - name: "default"
         orgId: 1
         folder: ""
         type: file
@@ -740,6 +740,7 @@ dashboardProviders:
         allowUiUpdates: true
         options:
           path: /var/lib/grafana/dashboards/default
+
       - name: "extra"
         orgId: 1
         folder: "Extra"
@@ -749,15 +750,26 @@ dashboardProviders:
         allowUiUpdates: true
         options:
           path: /var/lib/grafana/dashboards/extra
-      - name: "nginx"
+
+      - name: "network"
         orgId: 1
-        folder: "nginx"
+        folder: "Network"
+        type: file
+        disableDeletion: true
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/network
+
+      - name: "storage"
+        orgId: 1
+        folder: "Storage"
         type: file
         disableDeletion: true
         editable: true
         allowUiUpdates: true
         options:
-          path: /var/lib/grafana/dashboards/nginx
+          path: /var/lib/grafana/dashboards/storage
+
       - name: "device"
         orgId: 1
         folder: "Devices Metrics"
@@ -766,6 +778,7 @@ dashboardProviders:
         editable: true
         options:
           path: /var/lib/grafana/dashboards/device
+
       - name: "grafana-dashboards-kubernetes"
         orgId: 1
         folder: "Kubernetes"
@@ -774,23 +787,16 @@ dashboardProviders:
         editable: true
         options:
           path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
+
       - name: "freqtrade"
         orgId: 1
-        folder: "freqtrade"
+        folder: "Freqtrade"
         type: file
         disableDeletion: true
         editable: true
         options:
           path: /var/lib/grafana/dashboards/freqtrade
 
-      - name: "Network"
-        orgId: 1
-        folder: "Network"
-        type: file
-        disableDeletion: true
-        editable: true
-        options:
-          path: /var/lib/grafana/dashboards/Network
 
 
 
@@ -993,13 +999,44 @@ smtp:
 ## Sidecars that collect the configmaps with specified label and stores the included files them into the respective folders
 ## Requires at least Grafana 5 to work and can't be used together with parameters dashboardProviders, datasources and dashboards
 sidecar:
-  # image:
-  #   # -- The Docker registry
-  #   registry: quay.io
-  #   repository: kiwigrid/k8s-sidecar
-  #   tag: 1.26.1
-  #   sha: ""
-  # imagePullPolicy: IfNotPresent
+  dashboards:
+    enabled: true
+    defaultFolderName: "General"
+    label: grafana_dashboard
+    labelValue: "1"
+    folderAnnotation: grafana_folder
+    searchNamespace: ALL
+    provider:
+      name: sidecarProvider
+      orgid: "1"
+      folder: ""
+      type: file
+      disableDelete: false
+      allowUiUpdates: true
+      foldersFromFilesStructure: true
+
+    env: {}
+    SCProvider: true
+    folder: /tmp/dashboards
+    watchMethod: WATCH
+    resource: both
+    reloadURL: "http://localhost:3000/api/admin/provisioning/dashboards/reload"
+    script: null
+    skipReload: false
+    # watchServerTimeout: request to the server, asking it to cleanly close the connection after that.
+    # defaults to 60sec; much higher values like 3600 seconds (1h) are feasible for non-Azure K8S
+    # watchServerTimeout: 3600
+    #
+    # watchClientTimeout: is a client-side timeout, configuring your local socket.
+    # If you have a network outage dropping all packets with no RST/FIN,
+    # this is how long your client waits before realizing & dropping the connection.
+    # defaults to 66sec (sic!)
+    # watchClientTimeout: 60
+    #
+
+    extraMounts: []
+    sizeLimit: {}
+
   resources: {}
   #   limits:
   #     cpu: 100m
@@ -1063,69 +1100,7 @@ sidecar:
     extraMounts: []
     # Sets the size limit of the alert sidecar emptyDir volume
     sizeLimit: {}
-  dashboards:
-    enabled: true
-    # Additional environment variables for the dashboards sidecar
-    env: {}
-    # Do not reprocess already processed unchanged resources on k8s API reconnect.
-    # ignoreAlreadyProcessed: true
-    SCProvider: true
-    # label that the configmaps with dashboards are marked with
-    label: grafana_dashboard
-    # value of label that the configmaps with dashboards are set to
-    labelValue: "1"
-    # Log level. Can be one of: DEBUG, INFO, WARN, ERROR, CRITICAL.
-    # logLevel: INFO
-    # folder in the pod that should hold the collected dashboards (unless `defaultFolderName` is set)
-    folder: /tmp/dashboards
-    # The default folder name, it will create a subfolder under the `folder` and put dashboards in there instead
-    defaultFolderName: "General"
-    # Namespaces list. If specified, the sidecar will search for config-maps/secrets inside these namespaces.
-    # Otherwise the namespace in which the sidecar is running will be used.
-    # It's also possible to specify ALL to search in all namespaces.
-    searchNamespace: ALL
-    # Method to use to detect ConfigMap changes. With WATCH the sidecar will do a WATCH requests, with SLEEP it will list all ConfigMaps, then sleep for 60 seconds.
-    watchMethod: WATCH
-    # search in configmap, secret or both
-    resource: both
-    # If specified, the sidecar will look for annotation with this name to create folder and put graph here.
-    # You can use this parameter together with `provider.foldersFromFilesStructure`to annotate configmaps and create folder structure.
-    folderAnnotation: grafana_folder
-    # Endpoint to send request to reload alerts
-    reloadURL: "http://localhost:3000/api/admin/provisioning/dashboards/reload"
-    # Absolute path to shell script to execute after a configmap got reloaded
-    script: null
-    skipReload: false
-    # watchServerTimeout: request to the server, asking it to cleanly close the connection after that.
-    # defaults to 60sec; much higher values like 3600 seconds (1h) are feasible for non-Azure K8S
-    # watchServerTimeout: 3600
-    #
-    # watchClientTimeout: is a client-side timeout, configuring your local socket.
-    # If you have a network outage dropping all packets with no RST/FIN,
-    # this is how long your client waits before realizing & dropping the connection.
-    # defaults to 66sec (sic!)
-    # watchClientTimeout: 60
-    #
-    # provider configuration that lets grafana manage the dashboards
-    provider:
-      # name of the provider, should be unique
-      name: sidecarProvider
-      # orgid as configured in grafana
-      orgid: 1
-      # folder in which the dashboards should be imported in grafana
-      folder: ""
-      # type of the provider
-      type: file
-      # disableDelete to activate a import-only behaviour
-      disableDelete: false
-      # allow updating provisioned dashboards from the UI
-      allowUiUpdates: false
-      # allow Grafana to replicate dashboard structure from filesystem
-      foldersFromFilesStructure: true
-    # Additional dashboard sidecar volume mounts
-    extraMounts: []
-    # Sets the size limit of the dashboard sidecar emptyDir volume
-    sizeLimit: {}
+
   datasources:
     enabled: false
     # Additional environment variables for the datasourcessidecar
