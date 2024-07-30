@@ -843,7 +843,9 @@ dashboards:
       datasource: Prometheus
     longhorn:
       gnetId: 16888
-      datasource: Prometheus
+      datasource:
+      - name: DS_PROMETHEUS
+        value: Prometheus
 
   network:
     mikrotik:
