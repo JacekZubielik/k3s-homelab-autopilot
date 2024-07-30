@@ -779,14 +779,14 @@ dashboardProviders:
         options:
           path: /var/lib/grafana/dashboards/device
 
-      - name: "grafana-dashboards-kubernetes"
+      - name: "kubernetes"
         orgId: 1
         folder: "Kubernetes"
         type: file
         disableDeletion: true
         editable: true
         options:
-          path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
+          path: /var/lib/grafana/dashboards/kubernetes
 
       - name: "freqtrade"
         orgId: 1
@@ -812,7 +812,7 @@ dashboards:
     ingress-request-performance:
       url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/grafana/dashboards/request-handling-performance.json
 
-  grafana-dashboards-kubernetes:
+  kubernetes:
     k8s-system-api-server:
       url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
       token: ""
