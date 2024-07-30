@@ -16,7 +16,6 @@ commonAnnotations:
 configMapGenerator:
   - name: grafana-dashboard-network
     files: [ 13679_rev22.json ]
-    datasource: Prometheus
 
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
