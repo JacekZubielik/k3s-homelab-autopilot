@@ -614,7 +614,7 @@ datasources:
         isDefault: true
       - name: Loki
         type: loki
-        url: http://loki-gateway:3100 # http://loki-stack.svc.cluster.local:3100
+        url: http://loki-gateway.monitoring.svc.cluster.local:3100 # http://loki-gateway:3100 # http://loki-stack.svc.cluster.local:3100
         access: proxy
 
 # datasources: {}
