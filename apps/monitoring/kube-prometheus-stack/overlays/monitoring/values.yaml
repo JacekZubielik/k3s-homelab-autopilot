@@ -3238,7 +3238,7 @@ prometheus:
           namespace: monitoring
           labels:
             volume: storage
-            name: storage
+            name: pv-prometheus-server-0
             type: longhorn
         spec:
           accessModes:
