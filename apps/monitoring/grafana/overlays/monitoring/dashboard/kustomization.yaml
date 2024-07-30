@@ -25,7 +25,7 @@ namespace: monitoring
 generatorOptions:
   disableNameSuffixHash: true
   labels:
-    grafana_dashboard: "1"
+    grafana_dashboard: "2"
   annotations:
     k8s-sidecar-target-directory: /var/lib/grafana/dashboards/storage
 

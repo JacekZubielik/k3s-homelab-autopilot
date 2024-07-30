@@ -761,7 +761,7 @@ dashboardProviders:
           path: /var/lib/grafana/dashboards/network
 
       - name: "storage"
-        orgId: 1
+        orgId: 2
         folder: "Storage"
         type: file
         disableDeletion: false
@@ -770,14 +770,14 @@ dashboardProviders:
         options:
           path: /var/lib/grafana/dashboards/storage
 
-      - name: "devices"
-        orgId: 1
-        folder: "Devices"
-        type: file
-        disableDeletion: false
-        editable: true
-        options:
-          path: /var/lib/grafana/dashboards/device
+      # - name: "devices"
+      #   orgId: 1
+      #   folder: "Devices"
+      #   type: file
+      #   disableDeletion: false
+      #   editable: true
+      #   options:
+      #     path: /var/lib/grafana/dashboards/device
 
       # - name: "kubernetes"
       #   orgId: 1
