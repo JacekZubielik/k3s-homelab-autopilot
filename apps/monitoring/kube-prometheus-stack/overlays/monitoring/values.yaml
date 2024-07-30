@@ -3233,16 +3233,16 @@ prometheus:
     ##
     storageSpec:
       volumeClaimTemplate:
-      # - metadata:
-      #     name: storage-prometheus-server-0
+      - metadata:
+          name: storage
           # namespace: monitoring
           # labels:
           #   volume: storage
           #   name: storage
           #   type: longhorn
         spec:
-          accessModes:
-          - ReadWriteOnce
+          # accessModes:
+          # - ReadWriteOnce
           storageClassName: longhorn-data
           resources:
             requests:
