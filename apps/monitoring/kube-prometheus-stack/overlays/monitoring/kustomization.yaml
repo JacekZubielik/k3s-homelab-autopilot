@@ -63,22 +63,22 @@ helmCharts:
   namespace: monitoring
   releaseName: kube-prometheus-stack
   valuesFile: values.yaml
-  valuesInline:
-    spec:
-      ignoreDifferences:
-        - kind: PersistentVolume
-          jsonPointers:
-          - /spec/claimRef/resourceVersion
-          - /spec/claimRef/uid
-          - /status/lastPhaseTransitionTime
-      syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-          selfHeal: false
-        syncOptions:
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=false
-        - Delete=true
-        - Replace=true
+  # valuesInline:
+  #   spec:
+      # ignoreDifferences:
+      #   - kind: PersistentVolume
+      #     jsonPointers:
+      #     - /spec/claimRef/resourceVersion
+      #     - /spec/claimRef/uid
+      #     - /status/lastPhaseTransitionTime
+      # syncPolicy:
+      #   automated:
+      #     allowEmpty: true
+      #     prune: true
+      #     selfHeal: false
+      #   syncOptions:
+      #   - RespectIgnoreDifferences=true
+      #   - ServerSideApply=true
+      #   - SkipDryRunOnMissingResource=false
+      #   - Delete=true
+      #   - Replace=true
