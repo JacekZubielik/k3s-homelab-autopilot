@@ -424,6 +424,7 @@ alertmanager:
     port: 9093
     targetPort: 9093
     nodePort: 30903
+    clusterPort: 9094
     ## List of IP addresses at which the Prometheus server service is available
     ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
     ##
