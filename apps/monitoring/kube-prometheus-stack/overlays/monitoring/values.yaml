@@ -1899,7 +1899,7 @@ prometheusOperator:
     ## IgnoreOnInstallOnly - If Release.IsInstall returns "true", set "Ignore" otherwise "Fail"
     failurePolicy: ""
     ## The default timeoutSeconds is 10 and the maximum value is 30.
-    timeoutSeconds: 10
+    timeoutSeconds: 30
     enabled: true
     ## A PEM encoded CA bundle which will be used to validate the webhook's server certificate.
     ## If unspecified, system trust roots on the apiserver are used.
@@ -2107,7 +2107,7 @@ prometheusOperator:
       ##
       automountServiceAccountToken: true
     patch:
-      enabled: false # true
+      enabled: true
       # image:
       #   registry: registry.k8s.io
       #   repository: ingress-nginx/kube-webhook-certgen
