@@ -67,7 +67,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-prometheus-server
+  name: pvc-prometheus-operator-prometheus-0 # pv-prometheus-server
   # labels:
   #   volume: storage
   #   name: storage

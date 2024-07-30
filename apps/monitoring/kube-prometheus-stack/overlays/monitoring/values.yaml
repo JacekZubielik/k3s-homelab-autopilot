@@ -3240,7 +3240,7 @@ prometheus:
           resources:
             requests:
               storage: 20Gi
-          volumeName: pv-prometheus-server # must reference Persistent Volume
+          # volumeName: pv-prometheus-server # must reference Persistent Volume
 
     ## Using tmpfs volume
     ##
