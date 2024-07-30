@@ -5,6 +5,7 @@ metadata:
   #   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   #   argocd.argoproj.io/sync-wave: "5"
   name: argocd-metrics
+  namespace: argocd
   labels:
     release: prometheus
 spec:
@@ -22,6 +23,7 @@ metadata:
   #   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   #   argocd.argoproj.io/sync-wave: "5"
   name: argocd-server-metrics
+  namespace: argocd
   labels:
     release: prometheus
 spec:
@@ -39,6 +41,7 @@ metadata:
   #   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   #   argocd.argoproj.io/sync-wave: "5"
   name: argocd-repo-server-metrics
+  namespace: argocd
   labels:
     release: prometheus
 spec:
@@ -56,6 +59,7 @@ metadata:
   #   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   #   argocd.argoproj.io/sync-wave: "5"
   name: argocd-applicationset-controller-metrics
+  namespace: argocd
   labels:
     release: prometheus
 spec:
