@@ -236,7 +236,7 @@ prometheus-windows-exporter:
 ## ref: https://prometheus.io/docs/alerting/alertmanager/
 ##
 alertmanager:
-  enabled: false ################################
+  enabled: true
   annotations: {}
   apiVersion: v2
   enableFeatures: []
@@ -252,7 +252,6 @@ alertmanager:
   ## Alertmanager configuration directives
   ## ref: https://prometheus.io/docs/alerting/configuration/#configuration-file
   ##      https://prometheus.io/webtools/alerting/routing-tree-editor/
-  ##
   config:
     global:
       resolve_timeout: 5m
@@ -284,13 +283,13 @@ alertmanager:
       group_wait: 30s
       group_interval: 5m
       repeat_interval: 12h
-      receiver: 'null'
+      receiver: default-receiver
       routes:
-        - receiver: 'null'
+        - receiver: default-receiver
           matchers:
             - alertname = "Watchdog"
     receivers:
-      - name: 'null'
+      - name: default-receiver
     templates:
       - '/etc/alertmanager/config/*.tmpl'
   ## Alertmanager configuration directives (as string type, preferred over the config hash map)
@@ -422,15 +421,8 @@ alertmanager:
       enabled: false
       ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
-    ## Port for Alertmanager Service to listen on
-    ##
     port: 9093
-    ## To be used with a proxy extraContainer port
-    ##
     targetPort: 9093
-    ## Port to expose on each node
-    ## Only used if service.type is 'NodePort'
-    ##
     nodePort: 30903
     ## List of IP addresses at which the Prometheus server service is available
     ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
@@ -470,23 +462,11 @@ alertmanager:
   servicePerReplica:
     enabled: false
     annotations: {}
-    ## Port for Alertmanager Service per replica to listen on
-    ##
     port: 9093
-    ## To be used with a proxy extraContainer port
     targetPort: 9093
-    ## Port to expose on each node
-    ## Only used if servicePerReplica.type is 'NodePort'
-    ##
     nodePort: 30904
-    ## Loadbalancer source IP ranges
-    ## Only used if servicePerReplica.type is "LoadBalancer"
     loadBalancerSourceRanges: []
-    ## Denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints
-    ##
     externalTrafficPolicy: Cluster
-    ## Service type
-    ##
     type: ClusterIP
   ## Configuration for creating a ServiceMonitor for AlertManager
   ##
@@ -649,13 +629,13 @@ alertmanager:
     storage:
       volumeClaimTemplate:
         spec:
+          accessModes:
+          - ReadWriteOnce
           storageClassName: longhorn-data
-          accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 8Gi
-          # volumeMode: Filesystem
-          volumeName: pvc-kube-alertmanager
+              storage: 4Gi
+          volumeName: pv-kube-alertmanager # must reference Persistent Volume
 
     ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
     ##

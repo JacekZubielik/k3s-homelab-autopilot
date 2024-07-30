@@ -3,7 +3,10 @@
 # kind: PersistentVolume
 # metadata:
 #   name: pvc-kube-grafana
-#   namespace: monitoring
+  # labels:
+  #   volume: storage
+  #   name: storage
+  #   type: longhorn
 # spec:
 #   capacity:
 #     storage: 20Gi
@@ -16,53 +19,37 @@
 #     driver: driver.longhorn.io
 #     fsType: ext4
 #     volumeAttributes:
-#       numberOfReplicas: '1'
-#       staleReplicaTimeout: '2880'
+      # numberOfReplicates: "1"
+      # staleReplicaTimeout: "2880"
+      # dataLocality: "strict-local"
 #     volumeHandle: pvc-kube-grafana
 
-# ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: pvc-kube-alertmanager
-#   namespace: monitoring
-# spec:
-#   capacity:
-#     storage: 8Gi
-#   volumeMode: Filesystem
-#   accessModes:
-#   - ReadWriteOnce
-#   persistentVolumeReclaimPolicy: Retain
-#   storageClassName: longhorn-data
-#   csi:
-#     driver: driver.longhorn.io
-#     fsType: ext4
-#     volumeAttributes:
-#       numberOfReplicas: '1'
-#       staleReplicaTimeout: '2880'
-#     volumeHandle: pvc-kube-alertmanager
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-kube-alertmanager
+  # labels:
+  #   volume: storage
+  #   name: storage
+  #   type: longhorn
+spec:
+  capacity:
+    storage: 4Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: longhorn-data
+  csi:
+    driver: driver.longhorn.io
+    fsType: ext4
+    volumeAttributes:
+      numberOfReplicates: "1"
+      staleReplicaTimeout: "2880"
+      dataLocality: "strict-local"
+    volumeHandle: pvc-kube-alertmanager
 
-# ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: pvc-kube-prometheus
-#   namespace: monitoring
-# spec:
-#   capacity:
-#     storage: 20Gi
-#   volumeMode: Filesystem
-#   accessModes:
-#   - ReadWriteOnce
-#   persistentVolumeReclaimPolicy: Retain
-#   storageClassName: longhorn-data
-#   csi:
-#     driver: driver.longhorn.io
-#     fsType: ext4
-#     volumeAttributes:
-#       numberOfReplicas: '1'
-#       staleReplicaTimeout: '2880'
-#     volumeHandle: pvc-kube-prometheus
 ---
 apiVersion: v1
 kind: PersistentVolume
