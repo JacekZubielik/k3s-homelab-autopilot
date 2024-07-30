@@ -788,6 +788,7 @@ dashboards:
   devices:
     prometheus-pve-exporter:
       gnetId: 10347
+      revision: 5
       datasource: Prometheus
     blackbox-exporter-overview:
       gnetId: 5345
