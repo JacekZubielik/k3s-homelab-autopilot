@@ -2005,13 +2005,13 @@ prometheusOperator:
 
       ## Prometheus-operator webhook image
       ##
-      image:
-        registry: quay.io
-        repository: prometheus-operator/admission-webhook
-        # if not set appVersion field from Chart.yaml is used
-        tag: ""
-        sha: ""
-        pullPolicy: IfNotPresent
+      # image:
+      #   registry: quay.io
+      #   repository: prometheus-operator/admission-webhook
+      #   # if not set appVersion field from Chart.yaml is used
+      #   tag: ""
+      #   sha: ""
+      #   pullPolicy: IfNotPresent
       ## Define Log Format
       # Use logfmt (default) or json logging
       # logFormat: logfmt
@@ -2107,7 +2107,7 @@ prometheusOperator:
       ##
       automountServiceAccountToken: true
     patch:
-      enabled: false
+      enabled: true
       # image:
       #   registry: registry.k8s.io
       #   repository: ingress-nginx/kube-webhook-certgen
@@ -2160,7 +2160,7 @@ prometheusOperator:
             - ALL
     # Use certmanager to generate webhook certs
     certManager:
-      enabled: true # false
+      enabled: false
       # self-signed root certificate
       rootCert:
         duration: "" # default to be 5y
@@ -2423,13 +2423,13 @@ prometheusOperator:
       updateMode: Auto
   ## Prometheus-operator image
   ##
-  image:
-    registry: quay.io
-    repository: prometheus-operator/prometheus-operator
-    # if not set appVersion field from Chart.yaml is used
-    tag: ""
-    sha: ""
-    pullPolicy: IfNotPresent
+  # image:
+  #   registry: quay.io
+  #   repository: prometheus-operator/prometheus-operator
+  #   # if not set appVersion field from Chart.yaml is used
+  #   tag: ""
+  #   sha: ""
+  #   pullPolicy: IfNotPresent
   ## Prometheus image to use for prometheuses managed by the operator
   ##
   # prometheusDefaultBaseImage: prometheus/prometheus
@@ -2449,12 +2449,12 @@ prometheusOperator:
   ## Prometheus-config-reloader
   ##
   prometheusConfigReloader:
-    image:
-      registry: quay.io
-      repository: prometheus-operator/prometheus-config-reloader
-      # if not set appVersion field from Chart.yaml is used
-      tag: ""
-      sha: ""
+    # image:
+    #   registry: quay.io
+    #   repository: prometheus-operator/prometheus-config-reloader
+    #   # if not set appVersion field from Chart.yaml is used
+    #   tag: ""
+    #   sha: ""
     # add prometheus config reloader liveness and readiness probe. Default: false
     enableProbe: false
     # resource config for prometheusConfigReloader
@@ -2467,11 +2467,11 @@ prometheusOperator:
     #   memory: 50Mi
   ## Thanos side-car image when configured
   ##
-  thanosImage:
-    registry: quay.io
-    repository: thanos/thanos
-    tag: v0.35.1
-    sha: ""
+  # thanosImage:
+  #   registry: quay.io
+  #   repository: thanos/thanos
+  #   tag: v0.35.1
+  #   sha: ""
   ## Set a Label Selector to filter watched prometheus and prometheusAgent
   ##
   prometheusInstanceSelector: ""
@@ -3844,11 +3844,11 @@ thanosRuler:
     podMetadata: {}
     ## Image of ThanosRuler
     ##
-    image:
-      registry: quay.io
-      repository: thanos/thanos
-      tag: v0.35.1
-      sha: ""
+    # image:
+    #   registry: quay.io
+    #   repository: thanos/thanos
+    #   tag: v0.35.1
+    #   sha: ""
     ## Namespaces to be selected for PrometheusRules discovery.
     ## If nil, select own namespace. Namespaces to be selected for ServiceMonitor discovery.
     ## See https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#namespaceselector for usage
