@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
-- secrets/secret.sops.yaml
+- secrets/secret.yaml
 - resources/deployment.yaml
 - resources/service.yaml
 
