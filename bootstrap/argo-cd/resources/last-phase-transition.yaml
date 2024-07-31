@@ -6,5 +6,5 @@ apiServer:
     feature-gates: PersistentVolumeLastPhaseTransitionTime=true
   controllerManager:
     extraArgs:
-      cluster-cidr: 10.42.0.0/16
+      cluster-cidr: 10.43.0.0/16
       feature-gates: PersistentVolumeLastPhaseTransitionTime=true

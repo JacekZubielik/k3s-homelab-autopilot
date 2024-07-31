@@ -20,7 +20,7 @@ spec:
     driver: driver.longhorn.io
     fsType: ext4
     volumeAttributes:
-      numberOfReplicates: '1'
-      staleReplicaTimeout: '2880'
+      numberOfReplicates: "1"
+      staleReplicaTimeout: "2880"
       dataLocality: "strict-local"
     volumeHandle: pvc-esphome-data
