@@ -966,11 +966,38 @@ grafana:
         datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
+      mikrotik2:
+        gnetId: 13679
+        revision: 21
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+      mikrotik3:
+        gnetId: 13679
+        revision: 20
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+      traefik:
+        gnetId: 17347
+        revision: 8
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+      traefik2:
+        gnetId: 17346
+        revision: 8
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
 
     storage:
       minio-dashboard:
         gnetId: 13502
-        datasource: Prometheus
+        datasources:
+        revision: 26
+        - name: DS_PROMETHEUS
+          value: Prometheus
       minio-bucket:
         gnetId: 19237
         datasources:
