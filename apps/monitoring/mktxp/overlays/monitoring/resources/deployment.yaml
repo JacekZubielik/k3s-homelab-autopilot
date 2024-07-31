@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mktxp-exporter
-        image: ghcr.io/akpw/mktxp:v1.2.6
+        image: ghcr.io/akpw/mktxp:stable-20240730074829
         imagePullPolicy: IfNotPresent
         args:
           - --cfg-dir
