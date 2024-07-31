@@ -2,15 +2,17 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  name: storage-grafana-0
+  namespace: monitoring
   labels:
-    app: prometheus
-    prometheus: prometheus-operator-prometheus
-  name: prometheus-kube-prometheus-stack-prometheus-db-prometheus-kube-prometheus-stack-prometheus-0
+    volume: storage
+    name: storage
+    type: longhorn
 spec:
-  storageClassName: longhorn-data
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
+  storageClassName: longhorn-data
   resources:
     requests:
       storage: 20Gi
-  volumeName: pvc-prometheus-operator-prometheus-0
+  volumeName: pv-kube-grafana # must reference Persistent Volume
