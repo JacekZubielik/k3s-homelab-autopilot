@@ -435,7 +435,7 @@ serviceAccount:
 metrics:
   serviceMonitor:
     # -- Setting that allows the creation of a Prometheus ServiceMonitor resource for Longhorn Manager components.
-    enabled: false # do not change the value here
+    enabled: true # do not change the value here
 
 ## openshift settings
 openshift:

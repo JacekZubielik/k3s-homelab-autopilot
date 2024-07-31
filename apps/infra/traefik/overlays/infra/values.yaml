@@ -476,7 +476,7 @@ prometheus:
   enabled: true
   servicemonitor:
     enabled: true
-    prometheusInstance: default
+    prometheusInstance: kube-prometheus-stack # default
     targetPort: 9100
     path: /metrics
     interval: 60s
