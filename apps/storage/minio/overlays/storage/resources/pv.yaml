@@ -5,6 +5,8 @@ metadata:
   name: pvc-minio-0
   namespace: minio
   # labels:
+  #   volume: data
+  #   name: data
   #   type: local
 spec:
   storageClassName: host-path

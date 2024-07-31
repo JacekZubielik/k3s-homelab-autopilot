@@ -434,7 +434,6 @@ serviceAccount:
 
 metrics:
   serviceMonitor:
-    # -- Setting that allows the creation of a Prometheus ServiceMonitor resource for Longhorn Manager components.
     enabled: true # do not change the value here
 
 ## openshift settings
@@ -442,12 +441,8 @@ openshift:
   # -- Setting that allows Longhorn to integrate with OpenShift.
   enabled: false
   ui:
-    # -- Route for connections between Longhorn and the OpenShift web console.
     route: "longhorn-ui"
-    # -- Port for accessing the OpenShift web console.
     port: 443
-    # -- Port for proxy that provides access to the OpenShift web console.
     proxy: 8443
 
-# -- Setting that allows Longhorn to generate code coverage profiles.
 enableGoCoverDir: false

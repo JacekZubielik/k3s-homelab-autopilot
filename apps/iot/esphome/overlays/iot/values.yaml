@@ -71,7 +71,8 @@ monitoring:
     annotations:
       prometheus.io/scrape: "true"
       prometheus.io/port: 9100
-    labels: {}
+    labels:
+      release: kube-prometheus-stack
     honorLabels: true
     interval: 60s
     selector: {}

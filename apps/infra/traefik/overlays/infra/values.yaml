@@ -476,12 +476,13 @@ prometheus:
   enabled: true
   servicemonitor:
     enabled: true
-    prometheusInstance: kube-prometheus-stack # default
+    prometheusInstance: kube-prometheus-stack
     targetPort: 9100
     path: /metrics
     interval: 60s
     scrapeTimeout: 30s
-    labels: {}
+    labels:
+      release: kube-prometheus-stack
     annotations: {}
     honorLabels: false
     endpointAdditionalProperties: {}
