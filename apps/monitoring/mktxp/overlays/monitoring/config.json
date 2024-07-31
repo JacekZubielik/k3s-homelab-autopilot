@@ -1,6 +1,6 @@
 {
   "annotations": "",
-  "appName": "mktxp",
+  "appName": "mktxp-exporter",
   "appRole": "dev",
   "destNamespace": "monitoring",
   "destServer": "https://kubernetes.default.svc",
@@ -11,5 +11,5 @@
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "4",
-  "userGivenName": "mktxp"
+  "userGivenName": "mktxp-exporter"
 }

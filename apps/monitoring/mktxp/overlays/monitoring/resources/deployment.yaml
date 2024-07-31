@@ -18,6 +18,12 @@ spec:
           - --cfg-dir
           - /mktxp_config
           - export
+        env:
+          - name: TZ
+            valueFrom:
+              configMapKeyRef:
+                name: mktxp-exporter-tz
+                key: TZ
         resources:
           limits:
             memory: "512Mi"
