@@ -1147,7 +1147,7 @@ grafana:
 
     # labels for the ServiceMonitor
     labels:
-      release: kube-prometheus-stack
+      prometheus.io/scrap-with: kube-prometheus-stack
     # Scrape interval. If not set, the Prometheus default scrape interval is used.
     #
     interval: ""
