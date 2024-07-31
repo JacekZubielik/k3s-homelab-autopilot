@@ -5,7 +5,7 @@ global:
   additionalLabels:
     {}
   revisionHistoryLimit: 3
-  addPrometheusAnnotations: false
+  addPrometheusAnnotations: true
   nodeSelector: {}
   tolerations: []
   affinity:
