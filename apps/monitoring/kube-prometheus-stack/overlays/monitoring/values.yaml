@@ -594,9 +594,9 @@ alertmanager:
     #         - example-config-2
     #
     ## Example which selects all alertmanagerConfig resources with label "role" set to "example-config"
-    # alertmanagerConfigSelector:
-    #   matchLabels:
-    #     role: example-config
+    alertmanagerConfigSelector:
+      matchLabels:
+        prometheus.io/scrap-with: kube-prometheus-stack
 
     ## Namespaces to be selected for AlertmanagerConfig discovery. If nil, only check own namespace.
     ##
@@ -1046,12 +1046,13 @@ grafana:
       defaultFolderName: "General"
       searchNamespace: ALL
       label: grafana_dashboard
-      labelValue: "1"
+      labelValue: kube-prometheus-stack
       folderAnnotation: grafana_folder
       # Support for new table panels, when enabled grafana auto migrates the old table panels to newer table panels
       enableNewTablePanelSyntax: false
       ## Annotations for Grafana dashboard configmaps
-      annotations: {}
+      annotations:
+        grafana_folder: /tmp/dashboards/Kubernetes
       multicluster:
         global:
           enabled: false
@@ -1072,32 +1073,14 @@ grafana:
       isDefaultDatasource: true
       name: Prometheus
       uid: prometheus
-      ## URL of prometheus datasource
-      ##
-      # url: http://prometheus-stack-prometheus:9090/
-
-      ## Prometheus request timeout in seconds
-      # timeout: 30
-
-      # If not defined, will use prometheus.prometheusSpec.scrapeInterval or its default
-      # defaultDatasourceScrapeInterval: 15s
-
-      ## Annotations for Grafana datasource configmaps
       annotations: {}
-      ## Set method for HTTP to send query to datasource
       httpMethod: POST
-      ## Create datasource for each Pod of Prometheus StatefulSet;
-      ## this uses headless service `prometheus-operated` which is
-      ## created by Prometheus Operator
-      ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/0fee93e12dc7c2ea1218f19ae25ec6b893460590/pkg/prometheus/statefulset.go#L255-L286
       createPrometheusReplicasDatasources: false
       label: grafana_datasource
       labelValue: "1"
-      ## Field with internal link pointing to existing data source in Grafana.
-      ## Can be provisioned via additionalDataSources
-      exemplarTraceIdDestinations: {}
-      # datasourceUid: Jaeger
-      # traceIdLabelName: trace_id
+      exemplarTraceIdDestinations:
+        datasourceUid: tempo
+        traceIdLabelName: trace_id
       alertmanager:
         enabled: true
         name: Alertmanager
@@ -1109,7 +1092,6 @@ grafana:
   #   mountPath: /etc/grafana/ssl/
   #   configMap: certs-configmap
   #   readOnly: true
-
   deleteDatasources: []
   # - name: example-datasource
   #   orgId: 1
@@ -1120,18 +1102,31 @@ grafana:
     - name: Loki
       type: loki
       url: http://loki-gateway.monitoring
-  # - name: prometheus-sample
-  #   access: proxy
-  #   basicAuth: true
-  #   basicAuthPassword: pass
-  #   basicAuthUser: daco
-  #   editable: false
-  #   jsonData:
-  #       tlsSkipVerify: true
-  #   orgId: 1
-  #   type: prometheus
-  #   url: https://{{ printf "%s-prometheus.svc" .Release.Name }}:9090
-  #   version: 1
+    # More config at https://grafana.com/docs/grafana/latest/datasources/tempo/configure-tempo-data-source/
+    - name: Tempo
+      uid: tempo
+      type: tempo
+      access: proxy
+      url: http://tempo.monitoring.svc:3100
+      jsonData:
+        tracesToMetrics:
+          datasourceUid: 'prom'
+          spanStartTimeShift: '1h'
+          spanEndTimeShift: '-1h'
+          tags: [{ key: 'service.name', value: 'service' }]
+          queries:
+            - name: 'latency'
+              query: 'sum(rate(traces_spanmetrics_latency_bucket{$$__tags}[5m]))'
+        serviceMap:
+          datasourceUid: 'prometheus'
+        nodeGraph:
+          enabled: true
+        search:
+          hide: false
+        traceQuery:
+          timeShiftEnabled: true
+          spanStartTimeShift: '1h'
+          spanEndTimeShift: '-1h'
 
   ## Passed to grafana subchart and used by servicemonitor below
   service:
@@ -1906,26 +1901,15 @@ kube-state-metrics:
   prometheus:
     monitor:
       enabled: true
-      ## Scrape interval. If not set, the Prometheus default scrape interval is used.
       interval: ""
-      ## SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
       sampleLimit: 0
-      ## TargetLimit defines a limit on the number of scraped targets that will be accepted.
       targetLimit: 0
-      ## Per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
       labelLimit: 0
-      ## Per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
       labelNameLengthLimit: 0
-      ## Per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
       labelValueLengthLimit: 0
-      ## Scrape Timeout. If not set, the Prometheus default scrape timeout is used.
       scrapeTimeout: ""
-      ## proxyUrl: URL of a proxy that should be used for scraping.
       proxyUrl: ""
-      # Keep labels from scraped data, overriding server-side labels
       honorLabels: true
-      ## MetricRelabelConfigs to apply to samples after scraping, but before ingestion.
-      ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
       metricRelabelings: []
       # - action: keep
       #   regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
@@ -1933,7 +1917,6 @@ kube-state-metrics:
 
       ## RelabelConfigs to apply to samples before scraping
       ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
-      ##
       relabelings: []
       # - sourceLabels: [__meta_kubernetes_pod_node_name]
       #   separator: ;
@@ -1943,6 +1926,7 @@ kube-state-metrics:
       #   action: replace
   selfMonitor:
     enabled: false
+
 ## Deploy node exporter as a daemonset to all nodes
 nodeExporter:
   enabled: true
@@ -1974,29 +1958,13 @@ prometheus-node-exporter:
     monitor:
       enabled: true
       jobLabel: jobLabel
-      ## Scrape interval. If not set, the Prometheus default scrape interval is used.
-      ##
       interval: ""
-      ## SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
-      ##
       sampleLimit: 0
-      ## TargetLimit defines a limit on the number of scraped targets that will be accepted.
-      ##
       targetLimit: 0
-      ## Per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-      ##
       labelLimit: 0
-      ## Per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-      ##
       labelNameLengthLimit: 0
-      ## Per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-      ##
       labelValueLengthLimit: 0
-      ## How long until a scrape request times out. If not set, the Prometheus default scape timeout is used.
-      ##
       scrapeTimeout: ""
-      ## proxyUrl: URL of a proxy that should be used for scraping.
-      ##
       proxyUrl: ""
       ## MetricRelabelConfigs to apply to samples after scraping, but before ingestion.
       ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
@@ -2710,8 +2678,6 @@ prometheus:
     ## ClusterIP to assign
     # Default is to make this a headless service ("None")
     clusterIP: "None"
-    ## Port to expose on each node, if service type is NodePort
-    ##
     nodePort: 30901
     httpNodePort: 30902
   # ServiceMonitor to scrape Sidecar metrics
@@ -2970,38 +2936,18 @@ prometheus:
     allowedHostPaths: []
     volumes: []
   serviceMonitor:
-    ## If true, create a serviceMonitor for prometheus
-    ##
     selfMonitor: true
-    ## Scrape interval. If not set, the Prometheus default scrape interval is used.
-    ##
     interval: ""
-    ## Additional labels
-    ##
-    additionalLabels: {}
-    ## SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
-    ##
+    additionalLabels:
+      prometheus.io/scrap-with: kube-prometheus-stack
     sampleLimit: 0
-    ## TargetLimit defines a limit on the number of scraped targets that will be accepted.
-    ##
     targetLimit: 0
-    ## Per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-    ##
     labelLimit: 0
-    ## Per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-    ##
     labelNameLengthLimit: 0
-    ## Per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-    ##
     labelValueLengthLimit: 0
-    ## scheme: HTTP scheme to use for scraping. Can be used with `tlsConfig` for example if using istio mTLS.
     scheme: ""
-    ## tlsConfig: TLS configuration to use when scraping the endpoint. For example if using istio mTLS.
-    ## Of type: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#tlsconfig
     tlsConfig: {}
     bearerTokenFile:
-    ## Metric relabel configs to apply to samples before ingestion.
-    ##
     metricRelabelings: []
     # - action: keep
     #   regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
@@ -3033,78 +2979,28 @@ prometheus:
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#prometheusspec
   ##
   prometheusSpec:
-    ## Statefulset's persistent volume claim retention policy
-    ## pvcDeleteOnStsDelete and pvcDeleteOnStsScale determine whether
-    ## statefulset's PVCs are deleted (true) or retained (false) on scaling down
-    ## and deleting statefulset, respectively. Requires 1.27.0+.
-    ## Ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#persistentvolumeclaim-retention
     persistentVolumeClaimRetentionPolicy: {}
     #  whenDeleted: Retain
     #  whenScaled: Retain
-
-    ## If true, pass --storage.tsdb.max-block-duration=2h to prometheus. This is already done if using Thanos
-    ##
-    ## AutomountServiceAccountToken indicates whether a service account token should be automatically mounted in the pod,
-    ## If the field isn’t set, the operator mounts the service account token by default.
-    ## Warning: be aware that by default, Prometheus requires the service account token for Kubernetes service discovery,
-    ## It is possible to use strategic merge patch to project the service account token into the ‘prometheus’ container.
     automountServiceAccountToken: true
     disableCompaction: false
-    ## APIServerConfig
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#apiserverconfig
-    ##
     apiserverConfig: {}
-    ## Allows setting additional arguments for the Prometheus container
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.Prometheus
     additionalArgs: []
-    ## Interval between consecutive scrapes.
-    ## Defaults to 30s.
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/release-0.44/pkg/prometheus/promcfg.go#L180-L183
-    ##
     scrapeInterval: ""
-    ## Number of seconds to wait for target to respond before erroring
-    ##
     scrapeTimeout: ""
-    ## Interval between consecutive evaluations.
-    ##
     evaluationInterval: ""
-    ## ListenLocal makes the Prometheus server listen on loopback, so that it does not bind against the Pod IP.
-    ##
+
     listenLocal: false
-    ## EnableAdminAPI enables Prometheus the administrative HTTP API which includes functionality such as deleting time series.
-    ## This is disabled by default.
-    ## ref: https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis
-    ##
     enableAdminAPI: false
-    ## Sets version of Prometheus overriding the Prometheus version as derived
-    ## from the image tag. Useful in cases where the tag does not follow semver v2.
     version: ""
-    ## WebTLSConfig defines the TLS parameters for HTTPS
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#webtlsconfig
     web: {}
-    ## Exemplars related settings that are runtime reloadable.
-    ## It requires to enable the exemplar storage feature to be effective.
     exemplars: ""
-    ## Maximum number of exemplars stored in memory for all series.
-    ## If not set, Prometheus uses its default value.
-    ## A value of zero or less than zero disables the storage.
-    # maxSize: 100000
-
-    # EnableFeatures API enables access to Prometheus disabled features.
     # ref: https://prometheus.io/docs/prometheus/latest/disabled_features/
-    enableFeatures: []
-    # - exemplar-storage
+    enableFeatures:
+      - exemplar-storage # enable traces in metrics.
+      - memory-snapshot-on-shutdown
+      - otlp-write-receiver # allow to write otel metrics to /api/v1/otlp
 
-    ## Image of Prometheus.
-    ##
-    # image:
-    #   registry: quay.io
-    #   repository: prometheus/prometheus
-    #   tag: v2.53.0
-    #   sha: ""
-    ## Tolerations for use with node taints
-    ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
-    ##
     tolerations: []
     #  - key: "key"
     #    operator: "Equal"
@@ -3137,46 +3033,17 @@ prometheus:
     #   bearerTokenFile: ""
     #   apiVersion: v2
 
-    ## External labels to add to any time series or alerts when communicating with external systems
-    ##
     externalLabels: {}
-    ## enable --web.enable-remote-write-receiver flag on prometheus-server
-    ##
-    enableRemoteWriteReceiver: false
-    ## Name of the external label used to denote replica name
-    ##
+    enableRemoteWriteReceiver: true
     replicaExternalLabelName: ""
-    ## If true, the Operator won't add the external label used to denote replica name
-    ##
     replicaExternalLabelNameClear: false
-    ## Name of the external label used to denote Prometheus instance name
-    ##
     prometheusExternalLabelName: ""
-    ## If true, the Operator won't add the external label used to denote Prometheus instance name
-    ##
     prometheusExternalLabelNameClear: false
-    ## External URL at which Prometheus will be reachable.
-    ##
     externalUrl: ""
-    ## Define which Nodes the Pods are scheduled on.
-    ## ref: https://kubernetes.io/docs/user-guide/node-selection/
-    ##
     nodeSelector: {}
-    ## Secrets is a list of Secrets in the same namespace as the Prometheus object, which shall be mounted into the Prometheus Pods.
-    ## The Secrets are mounted into /etc/prometheus/secrets/. Secrets changes after initial creation of a Prometheus object are not
-    ## reflected in the running Pods. To change the secrets mounted into the Prometheus Pods, the object must be deleted and recreated
-    ## with the new list of secrets.
-    ##
     secrets: []
-    ## ConfigMaps is a list of ConfigMaps in the same namespace as the Prometheus object, which shall be mounted into the Prometheus Pods.
-    ## The ConfigMaps are mounted into /etc/prometheus/configmaps/.
-    ##
     configMaps: []
-    ## QuerySpec defines the query command line flags when starting Prometheus.
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#queryspec
-    ##
     query: {}
-    ## If nil, select own namespace. Namespaces to be selected for PrometheusRules discovery.
     ruleNamespaceSelector: {}
     ## Example which selects PrometheusRules in namespaces with label "prometheus" set to "somelabel"
     # ruleNamespaceSelector:
@@ -3207,83 +3074,48 @@ prometheus:
     #   matchLabels:
     #     role: example-rules
 
-    ## If true, a nil or {} value for prometheus.prometheusSpec.serviceMonitorSelector will cause the
-    ## prometheus resource to be created with selectors based on values in the helm deployment,
-    ## which will also match the servicemonitors created
-    ##
     serviceMonitorSelectorNilUsesHelmValues: false # true
-    ## ServiceMonitors to be selected for target discovery.
-    ## If {}, select all ServiceMonitors
-    ##
-    serviceMonitorSelector: {}
-    ## Example which selects ServiceMonitors with label "prometheus" set to "somelabel"
-    # serviceMonitorSelector:
-    #   matchLabels:
-    #     prometheus: somelabel
+    serviceMonitorSelector:
+      matchLabels:
+        prometheus.io/scrap-with: kube-prometheus-stack
 
-    ## Namespaces to be selected for ServiceMonitor discovery.
-    ##
     serviceMonitorNamespaceSelector: {}
-    ## Example which selects ServiceMonitors in namespaces with label "prometheus" set to "somelabel"
     # serviceMonitorNamespaceSelector:
     #   matchLabels:
     #     prometheus: somelabel
 
-    ## If true, a nil or {} value for prometheus.prometheusSpec.podMonitorSelector will cause the
-    ## prometheus resource to be created with selectors based on values in the helm deployment,
-    ## which will also match the podmonitors created
-    ##
     podMonitorSelectorNilUsesHelmValues: false # true
-    ## PodMonitors to be selected for target discovery.
-    ## If {}, select all PodMonitors
-    ##
     podMonitorSelector: {}
-    ## Example which selects PodMonitors with label "prometheus" set to "somelabel"
     # podMonitorSelector:
     #   matchLabels:
     #     prometheus: somelabel
 
-    ## If nil, select own namespace. Namespaces to be selected for PodMonitor discovery.
-    podMonitorNamespaceSelector: {}
-    ## Example which selects PodMonitor in namespaces with label "prometheus" set to "somelabel"
-    # podMonitorNamespaceSelector:
-    #   matchLabels:
-    #     prometheus: somelabel
+    podMonitorNamespaceSelector: false
+    podMonitorSelector:
+      matchLabels:
+        prometheus.io/scrap-with: kube-prometheus-stack
 
-    ## If true, a nil or {} value for prometheus.prometheusSpec.probeSelector will cause the
-    ## prometheus resource to be created with selectors based on values in the helm deployment,
-    ## which will also match the probes created
-    ##
-    probeSelectorNilUsesHelmValues: false # true
-    ## Probes to be selected for target discovery.
-    ## If {}, select all Probes
-    ##
+    probeSelectorNilUsesHelmValues: false
+    probeSelector:
+      matchLabels:
+        prometheus.io/scrap-with: kube-prometheus-stack
+
     probeSelector: {}
     ## Example which selects Probes with label "prometheus" set to "somelabel"
     # probeSelector:
     #   matchLabels:
     #     prometheus: somelabel
 
-    ## If nil, select own namespace. Namespaces to be selected for Probe discovery.
     probeNamespaceSelector: {}
     ## Example which selects Probe in namespaces with label "prometheus" set to "somelabel"
     # probeNamespaceSelector:
     #   matchLabels:
     #     prometheus: somelabel
 
-    ## If true, a nil or {} value for prometheus.prometheusSpec.scrapeConfigSelector will cause the
-    ## prometheus resource to be created with selectors based on values in the helm deployment,
-    ## which will also match the scrapeConfigs created
-    ##
-    scrapeConfigSelectorNilUsesHelmValues: true
-    ## scrapeConfigs to be selected for target discovery.
-    ## If {}, select all scrapeConfigs
-    ##
-    scrapeConfigSelector: {}
-    ## Example which selects scrapeConfigs with label "prometheus" set to "somelabel"
-    # scrapeConfigSelector:
-    #   matchLabels:
-    #     prometheus: somelabel
+    scrapeConfigSelectorNilUsesHelmValues: false
+    scrapeConfigSelector:
+      matchLabels:
+        prometheus.io/scrap-with: kube-prometheus-stack 
 
     ## If nil, select own namespace. Namespaces to be selected for scrapeConfig discovery.
     scrapeConfigNamespaceSelector: {}
