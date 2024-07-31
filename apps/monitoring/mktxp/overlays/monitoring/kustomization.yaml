@@ -4,9 +4,10 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
-- secrets/secret.yaml
 - resources/deployment.yaml
+- resources/podmonitor.yaml
 - resources/service.yaml
+- secrets/secret.yaml
 
 # generators:
 # - ksops-generator.yaml
@@ -17,9 +18,10 @@ configMapGenerator:
   - TZ=CET
 
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  # annotations:
+  #   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  #   argocd.argoproj.io/compare-options: IgnoreExtraneous
   labels:
-    app.kubernetes.io/name: mktxp-exporter
+    app: mktxp-exporter
+    # app.kubernetes.io/name: mktxp-exporter
   name: mktxp-exporter
