@@ -49,22 +49,22 @@ helmCharts:
   valuesFile: values.yaml
   valuesInline:
     spec:
-      ignoreDifferences:
-        - kind: PersistentVolume
-          jsonPointers:
-          - /spec/claimRef/resourceVersion
-          - /spec/claimRef/uid
-          - /status/lastPhaseTransitionTime
+      # ignoreDifferences:
+      #   - kind: PersistentVolume
+      #     jsonPointers:
+      #     - /spec/claimRef/resourceVersion
+      #     - /spec/claimRef/uid
+      #     - /status/lastPhaseTransitionTime
       syncPolicy:
         automated:
           allowEmpty: true
           prune: false
-          selfHeal: true
+          selfHeal: false
         syncOptions:
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
         - CreateNamespace=true
         - PruneLast=true
+        - Replace=true
+        - RespectIgnoreDifferences=true
+        - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
         # - Delete=true
-        - Replace=true

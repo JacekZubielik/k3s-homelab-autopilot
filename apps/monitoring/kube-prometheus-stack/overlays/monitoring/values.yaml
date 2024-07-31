@@ -2627,15 +2627,8 @@ prometheusOperator:
 ##
 prometheus:
   enabled: true
-  ## Toggle prometheus into agent mode
-  ## Note many of features described below (e.g. rules, query, alerting, remote read, thanos) will not work in agent mode.
-  ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/designs/prometheus-agent.md
-  ##
   agentMode: false
-  ## Annotations for Prometheus
-  ##
   annotations: {}
-  ## Configure network policy for the prometheus
   networkPolicy:
     enabled: false
     ## Flavor of the network policy to use.
@@ -2655,9 +2648,6 @@ prometheus:
   #   matchLabels:
   #     app: prometheus
 
-  ## Service account for Prometheuses to use.
-  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
-  ##
   serviceAccount:
     create: true
     name: ""
@@ -3002,8 +2992,6 @@ prometheus:
         targetLabel: job
         replacement: prometheus
 
-
-
     # - sourceLabels: [__meta_kubernetes_pod_node_name]
     #   separator: ;
     #   regex: ^(.*)$
@@ -3281,10 +3269,10 @@ prometheus:
 
     ## How long to retain metrics
     ##
-    retention: 10d
+    retention: 20d
     ## Maximum size of metrics
     ##
-    retentionSize: "10GB"
+    retentionSize: "20GB"
     ## Allow out-of-order/out-of-bounds samples ingested into Prometheus for a specified duration
     ## See https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tsdb
     tsdb:
