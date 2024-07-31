@@ -476,34 +476,16 @@ alertmanager:
   ## Configuration for creating a ServiceMonitor for AlertManager
   ##
   serviceMonitor:
-    ## If true, a ServiceMonitor will be created for the AlertManager service.
-    ##
     selfMonitor: true
-    ## Scrape interval. If not set, the Prometheus default scrape interval is used.
-    ##
     interval: ""
-    ## Additional labels
-    ##
-    additionalLabels: {}
-    ## SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
-    ##
+    additionalLabels:
+      prometheus.io/scrap-with: kube-prometheus-stack
     sampleLimit: 0
-    ## TargetLimit defines a limit on the number of scraped targets that will be accepted.
-    ##
     targetLimit: 0
-    ## Per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-    ##
     labelLimit: 0
-    ## Per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-    ##
     labelNameLengthLimit: 0
-    ## Per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-    ##
     labelValueLengthLimit: 0
-    ## proxyUrl: URL of a proxy that should be used for scraping.
-    ##
     proxyUrl: ""
-    ## scheme: HTTP scheme to use for scraping. Can be used with `tlsConfig` for example if using istio mTLS.
     scheme: ""
     ## enableHttp2: Whether to enable HTTP2.
     ## See https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#endpoint
@@ -512,9 +494,6 @@ alertmanager:
     ## Of type: https://github.com/coreos/prometheus-operator/blob/main/Documentation/api.md#tlsconfig
     tlsConfig: {}
     bearerTokenFile:
-    ## MetricRelabelConfigs to apply to samples after scraping, but before ingestion.
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
-    ##
     metricRelabelings: []
     # - action: keep
     #   regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
@@ -522,7 +501,6 @@ alertmanager:
 
     ## RelabelConfigs to apply to samples before scraping
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
-    ##
     relabelings:
       - sourceLabels:
         - __address__
@@ -546,54 +524,16 @@ alertmanager:
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#alertmanagerspec
   ##
   alertmanagerSpec:
-    ## Standard object's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
-    ## Metadata Labels and Annotations gets propagated to the Alertmanager pods.
-    ##
     podMetadata: {}
-    ## Image of Alertmanager
-    ##
-    # image:
-    #   registry: quay.io
-    #   repository: prometheus/alertmanager
-    #   tag: v0.27.0
-    #   sha: ""
-    ## If true then the user will be responsible to provide a secret with alertmanager configuration
-    ## So when true the config part will be ignored (including templateFiles) and the one in the secret will be used
-    ##
     useExistingSecret: false
-    ## Secrets is a list of Secrets in the same namespace as the Alertmanager object, which shall be mounted into the
-    ## Alertmanager Pods. The Secrets are mounted into /etc/alertmanager/secrets/.
-    ##
     secrets: []
-    ## If false then the user will opt out of automounting API credentials.
-    ##
     automountServiceAccountToken: true
-    ## ConfigMaps is a list of ConfigMaps in the same namespace as the Alertmanager object, which shall be mounted into the Alertmanager Pods.
-    ## The ConfigMaps are mounted into /etc/alertmanager/configmaps/.
-    ##
     configMaps: []
-    ## ConfigSecret is the name of a Kubernetes Secret in the same namespace as the Alertmanager object, which contains configuration for
-    ## this Alertmanager instance. Defaults to 'alertmanager-' The secret is mounted into /etc/alertmanager/config.
-    ##
     # configSecret:
-
     ## WebTLSConfig defines the TLS parameters for HTTPS
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#alertmanagerwebspec
     web: {}
     ## AlertmanagerConfigs to be selected to merge and configure Alertmanager with.
-    ##
-    alertmanagerConfigSelector: {}
-    ## Example which selects all alertmanagerConfig resources
-    ## with label "alertconfig" with values any of "example-config" or "example-config-2"
-    # alertmanagerConfigSelector:
-    #   matchExpressions:
-    #     - key: alertconfig
-    #       operator: In
-    #       values:
-    #         - example-config
-    #         - example-config-2
-    #
-    ## Example which selects all alertmanagerConfig resources with label "role" set to "example-config"
     alertmanagerConfigSelector:
       matchLabels:
         prometheus.io/scrap-with: kube-prometheus-stack
@@ -635,7 +575,7 @@ alertmanager:
     logFormat: logfmt
     logLevel: info
     replicas: 1
-    retention: 120h
+    retention: 720h # 30 days
 
     storage:
       volumeClaimTemplate:
@@ -648,45 +588,15 @@ alertmanager:
               storage: 4Gi
           volumeName: pv-kube-alertmanager # must reference Persistent Volume
 
-    ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
-    ##
     externalUrl:
-    ## The route prefix Alertmanager registers HTTP handlers for. This is useful, if using ExternalURL and a proxy is rewriting HTTP routes of a request, and the actual ExternalURL is still true,
-    ## but the server serves requests under a different route prefix. For example for use with kubectl proxy.
-    ##
     routePrefix: /
-    ## scheme: HTTP scheme to use. Can be used with `tlsConfig` for example if using istio mTLS.
     scheme: ""
-    ## tlsConfig: TLS configuration to use when connect to the endpoint. For example if using istio mTLS.
-    ## Of type: https://github.com/coreos/prometheus-operator/blob/main/Documentation/api.md#tlsconfig
     tlsConfig: {}
-    ## If set to true all actions on the underlying managed objects are not going to be performed, except for delete actions.
-    ##
     paused: false
-    ## Define which Nodes the Pods are scheduled on.
-    ## ref: https://kubernetes.io/docs/user-guide/node-selection/
-    ##
     nodeSelector: {}
-    ## Define resources requests and limits for single Pods.
-    ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
-    ##
     resources: {}
-    # requests:
-    #   memory: 400Mi
-
-    ## Pod anti-affinity can prevent the scheduler from placing Prometheus replicas on the same node.
-    ## The default value "soft" means that the scheduler should *prefer* to not schedule two replica pods onto the same node but no guarantee is provided.
-    ## The value "hard" means that the scheduler is *required* to not schedule two replica pods onto the same node.
-    ## The value "" will disable pod anti-affinity so that no anti-affinity rules will be configured.
-    ##
     podAntiAffinity: ""
-    ## If anti-affinity is enabled sets the topologyKey to use for anti-affinity.
-    ## This can be changed to, for example, failure-domain.beta.kubernetes.io/zone
-    ##
     podAntiAffinityTopologyKey: kubernetes.io/hostname
-    ## Assign custom affinity rules to the alertmanager instance
-    ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
-    ##
     affinity: {}
     # nodeAffinity:
     #   requiredDuringSchedulingIgnoredDuringExecution:
@@ -698,18 +608,12 @@ alertmanager:
     #         - e2e-az1
     #         - e2e-az2
 
-    ## If specified, the pod's tolerations.
-    ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
-    ##
     tolerations: []
     # - key: "key"
     #   operator: "Equal"
     #   value: "value"
     #   effect: "NoSchedule"
 
-    ## If specified, the pod's topology spread constraints.
-    ## ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
-    ##
     topologySpreadConstraints: []
     # - maxSkew: 1
     #   topologyKey: topology.kubernetes.io/zone
@@ -718,10 +622,6 @@ alertmanager:
     #     matchLabels:
     #       app: alertmanager
 
-    ## SecurityContext holds pod-level security attributes and common container settings.
-    ## This defaults to non root user with uid 1000 and gid 2000. *v1.PodSecurityContext  false
-    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-    ##
     securityContext:
       runAsGroup: 2000
       runAsNonRoot: true
@@ -729,12 +629,8 @@ alertmanager:
       fsGroup: 2000
       seccompProfile:
         type: RuntimeDefault
-    ## ListenLocal makes the Alertmanager server listen on loopback, so that it does not bind against the Pod IP.
-    ## Note this is only for the Alertmanager UI, not the gossip communication.
-    ##
+
     listenLocal: false
-    ## Containers allows injecting additional containers. This is meant to allow adding an authentication proxy to an Alertmanager pod.
-    ##
     containers: []
     # containers:
     # - name: oauth-proxy
@@ -1939,6 +1835,7 @@ nodeExporter:
   forceDeployDashboards: false
 ## Configuration for prometheus-node-exporter subchart
 prometheus-node-exporter:
+  fullnameOverride: prometheus-node-exporter
   namespaceOverride: ""
   podLabels:
     ## Add the 'node-exporter' label to be used by serviceMonitor to match standard common usage in rules and grafana dashboards
@@ -1957,6 +1854,8 @@ prometheus-node-exporter:
   prometheus:
     monitor:
       enabled: true
+      additionalLabels:
+        prometheus.io/scrap-with: kube-prometheus-stack
       jobLabel: jobLabel
       interval: ""
       sampleLimit: 0
@@ -1966,9 +1865,6 @@ prometheus-node-exporter:
       labelValueLengthLimit: 0
       scrapeTimeout: ""
       proxyUrl: ""
-      ## MetricRelabelConfigs to apply to samples after scraping, but before ingestion.
-      ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
-      ##
       metricRelabelings: []
       # - sourceLabels: [__name__]
       #   separator: ;
@@ -1976,9 +1872,6 @@ prometheus-node-exporter:
       #   replacement: $1
       #   action: drop
 
-      ## RelabelConfigs to apply to samples before scraping
-      ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
-      ##
       relabelings: []
       # - sourceLabels: [__meta_kubernetes_pod_node_name]
       #   separator: ;
