@@ -6,6 +6,8 @@ metadata:
   annotations:
     prometheus.io/port: "49090"
     prometheus.io/scrape: "true"
+  labels:
+    release: kube-prometheus-stack
 spec:
   selector:
     app: mktxp-exporter

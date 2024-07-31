@@ -8,6 +8,7 @@ resources:
 - resources/podmonitor.yaml
 - resources/service.yaml
 - secrets/secret.yaml
+- secrets/servicemonitor.yaml
 
 # generators:
 # - ksops-generator.yaml
