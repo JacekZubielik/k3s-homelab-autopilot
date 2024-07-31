@@ -10,7 +10,9 @@ spec:
     matchLabels:
       app: mktxp-exporter
   namespaceSelector:
-    matchNames:
-    - monitoring
+    any: true
+    # matchNames:
+    # - monitoring
   endpoints:
   - port: '49090'
+    path: /

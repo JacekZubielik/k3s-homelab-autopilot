@@ -2,19 +2,15 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  # annotations:
-  #   argocd.argoproj.io/compare-options: IgnoreExtraneous
-  #   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-  #   argocd.argoproj.io/sync-wave: "2"
-  labels:
-    app.kubernetes.io/name: cert-manager
-    release: cert-manager
   name: cert-manager-metrics
   namespace: cert-manager
+  labels:
+    release: kube-prometheus-stack
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: cert-manager
+      app: cert-manager
+      # app.kubernetes.io/name: cert-manager
   namespaceSelector:
     matchNames:
     - cert-manager
