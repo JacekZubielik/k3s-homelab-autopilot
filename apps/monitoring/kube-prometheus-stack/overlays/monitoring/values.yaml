@@ -1123,50 +1123,30 @@ kubeApiServer:
     #  foo: bar
 ## Component scraping the kubelet and kubelet-hosted cAdvisor
 kubelet:
-  enabled: false
+  enabled: true
   namespace: kube-system
   serviceMonitor:
-    ## Attach metadata to discovered targets. Requires Prometheus v2.45 for endpoints created by the operator.
+    enabled: true
+    additionalLabels:
+      prometheus.io/scrap-with: kube-prometheus-stack
     attachMetadata:
       node: false
-    ## Scrape interval. If not set, the Prometheus default scrape interval is used.
     interval: ""
-    ## If true, Prometheus use (respect) labels provided by exporter.
     honorLabels: true
-    ## If true, Prometheus ingests metrics with timestamp provided by exporter. If false, Prometheus ingests metrics with timestamp of scrape.
     honorTimestamps: true
-    ## SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
     sampleLimit: 0
-    ## TargetLimit defines a limit on the number of scraped targets that will be accepted.
     targetLimit: 0
-    ## Per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
     labelLimit: 0
-    ## Per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
     labelNameLengthLimit: 0
-    ## Per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
     labelValueLengthLimit: 0
-    ## proxyUrl: URL of a proxy that should be used for scraping.
     proxyUrl: ""
-    ## Enable scraping the kubelet over https. For requirements to enable this see
-    ## https://github.com/prometheus-operator/prometheus-operator/issues/926
     https: true
-    ## Skip TLS certificate validation when scraping.
-    ## This is enabled by default because kubelet serving certificate deployed by kubeadm is by default self-signed
-    ## ref: https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/#kubelet-serving-certs
-    ##
     insecureSkipVerify: true
-    ## Enable scraping /metrics/cadvisor from kubelet's service
     cAdvisor: false
-    ## Enable scraping /metrics/probes from kubelet's service
     probes: true
-    ## Enable scraping /metrics/resource from kubelet's service
-    ## This is disabled by default because container metrics are already exposed by cAdvisor
-    ##
     resource: false
-    # From kubernetes 1.18, /metrics/resource/v1alpha1 renamed to /metrics/resource
     resourcePath: "/metrics/resource/v1alpha1"
-    ## MetricRelabelConfigs to apply to samples after scraping, but before ingestion.
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
+
     cAdvisorMetricRelabelings:
       # Drop less useful container CPU metrics.
       - sourceLabels: [__name__]
@@ -1790,6 +1770,7 @@ kubeStateMetrics:
   enabled: true
 ## Configuration for kube-state-metrics subchart
 kube-state-metrics:
+  fullnameOverride: kube-state-metrics
   namespaceOverride: ""
   rbac:
     create: true
@@ -1797,6 +1778,8 @@ kube-state-metrics:
   prometheus:
     monitor:
       enabled: true
+      additionalLabels:
+        prometheus.io/scrap-with: kube-prometheus-stack
       interval: ""
       sampleLimit: 0
       targetLimit: 0
