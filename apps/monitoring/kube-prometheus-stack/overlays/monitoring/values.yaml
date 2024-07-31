@@ -994,8 +994,8 @@ grafana:
     storage:
       minio-dashboard:
         gnetId: 13502
-        datasources:
         revision: 26
+        datasources:
         - name: DS_PROMETHEUS
           value: Prometheus
       minio-bucket:
@@ -1008,8 +1008,6 @@ grafana:
         datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
-
-
 
   ingress:
     ## If true, Grafana Ingress will be created
