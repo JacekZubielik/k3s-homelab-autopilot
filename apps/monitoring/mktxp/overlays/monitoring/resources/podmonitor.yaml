@@ -14,6 +14,6 @@ spec:
     matchLabels:
       app: mktxp-exporter
   podMetricsEndpoints:
-  - port: 49090
+  - port: "49090"
     scheme: http
     path: /
