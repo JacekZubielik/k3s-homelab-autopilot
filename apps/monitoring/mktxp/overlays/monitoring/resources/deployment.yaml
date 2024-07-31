@@ -2,7 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mktxp-exporter
+  labels:
+    app: mktxp-exporter
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: mktxp-exporter
@@ -13,7 +16,8 @@ spec:
     spec:
       containers:
       - name: mktxp-exporter
-        image: ghcr.io/akpw/mktxp:latest
+        image: ghcr.io/akpw/mktxp:1.2.6
+        imagePullPolicy: IfNotPresent
         args:
           - --cfg-dir
           - /mktxp_config
