@@ -1087,7 +1087,7 @@ grafana:
   additionalDataSources:
     - name: Loki
       type: loki
-      url: http://loki-gateway.loki
+      url: http://loki-gateway.monitoring
   # - name: prometheus-sample
   #   access: proxy
   #   basicAuth: true
