@@ -515,34 +515,15 @@ prometheus:
   enabled: true
 
   servicemonitor:
-    # Create a ServiceMonitor to add cert-manager to Prometheus.
     enabled: true
-
-    # Specifies the `prometheus` label on the created ServiceMonitor. This is
-    # used when different Prometheus instances have label selectors matching
-    # different ServiceMonitors.
-    prometheusInstance: kube-prometheus-stack #default
-
-    # The target port to set on the ServiceMonitor. This must match the port that the
-    # cert-manager controller is listening on for metrics.
+    prometheusInstance: kube-prometheus-stack
     targetPort: 9402
-
-    # The path to scrape for metrics.
     path: /metrics
-
-    # The interval to scrape metrics.
     interval: 60s
-
-    # The timeout before a metrics scrape fails.
     scrapeTimeout: 30s
-
-    # Additional labels to add to the ServiceMonitor.
-    labels: {}
-
-    # Additional annotations to add to the ServiceMonitor.
+    labels:
+      release: kube-prometheus-stack
     annotations: {}
-
-    # Keep labels from scraped data, overriding server-side labels.
     honorLabels: false
 
     # EndpointAdditionalProperties allows setting additional properties on the
@@ -561,30 +542,13 @@ prometheus:
 
   # Note that you can not enable both PodMonitor and ServiceMonitor as they are mutually exclusive. Enabling both will result in a error.
   podmonitor:
-    # Create a PodMonitor to add cert-manager to Prometheus.
     enabled: false
-
-    # Specifies the `prometheus` label on the created PodMonitor. This is
-    # used when different Prometheus instances have label selectors matching
-    # different PodMonitors.
     prometheusInstance: default
-
-    # The path to scrape for metrics.
     path: /metrics
-
-    # The interval to scrape metrics.
     interval: 60s
-
-    # The timeout before a metrics scrape fails.
     scrapeTimeout: 30s
-
-    # Additional labels to add to the PodMonitor.
     labels: {}
-
-    # Additional annotations to add to the PodMonitor.
     annotations: {}
-
-    # Keep labels from scraped data, overriding server-side labels.
     honorLabels: false
 
     # EndpointAdditionalProperties allows setting additional properties on the
