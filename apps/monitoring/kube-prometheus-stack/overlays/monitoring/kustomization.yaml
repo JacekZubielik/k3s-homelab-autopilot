@@ -27,9 +27,9 @@ configMapGenerator:
 #   - dashboards/argocd-performance.json
 #   - dashboards/authentik.json
 
-# - name: prometheus-server-conf
-#   files:
-#   - resources/scrape_configs.yaml
+- name: prometheus-server-conf
+  files:
+  - resources/scrape_configs.yaml
 
 metadata:
   annotations:
@@ -46,7 +46,7 @@ helmCharts:
   includeCRDs: false
   namespace: monitoring
   releaseName: kube-prometheus-stack
-  valuesFile: values.yaml
+  valuesFile: values.yaml # values-default.yaml # values.yaml
   valuesInline:
     spec:
       # ignoreDifferences:
