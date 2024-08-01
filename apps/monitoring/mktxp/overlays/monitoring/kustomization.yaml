@@ -5,7 +5,7 @@ namespace: monitoring
 
 resources:
 - resources/deployment.yaml
-- resources/podmonitor.yaml
+# - resources/podmonitor.yaml
 - resources/service.yaml
 - resources/servicemonitor.yaml
 - secrets/secret.yaml
