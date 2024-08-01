@@ -2,7 +2,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: mktxp-exporter-servicemonitor
+  name: mktxp-exporter
   namespace: monitoring
   labels:
     app: mktxp-exporter
