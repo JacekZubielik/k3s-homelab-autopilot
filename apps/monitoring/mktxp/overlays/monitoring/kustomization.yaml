@@ -19,10 +19,6 @@ configMapGenerator:
   - TZ=CET
 
 metadata:
-  # annotations:
-  #   argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-  #   argocd.argoproj.io/compare-options: IgnoreExtraneous
   labels:
     app: mktxp-exporter
-    # app.kubernetes.io/name: mktxp-exporter
   name: mktxp-exporter

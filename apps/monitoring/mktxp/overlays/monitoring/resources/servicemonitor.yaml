@@ -6,11 +6,9 @@ metadata:
   namespace: monitoring
   labels:
     app: mktxp-exporter
-    release: kube-prometheus-stack
-    prometheus.io/scrap-with: kube-prometheus-stack
 spec:
   endpoints:
-    - port: metrics
+    - port: "49090"
       interval: 30s
   selector:
     matchLabels:
