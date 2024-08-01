@@ -447,7 +447,7 @@ cainjector:
   volumeMounts: []
   enableServiceLinks: false
 
-acmesolver:
+# acmesolver:
   # image:
   #   # The container registry to pull the acmesolver image from.
   #   # +docs:property
