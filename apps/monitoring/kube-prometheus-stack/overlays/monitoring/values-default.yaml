@@ -1990,7 +1990,7 @@ prometheus:
     scrapeConfigSelector: {}
     scrapeConfigNamespaceSelector: {}
     retention: 20d
-    retentionSize: "20Gi"
+    retentionSize: 20Gi
     tsdb:
       outOfOrderTimeWindow: 0s
     walCompression: true
