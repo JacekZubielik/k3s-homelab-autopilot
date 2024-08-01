@@ -879,7 +879,7 @@ kubeDns:
 
     jobLabel: jobLabel
     selector: {}
-      metricRelabelings: []
+    metricRelabelings: []
     relabelings: []
     dnsmasqMetricRelabelings: []
     dnsmasqRelabelings: []
