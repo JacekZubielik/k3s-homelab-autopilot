@@ -36,7 +36,7 @@ spec:
           - name: mktxp-credentials
             mountPath: /mktxp_config
         ports:
-        - containerPort: "49090"
+        - containerPort: 49090
       volumes:
         - name: mktxp-credentials
           secret:
