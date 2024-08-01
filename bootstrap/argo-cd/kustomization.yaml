@@ -18,7 +18,7 @@ configMapGenerator:
   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
   - kustomize.buildOptions="--enable-alpha-plugins --enable-exec --enable-helm" # --load-restrictor LoadRestrictionsNone"
   - kustomize.buildOptions.v4.4.0="--output /tmp"
-  # - resource.compareoptions.ignoreAggregatedRoles="true"
+  - resource.compareoptions.ignoreAggregatedRoles="true"
   - |
     repository.credentials=- passwordSecret:
         key: git_token
