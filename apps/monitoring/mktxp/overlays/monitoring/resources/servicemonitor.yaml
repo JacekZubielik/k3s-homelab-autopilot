@@ -11,7 +11,7 @@ metadata:
 spec:
   jobLabel: app.kubernetes.io/name
   endpoints:
-    - port: '49090'
+    - port: 49090
       # path: /
       interval: 30s
   # namespaceSelector:
