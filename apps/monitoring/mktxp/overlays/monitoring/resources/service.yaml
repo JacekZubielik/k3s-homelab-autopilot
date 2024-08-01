@@ -8,6 +8,7 @@ metadata:
     prometheus.io/scrape: "true"
   labels:
     release: kube-prometheus-stack
+    prometheus.io/scrap-with: kube-prometheus-stack
 spec:
   selector:
     app: mktxp-exporter

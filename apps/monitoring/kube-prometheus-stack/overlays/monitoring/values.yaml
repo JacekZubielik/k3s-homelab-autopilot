@@ -65,8 +65,8 @@ defaultRules:
     kubernetesResources: false
     kubernetesStorage: false
     kubernetesSystem: false
-    kubeSchedulerAlerting: true
-    kubeSchedulerRecording: true
+    kubeSchedulerAlerting: false
+    kubeSchedulerRecording: false
     kubeStateMetrics: true
     network: true
     node: true
@@ -80,7 +80,8 @@ defaultRules:
   ## Set keep_firing_for for all alerts
   keepFiringFor: ""
   ## Labels for default rules
-  labels: {}
+  labels:
+    prometheus.io/scrap-with: kube-prometheus-stack
   ## Annotations for default rules
   annotations: {}
   ## Additional labels for PrometheusRule alerts
@@ -1367,9 +1368,9 @@ kubeControllerManager:
 ## Component scraping coreDns. Use either this or kubeDns
 ##
 coreDns:
-  enabled: true
+  enabled: false
   service:
-    enabled: true
+    enabled: false
     port: 9153
     targetPort: 9153
     ipDualStack:
