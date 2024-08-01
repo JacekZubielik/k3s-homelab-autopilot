@@ -5,6 +5,7 @@ metadata:
   namespace: argocd
   labels:
     release: kube-prometheus-stack
+    prometheus.io/scrap-with: kube-prometheus-stack
 spec:
   selector:
     matchLabels:
@@ -22,6 +23,7 @@ metadata:
   namespace: argocd
   labels:
     release: kube-prometheus-stack
+    prometheus.io/scrap-with: kube-prometheus-stack
 spec:
   selector:
     matchLabels:
@@ -39,6 +41,7 @@ metadata:
   namespace: argocd
   labels:
     release: kube-prometheus-stack
+    prometheus.io/scrap-with: kube-prometheus-stack
 spec:
   selector:
     matchLabels:
@@ -56,6 +59,7 @@ metadata:
   namespace: argocd
   labels:
     release: kube-prometheus-stack
+    prometheus.io/scrap-with: kube-prometheus-stack
 spec:
   selector:
     matchLabels:
