@@ -16,16 +16,16 @@ configMapGenerator:
 - name: argocd-cm
   literals:
   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-  - resource.compareoptions.ignoreAggregatedRoles="true"
+  # - resource.compareoptions.ignoreAggregatedRoles="true"
 
 # - name: grafana-dashboards
 #   files:
 #   - dashboards/argocd-performance.json
 #   - dashboards/authentik.json
 
-# - name: prometheus-server-conf
-#   files:
-#   - resources/scrape_configs.yaml
+- name: prometheus-server-conf
+  files:
+  - resources/scrape_configs.yaml
 
 metadata:
   annotations:
