@@ -13,8 +13,8 @@ generators:
 - ksops-generator.yaml
 
 configMapGenerator:
-- name: argocd-cm
-  literals:
+# - name: argocd-cm
+#   literals:
   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
   # - resource.compareoptions.ignoreAggregatedRoles="true"
 
