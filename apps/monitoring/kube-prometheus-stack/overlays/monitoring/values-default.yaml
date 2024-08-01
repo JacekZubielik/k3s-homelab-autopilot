@@ -2241,10 +2241,8 @@ thanosRuler:
     logFormat: logfmt
     logLevel: info
     replicas: 1
-
     retention: 24h
     evaluationInterval: ""
-
     storage: {}
     alertmanagersConfig:
       existingSecret: {}
@@ -2254,14 +2252,12 @@ thanosRuler:
     routePrefix: /
     objectStorageConfig:
       existingSecret: {}
-
       secret: {}
     alertDropLabels: []
     queryEndpoints: []
     queryConfig:
       existingSecret: {}
       secret: {}
-
     labels: {}
     paused: false
     additionalArgs: []
@@ -2280,7 +2276,6 @@ thanosRuler:
       fsGroup: 2000
       seccompProfile:
         type: RuntimeDefault
-
     listenLocal: false
     containers: []
     volumes: []

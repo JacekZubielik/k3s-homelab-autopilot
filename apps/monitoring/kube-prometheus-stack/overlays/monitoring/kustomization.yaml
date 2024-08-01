@@ -3,33 +3,29 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
-  - ../../base
-  - resources/pv.yaml
-  - resources/pvc.yaml
+- ../../base
+- resources/pv.yaml
+- resources/pvc.yaml
+- resources/pve-scrape-config.yaml
+
 
 generators:
-  - ksops-generator.yaml
+- ksops-generator.yaml
 
-configMapGenerator:
-- name: argocd-cm
-  literals:
-  # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-  - resource.compareoptions.ignoreAggregatedRoles="true"
-
-# - name: argocd-cmd-params-cm
+# configMapGenerator:
+# - name: argocd-cm
 #   literals:
-#   # - server.insecure="true"
-#   - controller.diff.server.side="true"
-#   - controller.diff.include.mutation.webhook="true"
+#   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+#   - resource.compareoptions.ignoreAggregatedRoles="true"
 
 # - name: grafana-dashboards
 #   files:
 #   - dashboards/argocd-performance.json
 #   - dashboards/authentik.json
 
-- name: prometheus-server-conf
-  files:
-  - resources/scrape_configs.yaml
+# - name: prometheus-server-conf
+#   files:
+#   - resources/scrape_configs.yaml
 
 metadata:
   annotations:
