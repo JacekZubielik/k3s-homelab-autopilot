@@ -20,5 +20,5 @@ spec:
   selector:
     matchLabels:
       # app.kubernetes.io/instance: mktxp-exporter
-      app.kubernetes.io/name: mktxp-exporter
+      # app.kubernetes.io/name: mktxp-exporter
       app: mktxp-exporter
