@@ -483,6 +483,7 @@ prometheus:
     scrapeTimeout: 30s
     labels:
       release: kube-prometheus-stack
+      prometheus.io/scrap-with: kube-prometheus-stack
     annotations: {}
     honorLabels: false
     endpointAdditionalProperties: {}

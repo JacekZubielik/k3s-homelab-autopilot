@@ -21,20 +21,21 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
+  name: mktxp-exporter-servicemonitor
+  namespace: monitoring
   labels:
     app: mktxp-exporter
     release: kube-prometheus-stack
-  name: mktxp-exporter-servicemonitor
-  namespace: monitoring
+    prometheus.io/scrap-with: kube-prometheus-stack
 spec:
   jobLabel: app.kubernetes.io/name
   endpoints:
     - port: '49090'
-      path: /metrics
+      path: /
   namespaceSelector:
     matchNames:
       - monitoring
   selector:
     matchLabels:
-      app.kubernetes.io/instance: mktxp-exporter
+      # app.kubernetes.io/instance: mktxp-exporter
       app.kubernetes.io/name: mktxp-exporter
