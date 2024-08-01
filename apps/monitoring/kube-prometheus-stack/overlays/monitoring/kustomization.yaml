@@ -46,7 +46,7 @@ helmCharts:
   includeCRDs: false
   namespace: monitoring
   releaseName: kube-prometheus-stack
-  valuesFile: values-default.yaml # values.yaml
+  valuesFile: values.yaml # values-default.yaml
   valuesInline:
     spec:
       # ignoreDifferences:
