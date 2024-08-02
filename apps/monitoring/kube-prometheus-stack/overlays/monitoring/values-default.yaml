@@ -1116,7 +1116,7 @@ prometheus-node-exporter:
         - action: replace
           sourceLabels:
             - __meta_kubernetes_pod_node_name
-          targetLabel: instance
+          targetLabel: kubernetes_node
 ## smart disk data metrics
   extraArgs:
     - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
