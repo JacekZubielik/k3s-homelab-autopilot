@@ -49,8 +49,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-01T20:09:16Z"
-    mac: ENC[AES256_GCM,data:okPdz+wdaoVTMxajZZ552GiT1sLo7318mj2IHsRXCakXEE6V2E8hBuOJbNQOj5hRjr+zIuqrsXKkVDCLJvUHVRVenZ8gpdz2gSffW4ZxOW3aM0D+Q8+Tnab4FDuXkW13pL171E13HOZGmSJQPbERGzxND2FArerJMdNqDATD7r8=,iv:UcJ/kv1oSFWQha0/8OVM4/OB7sW965xK23OENLRFCqM=,tag:hCOm5Y9rrPLTH9iq6LcNDA==,type:str]
+    lastmodified: "2024-08-02T15:20:29Z"
+    mac: ENC[AES256_GCM,data:9nYknbPwtBPmYaWeD2867RJe+IZXtXekCdgKPon8YI56F5xWhnzKfFH3hzt284qJgxWu3QX90WCQ6haahCdanVqtId2XvYMaRkIN4Zx3QvFlhOVo0AdxeETpUTUoF38DBBY5DaDAPLlYQVcSbk+S+2DCyALAQPYrxHRQF0VkEcQ=,iv:TgVrPJSJu54ZQoM9ijrBySPasbswT1m/kfqujQqC8OU=,tag:pYMGbXcts2bqvK2lFwPBTw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -87,7 +87,7 @@ metadata:
 spec:
     weighted:
         services:
-            - name: grafana
+            - name: kube-prometheus-stack-grafana
               port: 80
               weight: 1
 sops:
@@ -105,8 +105,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-01T20:09:16Z"
-    mac: ENC[AES256_GCM,data:okPdz+wdaoVTMxajZZ552GiT1sLo7318mj2IHsRXCakXEE6V2E8hBuOJbNQOj5hRjr+zIuqrsXKkVDCLJvUHVRVenZ8gpdz2gSffW4ZxOW3aM0D+Q8+Tnab4FDuXkW13pL171E13HOZGmSJQPbERGzxND2FArerJMdNqDATD7r8=,iv:UcJ/kv1oSFWQha0/8OVM4/OB7sW965xK23OENLRFCqM=,tag:hCOm5Y9rrPLTH9iq6LcNDA==,type:str]
+    lastmodified: "2024-08-02T15:20:29Z"
+    mac: ENC[AES256_GCM,data:9nYknbPwtBPmYaWeD2867RJe+IZXtXekCdgKPon8YI56F5xWhnzKfFH3hzt284qJgxWu3QX90WCQ6haahCdanVqtId2XvYMaRkIN4Zx3QvFlhOVo0AdxeETpUTUoF38DBBY5DaDAPLlYQVcSbk+S+2DCyALAQPYrxHRQF0VkEcQ=,iv:TgVrPJSJu54ZQoM9ijrBySPasbswT1m/kfqujQqC8OU=,tag:pYMGbXcts2bqvK2lFwPBTw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -182,8 +182,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-01T20:09:16Z"
-    mac: ENC[AES256_GCM,data:okPdz+wdaoVTMxajZZ552GiT1sLo7318mj2IHsRXCakXEE6V2E8hBuOJbNQOj5hRjr+zIuqrsXKkVDCLJvUHVRVenZ8gpdz2gSffW4ZxOW3aM0D+Q8+Tnab4FDuXkW13pL171E13HOZGmSJQPbERGzxND2FArerJMdNqDATD7r8=,iv:UcJ/kv1oSFWQha0/8OVM4/OB7sW965xK23OENLRFCqM=,tag:hCOm5Y9rrPLTH9iq6LcNDA==,type:str]
+    lastmodified: "2024-08-02T15:20:29Z"
+    mac: ENC[AES256_GCM,data:9nYknbPwtBPmYaWeD2867RJe+IZXtXekCdgKPon8YI56F5xWhnzKfFH3hzt284qJgxWu3QX90WCQ6haahCdanVqtId2XvYMaRkIN4Zx3QvFlhOVo0AdxeETpUTUoF38DBBY5DaDAPLlYQVcSbk+S+2DCyALAQPYrxHRQF0VkEcQ=,iv:TgVrPJSJu54ZQoM9ijrBySPasbswT1m/kfqujQqC8OU=,tag:pYMGbXcts2bqvK2lFwPBTw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -220,7 +220,7 @@ metadata:
 spec:
     weighted:
         services:
-            - name: prometheus-prometheus
+            - name: kube-prometheus-stack-prometheus
               port: 9090
               weight: 1
 sops:
@@ -238,8 +238,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-01T20:09:16Z"
-    mac: ENC[AES256_GCM,data:okPdz+wdaoVTMxajZZ552GiT1sLo7318mj2IHsRXCakXEE6V2E8hBuOJbNQOj5hRjr+zIuqrsXKkVDCLJvUHVRVenZ8gpdz2gSffW4ZxOW3aM0D+Q8+Tnab4FDuXkW13pL171E13HOZGmSJQPbERGzxND2FArerJMdNqDATD7r8=,iv:UcJ/kv1oSFWQha0/8OVM4/OB7sW965xK23OENLRFCqM=,tag:hCOm5Y9rrPLTH9iq6LcNDA==,type:str]
+    lastmodified: "2024-08-02T15:20:29Z"
+    mac: ENC[AES256_GCM,data:9nYknbPwtBPmYaWeD2867RJe+IZXtXekCdgKPon8YI56F5xWhnzKfFH3hzt284qJgxWu3QX90WCQ6haahCdanVqtId2XvYMaRkIN4Zx3QvFlhOVo0AdxeETpUTUoF38DBBY5DaDAPLlYQVcSbk+S+2DCyALAQPYrxHRQF0VkEcQ=,iv:TgVrPJSJu54ZQoM9ijrBySPasbswT1m/kfqujQqC8OU=,tag:pYMGbXcts2bqvK2lFwPBTw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -315,8 +315,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-01T20:09:16Z"
-    mac: ENC[AES256_GCM,data:okPdz+wdaoVTMxajZZ552GiT1sLo7318mj2IHsRXCakXEE6V2E8hBuOJbNQOj5hRjr+zIuqrsXKkVDCLJvUHVRVenZ8gpdz2gSffW4ZxOW3aM0D+Q8+Tnab4FDuXkW13pL171E13HOZGmSJQPbERGzxND2FArerJMdNqDATD7r8=,iv:UcJ/kv1oSFWQha0/8OVM4/OB7sW965xK23OENLRFCqM=,tag:hCOm5Y9rrPLTH9iq6LcNDA==,type:str]
+    lastmodified: "2024-08-02T15:20:29Z"
+    mac: ENC[AES256_GCM,data:9nYknbPwtBPmYaWeD2867RJe+IZXtXekCdgKPon8YI56F5xWhnzKfFH3hzt284qJgxWu3QX90WCQ6haahCdanVqtId2XvYMaRkIN4Zx3QvFlhOVo0AdxeETpUTUoF38DBBY5DaDAPLlYQVcSbk+S+2DCyALAQPYrxHRQF0VkEcQ=,iv:TgVrPJSJu54ZQoM9ijrBySPasbswT1m/kfqujQqC8OU=,tag:pYMGbXcts2bqvK2lFwPBTw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -353,7 +353,7 @@ metadata:
 spec:
     weighted:
         services:
-            - name: prometheus-alertmanager
+            - name: kube-prometheus-stack-alertmanager
               port: 9093
               weight: 1
 sops:
@@ -371,8 +371,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-01T20:09:16Z"
-    mac: ENC[AES256_GCM,data:okPdz+wdaoVTMxajZZ552GiT1sLo7318mj2IHsRXCakXEE6V2E8hBuOJbNQOj5hRjr+zIuqrsXKkVDCLJvUHVRVenZ8gpdz2gSffW4ZxOW3aM0D+Q8+Tnab4FDuXkW13pL171E13HOZGmSJQPbERGzxND2FArerJMdNqDATD7r8=,iv:UcJ/kv1oSFWQha0/8OVM4/OB7sW965xK23OENLRFCqM=,tag:hCOm5Y9rrPLTH9iq6LcNDA==,type:str]
+    lastmodified: "2024-08-02T15:20:29Z"
+    mac: ENC[AES256_GCM,data:9nYknbPwtBPmYaWeD2867RJe+IZXtXekCdgKPon8YI56F5xWhnzKfFH3hzt284qJgxWu3QX90WCQ6haahCdanVqtId2XvYMaRkIN4Zx3QvFlhOVo0AdxeETpUTUoF38DBBY5DaDAPLlYQVcSbk+S+2DCyALAQPYrxHRQF0VkEcQ=,iv:TgVrPJSJu54ZQoM9ijrBySPasbswT1m/kfqujQqC8OU=,tag:pYMGbXcts2bqvK2lFwPBTw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
