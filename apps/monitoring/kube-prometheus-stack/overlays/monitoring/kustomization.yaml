@@ -44,6 +44,9 @@ helmCharts:
   releaseName: kube-prometheus-stack
   valuesFile: values-init.yaml
   valuesInline:
+    prometheus-node-exporter:
+        hostRootFsMount:
+          enabled: false
     prometheusOperator:
         admissionWebhooks:
           failurePolicy: Ignore

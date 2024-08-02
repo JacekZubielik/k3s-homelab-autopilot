@@ -18,10 +18,6 @@ kubeTargetVersionOverride: ""
 ##
 kubeVersionOverride: ""
 
-## Provide a name to substitute for the full names of resources
-##
-fullnameOverride: ""
-
 ## Labels to apply to all resources
 ##
 commonLabels: {}
