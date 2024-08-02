@@ -8,8 +8,8 @@ resources:
 - resources/pv.yaml
 - resources/pvc.yaml
 
-generators:
-- ksops-generator.yaml
+# generators:
+# - ksops-generator.yaml
 
 configMapGenerator:
 - name: esphome-dashboard
