@@ -44,9 +44,9 @@ helmCharts:
   releaseName: kube-prometheus-stack
   valuesFile: values.yaml
   valuesInline:
-        prometheusOperator:
-            admissionWebhooks:
-              failurePolicy: Ignore
+    prometheusOperator:
+        admissionWebhooks:
+          failurePolicy: Ignore
     spec:
       # ignoreDifferences:
       #   - kind: PersistentVolume
