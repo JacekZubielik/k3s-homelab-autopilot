@@ -61,7 +61,7 @@ helmCharts:
           selfHeal: false
         syncOptions:
         - CreateNamespace=true
-        - PruneLast=true
+        # - PruneLast=true
         - Replace=true
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
