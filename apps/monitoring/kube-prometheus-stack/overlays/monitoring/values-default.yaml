@@ -1987,7 +1987,9 @@ prometheus:
     probeSelector: {}
     probeNamespaceSelector: {}
     scrapeConfigSelectorNilUsesHelmValues: true
-    scrapeConfigSelector: {}
+    scrapeConfigSelector:
+      matchLabels:
+        release: kube-prometheus-stack
     scrapeConfigNamespaceSelector: {}
     retention: 20d
     retentionSize: 20GB
