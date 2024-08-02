@@ -32,7 +32,7 @@ spec:
     - Delete=false
     - FailOnSharedResource=false
     - preserveResourcesOnDeletion=false
-    - PruneLast=true
+    - PruneLast=false
     - PrunePropagationPolicy=foreground
     - Replace=false
     - RespectIgnoreDifferences=true
