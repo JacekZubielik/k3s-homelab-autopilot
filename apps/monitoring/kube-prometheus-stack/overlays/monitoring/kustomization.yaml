@@ -13,7 +13,7 @@ generators:
 - ksops-generator.yaml
 
 configMapGenerator:
-- name: ignoreAggregatedRoles
+- name: ignoreaggregatedroles #argocd-cm
   literals:
   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
   - resource.compareoptions.ignoreAggregatedRoles="true"
