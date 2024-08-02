@@ -3736,11 +3736,9 @@ prometheus:
     ## scrapeConfigs to be selected for target discovery.
     ## If {}, select all scrapeConfigs
     ##
-    scrapeConfigSelector: {}
-    ## Example which selects scrapeConfigs with label "prometheus" set to "somelabel"
-    # scrapeConfigSelector:
-    #   matchLabels:
-    #     prometheus: somelabel
+    scrapeConfigSelector:
+      matchLabels:
+        release: prometheus # kube-prometheus-stack
 
     ## If nil, select own namespace. Namespaces to be selected for scrapeConfig discovery.
     scrapeConfigNamespaceSelector: {}
