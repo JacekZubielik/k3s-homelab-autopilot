@@ -6,7 +6,7 @@ resources:
 - ../../base
 - resources/pv.yaml
 - resources/pvc.yaml
-# - resources/pve-scrape-config.yaml
+- resources/pve-scrape-config.yaml
 
 
 generators:
@@ -23,9 +23,9 @@ configMapGenerator:
 #   - dashboards/argocd-performance.json
 #   - dashboards/authentik.json
 
-- name: prometheus-server-conf
-  files:
-  - resources/scrape_configs.yaml
+# - name: prometheus-server-conf
+#   files:
+#   - resources/scrape_configs.yaml
 
 metadata:
   annotations:
