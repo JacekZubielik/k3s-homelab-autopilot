@@ -12,11 +12,11 @@ resources:
 generators:
 - ksops-generator.yaml
 
-configMapGenerator:
-- name: ignoreaggregatedroles #argocd-cm
-  literals:
-  # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-  - resource.compareoptions.ignoreAggregatedRoles="true"
+# configMapGenerator:
+# - name: ignoreaggregatedroles #argocd-cm
+#   literals:
+#   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+#   - resource.compareoptions.ignoreAggregatedRoles="true"
 
 # - name: grafana-dashboards
 #   files:
