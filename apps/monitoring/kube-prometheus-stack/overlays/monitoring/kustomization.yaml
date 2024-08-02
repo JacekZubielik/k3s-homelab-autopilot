@@ -39,11 +39,14 @@ helmCharts:
 - name: kube-prometheus-stack
   version: 61.6.0
   repo: https://prometheus-community.github.io/helm-charts
-  includeCRDs: true
+  includeCRDs: false
   namespace: monitoring
   releaseName: kube-prometheus-stack
   valuesFile: values.yaml
   valuesInline:
+        prometheusOperator:
+            admissionWebhooks:
+              failurePolicy: Ignore
     spec:
       # ignoreDifferences:
       #   - kind: PersistentVolume
