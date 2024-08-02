@@ -7,6 +7,7 @@ resources:
 - resources/pv.yaml
 - resources/pvc.yaml
 # - resources/pve-scrape-config.yaml
+- resources/servicemonitor.yaml
 
 
 generators:
