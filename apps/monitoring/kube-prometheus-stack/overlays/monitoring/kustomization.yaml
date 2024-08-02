@@ -42,7 +42,7 @@ helmCharts:
   includeCRDs: false
   namespace: monitoring
   releaseName: kube-prometheus-stack
-  valuesFile: values.yaml
+  valuesFile: values-init.yaml
   valuesInline:
     prometheusOperator:
         admissionWebhooks:
