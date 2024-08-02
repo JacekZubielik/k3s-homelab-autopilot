@@ -40,3 +40,6 @@ helmCharts:
   namespace: longhorn-system
   releaseName: longhorn
   valuesFile: values.yaml
+  valuesInline:
+    preUpgradeChecker:
+      jobEnabled: false
