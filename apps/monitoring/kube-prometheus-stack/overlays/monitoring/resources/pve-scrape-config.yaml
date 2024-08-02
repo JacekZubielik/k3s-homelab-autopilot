@@ -3,7 +3,7 @@ kind: ScrapeConfig
 metadata:
   name: pve-node-exporter
   labels:
-    release: monitoring
+    release: kube-prometheus-stack
 spec:
   scrape_configs:
   - job_name: "pve"
