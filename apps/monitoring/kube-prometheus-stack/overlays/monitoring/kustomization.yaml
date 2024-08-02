@@ -39,7 +39,7 @@ helmCharts:
 - name: kube-prometheus-stack
   version: 61.6.0
   repo: https://prometheus-community.github.io/helm-charts
-  includeCRDs: false
+  includeCRDs: true
   namespace: monitoring
   releaseName: kube-prometheus-stack
   valuesFile: values-default.yaml # values.yaml # values-default.yaml
