@@ -24,7 +24,6 @@ configMapGenerator:
 #   - dashboards/authentik.json
 
 - name: prometheus-server-conf
-  behavior: merge
   files:
   - resources/scrape_configs.yaml
 
