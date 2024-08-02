@@ -4521,11 +4521,11 @@ thanosRuler:
 
     ## Image of ThanosRuler
     ##
-    image:
-      registry: quay.io
-      repository: thanos/thanos
-      tag: v0.35.1
-      sha: ""
+    # image:
+    #   registry: quay.io
+    #   repository: thanos/thanos
+    #   tag: v0.35.1
+    #   sha: ""
 
     ## Namespaces to be selected for PrometheusRules discovery.
     ## If nil, select own namespace. Namespaces to be selected for ServiceMonitor discovery.
