@@ -25,7 +25,7 @@ spec:
   source:
     path: bootstrap/crds/cert-crds/
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
-    # kustomize:
+    kustomize:
     #   commonAnnotationsEnvsubst: true
     #   commonAnnotations:
     #     app-source: ${ARGOCD_APP_NAME}
