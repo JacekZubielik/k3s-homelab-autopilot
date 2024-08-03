@@ -46,7 +46,7 @@ helmCharts:
   includeCRDs: false
   namespace: cert-manager
   releaseName: cert-manager
-  valuesFile: values.yaml
+  valuesFile: values-init.yaml
 
   # valuesObject:
   #   global:
