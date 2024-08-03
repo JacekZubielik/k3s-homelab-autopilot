@@ -488,42 +488,14 @@ prometheus:
   podmonitor:
     # Create a PodMonitor to add cert-manager to Prometheus.
     enabled: false
-
-    # Specifies the `prometheus` label on the created PodMonitor. This is
-    # used when different Prometheus instances have label selectors matching
-    # different PodMonitors.
     prometheusInstance: default
-
-    # The path to scrape for metrics.
     path: /metrics
-
-    # The interval to scrape metrics.
     interval: 60s
-
-    # The timeout before a metrics scrape fails.
     scrapeTimeout: 30s
-
-    # Additional labels to add to the PodMonitor.
     labels: {}
-
-    # Additional annotations to add to the PodMonitor.
     annotations: {}
-
-    # Keep labels from scraped data, overriding server-side labels.
     honorLabels: false
 
-    # EndpointAdditionalProperties allows setting additional properties on the
-    # endpoint such as relabelings, metricRelabelings etc.
-    #
-    # For example:
-    #  endpointAdditionalProperties:
-    #   relabelings:
-    #   - action: replace
-    #     sourceLabels:
-    #     - __meta_kubernetes_pod_node_name
-    #     targetLabel: instance
-    #
-    # +docs:property
     endpointAdditionalProperties: {}
 
 # +docs:section=Webhook

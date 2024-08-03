@@ -53,3 +53,22 @@ helmCharts:
   namespace: traefik
   releaseName: traefik
   valuesFile: values.yaml
+  valuesInline:
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - ApplyOutOfSyncOnly=true
+        - CreateNamespace=true
+        # - Delete=true
+        - FailOnSharedResource=false
+        - preserveResourcesOnDeletion=false
+        - PruneLast=true
+        - PrunePropagationPolicy=foreground
+        - Replace=false
+        - RespectIgnoreDifferences=true
+        - ServerSideApply=true
+        - SkipDryRunOnMissingResource=true
+        # - Validate=false

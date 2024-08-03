@@ -53,7 +53,7 @@ spec:
         # - Replace=false
         # - RespectIgnoreDifferences=true
         - ServerSideApply=true
-        # - SkipDryRunOnMissingResource=true
+        - SkipDryRunOnMissingResource=true
         # - Validate=false
     retry:
       backoff:

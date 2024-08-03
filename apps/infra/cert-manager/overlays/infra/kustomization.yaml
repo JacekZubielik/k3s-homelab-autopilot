@@ -58,7 +58,7 @@ helmCharts:
         automated:
           allowEmpty: true
           prune: true
-          selfHeal: false
+          selfHeal: true
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
