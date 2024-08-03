@@ -103,7 +103,8 @@ approveSignerNames:
 - clusterissuers.cert-manager.io/*
 
 extraArgs:
-# - --enable-gateway-api
+- --enable-gateway-api
+
 
 # Additional environment variables to pass to cert-manager controller binary.
 extraEnv: []
@@ -333,7 +334,7 @@ webhook:
   # talk to the cluster nodes only on 443 and 10250. Configuring
   # securePort: 10250, therefore will work out-of-the-box without needing to add firewall
   # rules or requiring NET_BIND_SERVICE capabilities to bind port numbers <1000.
-  securePort: 10250 #10260 #10250
+  securePort: 443 #10250 #10260 #10250
 
   hostNetwork: false #true
 
