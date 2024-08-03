@@ -12,7 +12,7 @@ metadata:
 
   labels:
     app.kubernetes.io/managed-by: argocd-autopilot
-    app.kubernetes.io/name: argo-cd
+    app.kubernetes.io/name: cert-manager-crds
 
 spec:
   destination:
