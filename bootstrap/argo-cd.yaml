@@ -27,37 +27,13 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - ApplyOutOfSyncOnly=true
-    - CreateNamespace=true
-    - Delete=false
-    - FailOnSharedResource=false
-    - preserveResourcesOnDeletion=false
-    - PruneLast=false
-    - PrunePropagationPolicy=foreground
-    - Replace=false
-    - RespectIgnoreDifferences=true
-    - ServerSideApply=false
-    - SkipDryRunOnMissingResource=true
-    - Validate=false
-    # ignoreDifferences:
-    # - group: "apps"
-    #   kind: "Deployment"
-    #   jsonPointers:
-    #     - /spec/template/metadata/annotations
-    #     - /spec/template/metadata/labels
-    # - group: "apps"
-    #   kind: "StatefulSet"
-    #   jsonPointers:
-    #     - /spec/template/metadata/annotations
-    #     - /spec/template/metadata/labels
-
-
-# status:
-#   health: {}
-#   summary: {}
-#   sync:
-#     comparedTo:
-#       destination: {}
-#       source:
-#         repoURL: ""
-#     status: ""
+    - allowEmpty=true
+status:
+  health: {}
+  summary: {}
+  sync:
+    comparedTo:
+      destination: {}
+      source:
+        repoURL: ""
+    status: ""

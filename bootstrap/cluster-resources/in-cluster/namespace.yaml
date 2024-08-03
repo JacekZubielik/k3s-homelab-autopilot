@@ -88,14 +88,14 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
     argocd.argoproj.io/sync-options: Prune=false
 
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: kube-state
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
-    argocd.argoproj.io/sync-options: Prune=false
+# ---
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: kube-state
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "-1"
+#     argocd.argoproj.io/sync-options: Prune=false
 
 ---
 apiVersion: v1
@@ -110,7 +110,18 @@ metadata:
   apiVersion: v1
   kind: Namespace
   metadata:
+    name: longhorn-system
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
+      argocd.argoproj.io/sync-options: Prune=false
+
+---
+  apiVersion: v1
+  kind: Namespace
+  metadata:
     name: loki
     annotations:
       argocd.argoproj.io/sync-wave: "-1"
       argocd.argoproj.io/sync-options: Prune=false
+
+

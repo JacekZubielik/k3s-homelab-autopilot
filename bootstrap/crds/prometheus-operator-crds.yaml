@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+
+patches:
+- patch: |-
+    - op: add
+      path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
+      value: "Replace=true"
+  target:
+    group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: prometheuses.monitoring.coreos.com
+    version: v1
+
+metadata:
+  annotations:
+    # argocd.argoproj.io/compare-options: IgnoreExtraneous
+    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "-1"
+
+  labels:
+    app.kubernetes.io/managed-by: argocd-autopilot
+    app.kubernetes.io/name: argo-cd
+
+
+helmCharts:
+- name: prometheus-operator-crds
+  repo: https://prometheus-community.github.io/helm-charts
+  version: 13.0.1

@@ -28,18 +28,7 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - ApplyOutOfSyncOnly=true
-    - CreateNamespace=true
-    - Delete=false
-    - FailOnSharedResource=false
-    - preserveResourcesOnDeletion=false
-    - PruneLast=true
-    - PrunePropagationPolicy=foreground
-    - Replace=false
-    - RespectIgnoreDifferences=true
-    - ServerSideApply=false
-    - SkipDryRunOnMissingResource=true
-    - Validate=false
+    - allowEmpty=true
 status:
   health: {}
   summary: {}
@@ -51,3 +40,30 @@ status:
     status: ""
 
 
+#   syncPolicy:
+#     automated:
+#       allowEmpty: true
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#     - ApplyOutOfSyncOnly=true
+#     - CreateNamespace=true
+#     - Delete=false
+#     - FailOnSharedResource=false
+#     - preserveResourcesOnDeletion=false
+#     - PruneLast=true
+#     - PrunePropagationPolicy=foreground
+#     - Replace=false
+#     - RespectIgnoreDifferences=true
+#     - ServerSideApply=false
+#     - SkipDryRunOnMissingResource=true
+#     - Validate=false
+# status:
+#   health: {}
+#   summary: {}
+#   sync:
+#     comparedTo:
+#       destination: {}
+#       source:
+#         repoURL: ""
+#     status: ""
