@@ -1,8 +1,2 @@
 resources:
-# - crd-certificaterequests.yaml
-# - crd-certificates.yaml
-# - crd-challenges.yaml
-# - crd-clusterissuers.yaml
-# - crd-issuers.yaml
-# - crd-orders.yaml
 - cert-manager.crds.yaml

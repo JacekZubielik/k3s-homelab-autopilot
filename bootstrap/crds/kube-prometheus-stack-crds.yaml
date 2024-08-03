@@ -25,31 +25,14 @@ spec:
     path: charts/kube-prometheus-stack/charts/crds/
     repoURL: https://github.com/prometheus-community/helm-charts.git
     targetRevision: kube-prometheus-stack-61.6.0
-    # directory:
-    #   include: '*.yaml'
-    #   recurse: true
-    # kustomize:
-    #   commonAnnotationsEnvsubst: true
-    #   commonAnnotations:
-    #     app-source: ${ARGOCD_APP_NAME}
   syncPolicy:
     automated:
       allowEmpty: true
       prune: true
       selfHeal: true
     syncOptions:
-    # - ApplyOutOfSyncOnly=true
     - CreateNamespace=true
-    # - Delete=true
-    # - FailOnSharedResource=false
-    # - preserveResourcesOnDeletion=false
-    # - PruneLast=true
-    # - PrunePropagationPolicy=foreground
-    # - Replace=false
-    # - RespectIgnoreDifferences=true
     - ServerSideApply=true
-    # - SkipDryRunOnMissingResource=true
-    # - Validate=false
     retry:
       backoff:
         duration: 120s
