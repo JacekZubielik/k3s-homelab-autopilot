@@ -26,7 +26,7 @@ spec:
     targetRevision: v1.15.1
     directory:
       include: '*.yaml'
-      recurse: true
+      # recurse: true
     # kustomize:
     #   commonAnnotationsEnvsubst: true
     #   commonAnnotations:
