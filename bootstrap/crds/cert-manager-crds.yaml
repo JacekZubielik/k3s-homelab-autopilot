@@ -8,25 +8,25 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 
-  name: traefik-crds
+  name: cert-manager-crds
   namespace: argocd
 
   labels:
     app.kubernetes.io/managed-by: argocd-autopilot
-    app.kubernetes.io/name: traefik
+    app.kubernetes.io/name: cert-manager
 
 spec:
   destination:
-    namespace: traefik
+    namespace: cert-manager
     server: https://kubernetes.default.svc
   project: infra
   source:
-    path: traefik/crds/
-    repoURL: https://github.com/traefik/traefik-helm-chart/
-    targetRevision: v26.1.0
-    # directory:
-    #   include: '*.yaml'
-    #   recurse: true
+    path: deploy/crds
+    repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
+    targetRevision: v1.15.1
+    directory:
+      include: '*.yaml'
+      recurse: true
     kustomize:
       commonAnnotationsEnvsubst: true
       commonAnnotations:
@@ -51,7 +51,7 @@ spec:
         # - Validate=false
     retry:
       backoff:
-        duration: 60s
+        duration: 120s
         factor: 2
         maxDuration: 8m0s
       limit: 4

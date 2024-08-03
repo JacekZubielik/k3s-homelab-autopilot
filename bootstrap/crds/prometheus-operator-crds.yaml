@@ -1,30 +1,98 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-namespace: monitoring
-
-patches:
-- patch: |-
-    - op: add
-      path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
-      value: "Replace=true"
-  target:
-    group: apiextensions.k8s.io
-    kind: CustomResourceDefinition
-    name: prometheuses.monitoring.coreos.com
-    version: v1
-
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
   annotations:
-    # argocd.argoproj.io/compare-options: IgnoreExtraneous
-    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "-1"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+
+  name: prometheus-operator-crds
+  namespace: argocd
 
   labels:
     app.kubernetes.io/managed-by: argocd-autopilot
-    app.kubernetes.io/name: argo-cd
+    app.kubernetes.io/name: prometheus-operator
+
+spec:
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  project: infra
+  source:
+    path: charts/prometheus-operator-crds/charts/crds/
+    repoURL: https://github.com/prometheus-community/helm-charts.git
+    targetRevision: prometheus-operator-crds-13.0.2
+    # directory:
+    #   include: '*.yaml'
+    #   recurse: true
+    kustomize:
+      commonAnnotationsEnvsubst: true
+      commonAnnotations:
+        app-source: ${ARGOCD_APP_NAME}
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+        # - ApplyOutOfSyncOnly=true
+        - CreateNamespace=true
+        # - Delete=true
+        # - FailOnSharedResource=false
+        # - preserveResourcesOnDeletion=false
+        # - PruneLast=true
+        # - PrunePropagationPolicy=foreground
+        # - Replace=false
+        # - RespectIgnoreDifferences=true
+        # - ServerSideApply=true
+        # - SkipDryRunOnMissingResource=true
+        # - Validate=false
+    retry:
+      backoff:
+        duration: 60s
+        factor: 2
+        maxDuration: 8m0s
+      limit: 4
 
 
-helmCharts:
-- name: prometheus-operator-crds
-  repo: https://prometheus-community.github.io/helm-charts
-  version: 13.0.1
+
+
+
+
+
+
+
+
+
+# apiVersion: kustomize.config.k8s.io/v1beta1
+# kind: Kustomization
+# namespace: monitoring
+
+# patches:
+# - patch: |-
+#     - op: add
+#       path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
+#       value: "Replace=true"
+#   target:
+#     group: apiextensions.k8s.io
+#     kind: CustomResourceDefinition
+#     name: prometheuses.monitoring.coreos.com
+#     version: v1
+
+# metadata:
+#   annotations:
+#     # argocd.argoproj.io/compare-options: IgnoreExtraneous
+#     # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+#     argocd.argoproj.io/sync-wave: "-1"
+
+#   labels:
+#     app.kubernetes.io/managed-by: argocd-autopilot
+#     app.kubernetes.io/name: argo-cd
+
+
+# helmCharts:
+# - name: prometheus-operator-crds
+#   repo: https://prometheus-community.github.io/helm-charts
+#   version: 13.0.1
