@@ -27,10 +27,10 @@ spec:
     # directory:
     #   include: '*.yaml'
     #   recurse: true
-    kustomize:
-      commonAnnotationsEnvsubst: true
-      commonAnnotations:
-        app-source: ${ARGOCD_APP_NAME}
+    # kustomize:
+    #   commonAnnotationsEnvsubst: true
+    #   commonAnnotations:
+    #     app-source: ${ARGOCD_APP_NAME}
   syncPolicy:
     automated:
       allowEmpty: true
