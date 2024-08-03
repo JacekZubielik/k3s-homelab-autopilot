@@ -38,10 +38,16 @@ helmCharts:
 - name: cert-manager
   version: v1.15.1
   repo: https://charts.jetstack.io
-  includeCRDs: false
+  includeCRDs: true
   namespace: cert-manager
   releaseName: cert-manager
   valuesFile: values.yaml
+
+  # valuesObject:
+  #   global:
+  #     leaderElection:
+  #       namespace: cert-manager
+
   valuesInline:
     spec:
       ignoreDifferences:
