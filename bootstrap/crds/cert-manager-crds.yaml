@@ -23,7 +23,7 @@ spec:
   source:
     path: deploy/crds
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
-    targetRevision: v1.15.1
+    targetRevision: 1.15.1
     directory:
       include: '*.yaml'
       recurse: true
