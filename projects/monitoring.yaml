@@ -134,6 +134,6 @@ spec:
           backoff:
             duration: 60s
             factor: 2
-            maxDuration: 8m0s
+            maxDuration: 180s
           limit: 2
 status: {}

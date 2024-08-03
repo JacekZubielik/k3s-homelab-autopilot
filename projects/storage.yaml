@@ -141,8 +141,8 @@ spec:
         # - Validate=false
         retry:
           backoff:
-            duration: 20s
+            duration: 60s
             factor: 2
-            maxDuration: 8m0s
+            maxDuration: 180s
           limit: 2
 status: {}
