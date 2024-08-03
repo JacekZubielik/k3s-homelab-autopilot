@@ -5,6 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/hook: PreSync
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 
@@ -13,7 +14,8 @@ metadata:
 
   labels:
     app.kubernetes.io/managed-by: argocd-autopilot
-    app.kubernetes.io/name: cert-manager-crds
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: crds
 
 spec:
   destination:
@@ -21,16 +23,20 @@ spec:
     server: https://kubernetes.default.svc
   project: infra
   source:
-    path: deploy/crds/
-    repoURL: https://github.com/cert-manager/cert-manager.git
-    targetRevision: v1.15.1
-    directory:
-      include: '*.yaml'
-      recurse: true
+    path: bootstrap/crds/cert-crds/
+    repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
     kustomize:
       commonAnnotationsEnvsubst: true
       commonAnnotations:
         app-source: ${ARGOCD_APP_NAME}
+      patches:
+        - target:
+            kind: CustomResourceDefinition
+            labelSelector: app.kubernetes.io/instance=cert-manager
+          patch: |-
+            - op: remove
+              path: /metadata/labels/app.kubernetes.io~1instance
+
   syncPolicy:
     automated:
       allowEmpty: true
