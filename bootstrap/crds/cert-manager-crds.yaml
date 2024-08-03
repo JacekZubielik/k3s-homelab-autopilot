@@ -13,7 +13,7 @@ metadata:
 
   labels:
     app.kubernetes.io/managed-by: argocd-autopilot
-    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/name: cert-manager-crds
 
 spec:
   destination:
@@ -21,16 +21,16 @@ spec:
     server: https://kubernetes.default.svc
   project: infra
   source:
-    path: deploy/crds
+    path: deploy/crds/
     repoURL: https://github.com/cert-manager/cert-manager.git
     targetRevision: v1.15.1
     directory:
       include: '*.yaml'
-      # recurse: true
-    # kustomize:
-    #   commonAnnotationsEnvsubst: true
-    #   commonAnnotations:
-    #     app-source: ${ARGOCD_APP_NAME}
+      recurse: true
+    kustomize:
+      commonAnnotationsEnvsubst: true
+      commonAnnotations:
+        app-source: ${ARGOCD_APP_NAME}
   syncPolicy:
     automated:
       allowEmpty: true
