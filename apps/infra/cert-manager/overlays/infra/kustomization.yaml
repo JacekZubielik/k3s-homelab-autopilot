@@ -10,11 +10,11 @@ resources:
 - resources/issuer.k3s.ca-cluster.yaml
 # - resources/servicemonitor.yaml
 
-patches:
-  - path: ./remove-instance-label.jsonpatch.yaml
-    target:
-      kind: CustomResourceDefinition
-      labelSelector: app.kubernetes.io/instance=cert-manager
+# patches:
+#   - path: ./remove-instance-label.jsonpatch.yaml
+#     target:
+#       kind: CustomResourceDefinition
+#       labelSelector: app.kubernetes.io/instance=cert-manager
 
 generators:
 - ksops-generator.yaml
@@ -49,18 +49,18 @@ helmCharts:
   #       namespace: cert-manager
 
   valuesInline:
-    spec:
-      ignoreDifferences:
-        - group: "apps"
-          kind: "Deployment"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
-        - group: "apps"
-          kind: "StatefulSet"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
+    # spec:
+    #   ignoreDifferences:
+    #     - group: "apps"
+    #       kind: "Deployment"
+    #       jsonPointers:
+    #         - /spec/template/metadata/annotations
+    #         - /spec/template/metadata/labels
+    #     - group: "apps"
+    #       kind: "StatefulSet"
+    #       jsonPointers:
+    #         - /spec/template/metadata/annotations
+    #         - /spec/template/metadata/labels
       syncPolicy:
         automated:
           allowEmpty: true
@@ -73,3 +73,5 @@ helmCharts:
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true #false
+        - PruneLast=true
+        - Prune=true
