@@ -25,10 +25,10 @@ spec:
   source:
     path: bootstrap/crds/cert-crds/
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
-    kustomize:
-      commonAnnotationsEnvsubst: true
-      commonAnnotations:
-        app-source: ${ARGOCD_APP_NAME}
+    # kustomize:
+    #   commonAnnotationsEnvsubst: true
+    #   commonAnnotations:
+    #     app-source: ${ARGOCD_APP_NAME}
       patches:
         - target:
             kind: CustomResourceDefinition
@@ -40,8 +40,8 @@ spec:
   syncPolicy:
     automated:
       allowEmpty: true
-      prune: true
-      selfHeal: true
+      prune: false
+      selfHeal: false
     syncOptions:
         # - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
@@ -52,7 +52,7 @@ spec:
         # - PrunePropagationPolicy=foreground
         # - Replace=false
         # - RespectIgnoreDifferences=true
-        # - ServerSideApply=true
+        - ServerSideApply=true
         # - SkipDryRunOnMissingResource=true
         # - Validate=false
     retry:

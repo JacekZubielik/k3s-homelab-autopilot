@@ -54,18 +54,6 @@ helmCharts:
   #       namespace: cert-manager
 
   valuesInline:
-    # spec:
-    #   ignoreDifferences:
-    #     - group: "apps"
-    #       kind: "Deployment"
-    #       jsonPointers:
-    #         - /spec/template/metadata/annotations
-    #         - /spec/template/metadata/labels
-    #     - group: "apps"
-    #       kind: "StatefulSet"
-    #       jsonPointers:
-    #         - /spec/template/metadata/annotations
-    #         - /spec/template/metadata/labels
       syncPolicy:
         automated:
           allowEmpty: true
@@ -74,7 +62,7 @@ helmCharts:
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
-        - Delete=true
+        # - Delete=true
         - FailOnSharedResource=false
         - preserveResourcesOnDeletion=false
         - PruneLast=true
@@ -83,4 +71,4 @@ helmCharts:
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
-        - Validate=false
+        # - Validate=false
