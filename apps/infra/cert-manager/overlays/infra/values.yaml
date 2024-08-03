@@ -102,8 +102,8 @@ approveSignerNames:
 - issuers.cert-manager.io/*
 - clusterissuers.cert-manager.io/*
 
-extraArgs:
-- --enable-gateway-api
+extraArgs: []
+# - --enable-gateway-api
 
 
 # Additional environment variables to pass to cert-manager controller binary.
