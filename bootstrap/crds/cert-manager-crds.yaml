@@ -22,8 +22,8 @@ spec:
   project: infra
   source:
     path: deploy/crds
-    repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
-    targetRevision: 1.15.1
+    repoURL: https://github.com/cert-manager/cert-manager.git
+    targetRevision: v1.15.1
     directory:
       include: '*.yaml'
       recurse: true
