@@ -5,9 +5,9 @@ namespace: cert-manager
 
 resources:
 - ../../base
-- resources/cert.default.svc.yaml
-- resources/issuer.default.svc.yaml
-- resources/issuer.k3s.ca-cluster.yaml
+# - resources/cert.default.svc.yaml
+# - resources/issuer.default.svc.yaml
+# - resources/issuer.k3s.ca-cluster.yaml
 # - resources/servicemonitor.yaml
 
 patches:
