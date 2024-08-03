@@ -64,7 +64,7 @@ helmCharts:
       syncPolicy:
         automated:
           allowEmpty: true
-          prune: true
+          prune: false
           selfHeal: false
         syncOptions:
         - ApplyOutOfSyncOnly=true
@@ -72,7 +72,6 @@ helmCharts:
         - Delete=true
         - FailOnSharedResource=false
         - preserveResourcesOnDeletion=false
-        - Prune=true
         - PruneLast=true
         - PrunePropagationPolicy=foreground
         - Replace=true
