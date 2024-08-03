@@ -49,7 +49,7 @@ helmCharts:
 - name: traefik
   version: 26.1.0
   repo: https://helm.traefik.io/traefik
-  includeCRDs: true
+  includeCRDs: false
   namespace: traefik
   releaseName: traefik
   valuesFile: values.yaml
