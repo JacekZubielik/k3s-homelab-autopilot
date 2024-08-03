@@ -10,26 +10,26 @@ resources:
 - resources/issuer.k3s.ca-cluster.yaml
 # - resources/servicemonitor.yaml
 
-# patches:
-#   - path: ./remove-instance-label.jsonpatch.yaml
-#     target:
-#       kind: CustomResourceDefinition
-#       labelSelector: app.kubernetes.io/instance=cert-manager
+patches:
+  - path: ./remove-instance-label.jsonpatch.yaml
+    target:
+      kind: CustomResourceDefinition
+      labelSelector: app.kubernetes.io/instance=cert-manager
 
 generators:
 - ksops-generator.yaml
 
-configMapGenerator:
-- name: argocd-cm
-  literals:
-#   - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-  - resource.compareoptions.ignoreAggregatedRoles="true"
+# configMapGenerator:
+# - name: argocd-cm
+#   literals:
+# #   - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+#   - resource.compareoptions.ignoreAggregatedRoles="true"
 
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=true
     argocd.argoproj.io/sync-wave: "0"
-    cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
+    # cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
   labels:
     app.kubernetes.io/name: cert-manager
   name: cert-manager
@@ -68,10 +68,15 @@ helmCharts:
           selfHeal: false
         syncOptions:
         - ApplyOutOfSyncOnly=true
+        - CreateNamespace=true
         - Delete=true
+        - FailOnSharedResource=false
+        - preserveResourcesOnDeletion=false
+        - Prune=true
+        - PruneLast=true
+        - PrunePropagationPolicy=foreground
         - Replace=true
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true #false
-        - PruneLast=true
-        - Prune=true
+        - SkipDryRunOnMissingResource=true
+        - Validate=false
