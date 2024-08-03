@@ -24,9 +24,9 @@ spec:
     path: charts/kube-prometheus-stack/charts/crds/
     repoURL: https://github.com/prometheus-community/helm-charts.git
     targetRevision: kube-prometheus-stack-61.6.0
-    directory:
-      include: '*.yaml'
-      recurse: true
+    # directory:
+    #   include: '*.yaml'
+    #   recurse: true
     kustomize:
       commonAnnotationsEnvsubst: true
       commonAnnotations:
