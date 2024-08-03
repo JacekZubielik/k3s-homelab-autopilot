@@ -41,7 +41,7 @@ metadata:
 
 helmCharts:
 - name: cert-manager
-  version: v1.14.6 # 1.15.2
+  version: v1.16.0-alpha.0 #v1.14.6 # 1.15.2
   repo: https://charts.jetstack.io
   includeCRDs: false
   namespace: cert-manager
