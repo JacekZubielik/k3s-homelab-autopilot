@@ -17,6 +17,7 @@ metadata:
     app.kubernetes.io/name: kube-prometheus-stack
 
 spec:
+  revisionHistoryLimit: 4
   destination:
     namespace: monitoring
     server: https://kubernetes.default.svc
@@ -25,6 +26,11 @@ spec:
     path: charts/kube-prometheus-stack/charts/crds/
     repoURL: https://github.com/prometheus-community/helm-charts.git
     targetRevision: kube-prometheus-stack-61.6.0
+    kustomize:
+      namePrefix: infra-
+      commonAnnotationsEnvsubst: true
+      commonAnnotations:
+        app-source: ${ARGOCD_APP_NAME}
   syncPolicy:
     automated:
       allowEmpty: true
@@ -35,7 +41,7 @@ spec:
     - ServerSideApply=true
     retry:
       backoff:
-        duration: 120s
+        duration: 30s
         factor: 2
-        maxDuration: 8m0s
+        maxDuration: 120s
       limit: 4

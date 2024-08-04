@@ -18,6 +18,7 @@ metadata:
     app.kubernetes.io/component: crds
 
 spec:
+  revisionHistoryLimit: 4
   destination:
     namespace: cert-manager
     server: https://kubernetes.default.svc
@@ -26,9 +27,10 @@ spec:
     path: bootstrap/crds/cert-crds/
     repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
     kustomize:
-    #   commonAnnotationsEnvsubst: true
-    #   commonAnnotations:
-    #     app-source: ${ARGOCD_APP_NAME}
+      namePrefix: infra-
+      commonAnnotationsEnvsubst: true
+      commonAnnotations:
+        app-source: ${ARGOCD_APP_NAME}
       patches:
         - target:
             kind: CustomResourceDefinition
@@ -57,7 +59,7 @@ spec:
         # - Validate=false
     retry:
       backoff:
-        duration: 120s
+        duration: 30s
         factor: 2
-        maxDuration: 8m0s
+        maxDuration: 120s
       limit: 4

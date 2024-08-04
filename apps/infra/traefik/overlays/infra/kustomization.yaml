@@ -41,6 +41,7 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "5"
+        link.argocd.argoproj.io/external-link: http://192.168.40.180:9000/dashboard/#/
   labels:
     app.kubernetes.io/name: traefik
   name: traefik
@@ -72,3 +73,9 @@ helmCharts:
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
         # - Validate=false
+    retry:
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 120s
+      limit: 4

@@ -17,6 +17,7 @@ metadata:
     app.kubernetes.io/name: traefik
 
 spec:
+  revisionHistoryLimit: 4
   destination:
     namespace: traefik
     server: https://kubernetes.default.svc
@@ -26,16 +27,20 @@ spec:
     repoURL: https://github.com/traefik/traefik-helm-chart/
     targetRevision: v26.1.0
     kustomize:
+      namePrefix: infra-
       commonAnnotationsEnvsubst: true
       commonAnnotations:
         app-source: ${ARGOCD_APP_NAME}
+  info:
+    - name: 'traefik-crds:'
+      value: 'https://github.com/traefik/traefik-helm-chart/traefik/crds/'
   syncPolicy:
     automated:
       allowEmpty: true
       prune: true
       selfHeal: true
     syncOptions:
-        # - ApplyOutOfSyncOnly=true
+        - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
         # - Delete=true
         # - FailOnSharedResource=false
@@ -49,7 +54,7 @@ spec:
         # - Validate=false
     retry:
       backoff:
-        duration: 60s
+        duration: 30s
         factor: 2
-        maxDuration: 8m0s
+        maxDuration: 120s
       limit: 4
