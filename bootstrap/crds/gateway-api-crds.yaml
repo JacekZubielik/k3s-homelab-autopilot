@@ -28,8 +28,8 @@ spec:
   syncPolicy:
     automated:
       allowEmpty: true
-      prune: true
-      selfHeal: true
+      prune: false
+      selfHeal: false
     syncOptions:
         # - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
@@ -40,8 +40,8 @@ spec:
         # - PrunePropagationPolicy=foreground
         # - Replace=false
         # - RespectIgnoreDifferences=true
-        # - ServerSideApply=true
-        # - SkipDryRunOnMissingResource=true
+        - ServerSideApply=true
+        - SkipDryRunOnMissingResource=true
         # - Validate=false
     retry:
       backoff:
