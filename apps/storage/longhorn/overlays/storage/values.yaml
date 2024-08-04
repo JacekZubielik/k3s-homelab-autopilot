@@ -142,7 +142,7 @@ persistence:
     jobList: []
   backingImage:
     # -- Setting that allows you to use a backing image in a Longhorn StorageClass.
-    enable: false
+    enable: true
     # -- Backing image to be used for creating and restoring volumes in a Longhorn StorageClass. When no backing images are available, specify the data source type and parameters that Longhorn can use to create a backing image.
     name: ~
     # -- Data source type of a backing image used in a Longhorn StorageClass.
