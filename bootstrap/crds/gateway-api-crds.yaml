@@ -5,11 +5,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "-1"
-    argocd.argoproj.io/hook: PreSync
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 
-  name: gateway-api-crds
+  name: infra-gateway-api-crds
   namespace: argocd
 
   labels:
@@ -17,7 +16,6 @@ metadata:
     app.kubernetes.io/name: gateway-api
 
 spec:
-  revisionHistoryLimit: 4
   destination:
     namespace: envoy-gateway-system
     server: https://kubernetes.default.svc
@@ -26,10 +24,7 @@ spec:
     path: config/crd
     repoURL: https://github.com/kubernetes-sigs/gateway-api/
     targetRevision: v1.1.0
-    kustomize:
-      commonAnnotationsEnvsubst: true
-      commonAnnotations:
-        app-source: ${ARGOCD_APP_NAME}
+
   syncPolicy:
     automated:
       allowEmpty: true

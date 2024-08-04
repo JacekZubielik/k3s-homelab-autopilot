@@ -10,5 +10,6 @@ resources:
 - crds/cert-manager-crds.yaml
 - crds/gateway-api-crds.yaml
 - crds/kube-prometheus-stack-crds.yaml
+- crds/prometheus-operator-crds.yaml
 - crds/traefik-crds.yaml
 - root.yaml

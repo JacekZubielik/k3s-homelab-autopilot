@@ -5,11 +5,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "-1"
-    argocd.argoproj.io/hook: PreSync
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 
-  name: kube-prometheus-stack-crds
+  name: infra-kube-prometheus-stack-crds
   namespace: argocd
 
   labels:
@@ -17,7 +16,6 @@ metadata:
     app.kubernetes.io/name: kube-prometheus-stack
 
 spec:
-  revisionHistoryLimit: 4
   destination:
     namespace: monitoring
     server: https://kubernetes.default.svc
@@ -26,10 +24,7 @@ spec:
     path: charts/kube-prometheus-stack/charts/crds/
     repoURL: https://github.com/prometheus-community/helm-charts.git
     targetRevision: kube-prometheus-stack-61.6.0
-    kustomize:
-      commonAnnotationsEnvsubst: true
-      commonAnnotations:
-        app-source: ${ARGOCD_APP_NAME}
+
   syncPolicy:
     automated:
       allowEmpty: true

@@ -5,11 +5,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "-1"
-    argocd.argoproj.io/hook: PreSync
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 
-  name: prometheus-operator-crds
+  name: infra-prometheus-operator-crds
   namespace: argocd
 
   labels:
@@ -17,7 +16,6 @@ metadata:
     app.kubernetes.io/name: prometheus-operator
 
 spec:
-  revisionHistoryLimit: 4
   destination:
     namespace: monitoring
     server: https://kubernetes.default.svc
@@ -26,9 +24,6 @@ spec:
     path: charts/prometheus-operator-crds/charts/crds/
     repoURL: https://github.com/prometheus-community/helm-charts.git
     targetRevision: prometheus-operator-crds-13.0.2
-    kustomize:
-      namePrefix: infra-
-
   syncPolicy:
     automated:
       allowEmpty: true
