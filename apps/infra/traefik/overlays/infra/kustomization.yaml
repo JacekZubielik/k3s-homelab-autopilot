@@ -41,7 +41,7 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "5"
-        link.argocd.argoproj.io/external-link: http://192.168.40.180:9000/dashboard/#/
+    link.argocd.argoproj.io/external-link: http://192.168.40.180:9000/dashboard/#/
   labels:
     app.kubernetes.io/name: traefik
   name: traefik
