@@ -8,6 +8,7 @@ spec:
   cron: "0 */12 * * *"
   task: "snapshot"
   groups:
+  - default
   - group1
   retain: 3
   concurrency: 2
@@ -23,6 +24,7 @@ spec:
   cron: "0 */24 * * *"
   task: "snapshot"
   groups:
+  - default
   - group1
   retain: 3
   concurrency: 2
@@ -38,6 +40,7 @@ spec:
   cron: "0 */48 * * *"
   task: "snapshot"
   groups:
+  - default
   - group1
   retain: 3
   concurrency: 2
