@@ -6,7 +6,7 @@ resources:
 - resources/recurring_backup_job.yaml
 - resources/recurring_snapshot_job.yaml
 - resources/service.yaml
-- resources/servicemonitor.yaml
+# - resources/servicemonitor.yaml
 - resources/storageclass.yaml
 # - resources/volume-snapshotclass.yaml
 - resources/prometheus-rule.yaml
