@@ -114,7 +114,7 @@ service:
     nodePort: "32450"
   manager:
     # -- Service type for Longhorn Manager.
-    type: ClusterIP
+    type: NodePort
     # -- NodePort port number for Longhorn Manager. When unspecified, Longhorn selects a free port between 30000 and 32767.
     nodePort: "32451"
 
