@@ -124,7 +124,7 @@ persistence:
   # -- Filesystem type of the default Longhorn StorageClass.
   defaultFsType: ext4
   # -- mkfs parameters of the default Longhorn StorageClass.
-  defaultMkfsParams: ""
+  defaultMkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
   # -- Replica count of the default Longhorn StorageClass.
   defaultClassReplicaCount: 1
   # -- Data locality of the default Longhorn StorageClass. (Options: "disabled", "best-effort")
