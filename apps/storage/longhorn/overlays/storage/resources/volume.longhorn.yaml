@@ -9,7 +9,7 @@ metadata:
 spec:
   restoreVolumeRecurringJob: enabled
   engineImage: longhornio/longhorn-engine
-  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-5518bb878ed24d7d&volume=pvc-kube-alertmanager"
+  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-5d1f84405b63403b&volume=pvc-kube-alertmanager"
   frontend: blockdev
 
 ---
