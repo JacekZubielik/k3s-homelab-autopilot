@@ -41,7 +41,7 @@ spec:
   type: NodePort
   ports:
   - name: web
-    nodePort: 30904
+    nodePort: 32451 # 30904
     port: 9090
     protocol: TCP
     targetPort: web
