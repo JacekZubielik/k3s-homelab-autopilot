@@ -48,4 +48,14 @@ parameters:
   dataLocality: "disabled"
   diskSelector: "data,fast"
   nodeSelector:  "storage,fast"
-  recurringJobs: "12-hour-snapshots,48-hour-backups"
+  # recurringJobs: "12-hour-snapshots,48-hour-backups"
+  recurringJobSelector: '[
+    {
+      "name":"12-hour-snapshots",
+      "isGroup":default,
+    },
+    {
+      "name":"48-hour-backups",
+      "isGroup":default,
+    }
+    ]'
