@@ -73,9 +73,9 @@ helmCharts:
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
         # - Validate=false
-    retry:
-      backoff:
-        duration: 30s
-        factor: 2
-        maxDuration: 120s
-      limit: 4
+        retry:
+          backoff:
+            duration: 30s
+            factor: 2
+            maxDuration: 120s
+          limit: 4
