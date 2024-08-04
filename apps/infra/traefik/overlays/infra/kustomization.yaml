@@ -40,7 +40,7 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "20"
   labels:
     app.kubernetes.io/name: traefik
   name: traefik
@@ -54,27 +54,25 @@ helmCharts:
   releaseName: traefik
   valuesFile: values.yaml
   valuesInline:
-      syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-          selfHeal: true
-        syncOptions:
-        - ApplyOutOfSyncOnly=true
-        - CreateNamespace=true
-        # - Delete=true
-        - FailOnSharedResource=false
-        - preserveResourcesOnDeletion=false
-        - PruneLast=true
-        - PrunePropagationPolicy=foreground
-        - Replace=false
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
-        # - Validate=false
-        retry:
-          backoff:
-            duration: 30s
-            factor: 2
-            maxDuration: 120s
-          limit: 4
+    syncPolicy:
+      automated:
+        allowEmpty: true
+        prune: true
+        selfHeal: true
+      syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
+      - FailOnSharedResource=false
+      - preserveResourcesOnDeletion=false
+      - PruneLast=true
+      - PrunePropagationPolicy=foreground
+      - Replace=false
+      - RespectIgnoreDifferences=true
+      - ServerSideApply=true
+      - SkipDryRunOnMissingResource=true
+      retry:
+        backoff:
+          duration: 30s
+          factor: 2
+          maxDuration: 120s
+        limit: 4

@@ -37,18 +37,18 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-        - ApplyOutOfSyncOnly=true
-        - CreateNamespace=true
-        # - Delete=true
-        # - FailOnSharedResource=false
-        # - preserveResourcesOnDeletion=false
-        # - PruneLast=true
-        # - PrunePropagationPolicy=foreground
-        # - Replace=false
-        # - RespectIgnoreDifferences=true
-        # - ServerSideApply=true
-        # - SkipDryRunOnMissingResource=true
-        # - Validate=false
+    - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
+    # - Delete=true
+    # - FailOnSharedResource=false
+    # - preserveResourcesOnDeletion=false
+    # - PruneLast=true
+    # - PrunePropagationPolicy=foreground
+    # - Replace=false
+    # - RespectIgnoreDifferences=true
+    # - ServerSideApply=true
+    # - SkipDryRunOnMissingResource=true
+    # - Validate=false
     retry:
       backoff:
         duration: 30s

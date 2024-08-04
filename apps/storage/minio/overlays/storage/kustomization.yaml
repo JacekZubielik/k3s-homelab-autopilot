@@ -50,12 +50,21 @@ helmCharts:
         automated:
           allowEmpty: true
           prune: true
-          selfHeal: false
+          selfHeal: true
         syncOptions:
-        - ApplyOutOfSyncOnly=true
-        - Delete=false
-        - FailOnSharedResource=false
-        - Replace=false
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
+      - FailOnSharedResource=false
+      - preserveResourcesOnDeletion=false
+      - PruneLast=true
+      - PrunePropagationPolicy=foreground
+      - Replace=false
+      - RespectIgnoreDifferences=true
+      - ServerSideApply=true
+      - SkipDryRunOnMissingResource=true
+    retry:
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 120s
+      limit: 4

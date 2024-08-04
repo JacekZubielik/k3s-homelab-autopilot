@@ -20,7 +20,6 @@ patches:
   target:
     kind: Deployment
 
-
 generators:
 - ksops-generator.yaml
 
@@ -32,9 +31,9 @@ generators:
 
 metadata:
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=true
+    # argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=true
     argocd.argoproj.io/sync-wave: "10"
-    # cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
+    cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
   labels:
     app.kubernetes.io/name: cert-manager
   name: cert-manager
@@ -47,28 +46,26 @@ helmCharts:
   namespace: cert-manager
   releaseName: cert-manager
   valuesFile: values-init.yaml
-
-  # valuesObject:
-  #   global:
-  #     leaderElection:
-  #       namespace: cert-manager
-
   valuesInline:
-      syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-          selfHeal: true
-        syncOptions:
-        - ApplyOutOfSyncOnly=true
-        - CreateNamespace=true
-        # - Delete=true
-        - FailOnSharedResource=false
-        - preserveResourcesOnDeletion=false
-        - PruneLast=true
-        - PrunePropagationPolicy=foreground
-        - Replace=false
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
-        # - Validate=false
+    syncPolicy:
+      automated:
+        allowEmpty: true
+        prune: true
+        selfHeal: true
+      syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
+      - FailOnSharedResource=false
+      - preserveResourcesOnDeletion=false
+      - PruneLast=true
+      - PrunePropagationPolicy=foreground
+      - Replace=false
+      - RespectIgnoreDifferences=true
+      - ServerSideApply=true
+      - SkipDryRunOnMissingResource=true
+    retry:
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 120s
+      limit: 4
