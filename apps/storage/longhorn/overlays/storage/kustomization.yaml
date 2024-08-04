@@ -10,6 +10,7 @@ resources:
 - resources/storageclass.yaml
 # - resources/volume-snapshotclass.yaml
 - resources/prometheus-rule.yaml
+- resources/volume.longhorn.yaml
 
 generators:
 - ksops-generator.yaml

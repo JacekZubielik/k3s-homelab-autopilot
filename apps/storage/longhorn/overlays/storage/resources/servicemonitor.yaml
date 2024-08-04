@@ -13,4 +13,4 @@ spec:
     matchNames:
     - longhorn-system
   endpoints:
-  - port: manager
+  - port: '32452' #manager

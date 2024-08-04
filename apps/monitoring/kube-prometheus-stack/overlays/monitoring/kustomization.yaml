@@ -9,7 +9,7 @@ resources:
 # - resources/pve-scrape-config.yaml
 - resources/servicemonitor.yaml
 # - resources/cm.datasources.yaml
-- resources/volume.longhorn.yaml
+# - resources/volume.longhorn.yaml
 
 generators:
 - ksops-generator.yaml
