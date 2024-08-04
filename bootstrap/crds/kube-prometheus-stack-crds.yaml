@@ -27,7 +27,6 @@ spec:
     repoURL: https://github.com/prometheus-community/helm-charts.git
     targetRevision: kube-prometheus-stack-61.6.0
     kustomize:
-      namePrefix: infra-
       commonAnnotationsEnvsubst: true
       commonAnnotations:
         app-source: ${ARGOCD_APP_NAME}
