@@ -434,7 +434,7 @@ serviceAccount:
 
 metrics:
   serviceMonitor:
-    enabled: false # do not change the value here
+    enabled: true # false # do not change the value here
 
 ## openshift settings
 openshift:
