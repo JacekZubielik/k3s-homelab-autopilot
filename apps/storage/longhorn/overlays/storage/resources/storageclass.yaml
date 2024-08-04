@@ -49,7 +49,8 @@ parameters:
   diskSelector: "data,fast"
   nodeSelector:  "storage,fast"
   # recurringJobs: "12-hour-snapshots,48-hour-backups"
-  recurringJobSelector: '[
+  # recurringJobSelector:
+  recurringJobs: '[
     {
       "name":"12-hour-snapshots",
       "isGroup":default,
