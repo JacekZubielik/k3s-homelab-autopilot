@@ -27,7 +27,6 @@ spec:
     repoURL: https://github.com/kubernetes-sigs/gateway-api/
     targetRevision: v1.1.0
     kustomize:
-      namePrefix: infra-
       commonAnnotationsEnvsubst: true
       commonAnnotations:
         app-source: ${ARGOCD_APP_NAME}

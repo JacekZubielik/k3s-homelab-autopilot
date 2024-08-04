@@ -9,7 +9,7 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 
-  name: traefik-crds
+  name: infra-traefik-crds
   namespace: argocd
 
   labels:

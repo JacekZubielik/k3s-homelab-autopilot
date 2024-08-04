@@ -28,9 +28,7 @@ spec:
     targetRevision: prometheus-operator-crds-13.0.2
     kustomize:
       namePrefix: infra-
-      commonAnnotationsEnvsubst: true
-      commonAnnotations:
-        app-source: ${ARGOCD_APP_NAME}
+
   syncPolicy:
     automated:
       allowEmpty: true
