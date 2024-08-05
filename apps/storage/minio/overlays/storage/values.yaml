@@ -5,14 +5,14 @@ mode: standalone ## other supported values are "standalone"
 ## So that when these change on a subsequent helm install, the deployment/statefulset
 ## is restarted. This can result in unnecessary restarts under GitOps tooling such as
 ## flux, so set to "true" to disable this behaviour.
-ignoreChartChecksums: true #false
+ignoreChartChecksums: false
 minioAPIPort: "9000"
 minioConsolePort: "9001"
 
 deploymentUpdate:
   type: RollingUpdate
-  # maxUnavailable: 0
-  # maxSurge: 100%
+  maxUnavailable: 0
+  maxSurge: 100%
 
 ## Update strategy for StatefulSets
 statefulSetUpdate:
