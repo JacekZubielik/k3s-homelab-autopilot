@@ -235,7 +235,7 @@ defaultSettings:
   priorityClass: &defaultPriorityClassNameRef "longhorn-critical"
   # -- Setting that allows Longhorn to automatically salvage volumes when all replicas become faulty (for example, when the network connection is interrupted). Longhorn determines which replicas are usable and then uses these replicas for the volume.
   # This setting is enabled by default.
-  autoSalvage: "true"
+  autoSalvage: true
   # -- Setting that allows Longhorn to automatically delete a workload pod that is managed by a controller (for example, daemonset) whenever a Longhorn volume is detached unexpectedly (for example, during Kubernetes upgrades).
   # After deletion, the controller restarts the pod and then Kubernetes handles volume reattachment and remounting.
   autoDeletePodWhenVolumeDetachedUnexpectedly: "false"
@@ -280,7 +280,7 @@ defaultSettings:
   # -- Setting that notifies Longhorn that the cluster is using the Kubernetes Cluster Autoscaler.
   kubernetesClusterAutoscalerEnabled: ~
   # -- Setting that allows Longhorn to automatically delete an orphaned resource and the corresponding data (for example, stale replicas). Orphaned resources on failed or unknown nodes are not automatically cleaned up.
-  orphanAutoDeletion: "true"
+  orphanAutoDeletion: true
   # -- Storage network for in-cluster traffic. When unspecified, Longhorn uses the Kubernetes cluster network.
   storageNetwork: ~
   # -- Flag that prevents accidental uninstallation of Longhorn.
