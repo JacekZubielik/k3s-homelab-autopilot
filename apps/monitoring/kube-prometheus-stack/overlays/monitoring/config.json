@@ -10,6 +10,6 @@
   "srcPath": "apps/monitoring/kube-prometheus-stack/overlays/monitoring",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
-  "syncWave": "10",
+  "syncWave": "20",
   "userGivenName": "kube-prometheus-stack"
 }

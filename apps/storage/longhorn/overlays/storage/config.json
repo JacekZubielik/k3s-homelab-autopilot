@@ -10,6 +10,6 @@
   "srcPath": "apps/storage/longhorn/overlays/storage",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
-  "syncWave": "2",
+  "syncWave": "10",
   "userGivenName": "longhorn"
 }
