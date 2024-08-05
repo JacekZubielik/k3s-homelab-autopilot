@@ -40,7 +40,7 @@ helmCharts:
   includeCRDs: true
   namespace: longhorn-system
   releaseName: longhorn
-  valuesFile: values.yaml
+  valuesFile: values-test1.yaml
   valuesInline:
     preUpgradeChecker:
       jobEnabled: false

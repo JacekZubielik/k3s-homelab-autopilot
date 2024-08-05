@@ -1,0 +1,51 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "-1"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+
+  name: infra-external-snapshotter-crds
+  namespace: argocd
+
+  labels:
+    app.kubernetes.io/managed-by: argocd-autopilot
+    app.kubernetes.io/name: external-snapshotter
+
+spec:
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  project: infra
+  source:
+    path: client/config/crd
+    repoURL: https://github.com/kubernetes-csi/external-snapshotter/
+    targetRevision: v8.0.1
+
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: false
+      selfHeal: false
+    syncOptions:
+        # - ApplyOutOfSyncOnly=true
+        - CreateNamespace=true
+        # - Delete=true
+        # - FailOnSharedResource=false
+        # - preserveResourcesOnDeletion=false
+        # - PruneLast=true
+        # - PrunePropagationPolicy=foreground
+        # - Replace=false
+        # - RespectIgnoreDifferences=true
+        - ServerSideApply=true
+        - SkipDryRunOnMissingResource=true
+        # - Validate=false
+    retry:
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 120s
+      limit: 4

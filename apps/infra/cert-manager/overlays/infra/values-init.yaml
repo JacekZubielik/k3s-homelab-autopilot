@@ -1,23 +1,4 @@
-# +docs:section=Global
-
-# Default values for cert-manager.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
 global:
-  # Reference to one or more secrets to be used when pulling images.
-  # For more information, see [Pull an Image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/).
-  #
-  # For example:
-  #  imagePullSecrets:
-  #    - name: "image-pull-secret"
-  imagePullSecrets: []
-
-  # Labels to apply to all resources.
-  # Please note that this does not add labels to the resources created dynamically by the controllers.
-  # For these resources, you have to add the labels in the template in the cert-manager custom resource:
-  # For example, podTemplate/ ingressTemplate in ACMEChallengeSolverHTTP01Ingress
-  # For more information, see the [cert-manager documentation](https://cert-manager.io/docs/reference/api-docs/#acme.cert-manager.io/v1.ACMEChallengeSolverHTTP01Ingress).
-  # For example, secretTemplate in CertificateSpec
   # For more information, see the [cert-manager documentation](https://cert-manager.io/docs/reference/api-docs/#cert-manager.io/v1.CertificateSpec).
   commonLabels: {}
 
@@ -136,29 +117,9 @@ featureGates: ""
 maxConcurrentChallenges: 60
 
 image:
-  # The container registry to pull the manager image from.
-  # +docs:property
-  # registry: quay.io
-
-  # The container image for the cert-manager controller.
-  # +docs:property
   repository: quay.io/jetstack/cert-manager-controller
-
-  # Override the image tag to deploy by setting this variable.
-  # If no value is set, the chart's appVersion is used.
-  # +docs:property
-  # tag: vX.Y.Z
-
-  # Setting a digest will override any tag.
-  # +docs:property
-  # digest: sha256:0e072dddd1f7f8fc8909a2ca6f65e76c5f0d2fcfb8be47935ae3457e8bbceb20
-
-  # Kubernetes imagePullPolicy on Deployment.
   pullPolicy: IfNotPresent
 
-# Override the namespace used to store DNS provider credentials etc. for ClusterIssuer
-# resources. By default, the same namespace as cert-manager is deployed within is
-# used. This namespace will not be automatically created by the Helm chart.
 clusterResourceNamespace: ""
 
 # This namespace allows you to define where the services are installed into.
@@ -738,43 +699,12 @@ webhook:
   serviceIPFamilies: []
 
   image:
-    # The container registry to pull the webhook image from.
-    # +docs:property
-    # registry: quay.io
-
-    # The container image for the cert-manager webhook
-    # +docs:property
     repository: quay.io/jetstack/cert-manager-webhook
-
-    # Override the image tag to deploy by setting this variable.
-    # If no value is set, the chart's appVersion will be used.
-    # +docs:property
-    # tag: vX.Y.Z
-
-    # Setting a digest will override any tag
-    # +docs:property
-    # digest: sha256:0e072dddd1f7f8fc8909a2ca6f65e76c5f0d2fcfb8be47935ae3457e8bbceb20
-
-    # Kubernetes imagePullPolicy on Deployment.
     pullPolicy: IfNotPresent
 
   serviceAccount:
     # Specifies whether a service account should be created.
     create: true
-
-    # The name of the service account to use.
-    # If not set and create is true, a name is generated using the fullname template.
-    # +docs:property
-    # name: ""
-
-    # Optional additional annotations to add to the controller's Service Account.
-    # +docs:property
-    # annotations: {}
-
-    # Optional additional labels to add to the webhook's Service Account.
-    # +docs:property
-    # labels: {}
-
     # Automount API credentials for a Service Account.
     automountServiceAccountToken: true
 
@@ -799,10 +729,6 @@ webhook:
   # network, `webhook.securePort` should be changed to an available port if
   # running in hostNetwork mode.
   hostNetwork: false
-
-  # Specifies how the service should be handled. Useful if you want to expose the
-  # webhook outside of the cluster. In some cases, the control plane cannot
-  # reach internal services.
   serviceType: ClusterIP
 
   # Specify the load balancer IP for the created service.
@@ -864,16 +790,6 @@ webhook:
 cainjector:
   # Create the CA Injector deployment
   enabled: true
-
-  # The number of replicas of the cert-manager cainjector to run.
-  #
-  # The default is 1, but in production set this to 2 or 3 to provide high
-  # availability.
-  #
-  # If `replicas > 1`, consider setting `cainjector.podDisruptionBudget.enabled=true`.
-  #
-  # Note that cert-manager uses leader election to ensure that there can
-  # only be a single instance active at a time.
   replicaCount: 1
 
   # This is used to configure options for the cainjector pod.
@@ -1021,24 +937,7 @@ cainjector:
   podLabels: {}
 
   image:
-    # The container registry to pull the cainjector image from.
-    # +docs:property
-    # registry: quay.io
-
-    # The container image for the cert-manager cainjector
-    # +docs:property
     repository: quay.io/jetstack/cert-manager-cainjector
-
-    # Override the image tag to deploy by setting this variable.
-    # If no value is set, the chart's appVersion will be used.
-    # +docs:property
-    # tag: vX.Y.Z
-
-    # Setting a digest will override any tag.
-    # +docs:property
-    # digest: sha256:0e072dddd1f7f8fc8909a2ca6f65e76c5f0d2fcfb8be47935ae3457e8bbceb20
-
-    # Kubernetes imagePullPolicy on Deployment.
     pullPolicy: IfNotPresent
 
   serviceAccount:
@@ -1080,37 +979,9 @@ cainjector:
 
 acmesolver:
   image:
-    # The container registry to pull the acmesolver image from.
-    # +docs:property
-    # registry: quay.io
-
-    # The container image for the cert-manager acmesolver.
-    # +docs:property
     repository: quay.io/jetstack/cert-manager-acmesolver
-
-    # Override the image tag to deploy by setting this variable.
-    # If no value is set, the chart's appVersion is used.
-    # +docs:property
-    # tag: vX.Y.Z
-
-    # Setting a digest will override any tag.
-    # +docs:property
-    # digest: sha256:0e072dddd1f7f8fc8909a2ca6f65e76c5f0d2fcfb8be47935ae3457e8bbceb20
-
-    # Kubernetes imagePullPolicy on Deployment.
     pullPolicy: IfNotPresent
-
-# +docs:section=Startup API Check
-# This startupapicheck is a Helm post-install hook that waits for the webhook
-# endpoints to become available.
-# The check is implemented using a Kubernetes Job - if you are injecting mesh
-# sidecar proxies into cert-manager pods, ensure that they
-# are not injected into this Job's pod. Otherwise, the installation may time out
-# owing to the Job never being completed because the sidecar proxy does not exit.
-# For more information, see [this note](https://github.com/cert-manager/cert-manager/pull/4414).
-
 startupapicheck:
-  # Enables the startup api check.
   enabled: true
 
   # Pod Security Context to be set on the startupapicheck component Pod.
@@ -1273,13 +1144,4 @@ startupapicheck:
   # links.
   enableServiceLinks: false
 
-# Create dynamic manifests via values.
-#
-# For example:
-# extraObjects:
-#   - |
-#     apiVersion: v1
-#     kind: ConfigMap
-#     metadata:
-#       name: '{{ template "cert-manager.name" . }}-extra-configmap'
 extraObjects: []

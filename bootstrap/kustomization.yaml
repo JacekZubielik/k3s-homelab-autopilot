@@ -8,6 +8,7 @@ resources:
 - argo-cd.yaml
 - cluster-resources.yaml
 - crds/cert-manager-crds.yaml
+# - crds/external-snapshotter.yaml
 - crds/gateway-api-crds.yaml
 - crds/kube-prometheus-stack-crds.yaml
 - crds/prometheus-operator-crds.yaml
