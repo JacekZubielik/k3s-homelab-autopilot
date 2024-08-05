@@ -10,6 +10,6 @@
   "srcPath": "apps/user/lms/overlays/dev",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
-  "syncWave": "10",
+  "syncWave": "30",
   "userGivenName": "lms"
 }
