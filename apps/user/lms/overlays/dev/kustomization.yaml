@@ -1,0 +1,37 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: media
+
+resources:
+- ../../base
+# - resources/pv.yaml
+- resources/pvc.yaml
+- resources/volume.yaml
+
+# generators:
+# - ksops-generator.yaml
+
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "10"
+  labels:
+    app.kubernetes.io/name: lms
+  name: lms
+
+helmCharts:
+- name: lms
+  version: 0.0.10
+  repo: https://jacekzubielik.github.io/jz-helm-charts
+  includeCRDs: false
+  namespace: media
+  releaseName: lms
+  valuesFile: values.yaml
+
+configMapGenerator:
+- name: lms-tz
+  literals:
+  - TZ=CET
+  - PUID=1000
+  - PGID=1000
