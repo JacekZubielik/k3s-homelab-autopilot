@@ -4,7 +4,7 @@ namespace: media
 
 resources:
 - ../../base
-# - resources/pv.yaml
+- resources/pv.yaml
 - resources/pvc.yaml
 - resources/volume.yaml
 
