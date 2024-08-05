@@ -63,7 +63,7 @@ helmCharts:
       - SkipDryRunOnMissingResource=true
     retry:
       backoff:
-        duration: 30s
+        duration: 10s
         factor: 2
-        maxDuration: 120s
-      limit: 4
+        maxDuration: 15s
+      limit: 6
