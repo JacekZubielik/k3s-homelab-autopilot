@@ -3,7 +3,7 @@ apiVersion: longhorn.io/v1beta2
 kind: Volume
 metadata:
   labels:
-    longhornvolume: pvc-kube-alertmanager
+    longhornvolume: pvc-lms-config
   name: pvc-lms-config
   namespace: longhorn-system
 spec:
