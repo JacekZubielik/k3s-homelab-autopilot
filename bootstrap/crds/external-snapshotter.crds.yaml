@@ -8,22 +8,22 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 
-  name: infra-gateway-api-crds
+  name: infra-external-snapshotter-crds
   namespace: argocd
 
   labels:
     app.kubernetes.io/managed-by: argocd-autopilot
-    app.kubernetes.io/name: gateway-api
+    app.kubernetes.io/name: external-snapshotter
 
 spec:
   destination:
-    namespace: envoy-gateway-system
+    namespace: kube-system
     server: https://kubernetes.default.svc
   project: infra
   source:
-    path: config/crd
-    repoURL: https://github.com/kubernetes-sigs/gateway-api/
-    targetRevision: v1.1.0
+    path: client/config/crd
+    repoURL: https://github.com/kubernetes-csi/external-snapshotter/
+    targetRevision: v8.0.1
 
   syncPolicy:
     automated:
@@ -45,7 +45,7 @@ spec:
         # - Validate=false
     retry:
       backoff:
-        duration: 30s
+        duration: 10s
         factor: 2
-        maxDuration: 120s
+        maxDuration: 30s
       limit: 4

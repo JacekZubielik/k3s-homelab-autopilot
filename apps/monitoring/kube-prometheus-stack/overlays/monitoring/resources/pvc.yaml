@@ -9,9 +9,13 @@ metadata:
     name: storage
     type: longhorn
 spec:
+  dataSource:
+    name: pv-kube-grafana-backup
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
   accessModes:
   - ReadWriteOnce
-  storageClassName: longhorn-data
+  storageClassName: longhorn-data-delete
   resources:
     requests:
       storage: 20Gi

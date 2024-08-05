@@ -3,14 +3,15 @@ kind: Kustomization
 namespace: longhorn-system
 
 resources:
-- resources/recurring_backup_job.yaml
-- resources/recurring_snapshot_job.yaml
+- resources/prometheus.rule.yaml
+- resources/recurring-backup.job.yaml
+- resources/recurring-snapshot.job.yaml
 - resources/service.yaml
 - resources/servicemonitor.yaml
 - resources/storageclass.yaml
-# - resources/volume-snapshotclass.yaml
-- resources/prometheus-rule.yaml
-# - resources/volume.longhorn.yaml
+- resources/volume.snapshot.yaml
+- resources/volume.snapshotclass.yaml
+- resources/volume.yaml
 
 generators:
 - ksops-generator.yaml

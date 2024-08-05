@@ -12,7 +12,7 @@ spec:
       files:
       - path: bootstrap/cluster-resources/*.json
       repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
-      requeueAfterSeconds: 20
+      requeueAfterSeconds: 10
       revision: ""
       template:
         metadata: {}
