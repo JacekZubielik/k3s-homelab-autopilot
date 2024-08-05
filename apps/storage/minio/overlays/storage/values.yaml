@@ -11,8 +11,8 @@ minioConsolePort: "9001"
 
 deploymentUpdate:
   type: RollingUpdate
-  maxUnavailable: 0
-  maxSurge: 100%
+  # maxUnavailable: 0
+  # maxSurge: 100%
 
 ## Update strategy for StatefulSets
 statefulSetUpdate:
