@@ -5,7 +5,7 @@ metadata:
   labels:
     longhornvolume: pvc-lms-config
   name: pvc-lms-config
-  namespace: longhorn-system
+  # namespace: longhorn-system
 spec:
   restoreVolumeRecurringJob: enabled
   engineImage: longhornio/longhorn-engine
