@@ -61,7 +61,7 @@ metadata:
   name: longhorn-data-delete
   annotations:
     storageclass.kubernetes.io/is-default-class: "false"
-    app.kubernetes.io/instance: storage-longhorn
+    # app.kubernetes.io/instance: storage-longhorn
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 reclaimPolicy: "Delete"
@@ -70,14 +70,14 @@ parameters:
   numberOfReplicas: "1"
   disableRevisionCounter: "false"
   staleReplicaTimeout: "2880" # 48 hours in minutes
-  fromBackup: ""
+  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-688f1255781841ff&volume=pvc-lms-config"
   migratable: "true"
   fsType: "ext4"
   mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
   unmapMarkSnapChainRemoved: "ignored"
   nfsOptions: "soft,timeo=150,retrans=3"
-  dataLocality: "disabled"
-  diskSelector: "data,fast"
+  dataLocality: "best-effort"
+  diskSelector: "data"
   nodeSelector:  "storage,fast"
   recurringJobs: "12-hour-snapshots,48-hour-backups"
   recurringJobSelector: '[{"name":"group1", "isGroup":true},
