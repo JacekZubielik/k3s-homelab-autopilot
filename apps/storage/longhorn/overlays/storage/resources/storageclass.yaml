@@ -69,7 +69,7 @@ volumeBindingMode: Immediate
 parameters:
   numberOfReplicas: "1"
   disableRevisionCounter: "false"
-  staleReplicaTimeout: "2880" # 48 hours in minutes
+  staleReplicaTimeout: "30"
   fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-688f1255781841ff&volume=pvc-lms-config"
   migratable: "true"
   fsType: "ext4"
@@ -81,4 +81,4 @@ parameters:
   nodeSelector:  "storage,fast"
   recurringJobs: "12-hour-snapshots,48-hour-backups"
   recurringJobSelector: '[{"name":"group1", "isGroup":true},
-                          {"name":"default", "isGroup":false}]'
+                          {"name":"default", "isGroup":true}]'
