@@ -5,9 +5,9 @@ namespace: iot
 
 resources:
 - ../../base
-- resources/pv.yaml
-- resources/pvc.yaml
-- resources/volume.yaml
+# - resources/pv.yaml
+# - resources/pvc.yaml
+# - resources/volume.yaml
 
 # generators:
 # - ksops-generator.yaml
@@ -45,17 +45,17 @@ helmCharts:
   valuesFile: values.yaml
   valuesInline:
     spec:
-      # ignoreDifferences:
-      #   - kind: PersistentVolume
-      #     jsonPointers:
-      #     - /spec/claimRef/resourceVersion
-      #     - /spec/claimRef/uid
-      #     - /status/lastPhaseTransitionTime
+      ignoreDifferences:
+        - kind: PersistentVolume
+          jsonPointers:
+          - /spec/claimRef/resourceVersion
+          - /spec/claimRef/uid
+          - /status/lastPhaseTransitionTime
       syncPolicy:
         automated:
           allowEmpty: true
           prune: true
-          selfHeal: true
+          selfHeal: false
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - Delete=false
