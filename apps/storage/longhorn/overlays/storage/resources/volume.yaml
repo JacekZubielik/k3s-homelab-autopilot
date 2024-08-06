@@ -11,7 +11,6 @@ metadata:
   name: pvc-kube-alertmanager
   namespace: longhorn-system
 spec:
-spec:
   diskSelector:
     - data
     - fast
