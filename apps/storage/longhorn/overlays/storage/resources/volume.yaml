@@ -110,6 +110,6 @@ spec:
     - storage
   numberOfReplicas: 1
   restoreVolumeRecurringJob: enabled
-  # revisionCounterDisabled: false
+  revisionCounterDisabled: false
   size: '10737418240'
   snapshotMaxCount: 3
