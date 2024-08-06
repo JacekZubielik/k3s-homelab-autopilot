@@ -1,5 +1,4 @@
-## minio mode, i.e. standalone or distributed
-mode: standalone ## other supported values are "standalone"
+mode: standalone ## other supported values are "standalone" "distributed"
 
 ## Typically the deployment/statefulset includes checksums of secrets/config,
 ## So that when these change on a subsequent helm install, the deployment/statefulset
@@ -64,7 +63,7 @@ persistence:
   accessModes: ReadWriteOnce
   volumeName: pvc-minio-0
   volumeMode: Filesystem
-  size: 100Gi
+  size: 200Gi
   # persistentVolumeClaimRetentionPolicy:
   #   enabled: true
   #   whenScaled: Retain

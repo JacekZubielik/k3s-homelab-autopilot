@@ -11,13 +11,13 @@ metadata:
 spec:
   storageClassName: host-path
   capacity:
-    storage: 100Gi
+    storage: 200Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
   hostPath:
-    path: "/mnt/data/PV/minio-pv-volume"
+    path: "/mnt/hdd/PV/minio-pv-volume"
     type: DirectoryOrCreate
   # nodeAffinity:
   #   required:
