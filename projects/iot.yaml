@@ -102,38 +102,38 @@ spec:
         jsonPointers:
         - /spec/template/metadata/annotations
         - /spec/template/metadata/labels
-      - kind: PersistentVolume
-        jsonPointers:
-        - /spec/claimRef/resourceVersion
-        - /spec/claimRef/uid
-        - /status/lastPhaseTransitionTime
+      # - kind: PersistentVolume
+      #   jsonPointers:
+      #   - /spec/claimRef/resourceVersion
+      #   - /spec/claimRef/uid
+      #   - /status/lastPhaseTransitionTime
       project: iot
       source:
         path: '{{ srcPath }}'
         repoURL: '{{ srcRepoURL }}'
         targetRevision: '{{ srcTargetRevision }}'
-      syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-          selfHeal: true
-        syncOptions:
-        - ApplyOutOfSyncOnly=true
-        - CreateNamespace=true
-        - Delete=true
-        - FailOnSharedResource=false
-        - preserveResourcesOnDeletion=false
-        - PruneLast=true
-        - PrunePropagationPolicy=foreground
-        - Replace=false
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
-        - Validate=false
-        retry:
-          backoff:
-            duration: 60s
-            factor: 2
-            maxDuration: 180s
-          limit: 2
+      # syncPolicy:
+      #   automated:
+      #     allowEmpty: true
+      #     prune: true
+      #     selfHeal: true
+      #   syncOptions:
+      #   - ApplyOutOfSyncOnly=true
+      #   - CreateNamespace=true
+      #   - Delete=true
+      #   - FailOnSharedResource=false
+      #   - preserveResourcesOnDeletion=false
+      #   - PruneLast=true
+      #   - PrunePropagationPolicy=foreground
+      #   - Replace=false
+      #   - RespectIgnoreDifferences=true
+      #   - ServerSideApply=true
+      #   - SkipDryRunOnMissingResource=true
+      #   - Validate=false
+      #   retry:
+      #     backoff:
+      #       duration: 60s
+      #       factor: 2
+      #       maxDuration: 180s
+      #     limit: 2
 status: {}
