@@ -61,7 +61,7 @@ metadata:
   name: longhorn-data-delete
   annotations:
     storageclass.kubernetes.io/is-default-class: "false"
-    # app.kubernetes.io/instance: storage-longhorn
+    app.kubernetes.io/instance: storage-longhorn-delete
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 reclaimPolicy: "Delete"
