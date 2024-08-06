@@ -117,23 +117,5 @@ spec:
           allowEmpty: true
           prune: true
           selfHeal: true
-        syncOptions:
-          - ApplyOutOfSyncOnly=true
-          - CreateNamespace=true
-          - Delete=true
-          - FailOnSharedResource=false
-          - preserveResourcesOnDeletion=false
-          - PruneLast=true
-          - PrunePropagationPolicy=foreground
-          - Replace=false
-          - RespectIgnoreDifferences=true
-          - ServerSideApply=true
-          - SkipDryRunOnMissingResource=true
-          - Validate=false
-        retry:
-          backoff:
-            duration: 60s
-            factor: 2
-            maxDuration: 180s
-          limit: 2
+        syncPolicy: {}
 status: {}

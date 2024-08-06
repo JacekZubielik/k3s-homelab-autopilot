@@ -121,28 +121,9 @@ spec:
         path: '{{ srcPath }}'
         repoURL: '{{ srcRepoURL }}'
         targetRevision: '{{ srcTargetRevision }}'
-      syncPolicy:
+      syncPolicy: {}
         automated:
           allowEmpty: true
           prune: true
           selfHeal: true
-        syncOptions:
-        - CreateNamespace=true
-        - PruneLast=true
-        # - ApplyOutOfSyncOnly=true
-        # - Delete=false
-        # - FailOnSharedResource=false
-        # - preserveResourcesOnDeletion=false
-        # - PrunePropagationPolicy=foreground
-        # - Replace=false
-        # - RespectIgnoreDifferences=true
-        # - ServerSideApply=true
-        # - SkipDryRunOnMissingResource=true
-        # - Validate=false
-        retry:
-          backoff:
-            duration: 60s
-            factor: 2
-            maxDuration: 180s
-          limit: 2
 status: {}
