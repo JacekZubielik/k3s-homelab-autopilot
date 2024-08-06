@@ -44,29 +44,29 @@ helmCharts:
   releaseName: esphome
   valuesFile: values.yaml
   valuesInline:
-    spec:
-      ignoreDifferences:
-        - kind: PersistentVolume
-          jsonPointers:
-          - /spec/claimRef/resourceVersion
-          - /spec/claimRef/uid
-          - /status/lastPhaseTransitionTime
-      syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-          selfHeal: false
-        syncOptions:
-        - ApplyOutOfSyncOnly=true
-        - Delete=false
-        - FailOnSharedResource=false
-        - Replace=false
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
-      retry:
-        backoff:
-          duration: 10s
-          factor: 2
-          maxDuration: 15s
-        limit: 4
+    # spec:
+    #   ignoreDifferences:
+    #     - kind: PersistentVolume
+    #       jsonPointers:
+    #       - /spec/claimRef/resourceVersion
+    #       - /spec/claimRef/uid
+    #       - /status/lastPhaseTransitionTime
+    syncPolicy:
+      automated:
+        allowEmpty: true
+        prune: true
+        selfHeal: false
+      syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - Delete=false
+      - FailOnSharedResource=false
+      - Replace=false
+      - RespectIgnoreDifferences=true
+      - ServerSideApply=true
+      - SkipDryRunOnMissingResource=true
+    retry:
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 15s
+      limit: 4
