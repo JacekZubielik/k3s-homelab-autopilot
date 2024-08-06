@@ -92,7 +92,7 @@ metadata:
   labels:
     longhornvolume: pvc-esphome-data
     recurring-job-group.longhorn.io/default: enabled
-    # recurring-job-group.longhorn.io/group1: enabled
+    recurring-job-group.longhorn.io/group1: enabled
     recurring-job.longhorn.io/24-hour-snapshots: enabled
     recurring-job.longhorn.io/48-hour-backups: enabled
   name: pvc-esphome-data
@@ -100,16 +100,16 @@ metadata:
 spec:
   diskSelector:
     - data
-    # - fast
+    - fast
   # engineImage: longhornio/longhorn-engine:v1.6.2
-  fromBackup: '' # "s3://k3s-longhorn-backup@us-east-1/?backup=backup-7d98fa002eda49c0&volume=pvc-esphome-data"
+  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-7d98fa002eda49c0&volume=pvc-esphome-data"
   frontend: blockdev
   migratable: false
   nodeSelector:
     - fast
     - storage
   numberOfReplicas: 1
-  restoreVolumeRecurringJob: enabled
+  # restoreVolumeRecurringJob: enabled
   revisionCounterDisabled: false
   size: '10737418240'
   snapshotMaxCount: 3
