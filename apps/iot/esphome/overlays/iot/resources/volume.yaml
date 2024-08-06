@@ -15,7 +15,7 @@ spec:
     - data
     - fast
   engineImage: longhornio/longhorn-engine
-  fromBackup: # "s3://k3s-longhorn-backup@us-east-1/?backup=backup-7d98fa002eda49c0&volume=pvc-esphome-data"
+  fromBackup: '' # "s3://k3s-longhorn-backup@us-east-1/?backup=backup-7d98fa002eda49c0&volume=pvc-esphome-data"
   frontend: blockdev
   migratable: false
   nodeSelector:
