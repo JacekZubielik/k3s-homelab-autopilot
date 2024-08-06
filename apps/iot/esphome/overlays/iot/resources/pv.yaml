@@ -5,7 +5,7 @@ metadata:
   labels:
     longhornvolume: pvc-esphome-data
   name: pv-esphome-data
-  namespace: iot
+  # namespace: iot
 spec:
   capacity:
     storage: 10Gi
