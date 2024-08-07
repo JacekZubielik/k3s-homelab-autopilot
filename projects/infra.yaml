@@ -92,21 +92,21 @@ spec:
           kind: Application
           jsonPointers:
             - /operation
-        - group: "apps"
-          kind: "Deployment"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
-        - group: "apps"
-          kind: "StatefulSet"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
-        - kind: PersistentVolume
-          jsonPointers:
-          - /spec/claimRef/resourceVersion
-          - /spec/claimRef/uid
-          - /status/lastPhaseTransitionTime
+        # - group: "apps"
+        #   kind: "Deployment"
+        #   jsonPointers:
+        #     - /spec/template/metadata/annotations
+        #     - /spec/template/metadata/labels
+        # - group: "apps"
+        #   kind: "StatefulSet"
+        #   jsonPointers:
+        #     - /spec/template/metadata/annotations
+        #     - /spec/template/metadata/labels
+        # - kind: PersistentVolume
+        #   jsonPointers:
+        #   - /spec/claimRef/resourceVersion
+        #   - /spec/claimRef/uid
+        #   - /status/lastPhaseTransitionTime
       project: infra
       source:
         path: '{{ srcPath }}'
@@ -116,7 +116,7 @@ spec:
         automated:
           allowEmpty: true
           prune: true
-          selfHeal: false
+          selfHeal: true
         syncOptions:
           - ApplyOutOfSyncOnly=true
           - CreateNamespace=true
@@ -136,12 +136,3 @@ spec:
             factor: 2
             maxDuration: 20s
           limit: 6
-    # status: {}
-      # health: {}
-      # summary: {}
-      # sync:
-      #   comparedTo:
-      #     destination: {}
-      #     source:
-      #       repoURL: ""
-      #   status: ""
