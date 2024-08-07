@@ -47,37 +47,37 @@ helmCharts:
   releaseName: cert-manager
   valuesFile: values-init.yaml
   valuesInline:
-    spec:
-      ignoreDifferences:
-        - group: "apps"
-          kind: "Deployment"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
-        - group: "apps"
-          kind: "StatefulSet"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
-      syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-          selfHeal: true
-        syncOptions:
-        - ApplyOutOfSyncOnly=true
-        - CreateNamespace=true
-        - FailOnSharedResource=false
-        - preserveResourcesOnDeletion=false
-        - PruneLast=true
-        - PrunePropagationPolicy=foreground
-        - Replace=false
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
-      retry:
-        backoff:
-          duration: 10s
-          factor: 2
-          maxDuration: 30s
-        limit: 6
+spec:
+  ignoreDifferences:
+    - group: "apps"
+      kind: "Deployment"
+      jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+    - group: "apps"
+      kind: "StatefulSet"
+      jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
+    - FailOnSharedResource=false
+    - preserveResourcesOnDeletion=false
+    - PruneLast=true
+    - PrunePropagationPolicy=foreground
+    - Replace=false
+    - RespectIgnoreDifferences=true
+    - ServerSideApply=true
+    - SkipDryRunOnMissingResource=true
+  retry:
+    backoff:
+      duration: 10s
+      factor: 2
+      maxDuration: 30s
+    limit: 6
