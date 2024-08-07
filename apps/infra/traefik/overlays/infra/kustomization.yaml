@@ -18,23 +18,11 @@ generators:
 #   literals:
 #   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
 #   - resource.compareoptions.ignoreAggregatedRoles="true"
-
-# - name: argocd-cmd-params-cm
-#   literals:
-#   # - server.insecure="true"
-#   - controller.diff.server.side="true"
-#   - controller.diff.include.mutation.webhook="true"
-
-patches:
-- patch: |-
-    - op: add
-      path: /subjects/0/namespace
-      value: traefik
-  target:
-    group: rbac.authorization.k8s.io
-    kind: ClusterRoleBinding
-    name: traefik-role-binding
-    version: v1
+  # - name: argocd-cmd-params-cm
+  #   literals:
+  #   # - server.insecure="true"
+  #   - controller.diff.server.side="true"
+  #   - controller.diff.include.mutation.webhook="true"
 
 metadata:
   annotations:
@@ -53,26 +41,14 @@ helmCharts:
   namespace: traefik
   releaseName: traefik
   valuesFile: values.yaml
-  valuesInline:
-    syncPolicy:
-      automated:
-        allowEmpty: true
-        prune: true
-        selfHeal: true
-      syncOptions:
-      - ApplyOutOfSyncOnly=true
-      - CreateNamespace=true
-      - FailOnSharedResource=false
-      - preserveResourcesOnDeletion=false
-      - PruneLast=true
-      - PrunePropagationPolicy=foreground
-      - Replace=false
-      - RespectIgnoreDifferences=true
-      - ServerSideApply=true
-      - SkipDryRunOnMissingResource=true
-      retry:
-        backoff:
-          duration: 10s
-          factor: 2
-          maxDuration: 20s
-        limit: 4
+
+patches:
+- patch: |-
+    - op: add
+      path: /subjects/0/namespace
+      value: traefik
+  target:
+    group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: traefik-role-binding
+    version: v1

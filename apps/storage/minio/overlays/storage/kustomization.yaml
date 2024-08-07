@@ -10,16 +10,15 @@ generators:
 - ksops-generator.yaml
 
 configMapGenerator:
-# - name: argocd-cm
-#   literals:
-#   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-#   - resource.compareoptions.ignoreAggregatedRoles="true"
-
 - name: argocd-cmd-params-cm
   literals:
 #   # - server.insecure="true"
   - controller.diff.server.side="true"
   - controller.diff.include.mutation.webhook="true"
+  # - name: argocd-cm
+  #   literals:
+  #   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+  #   - resource.compareoptions.ignoreAggregatedRoles="true"
 
 metadata:
   annotations:
@@ -38,33 +37,3 @@ helmCharts:
   namespace: minio
   releaseName: minio
   valuesFile: values.yaml
-  valuesInline:
-    spec:
-      ignoreDifferences:
-        - kind: PersistentVolume
-          jsonPointers:
-          - /spec/claimRef/resourceVersion
-          - /spec/claimRef/uid
-          - /status/lastPhaseTransitionTime
-      syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-          selfHeal: true
-        syncOptions:
-        - ApplyOutOfSyncOnly=true
-        - CreateNamespace=true
-        - FailOnSharedResource=false
-        - preserveResourcesOnDeletion=false
-        - PruneLast=true
-        - PrunePropagationPolicy=foreground
-        - Replace=false
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
-        retry:
-          backoff:
-            duration: 5s
-            factor: 2
-            maxDuration: 20s
-          limit: 6

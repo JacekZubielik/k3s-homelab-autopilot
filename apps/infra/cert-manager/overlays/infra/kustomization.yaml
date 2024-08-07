@@ -10,16 +10,6 @@ resources:
 # - resources/issuer.k3s.ca-cluster.yaml
 # - resources/servicemonitor.yaml
 
-patches:
-# - path: patches/remove-instance-patch.yaml
-#   target:
-#     kind: CustomResourceDefinition
-#     labelSelector: app.kubernetes.io/instance=infra-cert-manager
-
-- path: patches/mutation-patch.yaml
-  target:
-    kind: Deployment
-
 generators:
 - ksops-generator.yaml
 
@@ -46,3 +36,12 @@ helmCharts:
   namespace: cert-manager
   releaseName: cert-manager
   valuesFile: values-init.yaml
+
+patches:
+- path: patches/mutation-patch.yaml
+  target:
+    kind: Deployment
+# - path: patches/remove-instance-patch.yaml
+#   target:
+#     kind: CustomResourceDefinition
+#     labelSelector: app.kubernetes.io/instance=infra-cert-manager

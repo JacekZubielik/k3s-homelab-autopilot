@@ -91,7 +91,7 @@ spec:
       - group: argoproj.io
         kind: Application
         jsonPointers:
-      #   - /operation
+        - /operation
       # - group: "apps"
       #   kind: "Deployment"
       #   jsonPointers:
@@ -112,5 +112,27 @@ spec:
         path: '{{ srcPath }}'
         repoURL: '{{ srcRepoURL }}'
         targetRevision: '{{ srcTargetRevision }}'
-      syncPolicy: {}
-status: {}
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
+          - CreateNamespace=true
+          - Delete=true
+          - FailOnSharedResource=false
+          - preserveResourcesOnDeletion=false
+          - PruneLast=true
+          - PrunePropagationPolicy=foreground
+          - Replace=false
+          - RespectIgnoreDifferences=true
+          - ServerSideApply=true
+          - SkipDryRunOnMissingResource=true
+          - Validate=false
+        retry:
+          backoff:
+            duration: 10s
+            factor: 2
+            maxDuration: 20s
+          limit: 6

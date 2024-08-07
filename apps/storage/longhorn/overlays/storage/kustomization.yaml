@@ -16,16 +16,6 @@ resources:
 generators:
 - ksops-generator.yaml
 
-patches:
-- path: patches/remove-instance-patch.yaml
-  target:
-    kind: CustomResourceDefinition
-    labelSelector: app.kubernetes.io/instance=longhorn
-- path: patches/hook.yaml
-  target:
-    name: pre-hook
-    kind: Job
-
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
@@ -42,35 +32,13 @@ helmCharts:
   namespace: longhorn-system
   releaseName: longhorn
   valuesFile: values-test1.yaml
-  valuesInline:
-    spec:
-      # ignoreDifferences:
-      #   - kind: PersistentVolume
-      #     jsonPointers:
-      #     - /spec/claimRef/resourceVersion
-      #     - /spec/claimRef/uid
-      #     - /status/lastPhaseTransitionTime
-      preUpgradeChecker:
-        jobEnabled: false
-      syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-          selfHeal: true
-        syncOptions:
-        - ApplyOutOfSyncOnly=true
-        - CreateNamespace=true
-        - FailOnSharedResource=false
-        - preserveResourcesOnDeletion=false
-        - PruneLast=true
-        - PrunePropagationPolicy=foreground
-        - Replace=false
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
-      retry:
-        backoff:
-          duration: 10s
-          factor: 2
-          maxDuration: 20s
-        limit: 6
+
+patches:
+- path: patches/remove-instance-patch.yaml
+  target:
+    kind: CustomResourceDefinition
+    labelSelector: app.kubernetes.io/instance=longhorn
+- path: patches/hook.yaml
+  target:
+    name: pre-hook
+    kind: Job
