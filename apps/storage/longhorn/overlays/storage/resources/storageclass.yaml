@@ -22,7 +22,7 @@ parameters:
   nfsOptions: "soft,timeo=150,retrans=3"
   dataLocality: "best-effort"
   diskSelector: "hdd,slow"
-  nodeSelector:  "storage,fast"
+  nodeSelector:  "storage"
   recurringJobs: "12-hour-snapshots,48-hour-backups"
 
 ---
