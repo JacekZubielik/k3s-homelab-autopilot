@@ -43,27 +43,34 @@ helmCharts:
   releaseName: longhorn
   valuesFile: values-test1.yaml
   valuesInline:
-    preUpgradeChecker:
-      jobEnabled: false
-    syncPolicy:
-      automated:
-        allowEmpty: true
-        prune: true
-        selfHeal: true
-      syncOptions:
-      - ApplyOutOfSyncOnly=true
-      - CreateNamespace=true
-      - FailOnSharedResource=false
-      - preserveResourcesOnDeletion=false
-      - PruneLast=true
-      - PrunePropagationPolicy=foreground
-      - Replace=false
-      - RespectIgnoreDifferences=true
-      - ServerSideApply=true
-      - SkipDryRunOnMissingResource=true
-    retry:
-      backoff:
-        duration: 10s
-        factor: 2
-        maxDuration: 15s
-      limit: 6
+    spec:
+      ignoreDifferences:
+        - kind: PersistentVolume
+          jsonPointers:
+          - /spec/claimRef/resourceVersion
+          - /spec/claimRef/uid
+          - /status/lastPhaseTransitionTime
+      preUpgradeChecker:
+        jobEnabled: false
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - ApplyOutOfSyncOnly=true
+        - CreateNamespace=true
+        - FailOnSharedResource=false
+        - preserveResourcesOnDeletion=false
+        - PruneLast=true
+        - PrunePropagationPolicy=foreground
+        - Replace=false
+        - RespectIgnoreDifferences=true
+        - ServerSideApply=true
+        - SkipDryRunOnMissingResource=true
+      retry:
+        backoff:
+          duration: 10s
+          factor: 2
+          maxDuration: 15s
+        limit: 6
