@@ -17,7 +17,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
   hostPath:
-    path: "/mnt/hdd/PV/minio-pv-volume"
+    path: "/mnt/hdd=0/PV/minio-pv-volume"
     type: DirectoryOrCreate
   # nodeAffinity:
   #   required:
