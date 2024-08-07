@@ -44,12 +44,12 @@ helmCharts:
   valuesFile: values-test1.yaml
   valuesInline:
     spec:
-      ignoreDifferences:
-        - kind: PersistentVolume
-          jsonPointers:
-          - /spec/claimRef/resourceVersion
-          - /spec/claimRef/uid
-          - /status/lastPhaseTransitionTime
+      # ignoreDifferences:
+      #   - kind: PersistentVolume
+      #     jsonPointers:
+      #     - /spec/claimRef/resourceVersion
+      #     - /spec/claimRef/uid
+      #     - /status/lastPhaseTransitionTime
       preUpgradeChecker:
         jobEnabled: false
       syncPolicy:
