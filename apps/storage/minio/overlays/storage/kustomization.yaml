@@ -66,5 +66,5 @@ helmCharts:
           backoff:
             duration: 5s
             factor: 2
-            maxDuration: 10s
+            maxDuration: 20s
           limit: 6
