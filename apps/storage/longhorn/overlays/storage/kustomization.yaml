@@ -10,7 +10,7 @@ resources:
 - resources/servicemonitor.yaml
 - resources/storageclass.yaml
 - resources/volume.snapshotclass.yaml
-# - resources/volume.yaml
+- resources/volume.yaml
 # - resources/volume.snapshot.yaml
 
 generators:

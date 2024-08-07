@@ -9,7 +9,7 @@ metadata:
     recurring-job.longhorn.io/24-hour-snapshots: enabled
     recurring-job.longhorn.io/48-hour-backups: enabled
   name: pvc-kube-alertmanager
-  namespace: longhorn-system
+  namespace: monitoring
 spec:
   diskSelector:
     - data
@@ -38,7 +38,7 @@ metadata:
     recurring-job.longhorn.io/24-hour-snapshots: enabled
     recurring-job.longhorn.io/48-hour-backups: enabled
   name: pvc-kube-grafana
-  namespace: longhorn-system
+  namespace: monitoring
 spec:
   diskSelector:
     - data
@@ -67,7 +67,7 @@ metadata:
     recurring-job.longhorn.io/24-hour-snapshots: enabled
     recurring-job.longhorn.io/48-hour-backups: enabled
   name: pvc-kube-prometheus
-  namespace: longhorn-system
+  namespace: monitoring
 spec:
   diskSelector:
     - data
@@ -96,7 +96,7 @@ metadata:
     recurring-job.longhorn.io/24-hour-snapshots: enabled
     recurring-job.longhorn.io/48-hour-backups: enabled
   name: pvc-esphome-data
-  namespace: longhorn-system
+  namespace: iot
 spec:
   diskSelector:
     - data
@@ -108,7 +108,7 @@ spec:
   nodeSelector:
     - fast
     # - storage
-  numberOfReplicas: 2
+  numberOfReplicas: 1
   # restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '10737418240'
@@ -137,7 +137,7 @@ spec:
   nodeSelector:
     # - fast
     - storage
-  numberOfReplicas: 2
+  numberOfReplicas: 1
   # restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '10737418240'
