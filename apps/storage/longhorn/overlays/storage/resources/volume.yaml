@@ -72,7 +72,7 @@ spec:
   diskSelector:
     - data
     - fast
-  # engineImage: longhornio/longhorn-engine:v1.6.2
+  engineImage: longhornio/longhorn-engine:v1.6.2
   fromBackup: '' # "s3://k3s-longhorn-backup@us-east-1/?backup=backup-9f64d241e64040d2&volume=pvc-kube-prometheus"
   frontend: blockdev
   migratable: false
@@ -90,8 +90,8 @@ apiVersion: longhorn.io/v1beta2
 kind: Volume
 metadata:
   labels:
-    longhornvolume: pvc-esphome-data
-    recurring-job-group.longhorn.io/default: enabled
+    # longhornvolume: pvc-esphome-data
+    # recurring-job-group.longhorn.io/default: enabled
     recurring-job-group.longhorn.io/group1: enabled
     recurring-job.longhorn.io/24-hour-snapshots: enabled
     recurring-job.longhorn.io/48-hour-backups: enabled
@@ -108,8 +108,37 @@ spec:
   nodeSelector:
     - fast
     # - storage
-  numberOfReplicas: 1
-  restoreVolumeRecurringJob: enabled
+  numberOfReplicas: 2
+  # restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '10737418240'
-  snapshotMaxCount: 3
+  snapshotMaxCount: 4
+
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  labels:
+    # longhornvolume: pvc-test
+    recurring-job-group.longhorn.io/default: enabled
+    # recurring-job-group.longhorn.io/group1: enabled
+    recurring-job.longhorn.io/24-hour-snapshots: enabled
+    recurring-job.longhorn.io/48-hour-backups: enabled
+  name: pvc-test
+  namespace: longhorn-system
+spec:
+  diskSelector:
+    - data
+    # - fast
+  # engineImage: longhornio/longhorn-engine:v1.6.2
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-7d98fa002eda49c0&volume=pvc-esphome-data"
+  frontend: blockdev
+  migratable: false
+  nodeSelector:
+    # - fast
+    - storage
+  numberOfReplicas: 2
+  # restoreVolumeRecurringJob: enabled
+  # revisionCounterDisabled: false
+  size: '10737418240'
+  # snapshotMaxCount: 3
