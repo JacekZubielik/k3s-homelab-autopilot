@@ -92,30 +92,56 @@ spec:
           kind: Application
           jsonPointers:
             - /operation
-        # - group: "apps"
-        #   kind: "Deployment"
-        #   jsonPointers:
-        #     - /spec/template/metadata/annotations
-        #     - /spec/template/metadata/labels
-        # - group: "apps"
-        #   kind: "StatefulSet"
-        #   jsonPointers:
-        #     - /spec/template/metadata/annotations
-        #     - /spec/template/metadata/labels
-        # - kind: PersistentVolume
-        #   jsonPointers:
-        #   - /spec/claimRef/resourceVersion
-        #   - /spec/claimRef/uid
-        #   - /status/lastPhaseTransitionTime
+        - group: "apps"
+          kind: "Deployment"
+          jsonPointers:
+            - /spec/template/metadata/annotations
+            - /spec/template/metadata/labels
+        - group: "apps"
+          kind: "StatefulSet"
+          jsonPointers:
+            - /spec/template/metadata/annotations
+            - /spec/template/metadata/labels
+        - kind: PersistentVolume
+          jsonPointers:
+          - /spec/claimRef/resourceVersion
+          - /spec/claimRef/uid
+          - /status/lastPhaseTransitionTime
       project: infra
       source:
         path: '{{ srcPath }}'
         repoURL: '{{ srcRepoURL }}'
         targetRevision: '{{ srcTargetRevision }}'
-      # syncPolicy: {}
-      # syncPolicy:
-      #   automated:
-      #     allowEmpty: true
-      #     prune: true
-      #     selfHeal: true
-status: {}
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: false
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
+          - CreateNamespace=true
+          - Delete=true
+          - FailOnSharedResource=false
+          - preserveResourcesOnDeletion=false
+          - PruneLast=true
+          - PrunePropagationPolicy=foreground
+          - Replace=false
+          - RespectIgnoreDifferences=true
+          - ServerSideApply=true
+          - SkipDryRunOnMissingResource=true
+          - Validate=false
+        retry:
+          backoff:
+            duration: 10s
+            factor: 2
+            maxDuration: 20s
+          limit: 6
+    status:
+      health: {}
+      summary: {}
+      sync:
+        comparedTo:
+          destination: {}
+          source:
+            repoURL: ""
+        status: ""
