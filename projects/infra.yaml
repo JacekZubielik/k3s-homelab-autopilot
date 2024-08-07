@@ -92,16 +92,16 @@ spec:
           kind: Application
           jsonPointers:
             - /operation
-        - group: "apps"
-          kind: "Deployment"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
-        - group: "apps"
-          kind: "StatefulSet"
-          jsonPointers:
-            - /spec/template/metadata/annotations
-            - /spec/template/metadata/labels
+        # - group: "apps"
+        #   kind: "Deployment"
+        #   jsonPointers:
+        #     - /spec/template/metadata/annotations
+        #     - /spec/template/metadata/labels
+        # - group: "apps"
+        #   kind: "StatefulSet"
+        #   jsonPointers:
+        #     - /spec/template/metadata/annotations
+        #     - /spec/template/metadata/labels
         # - kind: PersistentVolume
         #   jsonPointers:
         #   - /spec/claimRef/resourceVersion
@@ -112,12 +112,10 @@ spec:
         path: '{{ srcPath }}'
         repoURL: '{{ srcRepoURL }}'
         targetRevision: '{{ srcTargetRevision }}'
-      syncPolicy: {}
+      # syncPolicy: {}
       # syncPolicy:
       #   automated:
       #     allowEmpty: true
       #     prune: true
       #     selfHeal: true
-
-
 status: {}
