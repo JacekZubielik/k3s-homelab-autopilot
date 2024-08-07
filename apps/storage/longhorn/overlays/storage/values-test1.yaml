@@ -29,83 +29,6 @@ networkPolicies:
   # -- Distribution that determines the policy for allowing access for an ingress. (Options: "k3s", "rke2", "rke1")
   type: "k3s"
 
-# image:
-#   longhorn:
-#     engine:
-#       # -- Repository for the Longhorn Engine image.
-#       repository: longhornio/longhorn-engine
-#       # -- Specify Longhorn engine image tag
-#       tag: v1.6.2
-#     manager:
-#       # -- Repository for the Longhorn Manager image.
-#       repository: longhornio/longhorn-manager
-#       # -- Specify Longhorn manager image tag
-#       tag: v1.6.2
-#     ui:
-#       # -- Repository for the Longhorn UI image.
-#       repository: longhornio/longhorn-ui
-#       # -- Specify Longhorn ui image tag
-#       tag: v1.6.2
-#     instanceManager:
-#       # -- Repository for the Longhorn Instance Manager image.
-#       repository: longhornio/longhorn-instance-manager
-#       # -- Specify Longhorn instance manager image tag
-#       tag: v1.6.2
-#     shareManager:
-#       # -- Repository for the Longhorn Share Manager image.
-#       repository: longhornio/longhorn-share-manager
-#       # -- Specify Longhorn share manager image tag
-#       tag: v1.6.2
-#     backingImageManager:
-#       # -- Repository for the Backing Image Manager image. When unspecified, Longhorn uses the default value.
-#       repository: longhornio/backing-image-manager
-#       # -- Specify Longhorn backing image manager image tag
-#       tag: v1.6.2
-#     supportBundleKit:
-#       # -- Repository for the Longhorn Support Bundle Manager image.
-#       repository: longhornio/support-bundle-kit
-#       # -- Tag for the Longhorn Support Bundle Manager image.
-#       tag: v0.0.37
-#   csi:
-#     attacher:
-#       # -- Repository for the CSI attacher image. When unspecified, Longhorn uses the default value.
-#       repository: longhornio/csi-attacher
-#       # -- Tag for the CSI attacher image. When unspecified, Longhorn uses the default value.
-#       tag: v4.5.1
-#     provisioner:
-#       # -- Repository for the CSI Provisioner image. When unspecified, Longhorn uses the default value.
-#       repository: longhornio/csi-provisioner
-#       # -- Tag for the CSI Provisioner image. When unspecified, Longhorn uses the default value.
-#       tag: v3.6.4
-#     nodeDriverRegistrar:
-#       # -- Repository for the CSI Node Driver Registrar image. When unspecified, Longhorn uses the default value.
-#       repository: longhornio/csi-node-driver-registrar
-#       # -- Tag for the CSI Node Driver Registrar image. When unspecified, Longhorn uses the default value.
-#       tag: v2.9.2
-#     resizer:
-#       # -- Repository for the CSI Resizer image. When unspecified, Longhorn uses the default value.
-#       repository: longhornio/csi-resizer
-#       # -- Tag for the CSI Resizer image. When unspecified, Longhorn uses the default value.
-#       tag: v1.10.1
-#     snapshotter:
-#       # -- Repository for the CSI Snapshotter image. When unspecified, Longhorn uses the default value.
-#       repository: longhornio/csi-snapshotter
-#       # -- Tag for the CSI Snapshotter image. When unspecified, Longhorn uses the default value.
-#       tag: v6.3.4
-#     livenessProbe:
-#       # -- Repository for the CSI liveness probe image. When unspecified, Longhorn uses the default value.
-#       repository: longhornio/livenessprobe
-#       # -- Tag for the CSI liveness probe image. When unspecified, Longhorn uses the default value.
-#       tag: v2.12.0
-#   openshift:
-#     oauthProxy:
-#       # -- Repository for the OAuth Proxy image. This setting applies only to OpenShift users.
-#       repository: longhornio/openshift-origin-oauth-proxy
-#       # -- Tag for the OAuth Proxy image. This setting applies only to OpenShift users. Specify OCP/OKD version 4.1 or later. The latest stable version is 4.14.
-#       tag: 4.14
-#   # -- Image pull policy that applies to all user-deployed Longhorn components, such as Longhorn Manager, Longhorn driver, and Longhorn UI.
-#   pullPolicy: IfNotPresent
-
 service:
   ui:
     # -- Service type for Longhorn UI. (Options: "ClusterIP", "NodePort", "LoadBalancer", "Rancher-Proxy")
@@ -128,7 +51,7 @@ persistence:
   # -- Replica count of the default Longhorn StorageClass.
   defaultClassReplicaCount: 1
   # -- Data locality of the default Longhorn StorageClass. (Options: "disabled", "best-effort")
-  defaultDataLocality: disabled
+  defaultDataLocality: best-effort
   # -- Reclaim policy that provides instructions for handling of a volume after its claim is released. (Options: "Retain", "Delete")
   reclaimPolicy: Retain
   # -- Setting that allows you to enable live migration of a Longhorn volume from one node to another.
@@ -139,7 +62,8 @@ persistence:
     # -- Setting that allows you to enable the recurring job selector for a Longhorn StorageClass.
     enable: true
     # -- Recurring job selector for a Longhorn StorageClass. Ensure that quotes are used correctly when specifying job parameters. (Example: `[{"name":"backup", "isGroup":true}]`)
-    jobList: []
+    jobList: '[{"name":"group1", "isGroup":true},
+              {"name":"default", "isGroup":true}]'
   backingImage:
     # -- Setting that allows you to use a backing image in a Longhorn StorageClass.
     enable: true
@@ -158,7 +82,7 @@ persistence:
     # -- Setting that allows you to enable the node selector for the default Longhorn StorageClass.
     enable: true
     # -- Node selector for the default Longhorn StorageClass. Longhorn uses only nodes with the specified tags for storing volume data. (Examples: "storage,fast")
-    selector: "fast,slow,storage"
+    selector: "fast,storage"
   # -- Setting that allows you to enable automatic snapshot removal during filesystem trim for a Longhorn StorageClass. (Options: "ignored", "enabled", "disabled")
   removeSnapshotsDuringFilesystemTrim: enabled #ignored
 

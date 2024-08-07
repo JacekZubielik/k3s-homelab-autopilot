@@ -62,9 +62,9 @@ helmCharts:
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
-      retry:
-        backoff:
-          duration: 5s
-          factor: 2
-          maxDuration: 10s
-        limit: 6
+        retry:
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 10s
+          limit: 6
