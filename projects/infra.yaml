@@ -136,9 +136,9 @@ spec:
             factor: 2
             maxDuration: 20s
           limit: 6
-    status:
-      health: {}
-      summary: {}
+    status: {}
+      # health: {}
+      # summary: {}
       # sync:
       #   comparedTo:
       #     destination: {}
