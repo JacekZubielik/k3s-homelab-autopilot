@@ -120,7 +120,7 @@ defaultSettings:
   # -- Default data locality. A Longhorn volume has data locality if a local replica of the volume exists on the same node as the pod that is using the volume.
   defaultDataLocality: "best-effort"
   # -- Setting that allows scheduling on nodes with healthy replicas of the same volume. This setting is disabled by default.
-  replicaSoftAntiAffinity: ~
+  replicaSoftAntiAffinity: "true"
   # -- Setting that automatically rebalances replicas when an available node is discovered.
   replicaAutoBalance: ~
   # -- Percentage of storage that can be allocated relative to hard drive capacity. The default value is "100".

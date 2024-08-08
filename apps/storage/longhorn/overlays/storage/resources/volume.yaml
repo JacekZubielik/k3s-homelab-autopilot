@@ -38,9 +38,9 @@ metadata:
   labels:
     longhornvolume: pvc-kube-grafana
     # recurring-job-group.longhorn.io/default: enabled
-    # recurring-job-group.longhorn.io/group1: enabled
-    # recurring-job.longhorn.io/24-hour-snapshots: enabled
-    # recurring-job.longhorn.io/48-hour-backups: enabled
+    recurring-job-group.longhorn.io/group1: enabled
+    recurring-job.longhorn.io/24-hour-snapshots: enabled
+    recurring-job.longhorn.io/48-hour-backups: enabled
   name: pvc-kube-grafana
   namespace: longhorn-system
 spec:
@@ -55,7 +55,7 @@ spec:
     - fast
     - storage
   # numberOfReplicas: 1
-  restoreVolumeRecurringJob: enabled
+  ########## restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '21474836480'
   snapshotMaxCount: 3
