@@ -23,7 +23,7 @@ spec:
   nodeSelector:
     - fast
     - storage
-  # numberOfReplicas: 1
+  numberOfReplicas: 1
   # restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '4294967296'
@@ -47,7 +47,7 @@ spec:
   diskSelector:
     - data
     - fast
-  engineImage: longhornio/longhorn-engine:v1.6.2
+  # engineImage: longhornio/longhorn-engine:v1.6.2
   fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-7e8aba71ac144b34&volume=pvc-kube-grafana"
   frontend: blockdev
   # migratable: false
@@ -55,7 +55,7 @@ spec:
     - fast
     - storage
   # numberOfReplicas: 1
-  # restoreVolumeRecurringJob: enabled
+  restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '21474836480'
   snapshotMaxCount: 3
@@ -86,10 +86,10 @@ spec:
     - fast
     - storage
   numberOfReplicas: 1
-  # restoreVolumeRecurringJob: enabled
+  restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '21474836480'
-  snapshotMaxCount: 3
+  # snapshotMaxCount: 3
 
 # ---
 # apiVersion: longhorn.io/v1beta2

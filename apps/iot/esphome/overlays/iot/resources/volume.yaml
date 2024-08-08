@@ -6,7 +6,6 @@ metadata:
     argocd.argoproj.io/instance: longhorn
   labels:
     longhornvolume: pvc-esphome-data
-    recurring-job-group.longhorn.io/default=enabled
     # recurring-job-group.longhorn.io/default: enabled
     # recurring-job-group.longhorn.io/group1: enabled
     # recurring-job.longhorn.io/24-hour-snapshots: enabled
@@ -30,4 +29,4 @@ spec:
   # restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '10737418240'
-  snapshotMaxCount: 3
+  # snapshotMaxCount: 3

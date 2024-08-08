@@ -5,9 +5,9 @@ namespace: iot
 
 resources:
 - ../../base
-# - resources/pv.yaml
+- resources/pv.yaml
 - resources/pvc.yaml
-# - resources/volume.yaml
+- resources/volume.yaml
 
 # generators:
 # - ksops-generator.yaml
@@ -26,10 +26,6 @@ configMapGenerator:
 #   literals:
 #   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
 #   - resource.compareoptions.ignoreAggregatedRoles="true"
-
-- name: argocd-cm
-  files:
-  - resources/volume.yaml
 
 metadata:
   annotations:
