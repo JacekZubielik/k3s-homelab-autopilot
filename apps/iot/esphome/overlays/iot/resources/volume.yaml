@@ -1,6 +1,7 @@
 ---
 apiVersion: longhorn.io/v1beta2
 kind: Volume
+namespace: longhorn-system
 metadata:
   labels:
     longhornvolume: pvc-esphome-data
