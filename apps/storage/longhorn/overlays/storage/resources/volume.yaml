@@ -63,7 +63,8 @@ apiVersion: longhorn.io/v1beta2
 kind: Volume
 metadata:
   labels:
-    argocd.argoproj.io/instance: longhorn-resources
+    app.kubernetes.io/part-of:
+    # argocd.argoproj.io/instance: longhorn-resources
     longhornvolume: pvc-kube-prometheus
     recurring-job-group.longhorn.io/default: enabled
     recurring-job-group.longhorn.io/group1: enabled

@@ -4,7 +4,7 @@ kind: Volume
 metadata:
   labels:
     longhornvolume: pvc-esphome-data
-    argocd.argoproj.io/instance: longhorn-resources
+    # argocd.argoproj.io/instance: longhorn-resources
     # recurring-job-group.longhorn.io/default: enabled
     # recurring-job-group.longhorn.io/group1: enabled
     # recurring-job.longhorn.io/24-hour-snapshots: enabled

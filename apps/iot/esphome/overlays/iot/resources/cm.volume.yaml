@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alertmanager-telegram-template
+  namespace: monitoring
+data:
+  volume.yaml: |
+    apiVersion: longhorn.io/v1beta2
+    kind: Volume
+    metadata:
+      labels:
+        longhornvolume: pvc-esphome-data
+        # argocd.argoproj.io/instance: longhorn-resources
+        # recurring-job-group.longhorn.io/default: enabled
+        # recurring-job-group.longhorn.io/group1: enabled
+        # recurring-job.longhorn.io/24-hour-snapshots: enabled
+        # recurring-job.longhorn.io/48-hour-backups: enabled
+      name: pvc-esphome-data
+      namespace: longhorn-system
+      # selfLink: /apis/longhorn.io/v1beta2/namespaces/longhorn-system/volumes/pvc-esphome-data
+
+    spec:
+      diskSelector:
+        - data
+        # - fast
+      engineImage: longhornio/longhorn-engine:v1.6.2
+      fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-86deae32bf5648ed&volume=pvc-esphome-data"
+      frontend: blockdev
+      migratable: false
+      nodeSelector:
+        - fast
+        # - storage
+      numberOfReplicas: 1
+      # restoreVolumeRecurringJob: enabled
+      # revisionCounterDisabled: false
+      size: '10737418240'
+      snapshotMaxCount: 3
