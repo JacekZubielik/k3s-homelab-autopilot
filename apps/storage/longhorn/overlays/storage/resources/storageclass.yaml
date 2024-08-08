@@ -1,29 +1,29 @@
----
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: longhorn-hdd
-  annotations:
-    storageclass.kubernetes.io/is-default-class: "false"
-    app.kubernetes.io/instance: storage-longhorn
-provisioner: driver.longhorn.io
-allowVolumeExpansion: true
-reclaimPolicy: "Retain"
-volumeBindingMode: Immediate
-parameters:
-  numberOfReplicas: "1"
-  disableRevisionCounter: "false"
-  staleReplicaTimeout: "2880" # 48 hours in minutes
-  fromBackup: ""
-  migratable: "true"
-  fsType: "ext4"
-  mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
-  unmapMarkSnapChainRemoved: "ignored"
-  nfsOptions: "soft,timeo=150,retrans=3"
-  dataLocality: "best-effort"
-  diskSelector: "hdd,slow"
-  nodeSelector:  "storage"
-  recurringJobs: "12-hour-snapshots,48-hour-backups"
+# ---
+# kind: StorageClass
+# apiVersion: storage.k8s.io/v1
+# metadata:
+#   name: longhorn-hdd
+#   annotations:
+#     storageclass.kubernetes.io/is-default-class: "false"
+#     app.kubernetes.io/instance: storage-longhorn
+# provisioner: driver.longhorn.io
+# allowVolumeExpansion: true
+# reclaimPolicy: "Retain"
+# volumeBindingMode: Immediate
+# parameters:
+#   numberOfReplicas: "1"
+#   disableRevisionCounter: "false"
+#   staleReplicaTimeout: "2880" # 48 hours in minutes
+#   fromBackup: ""
+#   migratable: "true"
+#   fsType: "ext4"
+#   mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
+#   unmapMarkSnapChainRemoved: "ignored"
+#   nfsOptions: "soft,timeo=150,retrans=3"
+#   dataLocality: "best-effort"
+#   diskSelector: "hdd,slow"
+#   nodeSelector:  "storage"
+#   recurringJobs: "12-hour-snapshots,48-hour-backups"
 
 ---
 kind: StorageClass
@@ -32,27 +32,27 @@ metadata:
   name: longhorn-data
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
-    app.kubernetes.io/instance: storage-longhorn
+    app.kubernetes.io/instance: longhorn
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 reclaimPolicy: "Retain"
 volumeBindingMode: Immediate
 parameters:
-  numberOfReplicas: "1"
-  disableRevisionCounter: "false"
+  # numberOfReplicas: "1"
+  # disableRevisionCounter: "false"
   staleReplicaTimeout: "2880" # 48 hours in minutes
   fromBackup: ""
-  migratable: "true"
+  # migratable: "true"
   fsType: "ext4"
   mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
-  unmapMarkSnapChainRemoved: "ignored"
+  # unmapMarkSnapChainRemoved: "ignored"
   nfsOptions: "soft,timeo=150,retrans=3"
-  dataLocality: "best-effort"
-  diskSelector: "data,fast"
-  nodeSelector:  "storage,fast"
-  recurringJobs: "12-hour-snapshots,48-hour-backups"
-  recurringJobSelector: '[{"name":"group1", "isGroup":true},
-                          {"name":"default", "isGroup":false}]'
+  # dataLocality: "best-effort"
+  # diskSelector: "data,fast"
+  # nodeSelector:  "storage,fast"
+  # recurringJobs: "12-hour-snapshots,48-hour-backups"
+  # recurringJobSelector: '[{"name":"group1", "isGroup":true},
+  #                         {"name":"default", "isGroup":false}]'
 
 ---
 kind: StorageClass
