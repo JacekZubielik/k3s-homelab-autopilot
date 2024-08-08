@@ -85,34 +85,34 @@ spec:
   size: '21474836480'
   snapshotMaxCount: 3
 
----
-apiVersion: longhorn.io/v1beta2
-kind: Volume
-metadata:
-  labels:
-    # longhornvolume: pvc-esphome-data
-    # recurring-job-group.longhorn.io/default: enabled
-    recurring-job-group.longhorn.io/group1: enabled
-    recurring-job.longhorn.io/24-hour-snapshots: enabled
-    recurring-job.longhorn.io/48-hour-backups: enabled
-  name: pvc-esphome-data
-  namespace: iot
-spec:
-  diskSelector:
-    - data
-    # - fast
-  engineImage: longhornio/longhorn-engine:v1.6.2
-  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-86deae32bf5648ed&volume=pvc-esphome-data"
-  frontend: blockdev
-  migratable: false
-  nodeSelector:
-    - fast
-    # - storage
-  numberOfReplicas: 1
-  # restoreVolumeRecurringJob: enabled
-  # revisionCounterDisabled: false
-  size: '10737418240'
-  snapshotMaxCount: 4
+# ---
+# apiVersion: longhorn.io/v1beta2
+# kind: Volume
+# metadata:
+#   labels:
+#     # longhornvolume: pvc-esphome-data
+#     # recurring-job-group.longhorn.io/default: enabled
+#     recurring-job-group.longhorn.io/group1: enabled
+#     recurring-job.longhorn.io/24-hour-snapshots: enabled
+#     recurring-job.longhorn.io/48-hour-backups: enabled
+#   name: pvc-esphome-data
+#   namespace: iot
+# spec:
+#   diskSelector:
+#     - data
+#     # - fast
+#   engineImage: longhornio/longhorn-engine:v1.6.2
+#   fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-86deae32bf5648ed&volume=pvc-esphome-data"
+#   frontend: blockdev
+#   migratable: false
+#   nodeSelector:
+#     - fast
+#     # - storage
+#   numberOfReplicas: 1
+#   # restoreVolumeRecurringJob: enabled
+#   # revisionCounterDisabled: false
+#   size: '10737418240'
+#   snapshotMaxCount: 4
 
 # ---
 # apiVersion: longhorn.io/v1beta2
