@@ -10,8 +10,5 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  # selector:
-  #   matchLabels:
-  #     volume: config
-  storageClassName: longhorn-data
   volumeName: pv-esphome-data
+  storageClassName: longhorn-data

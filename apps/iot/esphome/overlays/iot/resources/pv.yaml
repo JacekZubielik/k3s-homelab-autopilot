@@ -5,7 +5,6 @@ metadata:
   labels:
     longhornvolume: pvc-esphome-data
   name: pv-esphome-data
-  # namespace: iot
 spec:
   capacity:
     storage: 10Gi
@@ -13,12 +12,11 @@ spec:
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: longhorn-data
+  storageClassName: longhorn
   csi:
     driver: driver.longhorn.io
     fsType: ext4
     volumeAttributes:
       numberOfReplicates: "1"
       staleReplicaTimeout: "2880"
-      dataLocality: "strict-local"
     volumeHandle: pvc-esphome-data
