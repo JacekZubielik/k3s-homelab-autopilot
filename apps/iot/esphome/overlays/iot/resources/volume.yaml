@@ -10,19 +10,19 @@ metadata:
     recurring-job.longhorn.io/48-hour-backups: enabled
   name: pvc-esphome-data
   namespace: iot # longhorn-system
-  selfLink: /apis/longhorn.io/v1beta2/namespaces/longhorn-system/volumes/pvc-esphome-data
+  # selfLink: /apis/longhorn.io/v1beta2/namespaces/longhorn-system/volumes/pvc-esphome-data
 
 spec:
   diskSelector:
     - data
     # - fast
-  engineImage: longhornio/longhorn-engine:v1.6.2
+  # engineImage: longhornio/longhorn-engine:v1.6.2
   fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-86deae32bf5648ed&volume=pvc-esphome-data"
   frontend: blockdev
   migratable: false
   nodeSelector:
     - fast
-    - storage
+    # - storage
   numberOfReplicas: 1
   # restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
