@@ -4,7 +4,7 @@ kind: Volume
 metadata:
   annotations:
     # app.kubernetes.io/part-of:
-    argocd.argoproj.io/instance: longhorn-resources
+    # argocd.argoproj.io/instance: longhorn-resources
   labels:
     longhornvolume: pvc-esphome-data
     # recurring-job-group.longhorn.io/default: enabled

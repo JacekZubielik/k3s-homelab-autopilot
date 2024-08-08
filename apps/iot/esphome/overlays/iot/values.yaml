@@ -1,9 +1,8 @@
----
-image:
-  repository: esphome/esphome
-  tag: ""
-  pullPolicy: IfNotPresent
-  pullSecrets: []
+# image:
+#   repository: esphome/esphome
+#   tag: ""
+#   pullPolicy: IfNotPresent
+#   pullSecrets: []
 
 nameOverride: ""
 fullnameOverride: ""
