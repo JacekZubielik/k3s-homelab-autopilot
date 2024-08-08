@@ -4,7 +4,7 @@ kind: Volume
 metadata:
   labels:
     longhornvolume: pvc-kube-alertmanager
-    recurring-job-group.longhorn.io/default: enabled
+    # recurring-job-group.longhorn.io/default: enabled
     recurring-job-group.longhorn.io/group1: enabled
     recurring-job.longhorn.io/24-hour-snapshots: enabled
     recurring-job.longhorn.io/48-hour-backups: enabled
@@ -31,12 +31,12 @@ spec:
 apiVersion: longhorn.io/v1beta2
 kind: Volume
 metadata:
-  labels:
-    longhornvolume: pvc-kube-grafana
-    recurring-job-group.longhorn.io/default: enabled
-    recurring-job-group.longhorn.io/group1: enabled
-    recurring-job.longhorn.io/24-hour-snapshots: enabled
-    recurring-job.longhorn.io/48-hour-backups: enabled
+  # labels:
+  #   longhornvolume: pvc-kube-grafana
+    # recurring-job-group.longhorn.io/default: enabled
+    # recurring-job-group.longhorn.io/group1: enabled
+    # recurring-job.longhorn.io/24-hour-snapshots: enabled
+    # recurring-job.longhorn.io/48-hour-backups: enabled
   name: pvc-kube-grafana
   namespace: monitoring
 spec:
@@ -46,7 +46,7 @@ spec:
   engineImage: longhornio/longhorn-engine:v1.6.2
   fromBackup: "" # "s3://k3s-longhorn-backup@us-east-1/?backup=backup-f8731c8cea4b4be3&volume=pvc-kube-grafana"
   frontend: blockdev
-  migratable: false
+  # migratable: false
   nodeSelector:
     - fast
     - storage
