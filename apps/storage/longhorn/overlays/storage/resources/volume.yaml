@@ -114,38 +114,38 @@ spec:
   size: '10737418240'
   snapshotMaxCount: 4
 
----
-apiVersion: longhorn.io/v1beta2
-kind: Volume
-metadata:
-  labels:
-    longhornvolume: pvc-test
-    recurring-job-group.longhorn.io/default: enabled
-    # recurring-job-group.longhorn.io/group1: enabled
-    recurring-job.longhorn.io/24-hour-snapshots: enabled
-    recurring-job.longhorn.io/48-hour-backups: enabled
-  name: pvc-test
-  namespace: longhorn-system
-  selfLink: /apis/longhorn.io/v1beta2/namespaces/longhorn-system/volumes/pvc-test
+# ---
+# apiVersion: longhorn.io/v1beta2
+# kind: Volume
+# metadata:
+#   labels:
+#     longhornvolume: pvc-test
+#     recurring-job-group.longhorn.io/default: enabled
+#     # recurring-job-group.longhorn.io/group1: enabled
+#     recurring-job.longhorn.io/24-hour-snapshots: enabled
+#     recurring-job.longhorn.io/48-hour-backups: enabled
+#   name: pvc-test
+#   namespace: longhorn-system
+#   selfLink: /apis/longhorn.io/v1beta2/namespaces/longhorn-system/volumes/pvc-test
 
-spec:
-  dataEngine: v1
-  accessMode: rwo
-  backupCompressionMethod: lz4
-  image: longhornio/longhorn-engine:v1.6.2
+# spec:
+#   dataEngine: v1
+#   accessMode: rwo
+#   backupCompressionMethod: lz4
+#   image: longhornio/longhorn-engine:v1.6.2
 
-  diskSelector:
-    - data
-    # - fast
-  engineImage: longhornio/longhorn-engine:v1.6.2
-  fromBackup: ''  # "s3://k3s-longhorn-backup@us-east-1/?backup=backup-7d98fa002eda49c0&volume=pvc-esphome-data"
-  frontend: blockdev
-  migratable: false
-  nodeSelector:
-    # - fast
-    - storage
-  numberOfReplicas: 1
-  # restoreVolumeRecurringJob: enabled
-  # revisionCounterDisabled: false
-  size: '10737418240'
-  snapshotMaxCount: 4
+#   diskSelector:
+#     - data
+#     # - fast
+#   engineImage: longhornio/longhorn-engine:v1.6.2
+#   fromBackup: ''  # "s3://k3s-longhorn-backup@us-east-1/?backup=backup-7d98fa002eda49c0&volume=pvc-esphome-data"
+#   frontend: blockdev
+#   migratable: false
+#   nodeSelector:
+#     # - fast
+#     - storage
+#   numberOfReplicas: 1
+#   # restoreVolumeRecurringJob: enabled
+#   # revisionCounterDisabled: false
+#   size: '10737418240'
+#   snapshotMaxCount: 4
