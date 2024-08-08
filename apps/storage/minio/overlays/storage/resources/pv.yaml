@@ -11,19 +11,19 @@ metadata:
 spec:
   storageClassName: host-path
   capacity:
-    storage: 200Gi
+    storage: 160Gi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
   hostPath:
-    path: "/mnt/hdd-0/PV/minio-pv-volume"
+    path: "/mnt/fast-backup/PV/minio-pv-volume"
     type: DirectoryOrCreate
-  # nodeAffinity:
-  #   required:
-  #     nodeSelectorTerms:
-  #       - matchExpressions:
-  #           - key: kubernetes.io/hostname
-  #             operator: In
-  #             values:
-  #               - dev-k3s-master-0
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - dev-k3s-master-0
