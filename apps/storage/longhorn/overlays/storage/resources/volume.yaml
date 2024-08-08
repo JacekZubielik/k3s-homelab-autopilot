@@ -3,7 +3,7 @@ apiVersion: longhorn.io/v1beta2
 kind: Volume
 metadata:
   annotations:
-    argocd.argoproj.io/instance: longhorn-resources
+    argocd.argoproj.io/instance: longhorn
   labels:
     longhornvolume: pvc-kube-alertmanager
     # recurring-job-group.longhorn.io/default: enabled
@@ -34,7 +34,7 @@ apiVersion: longhorn.io/v1beta2
 kind: Volume
 metadata:
   annotations:
-    argocd.argoproj.io/instance: longhorn-resources
+    argocd.argoproj.io/instance: longhorn
   labels:
     longhornvolume: pvc-kube-grafana
     # recurring-job-group.longhorn.io/default: enabled
@@ -65,7 +65,7 @@ apiVersion: longhorn.io/v1beta2
 kind: Volume
 metadata:
   annotations:
-    argocd.argoproj.io/instance: longhorn-resources
+    argocd.argoproj.io/instance: longhorn
   labels:
     longhornvolume: pvc-kube-prometheus
     recurring-job-group.longhorn.io/default: enabled
