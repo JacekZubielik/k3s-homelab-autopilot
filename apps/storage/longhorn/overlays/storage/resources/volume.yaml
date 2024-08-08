@@ -58,7 +58,7 @@ spec:
   ########## restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '21474836480'
-  snapshotMaxCount: 3
+  snapshotMaxCount: 2
 
 ---
 apiVersion: longhorn.io/v1beta2
