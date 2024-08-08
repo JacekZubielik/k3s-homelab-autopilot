@@ -11,4 +11,4 @@ spec:
     requests:
       storage: 10Gi
   volumeName: pv-esphome-data
-  storageClassName: longhorn-data
+  storageClassName: longhorn
