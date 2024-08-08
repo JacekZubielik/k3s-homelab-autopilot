@@ -29,8 +29,7 @@ configMapGenerator:
 
 - name: cm-volume
   files:
-  - resources/cm.volume.yaml
-
+  - resources/volume.yaml
 
 metadata:
   annotations:
