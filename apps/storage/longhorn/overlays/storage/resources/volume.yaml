@@ -132,6 +132,8 @@ spec:
   dataEngine: v1
   accessMode: rwo
   backupCompressionMethod: lz4
+  image: longhornio/longhorn-engine:v1.6.2
+
   diskSelector:
     - data
     # - fast
