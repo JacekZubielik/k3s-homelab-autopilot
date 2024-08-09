@@ -14,7 +14,7 @@ metadata:
     recurring-job.longhorn.io/48-hour-backups: enabled
   name: pvc-esphome-data
   namespace: longhorn-system
-  selfLink: /apis/longhorn.io/v1beta2/namespaces/longhorn-system/volumes/pvc-esphome-data
+  # selfLink: /apis/longhorn.io/v1beta2/namespaces/longhorn-system/volumes/pvc-esphome-data
 
 spec:
   diskSelector:
