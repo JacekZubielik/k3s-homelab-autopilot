@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
     argocd.argoproj.io/sync-options: PruneLast=true
-    argocd.argoproj.io/sync-wave: '{{ syncWave }}'
+    argocd.argoproj.io/sync-wave: '0' # '{{ syncWave }}'
   name: infra
   namespace: argocd
 spec:
@@ -28,7 +28,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: '{{ syncWave }}'
+    argocd.argoproj.io/sync-wave: '0' # '{{ syncWave }}'
   name: infra
   namespace: argocd
 spec:
@@ -86,21 +86,21 @@ spec:
     type: RollingSync
     rollingSync:
       steps:
-        - matchExpressions:
-            - key: syncPriority
-              operator: In
-              values:
-                - stage1
-        - matchExpressions:
-            - key: syncPriority
-              operator: In
-              values:
-                - stage2
-        - matchExpressions:
-            - key: syncPriority
-              operator: In
-              values:
-                - stage-last
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage1
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage2
+        # - matchExpressions:
+        #     - key: syncPriority
+        #       operator: In
+        #       values:
+        #         - stage-last
 
 
   syncPolicy: {}
