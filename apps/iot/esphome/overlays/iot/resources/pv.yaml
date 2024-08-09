@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    # argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "1"
   labels:
     longhornvolume: pvc-esphome-data
