@@ -17,13 +17,13 @@ metadata:
 spec:
   diskSelector:
     - data
-    - fast
+    # - fast
   engineImage: longhornio/longhorn-engine:v1.6.2
-  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=system-backup-6e0044ee5d464ba9&volume=pvc-kube-alertmanager"
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=system-backup-6e0044ee5d464ba9&volume=pvc-kube-alertmanager"
   frontend: blockdev
   # migratable: false
   nodeSelector:
-    - fast
+    # - fast
     - storage
   numberOfReplicas: 1
   restoreVolumeRecurringJob: enabled
@@ -51,13 +51,13 @@ metadata:
 spec:
   diskSelector:
     - data
-    - fast
+    # - fast
   engineImage: longhornio/longhorn-engine:v1.6.2
-  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=system-backup-2f1b76dc41724960&volume=pvc-kube-grafana"
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=system-backup-2f1b76dc41724960&volume=pvc-kube-grafana"
   frontend: blockdev
   # migratable: false
   nodeSelector:
-    - fast
+    # - fast
     - storage
   numberOfReplicas: 1
   restoreVolumeRecurringJob: enabled
