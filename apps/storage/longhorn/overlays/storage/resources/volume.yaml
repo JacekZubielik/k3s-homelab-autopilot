@@ -17,7 +17,7 @@ spec:
     - data
     - fast
   engineImage: longhornio/longhorn-engine:v1.6.2
-  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-822747b0dd86426a&volume=pvc-kube-alertmanager"
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-822747b0dd86426a&volume=pvc-kube-alertmanager"
   frontend: blockdev
   # migratable: false
   nodeSelector:
@@ -48,7 +48,7 @@ spec:
     - data
     - fast
   engineImage: longhornio/longhorn-engine:v1.6.2
-  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-7e8aba71ac144b34&volume=pvc-kube-grafana"
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-7e8aba71ac144b34&volume=pvc-kube-grafana"
   frontend: blockdev
   # migratable: false
   nodeSelector:
@@ -79,7 +79,7 @@ spec:
     - data
     # - fast
   # engineImage: longhornio/longhorn-engine:v1.6.2
-  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-02cce31cb81b4d2c&volume=pvc-kube-prometheus"
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-02cce31cb81b4d2c&volume=pvc-kube-prometheus"
   frontend: blockdev
   # migratable: false
   nodeSelector:
