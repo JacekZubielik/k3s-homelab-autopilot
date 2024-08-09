@@ -4,6 +4,8 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
+    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
   labels:
     longhornvolume: pvc-kube-alertmanager
     # recurring-job-group.longhorn.io/default: enabled
@@ -35,6 +37,9 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
+    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
+
   labels:
     longhornvolume: pvc-kube-grafana
     # recurring-job-group.longhorn.io/default: enabled
@@ -66,6 +71,9 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
+    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
+
   labels:
     longhornvolume: pvc-kube-prometheus
     recurring-job-group.longhorn.io/default: enabled
@@ -97,6 +105,9 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
+    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
+
     # argocd.argoproj.io/instance: longhorn-resources
   labels:
     longhornvolume: pvc-esphome-data
@@ -109,6 +120,7 @@ metadata:
   # selfLink: /apis/longhorn.io/v1beta2/namespaces/longhorn-system/volumes/pvc-esphome-data
 
 spec:
+  ttlSecondsAfterFinished: 100
   diskSelector:
     - data
     # - fast
