@@ -9,6 +9,7 @@ metadata:
   name: longhorn-frontend-ui
   namespace: longhorn-system
 spec:
+  ttlSecondsAfterFinished: 100
   ports:
   - port: 80
     protocol: TCP
