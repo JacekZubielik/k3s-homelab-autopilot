@@ -1,3 +1,6 @@
+fullnameOverride: longhorn
+
+
 global:
   cattle:
     systemDefaultRegistry: ""
@@ -253,15 +256,26 @@ longhornManager:
     format: plain
   # -- PriorityClass for Longhorn Manager.
   priorityClass: *defaultPriorityClassNameRef
-  tolerations: []
+  # tolerations: []
   nodeSelector: {}
   serviceAnnotations: {}
+  tolerations:
+  - effect: NoSchedule
+    key: home
+    operator: Exists
+
 
 longhornDriver:
   # -- PriorityClass for Longhorn Driver.
   priorityClass: *defaultPriorityClassNameRef
-  tolerations: []
+  # tolerations: []
   nodeSelector: {}
+
+  tolerations:
+  - effect: NoSchedule
+    key: home
+    operator: Exists
+
 
 longhornUI:
   # -- Replica count for Longhorn UI.
@@ -269,8 +283,14 @@ longhornUI:
   # -- PriorityClass for Longhorn UI.
   priorityClass: *defaultPriorityClassNameRef
   # -- Toleration for Longhorn UI on nodes allowed to run Longhorn components.
-  tolerations: []
+  # tolerations: []
   nodeSelector: {}
+
+  tolerations:
+  - effect: NoSchedule
+    key: home
+
+
 
 ingress:
   # -- Setting that allows Longhorn to generate ingress records for the Longhorn UI service.
