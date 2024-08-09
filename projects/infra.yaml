@@ -110,7 +110,7 @@ spec:
         app.kubernetes.io/managed-by: argocd-autopilot
         app.kubernetes.io/name: '{{ appName }}'
         application-role: '{{ appRole }}'
-        syncPriority: '{{ syncPriority }}'  # '{{.priority}}'
+        syncPriority: '{{ syncPriority }}'
       annotations:
         argocd.argoproj.io/sync-wave: '{{ syncWave }}'
       name: infra-{{ userGivenName }}
