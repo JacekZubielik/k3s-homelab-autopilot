@@ -3,8 +3,8 @@ apiVersion: longhorn.io/v1beta2
 kind: Volume
 metadata:
   annotations:
+    argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/instance: longhorn
-    argocd.argoproj.io/instance: longhorn-resources
   labels:
     longhornvolume: pvc-esphome-data
     # recurring-job-group.longhorn.io/default: enabled
