@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
     argocd.argoproj.io/sync-options: PruneLast=true
-    argocd.argoproj.io/sync-wave: '1' # '{{ syncWave }}'
+    argocd.argoproj.io/sync-wave: '1'
   name: infra
   namespace: argocd
 spec:
@@ -28,7 +28,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: '1' # '{{ syncWave }}'
+    argocd.argoproj.io/sync-wave: '1'
   name: infra
   namespace: argocd
 spec:
@@ -69,19 +69,6 @@ spec:
                 recurse: true
               repoURL: ""
 
-    # - list:
-    #     elements:
-    #       - appName: minio
-    #         priority: stage1
-    #         repo: 'https://github.com/JacekZubielik/k3s-homelab-autopilot.git'
-    #         path: 'apps/storage/minio/overlays/storage'
-    #         revision: ""
-    #       - appName: longhorn
-    #         priority: stage2
-    #         repo: 'https://github.com/JacekZubielik/k3s-homelab-autopilot.git'
-    #         path: 'apps/storage/longhorn/overlays/storage'
-    #         revision: ""
-
   strategy:
     type: RollingSync
     rollingSync:
@@ -101,7 +88,6 @@ spec:
         #       operator: In
         #       values:
         #         - stage-last
-
 
   syncPolicy: {}
   template:

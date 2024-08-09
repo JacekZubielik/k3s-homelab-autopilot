@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
     argocd.argoproj.io/sync-options: PruneLast=true
-    argocd.argoproj.io/sync-wave: '{{ syncWave }}'
+    argocd.argoproj.io/sync-wave: '2'
   name: monitoring
   namespace: argocd
 spec:
@@ -28,7 +28,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: '{{ syncWave }}'
+    argocd.argoproj.io/sync-wave: '2'
   name: monitoring
   namespace: argocd
 spec:
@@ -68,6 +68,27 @@ spec:
               jsonnet: {}
               recurse: true
             repoURL: ""
+
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage1
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage2
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage3
+
   syncPolicy: {}
   template:
     metadata:
@@ -75,6 +96,7 @@ spec:
         app.kubernetes.io/managed-by: argocd-autopilot
         app.kubernetes.io/name: '{{ appName }}'
         application-role: '{{ appRole }}'
+        syncPriority: '{{ syncPriority }}'
       annotations:
         argocd.argoproj.io/sync-wave: '{{ syncWave }}'
       name: monitoring-{{ userGivenName }}
@@ -134,5 +156,5 @@ spec:
           backoff:
             duration: 10s
             factor: 2
-            maxDuration: 20s
+            maxDuration: 15s
           limit: 6
