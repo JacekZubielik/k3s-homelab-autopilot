@@ -97,7 +97,7 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    argocd.argoproj.io/instance: longhorn-resources
+    # argocd.argoproj.io/instance: longhorn-resources
   labels:
     longhornvolume: pvc-esphome-data
     # recurring-job-group.longhorn.io/default: enabled
@@ -106,7 +106,7 @@ metadata:
     recurring-job.longhorn.io/48-hour-backups: enabled
   name: pvc-esphome-data
   namespace: longhorn-system
-  selfLink: /apis/longhorn.io/v1beta2/namespaces/longhorn-system/volumes/pvc-esphome-data
+  # selfLink: /apis/longhorn.io/v1beta2/namespaces/longhorn-system/volumes/pvc-esphome-data
 
 spec:
   diskSelector:
@@ -123,7 +123,7 @@ spec:
   # restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '10737418240'
-  # snapshotMaxCount: 3
+  snapshotMaxCount: 3
 
 # ---
 # apiVersion: longhorn.io/v1beta2
