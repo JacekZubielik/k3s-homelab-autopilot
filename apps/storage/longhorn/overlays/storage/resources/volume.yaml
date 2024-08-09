@@ -37,7 +37,7 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/hook: PostSync
     # argocd.argoproj.io/hook-delete-policy: HookSucceeded
 
   labels:
@@ -71,7 +71,7 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/hook: PostSync
     # argocd.argoproj.io/hook-delete-policy: HookSucceeded
 
   labels:
