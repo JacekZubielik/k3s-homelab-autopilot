@@ -23,7 +23,7 @@ spec:
   nodeSelector:
     - fast
     - storage
-  # numberOfReplicas: 1
+  numberOfReplicas: 1
   # restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '4294967296'
@@ -54,7 +54,7 @@ spec:
   nodeSelector:
     - fast
     - storage
-  # numberOfReplicas: 1
+  numberOfReplicas: 1
   ########## restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '21474836480'
