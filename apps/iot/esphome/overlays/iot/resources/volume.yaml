@@ -4,7 +4,7 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/instance: longhorn
+    # argocd.argoproj.io/instance: longhorn
   labels:
     longhornvolume: pvc-esphome-data
     # recurring-job-group.longhorn.io/default: enabled
