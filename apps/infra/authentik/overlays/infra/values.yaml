@@ -413,13 +413,12 @@ postgresql:
     existingSecret: authentik-private
     secretKeys:
       userPasswordKey: password
-  # primary:
-  #   extendedConfiguration: |
-  #     max_connections = 500
   primary:
+    extendedConfiguration: |
+      max_connections = 500
     persistence:
       enabled: true
-    existingClaim: pvc-authentik-psql
+      existingClaim: pvc-authentik-psql
 
   # persistence:
   #   enabled: true
@@ -435,7 +434,7 @@ redis:
   master:
     persistence:
       enabled: true
-    existingClaim: pvc-authentik-redis
+      existingClaim: pvc-authentik-redis
 
   # persistence:
   #   enabled: true
