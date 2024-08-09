@@ -144,4 +144,4 @@ spec:
             duration: 5s
             factor: 2
             maxDuration: 60s
-          limit: 5
+          limit: 6
