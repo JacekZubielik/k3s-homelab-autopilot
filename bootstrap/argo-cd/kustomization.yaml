@@ -42,7 +42,7 @@ configMapGenerator:
   - server.insecure="true"
   # - controller.diff.server.side="true"
   # - controller.diff.include.mutation.webhook="true"
-
+  - applicationsetcontroller.enable.progressive.syncs="true"
 patches:
 - path: patches/ksops.yaml
 - path: patches/rbac-cm.yaml
