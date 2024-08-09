@@ -68,6 +68,41 @@ spec:
                 jsonnet: {}
                 recurse: true
               repoURL: ""
+
+    # - list:
+    #     elements:
+    #       - appName: minio
+    #         priority: stage1
+    #         repo: 'https://github.com/JacekZubielik/k3s-homelab-autopilot.git'
+    #         path: 'apps/storage/minio/overlays/storage'
+    #         revision: ""
+    #       - appName: longhorn
+    #         priority: stage2
+    #         repo: 'https://github.com/JacekZubielik/k3s-homelab-autopilot.git'
+    #         path: 'apps/storage/longhorn/overlays/storage'
+    #         revision: ""
+
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+        - matchExpressions:
+            - key: syncPriority
+              operator: In
+              values:
+                - stage1
+        - matchExpressions:
+            - key: syncPriority
+              operator: In
+              values:
+                - stage2
+        - matchExpressions:
+            - key: syncPriority
+              operator: In
+              values:
+                - stage-last
+
+
   syncPolicy: {}
   template:
     metadata:
@@ -75,6 +110,7 @@ spec:
         app.kubernetes.io/managed-by: argocd-autopilot
         app.kubernetes.io/name: '{{ appName }}'
         application-role: '{{ appRole }}'
+        syncPriority: '{{ syncPriority }}'  # '{{.priority}}'
       annotations:
         argocd.argoproj.io/sync-wave: '{{ syncWave }}'
       name: infra-{{ userGivenName }}
