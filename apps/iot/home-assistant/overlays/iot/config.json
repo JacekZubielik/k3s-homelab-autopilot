@@ -1,0 +1,16 @@
+{
+  "annotations": "",
+  "appName": "home-assistant",
+  "appRole": "iot",
+  "destNamespace": "iot",
+  "destServer": "https://kubernetes.default.svc",
+  "exclude": "",
+  "include": "",
+  "labels": "",
+  "srcPath": "apps/iot/home-assistant/overlays/iot",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "",
+  "syncPriority": "stage4",
+  "syncWave": "10",
+  "userGivenName": "home-assistant"
+}

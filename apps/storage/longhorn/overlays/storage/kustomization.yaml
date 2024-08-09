@@ -18,14 +18,13 @@ generators:
 
 metadata:
   annotations:
-    argocd.argoproj.io/instance: longhorn
-    # argocd.argoproj.io/compare-options: IgnoreExtraneous
-    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-
+    # argocd.argoproj.io/instance: longhorn
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "2"
   labels:
     app.kubernetes.io/name: longhorn
   name: longhorn
+
 helmCharts:
 - name: longhorn
   version: 1.6.2

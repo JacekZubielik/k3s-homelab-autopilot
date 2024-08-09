@@ -1,6 +1,5 @@
 fullnameOverride: longhorn
 
-
 global:
   cattle:
     systemDefaultRegistry: ""
@@ -256,26 +255,24 @@ longhornManager:
     format: plain
   # -- PriorityClass for Longhorn Manager.
   priorityClass: *defaultPriorityClassNameRef
-  # tolerations: []
+  tolerations: []
   nodeSelector: {}
   serviceAnnotations: {}
-  tolerations:
-  - effect: NoSchedule
-    key: home
-    operator: Exists
-
+  # tolerations:
+  # - effect: NoSchedule
+  #   key: home
+  #   operator: Exists
 
 longhornDriver:
   # -- PriorityClass for Longhorn Driver.
   priorityClass: *defaultPriorityClassNameRef
-  # tolerations: []
+  tolerations: []
   nodeSelector: {}
 
-  tolerations:
-  - effect: NoSchedule
-    key: home
-    operator: Exists
-
+  # tolerations:
+  # - effect: NoSchedule
+  #   key: home
+  #   operator: Exists
 
 longhornUI:
   # -- Replica count for Longhorn UI.
@@ -283,43 +280,27 @@ longhornUI:
   # -- PriorityClass for Longhorn UI.
   priorityClass: *defaultPriorityClassNameRef
   # -- Toleration for Longhorn UI on nodes allowed to run Longhorn components.
-  # tolerations: []
+  tolerations: []
   nodeSelector: {}
 
-  tolerations:
-  - effect: NoSchedule
-    key: home
-
-
+  # tolerations:
+  # - effect: NoSchedule
+  #   key: home
 
 ingress:
-  # -- Setting that allows Longhorn to generate ingress records for the Longhorn UI service.
   enabled: false
-
-# -- Setting that allows you to enable pod security policies (PSPs) that allow privileged Longhorn pods to start. This setting applies only to clusters running Kubernetes 1.25 and earlier, and with the built-in Pod Security admission controller enabled.
 enablePSP: false
-
-# -- Specify override namespace, specifically this is useful for using longhorn as sub-chart and its release namespace is not the `longhorn-system`.
 namespaceOverride: ""
-
-# -- Annotation for the Longhorn Manager DaemonSet pods. This setting is optional.
 annotations: {}
 
 serviceAccount:
-  # -- Annotations to add to the service account
   annotations: {}
 
 metrics:
   serviceMonitor:
     enabled: false # do not change the value here
 
-## openshift settings
 openshift:
-  # -- Setting that allows Longhorn to integrate with OpenShift.
   enabled: false
-  ui:
-    route: "longhorn-ui"
-    port: 443
-    proxy: 8443
 
 enableGoCoverDir: false

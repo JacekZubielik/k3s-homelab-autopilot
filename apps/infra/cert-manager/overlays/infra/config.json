@@ -10,7 +10,7 @@
   "srcPath": "apps/infra/cert-manager/overlays/infra",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
+  "syncPriority": "stage1",
   "syncWave": "10",
-  "userGivenName": "cert-manager",
-  "syncPriority": "stage1"
+  "userGivenName": "cert-manager"
 }

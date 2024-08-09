@@ -10,7 +10,7 @@
   "srcPath": "apps/iot/esphome/overlays/iot",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
+  "syncPriority": "stage3",
   "syncWave": "40",
-  "userGivenName": "esphome",
-  "syncPriority": "stage3"
+  "userGivenName": "esphome"
 }

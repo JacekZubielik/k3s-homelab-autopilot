@@ -10,7 +10,7 @@
   "srcPath": "apps/infra/traefik/overlays/infra",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
+  "syncPriority": "stage2",
   "syncWave": "20",
-  "userGivenName": "traefik",
-  "syncPriority": "stage2"
+  "userGivenName": "traefik"
 }

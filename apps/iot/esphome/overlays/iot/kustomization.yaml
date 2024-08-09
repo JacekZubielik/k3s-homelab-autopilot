@@ -17,10 +17,10 @@ configMapGenerator:
   literals:
   - ESPHOME_DASHBOARD_USE_PING=true
 
-- name: argocd-cmd-params-cm
-  literals:
-  - controller.diff.server.side="true"
-  - controller.diff.include.mutation.webhook="true"
+# - name: argocd-cmd-params-cm
+#   literals:
+#   - controller.diff.server.side="true"
+#   - controller.diff.include.mutation.webhook="true"
 
 # - name: argocd-cm
 #   literals:
