@@ -12,7 +12,7 @@ generators:
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-wave: "0"
+    # argocd.argoproj.io/sync-wave: "0"
   labels:
     app.kubernetes.io/name: mosquitto
   name: mosquitto

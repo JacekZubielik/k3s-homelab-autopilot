@@ -13,7 +13,11 @@ resources:
 generators:
   - ksops-generator.yaml
 
-# configMapGenerator:
+configMapGenerator:
+- name: traefik-tz
+  literals:
+  - TZ=CET
+
 # - name: argocd-cm
 #   literals:
 #   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
@@ -27,7 +31,7 @@ generators:
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     # argocd.argoproj.io/sync-wave: "20"
   labels:
     app.kubernetes.io/name: traefik

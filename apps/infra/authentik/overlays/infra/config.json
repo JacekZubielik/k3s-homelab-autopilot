@@ -11,6 +11,6 @@
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncPriority": "stage4",
-  "syncWave": "5",
+  "syncWave": "0",
   "userGivenName": "authentik"
 }

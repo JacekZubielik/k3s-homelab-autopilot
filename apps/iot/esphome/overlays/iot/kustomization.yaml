@@ -16,7 +16,9 @@ configMapGenerator:
 - name: esphome-dashboard
   literals:
   - ESPHOME_DASHBOARD_USE_PING=true
-
+- name: esphome-tz
+  literals:
+  - TZ=CET
 # - name: argocd-cmd-params-cm
 #   literals:
 #   - controller.diff.server.side="true"
@@ -30,7 +32,7 @@ configMapGenerator:
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-wave: "40"
+    # argocd.argoproj.io/sync-wave: "40"
   labels:
     app.kubernetes.io/name: esphome
   name: esphome

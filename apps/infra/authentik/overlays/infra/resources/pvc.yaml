@@ -11,7 +11,7 @@ spec:
     requests:
       storage: 8Gi
   volumeName: pv-authentik-psql # must reference Persistent Volume
-  storageClassName: longhorn-data
+  storageClassName: longhorn-retain
 
 ---
 apiVersion: v1
@@ -26,4 +26,4 @@ spec:
     requests:
       storage: 8Gi
   volumeName: pv-authentik-redis  # must reference Persistent Volume
-  storageClassName: longhorn-data
+  storageClassName: longhorn-retain

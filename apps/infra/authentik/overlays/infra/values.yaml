@@ -27,6 +27,12 @@ global:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_SECRET_KEY
+  - name: TZ
+    valueFrom:
+      configMapKeyRef:
+        name: authentik-tz
+        key: TZ
+
   envFrom:
     []
     # - configMapRef:

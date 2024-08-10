@@ -3,11 +3,11 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   labels:
-    longhornvolume: pvc-esphome-data
-  name: pv-esphome-data
+    longhornvolume: pvc-kuma
+  name: pv-kuma
 spec:
   capacity:
-    storage: 10Gi
+    storage: 8Gi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
@@ -17,6 +17,5 @@ spec:
     driver: driver.longhorn.io
     fsType: ext4
     volumeAttributes:
-      # numberOfReplicates: "1"
       staleReplicaTimeout: "2880"
-    volumeHandle: pvc-esphome-data
+    volumeHandle: pvc-kuma # must match volume name from Longhorn

@@ -1,7 +1,19 @@
+---
+image:
+  repository: louislam/uptime-kuma
+  tag: ""
+  pullPolicy: IfNotPresent
+  PullSecrets: []
+
+# If this option  set to false a StateFulset instead of a Deployment is used
+useDeploy: false
+
 nameOverride: ""
 fullnameOverride: ""
 revisionHistoryLimit: 4
 hostNetwork: false
+
+# strategyType: RollingUpdate
 
 replicas: 1
 updateStrategy:
@@ -22,10 +34,13 @@ extraEnv:
 - name: TZ
   valueFrom:
     configMapKeyRef:
-      name: ha-tz
+      name: kuma-tz
       key: TZ
-
-
+- name: UPTIME_KUMA_PORT
+  valueFrom:
+    configMapKeyRef:
+      name: kuma-config
+      key: UPTIME_KUMA_PORT
 
 extraEnvSecrets:
   # This will set ${MQTT_PASSWORD} to the 'password' key from the 'mqtt' secret
@@ -38,11 +53,11 @@ extraEnvSecrets:
 ## All secrets will be mounted as environment variables, with each key/value mapping to a
 ## corresponding environment variable.
 extraSecretForEnvFrom: []
-# - mqtt-secrets
+# - esphome-secrets
 
-podSecurityContext:
-  privileged: true
+podSecurityContext: {}
   # fsGroup: 2000
+  # privileged: true
 
 securityContext: {}
   # capabilities:
@@ -59,12 +74,12 @@ service:
   labels: {}
   type: LoadBalancer
   externalIPs: []
-  loadBalancerIP: "192.168.40.191"
+  loadBalancerIP: "192.168.40.192"
   externalTrafficPolicy: {}
   loadBalancerSourceRanges: []
   publishNotReadyAddresses: false
-  httpPort: "8123"
-  metricsPort: "9100"
+  httpPort: 3001
+  metricsPort: 9100
 
 monitoring:
   enabled: true
@@ -73,8 +88,7 @@ monitoring:
     annotations:
       prometheus.io/scrape: "true"
       prometheus.io/port: 9100
-    labels:
-      release: kube-prometheus-stack
+    labels: {}
     honorLabels: true
     interval: 60s
     selector: {}
@@ -104,7 +118,6 @@ monitoring:
 
 livenessProbe:
   enabled: true
-  scheme: HTTP
   periodSeconds: 60
   timeoutSeconds: 10
   successThreshold: 1
@@ -112,7 +125,6 @@ livenessProbe:
   initialDelaySeconds: 30
 readinessProbe:
   enabled: true
-  scheme: HTTP
   periodSeconds: 60
   timeoutSeconds: 10
   successThreshold: 1
@@ -123,6 +135,9 @@ startupProbe:
   successThreshold: 1
   failureThreshold: 6
 
+ingress:
+  enabled: false
+
 resources: {}
 #   requests:
 #     cpu: "1"
@@ -131,14 +146,14 @@ resources: {}
 #     cpu: "1"
 #     memory: "512Mi"
 
-nodeSelector: []
-  # kubernetes.io/hostname: dev-k3s-master-0
+nodeSelector:
+  kubernetes.io/hostname: dev-k3s-master-0
 affinity: {}
 tolerations: []
 
 persistence:
   enabled: true
-  existingClaim: pvc-ha-data
+  existingClaim: pvc-kuma
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 hostMounts: []

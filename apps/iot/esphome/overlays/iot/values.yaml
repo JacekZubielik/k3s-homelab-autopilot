@@ -20,7 +20,15 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
-env: {}
+env:
+- name: TZ
+  valueFrom:
+    configMapKeyRef:
+      name: esphome-tz
+      key: TZ
+
+
+
 extraEnv: {}
 
 extraEnvSecrets: []

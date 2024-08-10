@@ -245,7 +245,12 @@ additionalArguments:
   # - "--certificatesresolvers.letsencrypt-staging.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
 
 # -- Environment variables to be passed to Traefik's binary
-env: []
+env:
+  - name: TZ
+    valueFrom:
+      configMapKeyRef:
+        name: traefik-tz
+        key: TZ
 # - name: POD_NAME
 #   valueFrom:
 #     fieldRef:
