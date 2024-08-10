@@ -9,7 +9,6 @@ resources:
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    # argocd.argoproj.io/sync-wave: "20"
   labels:
     app.kubernetes.io/name: binance-proxy
   name: binance-proxy
@@ -22,8 +21,3 @@ helmCharts:
   namespace: trade
   releaseName: binance-proxy
   valuesFile: values.yaml
-
-# configMapGenerator:
-# - name: binance-proxy-config
-#   literals:
-#   - TZ=CET
