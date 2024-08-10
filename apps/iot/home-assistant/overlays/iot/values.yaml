@@ -18,14 +18,14 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
-extraEnv:
+extraEnv: {}
+
+env:
 - name: TZ
   valueFrom:
     configMapKeyRef:
       name: ha-tz
       key: TZ
-
-
 
 extraEnvSecrets:
   # This will set ${MQTT_PASSWORD} to the 'password' key from the 'mqtt' secret
