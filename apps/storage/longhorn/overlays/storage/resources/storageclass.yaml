@@ -21,7 +21,7 @@ parameters:
   mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
   # unmapMarkSnapChainRemoved: "ignored"
   nfsOptions: "soft,timeo=150,retrans=3"
-  # dataLocality: "best-effort"
+  dataLocality: "best-effort"
   # diskSelector: "data,fast"
   # nodeSelector:  "storage,fast"
   # recurringJobs: "12-hour-snapshots,48-hour-backups"
