@@ -47,14 +47,14 @@ helmCharts:
           - /spec/claimRef/resourceVersion
           - /spec/claimRef/uid
           - /status/lastPhaseTransitionTime
-      syncPolicy:
-        automated:
-          allowEmpty: true
-          prune: true
-          selfHeal: true
-        syncOptions:
-        - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=false
-        - Delete=true
-        - Replace=true
+syncPolicy:
+  automated:
+    allowEmpty: true
+    prune: true
+    selfHeal: true
+  syncOptions:
+  - RespectIgnoreDifferences=true
+  - ServerSideApply=true
+  - SkipDryRunOnMissingResource=false
+  - Delete=true
+  - Replace=true
