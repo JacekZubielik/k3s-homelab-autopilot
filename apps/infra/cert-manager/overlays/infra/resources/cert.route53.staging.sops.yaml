@@ -1,5 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
+annotations:
+    argocd.argoproj.io/sync-wave: "3"
 metadata:
     name: letsencrypt-staging
 spec:
@@ -27,8 +29,8 @@ sops:
             Q1E3YjR2NHl0enI5WXZibWtHVkdhS1UKCHvTxnsvsaQPvZX9OfbrWbBsAjD6jAmP
             eTLeueHxjpZ3tGAuQ51Q866+QCVn6D98s6V/KtCb1OC2H8zmAjwxew==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-03T14:49:49Z"
-    mac: ENC[AES256_GCM,data:nHRNkeg9eA+U60nQBEsDCZo9tTzjzSaZZCuhnIUTj6sFVpGrKoHcglZmzpbxBHJ6zOpcZO9X2c+zqo/y+tTrOQOgP6rRSnHtru6mdRQXH0QTQH6FKtSqEKfO0uO9Sjw0vwZw6vH+AYHRntW6baM2Z/NejL3b03KinZJYtJcyask=,iv:VwBurpcA7GWTSekQnttwD3pbYQeXB4MhhFC7mXJXnYA=,tag:QGwqgBbmGiKZPja77G/EzA==,type:str]
+    lastmodified: "2024-08-10T15:54:20Z"
+    mac: ENC[AES256_GCM,data:a4Qiy91cbEpfTlb3ExnD3JV6QiSqTc7KDSh75r/urxJsxxLN9PA6SiX0dg9+kqas1EdIBLHzUFVQa0vAnN+k5JXe2h6h5OyhK0updJlTh1xZgVXgB1XJnAInvLof9/9jCu6kqQdIcPQ48Andc72jGtOIZ2mmuc1z9oz3QSSAjyQ=,iv:7ErUY3Yy1SevAkLJtcYQUC83/MVg5MAE1kqwsQaPw1g=,tag:UrS4WXE/mRqPeM9iH1+3xQ==,type:str]
     pgp:
         - created_at: "2024-06-18T10:57:28Z"
           enc: |-

@@ -35,7 +35,7 @@ helmCharts:
   includeCRDs: false
   namespace: cert-manager
   releaseName: cert-manager
-  valuesFile: values-init.yaml
+  valuesFile: values.yaml
 
 patches:
 - path: patches/mutation-patch.yaml

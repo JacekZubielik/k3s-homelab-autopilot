@@ -420,10 +420,6 @@ postgresql:
       enabled: true
       existingClaim: pvc-authentik-psql
 
-  # persistence:
-  #   enabled: true
-  #   existingClaim: pvc-authentik-psql
-
 
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
@@ -435,8 +431,3 @@ redis:
     persistence:
       enabled: true
       existingClaim: pvc-authentik-redis
-
-  # persistence:
-  #   enabled: true
-  #   existingClaim: pvc-authentik-redis
-
