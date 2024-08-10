@@ -5,7 +5,7 @@ metadata:
   name: longhorn-retain
   annotations:
     app.kubernetes.io/instance: longhorn
-    argocd.argoproj.io/hook: PreSync
+    # argocd.argoproj.io/hook: PreSync
     storageclass.kubernetes.io/is-default-class: "false"
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
