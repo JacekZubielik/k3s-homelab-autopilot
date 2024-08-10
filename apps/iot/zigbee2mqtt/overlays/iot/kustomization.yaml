@@ -14,7 +14,6 @@ resources:
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    # argocd.argoproj.io/sync-wave: "2"
   labels:
     app.kubernetes.io/name: zigbee2mqtt
   name: zigbee2mqtt
