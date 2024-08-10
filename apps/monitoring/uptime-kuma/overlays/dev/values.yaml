@@ -30,7 +30,9 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
-extraEnv:
+extraEnv: {}
+
+env:
 - name: TZ
   valueFrom:
     configMapKeyRef:
