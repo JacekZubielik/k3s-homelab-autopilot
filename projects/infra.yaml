@@ -165,4 +165,4 @@ spec:
             duration: 10s
             factor: 2
             maxDuration: 15s
-          limit: 6
+          limit: 8
