@@ -51,7 +51,7 @@ helmCharts:
         automated:
           allowEmpty: true
           prune: true
-          selfHeal: false
+          selfHeal: true
         syncOptions:
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
