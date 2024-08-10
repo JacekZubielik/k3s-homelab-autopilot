@@ -238,7 +238,7 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: PostDelete
     argocd.argoproj.io/sync-wave: "2"
   labels:
@@ -272,7 +272,7 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: PostDelete
     argocd.argoproj.io/sync-wave: "2"
   labels:
@@ -306,7 +306,7 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: PostDelete
     argocd.argoproj.io/sync-wave: "2"
   labels:
@@ -341,7 +341,7 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: PostDelete
     argocd.argoproj.io/sync-wave: "2"
   labels:
