@@ -7,7 +7,7 @@
   "exclude": "",
   "include": "",
   "labels": "",
-  "srcPath": "bootstrap/init/csi-external-snapshotter",
+  "srcPath": "bootstrap/crds/csi-external-snapshotter",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "-1",

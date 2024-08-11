@@ -21,7 +21,7 @@ metadata:
   labels:
     app.kubernetes.io/name: cert-manager
     app.kubernetes.io/component: crds
-  name: cert-manager-crds
+  name: cert-manager
 
 patches:
 - path: patches/remove-instance-patch.yaml
