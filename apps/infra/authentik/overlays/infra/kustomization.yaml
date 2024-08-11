@@ -31,7 +31,7 @@ metadata:
 
 helmCharts:
 - name: authentik
-  version: 2024.6.0
+  version: 2024.6.3
   repo: https://charts.goauthentik.io
   includeCRDs: true
   namespace: authentik

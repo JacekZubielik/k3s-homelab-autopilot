@@ -223,8 +223,8 @@ server:
 
   terminationGracePeriodSeconds: 30
   priorityClassName: ""
-  nodeSelector:
-    kubernetes.io/hostname: dev-k3s-master-0
+  nodeSelector: []
+    # kubernetes.io/hostname: dev-k3s-master-0
   tolerations: []
   affinity: {}
 
@@ -378,8 +378,8 @@ worker:
   # @default -- `""` (defaults to global.priorityClassName)
   priorityClassName: ""
 
-  nodeSelector:
-    kubernetes.io/hostname: dev-k3s-master-0
+  nodeSelector: []
+    # kubernetes.io/hostname: dev-k3s-master-0
   tolerations: []
   affinity: {}
 
