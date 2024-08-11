@@ -4,7 +4,7 @@ kind: AppProject
 metadata:
   annotations:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
-    argocd.argoproj.io/sync-wave: '0'
+    argocd.argoproj.io/sync-wave: '-1'
   name: bootstrap
   namespace: argocd
 spec:
@@ -27,7 +27,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: '0'
+    argocd.argoproj.io/sync-wave: '-1'
   name: bootstrap
   namespace: argocd
 spec:
@@ -36,7 +36,7 @@ spec:
       files:
       - path: bootstrap/**/bootstrap/config.json
       repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
-      requeueAfterSeconds: 20
+      requeueAfterSeconds: 10
       revision: ""
     # kustomize:
     #   namespace: job-test
@@ -60,7 +60,7 @@ spec:
       files:
       - path: bootstrap/**/bootstrap/config_dir.json
       repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
-      requeueAfterSeconds: 20
+      requeueAfterSeconds: 10
       revision: ""
       template:
         metadata:
