@@ -1,0 +1,16 @@
+{
+  "annotations": "",
+  "appName": "authentik",
+  "appRole": "infra",
+  "destNamespace": "authentik",
+  "destServer": "https://kubernetes.default.svc",
+  "exclude": "",
+  "include": "",
+  "labels": "",
+  "srcPath": "apps/infra/authentik/overlays/infra",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "",
+  "syncPriority": "stage4",
+  "syncWave": "0",
+  "userGivenName": "authentik"
+}

@@ -1,0 +1,27 @@
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  annotations:
+    # argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/instance: longhorn
+
+  name: pvc-kube-alertmanager-snapshot
+spec:
+  volumeSnapshotClassName: longhorn-snapshot-vsc
+  source:
+    persistentVolumeClaimName: pv-kube-alertmanager
+
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  annotations:
+    # argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/instance: longhorn
+
+  name: pv-kube-grafana-backup
+spec:
+  volumeSnapshotClassName: longhorn-backup-vsc
+  source:
+    persistentVolumeClaimName: storage-grafana-0 # pv-kube-grafana

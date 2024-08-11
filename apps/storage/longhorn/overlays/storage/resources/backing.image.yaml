@@ -1,0 +1,34 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: BackingImage
+metadata:
+  name: pvc-kube-grafana-export
+  namespace: longhorn-system
+spec:
+  sourceType: export-from-volume
+  sourceParameters:
+    volume-name: pvc-kube-grafana
+    export-type: qcow2
+---
+apiVersion: longhorn.io/v1beta2
+kind: BackingImage
+metadata:
+  name: pvc-kube-alertmanager-export
+  namespace: longhorn-system
+spec:
+  sourceType: export-from-volume
+  sourceParameters:
+    volume-name: pvc-kube-alertmanager
+    export-type: qcow2
+---
+apiVersion: longhorn.io/v1beta2
+kind: BackingImage
+metadata:
+  name: pvc-kube-prometheus-export
+  namespace: longhorn-system
+spec:
+  sourceType: export-from-volume
+  sourceParameters:
+    volume-name: pvc-kube-prometheus
+    export-type: qcow2
+
