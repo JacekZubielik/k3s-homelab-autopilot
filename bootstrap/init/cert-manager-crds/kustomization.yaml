@@ -32,7 +32,7 @@ patches:
 - path: patches/remove-instance-patch.yaml
   target:
     kind: CustomResourceDefinition
-    labelSelector: app.kubernetes.io/instance=infra-cert-manager
+    labelSelector: app.kubernetes.io/instance=cert-manager
 - path: patches/mutation-patch.yaml
   target:
     kind: Deployment
