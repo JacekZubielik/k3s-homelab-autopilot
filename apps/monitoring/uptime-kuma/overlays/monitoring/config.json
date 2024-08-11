@@ -7,7 +7,7 @@
   "exclude": "",
   "include": "",
   "labels": "",
-  "srcPath": "apps/monitoring/uptime-kuma/overlays/dev",
+  "srcPath": "apps/monitoring/uptime-kuma/overlays/monitoring",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncPriority": "stage1",
