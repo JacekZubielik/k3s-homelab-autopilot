@@ -126,11 +126,11 @@ spec:
         jsonPointers:
         - /spec/template/metadata/annotations
         - /spec/template/metadata/labels
-      # - kind: PersistentVolume
-      #   jsonPointers:
-      #   - /spec/claimRef/resourceVersion
-      #   - /spec/claimRef/uid
-      #   - /status/lastPhaseTransitionTime
+      - kind: PersistentVolume
+        jsonPointers:
+        - /spec/claimRef/resourceVersion
+        - /spec/claimRef/uid
+        - /status/lastPhaseTransitionTime
       project: init
       source:
         path: '{{ srcPath }}'
@@ -142,18 +142,18 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-        # - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
-        # - Delete=true
         - FailOnSharedResource=false
-        - preserveResourcesOnDeletion=false
-        # - PruneLast=true
-        # - PrunePropagationPolicy=foreground
-        # - Replace=true
+        - preserveResourcesOnDeletion=true
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
         - Validate=false
+        # - ApplyOutOfSyncOnly=true
+        # - Delete=true
+        # - PruneLast=true
+        # - PrunePropagationPolicy=foreground
+        # - Replace=true
         retry:
           backoff:
             duration: 5s
