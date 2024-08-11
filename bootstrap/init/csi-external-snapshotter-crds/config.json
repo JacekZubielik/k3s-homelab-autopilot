@@ -11,6 +11,6 @@
   "srcRepoURL": "https://github.com/kubernetes-csi/external-snapshotter/",
   "srcTargetRevision": "v8.0.1",
   "syncWave": "-1",
-  "userGivenName": "prometheus-stack-crds",
+  "userGivenName": "csi-external-snapshotter-crds",
   "syncPriority": "stage1"
 }
