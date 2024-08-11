@@ -142,7 +142,7 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-        # - ApplyOutOfSyncOnly=true
+        - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
         # - Delete=true
         - FailOnSharedResource=false
