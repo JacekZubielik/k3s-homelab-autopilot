@@ -11,13 +11,12 @@ resources:
 configMapGenerator:
 - name: argocd-cmd-params-cm
   literals:
-# #   # - server.insecure="true"
   - controller.diff.server.side="true"
   - controller.diff.include.mutation.webhook="true"
-#   # - name: argocd-cm
-#   #   literals:
-#   #   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-#   #   - resource.compareoptions.ignoreAggregatedRoles="true"
+  - name: argocd-cm
+    literals:
+    # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+    - resource.compareoptions.ignoreAggregatedRoles="true"
 
 metadata:
   annotations:
