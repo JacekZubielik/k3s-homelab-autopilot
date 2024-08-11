@@ -6,7 +6,7 @@ resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
 - resources/service.yaml
 # - resources/last-phase-transition.yaml
-# - resources/servicemonitor.yaml
+- resources/servicemonitor.yaml
 
 # generators:
 # - ksops-generator.yaml
@@ -16,7 +16,7 @@ configMapGenerator:
   name: argocd-cm
   literals:
   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-  - kustomize.buildOptions="--enable-alpha-plugins --enable-exec --enable-helm --load-restrictor LoadRestrictionsNone"
+  - kustomize.buildOptions="--enable-alpha-plugins --enable-exec --enable-helm" # --load-restrictor LoadRestrictionsNone"
   - kustomize.buildOptions.v4.4.0="--output /tmp"
   - statusbadge.enabled="true"
   - resource.compareoptions.ignoreAggregatedRoles="true"
@@ -47,5 +47,4 @@ configMapGenerator:
 patches:
 - path: patches/ksops.yaml
 - path: patches/rbac-cm.yaml
-# - path: patches/last-phase-transition.yaml
 
