@@ -9,22 +9,22 @@ resources:
 generators:
 - ksops-generator.yaml
 
-configMapGenerator:
-- name: argocd-cmd-params-cm
-  literals:
-#   # - server.insecure="true"
-  - controller.diff.server.side="true"
-  - controller.diff.include.mutation.webhook="true"
-  # - name: argocd-cm
-  #   literals:
-  #   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-  #   - resource.compareoptions.ignoreAggregatedRoles="true"
+# configMapGenerator:
+# - name: argocd-cmd-params-cm
+#   literals:
+# #   # - server.insecure="true"
+#   - controller.diff.server.side="true"
+#   - controller.diff.include.mutation.webhook="true"
+#   # - name: argocd-cm
+#   #   literals:
+#   #   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+#   #   - resource.compareoptions.ignoreAggregatedRoles="true"
 
 metadata:
   annotations:
     # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-wave: "1"
+    # argocd.argoproj.io/sync-wave: "1"
   labels:
     app.kubernetes.io/name: minio
   name: minio

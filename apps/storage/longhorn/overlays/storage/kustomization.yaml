@@ -20,7 +20,6 @@ metadata:
   annotations:
     # argocd.argoproj.io/instance: longhorn
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-wave: "0"
   labels:
     app.kubernetes.io/name: longhorn
   name: longhorn
