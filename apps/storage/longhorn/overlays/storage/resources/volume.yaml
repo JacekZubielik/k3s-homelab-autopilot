@@ -60,7 +60,7 @@ spec:
   restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '21474836480'
-  snapshotMaxCount: 2
+  snapshotMaxCount: 10
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -92,7 +92,7 @@ spec:
   restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '21474836480'
-  snapshotMaxCount: 3
+  snapshotMaxCount: 10
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -124,7 +124,7 @@ spec:
   restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '10737418240'
-  snapshotMaxCount: 3
+  snapshotMaxCount: 10
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -156,7 +156,7 @@ spec:
   restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '4294967296'
-  snapshotMaxCount: 3
+  snapshotMaxCount: 10
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -188,7 +188,7 @@ spec:
   restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '8589934592'
-  snapshotMaxCount: 3
+  snapshotMaxCount: 10
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -220,7 +220,7 @@ spec:
   restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '8589934592'
-  snapshotMaxCount: 3
+  snapshotMaxCount: 10
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -252,7 +252,7 @@ spec:
   restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '10737418240'
-  snapshotMaxCount: 3
+  snapshotMaxCount: 10
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -284,7 +284,7 @@ spec:
   restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '8589934592'
-  snapshotMaxCount: 3
+  snapshotMaxCount: 10
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -316,7 +316,7 @@ spec:
   restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '12884901888'
-  snapshotMaxCount: 3
+  snapshotMaxCount: 10
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -348,7 +348,7 @@ spec:
   restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '12884901888'
-  snapshotMaxCount: 3
+  snapshotMaxCount: 10
 
 # ---
 # apiVersion: longhorn.io/v1beta2
