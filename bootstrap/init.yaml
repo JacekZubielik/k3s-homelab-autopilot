@@ -116,12 +116,12 @@ spec:
         kind: Application
         jsonPointers:
         - /operation
-      - group: "init" # "apps"
+      - group: "apps"
         kind: "Deployment"
         jsonPointers:
         - /spec/template/metadata/annotations
         - /spec/template/metadata/labels
-      - group: "init" # "apps"
+      - group: "apps"
         kind: "StatefulSet"
         jsonPointers:
         - /spec/template/metadata/annotations
