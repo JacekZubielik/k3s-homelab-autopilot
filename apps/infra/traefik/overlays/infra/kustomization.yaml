@@ -39,7 +39,7 @@ metadata:
 
 helmCharts:
 - name: traefik
-  version: 26.1.0 # 30.0.2 # 
+  version: 30.0.2 # 26.1.0 # 30.0.2 # 
   repo: https://helm.traefik.io/traefik
   includeCRDs: false
   namespace: traefik
