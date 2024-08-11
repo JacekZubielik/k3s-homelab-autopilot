@@ -21,9 +21,9 @@ configMapGenerator:
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-  labels:
-    app.kubernetes.io/name: cert-manager
-    app.kubernetes.io/component: crds
+  # labels:
+    # app.kubernetes.io/name: cert-manager
+    # app.kubernetes.io/component: crds
   name: cert-manager-crds
 
 patches:
