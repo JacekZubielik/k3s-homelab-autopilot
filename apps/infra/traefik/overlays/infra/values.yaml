@@ -1,9 +1,8 @@
 # helm repo add traefik https://helm.traefik.io/traefik
 # helm show values traefik/traefik  >> traefik-values.yaml
 ---
-core:
-  defaultRuleSyntax: v2
-
+# core:
+#   defaultRuleSyntax: v2
 
 deployment:
   enabled: true
@@ -140,7 +139,7 @@ providers:
     allowEmptyServices: true
     ingressClass: traefik-external
     labelSelector: ""   # labelSelector: "app=traefik" # environment=production,method=traefik # -- Array of namespaces to watch. If left empty, Traefik watches all namespaces.
-    namespaces: ""  # - "argocd,cert-manager,default,dev,monitoring,prod,traefik,infra,longhorn-system,media,iot,iot-k3s,backup,storage,minio"
+    namespaces: [] # ""  # - "argocd,cert-manager,default,dev,monitoring,prod,traefik,infra,longhorn-system,media,iot,iot-k3s,backup,storage,minio"
 
   kubernetesIngress:
     enabled: true
@@ -148,7 +147,7 @@ providers:
     allowEmptyServices: true
     ingressClass: traefik-external
     labelSelector: ""
-    namespaces: ""  # - "argocd,cert-manager,default,dev,monitoring,prod,traefik,infra,longhorn-system,media,iot,iot-k3s,backup,storage,minio"
+    namespaces: []  # - "argocd,cert-manager,default,dev,monitoring,prod,traefik,infra,longhorn-system,media,iot,iot-k3s,backup,storage,minio"
 
     ingressEndpoint:
       publishedService: "traefik/traefik"
