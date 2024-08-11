@@ -142,7 +142,7 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-        - ApplyOutOfSyncOnly=true
+        # - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
         # - Delete=true
         - FailOnSharedResource=false
@@ -151,7 +151,7 @@ spec:
         # - PrunePropagationPolicy=foreground
         # - Replace=true
         - RespectIgnoreDifferences=true
-        # - ServerSideApply=true
+        - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
         - Validate=false
         retry:
