@@ -1,0 +1,16 @@
+{
+  "annotations": "",
+  "appName": "csi-external-snapshotter-crds",
+  "appRole": "crds",
+  "destNamespace": "default",
+  "destServer": "https://kubernetes.default.svc",
+  "exclude": "",
+  "include": "",
+  "labels": "app.kubernetes.io/managed-by: argocd-autopilot",
+  "srcPath": "client/config/crd",
+  "srcRepoURL": "https://github.com/kubernetes-csi/external-snapshotter/",
+  "srcTargetRevision": "v8.0.1",
+  "syncWave": "-1",
+  "userGivenName": "prometheus-stack-crds",
+  "syncPriority": "stage1"
+}
