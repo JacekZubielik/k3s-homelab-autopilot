@@ -4,9 +4,7 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    # argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/sync-wave: "2"
-    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
   labels:
     longhornvolume: pvc-kube-alertmanager
     # recurring-job-group.longhorn.io/default: enabled
@@ -38,9 +36,7 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    # argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/sync-wave: "2"
-    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
   labels:
     longhornvolume: pvc-kube-grafana
     # recurring-job-group.longhorn.io/default: enabled
@@ -72,9 +68,7 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    # argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/sync-wave: "2"
-    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
   labels:
     longhornvolume: pvc-kube-prometheus
     recurring-job-group.longhorn.io/default: enabled
@@ -106,7 +100,6 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    # argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/sync-wave: "2"
   labels:
     longhornvolume: pvc-esphome-data
@@ -139,7 +132,6 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    # argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/sync-wave: "2"
   labels:
     longhornvolume: pvc-zigbee2mqtt-data
@@ -172,7 +164,6 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    # argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/sync-wave: "2"
   labels:
     longhornvolume: pvc-authentik-psql
@@ -205,7 +196,6 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    # argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/sync-wave: "2"
   labels:
     longhornvolume: pvc-authentik-redis
@@ -238,8 +228,6 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    # argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: PostDelete
     argocd.argoproj.io/sync-wave: "2"
   labels:
     longhornvolume: pvc-ha-data
@@ -272,8 +260,6 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    # argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: PostDelete
     argocd.argoproj.io/sync-wave: "2"
   labels:
     longhornvolume: pvc-kuma
@@ -306,8 +292,6 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    # argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: PostDelete
     argocd.argoproj.io/sync-wave: "2"
   labels:
     longhornvolume: pvc-loki-backend
@@ -340,8 +324,6 @@ kind: Volume
 metadata:
   annotations:
     argocd.argoproj.io/instance: longhorn
-    # argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: PostDelete
     argocd.argoproj.io/sync-wave: "2"
   labels:
     longhornvolume: pvc-loki-write
