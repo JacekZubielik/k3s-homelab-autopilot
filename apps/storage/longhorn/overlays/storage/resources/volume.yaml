@@ -288,7 +288,7 @@ spec:
     - data
     # - fast
   engineImage: longhornio/longhorn-engine:v1.6.2
-  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-86deae32bf5648ed&volume=pvc-esphome-data"
+  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-b1ff700692954c4c&volume=pvc-kuma"
   frontend: blockdev
   # migratable: false
   nodeSelector:
@@ -333,7 +333,6 @@ spec:
   # revisionCounterDisabled: false
   size: '12884901888'
   snapshotMaxCount: 3
-
 
 ---
 apiVersion: longhorn.io/v1beta2
