@@ -8,15 +8,10 @@ resources:
 # generators:
 # - ksops-generator.yaml
 
-configMapGenerator:
-- name: argocd-cmd-params-cm
-  literals:
-  - controller.diff.server.side="true"
-  - controller.diff.include.mutation.webhook="true"
-- name: argocd-cm
-  literals:
-  - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-  - resource.compareoptions.ignoreAggregatedRoles="true"
+# configMapGenerator:
+# - name: argocd-cm
+#   literals:
+#   - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
 
 metadata:
   annotations:
