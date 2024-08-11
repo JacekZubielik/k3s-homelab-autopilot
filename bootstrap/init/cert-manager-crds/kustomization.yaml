@@ -23,9 +23,9 @@ metadata:
     # argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=true
 
-  # labels:
-    # app.kubernetes.io/name: cert-manager
-    # app.kubernetes.io/component: crds
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: crds
   name: cert-manager-crds
 
 patches:
