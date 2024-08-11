@@ -153,19 +153,19 @@ spec:
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
-        - Delete=true
+        # - Delete=true
         - FailOnSharedResource=false
         - preserveResourcesOnDeletion=false
         - PruneLast=true
         - PrunePropagationPolicy=foreground
-        - Replace=true
+        # - Replace=true
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
-        - Validate=false
+        # - Validate=false
         retry:
           backoff:
             duration: 10s
             factor: 2
             maxDuration: 15s
-          limit: 8
+          limit: 6
