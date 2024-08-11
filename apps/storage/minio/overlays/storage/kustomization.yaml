@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: minio
 
 resources:
+- ../../base
 - resources/pv.yaml
 
 generators:
@@ -21,7 +22,9 @@ configMapGenerator:
 
 metadata:
   annotations:
+    # argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app.kubernetes.io/name: minio
   name: minio

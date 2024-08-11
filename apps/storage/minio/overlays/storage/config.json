@@ -7,10 +7,10 @@
   "exclude": "",
   "include": "",
   "labels": "",
-  "srcPath": "bootstrap/init/minio",
+  "srcPath": "apps/storage/minio/overlays/storage",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
-  "syncWave": "-1",
+  "syncWave": "1",
   "userGivenName": "minio",
-  "syncPriority": "stage2"
+  "syncPriority": "stage1"
 }

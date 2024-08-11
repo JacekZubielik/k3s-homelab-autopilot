@@ -5,13 +5,13 @@ metadata:
   annotations:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
     argocd.argoproj.io/sync-wave: '-1'
-  name: init
+  name: crds
   namespace: argocd
 spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
-  description: init project
+  description: crds project
   destinations:
   - namespace: '*'
     server: '*'
@@ -28,13 +28,13 @@ kind: ApplicationSet
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: '-1'
-  name: init
+  name: crds
   namespace: argocd
 spec:
   generators:
   - git:
       files:
-      - path: bootstrap/init/**/config.json
+      - path: bootstrap/crds/**/config.json
       repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
       requeueAfterSeconds: 10
       revision: ""
@@ -49,7 +49,7 @@ spec:
             repoURL: ""
   - git:
       files:
-      - path: bootstrap/init/**/config_dir.json
+      - path: bootstrap/crds/**/config_dir.json
       repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
       requeueAfterSeconds: 10
       revision: ""
@@ -91,7 +91,6 @@ spec:
           - stage3
         maxUpdate: 100%
 
-
   template:
     metadata:
       labels:
@@ -101,7 +100,7 @@ spec:
         syncPriority: '{{ syncPriority }}'
       annotations:
         argocd.argoproj.io/sync-wave: '{{ syncWave }}'
-      name: init-{{ userGivenName }}
+      name: crds-{{ userGivenName }}
       namespace: argocd
     spec:
       destination:
@@ -131,7 +130,7 @@ spec:
         - /spec/claimRef/resourceVersion
         - /spec/claimRef/uid
         - /status/lastPhaseTransitionTime
-      project: init
+      project: crds
       source:
         path: '{{ srcPath }}'
         repoURL: '{{ srcRepoURL }}'
@@ -143,16 +142,16 @@ spec:
           selfHeal: true
         syncOptions:
         - CreateNamespace=true
-        - FailOnSharedResource=false
-        - preserveResourcesOnDeletion=false
+        - PruneLast=true
+        - PrunePropagationPolicy=foreground
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
         - Validate=false
         # - ApplyOutOfSyncOnly=true
         # - Delete=true
-        - PruneLast=true
-        - PrunePropagationPolicy=foreground
+        # - FailOnSharedResource=false
+        # - preserveResourcesOnDeletion=false
         # - Replace=true
         retry:
           backoff:

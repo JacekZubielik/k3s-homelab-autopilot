@@ -14,4 +14,4 @@ resources:
 # - crds/prometheus-operator.crds.yaml
 # - crds/traefik.crds.yaml
 - root.yaml
-- init.yaml
+- crds.yaml
