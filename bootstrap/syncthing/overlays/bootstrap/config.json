@@ -7,7 +7,7 @@
   "exclude": "",
   "include": "",
   "labels": "",
-  "srcPath": "apps/storage/syncthing/overlays/storage",
+  "srcPath": "bootstrap/syncthing/overlays/bootstrap",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
   "syncWave": "3",
