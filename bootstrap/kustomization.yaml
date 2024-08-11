@@ -7,11 +7,11 @@ commonLabels:
 resources:
 - argo-cd.yaml
 - cluster-resources.yaml
+- crds.yaml
+- root.yaml
 # - crds/cert-manager.crds.yaml
 # - crds/external-snapshotter.crds.yaml
 # - crds/gateway-api.crds.yaml
 # - crds/kube-prometheus-stack.crds.yaml
 # - crds/prometheus-operator.crds.yaml
 # - crds/traefik.crds.yaml
-- root.yaml
-- crds.yaml

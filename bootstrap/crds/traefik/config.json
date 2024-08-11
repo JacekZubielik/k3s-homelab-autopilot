@@ -1,0 +1,16 @@
+{
+  "annotations": "",
+  "appName": "traefik",
+  "appRole": "crds",
+  "destNamespace": "traefik",
+  "destServer": "https://kubernetes.default.svc",
+  "exclude": "",
+  "include": "",
+  "labels": "",
+  "srcPath": "bootstrap/crds/traefik",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "",
+  "syncWave": "-1",
+  "userGivenName": "traefik",
+  "syncPriority": "stage1"
+}

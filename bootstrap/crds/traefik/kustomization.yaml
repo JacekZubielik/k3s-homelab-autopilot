@@ -1,0 +1,43 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: traefik
+
+resources:
+- https://raw.githubusercontent.com/traefik/traefik/v3.1/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml
+- https://raw.githubusercontent.com/traefik/traefik/v3.1/docs/content/reference/dynamic-configuration/kubernetes-crd-rbac.yml
+
+
+# - resources/crd-alertmanagerconfigs.yaml
+# - resources/crd-alertmanagers.yaml
+# - resources/crd-podmonitors.yaml
+# - resources/crd-probes.yaml
+# - resources/crd-prometheusagents.yaml
+# - resources/crd-prometheuses.yaml
+# - resources/crd-prometheusrules.yaml
+# - resources/crd-scrapeconfigs.yaml
+# - resources/crd-servicemonitors.yaml
+# - resources/crd-thanosrulers.yaml
+
+# configMapGenerator:
+# - name: argocd-cm
+#   literals:
+#   - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+
+metadata:
+  annotations:
+    # argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=true
+
+  labels:
+    app.kubernetes.io/name: traefik
+    app.kubernetes.io/component: crds
+  name: traefik
+
+# patches:
+# - path: patches/remove-instance-patch.yaml
+#   target:
+#     kind: CustomResourceDefinition
+#     labelSelector: app.kubernetes.io/instance=cert-manager
+# - path: patches/mutation-patch.yaml
+#   target:
+#     kind: Deployment
