@@ -157,12 +157,12 @@ providers:
   file:
     # -- Create a file provider
     enabled: false
-    watch: true
-    content: ""
+    # watch: true
+    # content: [] # ""
 
 logs:
   general:
-    level: INFO   # -- DEBUG, PANIC, FATAL, ERROR, WARN, and INFO.
+    level: INFO # -- DEBUG, PANIC, FATAL, ERROR, WARN, and INFO.
   access:
     enabled: true
     filters:
