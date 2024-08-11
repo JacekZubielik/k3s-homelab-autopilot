@@ -6,7 +6,7 @@
   "destServer": "https://kubernetes.default.svc",
   "exclude": "",
   "include": "",
-  "labels": "app.kubernetes.io/managed-by: argocd-autopilot",
+  "labels": "",
   "srcPath": "client/config/crd",
   "srcRepoURL": "https://github.com/kubernetes-csi/external-snapshotter/",
   "srcTargetRevision": "v8.0.1",
