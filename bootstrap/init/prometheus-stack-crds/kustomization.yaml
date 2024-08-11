@@ -1,0 +1,47 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+
+# resources:
+
+# - resources/cert.default.svc.yaml
+# - resources/issuer.default.svc.yaml
+# - resources/issuer.k3s.ca-cluster.yaml
+# - resources/servicemonitor.yaml
+
+# generators:
+# - ksops-generator.yaml
+
+# configMapGenerator:
+# - name: argocd-cm
+#   literals:
+# #   - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+#   - resource.compareoptions.ignoreAggregatedRoles="true"
+
+metadata:
+  # annotations:
+    # argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=true
+    # argocd.argoproj.io/sync-wave: "10"
+    # cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
+  labels:
+    app.kubernetes.io/name: kube-prometheus-stack
+  name: kube-prometheus-stack
+
+# helmCharts:
+# - name: cert-manager
+#   version: v1.14.4 #v1.14.6 # 1.15.2
+#   repo: https://charts.jetstack.io
+#   includeCRDs: false
+#   namespace: cert-manager
+#   releaseName: cert-manager
+#   valuesFile: values.yaml
+
+# patches:
+# - path: patches/mutation-patch.yaml
+#   target:
+#     kind: Deployment
+# - path: patches/remove-instance-patch.yaml
+#   target:
+#     kind: CustomResourceDefinition
+#     labelSelector: app.kubernetes.io/instance=infra-cert-manager

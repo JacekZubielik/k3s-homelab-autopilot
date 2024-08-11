@@ -1,0 +1,36 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: minio
+
+resources:
+- resources/pv.yaml
+
+generators:
+- ksops-generator.yaml
+
+configMapGenerator:
+- name: argocd-cmd-params-cm
+  literals:
+#   # - server.insecure="true"
+  - controller.diff.server.side="true"
+  - controller.diff.include.mutation.webhook="true"
+  # - name: argocd-cm
+  #   literals:
+  #   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+  #   - resource.compareoptions.ignoreAggregatedRoles="true"
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  labels:
+    app.kubernetes.io/name: minio
+  name: minio
+
+helmCharts:
+- name: minio
+  version: 5.2.0
+  repo: https://charts.min.io/
+  includeCRDs: true
+  namespace: minio
+  releaseName: minio
+  valuesFile: values.yaml

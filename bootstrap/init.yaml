@@ -1,0 +1,162 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  annotations:
+    argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
+    argocd.argoproj.io/sync-wave: '-1'
+  name: init
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: init project
+  destinations:
+  - namespace: '*'
+    server: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  sourceRepos:
+  - '*'
+status: {}
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: '-1'
+  name: init
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      files:
+      - path: bootstrap/init/**/config.json
+      repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
+      requeueAfterSeconds: 10
+      revision: ""
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/managed-by: argocd-autopilot
+        spec:
+          destination: {}
+          project: ""
+          source:
+            repoURL: ""
+  - git:
+      files:
+      - path: bootstrap/init/**/config_dir.json
+      repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
+      requeueAfterSeconds: 10
+      revision: ""
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/managed-by: argocd-autopilot
+        spec:
+          destination: {}
+          project: ""
+          source:
+            directory:
+              exclude: '{{ exclude }}'
+              include: '{{ include }}'
+              jsonnet: {}
+              recurse: true
+            repoURL: ""
+  syncPolicy: {}
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage1
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage2
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage3
+        maxUpdate: 100%
+
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/managed-by: argocd-autopilot
+        app.kubernetes.io/name: '{{ appName }}'
+        application-role: '{{ appRole }}'
+        syncPriority: '{{ syncPriority }}'
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ syncWave }}'
+      name: init-{{ userGivenName }}
+      namespace: argocd
+    spec:
+      destination:
+        namespace: '{{ destNamespace }}'
+        server: '{{ destServer }}'
+      ignoreDifferences:
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+        - /status
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+        - /operation
+      - group: "init" # "apps"
+        kind: "Deployment"
+        jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+      - group: "init" # "apps"
+        kind: "StatefulSet"
+        jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+      - kind: PersistentVolume
+        jsonPointers:
+        - /spec/claimRef/resourceVersion
+        - /spec/claimRef/uid
+        - /status/lastPhaseTransitionTime
+      project: init
+      source:
+        path: '{{ srcPath }}'
+        repoURL: '{{ srcRepoURL }}'
+        targetRevision: '{{ srcTargetRevision }}'
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - ApplyOutOfSyncOnly=true
+        - CreateNamespace=true
+        - Delete=true
+        - FailOnSharedResource=false
+        - preserveResourcesOnDeletion=false
+        - PruneLast=true
+        - PrunePropagationPolicy=foreground
+        - Replace=true
+        - RespectIgnoreDifferences=true
+        - ServerSideApply=true
+        - SkipDryRunOnMissingResource=true
+        - Validate=false
+        retry:
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 10s
+          limit: 8
