@@ -152,7 +152,7 @@ spec:
         # - ApplyOutOfSyncOnly=true
         # - Delete=true
         - PruneLast=true
-        # - PrunePropagationPolicy=foreground
+        - PrunePropagationPolicy=foreground
         # - Replace=true
         retry:
           backoff:
