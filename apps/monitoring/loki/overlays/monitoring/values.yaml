@@ -52,10 +52,11 @@ loki:
 write:
   replicas: 1
   persistence:
-    # size: 8Gi
-    # storageClass: local-path
-    volumeClaimsEnabled: true
+    volumeClaimsEnabled: false
     enableStatefulSetAutoDeletePVC: false
+
+
+
 
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
@@ -103,7 +104,7 @@ backend:
   persistence:
     # size: 8Gi
     # storageClass: local-path
-    volumeClaimsEnabled: true
+    volumeClaimsEnabled: false
     enableStatefulSetAutoDeletePVC: false
 
   # Enable environment variables in config file
