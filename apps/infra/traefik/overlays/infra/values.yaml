@@ -432,16 +432,16 @@ podSecurityPolicy:
 
 serviceAccountAnnotations: {}
 resources: {}
-affinity:
-  podAntiAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-    - topologyKey: failure-domain.beta.kubernetes.io/zone
-      labelSelector:
-        matchExpressions:
-        - key: app
-          operator: In
-          values:
-          - traefik
+affinity: {}
+  # podAntiAffinity:
+  #   requiredDuringSchedulingIgnoredDuringExecution:
+  #   - topologyKey: failure-domain.beta.kubernetes.io/zone
+  #     labelSelector:
+  #       matchExpressions:
+  #       - key: app
+  #         operator: In
+  #         values:
+  #         - traefik
 nodeSelector: {}
 tolerations: []
 
