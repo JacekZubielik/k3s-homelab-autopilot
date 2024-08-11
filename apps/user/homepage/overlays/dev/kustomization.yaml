@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: dev
+
+resources:
+- ../../base
+- resources/cluster-role.yaml
+- resources/config.yaml
+- resources/deployment.yaml
+- resources/service.yaml
+- resources/serviceaccount.yaml
+
+generators:
+- ksops-generator.yaml
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  labels:
+    app.kubernetes.io/name: homepage
+  name: homepage
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+patches:
+- path: patches/homepage-secret-deployment.yaml
+  target:
+    kind: Deployment
