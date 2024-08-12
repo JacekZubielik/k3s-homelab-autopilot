@@ -77,7 +77,7 @@ monitoring:
       release: kube-prometheus-stack
     honorLabels: true
     interval: 60s
-    selector: {}
+    selector: []
     namespace: monitoring
     scrapeTimeout: 10s
     scheme: http
