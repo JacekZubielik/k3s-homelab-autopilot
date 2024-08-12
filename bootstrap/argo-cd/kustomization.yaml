@@ -44,7 +44,7 @@ configMapGenerator:
   - controller.diff.server.side="true"
   - controller.diff.include.mutation.webhook="true"
   - applicationsetcontroller.enable.progressive.syncs="true"
-  - applicationsetcontroller.default.application.progressing.timeout="10"
+  # - applicationsetcontroller.default.application.progressing.timeout="10"
 patches:
 - path: patches/ksops.yaml
 - path: patches/rbac-cm.yaml

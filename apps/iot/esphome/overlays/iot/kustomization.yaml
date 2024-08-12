@@ -19,20 +19,10 @@ configMapGenerator:
 - name: esphome-tz
   literals:
   - TZ=CET
-# - name: argocd-cmd-params-cm
-#   literals:
-#   - controller.diff.server.side="true"
-#   - controller.diff.include.mutation.webhook="true"
-
-# - name: argocd-cm
-#   literals:
-#   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-#   - resource.compareoptions.ignoreAggregatedRoles="true"
 
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    # argocd.argoproj.io/sync-wave: "40"
   labels:
     app.kubernetes.io/name: esphome
   name: esphome

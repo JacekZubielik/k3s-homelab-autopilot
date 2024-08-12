@@ -10,7 +10,7 @@
   "srcPath": "apps/storage/syncthing/overlays/storage",
   "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
   "srcTargetRevision": "",
+  "syncPriority": "stage3",
   "syncWave": "0",
-  "userGivenName": "syncthing",
-  "syncPriority": "stage3"
+  "userGivenName": "syncthing"
 }

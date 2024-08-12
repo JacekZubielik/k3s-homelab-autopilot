@@ -13,16 +13,8 @@ resources:
 generators:
 - ksops-generator.yaml
 
-# configMapGenerator:
-# - name: argocd-cm
-#   literals:
-# #   - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
-#   - resource.compareoptions.ignoreAggregatedRoles="true"
-
 metadata:
   annotations:
-    # argocd.argoproj.io/compare-options: IgnoreExtraneous,ServerSideDiff=true,IncludeMutationWebhook=true
-    # argocd.argoproj.io/sync-wave: "10"
     cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
   labels:
     app.kubernetes.io/name: cert-manager
