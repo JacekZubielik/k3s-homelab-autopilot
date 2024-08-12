@@ -69,6 +69,9 @@ spec:
               recurse: true
             repoURL: ""
   syncPolicy: {}
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+
   strategy:
     type: RollingSync
     rollingSync:
@@ -91,8 +94,12 @@ spec:
           values:
           - stage3
         maxUpdate: 100%
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage4
+        maxUpdate: 100%
 
   template:
     metadata:
@@ -103,7 +110,7 @@ spec:
         app.kubernetes.io/name: '{{ .appName }}'
         application-role: '{{ .appRole }}'
         syncPriority: '{{ .syncPriority }}'
-      name: dev-{{ .userGivenName }} # dev-'{{ userGivenName }}'
+      name: dev-{{ .userGivenName }}
       namespace: argocd
     spec:
       destination:
@@ -118,21 +125,21 @@ spec:
         kind: Application
         jsonPointers:
         - /operation
-      # - group: "apps"
-      #   kind: "Deployment"
-      #   jsonPointers:
-      #   - /spec/template/metadata/annotations
-      #   - /spec/template/metadata/labels
-      # - group: "apps"
-      #   kind: "StatefulSet"
-      #   jsonPointers:
-      #   - /spec/template/metadata/annotations
-      #   - /spec/template/metadata/labels
-      # - kind: PersistentVolume
-      #   jsonPointers:
-      #   - /spec/claimRef/resourceVersion
-      #   - /spec/claimRef/uid
-      #   - /status/lastPhaseTransitionTime
+      - group: "apps"
+        kind: "Deployment"
+        jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+      - group: "apps"
+        kind: "StatefulSet"
+        jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+      - kind: PersistentVolume
+        jsonPointers:
+        - /spec/claimRef/resourceVersion
+        - /spec/claimRef/uid
+        - /status/lastPhaseTransitionTime
       project: dev
       source:
         path: '{{ .srcPath }}'
