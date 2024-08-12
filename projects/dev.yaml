@@ -103,7 +103,7 @@ spec:
         app.kubernetes.io/name: '{{ appName }}'
         application-role: '{{ appRole }}'
         syncPriority: '{{ syncPriority }}'
-      name: dev-{{ userGivenName }}
+      name: dev-'{{ userGivenName }}'
       namespace: argocd
     spec:
       destination:
