@@ -3323,20 +3323,25 @@ prometheus:
     #   memory: 400Mi
 
 
-  storageSpec:
-    volumeClaimTemplate:
-      spec:
-        dataSource:
-          name: pvc-kube-prometheus-snapshot
-          kind: VolumeSnapshot
-          apiGroup: snapshot.storage.k8s.io
-        accessModes:
-        - ReadWriteOnce
-        storageClassName: longhorn-retain
-        resources:
-          requests:
-            storage: 20Gi
-        volumeName: pv-kube-prometheus # must reference Persistent Volume
+    storageSpec:
+      persistence:
+        enabled: true
+        existingClaim: pvc-kube-prometheus
+
+
+      # volumeClaimTemplate:
+      #   spec:
+      #     dataSource:
+      #       name: pvc-kube-prometheus-snapshot
+      #       kind: VolumeSnapshot
+      #       apiGroup: snapshot.storage.k8s.io
+      #     accessModes:
+      #     - ReadWriteOnce
+      #     storageClassName: longhorn-retain
+      #     resources:
+      #       requests:
+      #         storage: 20Gi
+      #     volumeName: pv-kube-prometheus # must reference Persistent Volume
 
     ## Using tmpfs volume
     ##
