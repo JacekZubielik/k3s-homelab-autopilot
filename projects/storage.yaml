@@ -39,15 +39,6 @@ spec:
       repoURL: https://github.com/JacekZubielik/k3s-homelab-autopilot.git
       requeueAfterSeconds: 20
       revision: ""
-    # kustomize:
-    #   namespace: job-test
-    #   patches:
-    #     - patch: |
-    #         - path: /metadata/annotations
-    #           op: remove
-    #       target:
-    #         kind: Job
-
       template:
         metadata:
           labels:
@@ -72,12 +63,15 @@ spec:
           project: ""
           source:
             directory:
-              exclude: '{{ exclude }}'
-              include: '{{ include }}'
+              exclude: '{{ .exclude }}'
+              include: '{{ .include }}'
               jsonnet: {}
               recurse: true
             repoURL: ""
   syncPolicy: {}
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+
   strategy:
     type: RollingSync
     rollingSync:
@@ -93,29 +87,35 @@ spec:
           operator: In
           values:
           - stage2
-        maxUpdate: 40%
+        maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage3
-        maxUpdate: 40%
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage4
+        maxUpdate: 100%
 
   template:
     metadata:
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ .syncWave }}'
       labels:
         app.kubernetes.io/managed-by: argocd-autopilot
-        app.kubernetes.io/name: '{{ appName }}'
-        application-role: '{{ appRole }}'
-        syncPriority: '{{ syncPriority }}'
-      annotations:
-        argocd.argoproj.io/sync-wave: '{{ syncWave }}'
-      name: storage-{{ userGivenName }}
+        app.kubernetes.io/name: '{{ .appName }}'
+        application-role: '{{ .appRole }}'
+        syncPriority: '{{ .syncPriority }}'
+      name: storage-{{ .userGivenName }}
       namespace: argocd
     spec:
       destination:
-        namespace: '{{ destNamespace }}'
-        server: '{{ destServer }}'
+        namespace: '{{ .destNamespace }}'
+        server: '{{ .destServer }}'
       ignoreDifferences:
       - group: argoproj.io
         kind: Application
@@ -142,9 +142,9 @@ spec:
         - /status/lastPhaseTransitionTime
       project: storage
       source:
-        path: '{{ srcPath }}'
-        repoURL: '{{ srcRepoURL }}'
-        targetRevision: '{{ srcTargetRevision }}'
+        path: '{{ .srcPath }}'
+        repoURL: '{{ .srcRepoURL }}'
+        targetRevision: '{{ .srcTargetRevision }}'
       syncPolicy:
         automated:
           allowEmpty: true
@@ -153,16 +153,16 @@ spec:
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
-        # - Delete=true
+        - Delete=true
         - FailOnSharedResource=false
         - preserveResourcesOnDeletion=false
         - PruneLast=true
         - PrunePropagationPolicy=foreground
-        # - Replace=true
+        - Replace=false
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
-        # - Validate=false
+        - Validate=false
         retry:
           backoff:
             duration: 10s
