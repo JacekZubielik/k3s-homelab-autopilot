@@ -69,8 +69,8 @@ spec:
               recurse: true
             repoURL: ""
   syncPolicy: {}
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
+  # goTemplate: true
+  # goTemplateOptions: ["missingkey=error"]
 
   strategy:
     type: RollingSync
@@ -135,11 +135,11 @@ spec:
         jsonPointers:
         - /spec/template/metadata/annotations
         - /spec/template/metadata/labels
-      # - kind: PersistentVolume
-      #   jsonPointers:
-      #   - /spec/claimRef/resourceVersion
-      #   - /spec/claimRef/uid
-      #   - /status/lastPhaseTransitionTime
+      - kind: PersistentVolume
+        jsonPointers:
+        - /spec/claimRef/resourceVersion
+        - /spec/claimRef/uid
+        - /status/lastPhaseTransitionTime
       project: storage
       source:
         path: '{{ .srcPath }}'
@@ -153,16 +153,16 @@ spec:
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
-        - Delete=true
-        - FailOnSharedResource=false
-        - preserveResourcesOnDeletion=false
-        - PruneLast=true
+        # - Delete=true
+        # - FailOnSharedResource=false
+        # - preserveResourcesOnDeletion=false
+        # - PruneLast=true
         - PrunePropagationPolicy=foreground
-        - Replace=false
-        - RespectIgnoreDifferences=true
+        # - Replace=false
+        # - RespectIgnoreDifferences=true
         # - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
-        - Validate=false
+        # - SkipDryRunOnMissingResource=true
+        # - Validate=false
         retry:
           backoff:
             duration: 10s
