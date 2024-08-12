@@ -69,8 +69,8 @@ spec:
               recurse: true
             repoURL: ""
   syncPolicy: {}
-  # goTemplate: true
-  # goTemplateOptions: ["missingkey=error"]
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
 
   strategy:
     type: RollingSync
@@ -153,11 +153,11 @@ spec:
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
         # - Delete=true
         # - FailOnSharedResource=false
         # - preserveResourcesOnDeletion=false
         # - PruneLast=true
-        - PrunePropagationPolicy=foreground
         # - Replace=false
         # - RespectIgnoreDifferences=true
         # - ServerSideApply=true
