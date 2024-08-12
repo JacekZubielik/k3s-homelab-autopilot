@@ -593,7 +593,7 @@ grafana:
 
   persistence:
     enabled: true
-    existingClaim: storage-grafana-0
+    existingClaim: pvc-kube-grafana
 
   serviceAccount:
     create: true
