@@ -114,7 +114,7 @@ spec:
     - data
     # - fast
   engineImage: longhornio/longhorn-engine:v1.6.2
-  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-79bc0e63aa734b8e&volume=pvc-esphome-data"
+  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-94ef25e2fd31440f&volume=pvc-esphome-data"
   frontend: blockdev
   # migratable: false
   nodeSelector:
@@ -242,7 +242,7 @@ spec:
     - data
     # - fast
   engineImage: longhornio/longhorn-engine:v1.6.2
-  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-94ef25e2fd31440f&volume=pvc-esphome-data"
+  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-37e6fc391d8f4141&volume=pvc-ha-data"
   frontend: blockdev
   # migratable: false
   nodeSelector:
