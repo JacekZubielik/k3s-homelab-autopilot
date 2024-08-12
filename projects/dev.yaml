@@ -63,8 +63,8 @@ spec:
           project: ""
           source:
             directory:
-              exclude: '{{ exclude }}'
-              include: '{{ include }}'
+              exclude: '{{ .exclude }}'
+              include: '{{ .include }}'
               jsonnet: {}
               recurse: true
             repoURL: ""
@@ -97,18 +97,18 @@ spec:
   template:
     metadata:
       annotations:
-        argocd.argoproj.io/sync-wave: '{{ syncWave }}'
+        argocd.argoproj.io/sync-wave: '{{ .syncWave }}'
       labels:
         app.kubernetes.io/managed-by: argocd-autopilot
-        app.kubernetes.io/name: '{{ appName }}'
-        application-role: '{{ appRole }}'
-        syncPriority: '{{ syncPriority }}'
+        app.kubernetes.io/name: '{{ .appName }}'
+        application-role: '{{ .appRole }}'
+        syncPriority: '{{ .syncPriority }}'
       name: dev-{{ .userGivenName }} # dev-'{{ userGivenName }}'
       namespace: argocd
     spec:
       destination:
-        namespace: '{{ destNamespace }}'
-        server: '{{ destServer }}'
+        namespace: '{{ .destNamespace }}'
+        server: '{{ .destServer }}'
       ignoreDifferences:
       - group: argoproj.io
         kind: Application
@@ -135,9 +135,9 @@ spec:
       #   - /status/lastPhaseTransitionTime
       project: dev
       source:
-        path: '{{ srcPath }}'
-        repoURL: '{{ srcRepoURL }}'
-        targetRevision: '{{ srcTargetRevision }}'
+        path: '{{ .srcPath }}'
+        repoURL: '{{ .srcRepoURL }}'
+        targetRevision: '{{ .srcTargetRevision }}'
       syncPolicy:
         automated:
           allowEmpty: true
