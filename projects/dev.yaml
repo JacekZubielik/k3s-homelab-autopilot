@@ -32,7 +32,6 @@ metadata:
   name: dev
   namespace: argocd
 spec:
-  goTemplate: true
   generators:
   - git:
       files:

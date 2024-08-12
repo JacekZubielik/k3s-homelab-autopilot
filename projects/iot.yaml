@@ -32,7 +32,6 @@ metadata:
   name: iot
   namespace: argocd
 spec:
-  goTemplate: true
   generators:
   - git:
       files:
