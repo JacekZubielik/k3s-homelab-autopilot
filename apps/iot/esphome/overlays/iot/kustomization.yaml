@@ -9,8 +9,8 @@ resources:
 - resources/pvc.yaml
 # - resources/volume.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 configMapGenerator:
 - name: esphome-dashboard

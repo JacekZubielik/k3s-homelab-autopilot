@@ -27,8 +27,6 @@ env:
       name: esphome-tz
       key: TZ
 
-
-
 extraEnv: {}
 
 extraEnvSecrets: []
