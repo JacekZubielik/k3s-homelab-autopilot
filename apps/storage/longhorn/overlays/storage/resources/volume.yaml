@@ -254,6 +254,7 @@ spec:
   size: '10737418240'
   snapshotMaxCount: 10
 
+
 ---
 apiVersion: longhorn.io/v1beta2
 kind: Volume
