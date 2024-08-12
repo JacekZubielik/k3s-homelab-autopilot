@@ -4,6 +4,8 @@ kind: AppProject
 metadata:
   annotations:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
+    argocd.argoproj.io/sync-options: PruneLast=true
+    argocd.argoproj.io/sync-wave: "-2"
   name: trade
   namespace: argocd
 spec:
@@ -26,6 +28,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   annotations:
+    argocd.argoproj.io/sync-wave: "0"
   name: trade
   namespace: argocd
 spec:
@@ -65,7 +68,7 @@ spec:
               jsonnet: {}
               recurse: true
             repoURL: ""
-
+  syncPolicy: {}
   strategy:
     type: RollingSync
     rollingSync:
@@ -157,3 +160,4 @@ spec:
             factor: 2
             maxDuration: 15s
           limit: 6
+status: {}
