@@ -28,6 +28,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   annotations:
+    argocd.argoproj.io/sync-wave: "0"
   name: dev
   namespace: argocd
 spec:
@@ -93,13 +94,13 @@ spec:
 
   template:
     metadata:
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ syncWave }}'
       labels:
         app.kubernetes.io/managed-by: argocd-autopilot
         app.kubernetes.io/name: '{{ appName }}'
         application-role: '{{ appRole }}'
         syncPriority: '{{ syncPriority }}'
-      annotations:
-        argocd.argoproj.io/sync-wave: '{{ syncWave }}'
       name: dev-{{ userGivenName }}
       namespace: argocd
     spec:
