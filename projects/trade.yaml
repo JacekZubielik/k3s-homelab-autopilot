@@ -4,7 +4,6 @@ kind: AppProject
 metadata:
   annotations:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
-    # argocd.argoproj.io/sync-wave: '4'
   name: trade
   namespace: argocd
 spec:
@@ -27,7 +26,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   annotations:
-    # argocd.argoproj.io/sync-wave: '4'
   name: trade
   namespace: argocd
 spec:
@@ -91,7 +89,6 @@ spec:
           - stage3
         maxUpdate: 100%
 
-  syncPolicy: {}
   template:
     metadata:
       labels:
