@@ -12,7 +12,7 @@ data:
     title: AnotherHomePage
     iconStyle: theme
     headerStyle: boxed
-    language: pl
+    language: en
     quicklaunch:
       searchDescriptions: true
       hideInternetSearch: true
