@@ -47,7 +47,7 @@ persistence:
     # -- Setting that allows you to enable the recurring job selector for a Longhorn StorageClass.
     enable: true
     # -- Recurring job selector for a Longhorn StorageClass. Ensure that quotes are used correctly when specifying job parameters. (Example: `[{"name":"backup", "isGroup":true}]`)
-    jobList: '' # '[{"name":"group1", "isGroup":true},{"name":"default", "isGroup":true}]'
+    jobList: ~ # '[{"name":"group1", "isGroup":true},{"name":"default", "isGroup":true}]'
   backingImage:
     # -- Setting that allows you to use a backing image in a Longhorn StorageClass.
     enable: true
@@ -66,7 +66,7 @@ persistence:
     # -- Setting that allows you to enable the node selector for the default Longhorn StorageClass.
     enable: true
     # -- Node selector for the default Longhorn StorageClass. Longhorn uses only nodes with the specified tags for storing volume data. (Examples: "storage,fast")
-    selector: '' # "fast,storage"
+    selector: ~ # "fast,storage"
   # -- Setting that allows you to enable automatic snapshot removal during filesystem trim for a Longhorn StorageClass. (Options: "ignored", "enabled", "disabled")
   removeSnapshotsDuringFilesystemTrim: ignored
 
