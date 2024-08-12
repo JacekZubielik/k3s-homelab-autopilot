@@ -81,13 +81,13 @@ spec:
           operator: In
           values:
           - stage1
-        maxUpdate: 0%
+        # maxUpdate: 0%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage2
-        maxUpdate: 10%
+        # maxUpdate: 10%
       - matchExpressions:
         - key: syncPriority
           operator: In
