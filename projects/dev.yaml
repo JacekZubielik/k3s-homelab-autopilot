@@ -68,7 +68,7 @@ spec:
               jsonnet: {}
               recurse: true
             repoURL: ""
-  syncPolicy: {}
+  # syncPolicy: {}
   strategy:
     type: RollingSync
     rollingSync:
