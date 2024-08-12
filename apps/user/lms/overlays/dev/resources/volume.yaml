@@ -1,0 +1,45 @@
+# ---
+# apiVersion: longhorn.io/v1beta2
+# kind: Volume
+# metadata:
+#   labels:
+#     longhornvolume: pvc-lms-config
+#   name: pvc-lms-config
+#   namespace: longhorn-system
+# spec:
+#   restoreVolumeRecurringJob: enabled
+#   engineImage: longhornio/longhorn-engine
+#   fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-2622ca7321524414&volume=pvc-lms-config"
+#   frontend: blockdev
+
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  annotations:
+    argocd.argoproj.io/instance: longhorn
+    argocd.argoproj.io/sync-wave: "-1"
+  labels:
+    longhornvolume: pvc-lms-config
+    # recurring-job-group.longhorn.io/default: enabled
+    recurring-job-group.longhorn.io/group1: enabled
+    recurring-job.longhorn.io/24-hour-snapshots: enabled
+    recurring-job.longhorn.io/48-hour-backups: enabled
+  name: pvc-lms-config
+  namespace: longhorn-system
+spec:
+  diskSelector:
+    - data
+    # - fast
+  engineImage: longhornio/longhorn-engine:v1.6.2
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-94ef25e2fd31440f&volume=pvc-esphome-data"
+  frontend: blockdev
+  # migratable: false
+  nodeSelector:
+    - fast
+    # - storage
+  numberOfReplicas: 1
+  restoreVolumeRecurringJob: enabled
+  # revisionCounterDisabled: false
+  size: '10737418240'
+  snapshotMaxCount: 10
