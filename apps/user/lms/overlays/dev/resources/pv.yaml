@@ -22,7 +22,7 @@ spec:
     volumeAttributes:
       numberOfReplicates: "1"
       staleReplicaTimeout: "2880"
-      dataLocality: "strict-local"
+      # dataLocality: "strict-local"
     volumeHandle: pvc-lms-config
 
 ---
