@@ -28,7 +28,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "-1"
   name: monitoring
   namespace: argocd
 spec:
@@ -155,11 +155,11 @@ spec:
         automated:
           allowEmpty: true
           prune: true
-          selfHeal: true
+          selfHeal: false
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
-        - Delete=true
+        # - Delete=true
         - FailOnSharedResource=false
         - preserveResourcesOnDeletion=false
         - PruneLast=true
