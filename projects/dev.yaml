@@ -69,28 +69,30 @@ spec:
               recurse: true
             repoURL: ""
   syncPolicy: {}
-  # strategy:
-  #   type: RollingSync
-  #   rollingSync:
-  #     steps:
-  #     - matchExpressions:
-  #       - key: syncPriority
-  #         operator: In
-  #         values:
-  #         - stage1
-  #       maxUpdate: 100%
-  #     - matchExpressions:
-  #       - key: syncPriority
-  #         operator: In
-  #         values:
-  #         - stage2
-  #       maxUpdate: 100%
-  #     - matchExpressions:
-  #       - key: syncPriority
-  #         operator: In
-  #         values:
-  #         - stage3
-  #       maxUpdate: 100%
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage1
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage2
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage3
+        maxUpdate: 100%
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
 
   template:
     metadata:
