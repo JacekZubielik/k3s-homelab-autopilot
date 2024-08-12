@@ -32,6 +32,7 @@ metadata:
   name: iot
   namespace: argocd
 spec:
+  goTemplate: true
   generators:
   - git:
       files:
@@ -94,13 +95,13 @@ spec:
 
   template:
     metadata:
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ syncWave }}'
       labels:
         app.kubernetes.io/managed-by: argocd-autopilot
         app.kubernetes.io/name: '{{ appName }}'
         application-role: '{{ appRole }}'
         syncPriority: '{{ syncPriority }}'
-      annotations:
-        argocd.argoproj.io/sync-wave: '{{ syncWave }}'
       name: iot-{{ userGivenName }}
       namespace: argocd
     spec:
