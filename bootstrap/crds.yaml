@@ -4,7 +4,8 @@ kind: AppProject
 metadata:
   annotations:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
-    argocd.argoproj.io/sync-wave: '-1'
+    argocd.argoproj.io/sync-options: PruneLast=true
+    argocd.argoproj.io/sync-wave: "-2"
   name: crds
   namespace: argocd
 spec:
@@ -159,3 +160,4 @@ spec:
             factor: 2
             maxDuration: 10s
           limit: 8
+status: {}
