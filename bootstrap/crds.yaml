@@ -69,6 +69,8 @@ spec:
               recurse: true
             repoURL: ""
   syncPolicy: {}
+  goTemplate: true
+
   # strategy:
   #   type: RollingSync
   #   rollingSync:
