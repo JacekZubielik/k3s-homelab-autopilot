@@ -15,7 +15,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: longhorn-data-delete
+  storageClassName: longhorn-delete
   csi:
     driver: driver.longhorn.io
     fsType: ext4

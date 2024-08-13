@@ -30,5 +30,5 @@ spec:
   resources:
     requests:
       storage: 180Gi
-  # volumeMode: Filesystem
+  volumeMode: Filesystem
   volumeName: pv-musicstorage
