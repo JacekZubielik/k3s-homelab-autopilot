@@ -147,7 +147,13 @@ persistence:
   musicstorage:
     enabled: true
     # existingClaim: pvc-musicstorage
-    hostPath: /mnt/hdd-0/media/audio
+    # hostPath: /mnt/hdd-0/media/audio
+
+    storageClass: host-path
+    accessModes: ReadWriteOnce
+    volumeName: pv-musicstorage
+    volumeMode: Filesystem
+    size: 180Gi
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 hostMounts: []
