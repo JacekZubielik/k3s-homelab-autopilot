@@ -99,7 +99,7 @@ spec:
           operator: In
           values:
           - stage4
-        maxUpdate: 100%
+        maxUpdate: 0%
 
   template:
     metadata:
@@ -160,7 +160,7 @@ spec:
         # - PrunePropagationPolicy=foreground
         # - Replace=false
         # - RespectIgnoreDifferences=true
-        # - ServerSideApply=true
+        - ServerSideApply=true
         # - SkipDryRunOnMissingResource=true
         # - Validate=false
         retry:
