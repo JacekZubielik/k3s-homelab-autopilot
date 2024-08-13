@@ -8,8 +8,8 @@ resources:
 - resources/pvc.yaml
 # - resources/volume.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 metadata:
   annotations:
