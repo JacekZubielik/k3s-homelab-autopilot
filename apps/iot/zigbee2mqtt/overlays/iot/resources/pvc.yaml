@@ -14,5 +14,5 @@ spec:
   resources:
     requests:
       storage: 4Gi
-  volumeName: pvc-zigbee2mqtt-data-data
+  volumeName: pvc-zigbee2mqtt-data
   storageClassName: longhorn-retain
