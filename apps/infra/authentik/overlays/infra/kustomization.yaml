@@ -9,8 +9,8 @@ resources:
 - resources/volume.yaml
 # - resources/volume.snapshot.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 metadata:
   annotations:
