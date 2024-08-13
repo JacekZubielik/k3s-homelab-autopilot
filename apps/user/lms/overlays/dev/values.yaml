@@ -146,8 +146,8 @@ persistence:
 
   musicstorage:
     enabled: true
-    existingClaim: pvc-musicstorage
-    # hostPath: /path/to/the/music/folder
+    # existingClaim: pvc-musicstorage
+    hostPath: /mnt/hdd-0/media/audio
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 hostMounts: []
