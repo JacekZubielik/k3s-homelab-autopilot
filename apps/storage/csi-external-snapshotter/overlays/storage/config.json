@@ -1,0 +1,16 @@
+{
+  "annotations": "",
+  "appName": "external-snapshotter",
+  "appRole": "csi-snapshotter",
+  "destNamespace": "kube-system",
+  "destServer": "https://kubernetes.default.svc",
+  "exclude": "",
+  "include": "",
+  "labels": "",
+  "srcPath": "apps/storage/csi-external-snapshotter/overlays/storage",
+  "srcRepoURL": "https://github.com/JacekZubielik/k3s-homelab-autopilot.git",
+  "srcTargetRevision": "",
+  "syncPriority": "stage2",
+  "syncWave": "0",
+  "userGivenName": "external-snapshotter"
+}
