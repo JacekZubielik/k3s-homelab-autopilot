@@ -2,12 +2,9 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-lms-config
-  namespace: media
   labels:
-    volume: lms-config
-    name: lms-config
-    type: longhorn
+    longhornvolume: pvc-lms-config
+  name: pv-lms-config
 spec:
   capacity:
     storage: 10Gi
@@ -15,14 +12,13 @@ spec:
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: longhorn-delete
+  storageClassName: longhorn-retain
   csi:
     driver: driver.longhorn.io
     fsType: ext4
     volumeAttributes:
       numberOfReplicates: "1"
       staleReplicaTimeout: "2880"
-      # dataLocality: "strict-local"
     volumeHandle: pvc-lms-config
 
 ---
@@ -30,15 +26,18 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: pv-musicstorage
+  namespace: media
 spec:
   accessModes:
     - ReadWriteOnce
   capacity:
     storage: 180Gi
   persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
   storageClassName: host-path
   hostPath:
     path: "/mnt/hdd-0/media/audio"
+    type: DirectoryOrCreate
   nodeAffinity:
     required:
       nodeSelectorTerms:
