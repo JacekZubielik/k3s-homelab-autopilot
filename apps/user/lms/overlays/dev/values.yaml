@@ -17,6 +17,14 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
+env:
+- name: TZ
+  valueFrom:
+    configMapKeyRef:
+      name: lms-tz
+      key: TZ
+
+
 extraEnv: {}
 
 extraEnvSecrets:
