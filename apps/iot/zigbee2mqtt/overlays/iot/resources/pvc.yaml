@@ -5,10 +5,15 @@ metadata:
   name: pvc-zigbee2mqtt-data
   namespace: iot
 spec:
+spec:
+  dataSource:
+    name: pvc-zigbee2mqtt-data-backup
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
       storage: 4Gi
-  volumeName: pv-zigbee2mqtt-data
+  volumeName: pvc-zigbee2mqtt-data-data
   storageClassName: longhorn-retain

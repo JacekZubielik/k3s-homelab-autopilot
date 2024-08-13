@@ -17,6 +17,14 @@ spec:
     driver: driver.longhorn.io
     fsType: ext4
     volumeAttributes:
-      # numberOfReplicates: "1"
+      numberOfReplicates: "1"
       staleReplicaTimeout: "2880"
     volumeHandle: pvc-zigbee2mqtt-data
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - dev-k3s-master-0

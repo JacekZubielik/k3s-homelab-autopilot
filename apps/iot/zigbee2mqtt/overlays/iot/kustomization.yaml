@@ -1,15 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: iot
 
 resources:
 - ../../base
 - resources/configmap.yaml
 - resources/pv.yaml
 - resources/pvc.yaml
+- resources/volume.yaml
+- resources/volume.snapshot.yaml
 
-generators:
-- ksops-generator.yaml
+# generators:
+# - ksops-generator.yaml
 
 metadata:
   annotations:
@@ -26,3 +27,8 @@ helmCharts:
   namespace: iot
   releaseName: zigbee2mqtt
   valuesFile: values.yaml
+
+configMapGenerator:
+- name: zigbee2mqtt-tz
+  literals:
+  - TZ=CET

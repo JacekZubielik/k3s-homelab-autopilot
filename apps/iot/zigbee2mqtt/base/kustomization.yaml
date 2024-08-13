@@ -4,11 +4,6 @@ kind: Kustomization
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
     app.kubernetes.io/name: zigbee2mqtt
 
-configMapGenerator:
-- name: zigbee2mqtt-tz
-  literals:
-  - TZ=CET
