@@ -5,8 +5,8 @@ metadata:
   name: pvc-ha-data
   namespace: iot
 spec:
-  # accessModes:
-  # - ReadWriteOnce
+  accessModes:
+  - ReadWriteOnce
   # resources:
   #   requests:
   #     storage: 10Gi
