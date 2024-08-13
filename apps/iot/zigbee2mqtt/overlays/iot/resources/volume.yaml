@@ -15,7 +15,7 @@ metadata:
   name: pvc-zigbee2mqtt-data
   namespace: longhorn-system
 spec:
-  dataLocality: "strict-local"
+  # dataLocality: "strict-local"
   diskSelector:
     - data
     # - fast
