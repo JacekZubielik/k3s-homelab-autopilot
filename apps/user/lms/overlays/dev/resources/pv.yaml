@@ -29,7 +29,7 @@ metadata:
   namespace: media
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   capacity:
     storage: 180Gi
   persistentVolumeReclaimPolicy: Retain
