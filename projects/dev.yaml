@@ -153,8 +153,8 @@ spec:
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
-        - PruneLast=true
         - PrunePropagationPolicy=foreground
+        # - PruneLast=true
         # - Delete=true
         # - FailOnSharedResource=false
         # - preserveResourcesOnDeletion=false
