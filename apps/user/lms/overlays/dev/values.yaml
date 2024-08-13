@@ -149,21 +149,21 @@ tolerations: []
 persistence:
   lmsconfig:
     enabled: true
-    # existingClaim: "" #pvc-lms-config
+    # existingClaim: pvc-lms-config
 
-    accessModes:
+    accessModes: 
       - ReadWriteOnce
     size: 10Gi
     storageClass: "longhorn"
 
 
   musicstorage:
-    enabled: true
+    enabled: false
     existingClaim: pvc-musicstorage
     # hostPath: /mnt/hdd-0/media/audio
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
-hostMounts: []
+hostMounts:
   # Example
-  # - name: cdrw
-  #   hostPath: /dev/cdrw
+  - name: pvc-musicstorage
+    hostPath: /mnt/hdd-0/media/audio
