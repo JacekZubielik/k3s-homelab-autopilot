@@ -20,7 +20,14 @@ spec:
       numberOfReplicates: "1"
       staleReplicaTimeout: "2880"
     volumeHandle: pvc-lms-config
-
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - dev-k3s-master-0
 ---
 apiVersion: v1
 kind: PersistentVolume
