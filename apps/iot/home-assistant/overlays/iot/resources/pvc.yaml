@@ -12,4 +12,4 @@ spec:
   #     storage: 10Gi
   # volumeMode: Filesystem
   volumeName: pv-ha-data
-  # storageClassName: longhorn-retain
+  storageClassName: longhorn-retain
