@@ -17,6 +17,6 @@ spec:
     driver: driver.longhorn.io
     fsType: ext4
     volumeAttributes:
-      # numberOfReplicates: "1"
+      numberOfReplicates: "1"
       staleReplicaTimeout: "2880"
     volumeHandle: pvc-ha-data
