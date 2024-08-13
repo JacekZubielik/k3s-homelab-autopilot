@@ -13,9 +13,9 @@ spec:
       storage: 10Gi
   volumeMode: Filesystem
   volumeName: pv-lms-config
-  selector:
-    matchLabels:
-      volume: lms-config
+  # selector:
+  #   matchLabels:
+  #     volume: lms-config
 
 ---
 apiVersion: v1
