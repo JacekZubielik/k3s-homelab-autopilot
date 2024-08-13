@@ -1,21 +1,21 @@
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: pvc-lms-config
-#   namespace: media
-# spec:
-#   accessModes:
-#   - ReadWriteOnce
-#   storageClassName: longhorn-retain
-#   resources:
-#     requests:
-#       storage: 10Gi
-#   volumeMode: Filesystem
-#   volumeName: pv-lms-config
-  # selector:
-  #   matchLabels:
-  #     volume: lms-config
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-lms-config
+  namespace: media
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: longhorn-retain
+  resources:
+    requests:
+      storage: 10Gi
+  volumeMode: Filesystem
+  volumeName: pv-lms-config
+  selector:
+    matchLabels:
+      volume: lms-config
 
 ---
 apiVersion: v1
