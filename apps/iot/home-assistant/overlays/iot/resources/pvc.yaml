@@ -5,11 +5,14 @@ metadata:
   name: pvc-ha-data
   namespace: iot
 spec:
+  dataSource:
+    name: pvc-ha-data-backup
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
-  volumeMode: Filesystem
   volumeName: pv-ha-data
   storageClassName: longhorn-retain

@@ -6,8 +6,3 @@ metadata:
   labels:
     app.kubernetes.io/name: home-assistant
   name: home-assistant
-
-configMapGenerator:
-- name: ha-tz
-  literals:
-  - TZ=CET

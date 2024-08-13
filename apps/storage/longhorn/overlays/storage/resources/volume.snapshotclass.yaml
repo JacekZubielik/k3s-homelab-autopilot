@@ -4,7 +4,7 @@ kind: VolumeSnapshotClass
 apiVersion: snapshot.storage.k8s.io/v1
 metadata:
   annotations:
-    # argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-1"
     argocd.argoproj.io/instance: longhorn
   name: longhorn
 driver: driver.longhorn.io
@@ -16,7 +16,7 @@ kind: VolumeSnapshotClass
 apiVersion: snapshot.storage.k8s.io/v1
 metadata:
   annotations:
-    # argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-1"
     argocd.argoproj.io/instance: longhorn
   name: longhorn-snapshot-vsc
 driver: driver.longhorn.io
@@ -30,7 +30,7 @@ kind: VolumeSnapshotClass
 apiVersion: snapshot.storage.k8s.io/v1
 metadata:
   annotations:
-    # argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-1"
     argocd.argoproj.io/instance: longhorn
   name: longhorn-backup-vsc
 driver: driver.longhorn.io

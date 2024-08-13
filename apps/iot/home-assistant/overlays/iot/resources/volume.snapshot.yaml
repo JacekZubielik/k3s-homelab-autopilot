@@ -5,11 +5,11 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     argocd.argoproj.io/instance: longhorn
-  name: pvc-lms-config-snapshot
+  name: pvc-ha-data-snapshot
 spec:
   volumeSnapshotClassName: longhorn-snapshot-vsc
   source:
-    persistentVolumeClaimName: pvc-lms-config
+    persistentVolumeClaimName: pvc-ha-data
 
 ---
 apiVersion: snapshot.storage.k8s.io/v1
@@ -18,8 +18,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     argocd.argoproj.io/instance: longhorn
-  name: pvc-lms-config-backup
+  name: pvc-ha-data-backup
 spec:
   volumeSnapshotClassName: longhorn-backup-vsc
   source:
-    persistentVolumeClaimName: pvc-lms-config
+    persistentVolumeClaimName: pvc-ha-data

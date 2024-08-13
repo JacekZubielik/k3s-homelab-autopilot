@@ -5,7 +5,6 @@ metadata:
   name: longhorn-retain
   annotations:
     app.kubernetes.io/instance: longhorn
-    # argocd.argoproj.io/hook: PreSync
     storageclass.kubernetes.io/is-default-class: "false"
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
@@ -35,7 +34,6 @@ parameters:
 #   name: longhorn-data-delete
 #   annotations:
 #     app.kubernetes.io/instance: storage-longhorn-delete
-#     argocd.argoproj.io/hook: PreSync
 #     storageclass.kubernetes.io/is-default-class: "false"
 # provisioner: driver.longhorn.io
 # allowVolumeExpansion: true
@@ -66,7 +64,6 @@ parameters:
 #   annotations:
     # storageclass.kubernetes.io/is-default-class: "false"
     # app.kubernetes.io/instance: storage-longhorn
-    #   argocd.argoproj.io/hook: PreSync
 # provisioner: driver.longhorn.io
 # allowVolumeExpansion: true
 # reclaimPolicy: "Retain"
