@@ -153,11 +153,11 @@ spec:
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
+        - PruneLast=true
+        - PrunePropagationPolicy=foreground
         # - Delete=true
         # - FailOnSharedResource=false
         # - preserveResourcesOnDeletion=false
-        # - PruneLast=true
-        # - PrunePropagationPolicy=foreground
         # - Replace=false
         # - RespectIgnoreDifferences=true
         # - ServerSideApply=true
