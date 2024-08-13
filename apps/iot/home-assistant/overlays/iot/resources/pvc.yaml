@@ -7,9 +7,9 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  # resources:
-  #   requests:
-  #     storage: 10Gi
-  # volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 10Gi
+  volumeMode: Filesystem
   volumeName: pv-ha-data
   storageClassName: longhorn-retain
