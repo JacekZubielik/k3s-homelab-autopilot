@@ -5,17 +5,36 @@ metadata:
   name: pvc-lms-config
   namespace: media
 spec:
+  dataSource:
+    name: pvc-lms-config-backup
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
   accessModes:
   - ReadWriteOnce
-  storageClassName: longhorn-retain
   resources:
     requests:
       storage: 10Gi
-  volumeMode: Filesystem
-  volumeName: pv-lms-config
-  selector:
-    matchLabels:
-      volume: lms-config
+  volumeName: pv-lms-config # must reference Persistent Volume
+  storageClassName: longhorn-retain
+
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: pvc-lms-config
+#   namespace: media
+# spec:
+#   accessModes:
+#   - ReadWriteOnce
+#   storageClassName: longhorn-retain
+#   resources:
+#     requests:
+#       storage: 10Gi
+#   volumeMode: Filesystem
+#   volumeName: pv-lms-config
+#   selector:
+#     matchLabels:
+#       volume: lms-config
 
 ---
 apiVersion: v1

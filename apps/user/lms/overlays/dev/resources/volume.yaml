@@ -5,7 +5,6 @@ metadata:
   finalizers:
     - longhorn.io
   annotations:
-    # argocd.argoproj.io/instance: longhorn
     argocd.argoproj.io/sync-wave: "-1"
   labels:
     longhornvolume: pvc-lms-config
