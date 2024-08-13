@@ -15,6 +15,7 @@ metadata:
   name: pvc-ha-data
   namespace: longhorn-system
 spec:
+  dataLocality: "best-effort"
   diskSelector:
     - data
     # - fast
@@ -25,7 +26,7 @@ spec:
   nodeSelector:
     - fast
     # - storage
-  numberOfReplicas: 1
+  # numberOfReplicas: 1
   restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '10737418240'

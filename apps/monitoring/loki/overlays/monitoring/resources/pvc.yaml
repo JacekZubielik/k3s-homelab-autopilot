@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-loki-backend
+  namespace: monitoring
+spec:
+  # dataSource:
+  #   name: pvc-lms-config-backup
+  #   kind: VolumeSnapshot
+  #   apiGroup: snapshot.storage.k8s.io
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 12Gi
+  volumeName: pv-loki-backend # must reference Persistent Volume
+  storageClassName: longhorn
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-loki-write
+  namespace: monitoring
+spec:
+  # dataSource:
+  #   name: pvc-lms-config-backup
+  #   kind: VolumeSnapshot
+  #   apiGroup: snapshot.storage.k8s.io
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 12Gi
+  volumeName: pv-loki-write # must reference Persistent Volume
+  storageClassName: longhorn

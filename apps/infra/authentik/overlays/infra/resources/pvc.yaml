@@ -5,6 +5,10 @@ metadata:
   name: pvc-authentik-psql
   namespace: authentik
 spec:
+  # dataSource:
+  #   name: pvc-lms-config-backup
+  #   kind: VolumeSnapshot
+  #   apiGroup: snapshot.storage.k8s.io
   accessModes:
   - ReadWriteOnce
   resources:
@@ -20,6 +24,10 @@ metadata:
   name: pvc-authentik-redis
   namespace: authentik
 spec:
+#   dataSource:
+#     name: pvc-lms-config-backup
+#     kind: VolumeSnapshot
+#     apiGroup: snapshot.storage.k8s.io
   accessModes:
   - ReadWriteOnce
   resources:

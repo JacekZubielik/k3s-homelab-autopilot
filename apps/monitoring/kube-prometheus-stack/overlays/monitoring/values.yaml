@@ -380,10 +380,10 @@ alertmanager:
     storage:
       volumeClaimTemplate:
         spec:
-          dataSource:
-            name: pvc-kube-alertmanager-snapshot
-            kind: VolumeSnapshot
-            apiGroup: snapshot.storage.k8s.io
+          # dataSource:
+          #   name: pvc-kube-alertmanager-snapshot
+          #   kind: VolumeSnapshot
+          #   apiGroup: snapshot.storage.k8s.io
           accessModes:
           - ReadWriteOnce
           storageClassName: longhorn
@@ -3326,10 +3326,10 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          dataSource:
-            name: pvc-kube-prometheus-snapshot
-            kind: VolumeSnapshot
-            apiGroup: snapshot.storage.k8s.io
+          # dataSource:
+          #   name: pvc-kube-prometheus-snapshot
+          #   kind: VolumeSnapshot
+          #   apiGroup: snapshot.storage.k8s.io
           accessModes:
           - ReadWriteOnce
           storageClassName: longhorn-retain
@@ -3402,7 +3402,6 @@ prometheus:
     #    {{end}}
     #    relabel_configs:
     #    ...
-
 
     ## If additional scrape configurations are already deployed in a single secret file you can use this section.
     ## Expected values are the secret name and key

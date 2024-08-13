@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
 - ../../base
-- resources/configmap.yaml
 - resources/pv.yaml
 - resources/pvc.yaml
 - resources/volume.yaml
@@ -16,19 +15,14 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
   labels:
-    app.kubernetes.io/name: zigbee2mqtt
-  name: zigbee2mqtt
+    app.kubernetes.io/name: loki
+  name: loki
 
 helmCharts:
-- name: zigbee2mqtt
-  version: 0.0.7
-  repo: https://jacekzubielik.github.io/jz-helm-charts
-  includeCRDs: false
-  namespace: iot
-  releaseName: zigbee2mqtt
+- name: loki
+  version: 6.6.3
+  repo: https://grafana.github.io/helm-charts
+  includeCRDs: true
+  namespace: monitoring
+  releaseName: loki
   valuesFile: values.yaml
-
-configMapGenerator:
-- name: zigbee2mqtt-tz
-  literals:
-  - TZ=CET

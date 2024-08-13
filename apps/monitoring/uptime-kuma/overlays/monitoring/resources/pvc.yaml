@@ -5,6 +5,10 @@ metadata:
   name: pvc-kuma
   namespace: monitoring
 spec:
+  # dataSource:
+  #   name: pvc-lms-config-backup
+  #   kind: VolumeSnapshot
+  #   apiGroup: snapshot.storage.k8s.io
   accessModes:
   - ReadWriteOnce
   resources:

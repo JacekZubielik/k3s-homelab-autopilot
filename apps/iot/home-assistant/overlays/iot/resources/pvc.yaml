@@ -5,10 +5,10 @@ metadata:
   name: pvc-ha-data
   namespace: iot
 spec:
-  dataSource:
-    name: pvc-ha-data-backup
-    kind: VolumeSnapshot
-    apiGroup: snapshot.storage.k8s.io
+  # dataSource:
+  #   name: pvc-ha-data-backup
+  #   kind: VolumeSnapshot
+  #   apiGroup: snapshot.storage.k8s.io
   accessModes:
   - ReadWriteOnce
   resources:

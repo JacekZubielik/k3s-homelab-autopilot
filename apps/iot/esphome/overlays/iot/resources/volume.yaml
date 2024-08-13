@@ -2,10 +2,10 @@
 apiVersion: longhorn.io/v1beta2
 kind: Volume
 metadata:
+  finalizers:
+    - longhorn.io
   annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "0"
-    # argocd.argoproj.io/instance: longhorn
+    argocd.argoproj.io/sync-wave: "-1"
   labels:
     longhornvolume: pvc-esphome-data
     # recurring-job-group.longhorn.io/default: enabled
@@ -14,8 +14,8 @@ metadata:
     recurring-job.longhorn.io/48-hour-backups: enabled
   name: pvc-esphome-data
   namespace: longhorn-system
-
 spec:
+  dataLocality: "strict-local"
   diskSelector:
     - data
     # - fast
@@ -27,7 +27,7 @@ spec:
     - fast
     # - storage
   numberOfReplicas: 1
-  # restoreVolumeRecurringJob: enabled
+  restoreVolumeRecurringJob: enabled
   # revisionCounterDisabled: false
   size: '10737418240'
-  # snapshotMaxCount: 3
+  snapshotMaxCount: 10
