@@ -3,7 +3,7 @@ apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "0"
     argocd.argoproj.io/instance: longhorn
   name: pvc-ha-data-snapshot
 spec:
@@ -16,7 +16,7 @@ apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "0"
     argocd.argoproj.io/instance: longhorn
   name: pvc-ha-data-backup
 spec:
