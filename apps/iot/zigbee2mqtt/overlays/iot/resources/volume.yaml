@@ -20,7 +20,7 @@ spec:
     - data
     # - fast
   engineImage: longhornio/longhorn-engine:v1.6.2
-  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-5c654121cc924d80&volume=pvc-zigbee2mqtt-data"
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-5c654121cc924d80&volume=pvc-zigbee2mqtt-data"
   frontend: blockdev
   # migratable: false
   nodeSelector:
