@@ -149,7 +149,7 @@ tolerations: []
 persistence:
   lmsconfig:
     enabled: true
-    # existingClaim: pvc-lms-config
+    existingClaim: "" #pvc-lms-config
 
     accessModes:
       - ReadWriteOnce

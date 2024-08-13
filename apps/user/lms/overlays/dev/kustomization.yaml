@@ -20,7 +20,7 @@ metadata:
 
 helmCharts:
 - name: lms
-  version: 0.0.12
+  version: 0.0.14
   repo: https://jacekzubielik.github.io/jz-helm-charts
   includeCRDs: false
   namespace: media
