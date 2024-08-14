@@ -20,7 +20,7 @@ podLabels: {}
 
 extraEnv:
 - name: TZ
-  value: CET
+  value: "CET"
 
 
 # env:
