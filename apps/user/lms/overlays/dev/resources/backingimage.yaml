@@ -25,18 +25,23 @@ spec:
   labels:
     usecase: test
     type: qcow2
-# ---
-# apiVersion: longhorn.io/v1beta2
-# kind: BackingImage
-# metadata:
-#     name: pvc-lms-config
-#     namespace: longhorn-system
-# spec:
-#     sourceType: restore
-#     sourceParameters:
-#         backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-lms-config
-#         concurrent-limit: "2"
-#     checksum: 304f3ed30ca6878e9056ee6f1b02b328239f0d0c2c1272840998212f9734b196371560b3b939037e4f4c2884ce457c2cbc9f0621f4f5d1ca983983c8cdf8cd9a
+
+---
+apiVersion: longhorn.io/v1beta2
+kind: BackingImage
+metadata:
+  finalizers:
+    - longhorn.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    name: pvc-lms-config
+    namespace: longhorn-system
+spec:
+    sourceType: restore
+    sourceParameters:
+        backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-lms-config
+        concurrent-limit: "2"
+    checksum: 8eac2872b92feeea9abc519c7e9795b68e831b05a3981f1b715c1eff4757aa437c7d2c2cbe38d5221d1ebee42c4124371e3274fa4a17885abb7cb0c40606e6ae
 
 
 
