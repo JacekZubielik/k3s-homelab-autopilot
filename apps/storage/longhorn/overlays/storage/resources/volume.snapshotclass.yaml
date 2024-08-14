@@ -22,8 +22,8 @@ metadata:
 driver: driver.longhorn.io
 deletionPolicy: Delete
 parameters:
-  # type: snap
-  type: longhorn-snapshot
+  type: snap
+  # type: longhorn-snapshot
 
 ---
 # CSI VolumeSnapshot Associated With Longhorn Backup
@@ -37,5 +37,5 @@ metadata:
 driver: driver.longhorn.io
 deletionPolicy: Delete
 parameters:
-  # type: bak
-  type: longhorn-backup
+  type: bak
+  # type: longhorn-backup
