@@ -21,22 +21,22 @@ podLabels: {}
 
 # extraEnv: {}
 extraEnv:
-- name: TZ
+- name: lms-env
   valueFrom:
     configMapKeyRef:
       name: lms-env
       key: TZ
 
-- name: PUID
-  valueFrom:
-    configMapKeyRef:
-      name: lms-env
-      key: PUID
-- name: PGID
-  valueFrom:
-    configMapKeyRef:
-      name: lms-env
-      key: PGID
+# - name: PUID
+#   valueFrom:
+#     configMapKeyRef:
+#       name: lms-env
+#       key: PUID
+# - name: PGID
+#   valueFrom:
+#     configMapKeyRef:
+#       name: lms-env
+#       key: PGID
 
 
 extraEnvSecrets: []
