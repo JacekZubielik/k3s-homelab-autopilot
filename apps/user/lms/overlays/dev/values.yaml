@@ -17,12 +17,18 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
+
+extraEnv:
+- name: TZ
+  value: CET
+
+
 # env:
-# - name: TZ
-#   valueFrom:
-#     configMapKeyRef:
-#       name: lms-tz
-#       key: TZ
+- name: TZ
+  valueFrom:
+    configMapKeyRef:
+      name: lms-tz
+      key: TZ
 # - name: PUID
 #   valueFrom:
 #     configMapKeyRef:
@@ -35,12 +41,12 @@ podLabels: {}
 #       key: PGID
 
 # extraEnv: {}
-extraEnv:
-- name: TZ
-  valueFrom:
-    configMapKeyRef:
-      name: lms-tz
-      key: TZ
+# extraEnv:
+# - name: TZ
+#   valueFrom:
+#     configMapKeyRef:
+#       name: lms-tz
+#       key: TZ
 # - name: PUID
 #   valueFrom:
 #     configMapKeyRef:
