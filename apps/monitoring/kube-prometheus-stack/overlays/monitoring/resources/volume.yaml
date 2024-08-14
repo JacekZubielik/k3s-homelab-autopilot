@@ -87,7 +87,7 @@ spec:
   diskSelector:
     - data
     # - fast
-  # engineImage: longhornio/longhorn-engine:v1.6.2
+  engineImage: longhornio/longhorn-engine:v1.6.2
   # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=system-backup-4cb2f5df916e4565&volume=pvc-kube-prometheus"
   frontend: blockdev
   # migratable: false
