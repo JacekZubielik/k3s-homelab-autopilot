@@ -1,4 +1,4 @@
-replicas: 1
+# replicas: 1
 nameOverride: ""
 fullnameOverride: ""
 revisionHistoryLimit: 4
@@ -17,7 +17,25 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
-env:
+# env:
+# - name: TZ
+#   valueFrom:
+#     configMapKeyRef:
+#       name: lms-tz
+#       key: TZ
+# - name: PUID
+#   valueFrom:
+#     configMapKeyRef:
+#       name: lms-puid
+#       key: PUID
+# - name: PGID
+#   valueFrom:
+#     configMapKeyRef:
+#       name: lms-pgid
+#       key: PGID
+
+# extraEnv: {}
+extraEnv:
 - name: TZ
   valueFrom:
     configMapKeyRef:
@@ -34,9 +52,11 @@ env:
       name: lms-pgid
       key: PGID
 
-extraEnv: {}
 
-extraEnvSecrets:
+
+
+
+extraEnvSecrets: []
   # This will set ${MQTT_PASSWORD} to the 'password' key from the 'mqtt' secret
   # MQTT_PASSWORD:
   #   secret: mqtt
@@ -66,7 +86,6 @@ securityContext: {}
 
 service:
   annotations:
-    # metallb.universe.tf/loadBalancerIPs: "192.168.40.188"
     prometheus.io/scrape: "true"
     prometheus.io/port: 9100
   labels: {}
