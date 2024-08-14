@@ -69,7 +69,7 @@ service:
   controlPort: "3483"
   discoveryPort: "3483"
   metricsPort: "9100"
-  # spotifyPort: {}
+  spotifyPort: "4070"
 
 monitoring:
   enabled: true
