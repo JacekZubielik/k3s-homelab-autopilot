@@ -18,45 +18,25 @@ podAnnotations: {}
 podLabels: {}
 
 
-extraEnv:
-- name: TZ
-  value: "CET"
-
-
-# env:
-# - name: TZ
-#   valueFrom:
-#     configMapKeyRef:
-#       name: lms-tz
-#       key: TZ
-# - name: PUID
-#   valueFrom:
-#     configMapKeyRef:
-#       name: lms-puid
-#       key: PUID
-# - name: PGID
-#   valueFrom:
-#     configMapKeyRef:
-#       name: lms-pgid
-#       key: PGID
 
 # extraEnv: {}
-# extraEnv:
-# - name: TZ
-#   valueFrom:
-#     configMapKeyRef:
-#       name: lms-tz
-#       key: TZ
-# - name: PUID
-#   valueFrom:
-#     configMapKeyRef:
-#       name: lms-puid
-#       key: PUID
-# - name: PGID
-#   valueFrom:
-#     configMapKeyRef:
-#       name: lms-pgid
-#       key: PGID
+extraEnv:
+- name: TZ
+  valueFrom:
+    configMapKeyRef:
+      name: lms-env
+      key: TZ
+
+- name: PUID
+  valueFrom:
+    configMapKeyRef:
+      name: lms-env
+      key: PUID
+- name: PGID
+  valueFrom:
+    configMapKeyRef:
+      name: lms-env
+      key: PGID
 
 
 extraEnvSecrets: []
