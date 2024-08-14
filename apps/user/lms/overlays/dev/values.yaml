@@ -1,8 +1,8 @@
-replicas: 1
+# replicas: 1
 nameOverride: ""
 fullnameOverride: ""
 revisionHistoryLimit: 4
-hostNetwork: false
+hostNetwork: true
 
 updateStrategy:
   type: RollingUpdate

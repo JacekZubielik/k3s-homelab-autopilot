@@ -18,8 +18,8 @@ spec:
 apiVersion: longhorn.io/v1beta2
 kind: BackingImage
 metadata:
-  # finalizers:
-  #   - longhorn.io
+  finalizers:
+    - longhorn.io
   annotations:
     argocd.argoproj.io/sync-wave: "2"
   name: pvc-lms-config
