@@ -36,14 +36,14 @@ spec:
   hostPath:
     path: "/mnt/hdd-0/media/audio"
     type: DirectoryOrCreate
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - dev-k3s-master-0
+  # nodeAffinity:
+  #   required:
+  #     nodeSelectorTerms:
+  #     - matchExpressions:
+  #       - key: kubernetes.io/hostname
+  #         operator: In
+  #         values:
+  #         - dev-k3s-master-0
 
 # ---
 # apiVersion: v1
