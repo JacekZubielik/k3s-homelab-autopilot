@@ -27,13 +27,13 @@ helmCharts:
   releaseName: lms
   valuesFile: values.yaml
 
-generatorOptions:
-  disableNameSuffixHash: false
+# generatorOptions:
+#   disableNameSuffixHash: true
 
-configMapGenerator:
-- name: lms-env
-  behavior: create
-  literals:
-  - TZ=CET
-  - PUID=1000
-  - PGID=1000
+# configMapGenerator:
+# - name: lms-env
+#   behavior: create
+#   literals:
+#   - TZ=CET
+#   - PUID=1000
+#   - PGID=1000
