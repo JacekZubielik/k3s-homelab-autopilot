@@ -41,16 +41,16 @@ extraEnv:
     configMapKeyRef:
       name: lms-tz
       key: TZ
-- name: PUID
-  valueFrom:
-    configMapKeyRef:
-      name: lms-puid
-      key: PUID
-- name: PGID
-  valueFrom:
-    configMapKeyRef:
-      name: lms-pgid
-      key: PGID
+# - name: PUID
+#   valueFrom:
+#     configMapKeyRef:
+#       name: lms-puid
+#       key: PUID
+# - name: PGID
+#   valueFrom:
+#     configMapKeyRef:
+#       name: lms-pgid
+#       key: PGID
 
 
 
