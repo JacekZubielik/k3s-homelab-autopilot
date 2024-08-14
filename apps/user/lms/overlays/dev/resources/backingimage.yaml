@@ -5,7 +5,7 @@ metadata:
   finalizers:
     - longhorn.io
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "0"
   name: pvc-lms-config
   namespace: longhorn-system
 spec:
@@ -21,7 +21,7 @@ metadata:
   finalizers:
     - longhorn.io
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "-1"
   name: pvc-lms-config
   namespace: longhorn-system
 spec:
