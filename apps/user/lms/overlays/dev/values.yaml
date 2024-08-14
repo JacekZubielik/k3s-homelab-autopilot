@@ -17,32 +17,13 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
-
-
 extraEnv: {}
-# extraEnv: "CET"
-# - name: TZ
-#   value: "CET"
-
-
 
 # - name: TZ
 #   valueFrom:
 #     configMapKeyRef:
 #       name: lms-env
 #       key: TZ
-
-# - name: PUID
-#   valueFrom:
-#     configMapKeyRef:
-#       name: lms-env
-#       key: PUID
-# - name: PGID
-#   valueFrom:
-#     configMapKeyRef:
-#       name: lms-env
-#       key: PGID
-
 
 extraEnvSecrets: []
   # This will set ${MQTT_PASSWORD} to the 'password' key from the 'mqtt' secret
@@ -60,7 +41,7 @@ extraSecretForEnvFrom: []
 #   - configMapRef:
 #       name: lms-tz
 
-# podSecurityContext: {}
+podSecurityContext: {}
   # fsGroup: 2000
   # privileged: true
 
@@ -71,21 +52,6 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
-
-
-podSecurityContext:
-  fsGroup: 1000
-  privileged: true
-
-# securityContext:
-#   capabilities:
-#     drop:
-#     - ALL
-#   readOnlyRootFilesystem: true
-#   runAsNonRoot: true
-#   runAsUser: 1000
-
-
 
 service:
   annotations:
@@ -166,11 +132,11 @@ ingress:
 
 resources:
   requests:
-    cpu: 150m
+    cpu: 850m
     memory: 0.4Gi
   limits:
-    cpu: 850m
-    memory: 0.8Gi
+    cpu: 2000m
+    memory: 1.2Gi
 
 nodeSelector:
   kubernetes.io/hostname: dev-k3s-master-0
