@@ -16,7 +16,7 @@ metadata:
   namespace: longhorn-system
 spec:
   backingImage: "pvc-lms-config"
-  # dataLocality: "strict-local"
+  dataLocality: "best-effort" #  "strict-local"
   diskSelector:
     - data
     # - fast
