@@ -31,9 +31,9 @@ configMapGenerator:
 - name: lms-tz
   literals:
   - TZ=CET
-# - name: lms-puid
-#   literals:
-#   - PUID=1000
-# - name: lms-pgid
-#   literals:
-#   - PGID=1000
+- name: lms-puid
+  literals:
+  - PUID=1000
+- name: lms-pgid
+  literals:
+  - PGID=1000
