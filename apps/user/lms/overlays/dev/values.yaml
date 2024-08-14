@@ -21,7 +21,7 @@ podLabels: {}
 
 # extraEnv: {}
 extraEnv:
-- name: lms-env
+- name: TZ
   valueFrom:
     configMapKeyRef:
       name: lms-env
