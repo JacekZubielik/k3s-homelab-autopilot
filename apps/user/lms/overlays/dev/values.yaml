@@ -1,4 +1,4 @@
-# replicas: 1
+replicas: 1
 nameOverride: ""
 fullnameOverride: ""
 revisionHistoryLimit: 4
@@ -60,7 +60,7 @@ extraSecretForEnvFrom: []
 #   - configMapRef:
 #       name: lms-tz
 
-# podSecurityContext: {}
+podSecurityContext: {}
   # fsGroup: 2000
   # privileged: true
 
@@ -73,9 +73,9 @@ extraSecretForEnvFrom: []
   # runAsUser: 1000
 
 
-podSecurityContext:
-  fsGroup: 2000
-  privileged: true
+# podSecurityContext:
+#   fsGroup: 2000
+#   privileged: true
 
 securityContext:
   capabilities:
