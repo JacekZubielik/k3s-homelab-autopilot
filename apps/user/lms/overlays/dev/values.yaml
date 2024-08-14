@@ -24,11 +24,11 @@ extraEnv:
 
 
 # env:
-- name: TZ
-  valueFrom:
-    configMapKeyRef:
-      name: lms-tz
-      key: TZ
+# - name: TZ
+#   valueFrom:
+#     configMapKeyRef:
+#       name: lms-tz
+#       key: TZ
 # - name: PUID
 #   valueFrom:
 #     configMapKeyRef:
