@@ -32,7 +32,8 @@ generatorOptions:
 
 configMapGenerator:
 - name: lms-env
-  literals:
+  # literals:
+  env:
   - TZ=CET
   - PUID=1000
   - PGID=1000
