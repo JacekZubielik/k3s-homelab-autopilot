@@ -10,8 +10,8 @@ resources:
 # - resources/pve-scrape-config.yaml
 # - resources/volume.snapshot.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 metadata:
   annotations:
