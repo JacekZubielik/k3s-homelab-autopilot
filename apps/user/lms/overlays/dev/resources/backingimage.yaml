@@ -16,23 +16,23 @@ spec:
       concurrent-limit: "2"
   checksum: a33bea925366becd96c7afc501822914e6028d439a97868d1a48a7a31a882da1600714802d607c908870d64973d31129eb1350c9e5cde985435411205dbdf808
 
-# ---
-# apiVersion: longhorn.io/v1beta2
-# kind: BackupBackingImage
-# metadata:
-#   finalizers:
-#     - longhorn.io
-#   annotations:
-#     argocd.argoproj.io/hook: PostSync
-#     argocd.argoproj.io/sync-wave: "1"
-#     argocd.argoproj.io/hook-delete-policy: HookSucceeded
-#   name: pvc-lms-config
-#   namespace: longhorn-system
-# spec:
-#   userCreated: true
-#   labels:
-#     usecase: test
-#     type: qcow2
+---
+apiVersion: longhorn.io/v1beta2
+kind: BackupBackingImage
+metadata:
+  finalizers:
+    - longhorn.io
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+  name: pvc-lms-config
+  namespace: longhorn-system
+spec:
+  userCreated: true
+  labels:
+    usecase: test
+    type: qcow2
 
 
 # apiVersion: longhorn.io/v1beta2
