@@ -146,7 +146,7 @@ spec:
         repoURL: '{{ .srcRepoURL }}'
         targetRevision: '{{ .srcTargetRevision }}'
       syncPolicy:
-        applicationsSync: create-delete
+        # applicationsSync: create-delete
         automated:
           allowEmpty: true
           prune: true
