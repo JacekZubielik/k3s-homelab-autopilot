@@ -155,13 +155,13 @@ spec:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
-        # - PruneLast=true
+        - ServerSideApply=true
         # - Delete=true
         # - FailOnSharedResource=false
         # - preserveResourcesOnDeletion=false
+        # - PruneLast=true
         # - Replace=false
         # - RespectIgnoreDifferences=true
-        # - ServerSideApply=true
         # - SkipDryRunOnMissingResource=true
         # - Validate=false
         retry:
