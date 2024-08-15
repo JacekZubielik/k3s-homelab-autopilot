@@ -1,4 +1,4 @@
-# replicas: 1
+replicas: 1
 nameOverride: ""
 fullnameOverride: ""
 revisionHistoryLimit: 4
@@ -60,7 +60,7 @@ service:
   labels: {}
   type: LoadBalancer
   externalIPs: []
-  loadBalancerIP: "192.168.40.188"
+  loadBalancerIP: "192.168.40.110"
   externalTrafficPolicy: {}
   loadBalancerSourceRanges: []
   publishNotReadyAddresses: false

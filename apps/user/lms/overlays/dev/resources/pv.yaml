@@ -2,6 +2,8 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
   labels:
     longhornvolume: pvc-lms-config
   name: pv-lms-config
@@ -24,6 +26,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
   name: pv-musicstorage
 spec:
   accessModes:
