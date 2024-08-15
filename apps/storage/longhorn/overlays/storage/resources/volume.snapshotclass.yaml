@@ -39,3 +39,17 @@ deletionPolicy: Delete
 parameters:
   type: bak
   # type: longhorn-backup
+
+---
+# CSI VolumeSnapshot Associated With Longhorn BackingImage
+kind: VolumeSnapshotClass
+apiVersion: snapshot.storage.k8s.io/v1
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  name: longhorn-snapshot-vsc-bi
+driver: driver.longhorn.io
+deletionPolicy: Delete
+parameters:
+  type: bi
+  export-type: qcow2
