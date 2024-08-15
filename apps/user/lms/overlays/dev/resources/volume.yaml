@@ -6,7 +6,7 @@ metadata:
     - longhorn.io
   annotations:
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "-2"
   labels:
     longhornvolume: pvc-lms-config
     # recurring-job-group.longhorn.io/default: enabled
