@@ -19,14 +19,14 @@ metadata:
     app.kubernetes.io/name: lms
   name: lms
 
-# helmCharts:
-# - name: lms
-#   version: 0.0.13
-#   repo: https://jacekzubielik.github.io/jz-helm-charts
-#   includeCRDs: false
-#   namespace: media
-#   releaseName: lms
-#   valuesFile: values.yaml
+helmCharts:
+- name: lms
+  version: 0.0.13
+  repo: https://jacekzubielik.github.io/jz-helm-charts
+  includeCRDs: false
+  namespace: media
+  releaseName: lms
+  valuesFile: values.yaml
 
 # generatorOptions:
 #   disableNameSuffixHash: true
