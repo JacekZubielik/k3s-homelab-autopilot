@@ -4,7 +4,7 @@ kind: PersistentVolume
 metadata:
   annotations:
     # argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "0"
   labels:
     longhornvolume: pvc-lms-config
   name: pv-lms-config
@@ -23,25 +23,25 @@ spec:
       staleReplicaTimeout: "2880"
     volumeHandle: pvc-lms-config
 
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  annotations:
-    # argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/sync-wave: "-1"
-  name: pv-musicstorage
-spec:
-  accessModes:
-    - ReadWriteMany
-  capacity:
-    storage: 180Gi
-  persistentVolumeReclaimPolicy: Retain
-  volumeMode: Filesystem
-  storageClassName: host-path
-  hostPath:
-    path: "/mnt/hdd-0/media/audio"
-    type: DirectoryOrCreate
+# ---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   annotations:
+#     # argocd.argoproj.io/hook: Sync
+#     argocd.argoproj.io/sync-wave: "-1"
+#   name: pv-musicstorage
+# spec:
+#   accessModes:
+#     - ReadWriteMany
+#   capacity:
+#     storage: 180Gi
+#   persistentVolumeReclaimPolicy: Retain
+#   volumeMode: Filesystem
+#   storageClassName: host-path
+#   hostPath:
+#     path: "/mnt/hdd-0/media/audio"
+#     type: DirectoryOrCreate
   # nodeAffinity:
   #   required:
   #     nodeSelectorTerms:

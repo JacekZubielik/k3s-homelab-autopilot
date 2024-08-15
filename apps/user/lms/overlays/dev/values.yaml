@@ -150,7 +150,7 @@ persistence:
     existingClaim: pvc-lms-config
 
   musicstorage:
-    enabled: true
+    enabled: false
     existingClaim: pvc-musicstorage
     # hostPath: /mnt/hdd-0/media/audio
 

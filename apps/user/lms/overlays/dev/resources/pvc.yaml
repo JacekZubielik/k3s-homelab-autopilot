@@ -20,24 +20,24 @@ spec:
   volumeName: pv-lms-config # must reference Persistent Volume
   storageClassName: longhorn-retain
 
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  annotations:
-    # argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/sync-wave: "0"
-  name: pvc-musicstorage
-  namespace: media
-spec:
-  accessModes:
-  - ReadWriteMany 
-  storageClassName: host-path
-  resources:
-    requests:
-      storage: 180Gi
-  volumeMode: Filesystem
-  volumeName: pv-musicstorage
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   annotations:
+#     # argocd.argoproj.io/hook: Sync
+#     argocd.argoproj.io/sync-wave: "0"
+#   name: pvc-musicstorage
+#   namespace: media
+# spec:
+#   accessModes:
+#   - ReadWriteMany 
+#   storageClassName: host-path
+#   resources:
+#     requests:
+#       storage: 180Gi
+#   volumeMode: Filesystem
+#   volumeName: pv-musicstorage
 
 # ---
 # apiVersion: v1
