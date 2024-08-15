@@ -2,7 +2,7 @@ replicas: 1
 nameOverride: ""
 fullnameOverride: ""
 revisionHistoryLimit: 4
-hostNetwork: true
+hostNetwork: false
 
 updateStrategy:
   type: RollingUpdate
@@ -60,7 +60,7 @@ service:
   labels: {}
   type: LoadBalancer
   externalIPs: []
-  loadBalancerIP: "192.168.40.110"
+  loadBalancerIP: "192.168.40.188"
   externalTrafficPolicy: {}
   loadBalancerSourceRanges: []
   publishNotReadyAddresses: false
@@ -69,7 +69,7 @@ service:
   controlPort: "3483"
   discoveryPort: "3483"
   metricsPort: "9100"
-  spotifyPort: "4070"
+  # spotifyPort: "4070"
 
 monitoring:
   enabled: true

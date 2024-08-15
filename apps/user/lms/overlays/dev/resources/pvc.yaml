@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     # argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "0"
   name: pvc-lms-config
   namespace: media
 spec:
@@ -26,7 +26,7 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     # argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "0"
   name: pvc-musicstorage
   namespace: media
 spec:

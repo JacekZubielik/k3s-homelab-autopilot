@@ -7,7 +7,7 @@ resources:
 - resources/pvc.yaml
 - resources/volume.yaml
 - resources/volume.snapshot.yaml
-- resources/backingimage.yaml
+# - resources/backingimage.yaml
 
 # generators:
 # - ksops-generator.yaml
@@ -21,7 +21,7 @@ metadata:
 
 helmCharts:
 - name: lms
-  version: 0.0.15
+  version: 0.0.13
   repo: https://jacekzubielik.github.io/jz-helm-charts
   includeCRDs: false
   namespace: media
