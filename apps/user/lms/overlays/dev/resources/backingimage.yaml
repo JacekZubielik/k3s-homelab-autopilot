@@ -44,7 +44,7 @@ metadata:
   name: pvc-lms-config
   namespace: longhorn-system
 spec:
-  userCreated: false # true
+  userCreated: true
   labels:
     usecase: test
     type: qcow2
