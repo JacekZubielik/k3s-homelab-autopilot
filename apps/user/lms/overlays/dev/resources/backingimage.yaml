@@ -32,22 +32,22 @@ spec:
     export-type: qcow2
 
 
-# ---
-# apiVersion: longhorn.io/v1beta2
-# kind: BackupBackingImage
-# metadata:
-#   finalizers:
-#     - longhorn.io
-#   annotations:
-#     # argocd.argoproj.io/hook: PostSync
-#     argocd.argoproj.io/sync-wave: "2"
-#   name: pvc-lms-config
-#   namespace: longhorn-system
-# spec:
-#   userCreated: false # true
-#   labels:
-#     usecase: test
-#     type: qcow2
+---
+apiVersion: longhorn.io/v1beta2
+kind: BackupBackingImage
+metadata:
+  finalizers:
+    - longhorn.io
+  annotations:
+    # argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/sync-wave: "2"
+  name: pvc-lms-config
+  namespace: longhorn-system
+spec:
+  userCreated: false # true
+  labels:
+    usecase: test
+    type: qcow2
 
 
 
