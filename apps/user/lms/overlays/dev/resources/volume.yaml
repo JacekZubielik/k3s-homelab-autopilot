@@ -22,7 +22,7 @@ spec:
     - data
     # - fast
   engineImage: longhornio/longhorn-engine:v1.6.2
-  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-d90600cd2297490e&volume=pvc-lms-config"
+  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-d90600cd2297490e&volume=pvc-lms-config"
   frontend: blockdev
   # migratable: false
   nodeSelector:
