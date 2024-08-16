@@ -6,7 +6,7 @@ metadata:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/sync-wave: "2"
     argocd.argoproj.io/instance: longhorn
-  name: pvc-lms-config-backup
+  name: pvc-lms-config
 spec:
   volumeSnapshotClassName: longhorn-snapshot-vsc-bi
   source:
