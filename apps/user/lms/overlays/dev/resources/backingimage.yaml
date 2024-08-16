@@ -14,23 +14,7 @@ spec:
   sourceParameters:
       backup-url: "s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-lms-config"
       concurrent-limit: "4"
-  checksum: a33bea925366becd96c7afc501822914e6028d439a97868d1a48a7a31a882da1600714802d607c908870d64973d31129eb1350c9e5cde985435411205dbdf808
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  checksum: ef7c5e5f8a30af30645d6333ee6af9958ab019a3c5c30036922161b97fa5e914c153ba175f7971732917094aef4b9beca5d4dacc3b6ba7c881ab556afd176704
 
 # ---
 # apiVersion: longhorn.io/v1beta2
