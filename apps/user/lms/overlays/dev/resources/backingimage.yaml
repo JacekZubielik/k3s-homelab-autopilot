@@ -1,20 +1,39 @@
+# ---
+# apiVersion: longhorn.io/v1beta2
+# kind: BackingImage
+# metadata:
+#   finalizers:
+#     - longhorn.io
+#   annotations:
+#     argocd.argoproj.io/hook: PreSync
+#     argocd.argoproj.io/sync-wave: "-3"
+#   name: pvc-lms-config
+#   namespace: longhorn-system
+# spec:
+#   sourceType: restore
+#   sourceParameters:
+#       backup-url: "s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-lms-config"
+#       concurrent-limit: "4"
+#   checksum: ef7c5e5f8a30af30645d6333ee6af9958ab019a3c5c30036922161b97fa5e914c153ba175f7971732917094aef4b9beca5d4dacc3b6ba7c881ab556afd176704
+
 ---
 apiVersion: longhorn.io/v1beta2
-kind: BackingImage
+kind: BackupBackingImage
 metadata:
   finalizers:
     - longhorn.io
   annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-3"
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/sync-wave: "2"
   name: pvc-lms-config
   namespace: longhorn-system
 spec:
-  sourceType: restore
-  sourceParameters:
-      backup-url: "s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-lms-config"
-      concurrent-limit: "4"
-  checksum: ef7c5e5f8a30af30645d6333ee6af9958ab019a3c5c30036922161b97fa5e914c153ba175f7971732917094aef4b9beca5d4dacc3b6ba7c881ab556afd176704
+  userCreated: false # true
+  labels:
+    usecase: test
+    type: qcow2
+
+
 
 # ---
 # apiVersion: longhorn.io/v1beta2
