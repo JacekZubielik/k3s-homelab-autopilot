@@ -120,7 +120,7 @@ defaultSettings:
   # so it is possible to use a Longhorn StorageClass to bind a workload to an existing PV without creating a Kubernetes StorageClass object. The default value is "longhorn-static".
   defaultLonghornStaticStorageClass: "longhorn"
   # -- Number of seconds that Longhorn waits before checking the backupstore for new backups. The default value is "300". When the value is "0", polling is disabled.
-  backupstorePollInterval: ~
+  backupstorePollInterval: "60"
   # -- Number of minutes that Longhorn keeps a failed backup resource. When the value is "0", automatic deletion is disabled.
   failedBackupTTL: ~
   # -- Setting that restores recurring jobs from a backup volume on a backup target and creates recurring jobs if none exist during backup restoration.

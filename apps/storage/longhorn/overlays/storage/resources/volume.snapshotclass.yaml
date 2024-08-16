@@ -49,7 +49,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
   name: longhorn-snapshot-vsc-bi
 driver: driver.longhorn.io
-deletionPolicy: Delete
+deletionPolicy: Retain # Delete
 parameters:
   type: bi
   export-type: qcow2
