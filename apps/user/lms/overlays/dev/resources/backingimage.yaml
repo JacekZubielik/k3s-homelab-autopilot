@@ -22,7 +22,7 @@ kind: BackingImage
 metadata:
   annotations:
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-3"
+    argocd.argoproj.io/sync-wave: "-1"
   name: pvc-lms-config
   namespace: longhorn-system
 spec:
