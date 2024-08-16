@@ -8,10 +8,10 @@ metadata:
   name: pvc-lms-config
   namespace: media
 spec:
-  # dataSource:
-  #   name: pvc-lms-config
-  #   kind: VolumeSnapshot
-  #   apiGroup: snapshot.storage.k8s.io
+  dataSource:
+    name: pvc-lms-config
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
   accessModes:
   - ReadWriteOnce
   resources:
