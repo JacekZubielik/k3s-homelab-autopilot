@@ -40,7 +40,7 @@ metadata:
     - longhorn.io
   annotations:
     argocd.argoproj.io/sync-options: preserveResourcesOnDeletion=true
-    # argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/sync-wave: "2"
   name: pvc-lms-config
   namespace: longhorn-system
