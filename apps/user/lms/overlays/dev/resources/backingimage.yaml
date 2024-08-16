@@ -21,7 +21,7 @@ apiVersion: longhorn.io/v1beta2
 kind: BackingImage
 metadata:
   annotations:
-  argocd.argoproj.io/sync-options: preserveResourcesOnDeletion=false
+    argocd.argoproj.io/sync-options: preserveResourcesOnDeletion=false
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "-1"
   name: pvc-lms-config
