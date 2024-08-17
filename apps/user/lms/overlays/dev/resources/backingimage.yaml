@@ -31,23 +31,23 @@ spec:
     volume-name: pvc-lms-config
     export-type: qcow2
 
----
-apiVersion: longhorn.io/v1beta2
-kind: BackupBackingImage
-metadata:
-  finalizers:
-    - longhorn.io
-  annotations:
-    argocd.argoproj.io/sync-options: preserveResourcesOnDeletion=true
-    # argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/sync-wave: "3"
-  name: pvc-lms-config
-  namespace: longhorn-system
-spec:
-  userCreated: true
-  labels:
-    usecase: test
-    type: qcow2
+# ---
+# apiVersion: longhorn.io/v1beta2
+# kind: BackupBackingImage
+# metadata:
+#   finalizers:
+#     - longhorn.io
+#   annotations:
+#     argocd.argoproj.io/sync-options: preserveResourcesOnDeletion=true
+#     # argocd.argoproj.io/hook: PostSync
+#     argocd.argoproj.io/sync-wave: "3"
+#   name: pvc-lms-config
+#   namespace: longhorn-system
+# spec:
+#   userCreated: true
+#   labels:
+#     usecase: test
+#     type: qcow2
 
 
 
