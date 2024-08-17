@@ -5,7 +5,7 @@ metadata:
   finalizers:
     - longhorn.io
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    # argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "-2"
   labels:
     longhornvolume: pvc-lms-config
@@ -16,7 +16,7 @@ metadata:
   name: pvc-lms-config
   namespace: longhorn-system
 spec:
-  # backingImage: "pvc-lms-config"
+  backingImage: "pvc-lms-config"
   dataLocality: "best-effort" #  "strict-local"
   diskSelector:
     - data
