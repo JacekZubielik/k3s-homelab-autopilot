@@ -16,21 +16,21 @@
 #       concurrent-limit: "4"
 #   checksum: ef7c5e5f8a30af30645d6333ee6af9958ab019a3c5c30036922161b97fa5e914c153ba175f7971732917094aef4b9beca5d4dacc3b6ba7c881ab556afd176704
 
-# ---
-# apiVersion: longhorn.io/v1beta2
-# kind: BackingImage
-# metadata:
-#   annotations:
-#     argocd.argoproj.io/sync-options: preserveResourcesOnDeletion=true
-#     argocd.argoproj.io/hook: PreSync
-#     argocd.argoproj.io/sync-wave: "-1"
-#   name: pvc-lms-config
-#   namespace: longhorn-system
-# spec:
-#   sourceType: export-from-volume
-#   sourceParameters:
-#     volume-name: pvc-lms-config
-#     export-type: qcow2
+---
+apiVersion: longhorn.io/v1beta2
+kind: BackingImage
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: preserveResourcesOnDeletion=true
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-1"
+  name: pvc-lms-config
+  namespace: longhorn-system
+spec:
+  sourceType: export-from-volume
+  sourceParameters:
+    volume-name: pvc-lms-config
+    export-type: qcow2
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -40,7 +40,7 @@ metadata:
     - longhorn.io
   annotations:
     argocd.argoproj.io/sync-options: preserveResourcesOnDeletion=true
-    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/sync-wave: "3"
   name: pvc-lms-config
   namespace: longhorn-system
