@@ -147,10 +147,10 @@ buckets:
   versioning: false
 
 - name: k3s-longhorn-backup
-  objectlocking: false
+  objectlocking: true # false
   policy: none
   purge: false
-  versioning: false
+  # versioning: false
 
 - name: k3s-syncthing
   objectlocking: false
@@ -277,7 +277,7 @@ policies:
     - "s3:GetBucketLocation"
     - "s3:ListBucket"
     - "s3:ListBucketMultipartUploads"
-    effect: "Allow"
+    # effect: "Allow"
 
 - name: syncthing
   statements:
