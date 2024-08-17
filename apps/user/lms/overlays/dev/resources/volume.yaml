@@ -5,7 +5,7 @@ metadata:
   finalizers:
     - longhorn.io
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    # argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-options: Delete=false
     argocd.argoproj.io/sync-wave: "-2"
   labels:
