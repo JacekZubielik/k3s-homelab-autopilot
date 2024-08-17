@@ -149,7 +149,7 @@ spec:
         # applicationsSync: create-delete
         automated:
           allowEmpty: true
-          prune: false
+          prune: true
           selfHeal: false
         syncOptions:
         - ApplyOutOfSyncOnly=true
