@@ -148,7 +148,7 @@ buckets:
 
 - name: k3s-longhorn-backup
   objectlocking: true # false
-  policy: none
+  policy: longhorn
   purge: false
   # versioning: false
 
