@@ -20,8 +20,8 @@ statefulSetUpdate:
 ## Set default rootUser, rootPassword
 ## rootUser and rootPassword is generated when not set
 ## Distributed MinIO ref: https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html
-rootUser: ""
-rootPassword: ""
+# rootUser: ""
+# rootPassword: ""
 existingSecret: "minio-secret"
 
 ## Directory on the MinIO pof
@@ -164,12 +164,6 @@ buckets:
   purge: false
   versioning: false
 
-- name: k3s-video
-  objectlocking: false
-  policy: private
-  purge: false
-  versioning: false
-
 users:
 - accessKey: authentik
   existingSecret: minio-secret
@@ -179,22 +173,14 @@ users:
   existingSecret: minio-secret
   existingSecretKey: backendPassword
   policy: backend
-- accessKey: lms
-  existingSecret: minio-secret
-  existingSecretKey: lmsPassword
-  policy: lms
 - accessKey: loki
   existingSecret: minio-secret
   existingSecretKey: lokiPassword
   policy: loki
-- accessKey: longhorn_accesskey
+- accessKey: longhorn
   existingSecret: minio-secret
-  existingSecretKey: longhorn_secretkey
+  existingSecretKey: longhornPassword
   policy: longhorn
-- accessKey: syncthing
-  existingSecret: minio-secret
-  existingSecretKey: syncthingPassword
-  policy: syncthing
 - accessKey: tempo
   existingSecret: minio-secret
   existingSecretKey: tempoPassword
@@ -241,17 +227,6 @@ policies:
     - "s3:ListBucket"
     - "s3:ListBucketMultipartUploads"
 
-- name: lms
-  statements:
-  - resources:
-    - 'arn:aws:s3:::k3s-audio'
-    - 'arn:aws:s3:::k3s-audio/*'
-    actions:
-    - "s3:DeleteObject"
-    - "s3:GetObject"
-    - "s3:ListBucket"
-    - "s3:PutObject"
-
 - name: loki
   statements:
   - resources:
@@ -278,17 +253,6 @@ policies:
     - "s3:ListBucket"
     - "s3:ListBucketMultipartUploads"
     # effect: "Allow"
-
-- name: syncthing
-  statements:
-  - resources:
-    - 'arn:aws:s3:::k3s-syncthing'
-    - 'arn:aws:s3:::k3s-syncthing/*'
-    actions:
-    - "s3:DeleteObject"
-    - "s3:GetObject"
-    - "s3:ListBucket"
-    - "s3:PutObject"
 
 - name: tempo
   statements:
