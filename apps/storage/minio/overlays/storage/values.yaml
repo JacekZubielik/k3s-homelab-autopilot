@@ -187,9 +187,9 @@ users:
   existingSecret: minio-secret
   existingSecretKey: lokiPassword
   policy: loki
-- accessKey: longhorn
+- accessKey: longhorn_accesskey
   existingSecret: minio-secret
-  existingSecretKey: longhornPassword
+  existingSecretKey: longhorn_secretkey
   policy: longhorn
 - accessKey: syncthing
   existingSecret: minio-secret
