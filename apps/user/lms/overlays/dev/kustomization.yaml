@@ -12,6 +12,7 @@ resources:
 # generators:
 # - ksops-generator.yaml
 
+
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
