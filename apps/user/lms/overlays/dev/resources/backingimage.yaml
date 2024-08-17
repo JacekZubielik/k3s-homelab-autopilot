@@ -6,7 +6,7 @@
 #     - longhorn.io
 #   annotations:
 #     argocd.argoproj.io/hook: PreSync
-#     argocd.argoproj.io/sync-wave: "-3"
+#     argocd.argoproj.io/sync-wave: "-1"
 #   name: pvc-lms-config
 #   namespace: longhorn-system
 # spec:
@@ -14,14 +14,13 @@
 #   sourceParameters:
 #       backup-url: "s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-lms-config"
 #       concurrent-limit: "4"
-#   checksum: ef7c5e5f8a30af30645d6333ee6af9958ab019a3c5c30036922161b97fa5e914c153ba175f7971732917094aef4b9beca5d4dacc3b6ba7c881ab556afd176704
+#   checksum: 2103a0f871d5c724edb5b80b7c356925970e66fb290f33d5068cf04710679bbc10a79db52c6a5775411969e711a5a2b225c896602efa878adabc132903a301df
 
 ---
 apiVersion: longhorn.io/v1beta2
 kind: BackingImage
 metadata:
   annotations:
-    argocd.argoproj.io/sync-options: preserveResourcesOnDeletion=true
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "-1"
   name: pvc-lms-config
