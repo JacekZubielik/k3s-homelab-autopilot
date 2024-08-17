@@ -156,13 +156,13 @@ spec:
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
         - ServerSideApply=true
+        - SkipDryRunOnMissingResource=true
         # - Delete=true
         # - FailOnSharedResource=false
         # - preserveResourcesOnDeletion=false
         # - PruneLast=true
         # - Replace=false
         # - RespectIgnoreDifferences=true
-        # - SkipDryRunOnMissingResource=true
         # - Validate=false
         retry:
           backoff:
