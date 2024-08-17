@@ -9,4 +9,4 @@ files:
 - secrets/secret.sops.yaml
 # - resources/cert.k3s.ca-cluster.sops.yaml
 # - resources/cert.route53.production.sops.yaml
-# - resources/issuer.route53.production.sops.yaml
+- resources/issuer.route53.production.sops.yaml
